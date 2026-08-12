@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>SefazSp.Epat.Infrastructure</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SefazSp.Epat.Application\SefazSp.Epat.Application.csproj" />
+    <ProjectReference Include="..\SefazSp.Epat.Domain\SefazSp.Epat.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
