@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {}
   },
@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\e_rfdbarssoles\\.nuget\\packages\\": {}
+    "/app/.saiapp/ai-cli-home/6a7ccba0326b6a1807d50823/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\SefazSp.Epat.Domain.csproj",
+      "projectUniqueName": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
       "projectName": "SefazSp.Epat.Domain",
-      "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\SefazSp.Epat.Domain.csproj",
-      "packagesPath": "C:\\Users\\e_rfdbarssoles\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\obj\\",
+      "projectPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
+      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ccba0326b6a1807d50823/.nuget/packages/",
+      "outputPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\e_rfdbarssoles\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/app/.saiapp/ai-cli-home/6a7ccba0326b6a1807d50823/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -30,6 +30,7 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {}
         }
@@ -44,10 +45,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "imports": [
           "net461",
@@ -60,12 +63,22 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.417/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
