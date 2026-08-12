@@ -199,3 +199,9 @@
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Domain.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Application.pdb
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Domain.pdb
+/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/.msCoverageSourceRootsMapping_SefazSp.Epat.Oracles.Tests
+/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/CoverletSourceRootsMapping_SefazSp.Epat.Oracles.Tests
+/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Application.dll
+/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Domain.dll
+/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Application.pdb
+/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Domain.pdb
