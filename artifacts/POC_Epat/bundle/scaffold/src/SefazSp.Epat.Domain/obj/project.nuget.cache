@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "u6B5IhveMsk=",
+  "dgSpecHash": "PdX7ILC/4cE=",
   "success": true,
   "projectFilePath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages/microsoft.netcore.app.ref/8.0.29/microsoft.netcore.app.ref.8.0.29.nupkg.sha512",
+    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages/microsoft.aspnetcore.app.ref/8.0.29/microsoft.aspnetcore.app.ref.8.0.29.nupkg.sha512"
+  ],
   "logs": []
 }
