@@ -15,7 +15,6 @@
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/Microsoft.VisualStudio.TestPlatform.Common.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/testhost.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/Newtonsoft.Json.dll
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/NuGet.Frameworks.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/xunit.abstractions.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/xunit.assert.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/xunit.core.dll
@@ -194,3 +193,9 @@
 /home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net10.0/SefazSp.Epat.Oracles.Tests.pdb
 /home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net10.0/SefazSp.Epat.Oracles.Tests.genruntimeconfig.cache
 /home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net10.0/ref/SefazSp.Epat.Oracles.Tests.dll
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/.msCoverageSourceRootsMapping_SefazSp.Epat.Oracles.Tests
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/CoverletSourceRootsMapping_SefazSp.Epat.Oracles.Tests
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Application.dll
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Domain.dll
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Application.pdb
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net10.0/SefazSp.Epat.Domain.pdb
