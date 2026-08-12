@@ -8,9 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
 using System.Text.Json.Nodes;
+using SefazSp.Epat.Oracles.Tests.Fixture;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace SefazSp.Epat.Oracles.Tests.ScenarioPath;
 
@@ -25,23 +26,80 @@ namespace SefazSp.Epat.Oracles.Tests.ScenarioPath;
 /// </summary>
 public sealed class ScenarioPathOracleTests
 {
-    // ── Fixture ────────────────────────────────────────────────────────────────
+    private readonly ITestOutputHelper _output;
 
-    private static readonly JsonNode Index = LoadIndex();
+    public ScenarioPathOracleTests(ITestOutputHelper output) => _output = output;
 
-    private static JsonNode LoadIndex()
+    private static readonly JsonNode Index = LoadIndexNode();
+
+    private static JsonNode LoadIndexNode()
     {
         var path = RepoRoot.ArtifactsPath("POC_Epat", "scenarios", "index.json");
         return JsonNode.Parse(File.ReadAllText(path))
                ?? throw new InvalidOperationException("index.json vazio: " + path);
     }
 
-    private static IReadOnlyList<JsonNode> AllScenarios() =>
+    private static IReadOnlyList<JsonNode> ScenarioSummaries() =>
         Index["scenarios"]!.AsArray()
             .Select(s => s!)
             .ToList();
 
-    // ── AC-ORACULO: totais declarados ─────────────────────────────────────────
+    /// <summary>
+    /// Provides the 146 scenario identifiers declared in the oracle fixture.
+    /// </summary>
+    public static IEnumerable<object[]> AllScenarios()
+    {
+        var index = ScenarioFixtureLoader.LoadIndex();
+        return index.Scenarios.Select(s => new object[] { s.Id, s.Process, s.Kind });
+    }
+
+    public static IEnumerable<object[]> AllScenarioIds() =>
+        ScenarioFixtureLoader.LoadIndex().Scenarios.Select(s => new object[] { s.Id });
+
+    /// <summary>
+    /// For every scenario declared in the fixture:
+    ///   1. The individual scenario file exists and is parseable.
+    ///   2. The scenario carries at least one path segment.
+    ///   3. Every node in every segment has a non-empty identifier.
+    ///   4. Segments are ordered (ordemNaJornada is non-negative and monotonically
+    ///      non-decreasing), confirming the path is a directed sequence.
+    /// </summary>
+    [Theory]
+    [MemberData(nameof(AllScenarios))]
+    public void Scenario_PathIsStructurallyValid(string scenarioId, string process, string kind)
+    {
+        var detail = ScenarioFixtureLoader.LoadScenario(scenarioId);
+
+        Assert.Equal(scenarioId, detail.Id);
+        Assert.Equal(process, detail.Process);
+        Assert.Equal(kind, detail.Kind);
+
+        var segments = detail.Segmentos;
+        Assert.NotNull(segments);
+        Assert.NotEmpty(segments);
+
+        var previousOrder = -1;
+        foreach (var seg in segments)
+        {
+            Assert.True(seg.OrdemNaJornada >= 0,
+                $"[{scenarioId}] Segment has negative ordemNaJornada: {seg.OrdemNaJornada}");
+
+            Assert.True(seg.OrdemNaJornada >= previousOrder,
+                $"[{scenarioId}] Segment order not monotonic: {seg.OrdemNaJornada} < {previousOrder}");
+            previousOrder = seg.OrdemNaJornada;
+
+            if (seg.Nos is { Count: > 0 } nos)
+            {
+                foreach (var no in nos)
+                {
+                    Assert.False(string.IsNullOrWhiteSpace(no.Id),
+                        $"[{scenarioId}] Node has empty id in segment at order {seg.OrdemNaJornada}");
+                }
+            }
+        }
+
+        _output.WriteLine($"[PASS] {scenarioId} ({process}, {kind}) — {segments.Count} segment(s)");
+    }
 
     [Fact]
     public void Index_DeclaresCaseCount_146()
@@ -53,8 +111,7 @@ public sealed class ScenarioPathOracleTests
     [Fact]
     public void Index_ScenariosList_Has146Entries()
     {
-        var scenarios = AllScenarios();
-        Assert.Equal(146, scenarios.Count);
+        Assert.Equal(146, ScenarioSummaries().Count);
     }
 
     [Fact]
@@ -64,60 +121,41 @@ public sealed class ScenarioPathOracleTests
         Assert.Equal("100%", coverage);
     }
 
-    // ── AC-ORACULO: cada caso tem campos obrigatórios ─────────────────────────
-
-    public static IEnumerable<object[]> AllScenarioIds()
-    {
-        var path = RepoRoot.ArtifactsPath("POC_Epat", "scenarios", "index.json");
-        var idx = JsonNode.Parse(File.ReadAllText(path))!;
-        return idx["scenarios"]!.AsArray()
-            .Select(s => new object[] { s!["id"]!.GetValue<string>() });
-    }
-
     [Theory]
     [MemberData(nameof(AllScenarioIds))]
     public void Scenario_HasRequiredFields(string scenarioId)
     {
-        var scenario = AllScenarios()
+        var scenario = ScenarioSummaries()
             .First(s => s["id"]?.GetValue<string>() == scenarioId);
 
-        // id
         Assert.False(string.IsNullOrWhiteSpace(scenario["id"]?.GetValue<string>()),
             $"{scenarioId}: campo 'id' ausente ou vazio.");
-
-        // process
         Assert.False(string.IsNullOrWhiteSpace(scenario["process"]?.GetValue<string>()),
             $"{scenarioId}: campo 'process' ausente ou vazio.");
 
-        // kind — deve ser um dos valores válidos
         var kind = scenario["kind"]?.GetValue<string>();
         Assert.True(
             kind is "ate-ao-fim" or "erro" or "percurso" or "prazo",
             $"{scenarioId}: 'kind' inválido: '{kind}'.");
 
-        // de + ate — origem e destino
         Assert.False(string.IsNullOrWhiteSpace(scenario["de"]?.GetValue<string>()),
             $"{scenarioId}: campo 'de' ausente ou vazio.");
         Assert.False(string.IsNullOrWhiteSpace(scenario["ate"]?.GetValue<string>()),
             $"{scenarioId}: campo 'ate' ausente ou vazio.");
 
-        // etapa — número de etapa válido (1-7)
         var etapa = scenario["etapa"]?.GetValue<int>();
         Assert.True(etapa is >= 1 and <= 7,
             $"{scenarioId}: 'etapa' fora do intervalo 1-7: {etapa}.");
 
-        // passos — pelo menos 1
         var passos = scenario["passos"]?.GetValue<int>();
         Assert.True(passos is > 0,
             $"{scenarioId}: 'passos' deve ser > 0: {passos}.");
     }
 
-    // ── AC-ORACULO: distribuição por kind bate com o summary ─────────────────
-
     [Fact]
     public void Index_SummaryByKind_MatchesActualScenarioCounts()
     {
-        var scenarios = AllScenarios();
+        var scenarios = ScenarioSummaries();
         var summary = Index["summary"]!["byKind"]!.AsObject();
 
         foreach (var (kind, node) in summary)
@@ -128,21 +166,17 @@ public sealed class ScenarioPathOracleTests
         }
     }
 
-    // ── AC-ORACULO: processos cobertos ────────────────────────────────────────
-
     [Fact]
     public void Index_SummaryProcesses_MatchesActualProcessCount()
     {
         var declared = Index["summary"]!["processes"]!.GetValue<int>();
-        var actual = AllScenarios()
+        var actual = ScenarioSummaries()
             .Select(s => s["process"]?.GetValue<string>())
             .Where(p => p != null)
             .Distinct()
             .Count();
         Assert.Equal(declared, actual);
     }
-
-    // ── AC-ORACULO: cobertura de arestas ─────────────────────────────────────
 
     [Fact]
     public void Index_Coverage_EachProcess_HasFullEdgeCoverage()
@@ -151,8 +185,7 @@ public sealed class ScenarioPathOracleTests
 
         foreach (var proc in coverage)
         {
-            var procName = proc!["process"]!.GetValue<string>();
-            var total = proc["edges"]!.GetValue<int>();
+            var total = proc!["edges"]!.GetValue<int>();
             var covered = proc["edgesCovered"]!.GetValue<int>();
             var uncovered = proc["edgesUncovered"]!.AsArray();
 
@@ -161,36 +194,29 @@ public sealed class ScenarioPathOracleTests
         }
     }
 
-    // ── Graft-step: os pontos dinâmicos pertencem a cenários de etapa 2 ───────
-
     [Fact]
     public void GraftStep_DynamicProcesses_HaveScenariosInEtapa2()
     {
-        var scenarios = AllScenarios();
+        var scenarios = ScenarioSummaries();
 
-        // DEAT0050 é atingido via graft-step — deve ter cenários
-        var deatScenarios = scenarios.Where(s => s["process"]?.GetValue<string>() == "DEAT0050").ToList();
-        Assert.True(deatScenarios.Count > 0, "DEAT0050 (graft-step ponto 1) sem cenários.");
-
-        // CONTROPC é atingido via graft-step — deve ter cenários
-        var contrScenarios = scenarios.Where(s => s["process"]?.GetValue<string>() == "CONTROPC").ToList();
-        Assert.True(contrScenarios.Count > 0, "CONTROPC (graft-step ponto 2) sem cenários.");
-
-        // AGPECASPC é atingido via graft-step — deve ter cenários
-        var agpeScenarios = scenarios.Where(s => s["process"]?.GetValue<string>() == "AGPECASPC").ToList();
-        Assert.True(agpeScenarios.Count > 0, "AGPECASPC (graft-step ponto 3) sem cenários.");
+        Assert.True(scenarios.Any(s => s["process"]?.GetValue<string>() == "DEAT0050"),
+            "DEAT0050 (graft-step ponto 1) sem cenários.");
+        Assert.True(scenarios.Any(s => s["process"]?.GetValue<string>() == "CONTROPC"),
+            "CONTROPC (graft-step ponto 2) sem cenários.");
+        Assert.True(scenarios.Any(s => s["process"]?.GetValue<string>() == "AGPECASPC"),
+            "AGPECASPC (graft-step ponto 3) sem cenários.");
     }
 
     [Fact]
     public void GraftStep_Etapa2_ScenarioCount_MatchesSummary()
     {
         var declared = Index["summary"]!["byEtapa"]!["etapa 2"]!.GetValue<int>();
-        var scenarios = AllScenarios();
-        var actual = scenarios.Count(s =>
+        var actual = ScenarioSummaries().Count(s =>
         {
             var etapas = s["etapas"]?.AsArray();
             return etapas != null && etapas.Any(e => e?.GetValue<int>() == 2);
         });
+
         Assert.Equal(declared, actual);
     }
 }
