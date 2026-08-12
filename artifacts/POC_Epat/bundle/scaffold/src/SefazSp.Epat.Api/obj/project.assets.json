@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "SefazSp.Epat.Application/1.0.0": {
@@ -66,19 +66,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\e_rfdbarssoles\\.nuget\\packages\\": {}
+    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Api\\SefazSp.Epat.Api.csproj",
+      "projectUniqueName": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Api/SefazSp.Epat.Api.csproj",
       "projectName": "SefazSp.Epat.Api",
-      "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Api\\SefazSp.Epat.Api.csproj",
-      "packagesPath": "C:\\Users\\e_rfdbarssoles\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Api\\obj\\",
+      "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Api/SefazSp.Epat.Api.csproj",
+      "packagesPath": "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages",
+      "outputPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\e_rfdbarssoles\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/runner/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -88,16 +88,17 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Application\\SefazSp.Epat.Application.csproj": {
-              "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Application\\SefazSp.Epat.Application.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
             },
-            "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\SefazSp.Epat.Domain.csproj": {
-              "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\SefazSp.Epat.Domain.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
             },
-            "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Infrastructure\\SefazSp.Epat.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Infrastructure\\SefazSp.Epat.Infrastructure.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj"
             }
           }
         }
@@ -112,10 +113,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "imports": [
           "net461",
@@ -128,12 +131,22 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.417/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

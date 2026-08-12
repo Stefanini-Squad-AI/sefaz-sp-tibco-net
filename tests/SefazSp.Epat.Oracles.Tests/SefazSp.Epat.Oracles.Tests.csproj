@@ -19,4 +19,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\artifacts\POC_Epat\bundle\scaffold\src\SefazSp.Epat.Application\SefazSp.Epat.Application.csproj" />
+  </ItemGroup>
 </Project>
