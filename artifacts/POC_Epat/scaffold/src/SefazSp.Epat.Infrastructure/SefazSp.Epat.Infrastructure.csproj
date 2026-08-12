@@ -15,4 +15,8 @@
     <ProjectReference Include="..\SefazSp.Epat.Domain\SefazSp.Epat.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.*" />
+  </ItemGroup>
+
 </Project>
