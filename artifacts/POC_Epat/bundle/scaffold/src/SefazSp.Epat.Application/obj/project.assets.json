@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52dab/.nuget/packages/": {}
+    "/home/runner/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
+      "projectUniqueName": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
       "projectName": "SefazSp.Epat.Application",
-      "projectPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
-      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52dab/.nuget/packages/",
-      "outputPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/obj/",
+      "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
+      "packagesPath": "/home/runner/.nuget/packages/",
+      "outputPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52dab/.nuget/NuGet/NuGet.Config"
+        "/home/runner/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -52,8 +52,8 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
-              "projectPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
             }
           }
         }
@@ -86,16 +86,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.29, 8.0.29]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.29, 8.0.29]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

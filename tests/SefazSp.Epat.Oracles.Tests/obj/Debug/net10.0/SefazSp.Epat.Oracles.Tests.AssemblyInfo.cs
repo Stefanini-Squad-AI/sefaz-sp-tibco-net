@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SefazSp.Epat.Oracles.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e8463520cbe82c83aeb03f1090dea097eb9466f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a336d7210f1e980acf644c59292755418542fbb")]
 [assembly: System.Reflection.AssemblyProductAttribute("SefazSp.Epat.Oracles.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SefazSp.Epat.Oracles.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

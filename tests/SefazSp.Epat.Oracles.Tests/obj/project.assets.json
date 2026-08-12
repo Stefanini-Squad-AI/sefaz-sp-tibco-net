@@ -923,19 +923,19 @@
     ]
   },
   "packageFolders": {
-    "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52dab/.nuget/packages/": {}
+    "/home/runner/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
+      "projectUniqueName": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
       "projectName": "SefazSp.Epat.Oracles.Tests",
-      "projectPath": "/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
-      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52dab/.nuget/packages/",
-      "outputPath": "/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/",
+      "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
+      "packagesPath": "/home/runner/.nuget/packages/",
+      "outputPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52dab/.nuget/NuGet/NuGet.Config"
+        "/home/runner/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -948,8 +948,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
-              "projectPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
             }
           }
         }
