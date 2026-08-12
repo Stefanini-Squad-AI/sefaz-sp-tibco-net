@@ -1,9 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>false</IsPackable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>SefazSp.Epat.Oracles.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../../src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj" />
+    <ProjectReference Include="../../src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj" />
+    <ProjectReference Include="../../src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
