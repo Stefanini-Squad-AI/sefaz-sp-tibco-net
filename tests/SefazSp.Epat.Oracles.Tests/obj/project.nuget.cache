@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "C248zrZVJWU=",
+  "dgSpecHash": "of+faFhxBPc=",
   "success": true,
   "projectFilePath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
   "expectedPackageFiles": [
+    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages/coverlet.collector/6.0.0/coverlet.collector.6.0.0.nupkg.sha512",
     "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages/microsoft.codecoverage/17.11.1/microsoft.codecoverage.17.11.1.nupkg.sha512",
     "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages/microsoft.net.test.sdk/17.11.1/microsoft.net.test.sdk.17.11.1.nupkg.sha512",
     "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages/microsoft.testplatform.objectmodel/17.11.1/microsoft.testplatform.objectmodel.17.11.1.nupkg.sha512",
