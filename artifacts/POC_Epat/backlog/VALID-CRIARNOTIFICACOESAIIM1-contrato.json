@@ -1,13 +1,13 @@
 {
   "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
-  "id": "VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato",
+  "id": "VALID-CRIARNOTIFICACOESAIIM1-contrato",
   "cardType": "validation",
-  "title": "Provar o contrato da operacao __sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao",
+  "title": "Provar o contrato da operacao criarNotificacoesAIIM.1",
   "epic": "fundacao",
   "content": {
     "intent": "Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.",
     "injectedContext": {
-      "summary": "Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.",
+      "summary": "Operacao realmente invocada pelo processo, em /EPATInterfaceWrappers/criarNotificacoesAIIM.1. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.",
       "hypotheses": []
     },
     "scaffold": [
@@ -20,14 +20,14 @@
   },
   "irRef": {
     "artifact": "service-contracts.json",
-    "pointer": "operations[__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao]",
+    "pointer": "operations[__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1]",
     "kind": "operation",
     "nodeIds": []
   },
   "sourceRef": [
     {
       "tibcoFile": "EPAT.wsdl",
-      "elementId": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao"
+      "elementId": "__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1"
     }
   ],
   "confidence": {
@@ -38,7 +38,7 @@
   },
   "provenance": {
     "generatedAt": "2026-05-28T00:00:00Z",
-    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
     "package": "POC_Epat"
   },
   "acceptance": {
@@ -66,8 +66,8 @@
       "ordemNaJornada": 1,
       "doPasso": 1,
       "aoPasso": 1,
-      "abrePor": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao",
-      "fechaEm": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao"
+      "abrePor": "__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1",
+      "fechaEm": "__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1"
     },
     "concepts": [
       "service-tasks"

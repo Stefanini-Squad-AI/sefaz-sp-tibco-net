@@ -5,8 +5,8 @@
   "porqueAssim": "O id do card e a CHAVE DE IDEMPOTENCIA: reenviar o mesmo card tem de actualizar, nunca duplicar. O Jira nao tem chave externa nativa, por isso ela vive numa label e opcionalmente num campo proprio. Sem isto, uma segunda corrida do pipeline cria 80 issues novas por cima das 80 que ja la estavam.",
 
   "projeto": {
-    "key": "EPAT",
-    "nota": "Chave do projecto no Jira. Alterar para a chave real antes de enviar."
+    "key": "SSTN",
+    "nota": "Chave real do projecto no Jira, confirmada em 2026-08-12. 'EPAT' e o valor de exemplo do gerador e dispara aviso."
   },
 
   "tiposDeIssue": {
@@ -36,12 +36,23 @@
   },
 
   "labels": {
-    "sempre": ["epat-migracao", "gerado-pelo-kit"],
+    "sempre": ["epat-migracao", "gerado-pelo-kit", "SAIAPP"],
     "porTipo": true,
     "porEtapa": true,
     "porPeso": true,
     "porBloqueador": true,
     "nota": "As labels sao a forma de filtrar no board sem depender de campos proprios. porBloqueador e a mais util: permite ver de um lado todos os cards travados pela semantica dos builtins."
+  },
+
+  "estadoInicial": {
+    "nome": "To Do",
+    "nota": "O Jira NAO aceita estado na criacao: a issue nasce sempre no primeiro estado do fluxo do projecto, que aqui e 'To Detail'. O envio faz uma transicao logo a seguir. Deixar null para aceitar o estado de origem."
+  },
+
+  "responsavel": {
+    "modo": "eu",
+    "accountId": null,
+    "nota": "'eu' atribui a conta dona do JIRA_API_TOKEN, resolvida em execucao. Para atribuir a outra pessoa, por 'accountId' e indicar o id. null em ambos deixa por atribuir."
   },
 
   "ligacoes": {

@@ -1127,25 +1127,25 @@
         {
           "process": "POC_EpatProcess",
           "node": "Corrigir Fechamento",
-          "nodeId": "_5E444FqTEfG5K7mY0I3I6w",
-          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-        },
-        {
-          "process": "POC_EpatProcess",
-          "node": "Corrigir Fechamento",
           "nodeId": "_tN6q4lqTEfG5K7mY0I3I6w",
           "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
         },
         {
           "process": "POC_EpatProcess",
-          "node": "Inicia Graft Step",
-          "nodeId": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "node": "Corrigir Fechamento",
+          "nodeId": "_5E444FqTEfG5K7mY0I3I6w",
           "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
         },
         {
           "process": "POC_EpatProcess",
           "node": "Inicia Graft Step",
           "nodeId": "_0XWagFqNEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Inicia Graft Step",
+          "nodeId": "_Faq_RVqTEfG5K7mY0I3I6w",
           "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
         },
         {
@@ -1280,13 +1280,6 @@
         },
         {
           "tibcoFile": "POC_Epat.xpdl",
-          "elementId": "_5E444FqTEfG5K7mY0I3I6w",
-          "xpath": "//xpdl2:Activity[@Id='_5E444FqTEfG5K7mY0I3I6w']",
-          "artifact": "process-model.json",
-          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
-        },
-        {
-          "tibcoFile": "POC_Epat.xpdl",
           "elementId": "_tN6q4lqTEfG5K7mY0I3I6w",
           "xpath": "//xpdl2:Activity[@Id='_tN6q4lqTEfG5K7mY0I3I6w']",
           "artifact": "process-model.json",
@@ -1294,8 +1287,8 @@
         },
         {
           "tibcoFile": "POC_Epat.xpdl",
-          "elementId": "_Faq_RVqTEfG5K7mY0I3I6w",
-          "xpath": "//xpdl2:Activity[@Id='_Faq_RVqTEfG5K7mY0I3I6w']",
+          "elementId": "_5E444FqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_5E444FqTEfG5K7mY0I3I6w']",
           "artifact": "process-model.json",
           "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
         },
@@ -1303,6 +1296,13 @@
           "tibcoFile": "POC_Epat.xpdl",
           "elementId": "_0XWagFqNEfG5K7mY0I3I6w",
           "xpath": "//xpdl2:Activity[@Id='_0XWagFqNEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_Faq_RVqTEfG5K7mY0I3I6w']",
           "artifact": "process-model.json",
           "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
         },
@@ -1522,49 +1522,49 @@
       "occurrenceCount": 15,
       "occurrences": [
         {
-          "package": "_XWivN1qTEfG5K7mY0I3I6w"
-        },
-        {
-          "package": "_-bkx9V6JEfGBBLgT-R5iuw"
-        },
-        {
-          "package": "_0XWaj1qNEfG5K7mY0I3I6w"
+          "package": "_CI6mDFqREfG5K7mY0I3I6w"
         },
         {
           "package": "_-bkx9l6JEfGBBLgT-R5iuw"
         },
         {
+          "package": "_-bkx716JEfGBBLgT-R5iuw"
+        },
+        {
           "package": "_CtQ7L1qPEfG5K7mY0I3I6w"
         },
         {
-          "package": "_lresZVqhEfG5K7mY0I3I6w"
-        },
-        {
-          "package": "_CI6mDFqREfG5K7mY0I3I6w"
-        },
-        {
-          "package": "_CI6mDVqREfG5K7mY0I3I6w"
+          "package": "_-bkx816JEfGBBLgT-R5iuw"
         },
         {
           "package": "_lresZlqhEfG5K7mY0I3I6w"
         },
         {
-          "package": "_lresZFqhEfG5K7mY0I3I6w"
+          "package": "_0XWaj1qNEfG5K7mY0I3I6w"
         },
         {
           "package": "_-bkx8F6JEfGBBLgT-R5iuw"
         },
         {
-          "package": "_-bkx716JEfGBBLgT-R5iuw"
-        },
-        {
-          "package": "_-bkx816JEfGBBLgT-R5iuw"
+          "package": "_lresZFqhEfG5K7mY0I3I6w"
         },
         {
           "package": "_CtQ7LlqPEfG5K7mY0I3I6w"
         },
         {
           "package": "_-bkx8V6JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_XWivN1qTEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_CI6mDVqREfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_-bkx9V6JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_lresZVqhEfG5K7mY0I3I6w"
         }
       ],
       "questionsForAnalyst": [

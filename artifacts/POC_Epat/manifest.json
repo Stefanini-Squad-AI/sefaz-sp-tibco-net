@@ -1,8 +1,8 @@
 {
   "$schema": "sefaz-sp/tibco-intermediate/run-manifest/v1",
   "package": "POC_Epat",
-  "generatedAt": "2026-08-12T10:50:09.5879885-03:00",
-  "durationMs": 23705,
+  "generatedAt": "2026-08-12T15:01:49.3039442-03:00",
+  "durationMs": 28469,
   "host": {
     "machine": "RAMONSTEFANINI",
     "powershell": "7.6.4"
@@ -49,7 +49,7 @@
     {
       "name": "process-model.json",
       "bytes": 417698,
-      "sha256": "62da8cceda2d9c78a8eb2735665618d7c8998f20b15467870afecb6d8dfb7ebc"
+      "sha256": "60e9c680fba7895bf7df2ff25edb76fc8e431962d1817150bb5bfb09e1cdffcb"
     },
     {
       "name": "case-field-dictionary.json",
@@ -58,8 +58,8 @@
     },
     {
       "name": "service-contracts.json",
-      "bytes": 894494,
-      "sha256": "a370b044fb97eb4afdd78665ddbe1a646390d3338651a56b031ab872a109bfb0"
+      "bytes": 893906,
+      "sha256": "f7211a8cc8b8348f7c3fd32a8f3bca83a21f71766786566bc754f1f541d6fdce"
     },
     {
       "name": "decision-tables.json",
@@ -84,12 +84,12 @@
     {
       "name": "review-dossier.json",
       "bytes": 193795,
-      "sha256": "6c4ed01c3d72d3396e4782c7e2777548ef2cff88e4f5e6eddfa56a4719f513ba"
+      "sha256": "d1ebf299c7b2e543ba91fbdd4ae99f06b1f5ab80b18754a6b318eba1a0c97bae"
     },
     {
       "name": "conformance.json",
-      "bytes": 39576,
-      "sha256": "b59de6d1c387bccca630541c877e31c37d176041c3092c84f4240e013fa47a2f"
+      "bytes": 39588,
+      "sha256": "9bf737c25d37bb857be4186552098ed898cff74e28e31c94a0a0cfa0082b9bc3"
     },
     {
       "name": "rule-inventory.json",
@@ -109,7 +109,7 @@
     {
       "name": "scope.json",
       "bytes": 274075,
-      "sha256": "3a8d853f0242194d6403c1eb2ea0979755e05f8a83e425e88144d64dfc2f653b"
+      "sha256": "415b63dd477137a5534e2e8ac28408ec829e85e0c8cabf905b20c26003648eff"
     }
   ]
 }

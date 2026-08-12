@@ -8,11 +8,10 @@
     3,
     4,
     5,
-    6,
     7
   ],
   "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-  "kind": "prazo",
+  "kind": "ate-ao-fim",
   "representative": null,
   "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
   "jornada": {
@@ -28,13 +27,13 @@
     "chamadoPor": null
   },
   "destino": {
-    "id": "_H22mclqWEfG5K7mY0I3I6w",
-    "nome": "Fim",
+    "id": "_CtQ66lqPEfG5K7mY0I3I6w",
+    "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
     "tipo": "endEvent",
     "como": "fim-do-caso",
     "regressaA": null
   },
-  "lengthNodes": 35,
+  "lengthNodes": 28,
   "segmentos": [
     {
       "etapas": [
@@ -247,9 +246,9 @@
       ],
       "ordemNaJornada": 8,
       "doPasso": 22,
-      "aoPasso": 33,
+      "aoPasso": 27,
       "abrePor": "Validar Paralelos",
-      "fechaEm": "prepSub",
+      "fechaEm": "Fim Vista Mista",
       "nos": [
         {
           "id": "_89MVQlqVEfG5K7mY0I3I6w",
@@ -277,56 +276,9 @@
           "tipo": "receiveTask"
         },
         {
-          "id": "_CtQ7A1qPEfG5K7mY0I3I6w",
-          "nome": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w",
-          "tipo": "timerEvent"
-        },
-        {
-          "id": "_CtQ66FqPEfG5K7mY0I3I6w",
-          "nome": "FimDRF",
-          "tipo": "signalThrow"
-        },
-        {
-          "id": "_CtQ691qPEfG5K7mY0I3I6w",
-          "nome": "Busca Emails",
-          "tipo": "callActivity"
-        },
-        {
-          "id": "_CtQ7AVqPEfG5K7mY0I3I6w",
-          "nome": "VoltaAgenda",
-          "tipo": "scriptTask"
-        },
-        {
-          "id": "_CtQ7AlqPEfG5K7mY0I3I6w",
-          "nome": "Tipo de Vista Mista?",
-          "tipo": "gateway"
-        },
-        {
-          "id": "_CtQ6-lqPEfG5K7mY0I3I6w",
-          "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
-          "tipo": "gateway"
-        },
-        {
-          "id": "_zE3XeV6JEfGBBLgT-R5iuw",
-          "nome": "prepSub",
-          "tipo": "scriptTask"
-        }
-      ]
-    },
-    {
-      "etapas": [
-        6
-      ],
-      "ordemNaJornada": 9,
-      "doPasso": 34,
-      "aoPasso": 34,
-      "abrePor": "Controlar Intimados",
-      "fechaEm": "Controlar Intimados",
-      "nos": [
-        {
-          "id": "_nQntZ16JEfGBBLgT-R5iuw",
-          "nome": "Controlar Intimados",
-          "tipo": "callActivity"
+          "id": "_CtQ67FqPEfG5K7mY0I3I6w",
+          "nome": "Fim Vista Mista",
+          "tipo": "signalCatch"
         }
       ]
     },
@@ -334,15 +286,15 @@
       "etapas": [
         7
       ],
-      "ordemNaJornada": 10,
-      "doPasso": 35,
-      "aoPasso": 35,
-      "abrePor": "Fim",
-      "fechaEm": "Fim",
+      "ordemNaJornada": 9,
+      "doPasso": 28,
+      "aoPasso": 28,
+      "abrePor": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "fechaEm": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
       "nos": [
         {
-          "id": "_H22mclqWEfG5K7mY0I3I6w",
-          "nome": "Fim",
+          "id": "_CtQ66lqPEfG5K7mY0I3I6w",
+          "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
           "tipo": "endEvent"
         }
       ]
@@ -533,64 +485,15 @@
       "entrouPor": "fluxo"
     },
     {
-      "id": "_CtQ7A1qPEfG5K7mY0I3I6w",
-      "nome": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w",
-      "tipo": "timerEvent",
+      "id": "_CtQ67FqPEfG5K7mY0I3I6w",
+      "nome": "Fim Vista Mista",
+      "tipo": "signalCatch",
       "escopo": "MAIN",
       "entrouPor": "fronteira"
     },
     {
-      "id": "_CtQ66FqPEfG5K7mY0I3I6w",
-      "nome": "FimDRF",
-      "tipo": "signalThrow",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_CtQ691qPEfG5K7mY0I3I6w",
-      "nome": "Busca Emails",
-      "tipo": "callActivity",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_CtQ7AVqPEfG5K7mY0I3I6w",
-      "nome": "VoltaAgenda",
-      "tipo": "scriptTask",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_CtQ7AlqPEfG5K7mY0I3I6w",
-      "nome": "Tipo de Vista Mista?",
-      "tipo": "gateway",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_CtQ6-lqPEfG5K7mY0I3I6w",
-      "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
-      "tipo": "gateway",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_zE3XeV6JEfGBBLgT-R5iuw",
-      "nome": "prepSub",
-      "tipo": "scriptTask",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_nQntZ16JEfGBBLgT-R5iuw",
-      "nome": "Controlar Intimados",
-      "tipo": "callActivity",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_H22mclqWEfG5K7mY0I3I6w",
-      "nome": "Fim",
+      "id": "_CtQ66lqPEfG5K7mY0I3I6w",
+      "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
       "tipo": "endEvent",
       "escopo": "MAIN",
       "entrouPor": "fluxo"
@@ -638,15 +541,6 @@
       "tipo": "OTHERWISE",
       "condicao": null,
       "leva": "gateway _CtQ7BVqPEfG5K7mY0I3I6w",
-      "exige": []
-    },
-    {
-      "decisao": "Tipo de Vista Mista?",
-      "decisaoId": "_CtQ7AlqPEfG5K7mY0I3I6w",
-      "ramo": "No",
-      "tipo": "OTHERWISE",
-      "condicao": null,
-      "leva": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
       "exige": []
     }
   ],
@@ -701,47 +595,6 @@
         "SC-PRPINTPC-016",
         "SC-PRPINTPC-017",
         "SC-PRPINTPC-018"
-      ],
-      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
-    },
-    {
-      "passo": "Busca Emails",
-      "passoId": "_CtQ691qPEfG5K7mY0I3I6w",
-      "continuaEm": "BSCENVPC",
-      "resolvidaPor": "process",
-      "dinamica": false,
-      "graftStep": false,
-      "cenarios": [
-        "SC-BSCENVPC-001",
-        "SC-BSCENVPC-002",
-        "SC-BSCENVPC-003",
-        "SC-BSCENVPC-004",
-        "SC-BSCENVPC-005",
-        "SC-BSCENVPC-006",
-        "SC-BSCENVPC-007",
-        "SC-BSCENVPC-008",
-        "SC-BSCENVPC-009",
-        "SC-BSCENVPC-010",
-        "SC-BSCENVPC-011",
-        "SC-BSCENVPC-012",
-        "SC-BSCENVPC-013",
-        "SC-BSCENVPC-014",
-        "SC-BSCENVPC-015",
-        "SC-BSCENVPC-016",
-        "SC-BSCENVPC-017",
-        "SC-BSCENVPC-018"
-      ],
-      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
-    },
-    {
-      "passo": "Controlar Intimados",
-      "passoId": "_nQntZ16JEfGBBLgT-R5iuw",
-      "continuaEm": "CONTROPC",
-      "resolvidaPor": "processInterface",
-      "dinamica": true,
-      "graftStep": false,
-      "cenarios": [
-        "SC-CONTROPC-001"
       ],
       "nota": "A jornada desce para este processo e regressa ao passo seguinte."
     }

@@ -552,16 +552,30 @@ foreach ($fp in (Arr $index.etapas.footprint)) {
     })
 }
 
+# O nome da operacao no WSDL traz o caminho de pasta codificado. O cartao mostra a
+# forma legivel; o elementId continua a ser o nome cru, que e a ligacao a fonte.
+$caminhoDaOperacao = @{}
+foreach ($svc in (Arr $services.services)) {
+    foreach ($op in (Arr $svc.operations)) { $caminhoDaOperacao[$op.name] = $op.logicalPath }
+}
+function Get-NomeDaOperacao {
+    param([string]$OpName)
+    $p = $caminhoDaOperacao[$OpName]
+    if (-not $p) { $p = $OpName }
+    return (($p -split '/')[-1])
+}
+
 foreach ($opName in (Arr $services.invokedOperations)) {
+    $nomeCurto = Get-NomeDaOperacao $opName
     $valid.Add([ordered]@{
         '$schema' = 'sefaz-sp/tibco-intermediate/backlog-card/v1'
-        id = 'VALID-{0}-contrato' -f (Slug $opName)
+        id = 'VALID-{0}-contrato' -f (Slug $nomeCurto)
         cardType = 'validation'
-        title = "Provar o contrato da operacao $opName"
+        title = "Provar o contrato da operacao $nomeCurto"
         epic = 'fundacao'
         content = [ordered]@{
             intent = "Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos."
-            injectedContext = [ordered]@{ summary = "Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele."; hypotheses = @() }
+            injectedContext = [ordered]@{ summary = "Operacao realmente invocada pelo processo, em $(if ($caminhoDaOperacao[$opName]) { $caminhoDaOperacao[$opName] } else { $opName }). O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele."; hypotheses = @() }
             scaffold = @([ordered]@{ path = 'tests/SefazSp.Epat.Oracles.Tests'; status = 'scaffold'; note = 'Conformidade de contrato contra o WSDL fixado.' })
         }
         irRef = [ordered]@{ artifact = 'service-contracts.json'; pointer = "operations[$opName]"; kind = 'operation'; nodeIds = @() }

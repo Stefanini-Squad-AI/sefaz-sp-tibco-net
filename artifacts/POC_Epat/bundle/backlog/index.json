@@ -3,7 +3,7 @@
   "package": "POC_Epat",
   "note": "Backlog projectado dos artefactos. A unidade de trabalho e o SEGMENTO da jornada: tem oraculo pronto (o troco do cenario) e etapa exacta, e o detalhe fino desce para content.checklist. Nada aqui e criativo - card, ordem, dependencia, bloqueador e cobertura sao leituras de factos ja extraidos. O julgamento entra apenas por analysis/backlog-review.json, como parecer anexo, e nunca altera uma contagem.",
   "generatedAt": "2026-05-28T00:00:00Z",
-  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
   "parecerAgentico": {
     "ficheiro": "analysis/backlog-review.json",
     "presente": true,
@@ -1541,10 +1541,10 @@
       "dependsOn": []
     },
     {
-      "id": "VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato",
+      "id": "VALID-PREPARARINTIMACAO-contrato",
       "cardType": "validation",
       "epic": "fundacao",
-      "title": "Provar o contrato da operacao __sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao",
+      "title": "Provar o contrato da operacao PrepararIntimacao",
       "etapas": [
         3
       ],
@@ -1558,10 +1558,10 @@
       "dependsOn": []
     },
     {
-      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato",
+      "id": "VALID-ATUALIZARINTIMACAO1-contrato",
       "cardType": "validation",
       "epic": "fundacao",
-      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1",
+      "title": "Provar o contrato da operacao atualizarIntimacao.1",
       "etapas": [
         3
       ],
@@ -1575,10 +1575,10 @@
       "dependsOn": []
     },
     {
-      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLBUSCARVISTASATIVASPORAIIM1-contrato",
+      "id": "VALID-BUSCARVISTASATIVASPORAIIM1-contrato",
       "cardType": "validation",
       "epic": "fundacao",
-      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_buscarVistasAtivasPorAiim.1",
+      "title": "Provar o contrato da operacao buscarVistasAtivasPorAiim.1",
       "etapas": [
         3
       ],
@@ -1592,10 +1592,10 @@
       "dependsOn": []
     },
     {
-      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLCRIARNOTIFICACOESAIIM1-contrato",
+      "id": "VALID-CRIARNOTIFICACOESAIIM1-contrato",
       "cardType": "validation",
       "epic": "fundacao",
-      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1",
+      "title": "Provar o contrato da operacao criarNotificacoesAIIM.1",
       "etapas": [
         3
       ],
@@ -1609,10 +1609,10 @@
       "dependsOn": []
     },
     {
-      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLOBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato",
+      "id": "VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato",
       "cardType": "validation",
       "epic": "fundacao",
-      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1",
+      "title": "Provar o contrato da operacao obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1",
       "etapas": [
         3
       ],
@@ -1717,10 +1717,10 @@
       "dependsOn": []
     },
     {
-      "id": "DOUBLE-CTRINTPC-interface",
+      "id": "DOUBLE-AGURETPC-interface",
       "cardType": "double",
       "epic": "fundacao",
-      "title": "Duble para a interface de processo CTRINTPC",
+      "title": "Duble para a interface de processo AGURETPC",
       "etapas": [
         2
       ],
@@ -1734,10 +1734,10 @@
       "dependsOn": []
     },
     {
-      "id": "DOUBLE-AGURETPC-interface",
+      "id": "DOUBLE-CTRINTPC-interface",
       "cardType": "double",
       "epic": "fundacao",
-      "title": "Duble para a interface de processo AGURETPC",
+      "title": "Duble para a interface de processo CTRINTPC",
       "etapas": [
         2
       ],

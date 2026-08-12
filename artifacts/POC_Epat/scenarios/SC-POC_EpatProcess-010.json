@@ -11,7 +11,7 @@
     7
   ],
   "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-  "kind": "ate-ao-fim",
+  "kind": "prazo",
   "representative": null,
   "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
   "jornada": {
@@ -27,13 +27,13 @@
     "chamadoPor": null
   },
   "destino": {
-    "id": "_CtQ66lqPEfG5K7mY0I3I6w",
-    "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+    "id": "_Xw86YlqQEfG5K7mY0I3I6w",
+    "nome": "Fim de Prazo",
     "tipo": "endEvent",
     "como": "fim-do-caso",
     "regressaA": null
   },
-  "lengthNodes": 28,
+  "lengthNodes": 30,
   "segmentos": [
     {
       "etapas": [
@@ -246,9 +246,9 @@
       ],
       "ordemNaJornada": 8,
       "doPasso": 22,
-      "aoPasso": 27,
+      "aoPasso": 29,
       "abrePor": "Validar Paralelos",
-      "fechaEm": "Fim Vista Mista",
+      "fechaEm": "Catch Signal Event",
       "nos": [
         {
           "id": "_89MVQlqVEfG5K7mY0I3I6w",
@@ -276,8 +276,18 @@
           "tipo": "receiveTask"
         },
         {
-          "id": "_CtQ67FqPEfG5K7mY0I3I6w",
-          "nome": "Fim Vista Mista",
+          "id": "_CtQ7A1qPEfG5K7mY0I3I6w",
+          "nome": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w",
+          "tipo": "timerEvent"
+        },
+        {
+          "id": "_CtQ66FqPEfG5K7mY0I3I6w",
+          "nome": "FimDRF",
+          "tipo": "signalThrow"
+        },
+        {
+          "id": "_WvTQIFqQEfG5K7mY0I3I6w",
+          "nome": "Catch Signal Event",
           "tipo": "signalCatch"
         }
       ]
@@ -287,14 +297,14 @@
         7
       ],
       "ordemNaJornada": 9,
-      "doPasso": 28,
-      "aoPasso": 28,
-      "abrePor": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
-      "fechaEm": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "doPasso": 30,
+      "aoPasso": 30,
+      "abrePor": "Fim de Prazo",
+      "fechaEm": "Fim de Prazo",
       "nos": [
         {
-          "id": "_CtQ66lqPEfG5K7mY0I3I6w",
-          "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+          "id": "_Xw86YlqQEfG5K7mY0I3I6w",
+          "nome": "Fim de Prazo",
           "tipo": "endEvent"
         }
       ]
@@ -485,15 +495,29 @@
       "entrouPor": "fluxo"
     },
     {
-      "id": "_CtQ67FqPEfG5K7mY0I3I6w",
-      "nome": "Fim Vista Mista",
-      "tipo": "signalCatch",
+      "id": "_CtQ7A1qPEfG5K7mY0I3I6w",
+      "nome": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w",
+      "tipo": "timerEvent",
       "escopo": "MAIN",
       "entrouPor": "fronteira"
     },
     {
-      "id": "_CtQ66lqPEfG5K7mY0I3I6w",
-      "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "id": "_CtQ66FqPEfG5K7mY0I3I6w",
+      "nome": "FimDRF",
+      "tipo": "signalThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_WvTQIFqQEfG5K7mY0I3I6w",
+      "nome": "Catch Signal Event",
+      "tipo": "signalCatch",
+      "escopo": "MAIN",
+      "entrouPor": "sinal"
+    },
+    {
+      "id": "_Xw86YlqQEfG5K7mY0I3I6w",
+      "nome": "Fim de Prazo",
       "tipo": "endEvent",
       "escopo": "MAIN",
       "entrouPor": "fluxo"

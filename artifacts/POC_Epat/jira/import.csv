@@ -34,9 +34,13 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-AG
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 9 do cenario SC-AGPECASPC-002 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:iprocess-builtin card:BUILD-AGPECASPC-seg040 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-4","BUILD-AGPECASPC-seg040"
+Card {{BUILD-AGPECASPC-seg040}} -- IR {{scenarios[SC-AGPECASPC-002].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:iprocess-builtin card:BUILD-AGPECASPC-seg040 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-4","BUILD-AGPECASPC-seg040"
 "[BUILD-AGPECASPC-seg044] Verificação do Retorno do Decisions: de 'Start Event' ate 'End Event'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'End Event', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -59,9 +63,12 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-AG
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 5 do cenario SC-AGPECASPC-003 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-AGPECASPC-seg044 epat-migracao etapa:4 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-4","BUILD-AGPECASPC-seg044"
+Card {{BUILD-AGPECASPC-seg044}} -- IR {{scenarios[SC-AGPECASPC-003].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-AGPECASPC-seg044 epat-migracao etapa:4 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-4","BUILD-AGPECASPC-seg044"
 "[BUILD-ATZINTPC-seg041] Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Bail'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Bail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -104,9 +111,12 @@ Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-AT
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 20 do cenario SC-ATZINTPC-009 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-ATZINTPC-seg041 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg041"
+Card {{BUILD-ATZINTPC-seg041}} -- IR {{scenarios[SC-ATZINTPC-009].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-ATZINTPC-seg041 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg041"
 "[BUILD-ATZINTPC-seg042] Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Fixed', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -148,9 +158,12 @@ Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-AT
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 19 do cenario SC-ATZINTPC-008 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-ATZINTPC-seg042 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg042"
+Card {{BUILD-ATZINTPC-seg042}} -- IR {{scenarios[SC-ATZINTPC-008].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-ATZINTPC-seg042 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg042"
 "[BUILD-ATZINTPC-seg043] Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Success', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -187,9 +200,12 @@ Oraculo *scenario-path*, 3 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-AT
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 15 do cenario SC-ATZINTPC-010 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-ATZINTPC-seg043 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg043"
+Card {{BUILD-ATZINTPC-seg043}} -- IR {{scenarios[SC-ATZINTPC-010].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-ATZINTPC-seg043 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg043"
 "[BUILD-ATZINTPC-seg046] Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Try Task', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -230,9 +246,13 @@ Oraculo *scenario-path*, 3 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-AT
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 18 do cenario SC-ATZINTPC-007 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-ATZINTPC-seg046 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg046"
+Card {{BUILD-ATZINTPC-seg046}} -- IR {{scenarios[SC-ATZINTPC-007].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-ATZINTPC-seg046 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-4","BUILD-ATZINTPC-seg046"
 "[BUILD-BSCENVPC-seg002] Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Bail'","Story","*Construir o troco da jornada que vai de 'Busca Envolvidos Vista Por AIIM' a 'Done - Bail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -267,8 +287,8 @@ Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * O percurso do passo 8 ao 20 do cenario SC-BSCENVPC-009 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-BSCENVPC-seg002 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg002"
+Card {{BUILD-BSCENVPC-seg002}} -- IR {{scenarios[SC-BSCENVPC-009].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-BSCENVPC-seg002 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg002"
 "[BUILD-BSCENVPC-seg003] Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Fixed'","Story","*Construir o troco da jornada que vai de 'Busca Envolvidos Vista Por AIIM' a 'Done - Fixed', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -302,8 +322,8 @@ Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * O percurso do passo 8 ao 19 do cenario SC-BSCENVPC-008 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-BSCENVPC-seg003 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg003"
+Card {{BUILD-BSCENVPC-seg003}} -- IR {{scenarios[SC-BSCENVPC-008].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-BSCENVPC-seg003 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg003"
 "[BUILD-BSCENVPC-seg004] Busca de envolvidos com vista aberta: caminho de sucesso","Story","*Construir o troco da jornada que vai de 'Busca Envolvidos Vista Por AIIM' a 'Done - Success', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -336,8 +356,8 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * O percurso do passo 8 ao 15 do cenario SC-BSCENVPC-010 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-BSCENVPC-seg004 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg004"
+Card {{BUILD-BSCENVPC-seg004}} -- IR {{scenarios[SC-BSCENVPC-010].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-BSCENVPC-seg004 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg004"
 "[BUILD-BSCENVPC-seg005] Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Try Task'","Story","*Construir o troco da jornada que vai de 'Busca Envolvidos Vista Por AIIM' a 'Try Task', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -369,9 +389,12 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * Build limpo, sem avisos
 * O percurso do passo 8 ao 18 do cenario SC-BSCENVPC-007 corre de ponta a ponta
 
+h3. Bloqueadores
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:link-goto card:BUILD-BSCENVPC-seg005 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg005"
+Card {{BUILD-BSCENVPC-seg005}} -- IR {{scenarios[SC-BSCENVPC-007].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:link-goto card:BUILD-BSCENVPC-seg005 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg005"
 "[BUILD-BSCENVPC-seg011] Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Check Retries SW_QRETRYCOUNT', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -397,9 +420,12 @@ Oraculo *scenario-path*, 12 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-B
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 7 do cenario SC-BSCENVPC-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg011 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg011"
+Card {{BUILD-BSCENVPC-seg011}} -- IR {{scenarios[SC-BSCENVPC-001].segmentos[0]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg011 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-BSCENVPC-seg011"
 "[BUILD-BSCENVPC-seg047] Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Bail'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Bail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -436,9 +462,12 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 17 do cenario SC-BSCENVPC-015 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg047 epat-migracao etapa:5 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg047"
+Card {{BUILD-BSCENVPC-seg047}} -- IR {{scenarios[SC-BSCENVPC-015].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg047 epat-migracao etapa:5 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg047"
 "[BUILD-BSCENVPC-seg048] Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Fixed'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Fixed', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -474,9 +503,12 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 16 do cenario SC-BSCENVPC-014 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg048 epat-migracao etapa:5 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg048"
+Card {{BUILD-BSCENVPC-seg048}} -- IR {{scenarios[SC-BSCENVPC-014].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg048 epat-migracao etapa:5 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg048"
 "[BUILD-BSCENVPC-seg049] Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Success'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Success', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -507,9 +539,12 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 12 do cenario SC-BSCENVPC-016 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg049 epat-migracao etapa:5 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg049"
+Card {{BUILD-BSCENVPC-seg049}} -- IR {{scenarios[SC-BSCENVPC-016].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-BSCENVPC-seg049 epat-migracao etapa:5 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg049"
 "[BUILD-BSCENVPC-seg050] Validação de Gateways Paralelos: de 'Start Event' ate 'Try Task'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Try Task', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -544,9 +579,13 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-BS
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 15 do cenario SC-BSCENVPC-013 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-BSCENVPC-seg050 epat-migracao etapa:5 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg050"
+Card {{BUILD-BSCENVPC-seg050}} -- IR {{scenarios[SC-BSCENVPC-013].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-BSCENVPC-seg050 epat-migracao etapa:5 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-5","BUILD-BSCENVPC-seg050"
 "[BUILD-CALCPRPC-seg029] Calculo de prazo: laco de retry ate desistir","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Bail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -611,9 +650,12 @@ Oraculo *scenario-path*, 8 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CA
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 20 do cenario SC-CALCPRPC-009 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 4 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CALCPRPC-seg029 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg029"
+Card {{BUILD-CALCPRPC-seg029}} -- IR {{scenarios[SC-CALCPRPC-009].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CALCPRPC-seg029 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg029"
 "[BUILD-CALCPRPC-seg030] Notificação do AIIM: de 'Start Event' ate 'Done - Fixed'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Fixed', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -671,9 +713,12 @@ Oraculo *scenario-path*, 8 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CA
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 19 do cenario SC-CALCPRPC-008 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 4 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CALCPRPC-seg030 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg030"
+Card {{BUILD-CALCPRPC-seg030}} -- IR {{scenarios[SC-CALCPRPC-008].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CALCPRPC-seg030 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg030"
 "[BUILD-CALCPRPC-seg031] Notificação do AIIM: de 'Start Event' ate 'Done - Success'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Success', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -722,9 +767,12 @@ Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CA
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 15 do cenario SC-CALCPRPC-010 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 4 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CALCPRPC-seg031 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg031"
+Card {{BUILD-CALCPRPC-seg031}} -- IR {{scenarios[SC-CALCPRPC-010].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CALCPRPC-seg031 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg031"
 "[BUILD-CALCPRPC-seg032] Notificação do AIIM: de 'Start Event' ate 'Try Task'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Try Task', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -780,9 +828,13 @@ Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CA
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 18 do cenario SC-CALCPRPC-007 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 4 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *link-goto* (decided) -- 4 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-CALCPRPC-seg032 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg032"
+Card {{BUILD-CALCPRPC-seg032}} -- IR {{scenarios[SC-CALCPRPC-007].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-CALCPRPC-seg032 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-2","BUILD-CALCPRPC-seg032"
 "[BUILD-CONTROPC-seg039] Verificação do Retorno do Decisions: de 'Aguardar Retorno' ate 'endEvent _-bkw8l6JEfGBBLgT-R5iuw'","Story","*Construir o troco da jornada que vai de 'Aguardar Retorno' a 'endEvent _-bkw8l6JEfGBBLgT-R5iuw', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -805,9 +857,12 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CO
 * Build limpo, sem avisos
 * O percurso do passo 5 ao 7 do cenario SC-CONTROPC-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *dynamic-subprocess* (decided) -- 1 no(s) deste segmento, de 3 no pacote inteiro. Decisao ratificada em NOEQ-dynamic-subprocess.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:dynamic-subprocess card:BUILD-CONTROPC-seg039 epat-migracao etapa:4 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-4","BUILD-CONTROPC-seg039"
+Card {{BUILD-CONTROPC-seg039}} -- IR {{scenarios[SC-CONTROPC-001].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:dynamic-subprocess card:BUILD-CONTROPC-seg039 epat-migracao etapa:4 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-4","BUILD-CONTROPC-seg039"
 "[BUILD-CONTROPC-seg045] Verificação do Retorno do Decisions: de 'Start Event' ate 'ISetSubProc'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'ISetSubProc', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -831,9 +886,12 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CO
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 4 do cenario SC-CONTROPC-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CONTROPC-seg045 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-4","BUILD-CONTROPC-seg045"
+Card {{BUILD-CONTROPC-seg045}} -- IR {{scenarios[SC-CONTROPC-001].segmentos[0]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CONTROPC-seg045 epat-migracao etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-4","BUILD-CONTROPC-seg045"
 "[BUILD-CRNOTPC-seg016] Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Bail'","Story","*Construir o troco da jornada que vai de 'CriaNotificacao' a 'Done - Bail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -868,8 +926,8 @@ Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CR
 * O percurso do passo 8 ao 20 do cenario SC-CRNOTPC-009 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-CRNOTPC-seg016 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg016"
+Card {{BUILD-CRNOTPC-seg016}} -- IR {{scenarios[SC-CRNOTPC-009].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-CRNOTPC-seg016 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg016"
 "[BUILD-CRNOTPC-seg017] Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Fixed'","Story","*Construir o troco da jornada que vai de 'CriaNotificacao' a 'Done - Fixed', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -903,8 +961,8 @@ Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CR
 * O percurso do passo 8 ao 19 do cenario SC-CRNOTPC-008 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-CRNOTPC-seg017 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg017"
+Card {{BUILD-CRNOTPC-seg017}} -- IR {{scenarios[SC-CRNOTPC-008].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-CRNOTPC-seg017 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg017"
 "[BUILD-CRNOTPC-seg018] Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Success'","Story","*Construir o troco da jornada que vai de 'CriaNotificacao' a 'Done - Success', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -933,8 +991,8 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CR
 * O percurso do passo 8 ao 15 do cenario SC-CRNOTPC-010 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-CRNOTPC-seg018 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg018"
+Card {{BUILD-CRNOTPC-seg018}} -- IR {{scenarios[SC-CRNOTPC-010].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-CRNOTPC-seg018 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg018"
 "[BUILD-CRNOTPC-seg019] Notificação do AIIM: de 'CriaNotificacao' ate 'Try Task'","Story","*Construir o troco da jornada que vai de 'CriaNotificacao' a 'Try Task', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -966,9 +1024,12 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-CR
 * Build limpo, sem avisos
 * O percurso do passo 8 ao 18 do cenario SC-CRNOTPC-007 corre de ponta a ponta
 
+h3. Bloqueadores
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:link-goto card:BUILD-CRNOTPC-seg019 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg019"
+Card {{BUILD-CRNOTPC-seg019}} -- IR {{scenarios[SC-CRNOTPC-007].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:link-goto card:BUILD-CRNOTPC-seg019 epat-migracao etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg019"
 "[BUILD-CRNOTPC-seg028] Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Check Retries SW_QRETRYCOUNT', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -994,9 +1055,12 @@ Oraculo *scenario-path*, 12 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-C
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 7 do cenario SC-CRNOTPC-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CRNOTPC-seg028 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg028"
+Card {{BUILD-CRNOTPC-seg028}} -- IR {{scenarios[SC-CRNOTPC-001].segmentos[0]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-CRNOTPC-seg028 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-CRNOTPC-seg028"
 "[BUILD-DEAT0050-seg008] Retomada por evento externo e entrada no laco de prazo","Story","*Construir o troco da jornada que vai de 'INICALC' a 'Controlar Data', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1031,9 +1095,14 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-DE
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 6 do cenario SC-DEAT0050-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *expression-deadline* (decided) -- 1 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:external-event bloq:iprocess-builtin card:BUILD-DEAT0050-seg008 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg008"
+Card {{BUILD-DEAT0050-seg008}} -- IR {{scenarios[SC-DEAT0050-001].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:external-event bloq:iprocess-builtin card:BUILD-DEAT0050-seg008 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg008"
 "[BUILD-DEAT0050-seg009] Fechamento do AIIM + Notificação do AIIM: de 'INICALC' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'","Story","*Construir o troco da jornada que vai de 'INICALC' a 'endEvent _lrer2FqhEfG5K7mY0I3I6w', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1060,9 +1129,13 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-DE
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 5 do cenario SC-DEAT0050-002 corre de ponta a ponta
 
+h3. Bloqueadores
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:iprocess-builtin card:BUILD-DEAT0050-seg009 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg009"
+Card {{BUILD-DEAT0050-seg009}} -- IR {{scenarios[SC-DEAT0050-002].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:iprocess-builtin card:BUILD-DEAT0050-seg009 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg009"
 "[BUILD-DEAT0050-seg012] Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Controlar Data'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Controlar Data', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1089,9 +1162,13 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-DE
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 6 do cenario SC-DEAT0050-003 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *expression-deadline* (decided) -- 1 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:iprocess-builtin card:BUILD-DEAT0050-seg012 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg012"
+Card {{BUILD-DEAT0050-seg012}} -- IR {{scenarios[SC-DEAT0050-003].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:iprocess-builtin card:BUILD-DEAT0050-seg012 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg012"
 "[BUILD-DEAT0050-seg013] Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'endEvent _lrer2FqhEfG5K7mY0I3I6w', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1116,9 +1193,12 @@ Oraculo *scenario-path*, 1 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-DE
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 5 do cenario SC-DEAT0050-004 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-DEAT0050-seg013 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg013"
+Card {{BUILD-DEAT0050-seg013}} -- IR {{scenarios[SC-DEAT0050-004].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-DEAT0050-seg013 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-DEAT0050-seg013"
 "[BUILD-POCEPATPROCESS-seg001] Fechamento do AIIM + Notificação do AIIM: de 'Aguardar evento de Notificacao do AIIM' ate 'Aguardar evento de Notificacao do AIIM'","Story","*Construir o troco da jornada que vai de 'Aguardar evento de Notificacao do AIIM' a 'Aguardar evento de Notificacao do AIIM', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1137,9 +1217,12 @@ Oraculo *scenario-path*, 39 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * Build limpo, sem avisos
 * O percurso do passo 13 ao 13 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *dynamic-subprocess* (decided) -- 1 no(s) deste segmento, de 3 no pacote inteiro. Decisao ratificada em NOEQ-dynamic-subprocess.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:dynamic-subprocess card:BUILD-POCEPATPROCESS-seg001 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg001"
+Card {{BUILD-POCEPATPROCESS-seg001}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[5]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:dynamic-subprocess card:BUILD-POCEPATPROCESS-seg001 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg001"
 "[BUILD-POCEPATPROCESS-seg006] Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'gateway _Faq_RFqTEfG5K7mY0I3I6w'","Story","*Construir o troco da jornada que vai de 'Finalizar AIIM' a 'gateway _Faq_RFqTEfG5K7mY0I3I6w', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1160,8 +1243,8 @@ Oraculo *scenario-path*, 28 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * O percurso do passo 7 ao 8 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg006 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:medio tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg006"
+Card {{BUILD-POCEPATPROCESS-seg006}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[3]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg006 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:medio SAIAPP tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg006"
 "[BUILD-POCEPATPROCESS-seg007] Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'Set Nome Etapa 2'","Story","*Construir o troco da jornada que vai de 'Finalizar AIIM' a 'Set Nome Etapa 2', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1178,14 +1261,17 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Workflows}} -- _scaffold_ -- A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-045.json}}.
+Oraculo *scenario-path*, 4 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-032.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 2 ao 4 do cenario SC-POC_EpatProcess-045 corre de ponta a ponta
+* O percurso do passo 2 ao 4 do cenario SC-POC_EpatProcess-032 corre de ponta a ponta
+
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-POCEPATPROCESS-seg007 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg007"
+Card {{BUILD-POCEPATPROCESS-seg007}} -- IR {{scenarios[SC-POC_EpatProcess-032].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-POCEPATPROCESS-seg007 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg007"
 "[BUILD-POCEPATPROCESS-seg010] Fechamento do AIIM + Notificação do AIIM: de 'Início' ate 'Início'","Story","*Construir o troco da jornada que vai de 'Início' a 'Início', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1198,14 +1284,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Workflows}} -- _final_ -- Ciclo de vida da instancia. Transcricao: nao ha corpo a escrever.
 
 h3. Como se prova
-Oraculo *scenario-path*, 18 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-031.json}}.
+Oraculo *scenario-path*, 18 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-018.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 1 ao 1 do cenario SC-POC_EpatProcess-031 corre de ponta a ponta
+* O percurso do passo 1 ao 1 do cenario SC-POC_EpatProcess-018 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg010 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg010"
+Card {{BUILD-POCEPATPROCESS-seg010}} -- IR {{scenarios[SC-POC_EpatProcess-018].segmentos[0]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg010 epat-migracao etapa:1 etapa:2 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg010"
 "[BUILD-POCEPATPROCESS-seg014] Fechamento do AIIM: de 'Corrigir Fechamento' ate 'Corrigir Fechamento'","Story","*Construir o troco da jornada que vai de 'Corrigir Fechamento' a 'Corrigir Fechamento', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1224,9 +1310,12 @@ Oraculo *scenario-path*, 15 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * Build limpo, sem avisos
 * O percurso do passo 5 ao 6 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:link-goto card:BUILD-POCEPATPROCESS-seg014 epat-migracao etapa:1 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg014"
+Card {{BUILD-POCEPATPROCESS-seg014}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[2]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:link-goto card:BUILD-POCEPATPROCESS-seg014 epat-migracao etapa:1 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg014"
 "[BUILD-POCEPATPROCESS-seg015] Aviso por e-mail ao controlo de qualidade do fechamento","Story","*Construir o troco da jornada que vai de 'Email CQ Fechamento' a 'Email CQ Fechamento', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1244,14 +1333,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Infrastructure/Integration.Soap}} -- _scaffold_ -- Envio de e-mail e integracao externa como outra qualquer. Os destinatarios saem do script para configuracao por ambiente, decidido em rulings.HARDCODED-VALUES.
 
 h3. Como se prova
-Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json}}.
+Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-017.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 5 ao 5 do cenario SC-POC_EpatProcess-016 corre de ponta a ponta
+* O percurso do passo 5 ao 5 do cenario SC-POC_EpatProcess-017 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg015 epat-migracao etapa:1 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg015"
+Card {{BUILD-POCEPATPROCESS-seg015}} -- IR {{scenarios[SC-POC_EpatProcess-017].segmentos[2]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg015 epat-migracao etapa:1 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-1","BUILD-POCEPATPROCESS-seg015"
 "[BUILD-POCEPATPROCESS-seg020] Notificação do AIIM: de 'Existe Notificação?' ate 'Existe Notificação?'","Story","*Construir o troco da jornada que vai de 'Existe Notificação?' a 'Existe Notificação?', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1270,8 +1359,8 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PO
 * O percurso do passo 9 ao 9 do cenario SC-POC_EpatProcess-014 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg020 epat-migracao etapa:2 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg020"
+Card {{BUILD-POCEPATPROCESS-seg020}} -- IR {{scenarios[SC-POC_EpatProcess-014].segmentos[4]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg020 epat-migracao etapa:2 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg020"
 "[BUILD-POCEPATPROCESS-seg021] Notificação do AIIM: de 'Existe Notificação?' ate 'Flag Retirati True GS'","Story","*Construir o troco da jornada que vai de 'Existe Notificação?' a 'Flag Retirati True GS', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1293,9 +1382,13 @@ Oraculo *scenario-path*, 26 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * Build limpo, sem avisos
 * O percurso do passo 9 ao 12 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *graft-step* (decided) -- 2 no(s) deste segmento, de 3 no pacote inteiro. Decisao ratificada em NOEQ-graft-step.
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:graft-step bloq:link-goto card:BUILD-POCEPATPROCESS-seg021 epat-migracao etapa:2 gerado-pelo-kit peso:medio tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg021"
+Card {{BUILD-POCEPATPROCESS-seg021}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[4]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:graft-step bloq:link-goto card:BUILD-POCEPATPROCESS-seg021 epat-migracao etapa:2 gerado-pelo-kit peso:medio SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg021"
 "[BUILD-POCEPATPROCESS-seg022] Notificação do AIIM: de 'Iniciar Aguardar Notificacao' ate 'Flag Retirati True GS'","Story","*Construir o troco da jornada que vai de 'Iniciar Aguardar Notificacao' a 'Flag Retirati True GS', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1311,14 +1404,17 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Execution}} -- _scaffold_ -- O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio.
 
 h3. Como se prova
-Oraculo *scenario-path*, 13 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-018.json}}.
+Oraculo *scenario-path*, 13 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-036.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 1 ao 2 do cenario SC-POC_EpatProcess-018 corre de ponta a ponta
+* O percurso do passo 1 ao 2 do cenario SC-POC_EpatProcess-036 corre de ponta a ponta
+
+h3. Bloqueadores
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event card:BUILD-POCEPATPROCESS-seg022 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg022"
+Card {{BUILD-POCEPATPROCESS-seg022}} -- IR {{scenarios[SC-POC_EpatProcess-036].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event card:BUILD-POCEPATPROCESS-seg022 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg022"
 "[BUILD-POCEPATPROCESS-seg023] Notificação do AIIM: de 'Iniciar Novo Graft' ate 'Set Nome Etapa 2'","Story","*Construir o troco da jornada que vai de 'Iniciar Novo Graft' a 'Set Nome Etapa 2', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1339,9 +1435,14 @@ Oraculo *scenario-path*, 17 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 2 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *graft-step* (decided) -- 1 no(s) deste segmento, de 3 no pacote inteiro. Decisao ratificada em NOEQ-graft-step.
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:graft-step bloq:iprocess-builtin card:BUILD-POCEPATPROCESS-seg023 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg023"
+Card {{BUILD-POCEPATPROCESS-seg023}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[0]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:graft-step bloq:iprocess-builtin card:BUILD-POCEPATPROCESS-seg023 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg023"
 "[BUILD-POCEPATPROCESS-seg024] Notificação do AIIM: de 'Preparar Notificacao' ate 'Corrigir?'","Story","*Construir o troco da jornada que vai de 'Preparar Notificacao' a 'Corrigir?', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1362,8 +1463,8 @@ Oraculo *scenario-path*, 15 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * O percurso do passo 3 ao 4 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg024 epat-migracao etapa:2 gerado-pelo-kit peso:medio tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg024"
+Card {{BUILD-POCEPATPROCESS-seg024}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg024 epat-migracao etapa:2 gerado-pelo-kit peso:medio SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg024"
 "[BUILD-POCEPATPROCESS-seg025] Notificação do AIIM: de 'Preparar Notificacao' ate 'Criar Notificacao'","Story","*Construir o troco da jornada que vai de 'Preparar Notificacao' a 'Criar Notificacao', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1387,8 +1488,8 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PO
 * O percurso do passo 3 ao 5 do cenario SC-POC_EpatProcess-015 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg025 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg025"
+Card {{BUILD-POCEPATPROCESS-seg025}} -- IR {{scenarios[SC-POC_EpatProcess-015].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg025 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg025"
 "[BUILD-POCEPATPROCESS-seg026] Notificação do AIIM: de 'Preparar Notificacao' ate 'Encerra e retira'","Story","*Construir o troco da jornada que vai de 'Preparar Notificacao' a 'Encerra e retira', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1404,14 +1505,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Domain/Abstractions}} -- _final_ -- O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel.
 
 h3. Como se prova
-Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-017.json}}.
+Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 3 ao 4 do cenario SC-POC_EpatProcess-017 corre de ponta a ponta
+* O percurso do passo 3 ao 4 do cenario SC-POC_EpatProcess-016 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg026 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg026"
+Card {{BUILD-POCEPATPROCESS-seg026}} -- IR {{scenarios[SC-POC_EpatProcess-016].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg026 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg026"
 "[BUILD-POCEPATPROCESS-seg027] Notificação do AIIM: de 'Preparar Notificacao' ate 'Fim de Prazo Mantendo Atividade'","Story","*Construir o troco da jornada que vai de 'Preparar Notificacao' a 'Fim de Prazo Mantendo Atividade', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1427,14 +1528,18 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Domain/Abstractions}} -- _final_ -- O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel.
 
 h3. Como se prova
-Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json}}.
+Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-017.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 3 ao 4 do cenario SC-POC_EpatProcess-016 corre de ponta a ponta
+* O percurso do passo 3 ao 4 do cenario SC-POC_EpatProcess-017 corre de ponta a ponta
+
+h3. Bloqueadores
+* *expression-deadline* (decided) -- 1 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.
+* *non-interrupting-boundary* (decided) -- 1 no(s) deste segmento, de 1 no pacote inteiro. Decisao ratificada em NOEQ-non-interrupting-boundary.
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:non-interrupting-boundary card:BUILD-POCEPATPROCESS-seg027 epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg027"
+Card {{BUILD-POCEPATPROCESS-seg027}} -- IR {{scenarios[SC-POC_EpatProcess-017].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:non-interrupting-boundary card:BUILD-POCEPATPROCESS-seg027 epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg027"
 "[BUILD-POCEPATPROCESS-seg033] Notificação do AIIM: de 'Trocar Notificação?' ate 'Trocar Notificação?'","Story","*Construir o troco da jornada que vai de 'Trocar Notificação?' a 'Trocar Notificação?', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1453,8 +1558,8 @@ Oraculo *scenario-path*, 39 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * O percurso do passo 14 ao 14 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg033 epat-migracao etapa:2 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg033"
+Card {{BUILD-POCEPATPROCESS-seg033}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[6]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg033 epat-migracao etapa:2 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-2","BUILD-POCEPATPROCESS-seg033"
 "[BUILD-POCEPATPROCESS-seg034] Chamada ao Decisions e conferencia humana do retorno","Story","*Construir o troco da jornada que vai de 'Iniciar Decisions' a 'Verificar Retorno Decisions', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1490,9 +1595,13 @@ Oraculo *scenario-path*, 39 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * Build limpo, sem avisos
 * O percurso do passo 15 ao 21 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-POCEPATPROCESS-seg034 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-3","BUILD-POCEPATPROCESS-seg034"
+Card {{BUILD-POCEPATPROCESS-seg034}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[7]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-POCEPATPROCESS-seg034 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-3","BUILD-POCEPATPROCESS-seg034"
 "[BUILD-POCEPATPROCESS-seg051] Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Catch Signal Event'","Story","*Construir o troco da jornada que vai de 'Validar Paralelos' a 'Catch Signal Event', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1517,14 +1626,19 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Domain/Abstractions}} -- _final_ -- O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel.
 
 h3. Como se prova
-Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
+Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-010.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 22 ao 29 do cenario SC-POC_EpatProcess-009 corre de ponta a ponta
+* O percurso do passo 22 ao 29 do cenario SC-POC_EpatProcess-010 corre de ponta a ponta
+
+h3. Bloqueadores
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+* *expression-deadline* (decided) -- 1 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:external-event bloq:link-goto card:BUILD-POCEPATPROCESS-seg051 epat-migracao etapa:5 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-5","BUILD-POCEPATPROCESS-seg051"
+Card {{BUILD-POCEPATPROCESS-seg051}} -- IR {{scenarios[SC-POC_EpatProcess-010].segmentos[8]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:external-event bloq:link-goto card:BUILD-POCEPATPROCESS-seg051 epat-migracao etapa:5 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-5","BUILD-POCEPATPROCESS-seg051"
 "[BUILD-POCEPATPROCESS-seg052] Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Fim Vista Mista'","Story","*Construir o troco da jornada que vai de 'Validar Paralelos' a 'Fim Vista Mista', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1538,7 +1652,7 @@ h3. Passos
 # (userTask) Realizar Atividade Vista Mista
 # (signalThrow) Fim Vista Mista
 # (signalCatch) Fim Vista Mista -- entra por *sinal* - nao existe como transicao no XPDL
-# (receiveTask) Pedido de Vistas -- Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-010); nao aparece no percurso de referencia.
+# (receiveTask) Pedido de Vistas -- Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-007); nao aparece no percurso de referencia.
 
 h3. Onde aterra
 * {{src/SefazSp.Epat.Api/Endpoints}} -- _scaffold_ -- Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation.
@@ -1552,9 +1666,13 @@ Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PO
 * Build limpo, sem avisos
 * O percurso do passo 22 ao 28 do cenario SC-POC_EpatProcess-012 corre de ponta a ponta
 
+h3. Bloqueadores
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+* *external-event* (decided) -- 1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:link-goto card:BUILD-POCEPATPROCESS-seg052 epat-migracao etapa:5 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-5","BUILD-POCEPATPROCESS-seg052"
+Card {{BUILD-POCEPATPROCESS-seg052}} -- IR {{scenarios[SC-POC_EpatProcess-012].segmentos[8]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:external-event bloq:link-goto card:BUILD-POCEPATPROCESS-seg052 epat-migracao etapa:5 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-5","BUILD-POCEPATPROCESS-seg052"
 "[BUILD-POCEPATPROCESS-seg053] Vistas do juiz e mistas, ate a preparacao dos intimados","Story","*Construir o troco da jornada que vai de 'Validar Paralelos' a 'prepSub', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1603,14 +1721,20 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Infrastructure/Integration.Doubles}} -- _scaffold_ -- A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble.
 
 h3. Como se prova
-Oraculo *scenario-path*, 27 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-025.json}}.
+Oraculo *scenario-path*, 27 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-026.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 12 ao 25 do cenario SC-POC_EpatProcess-025 corre de ponta a ponta
+* O percurso do passo 17 ao 30 do cenario SC-POC_EpatProcess-026 corre de ponta a ponta
+
+h3. Bloqueadores
+* *link-goto* (decided) -- 4 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+* *external-event* (decided) -- 2 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.
+* *expression-deadline* (decided) -- 2 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.
+* *iprocess-builtin* (decided) -- 1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:external-event bloq:iprocess-builtin bloq:link-goto card:BUILD-POCEPATPROCESS-seg053 epat-migracao etapa:5 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-5","BUILD-POCEPATPROCESS-seg053"
+Card {{BUILD-POCEPATPROCESS-seg053}} -- IR {{scenarios[SC-POC_EpatProcess-026].segmentos[6]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:expression-deadline bloq:external-event bloq:iprocess-builtin bloq:link-goto card:BUILD-POCEPATPROCESS-seg053 epat-migracao etapa:5 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-5","BUILD-POCEPATPROCESS-seg053"
 "[BUILD-POCEPATPROCESS-seg054] Controle de Intimados: de 'Controlar Intimados' ate 'Controlar Intimados'","Story","*Construir o troco da jornada que vai de 'Controlar Intimados' a 'Controlar Intimados', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1629,9 +1753,12 @@ Oraculo *scenario-path*, 27 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * Build limpo, sem avisos
 * O percurso do passo 29 ao 29 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
+h3. Bloqueadores
+* *dynamic-subprocess* (decided) -- 1 no(s) deste segmento, de 3 no pacote inteiro. Decisao ratificada em NOEQ-dynamic-subprocess.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:dynamic-subprocess card:BUILD-POCEPATPROCESS-seg054 epat-migracao etapa:6 gerado-pelo-kit peso:grande tipo:build","EPIC-etapa-6","BUILD-POCEPATPROCESS-seg054"
+Card {{BUILD-POCEPATPROCESS-seg054}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[9]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:dynamic-subprocess card:BUILD-POCEPATPROCESS-seg054 epat-migracao etapa:6 gerado-pelo-kit peso:grande SAIAPP tipo:build","EPIC-etapa-6","BUILD-POCEPATPROCESS-seg054"
 "[BUILD-POCEPATPROCESS-seg055] Encerramento: de 'End Event' ate 'End Event'","Story","*Construir o troco da jornada que vai de 'End Event' a 'End Event', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1644,14 +1771,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Workflows}} -- _final_ -- Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento.
 
 h3. Como se prova
-Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-017.json}}.
+Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 5 ao 5 do cenario SC-POC_EpatProcess-017 corre de ponta a ponta
+* O percurso do passo 5 ao 5 do cenario SC-POC_EpatProcess-016 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg055 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg055"
+Card {{BUILD-POCEPATPROCESS-seg055}} -- IR {{scenarios[SC-POC_EpatProcess-016].segmentos[2]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg055 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg055"
 "[BUILD-POCEPATPROCESS-seg056] Encerramento: de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' ate 'endEvent _CtQ66lqPEfG5K7mY0I3I6w'","Story","*Construir o troco da jornada que vai de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' a 'endEvent _CtQ66lqPEfG5K7mY0I3I6w', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1664,14 +1791,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Workflows}} -- _final_ -- Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento.
 
 h3. Como se prova
-Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-010.json}}.
+Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-007.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 28 ao 28 do cenario SC-POC_EpatProcess-010 corre de ponta a ponta
+* O percurso do passo 28 ao 28 do cenario SC-POC_EpatProcess-007 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg056 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg056"
+Card {{BUILD-POCEPATPROCESS-seg056}} -- IR {{scenarios[SC-POC_EpatProcess-007].segmentos[9]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg056 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg056"
 "[BUILD-POCEPATPROCESS-seg057] Encerramento: de 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w' ate 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w'","Story","*Construir o troco da jornada que vai de 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w' a 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1690,8 +1817,8 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PO
 * O percurso do passo 10 ao 10 do cenario SC-POC_EpatProcess-014 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg057 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg057"
+Card {{BUILD-POCEPATPROCESS-seg057}} -- IR {{scenarios[SC-POC_EpatProcess-014].segmentos[5]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg057 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg057"
 "[BUILD-POCEPATPROCESS-seg058] Encerramento: de 'endEvent _O7K3MF9LEfGqPfX31TKC3w' ate 'endEvent _O7K3MF9LEfGqPfX31TKC3w'","Story","*Construir o troco da jornada que vai de 'endEvent _O7K3MF9LEfGqPfX31TKC3w' a 'endEvent _O7K3MF9LEfGqPfX31TKC3w', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1710,8 +1837,8 @@ Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PO
 * O percurso do passo 6 ao 6 do cenario SC-POC_EpatProcess-015 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg058 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg058"
+Card {{BUILD-POCEPATPROCESS-seg058}} -- IR {{scenarios[SC-POC_EpatProcess-015].segmentos[2]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg058 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg058"
 "[BUILD-POCEPATPROCESS-seg059] Encerramento: de 'Fim de Prazo' ate 'Fim de Prazo'","Story","*Construir o troco da jornada que vai de 'Fim de Prazo' a 'Fim de Prazo', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1724,14 +1851,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Workflows}} -- _final_ -- Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento.
 
 h3. Como se prova
-Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
+Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-010.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 30 ao 30 do cenario SC-POC_EpatProcess-009 corre de ponta a ponta
+* O percurso do passo 30 ao 30 do cenario SC-POC_EpatProcess-010 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg059 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg059"
+Card {{BUILD-POCEPATPROCESS-seg059}} -- IR {{scenarios[SC-POC_EpatProcess-010].segmentos[9]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg059 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg059"
 "[BUILD-POCEPATPROCESS-seg060] Encerramento: de 'Fim E-mail' ate 'Fim E-mail'","Story","*Construir o troco da jornada que vai de 'Fim E-mail' a 'Fim E-mail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1744,14 +1871,14 @@ h3. Onde aterra
 * {{src/SefazSp.Epat.Application/Workflows}} -- _final_ -- Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento.
 
 h3. Como se prova
-Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json}}.
+Oraculo *scenario-path*, 2 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-017.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * Build limpo, sem avisos
-* O percurso do passo 6 ao 6 do cenario SC-POC_EpatProcess-016 corre de ponta a ponta
+* O percurso do passo 6 ao 6 do cenario SC-POC_EpatProcess-017 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg060 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg060"
+Card {{BUILD-POCEPATPROCESS-seg060}} -- IR {{scenarios[SC-POC_EpatProcess-017].segmentos[3]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg060 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg060"
 "[BUILD-POCEPATPROCESS-seg061] Encerramento: de 'Fim' ate 'Fim'","Story","*Construir o troco da jornada que vai de 'Fim' a 'Fim', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1770,8 +1897,8 @@ Oraculo *scenario-path*, 27 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-P
 * O percurso do passo 30 ao 30 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg061 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg061"
+Card {{BUILD-POCEPATPROCESS-seg061}} -- IR {{scenarios[SC-POC_EpatProcess-001].segmentos[10]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:BUILD-POCEPATPROCESS-seg061 epat-migracao etapa:7 gerado-pelo-kit peso:pequeno SAIAPP tipo:build","EPIC-etapa-7","BUILD-POCEPATPROCESS-seg061"
 "[BUILD-PRPINTPC-seg035] Preparacao da intimacao: laco de retry, COM O DEFEITO DE COPIA A CORRIGIR","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Bail', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1819,9 +1946,12 @@ Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PR
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 20 do cenario SC-PRPINTPC-009 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-PRPINTPC-seg035 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg035"
+Card {{BUILD-PRPINTPC-seg035}} -- IR {{scenarios[SC-PRPINTPC-009].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-PRPINTPC-seg035 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg035"
 "[BUILD-PRPINTPC-seg036] Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Fixed', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1863,9 +1993,12 @@ Oraculo *scenario-path*, 6 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PR
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 19 do cenario SC-PRPINTPC-008 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-PRPINTPC-seg036 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg036"
+Card {{BUILD-PRPINTPC-seg036}} -- IR {{scenarios[SC-PRPINTPC-008].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-PRPINTPC-seg036 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg036"
 "[BUILD-PRPINTPC-seg037] Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Done - Success', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1902,9 +2035,12 @@ Oraculo *scenario-path*, 3 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PR
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 15 do cenario SC-PRPINTPC-010 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-PRPINTPC-seg037 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg037"
+Card {{BUILD-PRPINTPC-seg037}} -- IR {{scenarios[SC-PRPINTPC-010].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin card:BUILD-PRPINTPC-seg037 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg037"
 "[BUILD-PRPINTPC-seg038] Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'","Story","*Construir o troco da jornada que vai de 'Start Event' a 'Try Task', reproduzindo o comportamento observado no legado.*
 
 h3. Contexto
@@ -1945,9 +2081,13 @@ Oraculo *scenario-path*, 3 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-PR
 * Build limpo, sem avisos
 * O percurso do passo 1 ao 18 do cenario SC-PRPINTPC-007 corre de ponta a ponta
 
+h3. Bloqueadores
+* *iprocess-builtin* (decided) -- 2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.
+* *link-goto* (decided) -- 2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.
+
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-PRPINTPC-seg038 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg038"
+Card {{BUILD-PRPINTPC-seg038}} -- IR {{scenarios[SC-PRPINTPC-007].segmentos[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","bloq:iprocess-builtin bloq:link-goto card:BUILD-PRPINTPC-seg038 epat-migracao etapa:3 etapa:4 gerado-pelo-kit peso:atravessa-o-sistema SAIAPP tipo:build","EPIC-etapa-3","BUILD-PRPINTPC-seg038"
 "[DOUBLE-AGURETPC-interface] Duble para a interface de processo AGURETPC","Task","*Construir um duble fiel ao contrato de AGURETPC, conduzido por cenario, para que o destino em falta falhe de forma visivel em vez de silenciosa.*
 
 h3. Contexto
@@ -1963,8 +2103,8 @@ Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/scaffold/src/SefazSp
 * Destino sem implementacao falha de forma visivel
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:DOUBLE-AGURETPC-interface epat-migracao etapa:2 gerado-pelo-kit peso:pequeno tipo:double","EPIC-fundacao","DOUBLE-AGURETPC-interface"
+Card {{DOUBLE-AGURETPC-interface}} -- IR {{processInterfaces[AGURETPC]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:DOUBLE-AGURETPC-interface epat-migracao etapa:2 gerado-pelo-kit peso:pequeno SAIAPP tipo:double","EPIC-fundacao","DOUBLE-AGURETPC-interface"
 "[DOUBLE-CTRINTPC-interface] Duble para a interface de processo CTRINTPC","Task","*Construir um duble fiel ao contrato de CTRINTPC, conduzido por cenario, para que o destino em falta falhe de forma visivel em vez de silenciosa.*
 
 h3. Contexto
@@ -1980,8 +2120,8 @@ Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/scaffold/src/SefazSp
 * Destino sem implementacao falha de forma visivel
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:DOUBLE-CTRINTPC-interface epat-migracao etapa:2 gerado-pelo-kit peso:pequeno tipo:double","EPIC-fundacao","DOUBLE-CTRINTPC-interface"
+Card {{DOUBLE-CTRINTPC-interface}} -- IR {{processInterfaces[CTRINTPC]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:DOUBLE-CTRINTPC-interface epat-migracao etapa:2 gerado-pelo-kit peso:pequeno SAIAPP tipo:double","EPIC-fundacao","DOUBLE-CTRINTPC-interface"
 "[DOUBLE-NOTFAIIM-interface] Duble para a interface de processo NOTFAIIM","Task","*Construir um duble fiel ao contrato de NOTFAIIM, conduzido por cenario, para que o destino em falta falhe de forma visivel em vez de silenciosa.*
 
 h3. Contexto
@@ -1997,8 +2137,40 @@ Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/scaffold/src/SefazSp
 * Destino sem implementacao falha de forma visivel
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:DOUBLE-NOTFAIIM-interface epat-migracao etapa:2 gerado-pelo-kit peso:pequeno tipo:double","EPIC-fundacao","DOUBLE-NOTFAIIM-interface"
+Card {{DOUBLE-NOTFAIIM-interface}} -- IR {{processInterfaces[NOTFAIIM]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:DOUBLE-NOTFAIIM-interface epat-migracao etapa:2 gerado-pelo-kit peso:pequeno SAIAPP tipo:double","EPIC-fundacao","DOUBLE-NOTFAIIM-interface"
+"[VALID-ATUALIZARINTIMACAO1-contrato] Provar o contrato da operacao atualizarIntimacao.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
+
+h3. Contexto
+Operacao realmente invocada pelo processo, em /EPATInterfaceWrappers/atualizarIntimacao.1. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
+
+h3. Onde aterra
+* {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
+
+h3. Como se prova
+Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.json}}.
+{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
+* Pedido e resposta validam contra o esquema do WSDL
+
+h3. Rasto
+Card {{VALID-ATUALIZARINTIMACAO1-contrato}} -- IR {{operations[__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ATUALIZARINTIMACAO1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno SAIAPP tipo:validation","EPIC-fundacao","VALID-ATUALIZARINTIMACAO1-contrato"
+"[VALID-BUSCARVISTASATIVASPORAIIM1-contrato] Provar o contrato da operacao buscarVistasAtivasPorAiim.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
+
+h3. Contexto
+Operacao realmente invocada pelo processo, em /EPATInterfaceWrappers/buscarVistasAtivasPorAiim.1. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
+
+h3. Onde aterra
+* {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
+
+h3. Como se prova
+Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.json}}.
+{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
+* Pedido e resposta validam contra o esquema do WSDL
+
+h3. Rasto
+Card {{VALID-BUSCARVISTASATIVASPORAIIM1-contrato}} -- IR {{operations[__sol_EPATInterfaceWrappers_sol_buscarVistasAtivasPorAiim.1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-BUSCARVISTASATIVASPORAIIM1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno SAIAPP tipo:validation","EPIC-fundacao","VALID-BUSCARVISTASATIVASPORAIIM1-contrato"
 "[VALID-CORTICON-tabela] Provar a equivalencia entre o DMN gerado e as planilhas Corticon","Task","*Correr cada coluna da planilha como caso e comparar o resultado do motor .NET com o do Corticon.*
 
 h3. Contexto
@@ -2013,120 +2185,136 @@ Oraculo *decision-table*, 1 caso(s), fixture {{artifacts/POC_Epat/dmn}}.
 * Zero divergencias entre DMN e Corticon
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-CORTICON-tabela epat-migracao etapa:3 gerado-pelo-kit peso:medio tipo:validation","EPIC-fundacao","VALID-CORTICON-tabela"
+Card {{VALID-CORTICON-tabela}} -- IR {{rulesheets[*]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-CORTICON-tabela epat-migracao etapa:3 gerado-pelo-kit peso:medio SAIAPP tipo:validation","EPIC-fundacao","VALID-CORTICON-tabela"
+"[VALID-CRIARNOTIFICACOESAIIM1-contrato] Provar o contrato da operacao criarNotificacoesAIIM.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
+
+h3. Contexto
+Operacao realmente invocada pelo processo, em /EPATInterfaceWrappers/criarNotificacoesAIIM.1. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
+
+h3. Onde aterra
+* {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
+
+h3. Como se prova
+Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.json}}.
+{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
+* Pedido e resposta validam contra o esquema do WSDL
+
+h3. Rasto
+Card {{VALID-CRIARNOTIFICACOESAIIM1-contrato}} -- IR {{operations[__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-CRIARNOTIFICACOESAIIM1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno SAIAPP tipo:validation","EPIC-fundacao","VALID-CRIARNOTIFICACOESAIIM1-contrato"
 "[VALID-ETAPA1-percurso] Provar a etapa 1 - Fechamento do AIIM - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 1 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 41 no(s) e e exercitada por 62 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 41 no(s) e e exercitada por 62 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 62 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 62 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA1-percurso epat-migracao etapa:1 gerado-pelo-kit peso:grande tipo:validation","EPIC-etapa-1","VALID-ETAPA1-percurso"
+Card {{VALID-ETAPA1-percurso}} -- IR {{etapas.footprint[1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA1-percurso epat-migracao etapa:1 gerado-pelo-kit peso:grande SAIAPP tipo:validation","EPIC-etapa-1","VALID-ETAPA1-percurso"
 "[VALID-ETAPA2-percurso] Provar a etapa 2 - Notificação do AIIM - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 2 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 102 no(s) e e exercitada por 100 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 102 no(s) e e exercitada por 100 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 100 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 100 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA2-percurso epat-migracao etapa:2 gerado-pelo-kit peso:grande tipo:validation","EPIC-etapa-2","VALID-ETAPA2-percurso"
+Card {{VALID-ETAPA2-percurso}} -- IR {{etapas.footprint[2]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA2-percurso epat-migracao etapa:2 gerado-pelo-kit peso:grande SAIAPP tipo:validation","EPIC-etapa-2","VALID-ETAPA2-percurso"
 "[VALID-ETAPA3-percurso] Provar a etapa 3 - Integração com Decisions - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 3 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 33 no(s) e e exercitada por 57 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 33 no(s) e e exercitada por 57 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 57 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 57 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA3-percurso epat-migracao etapa:3 gerado-pelo-kit peso:grande tipo:validation","EPIC-etapa-3","VALID-ETAPA3-percurso"
+Card {{VALID-ETAPA3-percurso}} -- IR {{etapas.footprint[3]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA3-percurso epat-migracao etapa:3 gerado-pelo-kit peso:grande SAIAPP tipo:validation","EPIC-etapa-3","VALID-ETAPA3-percurso"
 "[VALID-ETAPA4-percurso] Provar a etapa 4 - Verificação do Retorno do Decisions - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 4 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 76 no(s) e e exercitada por 79 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 76 no(s) e e exercitada por 79 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 79 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 79 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA4-percurso epat-migracao etapa:4 gerado-pelo-kit peso:grande tipo:validation","EPIC-etapa-4","VALID-ETAPA4-percurso"
+Card {{VALID-ETAPA4-percurso}} -- IR {{etapas.footprint[4]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA4-percurso epat-migracao etapa:4 gerado-pelo-kit peso:grande SAIAPP tipo:validation","EPIC-etapa-4","VALID-ETAPA4-percurso"
 "[VALID-ETAPA5-percurso] Provar a etapa 5 - Validação de Gateways Paralelos - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 5 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 47 no(s) e e exercitada por 45 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 47 no(s) e e exercitada por 45 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 45 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 45 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA5-percurso epat-migracao etapa:5 gerado-pelo-kit peso:grande tipo:validation","EPIC-etapa-5","VALID-ETAPA5-percurso"
+Card {{VALID-ETAPA5-percurso}} -- IR {{etapas.footprint[5]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA5-percurso epat-migracao etapa:5 gerado-pelo-kit peso:grande SAIAPP tipo:validation","EPIC-etapa-5","VALID-ETAPA5-percurso"
 "[VALID-ETAPA6-percurso] Provar a etapa 6 - Controle de Intimados - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 6 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 1 no(s) e e exercitada por 27 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 1 no(s) e e exercitada por 27 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 27 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 27 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA6-percurso epat-migracao etapa:6 gerado-pelo-kit peso:pequeno tipo:validation","EPIC-etapa-6","VALID-ETAPA6-percurso"
+Card {{VALID-ETAPA6-percurso}} -- IR {{etapas.footprint[6]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA6-percurso epat-migracao etapa:6 gerado-pelo-kit peso:pequeno SAIAPP tipo:validation","EPIC-etapa-6","VALID-ETAPA6-percurso"
 "[VALID-ETAPA7-percurso] Provar a etapa 7 - Encerramento - por rasto de instancia","Task","*Montar o arnes que corre os percursos da etapa 7 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.*
 
 h3. Contexto
-A etapa toca 7 no(s) e e exercitada por 47 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
+A etapa toca 7 no(s) e e exercitada por 47 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- O agente liga o arnes a fixture e nunca escreve o valor esperado.
 
 h3. Como se prova
-Oraculo *scenario-path*, 47 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json}}.
+Oraculo *scenario-path*, 47 caso(s), fixture {{artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json}}.
 {panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
 * O rasto de execucao bate passo a passo com o percurso do cenario
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA7-percurso epat-migracao etapa:7 gerado-pelo-kit peso:medio tipo:validation","EPIC-etapa-7","VALID-ETAPA7-percurso"
+Card {{VALID-ETAPA7-percurso}} -- IR {{etapas.footprint[7]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-ETAPA7-percurso epat-migracao etapa:7 gerado-pelo-kit peso:medio SAIAPP tipo:validation","EPIC-etapa-7","VALID-ETAPA7-percurso"
 "[VALID-GATEWAYSAND-conceito] Provar o conceito Gateways Paralelos (AND)","Task","*Montar o arnes que prova o conceito 'Gateways Paralelos (AND)': Divisao e sincronizacao de fluxos paralelos. Nenhum passo do processo o demonstra sozinho, por isso nao cabe em card de segmento.*
 
 h3. Contexto
@@ -2141,8 +2329,8 @@ Oraculo *scenario-path*, 146 caso(s), fixture {{artifacts/POC_Epat/scenarios/ind
 * O conceito e observavel em execucao nos 3 ponto(s) onde o pacote o usa
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-GATEWAYSAND-conceito epat-migracao etapa:1 etapa:2 etapa:5 gerado-pelo-kit peso:medio tipo:validation","EPIC-fundacao","VALID-GATEWAYSAND-conceito"
+Card {{VALID-GATEWAYSAND-conceito}} -- IR {{concepts[gateways-and]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-GATEWAYSAND-conceito epat-migracao etapa:1 etapa:2 etapa:5 gerado-pelo-kit peso:medio SAIAPP tipo:validation","EPIC-fundacao","VALID-GATEWAYSAND-conceito"
 "[VALID-GRAFTSTEP-conceito] Provar o conceito Graft Step","Task","*Montar o arnes que prova o conceito 'Graft Step': Acoplamento dinamico de um fluxo ou subprocesso durante a execucao do processo principal, sem que ele faca parte originalmente da sequencia de atividades. Nenhum passo do processo o demonstra sozinho, por isso nao cabe em card de segmento.*
 
 h3. Contexto
@@ -2157,12 +2345,12 @@ Oraculo *scenario-path*, 146 caso(s), fixture {{artifacts/POC_Epat/scenarios/ind
 * O conceito e observavel em execucao nos 4 ponto(s) onde o pacote o usa
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-GRAFTSTEP-conceito epat-migracao etapa:2 gerado-pelo-kit peso:medio tipo:validation","EPIC-fundacao","VALID-GRAFTSTEP-conceito"
-"[VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato] Provar o contrato da operacao __sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
+Card {{VALID-GRAFTSTEP-conceito}} -- IR {{concepts[graft-step]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-GRAFTSTEP-conceito epat-migracao etapa:2 gerado-pelo-kit peso:medio SAIAPP tipo:validation","EPIC-fundacao","VALID-GRAFTSTEP-conceito"
+"[VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato] Provar o contrato da operacao obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
 
 h3. Contexto
-Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
+Operacao realmente invocada pelo processo, em /EPATInterfaceWrappers/obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
@@ -2173,12 +2361,12 @@ Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.js
 * Pedido e resposta validam contra o esquema do WSDL
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno tipo:validation","EPIC-fundacao","VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato"
-"[VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato] Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
+Card {{VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato}} -- IR {{operations[__sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno SAIAPP tipo:validation","EPIC-fundacao","VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato"
+"[VALID-PREPARARINTIMACAO-contrato] Provar o contrato da operacao PrepararIntimacao","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
 
 h3. Contexto
-Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
+Operacao realmente invocada pelo processo, em /Business Processes/Decision/Sub Processes/Intimacao/PrepararIntimacao. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
 
 h3. Onde aterra
 * {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
@@ -2189,56 +2377,8 @@ Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.js
 * Pedido e resposta validam contra o esquema do WSDL
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno tipo:validation","EPIC-fundacao","VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato"
-"[VALID-SOLEPATINTERFACEWRAPPERSSOLBUSCARVISTASATIVASPORAIIM1-contrato] Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_buscarVistasAtivasPorAiim.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
-
-h3. Contexto
-Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
-
-h3. Onde aterra
-* {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
-
-h3. Como se prova
-Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.json}}.
-{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
-* Pedido e resposta validam contra o esquema do WSDL
-
-h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-SOLEPATINTERFACEWRAPPERSSOLBUSCARVISTASATIVASPORAIIM1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno tipo:validation","EPIC-fundacao","VALID-SOLEPATINTERFACEWRAPPERSSOLBUSCARVISTASATIVASPORAIIM1-contrato"
-"[VALID-SOLEPATINTERFACEWRAPPERSSOLCRIARNOTIFICACOESAIIM1-contrato] Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
-
-h3. Contexto
-Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
-
-h3. Onde aterra
-* {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
-
-h3. Como se prova
-Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.json}}.
-{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
-* Pedido e resposta validam contra o esquema do WSDL
-
-h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-SOLEPATINTERFACEWRAPPERSSOLCRIARNOTIFICACOESAIIM1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno tipo:validation","EPIC-fundacao","VALID-SOLEPATINTERFACEWRAPPERSSOLCRIARNOTIFICACOESAIIM1-contrato"
-"[VALID-SOLEPATINTERFACEWRAPPERSSOLOBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato] Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1","Task","*Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.*
-
-h3. Contexto
-Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.
-
-h3. Onde aterra
-* {{tests/SefazSp.Epat.Oracles.Tests}} -- _scaffold_ -- Conformidade de contrato contra o WSDL fixado.
-
-h3. Como se prova
-Oraculo *contract*, 1 caso(s), fixture {{artifacts/POC_Epat/service-contracts.json}}.
-{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}
-* Pedido e resposta validam contra o esquema do WSDL
-
-h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-SOLEPATINTERFACEWRAPPERSSOLOBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno tipo:validation","EPIC-fundacao","VALID-SOLEPATINTERFACEWRAPPERSSOLOBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato"
+Card {{VALID-PREPARARINTIMACAO-contrato}} -- IR {{operations[__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-PREPARARINTIMACAO-contrato epat-migracao etapa:3 gerado-pelo-kit peso:pequeno SAIAPP tipo:validation","EPIC-fundacao","VALID-PREPARARINTIMACAO-contrato"
 "[VALID-TIMERSDEADLINES-conceito] Provar o conceito Timers e Deadlines","Task","*Montar o arnes que prova o conceito 'Timers e Deadlines': Controle de prazo e vencimento de atividades. Nenhum passo do processo o demonstra sozinho, por isso nao cabe em card de segmento.*
 
 h3. Contexto
@@ -2253,5 +2393,5 @@ Oraculo *scenario-path*, 146 caso(s), fixture {{artifacts/POC_Epat/scenarios/ind
 * O conceito e observavel em execucao nos 11 ponto(s) onde o pacote o usa
 
 h3. Rasto
-Card {{}} -- IR {{}} -- pacote {{}} -- manifesto {{}}
-_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-TIMERSDEADLINES-conceito epat-migracao etapa:1 etapa:2 etapa:3 etapa:4 etapa:5 gerado-pelo-kit peso:medio tipo:validation","EPIC-fundacao","VALID-TIMERSDEADLINES-conceito"
+Card {{VALID-TIMERSDEADLINES-conceito}} -- IR {{concepts[timers-deadlines]}} -- pacote {{POC_Epat}} -- manifesto {{e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38}}
+_Antes de implementar, reconferir o manifesto: se nao bater, o card tem de ser regerado e nao implementado._","card:VALID-TIMERSDEADLINES-conceito epat-migracao etapa:1 etapa:2 etapa:3 etapa:4 etapa:5 gerado-pelo-kit peso:medio SAIAPP tipo:validation","EPIC-fundacao","VALID-TIMERSDEADLINES-conceito"

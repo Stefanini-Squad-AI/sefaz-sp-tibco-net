@@ -8982,28 +8982,8 @@
     },
     {
       "kind": "externalPackage",
-      "id": "_XWivN1qTEfG5K7mY0I3I6w",
-      "name": "Calendario",
-      "process": "",
-      "inScope": true,
-      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
-      "exclusionId": null,
-      "workKind": "duble"
-    },
-    {
-      "kind": "externalPackage",
-      "id": "_-bkx9V6JEfGBBLgT-R5iuw",
-      "name": "INTIMACAO_SERVICES",
-      "process": "",
-      "inScope": true,
-      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
-      "exclusionId": null,
-      "workKind": "duble"
-    },
-    {
-      "kind": "externalPackage",
-      "id": "_0XWaj1qNEfG5K7mY0I3I6w",
-      "name": "NotificacaoAIIM",
+      "id": "_CI6mDFqREfG5K7mY0I3I6w",
+      "name": "Decisions",
       "process": "",
       "inScope": true,
       "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
@@ -9022,6 +9002,16 @@
     },
     {
       "kind": "externalPackage",
+      "id": "_-bkx716JEfGBBLgT-R5iuw",
+      "name": "EPAT IPROCESS 3",
+      "process": "",
+      "inScope": true,
+      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
+      "exclusionId": null,
+      "workKind": "duble"
+    },
+    {
+      "kind": "externalPackage",
       "id": "_CtQ7L1qPEfG5K7mY0I3I6w",
       "name": "EPAT_SEGUNDA",
       "process": "",
@@ -9032,28 +9022,8 @@
     },
     {
       "kind": "externalPackage",
-      "id": "_lresZVqhEfG5K7mY0I3I6w",
-      "name": "Process",
-      "process": "",
-      "inScope": true,
-      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
-      "exclusionId": null,
-      "workKind": "duble"
-    },
-    {
-      "kind": "externalPackage",
-      "id": "_CI6mDFqREfG5K7mY0I3I6w",
-      "name": "Decisions",
-      "process": "",
-      "inScope": true,
-      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
-      "exclusionId": null,
-      "workKind": "duble"
-    },
-    {
-      "kind": "externalPackage",
-      "id": "_CI6mDVqREfG5K7mY0I3I6w",
-      "name": "GERAL",
+      "id": "_-bkx816JEfGBBLgT-R5iuw",
+      "name": "iProcess",
       "process": "",
       "inScope": true,
       "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
@@ -9072,8 +9042,8 @@
     },
     {
       "kind": "externalPackage",
-      "id": "_lresZFqhEfG5K7mY0I3I6w",
-      "name": "EPAT",
+      "id": "_0XWaj1qNEfG5K7mY0I3I6w",
+      "name": "NotificacaoAIIM",
       "process": "",
       "inScope": true,
       "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
@@ -9092,18 +9062,8 @@
     },
     {
       "kind": "externalPackage",
-      "id": "_-bkx716JEfGBBLgT-R5iuw",
-      "name": "EPAT IPROCESS 3",
-      "process": "",
-      "inScope": true,
-      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
-      "exclusionId": null,
-      "workKind": "duble"
-    },
-    {
-      "kind": "externalPackage",
-      "id": "_-bkx816JEfGBBLgT-R5iuw",
-      "name": "iProcess",
+      "id": "_lresZFqhEfG5K7mY0I3I6w",
+      "name": "EPAT",
       "process": "",
       "inScope": true,
       "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
@@ -9124,6 +9084,46 @@
       "kind": "externalPackage",
       "id": "_-bkx8V6JEfGBBLgT-R5iuw",
       "name": "GED",
+      "process": "",
+      "inScope": true,
+      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
+      "exclusionId": null,
+      "workKind": "duble"
+    },
+    {
+      "kind": "externalPackage",
+      "id": "_XWivN1qTEfG5K7mY0I3I6w",
+      "name": "Calendario",
+      "process": "",
+      "inScope": true,
+      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
+      "exclusionId": null,
+      "workKind": "duble"
+    },
+    {
+      "kind": "externalPackage",
+      "id": "_CI6mDVqREfG5K7mY0I3I6w",
+      "name": "GERAL",
+      "process": "",
+      "inScope": true,
+      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
+      "exclusionId": null,
+      "workKind": "duble"
+    },
+    {
+      "kind": "externalPackage",
+      "id": "_-bkx9V6JEfGBBLgT-R5iuw",
+      "name": "INTIMACAO_SERVICES",
+      "process": "",
+      "inScope": true,
+      "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",
+      "exclusionId": null,
+      "workKind": "duble"
+    },
+    {
+      "kind": "externalPackage",
+      "id": "_lresZVqhEfG5K7mY0I3I6w",
+      "name": "Process",
       "process": "",
       "inScope": true,
       "reason": "referenciado pelo XPDL e nunca entregue; o cenario precisa dele",

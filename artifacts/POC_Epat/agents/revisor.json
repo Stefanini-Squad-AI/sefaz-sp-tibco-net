@@ -3,7 +3,7 @@
   "package": "POC_Epat",
   "nota": "Manifesto de agente. NAO contem raciocinio: delimita-o. O que este agente pode escrever sai do mapa de camadas e do estado dos caminhos nos cards, nunca de uma proposta. O que o julga e o oraculo, que ele nao pode editar.",
   "generatedAt": "2026-05-28T00:00:00Z",
-  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
   "id": "revisor",
   "papel": "Revisor",
   "tipo": "revisor",
@@ -74,7 +74,10 @@
     "DOUBLE-AGURETPC-interface",
     "DOUBLE-CTRINTPC-interface",
     "DOUBLE-NOTFAIIM-interface",
+    "VALID-ATUALIZARINTIMACAO1-contrato",
+    "VALID-BUSCARVISTASATIVASPORAIIM1-contrato",
     "VALID-CORTICON-tabela",
+    "VALID-CRIARNOTIFICACOESAIIM1-contrato",
     "VALID-ETAPA1-percurso",
     "VALID-ETAPA2-percurso",
     "VALID-ETAPA3-percurso",
@@ -84,11 +87,8 @@
     "VALID-ETAPA7-percurso",
     "VALID-GATEWAYSAND-conceito",
     "VALID-GRAFTSTEP-conceito",
-    "VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato",
-    "VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato",
-    "VALID-SOLEPATINTERFACEWRAPPERSSOLBUSCARVISTASATIVASPORAIIM1-contrato",
-    "VALID-SOLEPATINTERFACEWRAPPERSSOLCRIARNOTIFICACOESAIIM1-contrato",
-    "VALID-SOLEPATINTERFACEWRAPPERSSOLOBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato",
+    "VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato",
+    "VALID-PREPARARINTIMACAO-contrato",
     "VALID-TIMERSDEADLINES-conceito"
   ],
   "etapasQueToca": [
@@ -283,7 +283,7 @@
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-007.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
@@ -319,15 +319,15 @@
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-025.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-026.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-031.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-032.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-045.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-036.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {

@@ -34,7 +34,7 @@
     "como": "fim-do-caso",
     "regressaA": null
   },
-  "lengthNodes": 37,
+  "lengthNodes": 35,
   "segmentos": [
     {
       "etapas": [
@@ -247,7 +247,7 @@
       ],
       "ordemNaJornada": 8,
       "doPasso": 22,
-      "aoPasso": 35,
+      "aoPasso": 33,
       "abrePor": "Validar Paralelos",
       "fechaEm": "prepSub",
       "nos": [
@@ -302,16 +302,6 @@
           "tipo": "gateway"
         },
         {
-          "id": "_CtQ7AFqPEfG5K7mY0I3I6w",
-          "nome": "gateway _CtQ7AFqPEfG5K7mY0I3I6w",
-          "tipo": "gateway"
-        },
-        {
-          "id": "_CtQ69FqPEfG5K7mY0I3I6w",
-          "nome": "gateway _CtQ69FqPEfG5K7mY0I3I6w",
-          "tipo": "gateway"
-        },
-        {
           "id": "_CtQ6-lqPEfG5K7mY0I3I6w",
           "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
           "tipo": "gateway"
@@ -328,8 +318,8 @@
         6
       ],
       "ordemNaJornada": 9,
-      "doPasso": 36,
-      "aoPasso": 36,
+      "doPasso": 34,
+      "aoPasso": 34,
       "abrePor": "Controlar Intimados",
       "fechaEm": "Controlar Intimados",
       "nos": [
@@ -345,8 +335,8 @@
         7
       ],
       "ordemNaJornada": 10,
-      "doPasso": 37,
-      "aoPasso": 37,
+      "doPasso": 35,
+      "aoPasso": 35,
       "abrePor": "Fim",
       "fechaEm": "Fim",
       "nos": [
@@ -578,20 +568,6 @@
       "entrouPor": "fluxo"
     },
     {
-      "id": "_CtQ7AFqPEfG5K7mY0I3I6w",
-      "nome": "gateway _CtQ7AFqPEfG5K7mY0I3I6w",
-      "tipo": "gateway",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
-      "id": "_CtQ69FqPEfG5K7mY0I3I6w",
-      "nome": "gateway _CtQ69FqPEfG5K7mY0I3I6w",
-      "tipo": "gateway",
-      "escopo": "MAIN",
-      "entrouPor": "fluxo"
-    },
-    {
       "id": "_CtQ6-lqPEfG5K7mY0I3I6w",
       "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
       "tipo": "gateway",
@@ -667,18 +643,11 @@
     {
       "decisao": "Tipo de Vista Mista?",
       "decisaoId": "_CtQ7AlqPEfG5K7mY0I3I6w",
-      "ramo": "Sim",
-      "tipo": "CONDITION",
-      "condicao": "TIPOVISTAS == 'MISTA';",
-      "leva": "gateway _CtQ7AFqPEfG5K7mY0I3I6w",
-      "exige": [
-        {
-          "campo": "TIPOVISTAS",
-          "operador": "==",
-          "valor": "MISTA",
-          "sentinelaSwNa": false
-        }
-      ]
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
+      "exige": []
     }
   ],
   "inputsRequired": [
@@ -686,12 +655,6 @@
       "campo": "CORRECAO",
       "operador": "==",
       "valor": "true",
-      "sentinelaSwNa": false
-    },
-    {
-      "campo": "TIPOVISTAS",
-      "operador": "==",
-      "valor": "MISTA",
       "sentinelaSwNa": false
     }
   ],

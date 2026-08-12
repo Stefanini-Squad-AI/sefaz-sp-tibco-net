@@ -9,31 +9,36 @@
     "file": "POC_Epat.xpdl"
   },
   "externalPackages": {
-    "_XWivN1qTEfG5K7mY0I3I6w": "Calendario",
-    "_-bkx9V6JEfGBBLgT-R5iuw": "INTIMACAO_SERVICES",
-    "_0XWaj1qNEfG5K7mY0I3I6w": "NotificacaoAIIM",
-    "_-bkx9l6JEfGBBLgT-R5iuw": "Intimacao",
-    "_CtQ7L1qPEfG5K7mY0I3I6w": "EPAT_SEGUNDA",
-    "_lresZVqhEfG5K7mY0I3I6w": "Process",
     "_CI6mDFqREfG5K7mY0I3I6w": "Decisions",
-    "_CI6mDVqREfG5K7mY0I3I6w": "GERAL",
-    "_lresZlqhEfG5K7mY0I3I6w": "EPAT IPROCESS",
-    "_lresZFqhEfG5K7mY0I3I6w": "EPAT",
-    "_-bkx8F6JEfGBBLgT-R5iuw": "GED2",
+    "_-bkx9l6JEfGBBLgT-R5iuw": "Intimacao",
     "_-bkx716JEfGBBLgT-R5iuw": "EPAT IPROCESS 3",
+    "_CtQ7L1qPEfG5K7mY0I3I6w": "EPAT_SEGUNDA",
     "_-bkx816JEfGBBLgT-R5iuw": "iProcess",
+    "_lresZlqhEfG5K7mY0I3I6w": "EPAT IPROCESS",
+    "_0XWaj1qNEfG5K7mY0I3I6w": "NotificacaoAIIM",
+    "_-bkx8F6JEfGBBLgT-R5iuw": "GED2",
+    "_lresZFqhEfG5K7mY0I3I6w": "EPAT",
     "_CtQ7LlqPEfG5K7mY0I3I6w": "EPAT_SEGUNDA1",
-    "_-bkx8V6JEfGBBLgT-R5iuw": "GED"
+    "_-bkx8V6JEfGBBLgT-R5iuw": "GED",
+    "_XWivN1qTEfG5K7mY0I3I6w": "Calendario",
+    "_CI6mDVqREfG5K7mY0I3I6w": "GERAL",
+    "_-bkx9V6JEfGBBLgT-R5iuw": "INTIMACAO_SERVICES",
+    "_lresZVqhEfG5K7mY0I3I6w": "Process"
   },
   "participants": [
     {
-      "id": "_RNdKEl6PEfGBBLgT-R5iuw",
-      "name": "DES.SEFAZ.SEFAZ.EPAT.IPROCESS_tibjmsnaming://srv10191:7222",
+      "id": "_KEwDTl6EEfGBBLgT-R5iuw",
+      "name": "DecisionsEPAT",
       "type": "SYSTEM"
     },
     {
-      "id": "_zJIHRVqiEfG5K7mY0I3I6w",
-      "name": "EPAT",
+      "id": "_6WNrA1qgEfG5K7mY0I3I6w",
+      "name": "DefaultEMailSender",
+      "type": "SYSTEM"
+    },
+    {
+      "id": "_uv1JYF9QEfG6Lfb98zsREQ",
+      "name": "sefaz.br.decisions.epat_tcp://srv35796:7222",
       "type": "SYSTEM"
     },
     {
@@ -42,13 +47,13 @@
       "type": "SYSTEM"
     },
     {
-      "id": "_zJIHQlqiEfG5K7mY0I3I6w",
-      "name": "swadmin",
-      "type": "HUMAN"
+      "id": "_lresWVqhEfG5K7mY0I3I6w",
+      "name": "EPATPC",
+      "type": "SYSTEM"
     },
     {
-      "id": "_uv1JYF9QEfG6Lfb98zsREQ",
-      "name": "sefaz.br.decisions.epat_tcp://srv35796:7222",
+      "id": "_zJIHRVqiEfG5K7mY0I3I6w",
+      "name": "EPAT",
       "type": "SYSTEM"
     },
     {
@@ -62,29 +67,24 @@
       "type": "SYSTEM"
     },
     {
-      "id": "_6WNrA1qgEfG5K7mY0I3I6w",
-      "name": "DefaultEMailSender",
-      "type": "SYSTEM"
+      "id": "_zJIHQlqiEfG5K7mY0I3I6w",
+      "name": "swadmin",
+      "type": "HUMAN"
     },
     {
-      "id": "_KEwDTl6EEfGBBLgT-R5iuw",
-      "name": "DecisionsEPAT",
-      "type": "SYSTEM"
-    },
-    {
-      "id": "_lresWVqhEfG5K7mY0I3I6w",
-      "name": "EPATPC",
+      "id": "_RNdKEl6PEfGBBLgT-R5iuw",
+      "name": "DES.SEFAZ.SEFAZ.EPAT.IPROCESS_tibjmsnaming://srv10191:7222",
       "type": "SYSTEM"
     }
   ],
   "typeDeclarations": [
     {
-      "id": "_CtQ7LFqPEfG5K7mY0I3I6w",
-      "name": "AiimWebTB_AIIMNR_AIIM",
+      "id": "_lresYFqhEfG5K7mY0I3I6w",
+      "name": "AiimWebAiimid",
       "basicType": "INTEGER",
       "precision": "11",
       "length": null,
-      "description": "Número do AIIM (sem dígito)"
+      "description": null
     },
     {
       "id": "_CtQ7LVqPEfG5K7mY0I3I6w",
@@ -95,12 +95,28 @@
       "description": "Número da Ret-Ratificação. \"0\" - Auto Original, \"1\" - 1o Rat, ..."
     },
     {
-      "id": "_CI6mCVqREfG5K7mY0I3I6w",
-      "name": "AiimWebTB_AIIMID_SEQ_AIIM",
+      "id": "_xWNLlFqSEfG5K7mY0I3I6w",
+      "name": "AiimWebTB_DADOS_POSTO_AIIMCD_DRT",
+      "basicType": "INTEGER",
+      "precision": "8",
+      "length": null,
+      "description": "UA do GDOC que refere-se a este posto."
+    },
+    {
+      "id": "_CtQ7LFqPEfG5K7mY0I3I6w",
+      "name": "AiimWebTB_AIIMNR_AIIM",
       "basicType": "INTEGER",
       "precision": "11",
       "length": null,
-      "description": "(PK) Identificador sequencial interno"
+      "description": "Número do AIIM (sem dígito)"
+    },
+    {
+      "id": "_zJIHRlqiEfG5K7mY0I3I6w",
+      "name": "AiimWebTB_DADOS_SOLIDARIOS_AIIMID_MUNICIPIO",
+      "basicType": "INTEGER",
+      "precision": "10",
+      "length": null,
+      "description": null
     },
     {
       "id": "_xWNLk1qSEfG5K7mY0I3I6w",
@@ -111,28 +127,12 @@
       "description": "Identificador do município onde foi lavrado o AIIM. Somente se IN_LAVRADO_POSTO = \"1\""
     },
     {
-      "id": "_lresYFqhEfG5K7mY0I3I6w",
-      "name": "AiimWebAiimid",
+      "id": "_CI6mCVqREfG5K7mY0I3I6w",
+      "name": "AiimWebTB_AIIMID_SEQ_AIIM",
       "basicType": "INTEGER",
       "precision": "11",
       "length": null,
-      "description": null
-    },
-    {
-      "id": "_xWNLlFqSEfG5K7mY0I3I6w",
-      "name": "AiimWebTB_DADOS_POSTO_AIIMCD_DRT",
-      "basicType": "INTEGER",
-      "precision": "8",
-      "length": null,
-      "description": "UA do GDOC que refere-se a este posto."
-    },
-    {
-      "id": "_zJIHRlqiEfG5K7mY0I3I6w",
-      "name": "AiimWebTB_DADOS_SOLIDARIOS_AIIMID_MUNICIPIO",
-      "basicType": "INTEGER",
-      "precision": "10",
-      "length": null,
-      "description": null
+      "description": "(PK) Identificador sequencial interno"
     }
   ],
   "processInterfaces": [
@@ -145,19 +145,19 @@
       ]
     },
     {
-      "id": "_BAx4zV6KEfGBBLgT-R5iuw",
-      "name": "CTRINTPC",
-      "displayName": "CTRINTPC",
-      "implementedBy": [
-        "CONTROPC"
-      ]
-    },
-    {
       "id": "__BAVLV6QEfGlneRUZ2ZhXA",
       "name": "AGURETPC",
       "displayName": "AGURETPC",
       "implementedBy": [
         "AGPECASPC"
+      ]
+    },
+    {
+      "id": "_BAx4zV6KEfGBBLgT-R5iuw",
+      "name": "CTRINTPC",
+      "displayName": "CTRINTPC",
+      "implementedBy": [
+        "CONTROPC"
       ]
     }
   ],
@@ -11711,51 +11711,11 @@
     "linkEdges": [
       {
         "kind": "link",
-        "name": "Try Task",
-        "from": "_zJIHYFqiEfG5K7mY0I3I6w",
-        "fromLabel": "Link To: Try Task",
-        "to": "_zJIHWVqiEfG5K7mY0I3I6w",
-        "toLabel": "Try Task",
-        "process": "CALCPRPC",
-        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
-      },
-      {
-        "kind": "link",
-        "name": "Try Task",
-        "from": "_qIDun16BEfGBBLgT-R5iuw",
-        "fromLabel": "Link To: Try Task",
-        "to": "_qIDumF6BEfGBBLgT-R5iuw",
-        "toLabel": "Try Task",
-        "process": "BSCENVPC",
-        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
-      },
-      {
-        "kind": "link",
         "name": "Mista",
         "from": "_xAIVElqPEfG5K7mY0I3I6w",
         "fromLabel": "Mista",
         "to": "_CtQ66VqPEfG5K7mY0I3I6w",
         "toLabel": "Mista",
-        "process": "POC_EpatProcess",
-        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
-      },
-      {
-        "kind": "link",
-        "name": "Validação Paralelos",
-        "from": "_89MVQlqVEfG5K7mY0I3I6w",
-        "fromLabel": "Validar Paralelos",
-        "to": "_Ei94AFqPEfG5K7mY0I3I6w",
-        "toLabel": "Validação Paralelos",
-        "process": "POC_EpatProcess",
-        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
-      },
-      {
-        "kind": "link",
-        "name": "Iniciar Decisions",
-        "from": "_LeuhgFqVEfG5K7mY0I3I6w",
-        "fromLabel": "Iniciar Decisions",
-        "to": "_CI6l0VqREfG5K7mY0I3I6w",
-        "toLabel": "Iniciar Decisions",
         "process": "POC_EpatProcess",
         "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
       },
@@ -11772,11 +11732,51 @@
       {
         "kind": "link",
         "name": "Try Task",
+        "from": "_zJIHYFqiEfG5K7mY0I3I6w",
+        "fromLabel": "Link To: Try Task",
+        "to": "_zJIHWVqiEfG5K7mY0I3I6w",
+        "toLabel": "Try Task",
+        "process": "CALCPRPC",
+        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
+      },
+      {
+        "kind": "link",
+        "name": "Try Task",
         "from": "_KEwC6F6EEfGBBLgT-R5iuw",
         "fromLabel": "Link To: Try Task",
         "to": "_KEwC4V6EEfGBBLgT-R5iuw",
         "toLabel": "Try Task",
         "process": "PRPINTPC",
+        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
+      },
+      {
+        "kind": "link",
+        "name": "Iniciar Decisions",
+        "from": "_LeuhgFqVEfG5K7mY0I3I6w",
+        "fromLabel": "Iniciar Decisions",
+        "to": "_CI6l0VqREfG5K7mY0I3I6w",
+        "toLabel": "Iniciar Decisions",
+        "process": "POC_EpatProcess",
+        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
+      },
+      {
+        "kind": "link",
+        "name": "Try Task",
+        "from": "_qIDun16BEfGBBLgT-R5iuw",
+        "fromLabel": "Link To: Try Task",
+        "to": "_qIDumF6BEfGBBLgT-R5iuw",
+        "toLabel": "Try Task",
+        "process": "BSCENVPC",
+        "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
+      },
+      {
+        "kind": "link",
+        "name": "Inicia Graft Step",
+        "from": "_Faq_RVqTEfG5K7mY0I3I6w",
+        "fromLabel": "Inicia Graft Step",
+        "to": "_0XWagFqNEfG5K7mY0I3I6w",
+        "toLabel": "Inicia Graft Step",
+        "process": "POC_EpatProcess",
         "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
       },
       {
@@ -11801,28 +11801,16 @@
       },
       {
         "kind": "link",
-        "name": "Inicia Graft Step",
-        "from": "_Faq_RVqTEfG5K7mY0I3I6w",
-        "fromLabel": "Inicia Graft Step",
-        "to": "_0XWagFqNEfG5K7mY0I3I6w",
-        "toLabel": "Inicia Graft Step",
+        "name": "Validação Paralelos",
+        "from": "_89MVQlqVEfG5K7mY0I3I6w",
+        "fromLabel": "Validar Paralelos",
+        "to": "_Ei94AFqPEfG5K7mY0I3I6w",
+        "toLabel": "Validação Paralelos",
         "process": "POC_EpatProcess",
         "note": "Implicit GOTO. Must become an explicit transition in the .NET flow."
       }
     ],
     "signalEdges": [
-      {
-        "kind": "signal",
-        "name": "fimDRF",
-        "from": "_CtQ66FqPEfG5K7mY0I3I6w",
-        "fromLabel": "FimDRF",
-        "to": "_WvTQIFqQEfG5K7mY0I3I6w",
-        "toLabel": "Catch Signal Event",
-        "catchIsBoundary": true,
-        "attachedTo": "_tbOD4FqPEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "note": "Broadcast cancellation/completion between parallel branches."
-      },
       {
         "kind": "signal",
         "name": "Signal4",
@@ -11832,6 +11820,18 @@
         "toLabel": "Fim Vista Mista",
         "catchIsBoundary": true,
         "attachedTo": "_CtQ68lqPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "note": "Broadcast cancellation/completion between parallel branches."
+      },
+      {
+        "kind": "signal",
+        "name": "fimDRF",
+        "from": "_CtQ66FqPEfG5K7mY0I3I6w",
+        "fromLabel": "FimDRF",
+        "to": "_WvTQIFqQEfG5K7mY0I3I6w",
+        "toLabel": "Catch Signal Event",
+        "catchIsBoundary": true,
+        "attachedTo": "_tbOD4FqPEfG5K7mY0I3I6w",
         "process": "POC_EpatProcess",
         "note": "Broadcast cancellation/completion between parallel branches."
       }
@@ -12022,305 +12022,12 @@
     ],
     "migrationHazards": [
       {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "SetParameters",
-        "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
-        "process": "BSCENVPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "SetParameters",
-        "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
-        "process": "PRPINTPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "SetParameters",
-        "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
-        "process": "CRNOTPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Try Task",
-        "nodeId": "_zJIHWVqiEfG5K7mY0I3I6w",
-        "process": "CALCPRPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "external-event",
-        "node": "Vistas do Juiz",
-        "nodeId": "_CtQ6-1qPEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
-      },
-      {
-        "severity": "medium",
-        "category": "external-event",
-        "node": "Iniciar Aguardar Notificacao",
-        "nodeId": "_0XWaglqNEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
-      },
-      {
-        "severity": "medium",
-        "category": "external-event",
-        "node": "INICALC",
-        "nodeId": "_lrer81qhEfG5K7mY0I3I6w",
-        "process": "DEAT0050",
-        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Inicia Graft Step",
-        "nodeId": "_0XWagFqNEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Corrigir Fechamento",
-        "nodeId": "_5E444FqTEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Link To: Try Task",
-        "nodeId": "_zJIHYFqiEfG5K7mY0I3I6w",
-        "process": "CALCPRPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Link To: Try Task",
-        "nodeId": "_qIDun16BEfGBBLgT-R5iuw",
-        "process": "BSCENVPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
         "severity": "medium",
         "category": "link-goto",
         "node": "Mista",
         "nodeId": "_xAIVElqPEfG5K7mY0I3I6w",
         "process": "POC_EpatProcess",
         "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "HoraFimSC",
-        "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
-        "process": "DEAT0050",
-        "detail": "Uses iProcess runtime built-ins: IPEDateTimeUtil.CALCTIME, IPESystemValues.SW_DATE, IPESystemValues.SW_HOSTNAME, IPESystemValues.SW_TIME. Requires a compatibility shim.",
-        "symbols": [
-          "IPEDateTimeUtil.CALCTIME",
-          "IPESystemValues.SW_DATE",
-          "IPESystemValues.SW_HOSTNAME",
-          "IPESystemValues.SW_TIME"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Validar Paralelos",
-        "nodeId": "_89MVQlqVEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "ISetSubProc",
-        "nodeId": "_-bkw-F6JEfGBBLgT-R5iuw",
-        "process": "CONTROPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Iniciar Decisions",
-        "nodeId": "_LeuhgFqVEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Try Task",
-        "nodeId": "_RNdJzV6PEfGBBLgT-R5iuw",
-        "process": "ATZINTPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Iniciar Decisions",
-        "nodeId": "_CI6l0VqREfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "high",
-        "category": "dynamic-subprocess",
-        "node": "Aguardar Retorno",
-        "nodeId": "_-bkw-V6JEfGBBLgT-R5iuw",
-        "process": "CONTROPC",
-        "detail": "Callee resolved at runtime from case field 'AGUARDAR', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "SetParameters",
-        "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
-        "process": "ATZINTPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "high",
-        "category": "dynamic-subprocess",
-        "node": "Controlar Intimados",
-        "nodeId": "_nQntZ16JEfGBBLgT-R5iuw",
-        "process": "POC_EpatProcess",
-        "detail": "Callee resolved at runtime from case field 'NRSUBPRO', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "Verificar Anulacao",
-        "nodeId": "_CI6lx1qREfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Try Task",
-        "nodeId": "_qIDumF6BEfGBBLgT-R5iuw",
-        "process": "BSCENVPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "high",
-        "category": "dynamic-subprocess",
-        "node": "Aguardar evento de Notificacao do AIIM",
-        "nodeId": "_0XWagVqNEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "Callee resolved at runtime from case field 'DEAT0050', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "Start Loop",
-        "nodeId": "_NcJJ5F9KEfGqPfX31TKC3w",
-        "process": "CRNOTPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_DATE"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "expression-deadline",
-        "node": null,
-        "nodeId": "_CtQ6_1qPEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "Deadline is a script expression ('PRAZORETIRADAVI;\nHORAFINAL.Time;') combining a DATE and a TIME field, not a duration."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Try Task",
-        "nodeId": "_NcJJ5V9KEfGqPfX31TKC3w",
-        "process": "CRNOTPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "expression-deadline",
-        "node": "Aguarda Defesa",
-        "nodeId": "_lrer2lqhEfG5K7mY0I3I6w",
-        "process": "DEAT0050",
-        "detail": "Deadline is a script expression ('PRAZODEFESA;\nPRAZODEFESAT;') combining a DATE and a TIME field, not a duration."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "prepSub",
-        "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
-        "process": "POC_EpatProcess",
-        "detail": "Uses iProcess runtime built-ins: IPEStringUtil.SEARCH, IPEStringUtil.STRLEN, IPEStringUtil.SUBSTR, IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPEStringUtil.SEARCH",
-          "IPEStringUtil.STRLEN",
-          "IPEStringUtil.SUBSTR",
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "external-event",
-        "node": "Iniciar Novo Graft",
-        "nodeId": "_OAgPol9UEfG6Lfb98zsREQ",
-        "process": "POC_EpatProcess",
-        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
-      },
-      {
-        "severity": "high",
-        "category": "iprocess-builtin",
-        "node": "Start Loop",
-        "nodeId": "_KEwC4F6EEfGBBLgT-R5iuw",
-        "process": "PRPINTPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE, IPESystemValues.SW_NA. Requires a compatibility shim.",
-        "symbols": [
-          "IPESystemValues.SW_DATE",
-          "IPESystemValues.SW_NA"
-        ]
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Corrigir Fechamento",
-        "nodeId": "_tN6q4lqTEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "external-event",
-        "node": "Pedido de Vistas",
-        "nodeId": "_CtQ68lqPEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
       },
       {
         "severity": "medium",
@@ -12339,6 +12046,158 @@
         "detail": "Deadline is a script expression ('DTFIMCQ;\nHRFIMCQ;') combining a DATE and a TIME field, not a duration."
       },
       {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "SetParameters",
+        "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
+        "process": "ATZINTPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_NA"
+        ]
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "SetParameters",
+        "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+        "process": "BSCENVPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_NA"
+        ]
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Corrigir Fechamento",
+        "nodeId": "_tN6q4lqTEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "expression-deadline",
+        "node": null,
+        "nodeId": "_CtQ6_1qPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "Deadline is a script expression ('PRAZORETIRADAVI;\nHORAFINAL.Time;') combining a DATE and a TIME field, not a duration."
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "Set Nome Etapa 2",
+        "nodeId": "_XWivF1qTEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "Uses iProcess runtime built-ins: IPEDateTimeUtil.CALCTIME, IPESystemValues.SW_DATE. Requires a compatibility shim.",
+        "symbols": [
+          "IPEDateTimeUtil.CALCTIME",
+          "IPESystemValues.SW_DATE"
+        ]
+      },
+      {
+        "severity": "high",
+        "category": "dynamic-subprocess",
+        "node": "Aguardar Retorno",
+        "nodeId": "_-bkw-V6JEfGBBLgT-R5iuw",
+        "process": "CONTROPC",
+        "detail": "Callee resolved at runtime from case field 'AGUARDAR', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
+      },
+      {
+        "severity": "medium",
+        "category": "external-event",
+        "node": "Vistas do Juiz",
+        "nodeId": "_CtQ6-1qPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Try Task",
+        "nodeId": "_zJIHWVqiEfG5K7mY0I3I6w",
+        "process": "CALCPRPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Corrigir Fechamento",
+        "nodeId": "_5E444FqTEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Inicia Graft Step",
+        "nodeId": "_0XWagFqNEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Try Task",
+        "nodeId": "_KEwC4V6EEfGBBLgT-R5iuw",
+        "process": "PRPINTPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Link To: Try Task",
+        "nodeId": "_zJIHYFqiEfG5K7mY0I3I6w",
+        "process": "CALCPRPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Try Task",
+        "nodeId": "_qIDumF6BEfGBBLgT-R5iuw",
+        "process": "BSCENVPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "expression-deadline",
+        "node": "Aguarda Defesa",
+        "nodeId": "_lrer2lqhEfG5K7mY0I3I6w",
+        "process": "DEAT0050",
+        "detail": "Deadline is a script expression ('PRAZODEFESA;\nPRAZODEFESAT;') combining a DATE and a TIME field, not a duration."
+      },
+      {
+        "severity": "high",
+        "category": "dynamic-subprocess",
+        "node": "Aguardar evento de Notificacao do AIIM",
+        "nodeId": "_0XWagVqNEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "Callee resolved at runtime from case field 'DEAT0050', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
+      },
+      {
+        "severity": "medium",
+        "category": "external-event",
+        "node": "Iniciar Novo Graft",
+        "nodeId": "_OAgPol9UEfG6Lfb98zsREQ",
+        "process": "POC_EpatProcess",
+        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "HoraFimSC",
+        "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
+        "process": "DEAT0050",
+        "detail": "Uses iProcess runtime built-ins: IPEDateTimeUtil.CALCTIME, IPESystemValues.SW_DATE, IPESystemValues.SW_HOSTNAME, IPESystemValues.SW_TIME. Requires a compatibility shim.",
+        "symbols": [
+          "IPEDateTimeUtil.CALCTIME",
+          "IPESystemValues.SW_DATE",
+          "IPESystemValues.SW_HOSTNAME",
+          "IPESystemValues.SW_TIME"
+        ]
+      },
+      {
         "severity": "medium",
         "category": "link-goto",
         "node": "Link To: Try Task",
@@ -12349,23 +12208,31 @@
       {
         "severity": "high",
         "category": "iprocess-builtin",
-        "node": "Start Loop",
-        "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
-        "process": "BSCENVPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim.",
+        "node": "SetParameters",
+        "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
+        "process": "CRNOTPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
         "symbols": [
-          "IPESystemValues.SW_DATE"
+          "IPESystemValues.SW_NA"
         ]
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Try Task",
+        "nodeId": "_RNdJzV6PEfGBBLgT-R5iuw",
+        "process": "ATZINTPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
       },
       {
         "severity": "high",
         "category": "iprocess-builtin",
-        "node": "SetParameters",
-        "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+        "node": "Start Loop",
+        "nodeId": "_zJIHWFqiEfG5K7mY0I3I6w",
         "process": "CALCPRPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim.",
         "symbols": [
-          "IPESystemValues.SW_NA"
+          "IPESystemValues.SW_DATE"
         ]
       },
       {
@@ -12384,24 +12251,61 @@
       {
         "severity": "high",
         "category": "iprocess-builtin",
-        "node": "Set Nome Etapa 2",
-        "nodeId": "_XWivF1qTEfG5K7mY0I3I6w",
+        "node": "prepSub",
+        "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
         "process": "POC_EpatProcess",
-        "detail": "Uses iProcess runtime built-ins: IPEDateTimeUtil.CALCTIME, IPESystemValues.SW_DATE. Requires a compatibility shim.",
+        "detail": "Uses iProcess runtime built-ins: IPEStringUtil.SEARCH, IPEStringUtil.STRLEN, IPEStringUtil.SUBSTR, IPESystemValues.SW_NA. Requires a compatibility shim.",
         "symbols": [
-          "IPEDateTimeUtil.CALCTIME",
+          "IPEStringUtil.SEARCH",
+          "IPEStringUtil.STRLEN",
+          "IPEStringUtil.SUBSTR",
+          "IPESystemValues.SW_NA"
+        ]
+      },
+      {
+        "severity": "medium",
+        "category": "external-event",
+        "node": "Pedido de Vistas",
+        "nodeId": "_CtQ68lqPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Iniciar Decisions",
+        "nodeId": "_LeuhgFqVEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "external-event",
+        "node": "Iniciar Aguardar Notificacao",
+        "nodeId": "_0XWaglqNEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "Start Loop",
+        "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
+        "process": "BSCENVPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim.",
+        "symbols": [
           "IPESystemValues.SW_DATE"
         ]
       },
       {
         "severity": "high",
         "category": "iprocess-builtin",
-        "node": "Start Loop",
-        "nodeId": "_zJIHWFqiEfG5K7mY0I3I6w",
-        "process": "CALCPRPC",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim.",
+        "node": "SetParameters",
+        "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
+        "process": "PRPINTPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
         "symbols": [
-          "IPESystemValues.SW_DATE"
+          "IPESystemValues.SW_NA"
         ]
       },
       {
@@ -12416,42 +12320,30 @@
         ]
       },
       {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Validação Paralelos",
-        "nodeId": "_Ei94AFqPEfG5K7mY0I3I6w",
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "Define Destinatarios",
+        "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
         "process": "POC_EpatProcess",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Try Task",
-        "nodeId": "_KEwC4V6EEfGBBLgT-R5iuw",
-        "process": "PRPINTPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
-      },
-      {
-        "severity": "medium",
-        "category": "link-goto",
-        "node": "Link To: Try Task",
-        "nodeId": "_RNdJ1F6PEfGBBLgT-R5iuw",
-        "process": "ATZINTPC",
-        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_HOSTNAME, IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_HOSTNAME",
+          "IPESystemValues.SW_NA"
+        ]
       },
       {
         "severity": "medium",
         "category": "link-goto",
         "node": "Link To: Try Task",
-        "nodeId": "_NcJJ7F9KEfGqPfX31TKC3w",
-        "process": "CRNOTPC",
+        "nodeId": "_qIDun16BEfGBBLgT-R5iuw",
+        "process": "BSCENVPC",
         "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
       },
       {
         "severity": "medium",
         "category": "link-goto",
-        "node": "Mista",
-        "nodeId": "_CtQ66VqPEfG5K7mY0I3I6w",
+        "node": "Iniciar Decisions",
+        "nodeId": "_CI6l0VqREfG5K7mY0I3I6w",
         "process": "POC_EpatProcess",
         "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
       },
@@ -12465,14 +12357,6 @@
       },
       {
         "severity": "medium",
-        "category": "expression-deadline",
-        "node": null,
-        "nodeId": "_CtQ7A1qPEfG5K7mY0I3I6w",
-        "process": "POC_EpatProcess",
-        "detail": "Deadline is a script expression ('PRAZORETIRADAVI;\nHORAFINAL.Time;') combining a DATE and a TIME field, not a duration."
-      },
-      {
-        "severity": "medium",
         "category": "link-goto",
         "node": "Inicia Graft Step",
         "nodeId": "_Faq_RVqTEfG5K7mY0I3I6w",
@@ -12482,14 +12366,130 @@
       {
         "severity": "high",
         "category": "iprocess-builtin",
-        "node": "Define Destinatarios",
-        "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
+        "node": "Verificar Anulacao",
+        "nodeId": "_CI6lx1qREfG5K7mY0I3I6w",
         "process": "POC_EpatProcess",
-        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_HOSTNAME, IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
         "symbols": [
-          "IPESystemValues.SW_HOSTNAME",
           "IPESystemValues.SW_NA"
         ]
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Try Task",
+        "nodeId": "_NcJJ5V9KEfGqPfX31TKC3w",
+        "process": "CRNOTPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Link To: Try Task",
+        "nodeId": "_RNdJ1F6PEfGBBLgT-R5iuw",
+        "process": "ATZINTPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "Start Loop",
+        "nodeId": "_KEwC4F6EEfGBBLgT-R5iuw",
+        "process": "PRPINTPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE, IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_DATE",
+          "IPESystemValues.SW_NA"
+        ]
+      },
+      {
+        "severity": "high",
+        "category": "dynamic-subprocess",
+        "node": "Controlar Intimados",
+        "nodeId": "_nQntZ16JEfGBBLgT-R5iuw",
+        "process": "POC_EpatProcess",
+        "detail": "Callee resolved at runtime from case field 'NRSUBPRO', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Validação Paralelos",
+        "nodeId": "_Ei94AFqPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "external-event",
+        "node": "INICALC",
+        "nodeId": "_lrer81qhEfG5K7mY0I3I6w",
+        "process": "DEAT0050",
+        "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Link To: Try Task",
+        "nodeId": "_NcJJ7F9KEfGqPfX31TKC3w",
+        "process": "CRNOTPC",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "expression-deadline",
+        "node": null,
+        "nodeId": "_CtQ7A1qPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "Deadline is a script expression ('PRAZORETIRADAVI;\nHORAFINAL.Time;') combining a DATE and a TIME field, not a duration."
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "Start Loop",
+        "nodeId": "_NcJJ5F9KEfGqPfX31TKC3w",
+        "process": "CRNOTPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_DATE"
+        ]
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "ISetSubProc",
+        "nodeId": "_-bkw-F6JEfGBBLgT-R5iuw",
+        "process": "CONTROPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_NA"
+        ]
+      },
+      {
+        "severity": "high",
+        "category": "iprocess-builtin",
+        "node": "SetParameters",
+        "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+        "process": "CALCPRPC",
+        "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim.",
+        "symbols": [
+          "IPESystemValues.SW_NA"
+        ]
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Validar Paralelos",
+        "nodeId": "_89MVQlqVEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+      },
+      {
+        "severity": "medium",
+        "category": "link-goto",
+        "node": "Mista",
+        "nodeId": "_CtQ66VqPEfG5K7mY0I3I6w",
+        "process": "POC_EpatProcess",
+        "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
       }
     ]
   },

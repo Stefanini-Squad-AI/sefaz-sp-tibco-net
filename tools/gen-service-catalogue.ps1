@@ -145,7 +145,8 @@ function Get-WsdlModel([string]$path) {
                 portType  = $pt.GetAttribute('name')
                 name      = $op.GetAttribute('name')
                 # BW/iProcess mangles the folder path: __sol_ = '/', _sp_ = ' '
-                logicalPath = ($op.GetAttribute('name') -replace '__sol_', '/' -replace '_sp_', ' ')
+                # The leading separator is doubled; the inner ones are not, so both forms must be replaced.
+                logicalPath = ($op.GetAttribute('name') -replace '__sol_', '/' -replace '_sol_', '/' -replace '_sp_', ' ')
                 input     = if ($inM) { Expand-Message $inM.GetAttribute('message') $inM } else { @() }
                 output    = if ($outM) { Expand-Message $outM.GetAttribute('message') $outM } else { @() }
             }

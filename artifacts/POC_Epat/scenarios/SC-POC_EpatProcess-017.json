@@ -1,8 +1,9 @@
 {
   "id": "SC-POC_EpatProcess-017",
   "process": "POC_EpatProcess",
-  "etapa": 2,
+  "etapa": 1,
   "etapas": [
+    1,
     2,
     7
   ],
@@ -23,13 +24,13 @@
     "chamadoPor": null
   },
   "destino": {
-    "id": "_UiYAYFqiEfG5K7mY0I3I6w",
-    "nome": "End Event",
+    "id": "_RqXZ0lqUEfG5K7mY0I3I6w",
+    "nome": "Fim E-mail",
     "tipo": "endEvent",
     "como": "fim-do-caso",
     "regressaA": null
   },
-  "lengthNodes": 5,
+  "lengthNodes": 6,
   "segmentos": [
     {
       "etapas": [
@@ -62,7 +63,7 @@
       "doPasso": 3,
       "aoPasso": 4,
       "abrePor": "Preparar Notificacao",
-      "fechaEm": "Encerra e retira",
+      "fechaEm": "Fim de Prazo Mantendo Atividade",
       "nos": [
         {
           "id": "_sfwu-VqUEfG5K7mY0I3I6w",
@@ -70,9 +71,26 @@
           "tipo": "userTask"
         },
         {
-          "id": "_T4Ma8FqiEfG5K7mY0I3I6w",
-          "nome": "Encerra e retira",
+          "id": "_XWivFlqTEfG5K7mY0I3I6w",
+          "nome": "Fim de Prazo Mantendo Atividade",
           "tipo": "timerEvent"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1
+      ],
+      "ordemNaJornada": 2,
+      "doPasso": 5,
+      "aoPasso": 5,
+      "abrePor": "Email CQ Fechamento",
+      "fechaEm": "Email CQ Fechamento",
+      "nos": [
+        {
+          "id": "_O-rPp1qUEfG5K7mY0I3I6w",
+          "nome": "Email CQ Fechamento",
+          "tipo": "emailTask"
         }
       ]
     },
@@ -80,15 +98,15 @@
       "etapas": [
         7
       ],
-      "ordemNaJornada": 2,
-      "doPasso": 5,
-      "aoPasso": 5,
-      "abrePor": "End Event",
-      "fechaEm": "End Event",
+      "ordemNaJornada": 3,
+      "doPasso": 6,
+      "aoPasso": 6,
+      "abrePor": "Fim E-mail",
+      "fechaEm": "Fim E-mail",
       "nos": [
         {
-          "id": "_UiYAYFqiEfG5K7mY0I3I6w",
-          "nome": "End Event",
+          "id": "_RqXZ0lqUEfG5K7mY0I3I6w",
+          "nome": "Fim E-mail",
           "tipo": "endEvent"
         }
       ]
@@ -118,15 +136,22 @@
       "entrouPor": "fluxo"
     },
     {
-      "id": "_T4Ma8FqiEfG5K7mY0I3I6w",
-      "nome": "Encerra e retira",
+      "id": "_XWivFlqTEfG5K7mY0I3I6w",
+      "nome": "Fim de Prazo Mantendo Atividade",
       "tipo": "timerEvent",
       "escopo": "MAIN",
-      "entrouPor": "fronteira"
+      "entrouPor": "fronteira-paralela"
     },
     {
-      "id": "_UiYAYFqiEfG5K7mY0I3I6w",
-      "nome": "End Event",
+      "id": "_O-rPp1qUEfG5K7mY0I3I6w",
+      "nome": "Email CQ Fechamento",
+      "tipo": "emailTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_RqXZ0lqUEfG5K7mY0I3I6w",
+      "nome": "Fim E-mail",
       "tipo": "endEvent",
       "escopo": "MAIN",
       "entrouPor": "fluxo"

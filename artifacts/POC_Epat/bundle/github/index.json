@@ -3,7 +3,7 @@
   "package": "POC_Epat",
   "nota": "Ficheiros de customizacao do Copilot, projectados dos manifestos de papel. Copiar para a raiz do repositorio da fase 2: .github/ e AGENTS.md. Nao ha raciocinio nesta traducao - o que cada papel pode escrever continua a sair do mapa de camadas, e o oraculo continua fora de qualquer instrucao para nao poder ser editado.",
   "generatedAt": "2026-05-28T00:00:00Z",
-  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
   "summary": {
     "agentes": 17,
     "instrucoes": 5,

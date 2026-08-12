@@ -261,7 +261,7 @@
   },
   "provenance": {
     "generatedAt": "2026-05-28T00:00:00Z",
-    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
     "package": "POC_Epat"
   },
   "acceptance": {

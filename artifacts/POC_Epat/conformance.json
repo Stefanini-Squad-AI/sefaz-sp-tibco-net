@@ -23,21 +23,21 @@
     "etapasBlocked": 7
   },
   "externalPackagesNotDelivered": [
-    "_XWivN1qTEfG5K7mY0I3I6w",
-    "_-bkx9V6JEfGBBLgT-R5iuw",
-    "_0XWaj1qNEfG5K7mY0I3I6w",
-    "_-bkx9l6JEfGBBLgT-R5iuw",
-    "_CtQ7L1qPEfG5K7mY0I3I6w",
-    "_lresZVqhEfG5K7mY0I3I6w",
     "_CI6mDFqREfG5K7mY0I3I6w",
-    "_CI6mDVqREfG5K7mY0I3I6w",
-    "_lresZlqhEfG5K7mY0I3I6w",
-    "_lresZFqhEfG5K7mY0I3I6w",
-    "_-bkx8F6JEfGBBLgT-R5iuw",
+    "_-bkx9l6JEfGBBLgT-R5iuw",
     "_-bkx716JEfGBBLgT-R5iuw",
+    "_CtQ7L1qPEfG5K7mY0I3I6w",
     "_-bkx816JEfGBBLgT-R5iuw",
+    "_lresZlqhEfG5K7mY0I3I6w",
+    "_0XWaj1qNEfG5K7mY0I3I6w",
+    "_-bkx8F6JEfGBBLgT-R5iuw",
+    "_lresZFqhEfG5K7mY0I3I6w",
     "_CtQ7LlqPEfG5K7mY0I3I6w",
-    "_-bkx8V6JEfGBBLgT-R5iuw"
+    "_-bkx8V6JEfGBBLgT-R5iuw",
+    "_XWivN1qTEfG5K7mY0I3I6w",
+    "_CI6mDVqREfG5K7mY0I3I6w",
+    "_-bkx9V6JEfGBBLgT-R5iuw",
+    "_lresZVqhEfG5K7mY0I3I6w"
   ],
   "concepts": [
     {
@@ -454,8 +454,8 @@
           ],
           "samples": [
             "POC_EpatProcess/Vistas do Juiz",
-            "POC_EpatProcess/Iniciar Aguardar Notificacao",
-            "DEAT0050/INICALC"
+            "POC_EpatProcess/Iniciar Novo Graft",
+            "POC_EpatProcess/Pedido de Vistas"
           ]
         }
       ]
@@ -502,8 +502,8 @@
           ],
           "samples": [
             "POC_EpatProcess/Vistas do Juiz",
-            "POC_EpatProcess/Iniciar Aguardar Notificacao",
-            "DEAT0050/INICALC"
+            "POC_EpatProcess/Iniciar Novo Graft",
+            "POC_EpatProcess/Pedido de Vistas"
           ]
         }
       ]
@@ -553,9 +553,9 @@
             "POC_EpatProcess"
           ],
           "samples": [
+            "POC_EpatProcess/Fim de Prazo Mantendo Atividade",
             "POC_EpatProcess/",
-            "DEAT0050/Aguarda Defesa",
-            "POC_EpatProcess/Fim de Prazo Mantendo Atividade"
+            "DEAT0050/Aguarda Defesa"
           ]
         }
       ]
@@ -686,8 +686,8 @@
           ],
           "samples": [
             "CONTROPC/Aguardar Retorno",
-            "POC_EpatProcess/Controlar Intimados",
-            "POC_EpatProcess/Aguardar evento de Notificacao do AIIM"
+            "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+            "POC_EpatProcess/Controlar Intimados"
           ]
         }
       ]

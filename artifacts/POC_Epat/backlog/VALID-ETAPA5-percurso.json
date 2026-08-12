@@ -7,7 +7,7 @@
   "content": {
     "intent": "Montar o arnes que corre os percursos da etapa 5 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.",
     "injectedContext": {
-      "summary": "A etapa toca 47 no(s) e e exercitada por 45 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.",
+      "summary": "A etapa toca 47 no(s) e e exercitada por 45 cenario(s). O percurso de referencia e SC-POC_EpatProcess-009, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.",
       "hypotheses": []
     },
     "scaffold": [
@@ -44,13 +44,13 @@
   },
   "provenance": {
     "generatedAt": "2026-05-28T00:00:00Z",
-    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
     "package": "POC_Epat"
   },
   "acceptance": {
     "oracle": {
       "kind": "scenario-path",
-      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json",
       "immutable": true,
       "caseCount": 45
     },
@@ -68,7 +68,7 @@
       5
     ],
     "segmento": {
-      "cenarioReferencia": "SC-POC_EpatProcess-008",
+      "cenarioReferencia": "SC-POC_EpatProcess-009",
       "ordemNaJornada": 1,
       "doPasso": 1,
       "aoPasso": 37,

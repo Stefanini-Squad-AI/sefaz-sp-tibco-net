@@ -95,7 +95,8 @@ function Get-Descricao {
     $l.Add('h3. Como se prova')
     $l.Add("Oraculo *$($C.acceptance.oracle.kind)*, $($C.acceptance.oracle.caseCount) caso(s), fixture {{$($C.acceptance.oracle.fixture)}}.")
     $l.Add('{panel:bgColor=#fffae6}Os valores esperados sao do kit e sao imutaveis. Ligar o arnes a fixture; nunca escrever nem editar um valor esperado.{panel}')
-    foreach ($c in (Arr $C.acceptance.criteria)) { $l.Add("* $c") }
+    # Nao usar $c aqui: PowerShell nao distingue maiusculas e apagaria o parametro $C.
+    foreach ($criterio in (Arr $C.acceptance.criteria)) { $l.Add("* $criterio") }
     if (@(Arr $C.gaps).Count -gt 0) {
         $l.Add('')
         $l.Add('h3. Bloqueadores')
@@ -181,6 +182,8 @@ $carga = [ordered]@{
     manifestSha256 = $backlog.manifestSha256
     projeto = $proj
     mapaDeCampos = 'config/jira-mapping.json'
+    estadoInicial = $map.estadoInicial.nome
+    responsavel = [ordered]@{ modo = $map.responsavel.modo; accountId = $map.responsavel.accountId }
     summary = [ordered]@{
         epicas = @($epicas).Count
         issues = @($issues).Count

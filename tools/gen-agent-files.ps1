@@ -26,7 +26,9 @@ param(
     [string]$MapPath      = "$PSScriptRoot/../config/dotnet-architecture.json",
     [string]$GlossaryPath = "$PSScriptRoot/../config/glossary/POC_Epat.yaml",
     [string]$CatalogPath  = "$PSScriptRoot/../config/net-equivalence-catalog.json",
-    [string]$OutDir       = "$PSScriptRoot/../artifacts/POC_Epat/github"
+    [string]$OutDir       = "$PSScriptRoot/../artifacts/POC_Epat/github",
+    # A pasta muda com o repositorio de destino; os ficheiros e o conteudo nao.
+    [string]$Base         = '.github'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -68,7 +70,8 @@ $ferramentas = @{
 }
 
 if (Test-Path $OutDir) { Remove-Item $OutDir -Recurse -Force }
-foreach ($d in @('.github/agents', '.github/instructions', '.github/skills')) {
+$Base = $Base.Trim('/', '\')
+foreach ($d in @("$Base/agents", "$Base/instructions", "$Base/skills")) {
     New-Item -ItemType Directory -Path (Join-Path $OutDir $d) -Force | Out-Null
 }
 
@@ -149,7 +152,7 @@ foreach ($p in $papeis) {
     if ($p.parecer -and $p.parecer.aviso) {
         $body += @('', '## Advisory (agentic review, not fact)', '', "> $($p.parecer.aviso)")
     }
-    Write-Doc ".github/agents/$($p.id).agent.md" $body
+    Write-Doc "$Base/agents/$($p.id).agent.md" $body
 }
 
 # ------------------------------------------------------ instructions ---------
@@ -178,10 +181,10 @@ foreach ($l in $map.layers) {
         ''
         "- $($map.namingRule)"
     )
-    Write-Doc ".github/instructions/layer-$($l.name.ToLowerInvariant()).instructions.md" $body
+    Write-Doc "$Base/instructions/layer-$($l.name.ToLowerInvariant()).instructions.md" $body
 }
 
-Write-Doc '.github/instructions/oracles.instructions.md' @(
+Write-Doc "$Base/instructions/oracles.instructions.md" @(
     '---'
     'description: "Use when writing or changing any test in the ePAT migration. Covers which values may be authored and which are fixed by the toolkit."'
     'applyTo: "tests/**"'
@@ -235,7 +238,7 @@ foreach ($prop in $catalog.categories.PSObject.Properties) {
         $body += "- **$($o.id)** - $($o.approach)"
         $body += "  - Consequence: $($o.consequence)"
     }
-    Write-Doc ".github/skills/$nome/SKILL.md" $body
+    Write-Doc "$Base/skills/$nome/SKILL.md" $body
 }
 
 # ------------------------------------------- always-on + porta de entrada ----
@@ -262,7 +265,7 @@ $sempre = @(
     ''
     "This is a proof of concept, not the full migration. $($backlog.summary.nosComCard) of $($backlog.summary.nosEmEscopo) in-scope nodes have a card; what was left out is recorded with a reason in `context/scope.json`. If something looks missing, check there before assuming it was forgotten."
 )
-Write-Doc '.github/copilot-instructions.md' $sempre
+Write-Doc "$Base/copilot-instructions.md" $sempre
 
 $porta = @(
     '# AGENTS.md'

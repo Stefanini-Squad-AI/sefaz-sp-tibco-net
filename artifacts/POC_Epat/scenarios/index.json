@@ -459,8 +459,8 @@
     {
       "processo": "POC_EpatProcess",
       "tipo": "link",
-      "de": "Validar Paralelos",
-      "para": "Validação Paralelos"
+      "de": "Corrigir Fechamento",
+      "para": "Corrigir Fechamento"
     },
     {
       "processo": "POC_EpatProcess",
@@ -471,38 +471,14 @@
     {
       "processo": "POC_EpatProcess",
       "tipo": "link",
-      "de": "Corrigir Fechamento",
-      "para": "Corrigir Fechamento"
-    },
-    {
-      "processo": "POC_EpatProcess",
-      "tipo": "link",
       "de": "Inicia Graft Step",
       "para": "Inicia Graft Step"
     },
     {
       "processo": "POC_EpatProcess",
-      "tipo": "fronteira",
-      "de": "Preparar Notificacao",
-      "para": "Fim de Prazo Mantendo Atividade"
-    },
-    {
-      "processo": "POC_EpatProcess",
-      "tipo": "fronteira",
-      "de": "Pedido de Vistas",
-      "para": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w"
-    },
-    {
-      "processo": "POC_EpatProcess",
-      "tipo": "fronteira",
-      "de": "Pedido de Vistas",
-      "para": "Fim Vista Mista"
-    },
-    {
-      "processo": "POC_EpatProcess",
-      "tipo": "fronteira",
-      "de": "Vistas do Juiz",
-      "para": "timerEvent _CtQ6_1qPEfG5K7mY0I3I6w"
+      "tipo": "link",
+      "de": "Validar Paralelos",
+      "para": "Validação Paralelos"
     },
     {
       "processo": "POC_EpatProcess",
@@ -518,15 +494,39 @@
     },
     {
       "processo": "POC_EpatProcess",
-      "tipo": "sinal",
-      "de": "FimDRF",
-      "para": "Catch Signal Event"
+      "tipo": "fronteira",
+      "de": "Preparar Notificacao",
+      "para": "Fim de Prazo Mantendo Atividade"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Vistas do Juiz",
+      "para": "timerEvent _CtQ6_1qPEfG5K7mY0I3I6w"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Pedido de Vistas",
+      "para": "Fim Vista Mista"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Pedido de Vistas",
+      "para": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w"
     },
     {
       "processo": "POC_EpatProcess",
       "tipo": "sinal",
       "de": "Fim Vista Mista",
       "para": "Fim Vista Mista"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "sinal",
+      "de": "FimDRF",
+      "para": "Catch Signal Event"
     },
     {
       "processo": "CALCPRPC",
@@ -609,12 +609,12 @@
           "tipo": "receiveTask"
         },
         {
-          "nome": "Iniciar Aguardar Notificacao",
-          "tipo": "receiveTask"
-        },
-        {
           "nome": "Início",
           "tipo": "startEvent"
+        },
+        {
+          "nome": "Iniciar Aguardar Notificacao",
+          "tipo": "receiveTask"
         }
       ],
       "scenarios": 48,
@@ -900,6 +900,27 @@
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 28,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-008",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
       "kind": "prazo",
       "de": "Iniciar Novo Graft",
       "ate": "Fim",
@@ -918,7 +939,7 @@
       "entradas": 1
     },
     {
-      "id": "SC-POC_EpatProcess-008",
+      "id": "SC-POC_EpatProcess-009",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -940,7 +961,7 @@
       "entradas": 2
     },
     {
-      "id": "SC-POC_EpatProcess-009",
+      "id": "SC-POC_EpatProcess-010",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -957,27 +978,6 @@
         7
       ],
       "passos": 30,
-      "decisoes": 4,
-      "entradas": 1
-    },
-    {
-      "id": "SC-POC_EpatProcess-010",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Novo Graft",
-      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7
-      ],
-      "passos": 28,
       "decisoes": 4,
       "entradas": 1
     },
@@ -1083,6 +1083,23 @@
     {
       "id": "SC-POC_EpatProcess-016",
       "process": "POC_EpatProcess",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "End Event",
+      "termina": "fim-do-caso",
+      "etapas": [
+        2,
+        7
+      ],
+      "passos": 5,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-017",
+      "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
       "kind": "prazo",
@@ -1099,29 +1116,12 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-017",
-      "process": "POC_EpatProcess",
-      "etapa": 2,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Iniciar Novo Graft",
-      "ate": "End Event",
-      "termina": "fim-do-caso",
-      "etapas": [
-        2,
-        7
-      ],
-      "passos": 5,
-      "decisoes": 0,
-      "entradas": 0
-    },
-    {
       "id": "SC-POC_EpatProcess-018",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
       "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
+      "de": "Início",
       "ate": "Fim",
       "termina": "fim-do-caso",
       "etapas": [
@@ -1133,8 +1133,8 @@
         6,
         7
       ],
-      "passos": 20,
-      "decisoes": 3,
+      "passos": 25,
+      "decisoes": 4,
       "entradas": 2
     },
     {
@@ -1143,7 +1143,7 @@
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
       "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
+      "de": "Início",
       "ate": "Fim",
       "termina": "fim-do-caso",
       "etapas": [
@@ -1155,294 +1155,12 @@
         6,
         7
       ],
-      "passos": 22,
-      "decisoes": 3,
+      "passos": 27,
+      "decisoes": 4,
       "entradas": 3
     },
     {
       "id": "SC-POC_EpatProcess-020",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 23,
-      "decisoes": 3,
-      "entradas": 2
-    },
-    {
-      "id": "SC-POC_EpatProcess-021",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 25,
-      "decisoes": 3,
-      "entradas": 3
-    },
-    {
-      "id": "SC-POC_EpatProcess-022",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 21,
-      "decisoes": 3,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-023",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 23,
-      "decisoes": 3,
-      "entradas": 1
-    },
-    {
-      "id": "SC-POC_EpatProcess-024",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 25,
-      "decisoes": 3,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-025",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 27,
-      "decisoes": 3,
-      "entradas": 1
-    },
-    {
-      "id": "SC-POC_EpatProcess-026",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim de Prazo",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7
-      ],
-      "passos": 20,
-      "decisoes": 2,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-027",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7
-      ],
-      "passos": 18,
-      "decisoes": 2,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-028",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 25,
-      "decisoes": 2,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-029",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7
-      ],
-      "passos": 19,
-      "decisoes": 2,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-030",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Iniciar Aguardar Notificacao",
-      "ate": "Fim de Prazo",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7
-      ],
-      "passos": 18,
-      "decisoes": 2,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-031",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Início",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 25,
-      "decisoes": 4,
-      "entradas": 2
-    },
-    {
-      "id": "SC-POC_EpatProcess-032",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Início",
-      "ate": "Fim",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
-      ],
-      "passos": 27,
-      "decisoes": 4,
-      "entradas": 3
-    },
-    {
-      "id": "SC-POC_EpatProcess-033",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1464,7 +1182,7 @@
       "entradas": 2
     },
     {
-      "id": "SC-POC_EpatProcess-034",
+      "id": "SC-POC_EpatProcess-021",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1486,7 +1204,7 @@
       "entradas": 3
     },
     {
-      "id": "SC-POC_EpatProcess-035",
+      "id": "SC-POC_EpatProcess-022",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1508,7 +1226,7 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-036",
+      "id": "SC-POC_EpatProcess-023",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1530,7 +1248,28 @@
       "entradas": 1
     },
     {
-      "id": "SC-POC_EpatProcess-037",
+      "id": "SC-POC_EpatProcess-024",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-025",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1552,7 +1291,7 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-038",
+      "id": "SC-POC_EpatProcess-026",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1574,7 +1313,7 @@
       "entradas": 1
     },
     {
-      "id": "SC-POC_EpatProcess-039",
+      "id": "SC-POC_EpatProcess-027",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1595,28 +1334,7 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-040",
-      "process": "POC_EpatProcess",
-      "etapa": 1,
-      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "ate-ao-fim",
-      "de": "Início",
-      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
-      "termina": "fim-do-caso",
-      "etapas": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        7
-      ],
-      "passos": 23,
-      "decisoes": 3,
-      "entradas": 0
-    },
-    {
-      "id": "SC-POC_EpatProcess-041",
+      "id": "SC-POC_EpatProcess-028",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1638,7 +1356,7 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-042",
+      "id": "SC-POC_EpatProcess-029",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1659,7 +1377,7 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-043",
+      "id": "SC-POC_EpatProcess-030",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1680,7 +1398,7 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-044",
+      "id": "SC-POC_EpatProcess-031",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1698,7 +1416,7 @@
       "entradas": 1
     },
     {
-      "id": "SC-POC_EpatProcess-045",
+      "id": "SC-POC_EpatProcess-032",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1715,7 +1433,7 @@
       "entradas": 1
     },
     {
-      "id": "SC-POC_EpatProcess-046",
+      "id": "SC-POC_EpatProcess-033",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1733,7 +1451,25 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-047",
+      "id": "SC-POC_EpatProcess-034",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "End Event",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 7,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-035",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
@@ -1751,21 +1487,285 @@
       "entradas": 0
     },
     {
-      "id": "SC-POC_EpatProcess-048",
+      "id": "SC-POC_EpatProcess-036",
       "process": "POC_EpatProcess",
       "etapa": 1,
       "etapaOrigem": "no-do-percurso+arvore-de-chamada",
-      "kind": "prazo",
-      "de": "Início",
-      "ate": "End Event",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
       "termina": "fim-do-caso",
       "etapas": [
         1,
         2,
+        3,
+        4,
+        5,
+        6,
         7
       ],
-      "passos": 7,
-      "decisoes": 0,
+      "passos": 20,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-037",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 22,
+      "decisoes": 3,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-038",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-039",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 3,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-040",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 21,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-041",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-042",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 18,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-043",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-044",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 27,
+      "decisoes": 3,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-045",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 20,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-046",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-047",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 19,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-048",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 18,
+      "decisoes": 2,
       "entradas": 0
     },
     {

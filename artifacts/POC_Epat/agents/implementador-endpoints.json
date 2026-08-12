@@ -3,7 +3,7 @@
   "package": "POC_Epat",
   "nota": "Manifesto de agente. NAO contem raciocinio: delimita-o. O que este agente pode escrever sai do mapa de camadas e do estado dos caminhos nos cards, nunca de uma proposta. O que o julga e o oraculo, que ele nao pode editar.",
   "generatedAt": "2026-05-28T00:00:00Z",
-  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "manifestSha256": "e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38",
   "id": "implementador-endpoints",
   "papel": "Implementador de Endpoints",
   "tipo": "implementador",
@@ -226,7 +226,7 @@
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-007.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
@@ -262,15 +262,15 @@
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-025.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-026.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-031.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-032.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {
-      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-045.json",
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-036.json",
       "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
     },
     {

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de execucao - POC_Epat</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b36;--txt:#e6e9ef;--dim:#9aa3b2;--acc:#4c9aff;--warn:#f5a623;--bad:#ff6b6b;--ok:#3ddc97}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:28px 32px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#171a21,#0f1115)}
+h1{margin:0 0 6px;font-size:22px}
+.sub{color:var(--dim);font-size:13px}
+.kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:104px}
+.kpi b{display:block;font-size:20px}
+.kpi span{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+main{padding:24px 32px;max-width:1500px}
+.bar{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+input[type=search]{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:8px 12px;min-width:280px}
+button{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:8px 12px;cursor:pointer}
+button.on{border-color:var(--acc);color:var(--acc)}
+.onda{margin-bottom:28px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.onda>h2{margin:0;padding:14px 18px;font-size:15px;background:#1c2029;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.n{background:var(--acc);color:#05070c;border-radius:5px;padding:1px 9px;font-size:12px;font-weight:700}
+.porque{padding:11px 18px;color:var(--dim);font-size:12.5px;border-bottom:1px solid var(--line)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);padding:9px 12px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:9px 12px;border-bottom:1px solid #1e222b;vertical-align:top}
+tr:last-child td{border-bottom:0}
+tr.hide{display:none}
+code{font:12px ui-monospace,Consolas,monospace;color:var(--acc)}
+.t{font-size:13px}
+.tag{display:inline-block;font-size:10.5px;padding:1px 7px;border-radius:4px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.tp-build{border-color:#2f6bd6;color:#79aaff}
+.tp-valid{border-color:#2f8f6b;color:#5fd6a8}
+.tp-double{border-color:#8f6b2f;color:#e0b562}
+.bl{border-color:#7a3030;color:var(--bad)}
+.trava{border-color:#7a5a20;color:var(--warn);font-weight:700}
+.lote{padding:8px 18px;background:#131720;border-bottom:1px solid var(--line);border-top:1px solid var(--line);color:var(--dim);font-size:12px}
+.lt{display:inline-block;background:#232937;color:var(--txt);border-radius:4px;padding:1px 8px;margin-right:8px;font-size:11px;font-weight:700}
+.jk{display:inline-block;font:12px ui-monospace,Consolas,monospace;font-weight:700;color:var(--ok);text-decoration:none;border:1px solid #2f8f6b;border-radius:4px;padding:1px 7px;white-space:nowrap}
+a.jk:hover{background:#1b2b24}
+.act{display:flex;gap:4px;margin-top:5px}
+.act button{font-size:10px;padding:2px 6px;border-radius:4px;line-height:1.3}
+.act button.sel{border-color:var(--acc);color:var(--acc);background:#16233a}
+tr.marcada td{background:#141b28}
+#sel{position:sticky;bottom:0;z-index:5;background:#1c2029;border-top:1px solid var(--acc);padding:12px 32px;display:none;gap:12px;align-items:center;flex-wrap:wrap;margin:0 -32px}
+#sel.on{display:flex}
+#sel code{color:var(--txt)}
+.cmd{flex:1;min-width:320px;background:#0f1115;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font:11.5px ui-monospace,Consolas,monospace;color:var(--ok);overflow-x:auto;white-space:nowrap}
+.pz-atravessa-o-sistema{border-color:#7a5a20;color:var(--warn)}
+.dim{color:var(--dim);font-size:12px}
+.esp{font:11.5px ui-monospace,Consolas,monospace;color:var(--dim)}
+footer{padding:18px 32px;color:var(--dim);font-size:12px;border-top:1px solid var(--line)}
+</style>
+</head><body>
+<header>
+<h1>Plano de execucao &mdash; POC_Epat</h1>
+<div class="sub">A ordem e derivada do backlog: dependencia entre segmentos, etapa do plano de cumprimento e precedencia da fundacao. Nada aqui foi estimado.</div>
+<div class="kpis">
+<div class="kpi"><b>80</b><span>cards</span></div>
+<div class="kpi"><b>61</b><span>build</span></div>
+<div class="kpi"><b>16</b><span>validacao</span></div>
+<div class="kpi"><b>3</b><span>duble</span></div>
+<div class="kpi"><b>8</b><span>ondas</span></div>
+<div class="kpi"><b>16</b><span>maior lote paralelo</span></div>
+<div class="kpi"><b>15</b><span>travam outros</span></div>
+<div class="kpi"><b>40</b><span>com bloqueador</span></div>
+<div class="kpi"><b>80</b><span>no board</span></div>
+</div></header>
+<main>
+<div class="bar">
+<input type="search" id="q" placeholder="filtrar por id, titulo ou bloqueador...">
+<button id="fb">so com bloqueador</button>
+<button id="ft">so os que travam outros</button>
+<button id="fg">so os que atravessam o sistema</button>
+<span class="dim" id="cnt"></span>
+</div>
+<section class="onda">
+<h2><span class="n">Onda 0</span> Fundacao <span class="dim">(12 cards)</span></h2>
+<div class="porque">Camada anticorrupcao, portas de servico, dubles dos processos nao entregues e motor de decisao. Nenhum card de build tem onde assentar antes disto. Sao independentes entre si.</div>
+<div class="lote"><span class="lt">Lote 1</span> 12 cards em paralelo &mdash; nenhum depende de outro</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="0" data-s="double-aguretpc-interface duble para a interface de processo aguretpc sstn-62 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-62">SSTN-62</a><div class="act"><button data-k="SSTN-62" data-e="To Detail">To Detail</button><button data-k="SSTN-62" data-e="In Progress">In Progress</button></div></td>
+<td><code>DOUBLE-AGURETPC-interface</code></td>
+<td class="t">Duble para a interface de processo AGURETPC</td>
+<td><span class="tag tp-double">double</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="double-ctrintpc-interface duble para a interface de processo ctrintpc sstn-63 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-63">SSTN-63</a><div class="act"><button data-k="SSTN-63" data-e="To Detail">To Detail</button><button data-k="SSTN-63" data-e="In Progress">In Progress</button></div></td>
+<td><code>DOUBLE-CTRINTPC-interface</code></td>
+<td class="t">Duble para a interface de processo CTRINTPC</td>
+<td><span class="tag tp-double">double</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="double-notfaiim-interface duble para a interface de processo notfaiim sstn-64 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-64">SSTN-64</a><div class="act"><button data-k="SSTN-64" data-e="To Detail">To Detail</button><button data-k="SSTN-64" data-e="In Progress">In Progress</button></div></td>
+<td><code>DOUBLE-NOTFAIIM-interface</code></td>
+<td class="t">Duble para a interface de processo NOTFAIIM</td>
+<td><span class="tag tp-double">double</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-atualizarintimacao1-contrato provar o contrato da operacao atualizarintimacao.1 sstn-65 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-65">SSTN-65</a><div class="act"><button data-k="SSTN-65" data-e="To Detail">To Detail</button><button data-k="SSTN-65" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ATUALIZARINTIMACAO1-contrato</code></td>
+<td class="t">Provar o contrato da operacao atualizarIntimacao.1</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-buscarvistasativasporaiim1-contrato provar o contrato da operacao buscarvistasativasporaiim.1 sstn-66 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-66">SSTN-66</a><div class="act"><button data-k="SSTN-66" data-e="To Detail">To Detail</button><button data-k="SSTN-66" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-BUSCARVISTASATIVASPORAIIM1-contrato</code></td>
+<td class="t">Provar o contrato da operacao buscarVistasAtivasPorAiim.1</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-corticon-tabela provar a equivalencia entre o dmn gerado e as planilhas corticon sstn-67 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-67">SSTN-67</a><div class="act"><button data-k="SSTN-67" data-e="To Detail">To Detail</button><button data-k="SSTN-67" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-CORTICON-tabela</code></td>
+<td class="t">Provar a equivalencia entre o DMN gerado e as planilhas Corticon</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">0</td>
+<td class="dim">decision-table<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-criarnotificacoesaiim1-contrato provar o contrato da operacao criarnotificacoesaiim.1 sstn-68 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-68">SSTN-68</a><div class="act"><button data-k="SSTN-68" data-e="To Detail">To Detail</button><button data-k="SSTN-68" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-CRIARNOTIFICACOESAIIM1-contrato</code></td>
+<td class="t">Provar o contrato da operacao criarNotificacoesAIIM.1</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-gatewaysand-conceito provar o conceito gateways paralelos (and) sstn-76 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-76">SSTN-76</a><div class="act"><button data-k="SSTN-76" data-e="To Detail">To Detail</button><button data-k="SSTN-76" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-GATEWAYSAND-conceito</code></td>
+<td class="t">Provar o conceito Gateways Paralelos (AND)</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">146 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-graftstep-conceito provar o conceito graft step sstn-77 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-77">SSTN-77</a><div class="act"><button data-k="SSTN-77" data-e="To Detail">To Detail</button><button data-k="SSTN-77" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-GRAFTSTEP-conceito</code></td>
+<td class="t">Provar o conceito Graft Step</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">146 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-obterprimeirodiautilaposperiododediascorridosdeat1-contrato provar o contrato da operacao obterprimeirodiautilaposperiododediascorridosdeat.1 sstn-78 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-78">SSTN-78</a><div class="act"><button data-k="SSTN-78" data-e="To Detail">To Detail</button><button data-k="SSTN-78" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-OBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato</code></td>
+<td class="t">Provar o contrato da operacao obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-prepararintimacao-contrato provar o contrato da operacao prepararintimacao sstn-79 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-79">SSTN-79</a><div class="act"><button data-k="SSTN-79" data-e="To Detail">To Detail</button><button data-k="SSTN-79" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-PREPARARINTIMACAO-contrato</code></td>
+<td class="t">Provar o contrato da operacao PrepararIntimacao</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">contract<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-timersdeadlines-conceito provar o conceito timers e deadlines sstn-80 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-80">SSTN-80</a><div class="act"><button data-k="SSTN-80" data-e="To Detail">To Detail</button><button data-k="SSTN-80" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-TIMERSDEADLINES-conceito</code></td>
+<td class="t">Provar o conceito Timers e Deadlines</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">146 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 1</span> Etapa 1 - Fechamento do AIIM <span class="dim">(16 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 12 cards em paralelo &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-bscenvpc-seg002 fechamento do aiim + notificação do aiim: de 'busca envolvidos vista por aiim' ate 'done - bail' sstn-7 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-7">SSTN-7</a><div class="act"><button data-k="SSTN-7" data-e="To Detail">To Detail</button><button data-k="SSTN-7" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg002</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Bail'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">13</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-bscenvpc-seg003 fechamento do aiim + notificação do aiim: de 'busca envolvidos vista por aiim' ate 'done - fixed' sstn-8 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-8">SSTN-8</a><div class="act"><button data-k="SSTN-8" data-e="To Detail">To Detail</button><button data-k="SSTN-8" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg003</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Fixed'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">12</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-bscenvpc-seg004 busca de envolvidos com vista aberta: caminho de sucesso sstn-9 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-9">SSTN-9</a><div class="act"><button data-k="SSTN-9" data-e="To Detail">To Detail</button><button data-k="SSTN-9" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg004</code></td>
+<td class="t">Busca de envolvidos com vista aberta: caminho de sucesso</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">8</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-bscenvpc-seg005 fechamento do aiim + notificação do aiim: de 'busca envolvidos vista por aiim' ate 'try task' sstn-10 link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-10">SSTN-10</a><div class="act"><button data-k="SSTN-10" data-e="To Detail">To Detail</button><button data-k="SSTN-10" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg005</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Try Task'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">11</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">link-goto</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-bscenvpc-seg011 fechamento do aiim + notificação do aiim: de 'start event' ate 'check retries sw_qretrycount' sstn-11 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-11">SSTN-11</a><div class="act"><button data-k="SSTN-11" data-e="To Detail">To Detail</button><button data-k="SSTN-11" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg011</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">7</td>
+<td class="dim">scenario-path<br><span class="esp">12 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-deat0050-seg008 retomada por evento externo e entrada no laco de prazo sstn-27 external-event iprocess-builtin expression-deadline">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-27">SSTN-27</a><div class="act"><button data-k="SSTN-27" data-e="To Detail">To Detail</button><button data-k="SSTN-27" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-DEAT0050-seg008</code></td>
+<td class="t">Retomada por evento externo e entrada no laco de prazo</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">6</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">external-event</span> <span class="tag bl">iprocess-builtin</span> <span class="tag bl">expression-deadline</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-deat0050-seg009 fechamento do aiim + notificação do aiim: de 'inicalc' ate 'endevent _lrer2fqhefg5k7my0i3i6w' sstn-28 external-event iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-28">SSTN-28</a><div class="act"><button data-k="SSTN-28" data-e="To Detail">To Detail</button><button data-k="SSTN-28" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-DEAT0050-seg009</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'INICALC' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">5</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">external-event</span> <span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-deat0050-seg012 fechamento do aiim + notificação do aiim: de 'start event' ate 'controlar data' sstn-29 iprocess-builtin expression-deadline">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-29">SSTN-29</a><div class="act"><button data-k="SSTN-29" data-e="To Detail">To Detail</button><button data-k="SSTN-29" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-DEAT0050-seg012</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Controlar Data'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">6</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span> <span class="tag bl">expression-deadline</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-deat0050-seg013 fechamento do aiim + notificação do aiim: de 'start event' ate 'endevent _lrer2fqhefg5k7my0i3i6w' sstn-30 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-30">SSTN-30</a><div class="act"><button data-k="SSTN-30" data-e="To Detail">To Detail</button><button data-k="SSTN-30" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-DEAT0050-seg013</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">5</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-pocepatprocess-seg007 fechamento do aiim + notificação do aiim: de 'finalizar aiim' ate 'set nome etapa 2' sstn-33 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-33">SSTN-33</a><div class="act"><button data-k="SSTN-33" data-e="To Detail">To Detail</button><button data-k="SSTN-33" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg007</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'Set Nome Etapa 2'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">3</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg010 fechamento do aiim + notificação do aiim: de 'início' ate 'início' sstn-34 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-34">SSTN-34</a><div class="act"><button data-k="SSTN-34" data-e="To Detail">To Detail</button><button data-k="SSTN-34" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg010</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Início' ate 'Início'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">18 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa1-percurso provar a etapa 1 - fechamento do aiim - por rasto de instancia sstn-69 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-69">SSTN-69</a><div class="act"><button data-k="SSTN-69" data-e="To Detail">To Detail</button><button data-k="SSTN-69" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA1-percurso</code></td>
+<td class="t">Provar a etapa 1 - Fechamento do AIIM - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">62 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 2</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg015 aviso por e-mail ao controlo de qualidade do fechamento sstn-36 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-36">SSTN-36</a><div class="act"><button data-k="SSTN-36" data-e="To Detail">To Detail</button><button data-k="SSTN-36" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg015</code></td>
+<td class="t">Aviso por e-mail ao controlo de qualidade do fechamento</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg027</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg060</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 3</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="0" data-t="1" data-s="build-pocepatprocess-seg014 fechamento do aiim: de 'corrigir fechamento' ate 'corrigir fechamento' sstn-35 link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-35">SSTN-35</a><div class="act"><button data-k="SSTN-35" data-e="To Detail">To Detail</button><button data-k="SSTN-35" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg014</code></td>
+<td class="t">Fechamento do AIIM: de 'Corrigir Fechamento' ate 'Corrigir Fechamento'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">15 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg024</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">5 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg006</span></td>
+<td><span class="tag bl">link-goto</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 4</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg006 fechamento do aiim + notificação do aiim: de 'finalizar aiim' ate 'gateway _faq_rfqtefg5k7my0i3i6w' sstn-32 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-32">SSTN-32</a><div class="act"><button data-k="SSTN-32" data-e="To Detail">To Detail</button><button data-k="SSTN-32" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg006</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'gateway _Faq_RFqTEfG5K7mY0I3I6w'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">28 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg014</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">4 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg021</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 5</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="0" data-t="1" data-s="build-pocepatprocess-seg001 fechamento do aiim + notificação do aiim: de 'aguardar evento de notificacao do aiim' ate 'aguardar evento de notificacao do aiim' sstn-31 dynamic-subprocess">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-31">SSTN-31</a><div class="act"><button data-k="SSTN-31" data-e="To Detail">To Detail</button><button data-k="SSTN-31" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg001</code></td>
+<td class="t">Fechamento do AIIM + Notificação do AIIM: de 'Aguardar evento de Notificacao do AIIM' ate 'Aguardar evento de Notificacao do AIIM'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">39 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg021</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">2 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg033</span></td>
+<td><span class="tag bl">dynamic-subprocess</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 2</span> Etapa 2 - Notificação do AIIM <span class="dim">(19 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 16 cards em paralelo &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="0" data-t="1" data-s="build-pocepatprocess-seg023 notificação do aiim: de 'iniciar novo graft' ate 'set nome etapa 2' sstn-40 graft-step external-event iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-40">SSTN-40</a><div class="act"><button data-k="SSTN-40" data-e="To Detail">To Detail</button><button data-k="SSTN-40" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg023</code></td>
+<td class="t">Notificação do AIIM: de 'Iniciar Novo Graft' ate 'Set Nome Etapa 2'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">17 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">7 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg024</span></td>
+<td><span class="tag bl">graft-step</span> <span class="tag bl">external-event</span> <span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="1" data-s="build-pocepatprocess-seg027 notificação do aiim: de 'preparar notificacao' ate 'fim de prazo mantendo atividade' sstn-44 expression-deadline non-interrupting-boundary">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-44">SSTN-44</a><div class="act"><button data-k="SSTN-44" data-e="To Detail">To Detail</button><button data-k="SSTN-44" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg027</code></td>
+<td class="t">Notificação do AIIM: de 'Preparar Notificacao' ate 'Fim de Prazo Mantendo Atividade'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">2 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg015</span></td>
+<td><span class="tag bl">expression-deadline</span> <span class="tag bl">non-interrupting-boundary</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg020 notificação do aiim: de 'existe notificação?' ate 'existe notificação?' sstn-37 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-37">SSTN-37</a><div class="act"><button data-k="SSTN-37" data-e="To Detail">To Detail</button><button data-k="SSTN-37" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg020</code></td>
+<td class="t">Notificação do AIIM: de 'Existe Notificação?' ate 'Existe Notificação?'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg057</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg025 notificação do aiim: de 'preparar notificacao' ate 'criar notificacao' sstn-42 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-42">SSTN-42</a><div class="act"><button data-k="SSTN-42" data-e="To Detail">To Detail</button><button data-k="SSTN-42" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg025</code></td>
+<td class="t">Notificação do AIIM: de 'Preparar Notificacao' ate 'Criar Notificacao'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">3</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg058</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg026 notificação do aiim: de 'preparar notificacao' ate 'encerra e retira' sstn-43 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-43">SSTN-43</a><div class="act"><button data-k="SSTN-43" data-e="To Detail">To Detail</button><button data-k="SSTN-43" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg026</code></td>
+<td class="t">Notificação do AIIM: de 'Preparar Notificacao' ate 'Encerra e retira'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg055</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-calcprpc-seg029 calculo de prazo: laco de retry ate desistir sstn-16 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-16">SSTN-16</a><div class="act"><button data-k="SSTN-16" data-e="To Detail">To Detail</button><button data-k="SSTN-16" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CALCPRPC-seg029</code></td>
+<td class="t">Calculo de prazo: laco de retry ate desistir</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">38</td>
+<td class="dim">scenario-path<br><span class="esp">8 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-calcprpc-seg030 notificação do aiim: de 'start event' ate 'done - fixed' sstn-17 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-17">SSTN-17</a><div class="act"><button data-k="SSTN-17" data-e="To Detail">To Detail</button><button data-k="SSTN-17" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CALCPRPC-seg030</code></td>
+<td class="t">Notificação do AIIM: de 'Start Event' ate 'Done - Fixed'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">36</td>
+<td class="dim">scenario-path<br><span class="esp">8 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-calcprpc-seg031 notificação do aiim: de 'start event' ate 'done - success' sstn-18 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-18">SSTN-18</a><div class="act"><button data-k="SSTN-18" data-e="To Detail">To Detail</button><button data-k="SSTN-18" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CALCPRPC-seg031</code></td>
+<td class="t">Notificação do AIIM: de 'Start Event' ate 'Done - Success'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">28</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-calcprpc-seg032 notificação do aiim: de 'start event' ate 'try task' sstn-19 iprocess-builtin link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-19">SSTN-19</a><div class="act"><button data-k="SSTN-19" data-e="To Detail">To Detail</button><button data-k="SSTN-19" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CALCPRPC-seg032</code></td>
+<td class="t">Notificação do AIIM: de 'Start Event' ate 'Try Task'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">34</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span> <span class="tag bl">link-goto</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-crnotpc-seg016 notificação do aiim: de 'crianotificacao' ate 'done - bail' sstn-22 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-22">SSTN-22</a><div class="act"><button data-k="SSTN-22" data-e="To Detail">To Detail</button><button data-k="SSTN-22" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CRNOTPC-seg016</code></td>
+<td class="t">Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Bail'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">13</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-crnotpc-seg017 notificação do aiim: de 'crianotificacao' ate 'done - fixed' sstn-23 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-23">SSTN-23</a><div class="act"><button data-k="SSTN-23" data-e="To Detail">To Detail</button><button data-k="SSTN-23" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CRNOTPC-seg017</code></td>
+<td class="t">Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Fixed'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">12</td>
+<td class="dim">scenario-path<br><span class="esp">4 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-crnotpc-seg018 notificação do aiim: de 'crianotificacao' ate 'done - success' sstn-24 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-24">SSTN-24</a><div class="act"><button data-k="SSTN-24" data-e="To Detail">To Detail</button><button data-k="SSTN-24" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CRNOTPC-seg018</code></td>
+<td class="t">Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Success'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">8</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-crnotpc-seg019 notificação do aiim: de 'crianotificacao' ate 'try task' sstn-25 link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-25">SSTN-25</a><div class="act"><button data-k="SSTN-25" data-e="To Detail">To Detail</button><button data-k="SSTN-25" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CRNOTPC-seg019</code></td>
+<td class="t">Notificação do AIIM: de 'CriaNotificacao' ate 'Try Task'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">11</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">link-goto</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-crnotpc-seg028 notificação do aiim: de 'start event' ate 'check retries sw_qretrycount' sstn-26 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-26">SSTN-26</a><div class="act"><button data-k="SSTN-26" data-e="To Detail">To Detail</button><button data-k="SSTN-26" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CRNOTPC-seg028</code></td>
+<td class="t">Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">7</td>
+<td class="dim">scenario-path<br><span class="esp">12 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-pocepatprocess-seg022 notificação do aiim: de 'iniciar aguardar notificacao' ate 'flag retirati true gs' sstn-39 external-event">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-39">SSTN-39</a><div class="act"><button data-k="SSTN-39" data-e="To Detail">To Detail</button><button data-k="SSTN-39" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg022</code></td>
+<td class="t">Notificação do AIIM: de 'Iniciar Aguardar Notificacao' ate 'Flag Retirati True GS'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">13 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">external-event</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa2-percurso provar a etapa 2 - notificação do aiim - por rasto de instancia sstn-70 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-70">SSTN-70</a><div class="act"><button data-k="SSTN-70" data-e="To Detail">To Detail</button><button data-k="SSTN-70" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA2-percurso</code></td>
+<td class="t">Provar a etapa 2 - Notificação do AIIM - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">100 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 2</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg024 notificação do aiim: de 'preparar notificacao' ate 'corrigir?' sstn-41 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-41">SSTN-41</a><div class="act"><button data-k="SSTN-41" data-e="To Detail">To Detail</button><button data-k="SSTN-41" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg024</code></td>
+<td class="t">Notificação do AIIM: de 'Preparar Notificacao' ate 'Corrigir?'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">2</td>
+<td class="dim">scenario-path<br><span class="esp">15 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg023</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">6 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg014</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 3</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="0" data-t="1" data-s="build-pocepatprocess-seg021 notificação do aiim: de 'existe notificação?' ate 'flag retirati true gs' sstn-38 graft-step link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-38">SSTN-38</a><div class="act"><button data-k="SSTN-38" data-e="To Detail">To Detail</button><button data-k="SSTN-38" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg021</code></td>
+<td class="t">Notificação do AIIM: de 'Existe Notificação?' ate 'Flag Retirati True GS'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">4</td>
+<td class="dim">scenario-path<br><span class="esp">26 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg006</td>
+<td><span class="tag trava">trava 1</span> <span class="esp">3 na cadeia</span><br><span class="esp">BUILD-POCEPATPROCESS-seg001</span></td>
+<td><span class="tag bl">graft-step</span> <span class="tag bl">link-goto</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 4</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="1" data-s="build-pocepatprocess-seg033 notificação do aiim: de 'trocar notificação?' ate 'trocar notificação?' sstn-45 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-45">SSTN-45</a><div class="act"><button data-k="SSTN-45" data-e="To Detail">To Detail</button><button data-k="SSTN-45" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg033</code></td>
+<td class="t">Notificação do AIIM: de 'Trocar Notificação?' ate 'Trocar Notificação?'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">39 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg001</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg034</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 3</span> Etapa 3 - Integração com Decisions <span class="dim">(6 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 5 cards em paralelo &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-prpintpc-seg035 preparacao da intimacao: laco de retry, com o defeito de copia a corrigir sstn-58 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-58">SSTN-58</a><div class="act"><button data-k="SSTN-58" data-e="To Detail">To Detail</button><button data-k="SSTN-58" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-PRPINTPC-seg035</code></td>
+<td class="t">Preparacao da intimacao: laco de retry, COM O DEFEITO DE COPIA A CORRIGIR</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">21</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-prpintpc-seg036 integração com decisions + verificação do retorno do decisions: de 'start event' ate 'done - fixed' sstn-59 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-59">SSTN-59</a><div class="act"><button data-k="SSTN-59" data-e="To Detail">To Detail</button><button data-k="SSTN-59" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-PRPINTPC-seg036</code></td>
+<td class="t">Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">20</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-prpintpc-seg037 integração com decisions + verificação do retorno do decisions: de 'start event' ate 'done - success' sstn-60 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-60">SSTN-60</a><div class="act"><button data-k="SSTN-60" data-e="To Detail">To Detail</button><button data-k="SSTN-60" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-PRPINTPC-seg037</code></td>
+<td class="t">Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">16</td>
+<td class="dim">scenario-path<br><span class="esp">3 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-prpintpc-seg038 integração com decisions + verificação do retorno do decisions: de 'start event' ate 'try task' sstn-61 iprocess-builtin link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-61">SSTN-61</a><div class="act"><button data-k="SSTN-61" data-e="To Detail">To Detail</button><button data-k="SSTN-61" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-PRPINTPC-seg038</code></td>
+<td class="t">Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">19</td>
+<td class="dim">scenario-path<br><span class="esp">3 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span> <span class="tag bl">link-goto</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa3-percurso provar a etapa 3 - integração com decisions - por rasto de instancia sstn-71 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-71">SSTN-71</a><div class="act"><button data-k="SSTN-71" data-e="To Detail">To Detail</button><button data-k="SSTN-71" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA3-percurso</code></td>
+<td class="t">Provar a etapa 3 - Integração com Decisions - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">57 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 2</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-pocepatprocess-seg034 chamada ao decisions e conferencia humana do retorno sstn-46 link-goto iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-46">SSTN-46</a><div class="act"><button data-k="SSTN-46" data-e="To Detail">To Detail</button><button data-k="SSTN-46" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg034</code></td>
+<td class="t">Chamada ao Decisions e conferencia humana do retorno</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">7</td>
+<td class="dim">scenario-path<br><span class="esp">39 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg033</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">link-goto</span> <span class="tag bl">iprocess-builtin</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 4</span> Etapa 4 - Verificação do Retorno do Decisions <span class="dim">(9 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 8 cards em paralelo &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="1" data-t="1" data-s="build-contropc-seg045 verificação do retorno do decisions: de 'start event' ate 'isetsubproc' sstn-21 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-21">SSTN-21</a><div class="act"><button data-k="SSTN-21" data-e="To Detail">To Detail</button><button data-k="SSTN-21" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CONTROPC-seg045</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Start Event' ate 'ISetSubProc'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">4</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-CONTROPC-seg039</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-agpecaspc-seg040 espera pelas interposicoes, com prorrogacao de prazo sstn-1 iprocess-builtin external-event">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-1">SSTN-1</a><div class="act"><button data-k="SSTN-1" data-e="To Detail">To Detail</button><button data-k="SSTN-1" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-AGPECASPC-seg040</code></td>
+<td class="t">Espera pelas interposicoes, com prorrogacao de prazo</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">9</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span> <span class="tag bl">external-event</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-agpecaspc-seg044 verificação do retorno do decisions: de 'start event' ate 'end event' sstn-2 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-2">SSTN-2</a><div class="act"><button data-k="SSTN-2" data-e="To Detail">To Detail</button><button data-k="SSTN-2" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-AGPECASPC-seg044</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Start Event' ate 'End Event'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">5</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-atzintpc-seg041 verificação do retorno do decisions: de 'start event' ate 'done - bail' sstn-3 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-3">SSTN-3</a><div class="act"><button data-k="SSTN-3" data-e="To Detail">To Detail</button><button data-k="SSTN-3" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-ATZINTPC-seg041</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Bail'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">21</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-atzintpc-seg042 verificação do retorno do decisions: de 'start event' ate 'done - fixed' sstn-4 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-4">SSTN-4</a><div class="act"><button data-k="SSTN-4" data-e="To Detail">To Detail</button><button data-k="SSTN-4" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-ATZINTPC-seg042</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">20</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-atzintpc-seg043 verificação do retorno do decisions: de 'start event' ate 'done - success' sstn-5 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-5">SSTN-5</a><div class="act"><button data-k="SSTN-5" data-e="To Detail">To Detail</button><button data-k="SSTN-5" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-ATZINTPC-seg043</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">16</td>
+<td class="dim">scenario-path<br><span class="esp">3 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-atzintpc-seg046 verificação do retorno do decisions: de 'start event' ate 'try task' sstn-6 iprocess-builtin link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-6">SSTN-6</a><div class="act"><button data-k="SSTN-6" data-e="To Detail">To Detail</button><button data-k="SSTN-6" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-ATZINTPC-seg046</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">19</td>
+<td class="dim">scenario-path<br><span class="esp">3 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span> <span class="tag bl">link-goto</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa4-percurso provar a etapa 4 - verificação do retorno do decisions - por rasto de instancia sstn-72 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-72">SSTN-72</a><div class="act"><button data-k="SSTN-72" data-e="To Detail">To Detail</button><button data-k="SSTN-72" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA4-percurso</code></td>
+<td class="t">Provar a etapa 4 - Verificação do Retorno do Decisions - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">79 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 2</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-contropc-seg039 verificação do retorno do decisions: de 'aguardar retorno' ate 'endevent _-bkw8l6jefgbblgt-r5iuw' sstn-20 dynamic-subprocess">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-20">SSTN-20</a><div class="act"><button data-k="SSTN-20" data-e="To Detail">To Detail</button><button data-k="SSTN-20" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-CONTROPC-seg039</code></td>
+<td class="t">Verificação do Retorno do Decisions: de 'Aguardar Retorno' ate 'endEvent _-bkw8l6JEfGBBLgT-R5iuw'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">3</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">BUILD-CONTROPC-seg045</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">dynamic-subprocess</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 5</span> Etapa 5 - Validação de Gateways Paralelos <span class="dim">(8 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 8 cards em paralelo &mdash; nenhum depende de outro</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="1" data-t="1" data-s="build-pocepatprocess-seg051 validação de gateways paralelos: de 'validar paralelos' ate 'catch signal event' sstn-47 link-goto external-event expression-deadline">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-47">SSTN-47</a><div class="act"><button data-k="SSTN-47" data-e="To Detail">To Detail</button><button data-k="SSTN-47" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg051</code></td>
+<td class="t">Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Catch Signal Event'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">9</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg059</span></td>
+<td><span class="tag bl">link-goto</span> <span class="tag bl">external-event</span> <span class="tag bl">expression-deadline</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-bscenvpc-seg047 validação de gateways paralelos: de 'start event' ate 'done - bail' sstn-12 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-12">SSTN-12</a><div class="act"><button data-k="SSTN-12" data-e="To Detail">To Detail</button><button data-k="SSTN-12" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg047</code></td>
+<td class="t">Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Bail'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">17</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-bscenvpc-seg048 validação de gateways paralelos: de 'start event' ate 'done - fixed' sstn-13 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-13">SSTN-13</a><div class="act"><button data-k="SSTN-13" data-e="To Detail">To Detail</button><button data-k="SSTN-13" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg048</code></td>
+<td class="t">Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Fixed'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">16</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-bscenvpc-seg049 validação de gateways paralelos: de 'start event' ate 'done - success' sstn-14 iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-14">SSTN-14</a><div class="act"><button data-k="SSTN-14" data-e="To Detail">To Detail</button><button data-k="SSTN-14" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg049</code></td>
+<td class="t">Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Success'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">12</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-bscenvpc-seg050 validação de gateways paralelos: de 'start event' ate 'try task' sstn-15 iprocess-builtin link-goto">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-15">SSTN-15</a><div class="act"><button data-k="SSTN-15" data-e="To Detail">To Detail</button><button data-k="SSTN-15" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-BSCENVPC-seg050</code></td>
+<td class="t">Validação de Gateways Paralelos: de 'Start Event' ate 'Try Task'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">15</td>
+<td class="dim">scenario-path<br><span class="esp">1 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">iprocess-builtin</span> <span class="tag bl">link-goto</span></td>
+</tr>
+<tr data-b="1" data-g="0" data-t="0" data-s="build-pocepatprocess-seg052 validação de gateways paralelos: de 'validar paralelos' ate 'fim vista mista' sstn-48 link-goto external-event">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-48">SSTN-48</a><div class="act"><button data-k="SSTN-48" data-e="To Detail">To Detail</button><button data-k="SSTN-48" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg052</code></td>
+<td class="t">Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Fim Vista Mista'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">8</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">link-goto</span> <span class="tag bl">external-event</span></td>
+</tr>
+<tr data-b="1" data-g="1" data-t="0" data-s="build-pocepatprocess-seg053 vistas do juiz e mistas, ate a preparacao dos intimados sstn-49 link-goto external-event expression-deadline iprocess-builtin">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-49">SSTN-49</a><div class="act"><button data-k="SSTN-49" data-e="To Detail">To Detail</button><button data-k="SSTN-49" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg053</code></td>
+<td class="t">Vistas do juiz e mistas, ate a preparacao dos intimados</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-atravessa-o-sistema">atravessa-o-sistema</span></td>
+<td class="dim">23</td>
+<td class="dim">scenario-path<br><span class="esp">27 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="tag bl">link-goto</span> <span class="tag bl">external-event</span> <span class="tag bl">expression-deadline</span> <span class="tag bl">iprocess-builtin</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa5-percurso provar a etapa 5 - validação de gateways paralelos - por rasto de instancia sstn-73 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-73">SSTN-73</a><div class="act"><button data-k="SSTN-73" data-e="To Detail">To Detail</button><button data-k="SSTN-73" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA5-percurso</code></td>
+<td class="t">Provar a etapa 5 - Validação de Gateways Paralelos - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">45 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 6</span> Etapa 6 - Controle de Intimados <span class="dim">(2 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 2 cards em paralelo &mdash; nenhum depende de outro</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="1" data-g="0" data-t="1" data-s="build-pocepatprocess-seg054 controle de intimados: de 'controlar intimados' ate 'controlar intimados' sstn-50 dynamic-subprocess">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-50">SSTN-50</a><div class="act"><button data-k="SSTN-50" data-e="To Detail">To Detail</button><button data-k="SSTN-50" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg054</code></td>
+<td class="t">Controle de Intimados: de 'Controlar Intimados' ate 'Controlar Intimados'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-grande">grande</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">27 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="tag trava">trava 1</span><br><span class="esp">BUILD-POCEPATPROCESS-seg061</span></td>
+<td><span class="tag bl">dynamic-subprocess</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa6-percurso provar a etapa 6 - controle de intimados - por rasto de instancia sstn-74 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-74">SSTN-74</a><div class="act"><button data-k="SSTN-74" data-e="To Detail">To Detail</button><button data-k="SSTN-74" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA6-percurso</code></td>
+<td class="t">Provar a etapa 6 - Controle de Intimados - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">27 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+</section>
+<section class="onda">
+<h2><span class="n">Onda 7</span> Etapa 7 - Encerramento <span class="dim">(8 cards)</span></h2>
+<div class="porque">Construir os trocos da jornada desta etapa e, no fim, prova-la por rasto de instancia. Dentro da onda, a coluna 'espera por' diz o que nao pode comecar antes.</div>
+<div class="lote"><span class="lt">Lote 1</span> 2 cards em paralelo &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg056 encerramento: de 'endevent _ctq66lqpefg5k7my0i3i6w' ate 'endevent _ctq66lqpefg5k7my0i3i6w' sstn-52 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-52">SSTN-52</a><div class="act"><button data-k="SSTN-52" data-e="To Detail">To Detail</button><button data-k="SSTN-52" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg056</code></td>
+<td class="t">Encerramento: de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' ate 'endEvent _CtQ66lqPEfG5K7mY0I3I6w'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="valid-etapa7-percurso provar a etapa 7 - encerramento - por rasto de instancia sstn-75 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-75">SSTN-75</a><div class="act"><button data-k="SSTN-75" data-e="To Detail">To Detail</button><button data-k="SSTN-75" data-e="In Progress">In Progress</button></div></td>
+<td><code>VALID-ETAPA7-percurso</code></td>
+<td class="t">Provar a etapa 7 - Encerramento - por rasto de instancia</td>
+<td><span class="tag tp-valid">validation</span></td>
+<td><span class="tag pz-medio">medio</span></td>
+<td class="dim">0</td>
+<td class="dim">scenario-path<br><span class="esp">47 caso(s)</span></td>
+<td class="esp">&mdash;</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 2</span> 5 cards em paralelo &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg055 encerramento: de 'end event' ate 'end event' sstn-51 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-51">SSTN-51</a><div class="act"><button data-k="SSTN-51" data-e="To Detail">To Detail</button><button data-k="SSTN-51" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg055</code></td>
+<td class="t">Encerramento: de 'End Event' ate 'End Event'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg026</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg057 encerramento: de 'endevent _faq_q1qtefg5k7my0i3i6w' ate 'endevent _faq_q1qtefg5k7my0i3i6w' sstn-53 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-53">SSTN-53</a><div class="act"><button data-k="SSTN-53" data-e="To Detail">To Detail</button><button data-k="SSTN-53" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg057</code></td>
+<td class="t">Encerramento: de 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w' ate 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg020</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg058 encerramento: de 'endevent _o7k3mf9lefgqpfx31tkc3w' ate 'endevent _o7k3mf9lefgqpfx31tkc3w' sstn-54 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-54">SSTN-54</a><div class="act"><button data-k="SSTN-54" data-e="To Detail">To Detail</button><button data-k="SSTN-54" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg058</code></td>
+<td class="t">Encerramento: de 'endEvent _O7K3MF9LEfGqPfX31TKC3w' ate 'endEvent _O7K3MF9LEfGqPfX31TKC3w'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg025</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg059 encerramento: de 'fim de prazo' ate 'fim de prazo' sstn-55 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-55">SSTN-55</a><div class="act"><button data-k="SSTN-55" data-e="To Detail">To Detail</button><button data-k="SSTN-55" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg059</code></td>
+<td class="t">Encerramento: de 'Fim de Prazo' ate 'Fim de Prazo'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">6 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg051</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg061 encerramento: de 'fim' ate 'fim' sstn-57 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-57">SSTN-57</a><div class="act"><button data-k="SSTN-57" data-e="To Detail">To Detail</button><button data-k="SSTN-57" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg061</code></td>
+<td class="t">Encerramento: de 'Fim' ate 'Fim'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">27 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg054</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+<div class="lote"><span class="lt">Lote 3</span> 1 card, sozinho &mdash; so pode comecar depois do lote anterior</div>
+<table><thead><tr><th>Jira</th><th>Card</th><th>Titulo</th><th>Tipo</th><th>Peso</th><th>Passos</th><th>Oraculo</th><th>Espera por</th><th>Bloqueia</th><th>Bloqueadores</th></tr></thead><tbody>
+<tr data-b="0" data-g="0" data-t="0" data-s="build-pocepatprocess-seg060 encerramento: de 'fim e-mail' ate 'fim e-mail' sstn-56 ">
+<td><a class="jk" target="_blank" href="https://stefaninisophiedelivery.atlassian.net/browse/SSTN-56">SSTN-56</a><div class="act"><button data-k="SSTN-56" data-e="To Detail">To Detail</button><button data-k="SSTN-56" data-e="In Progress">In Progress</button></div></td>
+<td><code>BUILD-POCEPATPROCESS-seg060</code></td>
+<td class="t">Encerramento: de 'Fim E-mail' ate 'Fim E-mail'</td>
+<td><span class="tag tp-build">build</span></td>
+<td><span class="tag pz-pequeno">pequeno</span></td>
+<td class="dim">1</td>
+<td class="dim">scenario-path<br><span class="esp">2 caso(s)</span></td>
+<td class="esp">BUILD-POCEPATPROCESS-seg015</td>
+<td><span class="dim">&mdash;</span></td>
+<td><span class="dim">&mdash;</span></td>
+</tr>
+</tbody></table>
+</section>
+</main>
+<div id="sel"><b id="selN"></b><span class="cmd" id="selCmd"></span><button id="selCopy">copiar comando</button><button id="selClear">limpar</button></div>
+<footer>Gerado por <code>tools/gen-plano-execucao.ps1</code> a partir de <code>artifacts/POC_Epat/backlog/index.json</code>. Manifesto <code>e319db2a191633c242c3768767273b292a21aaeceae26ac0e73993f5b80a7b38</code>. Regenerar sempre que o backlog mudar.</footer>
+<script>
+const rows=[...document.querySelectorAll('tbody tr')];
+const q=document.getElementById('q'),fb=document.getElementById('fb'),ft=document.getElementById('ft'),fg=document.getElementById('fg'),cnt=document.getElementById('cnt');
+let ob=false,ot=false,og=false;
+function apply(){
+  const t=q.value.trim().toLowerCase();let v=0;
+  for(const r of rows){
+    const ok=(!t||r.dataset.s.includes(t))&&(!ob||r.dataset.b==='1')&&(!ot||r.dataset.t==='1')&&(!og||r.dataset.g==='1');
+    r.classList.toggle('hide',!ok); if(ok)v++;
+  }
+  cnt.textContent=v+' de '+rows.length+' cards visiveis';
+}
+q.addEventListener('input',apply);
+fb.addEventListener('click',()=>{ob=!ob;fb.classList.toggle('on',ob);apply();});
+ft.addEventListener('click',()=>{ot=!ot;ft.classList.toggle('on',ot);apply();});
+fg.addEventListener('click',()=>{og=!og;fg.classList.toggle('on',og);apply();});
+apply();
+
+// Selecao para transicao. O HTML nao move nada: monta o comando que move.
+const sel=new Map();
+const bar=document.getElementById('sel'),selN=document.getElementById('selN'),selCmd=document.getElementById('selCmd');
+function redraw(){
+  const estados=[...new Set([...sel.values()])];
+  selN.textContent=sel.size+' issue(s)';
+  if(sel.size===0){bar.classList.remove('on');return;}
+  bar.classList.add('on');
+  const linhas=estados.map(e=>{
+    const ks=[...sel.entries()].filter(([,v])=>v===e).map(([k])=>k).join(',');
+    return `pwsh tools/jira-transicao.ps1 -Estado "${e}" -Chaves ${ks} -Confirmar`;
+  });
+  selCmd.textContent=linhas.join('  ;  ');
+}
+document.querySelectorAll('.act button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const k=b.dataset.k,e=b.dataset.e,tr=b.closest('tr');
+    const irmaos=tr.querySelectorAll('.act button');
+    if(sel.get(k)===e){sel.delete(k);irmaos.forEach(x=>x.classList.remove('sel'));tr.classList.remove('marcada');}
+    else{sel.set(k,e);irmaos.forEach(x=>x.classList.toggle('sel',x===b));tr.classList.add('marcada');}
+    redraw();
+  });
+});
+document.getElementById('selCopy').addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(selCmd.textContent);}
+  catch(_){const r=document.createRange();r.selectNode(selCmd);getSelection().removeAllRanges();getSelection().addRange(r);document.execCommand('copy');}
+});
+document.getElementById('selClear').addEventListener('click',()=>{
+  sel.clear();
+  document.querySelectorAll('.act button.sel').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('tr.marcada').forEach(r=>r.classList.remove('marcada'));
+  redraw();
+});
+</script>
+</body></html>

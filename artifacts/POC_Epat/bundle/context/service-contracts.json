@@ -470,28 +470,6 @@
         }
       ],
       "technicalEnvelope": {
-        "RESULT": [
-          {
-            "name": "STATUS_CODE",
-            "xsdType": "xsd:integer",
-            "clrType": "int",
-            "required": true
-          },
-          {
-            "name": "ERROR",
-            "xsdType": "TechnicalObjects:ERROR",
-            "clrType": null,
-            "required": false
-          }
-        ],
-        "APPLICATIONDATAS": [
-          {
-            "name": "APPLICATIONDATA",
-            "xsdType": "TechnicalObjects:APPLICATIONDATA",
-            "clrType": null,
-            "required": true
-          }
-        ],
         "ERROR": [
           {
             "name": "SERVICE_NAME",
@@ -527,6 +505,28 @@
             "name": "DUMP_ANALYSIS",
             "xsdType": "xsd:string",
             "clrType": "string",
+            "required": true
+          }
+        ],
+        "RESULT": [
+          {
+            "name": "STATUS_CODE",
+            "xsdType": "xsd:integer",
+            "clrType": "int",
+            "required": true
+          },
+          {
+            "name": "ERROR",
+            "xsdType": "TechnicalObjects:ERROR",
+            "clrType": null,
+            "required": false
+          }
+        ],
+        "APPLICATIONDATAS": [
+          {
+            "name": "APPLICATIONDATA",
+            "xsdType": "TechnicalObjects:APPLICATIONDATA",
+            "clrType": null,
             "required": true
           }
         ],
@@ -575,7 +575,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarNucleoInformacaoDefault.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarNucleoInformacaoDefault.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarNucleoInformacaoDefault.1",
           "input": [
             {
               "partName": "param",
@@ -730,7 +730,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_gerarIntimacoesAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_gerarIntimacoesAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/gerarIntimacoesAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -1046,7 +1046,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarRepresentacaoFiscal.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarRepresentacaoFiscal.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarRepresentacaoFiscal.1",
           "input": [
             {
               "partName": "param",
@@ -1257,7 +1257,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarSeTipoPecaAberto.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarSeTipoPecaAberto.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarSeTipoPecaAberto.1",
           "input": [
             {
               "partName": "param",
@@ -1426,7 +1426,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarChefeRF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarChefeRF.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarChefeRF.1",
           "input": [
             {
               "partName": "param",
@@ -1581,7 +1581,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_consultarTipoTributoAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_consultarTipoTributoAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/consultarTipoTributoAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -1736,7 +1736,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarFaseProcessual.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarFaseProcessual.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarFaseProcessual.1",
           "input": [
             {
               "partName": "param",
@@ -1891,7 +1891,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarIdentificacaoPagamento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarIdentificacaoPagamento.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarIdentificacaoPagamento.1",
           "input": [
             {
               "partName": "param",
@@ -2046,7 +2046,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarVistasAtivasAiim.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarVistasAtivasAiim.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarVistasAtivasAiim.1",
           "input": [
             {
               "partName": "param",
@@ -2222,7 +2222,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_cfAiimEnviarRatificacao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_cfAiimEnviarRatificacao.1",
+          "logicalPath": "/EPATInterfaceWrappers/cfAiimEnviarRatificacao.1",
           "input": [
             {
               "partName": "param",
@@ -2384,7 +2384,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_obterCodigoSituacaoIE.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_obterCodigoSituacaoIE.1",
+          "logicalPath": "/EPATInterfaceWrappers/obterCodigoSituacaoIE.1",
           "input": [
             {
               "partName": "param",
@@ -2546,7 +2546,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarChefeAssistencia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarChefeAssistencia.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarChefeAssistencia.1",
           "input": [
             {
               "partName": "param",
@@ -2701,7 +2701,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_publicarIntimacaoProcuradores.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_publicarIntimacaoProcuradores.1",
+          "logicalPath": "/EPATInterfaceWrappers/publicarIntimacaoProcuradores.1",
           "input": [
             {
               "partName": "param",
@@ -2912,7 +2912,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarStatusArquivoPorTipo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarStatusArquivoPorTipo.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarStatusArquivoPorTipo.1",
           "input": [
             {
               "partName": "param",
@@ -3074,7 +3074,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarIdMunicipioPorAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarIdMunicipioPorAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarIdMunicipioPorAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -3229,7 +3229,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_excluirPecasTemporarias.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_excluirPecasTemporarias.1",
+          "logicalPath": "/EPATInterfaceWrappers/excluirPecasTemporarias.1",
           "input": [
             {
               "partName": "param",
@@ -3384,7 +3384,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarDocumentosPorTipo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarDocumentosPorTipo.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarDocumentosPorTipo.1",
           "input": [
             {
               "partName": "param",
@@ -3553,7 +3553,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_devolverProcessoSegundaInstancia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_devolverProcessoSegundaInstancia.1",
+          "logicalPath": "/EPATInterfaceWrappers/devolverProcessoSegundaInstancia.1",
           "input": [
             {
               "partName": "param",
@@ -3715,7 +3715,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasUteisDEAT.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasUteisDEAT.1",
+          "logicalPath": "/EPATInterfaceWrappers/obterPrimeiroDiaUtilAposPeriodoDeDiasUteisDEAT.1",
           "input": [
             {
               "partName": "param",
@@ -3884,7 +3884,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarNotificacaoAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarNotificacaoAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarNotificacaoAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -4039,7 +4039,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarPreventosAtivosPorNrAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarPreventosAtivosPorNrAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarPreventosAtivosPorNrAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -4250,7 +4250,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_cadastrarMensagemAiim.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_cadastrarMensagemAiim.1",
+          "logicalPath": "/EPATInterfaceWrappers/cadastrarMensagemAiim.1",
           "input": [
             {
               "partName": "param",
@@ -4412,7 +4412,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarUltimoJulgamentoDefesa.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarUltimoJulgamentoDefesa.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarUltimoJulgamentoDefesa.1",
           "input": [
             {
               "partName": "param",
@@ -4644,7 +4644,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_incluirDistribuicao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_incluirDistribuicao.1",
+          "logicalPath": "/EPATInterfaceWrappers/incluirDistribuicao.1",
           "input": [
             {
               "partName": "param",
@@ -4827,7 +4827,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_obterDiaUtilAposDiasCorridosMenosDiasAntes.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_obterDiaUtilAposDiasCorridosMenosDiasAntes.1",
+          "logicalPath": "/EPATInterfaceWrappers/obterDiaUtilAposDiasCorridosMenosDiasAntes.1",
           "input": [
             {
               "partName": "param",
@@ -5003,7 +5003,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarTotalArquivosPorTipoESobrestado.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarTotalArquivosPorTipoESobrestado.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarTotalArquivosPorTipoESobrestado.1",
           "input": [
             {
               "partName": "param",
@@ -5179,7 +5179,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarUltimoRepresentanteFiscal.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarUltimoRepresentanteFiscal.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarUltimoRepresentanteFiscal.1",
           "input": [
             {
               "partName": "param",
@@ -5334,7 +5334,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoInicioMF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoInicioMF.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoInicioMF.1",
           "input": [
             {
               "partName": "param",
@@ -5489,7 +5489,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_enviarEmail.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_enviarEmail.1",
+          "logicalPath": "/EPATInterfaceWrappers/enviarEmail.1",
           "input": [
             {
               "partName": "param",
@@ -5672,7 +5672,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_criarNotificacoesGraft.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_criarNotificacoesGraft.1",
+          "logicalPath": "/EPATInterfaceWrappers/criarNotificacoesGraft.1",
           "input": [
             {
               "partName": "param",
@@ -5883,7 +5883,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_cadastrarDataEnvioNotificacaoDEC.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_cadastrarDataEnvioNotificacaoDEC.1",
+          "logicalPath": "/EPATInterfaceWrappers/cadastrarDataEnvioNotificacaoDEC.1",
           "input": [
             {
               "partName": "param",
@@ -6052,7 +6052,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarSeUsuarioAtivo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarSeUsuarioAtivo.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarSeUsuarioAtivo.1",
           "input": [
             {
               "partName": "param",
@@ -6214,7 +6214,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_removerMensagemAiim.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_removerMensagemAiim.1",
+          "logicalPath": "/EPATInterfaceWrappers/removerMensagemAiim.1",
           "input": [
             {
               "partName": "param",
@@ -6376,7 +6376,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_removerCargaTrabalho.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_removerCargaTrabalho.1",
+          "logicalPath": "/EPATInterfaceWrappers/removerCargaTrabalho.1",
           "input": [
             {
               "partName": "param",
@@ -6524,7 +6524,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarNAADTJporDRT.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarNAADTJporDRT.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarNAADTJporDRT.1",
           "input": [
             {
               "partName": "param",
@@ -6686,7 +6686,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/criarNotificacoesAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -6876,7 +6876,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_marcarPrevento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_marcarPrevento.1",
+          "logicalPath": "/EPATInterfaceWrappers/marcarPrevento.1",
           "input": [
             {
               "partName": "param",
@@ -7052,7 +7052,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarInformacoesDocumento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarInformacoesDocumento.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarInformacoesDocumento.1",
           "input": [
             {
               "partName": "param",
@@ -7235,7 +7235,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarAlcadaAiim.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarAlcadaAiim.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarAlcadaAiim.1",
           "input": [
             {
               "partName": "param",
@@ -7390,7 +7390,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoRelator.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoRelator.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDecursoPrazoRelator.1",
           "input": [
             {
               "partName": "param",
@@ -7552,7 +7552,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_iniciarProcesso.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_iniciarProcesso.1",
+          "logicalPath": "/EPATInterfaceWrappers/iniciarProcesso.1",
           "input": [
             {
               "partName": "param",
@@ -7721,7 +7721,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_incluirDistribuicaoUR.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_incluirDistribuicaoUR.1",
+          "logicalPath": "/EPATInterfaceWrappers/incluirDistribuicaoUR.1",
           "input": [
             {
               "partName": "param",
@@ -7904,7 +7904,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_efetivarApartacao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_efetivarApartacao.1",
+          "logicalPath": "/EPATInterfaceWrappers/efetivarApartacao.1",
           "input": [
             {
               "partName": "param",
@@ -8059,7 +8059,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarCodigoArea.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarCodigoArea.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarCodigoArea.1",
           "input": [
             {
               "partName": "param",
@@ -8228,7 +8228,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarEtapaNotificado.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarEtapaNotificado.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarEtapaNotificado.1",
           "input": [
             {
               "partName": "param",
@@ -8390,7 +8390,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_incluirDistribuicaoAssistencia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_incluirDistribuicaoAssistencia.1",
+          "logicalPath": "/EPATInterfaceWrappers/incluirDistribuicaoAssistencia.1",
           "input": [
             {
               "partName": "param",
@@ -8545,7 +8545,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarSituacaoPecaPorData.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarSituacaoPecaPorData.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarSituacaoPecaPorData.1",
           "input": [
             {
               "partName": "param",
@@ -8714,7 +8714,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarUFCDefault.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarUFCDefault.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarUFCDefault.1",
           "input": [
             {
               "partName": "param",
@@ -8869,7 +8869,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_listarRecursoRF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_listarRecursoRF.1",
+          "logicalPath": "/EPATInterfaceWrappers/listarRecursoRF.1",
           "input": [
             {
               "partName": "param",
@@ -9031,7 +9031,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDeDisponibilizacao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDeDisponibilizacao.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDeDisponibilizacao.1",
           "input": [
             {
               "partName": "param",
@@ -9200,7 +9200,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_qualificarPecas.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_qualificarPecas.1",
+          "logicalPath": "/EPATInterfaceWrappers/qualificarPecas.1",
           "input": [
             {
               "partName": "param",
@@ -9397,7 +9397,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_obterMaiorDiaUtilEntreMunicipios.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_obterMaiorDiaUtilEntreMunicipios.1",
+          "logicalPath": "/EPATInterfaceWrappers/obterMaiorDiaUtilEntreMunicipios.1",
           "input": [
             {
               "partName": "param",
@@ -9573,7 +9573,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDecursoDePrazoContribuinte.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDecursoDePrazoContribuinte.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDecursoDePrazoContribuinte.1",
           "input": [
             {
               "partName": "param",
@@ -9742,7 +9742,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_recuperaDadosFechamentoAiim.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_recuperaDadosFechamentoAiim.1",
+          "logicalPath": "/EPATInterfaceWrappers/recuperaDadosFechamentoAiim.1",
           "input": [
             {
               "partName": "param",
@@ -10219,7 +10219,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarEtapaDeInterposicao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarEtapaDeInterposicao.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarEtapaDeInterposicao.1",
           "input": [
             {
               "partName": "param",
@@ -10395,7 +10395,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_movimentarProcessoPorPerdaPrazoVistas.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_movimentarProcessoPorPerdaPrazoVistas.1",
+          "logicalPath": "/EPATInterfaceWrappers/movimentarProcessoPorPerdaPrazoVistas.1",
           "input": [
             {
               "partName": "param",
@@ -10543,7 +10543,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificaPecasJulgamento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificaPecasJulgamento.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificaPecasJulgamento.1",
           "input": [
             {
               "partName": "param",
@@ -10747,7 +10747,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_suspenderRetiRatiAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_suspenderRetiRatiAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/suspenderRetiRatiAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -10909,7 +10909,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarIntimacao.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarIntimacao.1",
           "input": [
             {
               "partName": "param",
@@ -11092,7 +11092,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarUltimaDataDefesa.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarUltimaDataDefesa.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarUltimaDataDefesa.1",
           "input": [
             {
               "partName": "param",
@@ -11261,7 +11261,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarStatusIntimacao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarStatusIntimacao.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarStatusIntimacao.1",
           "input": [
             {
               "partName": "param",
@@ -11416,7 +11416,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarStatusArquivo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarStatusArquivo.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarStatusArquivo.1",
           "input": [
             {
               "partName": "param",
@@ -11571,7 +11571,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarDataLimiteRelato.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarDataLimiteRelato.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarDataLimiteRelato.1",
           "input": [
             {
               "partName": "param",
@@ -11726,7 +11726,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarSituacaoPecaPorTipo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarSituacaoPecaPorTipo.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarSituacaoPecaPorTipo.1",
           "input": [
             {
               "partName": "param",
@@ -11895,7 +11895,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarInspetorPorAFR.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarInspetorPorAFR.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarInspetorPorAFR.1",
           "input": [
             {
               "partName": "param",
@@ -12050,7 +12050,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarArea.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarArea.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarArea.1",
           "input": [
             {
               "partName": "param",
@@ -12219,7 +12219,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_encerrarDistribuicao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_encerrarDistribuicao.1",
+          "logicalPath": "/EPATInterfaceWrappers/encerrarDistribuicao.1",
           "input": [
             {
               "partName": "param",
@@ -12367,7 +12367,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarStatusProcesso.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarStatusProcesso.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarStatusProcesso.1",
           "input": [
             {
               "partName": "param",
@@ -12522,7 +12522,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_excluirNotificacoesAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_excluirNotificacoesAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/excluirNotificacoesAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -12691,7 +12691,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarPossibilidadeCorrecao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarPossibilidadeCorrecao.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarPossibilidadeCorrecao.1",
           "input": [
             {
               "partName": "param",
@@ -12846,7 +12846,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarNAAProcesso.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarNAAProcesso.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarNAAProcesso.1",
           "input": [
             {
               "partName": "param",
@@ -13001,7 +13001,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoCienciaTacito.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoCienciaTacito.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoCienciaTacito.1",
           "input": [
             {
               "partName": "param",
@@ -13163,7 +13163,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_obterRecursoAtivoSegundaInstancia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_obterRecursoAtivoSegundaInstancia.1",
+          "logicalPath": "/EPATInterfaceWrappers/obterRecursoAtivoSegundaInstancia.1",
           "input": [
             {
               "partName": "param",
@@ -13318,7 +13318,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_reativarPecas.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_reativarPecas.1",
+          "logicalPath": "/EPATInterfaceWrappers/reativarPecas.1",
           "input": [
             {
               "partName": "param",
@@ -13480,7 +13480,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarAlcadaAiimControleQualidade.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarAlcadaAiimControleQualidade.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarAlcadaAiimControleQualidade.1",
           "input": [
             {
               "partName": "param",
@@ -13635,7 +13635,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_publicarTeorJulgamento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_publicarTeorJulgamento.1",
+          "logicalPath": "/EPATInterfaceWrappers/publicarTeorJulgamento.1",
           "input": [
             {
               "partName": "param",
@@ -13818,7 +13818,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarApartacaoJulgamentos.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarApartacaoJulgamentos.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarApartacaoJulgamentos.1",
           "input": [
             {
               "partName": "param",
@@ -13973,7 +13973,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarNAAPorRF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarNAAPorRF.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarNAAPorRF.1",
           "input": [
             {
               "partName": "param",
@@ -14128,7 +14128,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoMF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoMF.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDecursoPrazoMF.1",
           "input": [
             {
               "partName": "param",
@@ -14276,7 +14276,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarTotalArquivosPorTipoEData.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarTotalArquivosPorTipoEData.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarTotalArquivosPorTipoEData.1",
           "input": [
             {
               "partName": "param",
@@ -14459,7 +14459,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoVista.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoVista.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDecursoPrazoVista.1",
           "input": [
             {
               "partName": "param",
@@ -14621,7 +14621,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarPostoFiscalDefaultPorDRT.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarPostoFiscalDefaultPorDRT.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarPostoFiscalDefaultPorDRT.1",
           "input": [
             {
               "partName": "param",
@@ -14783,7 +14783,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarChefeJulgador.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarChefeJulgador.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarChefeJulgador.1",
           "input": [
             {
               "partName": "param",
@@ -14938,7 +14938,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_encerrarInterposicaoDePeca.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_encerrarInterposicaoDePeca.1",
+          "logicalPath": "/EPATInterfaceWrappers/encerrarInterposicaoDePeca.1",
           "input": [
             {
               "partName": "param",
@@ -15086,7 +15086,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_inicializarPecasSegundaInstancia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_inicializarPecasSegundaInstancia.1",
+          "logicalPath": "/EPATInterfaceWrappers/inicializarPecasSegundaInstancia.1",
           "input": [
             {
               "partName": "param",
@@ -15269,7 +15269,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_receberIntimacaoPortal.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_receberIntimacaoPortal.1",
+          "logicalPath": "/EPATInterfaceWrappers/receberIntimacaoPortal.1",
           "input": [
             {
               "partName": "param",
@@ -15466,7 +15466,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarAprovadorAdmissibilidade.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarAprovadorAdmissibilidade.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarAprovadorAdmissibilidade.1",
           "input": [
             {
               "partName": "param",
@@ -15621,7 +15621,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_cfAiimCancelarDecisao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_cfAiimCancelarDecisao.1",
+          "logicalPath": "/EPATInterfaceWrappers/cfAiimCancelarDecisao.1",
           "input": [
             {
               "partName": "param",
@@ -15776,7 +15776,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_triggerEventIPE.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_triggerEventIPE.1",
+          "logicalPath": "/EPATInterfaceWrappers/triggerEventIPE.1",
           "input": [
             {
               "partName": "param",
@@ -15959,7 +15959,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_alterarSituacaoPecaConfirmacaoVoto.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_alterarSituacaoPecaConfirmacaoVoto.1",
+          "logicalPath": "/EPATInterfaceWrappers/alterarSituacaoPecaConfirmacaoVoto.1",
           "input": [
             {
               "partName": "param",
@@ -16114,7 +16114,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarExistePecaPorDocumento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarExistePecaPorDocumento.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarExistePecaPorDocumento.1",
           "input": [
             {
               "partName": "param",
@@ -16290,7 +16290,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarPublicacaoProcuradores.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarPublicacaoProcuradores.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarPublicacaoProcuradores.1",
           "input": [
             {
               "partName": "param",
@@ -16452,7 +16452,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_cfAiimEnviarDecisao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_cfAiimEnviarDecisao.1",
+          "logicalPath": "/EPATInterfaceWrappers/cfAiimEnviarDecisao.1",
           "input": [
             {
               "partName": "param",
@@ -16614,7 +16614,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarSuperioresRF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarSuperioresRF.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarSuperioresRF.1",
           "input": [
             {
               "partName": "param",
@@ -16790,7 +16790,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarProcessoTipoRecurso.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarProcessoTipoRecurso.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarProcessoTipoRecurso.1",
           "input": [
             {
               "partName": "param",
@@ -16945,7 +16945,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarPublicacaoDE.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarPublicacaoDE.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarPublicacaoDE.1",
           "input": [
             {
               "partName": "param",
@@ -17142,7 +17142,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarChefeAssistenteUR.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarChefeAssistenteUR.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarChefeAssistenteUR.1",
           "input": [
             {
               "partName": "param",
@@ -17304,7 +17304,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoRF.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDecursoPrazoRF.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDecursoPrazoRF.1",
           "input": [
             {
               "partName": "param",
@@ -17452,7 +17452,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_ConsultarPresidenteTIT.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_ConsultarPresidenteTIT.1",
+          "logicalPath": "/EPATInterfaceWrappers/ConsultarPresidenteTIT.1",
           "input": [
             {
               "partName": "param",
@@ -17607,7 +17607,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarProcessoImpedimento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarProcessoImpedimento.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarProcessoImpedimento.1",
           "input": [
             {
               "partName": "param",
@@ -17762,7 +17762,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarAutorDocumento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarAutorDocumento.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarAutorDocumento.1",
           "input": [
             {
               "partName": "param",
@@ -17917,7 +17917,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_gerarPaginadoTemporario.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_gerarPaginadoTemporario.1",
+          "logicalPath": "/EPATInterfaceWrappers/gerarPaginadoTemporario.1",
           "input": [
             {
               "partName": "param",
@@ -18072,7 +18072,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_Services_sol_triggerEventIPE_sol_ReprocessarTrigger_sol_reprocessarTriggersComErro",
-          "logicalPath": "/Services_sol_triggerEventIPE_sol_ReprocessarTrigger_sol_reprocessarTriggersComErro",
+          "logicalPath": "/Services/triggerEventIPE/ReprocessarTrigger/reprocessarTriggersComErro",
           "input": [
             {
               "partName": "param",
@@ -18178,7 +18178,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_cadastrarCienciaNotificacao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_cadastrarCienciaNotificacao.1",
+          "logicalPath": "/EPATInterfaceWrappers/cadastrarCienciaNotificacao.1",
           "input": [
             {
               "partName": "param",
@@ -18368,7 +18368,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarTiposArquivo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarTiposArquivo.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarTiposArquivo.1",
           "input": [
             {
               "partName": "param",
@@ -18530,7 +18530,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_reativarRecursosCamaraJulgadora.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_reativarRecursosCamaraJulgadora.1",
+          "logicalPath": "/EPATInterfaceWrappers/reativarRecursosCamaraJulgadora.1",
           "input": [
             {
               "partName": "param",
@@ -18692,7 +18692,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarEordenarArquivos.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarEordenarArquivos.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarEordenarArquivos.1",
           "input": [
             {
               "partName": "param",
@@ -18882,7 +18882,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_verificarPecaInterposta.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_verificarPecaInterposta.1",
+          "logicalPath": "/EPATInterfaceWrappers/verificarPecaInterposta.1",
           "input": [
             {
               "partName": "param",
@@ -19051,7 +19051,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1",
+          "logicalPath": "/EPATInterfaceWrappers/obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1",
           "input": [
             {
               "partName": "param",
@@ -19220,7 +19220,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_removerIdentificacaoPagamento.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_removerIdentificacaoPagamento.1",
+          "logicalPath": "/EPATInterfaceWrappers/removerIdentificacaoPagamento.1",
           "input": [
             {
               "partName": "param",
@@ -19375,7 +19375,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarVistasAtivasPorAiim.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarVistasAtivasPorAiim.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarVistasAtivasPorAiim.1",
           "input": [
             {
               "partName": "param",
@@ -19565,7 +19565,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarPecaDeInterposicao.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarPecaDeInterposicao.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarPecaDeInterposicao.1",
           "input": [
             {
               "partName": "param",
@@ -19734,7 +19734,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_inserirDataAdmissibilidade.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_inserirDataAdmissibilidade.1",
+          "logicalPath": "/EPATInterfaceWrappers/inserirDataAdmissibilidade.1",
           "input": [
             {
               "partName": "param",
@@ -19882,7 +19882,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_transferirArquivoDeCaso.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_transferirArquivoDeCaso.1",
+          "logicalPath": "/EPATInterfaceWrappers/transferirArquivoDeCaso.1",
           "input": [
             {
               "partName": "param",
@@ -20037,7 +20037,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_habilitaPeticoesdeEnvolvidos.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_habilitaPeticoesdeEnvolvidos.1",
+          "logicalPath": "/EPATInterfaceWrappers/habilitaPeticoesdeEnvolvidos.1",
           "input": [
             {
               "partName": "param",
@@ -20192,7 +20192,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_atualizarMomentoProcessual.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_atualizarMomentoProcessual.1",
+          "logicalPath": "/EPATInterfaceWrappers/atualizarMomentoProcessual.1",
           "input": [
             {
               "partName": "param",
@@ -20347,7 +20347,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarUltimoJulgamentoAIIMSegundaInstancia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarUltimoJulgamentoAIIMSegundaInstancia.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarUltimoJulgamentoAIIMSegundaInstancia.1",
           "input": [
             {
               "partName": "param",
@@ -20544,7 +20544,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_buscarTotalArquivosPorTipo.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_buscarTotalArquivosPorTipo.1",
+          "logicalPath": "/EPATInterfaceWrappers/buscarTotalArquivosPorTipo.1",
           "input": [
             {
               "partName": "param",
@@ -20720,7 +20720,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_publicarIntimacaoDE.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_publicarIntimacaoDE.1",
+          "logicalPath": "/EPATInterfaceWrappers/publicarIntimacaoDE.1",
           "input": [
             {
               "partName": "param",
@@ -20910,7 +20910,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_criarIntimacoesAIIM.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_criarIntimacoesAIIM.1",
+          "logicalPath": "/EPATInterfaceWrappers/criarIntimacoesAIIM.1",
           "input": [
             {
               "partName": "param",
@@ -21219,7 +21219,7 @@
         {
           "portType": "__sol_Resources_sol_Agents_sol_iProcessServiceAgentEPAT",
           "name": "__sol_EPATInterfaceWrappers_sol_salvarTermoDistribuicaoSegundaInstancia.1",
-          "logicalPath": "/EPATInterfaceWrappers_sol_salvarTermoDistribuicaoSegundaInstancia.1",
+          "logicalPath": "/EPATInterfaceWrappers/salvarTermoDistribuicaoSegundaInstancia.1",
           "input": [
             {
               "partName": "param",
@@ -21383,7 +21383,7 @@
         {
           "portType": "__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent",
           "name": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico",
-          "logicalPath": "/Business Processes_sol_Decision_sol_Sub Processes_sol_Intimacao_sol_PrepararVotoEletronico",
+          "logicalPath": "/Business Processes/Decision/Sub Processes/Intimacao/PrepararVotoEletronico",
           "input": [
             {
               "partName": "param",
@@ -21571,7 +21571,7 @@
         {
           "portType": "__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent",
           "name": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior",
-          "logicalPath": "/Business Processes_sol_Decision_sol_Sub Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior",
+          "logicalPath": "/Business Processes/Decision/Sub Processes/IntimacaoCamaraSuperior/PrepararCamaraSuperior",
           "input": [
             {
               "partName": "param",
@@ -21717,7 +21717,7 @@
         {
           "portType": "__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent",
           "name": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos",
-          "logicalPath": "/Business Processes_sol_Decision_sol_Sub Processes_sol_Intimacao_sol_PrepararDTJRecursos",
+          "logicalPath": "/Business Processes/Decision/Sub Processes/Intimacao/PrepararDTJRecursos",
           "input": [
             {
               "partName": "param",
@@ -21884,7 +21884,7 @@
         {
           "portType": "__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent",
           "name": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm",
-          "logicalPath": "/Business Processes_sol_Decision_sol_Sub Processes_sol_Intimacao_sol_PreparaDespachoAdm",
+          "logicalPath": "/Business Processes/Decision/Sub Processes/Intimacao/PreparaDespachoAdm",
           "input": [
             {
               "partName": "param",
@@ -22044,7 +22044,7 @@
         {
           "portType": "__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent",
           "name": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ",
-          "logicalPath": "/Business Processes_sol_Decision_sol_Sub Processes_sol_Intimacao_sol_PrepararPRJ",
+          "logicalPath": "/Business Processes/Decision/Sub Processes/Intimacao/PrepararPRJ",
           "input": [
             {
               "partName": "param",
@@ -22204,7 +22204,7 @@
         {
           "portType": "__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent",
           "name": "__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao",
-          "logicalPath": "/Business Processes_sol_Decision_sol_Sub Processes_sol_Intimacao_sol_PrepararIntimacao",
+          "logicalPath": "/Business Processes/Decision/Sub Processes/Intimacao/PrepararIntimacao",
           "input": [
             {
               "partName": "param",
