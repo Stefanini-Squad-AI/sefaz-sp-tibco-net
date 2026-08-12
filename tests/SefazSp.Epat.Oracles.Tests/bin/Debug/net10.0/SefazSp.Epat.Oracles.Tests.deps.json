@@ -9,6 +9,7 @@
       "SefazSp.Epat.Oracles.Tests/1.0.0": {
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "17.11.1",
+          "SefazSp.Epat.Application": "1.0.0",
           "xunit": "2.9.0"
         },
         "runtime": {
@@ -329,6 +330,25 @@
             "fileVersion": "2.9.0.0"
           }
         }
+      },
+      "SefazSp.Epat.Application/1.0.0": {
+        "dependencies": {
+          "SefazSp.Epat.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SefazSp.Epat.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SefazSp.Epat.Domain/1.0.0": {
+        "runtime": {
+          "SefazSp.Epat.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -414,6 +434,16 @@
       "sha512": "sha512-5ZTQZvmPLlBw6QzCOwM0KnMsZw6eGjbmC176QHZlcbQoMhGIeGcYzYwn5w9yXxf+4phtplMuVqTpTbFDQh2bqQ==",
       "path": "xunit.extensibility.execution/2.9.0",
       "hashPath": "xunit.extensibility.execution.2.9.0.nupkg.sha512"
+    },
+    "SefazSp.Epat.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SefazSp.Epat.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
