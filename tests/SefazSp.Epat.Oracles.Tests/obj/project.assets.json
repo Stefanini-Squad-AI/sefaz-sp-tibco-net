@@ -923,7 +923,7 @@
     ]
   },
   "packageFolders": {
-    "/app/.saiapp/ai-cli-home/6a7ceed9326b6a1807d52d79/.nuget/packages/": {}
+    "/app/.saiapp/ai-cli-home/6a7ceedf326b6a1807d52d8c/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -931,11 +931,11 @@
       "projectUniqueName": "/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
       "projectName": "SefazSp.Epat.Oracles.Tests",
       "projectPath": "/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/SefazSp.Epat.Oracles.Tests.csproj",
-      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ceed9326b6a1807d52d79/.nuget/packages/",
+      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ceedf326b6a1807d52d8c/.nuget/packages/",
       "outputPath": "/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/app/.saiapp/ai-cli-home/6a7ceed9326b6a1807d52d79/.nuget/NuGet/NuGet.Config"
+        "/app/.saiapp/ai-cli-home/6a7ceedf326b6a1807d52d8c/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
