@@ -1,0 +1,52 @@
+{"control_DATETIME_validation_DATETIME__length_message":
+  "\u0027DATETIME\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_ISAPPERROR_label":"IsAppError","control_PROCESS_ID_label":
+  "PROCESS_ID",
+  "control_MAXRETRIES_validation_MAXRETRIES__lowerLimit_message":
+  "\u0027MaxRetries\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_OUTCOME_label":"Outcome","pane_root_label":"Manipular Excecao",
+  "form_action_error_message":"Error in script for action {0} ({1}): {2}",
+  "pane_toolbar_label":"Toolbar",
+  "control_SW_MAINPROC_validation_SW_MAINPROC__length_message":
+  "\u0027SW_MAINPROC\u0027 not valid: expecting a value with no more than 8 characters",
+  "control_MAXRETRIES_validation_MAXRETRIES__length_message":
+  "\u0027MaxRetries\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_OUTCOME_hint":
+  "Valores \u0027R\u0027 tentar novamente ou \u0027OK\u0027 para sair",
+  "form_validation_error_message":
+  "Error in script for validation {0} of Control {1} ({2}): {3}",
+  "control_STATUS_CODE_label":"STATUS_CODE","control_submit_label":
+  "Submit","control_SERVICE_NAME_validation_SERVICE_NAME__length_message":
+  "\u0027SERVICE_NAME\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_SW_MAINCASE_label":"SW_MAINCASE","control_STERRORDESC_label":
+  "STErrorDesc","form_required_message":"{0} is a required field.",
+  "control_PROCESS_ID_validation_PROCESS_ID__length_message":
+  "\u0027PROCESS_ID\u0027 not valid: expecting a value with no more than 35 characters",
+  "control_SW_MAINCASE_validation_SW_MAINCASE__length_message":
+  "\u0027SW_MAINCASE\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_ISAPPERROR_validation_ISAPPERROR__length_message":
+  "\u0027IsAppError\u0027 not valid: expecting a value with no more than 1 characters",
+  "control_SW_MAINCASE_validation_SW_MAINCASE__upperLimit_message":
+  "\u0027SW_MAINCASE\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_cancel_label":"Cancel",
+  "control_STATUS_CODE_validation_STATUS_CODE__length_message":
+  "\u0027STATUS_CODE\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_SW_MAINPROC_label":"SW_MAINPROC",
+  "control_STERRORDESC_validation_STERRORDESC__length_message":
+  "\u0027STErrorDesc\u0027 not valid: expecting a value with no more than 100 characters",
+  "control_DATETIME_label":"DATETIME","control_MAXRETRIES_label":
+  "MaxRetries",
+  "control_SW_MAINCASE_validation_SW_MAINCASE__lowerLimit_message":
+  "\u0027SW_MAINCASE\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_OUTCOME_validation_OUTCOME__length_message":
+  "\u0027Outcome\u0027 not valid: expecting a value with no more than 10 characters",
+  "control_ISTECHERROR_validation_ISTECHERROR__length_message":
+  "\u0027IsTechError\u0027 not valid: expecting a value with no more than 1 characters",
+  "control_MAXRETRIES_validation_MAXRETRIES__upperLimit_message":
+  "\u0027MaxRetries\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SERVICE_NAME_label":"SERVICE_NAME","control_DUMP_label":"DUMP",
+  "control_ISTECHERROR_label":"IsTechError","pane_messages_label":
+  "Invalid Entries","control_close_label":"Close",
+  "control_STERRORCODE_validation_STERRORCODE__length_message":
+  "\u0027STErrorCode\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_STERRORCODE_label":"STErrorCode"}

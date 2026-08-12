@@ -1,0 +1,56 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/jira-mapping/v1",
+  "note": "Mapa de campos para o Jira. Este ficheiro e AUTORADO: o gerador nao adivinha nomes de campo nem tipos de issue, porque variam de instancia para instancia. A pergunta 20 do documento de arquitectura - 'confirmar os campos que o SAI APP 3.0 ingere' - responde-se aqui e nao no codigo. Ajustar antes do primeiro envio.",
+
+  "porqueAssim": "O id do card e a CHAVE DE IDEMPOTENCIA: reenviar o mesmo card tem de actualizar, nunca duplicar. O Jira nao tem chave externa nativa, por isso ela vive numa label e opcionalmente num campo proprio. Sem isto, uma segunda corrida do pipeline cria 80 issues novas por cima das 80 que ja la estavam.",
+
+  "projeto": {
+    "key": "EPAT",
+    "nota": "Chave do projecto no Jira. Alterar para a chave real antes de enviar."
+  },
+
+  "tiposDeIssue": {
+    "epic": "Epic",
+    "build": "Story",
+    "validation": "Task",
+    "double": "Task",
+    "nota": "Nomes tal como aparecem na instancia. Numa instancia em portugues sao 'Epico', 'Historia', 'Tarefa'."
+  },
+
+  "campos": {
+    "idDoCard": {
+      "campo": "labels",
+      "prefixo": "card:",
+      "nota": "A chave de idempotencia. Fica numa label porque toda a instancia tem labels; se existir um campo de texto proprio, indicar aqui o id customfield_NNNNN e o gerador usa-o tambem."
+    },
+    "epicLink": {
+      "campo": null,
+      "nota": "Em Jira Cloud novo, a ligacao a epica e o campo 'parent'. Em instancias antigas e um customfield ('Epic Link'). Deixar null usa parent."
+    },
+    "storyPoints": {
+      "campo": null,
+      "nota": "Se existir, o gerador escreve o numero de nos do card - que e a unica medida de tamanho que o kit tem e nao inventa. Deixar null nao escreve nada."
+    },
+    "camposProprios": [],
+    "nota": "Acrescentar aqui pares { campo, valorDe } para levar mais metadados. valorDe aceita: id, cardType, etapas, peso, oraculo, casos, processo."
+  },
+
+  "labels": {
+    "sempre": ["epat-migracao", "gerado-pelo-kit"],
+    "porTipo": true,
+    "porEtapa": true,
+    "porPeso": true,
+    "porBloqueador": true,
+    "nota": "As labels sao a forma de filtrar no board sem depender de campos proprios. porBloqueador e a mais util: permite ver de um lado todos os cards travados pela semantica dos builtins."
+  },
+
+  "ligacoes": {
+    "dependsOn": "Blocks",
+    "nota": "O dependsOn do card sai da ordem dos segmentos na jornada. No Jira e um issue link; o tipo tem de existir na instancia."
+  },
+
+  "naoEnviar": {
+    "oraculo": true,
+    "nota": "Os valores esperados NAO vao para o Jira. Ficam nos ficheiros de fixture, imutaveis. O issue aponta para o caminho da fixture; quem a editar no Jira nao altera o oraculo, e e assim que tem de ser."
+  }
+}

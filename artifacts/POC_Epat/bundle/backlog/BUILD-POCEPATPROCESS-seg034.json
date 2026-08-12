@@ -1,0 +1,248 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg034",
+  "cardType": "build",
+  "title": "Chamada ao Decisions e conferencia humana do retorno",
+  "epic": "etapa-3-4",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Iniciar Decisions' a 'Verificar Retorno Decisions', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 7 passo(s) da jornada do caso, de 'Iniciar Decisions' ate 'Verificar Retorno Decisions', no processo POC_EpatProcess. ATENCAO: 1 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (link) e tem de ser escrita explicitamente no fluxo .NET.",
+      "hypotheses": [
+        "Entra-se neste troco por um par link throw/catch que NAO existe como transicao no XPDL: tem de ser escrito como aresta explicita, senao o fluxo parte-se em dois.",
+        "Os enderecos de e-mail em copia e copia oculta sao configuracao por ambiente e nao literais no codigo; um deles e nominal de uma pessoa e deixa de avisar quem devia se ela sair."
+      ]
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Processes",
+        "status": "final",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Services",
+        "status": "final",
+        "note": "Envio de e-mail e integracao externa como outra qualquer. Os destinatarios saem do script para configuracao por ambiente, decidido em rulings.HARDCODED-VALUES."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/UseCases",
+        "status": "scaffold",
+        "note": "Tarefa humana e um caso de uso. As regras do code-behind das telas aterram aqui porque decidem o desfecho do processo, nao a apresentacao."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "GOTO implicito. Decidido flatten-edge: vira aresta explicita, porque manter como sinal introduziria pontos de espera que o TIBCO nao tem."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Rules",
+        "status": "draft",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Doubles",
+        "status": "scaffold",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Soap",
+        "status": "scaffold",
+        "note": "Envio de e-mail e integracao externa como outra qualquer. Os destinatarios saem do script para configuracao por ambiente, decidido em rulings.HARDCODED-VALUES."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_LeuhgFqVEfG5K7mY0I3I6w",
+        "nome": "Iniciar Decisions",
+        "kind": "linkThrow",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_CI6l0VqREfG5K7mY0I3I6w",
+        "nome": "Iniciar Decisions",
+        "kind": "linkCatch",
+        "entrouPor": "link"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_CI6lx1qREfG5K7mY0I3I6w",
+        "nome": "Verificar Anulacao",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-script-POC_EpatProcess-VerificarAnulacao"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+        "nome": "Prepara Intimação",
+        "kind": "callActivity",
+        "entrouPor": "fluxo",
+        "nota": "2 regra(s) de negocio neste passo: RI-dataMapping-POC_EpatProcess-PreparaIntimao, RI-dataMapping-POC_EpatProcess-PreparaIntimao"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
+        "nome": "Define Destinatarios",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_6WNq-lqgEfG5K7mY0I3I6w",
+        "nome": "Email Limite Rel 1",
+        "kind": "emailTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_30jAcFqVEfG5K7mY0I3I6w",
+        "nome": "Verificar Retorno Decisions",
+        "kind": "userTask",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-001].segmentos[7]",
+    "kind": "segment",
+    "nodeIds": [
+      "_LeuhgFqVEfG5K7mY0I3I6w",
+      "_CI6l0VqREfG5K7mY0I3I6w",
+      "_CI6lx1qREfG5K7mY0I3I6w",
+      "_CI6lyFqREfG5K7mY0I3I6w",
+      "_G4hU81qhEfG5K7mY0I3I6w",
+      "_6WNq-lqgEfG5K7mY0I3I6w",
+      "_30jAcFqVEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_LeuhgFqVEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_LeuhgFqVEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CI6l0VqREfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CI6l0VqREfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CI6lx1qREfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CI6lx1qREfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CI6lyFqREfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_G4hU81qhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_G4hU81qhEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_6WNq-lqgEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_6WNq-lqgEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_30jAcFqVEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_30jAcFqVEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat",
+    "reviewSha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-001.json",
+      "immutable": true,
+      "caseCount": 39
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 15 ao 21 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      3,
+      4
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-001",
+      "ordemNaJornada": 7,
+      "doPasso": 15,
+      "aoPasso": 21,
+      "abrePor": "Iniciar Decisions",
+      "fechaEm": "Verificar Retorno Decisions"
+    },
+    "concepts": [
+      "loops-retornos",
+      "encadeamento-subprocessos",
+      "envio-emails",
+      "user-tasks"
+    ],
+    "expectedResults": [
+      "subprocessos-encadeados",
+      "notificacoes"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 7,
+    "camadas": 3,
+    "pastas": 8,
+    "aEscrever": 6,
+    "bloqueadores": 2,
+    "regrasDeNegocio": 3,
+    "peso": "atravessa-o-sistema",
+    "nota": "Toca 3 projecto(s) e 6 pasta(s) por escrever. Continua a ser um card valido - e o troco que cumpre a etapa -, mas nao deve ser atribuido a uma pessoa so nem estimado como os outros."
+  },
+  "gaps": [
+    {
+      "construct": "link-goto",
+      "detail": "2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.",
+      "status": "decided",
+      "decisionRef": "NOEQ-link-goto"
+    },
+    {
+      "construct": "iprocess-builtin",
+      "detail": "2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-link-goto",
+    "NOEQ-iprocess-builtin"
+  ],
+  "dependsOn": [
+    "BUILD-POCEPATPROCESS-seg033"
+  ]
+}

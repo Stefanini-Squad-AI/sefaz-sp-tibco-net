@@ -1,0 +1,139 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/github-customization/v1",
+  "package": "POC_Epat",
+  "nota": "Ficheiros de customizacao do Copilot, projectados dos manifestos de papel. Copiar para a raiz do repositorio da fase 2: .github/ e AGENTS.md. Nao ha raciocinio nesta traducao - o que cada papel pode escrever continua a sair do mapa de camadas, e o oraculo continua fora de qualquer instrucao para nao poder ser editado.",
+  "generatedAt": "2026-05-28T00:00:00Z",
+  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "summary": {
+    "agentes": 17,
+    "instrucoes": 5,
+    "skills": 7,
+    "ficheiros": 31
+  },
+  "ficheiros": [
+    {
+      "ficheiro": ".github/agents/autor-de-testes-application-tests.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/autor-de-testes-domain-tests.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/autor-de-testes-oracles-tests.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/fundacao-anticorrupcao.agent.md",
+      "linhas": 34
+    },
+    {
+      "ficheiro": ".github/agents/fundacao-motor-de-regras.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/fundacao-motor.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/fundacao-persistencia.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/fundacao-registo.agent.md",
+      "linhas": 33
+    },
+    {
+      "ficheiro": ".github/agents/implementador-endpoints.agent.md",
+      "linhas": 41
+    },
+    {
+      "ficheiro": ".github/agents/implementador-execution.agent.md",
+      "linhas": 42
+    },
+    {
+      "ficheiro": ".github/agents/implementador-integration-doubles.agent.md",
+      "linhas": 41
+    },
+    {
+      "ficheiro": ".github/agents/implementador-integration-soap.agent.md",
+      "linhas": 38
+    },
+    {
+      "ficheiro": ".github/agents/implementador-rules.agent.md",
+      "linhas": 44
+    },
+    {
+      "ficheiro": ".github/agents/implementador-usecases.agent.md",
+      "linhas": 41
+    },
+    {
+      "ficheiro": ".github/agents/implementador-workflows.agent.md",
+      "linhas": 46
+    },
+    {
+      "ficheiro": ".github/agents/molde-subprocesso-de-servico.agent.md",
+      "linhas": 38
+    },
+    {
+      "ficheiro": ".github/agents/revisor.agent.md",
+      "linhas": 37
+    },
+    {
+      "ficheiro": ".github/instructions/layer-domain.instructions.md",
+      "linhas": 24
+    },
+    {
+      "ficheiro": ".github/instructions/layer-application.instructions.md",
+      "linhas": 25
+    },
+    {
+      "ficheiro": ".github/instructions/layer-infrastructure.instructions.md",
+      "linhas": 25
+    },
+    {
+      "ficheiro": ".github/instructions/layer-api.instructions.md",
+      "linhas": 21
+    },
+    {
+      "ficheiro": ".github/instructions/oracles.instructions.md",
+      "linhas": 11
+    },
+    {
+      "ficheiro": ".github/skills/iprocess-builtin/SKILL.md",
+      "linhas": 30
+    },
+    {
+      "ficheiro": ".github/skills/link-goto/SKILL.md",
+      "linhas": 28
+    },
+    {
+      "ficheiro": ".github/skills/external-event/SKILL.md",
+      "linhas": 28
+    },
+    {
+      "ficheiro": ".github/skills/expression-deadline/SKILL.md",
+      "linhas": 28
+    },
+    {
+      "ficheiro": ".github/skills/dynamic-subprocess/SKILL.md",
+      "linhas": 30
+    },
+    {
+      "ficheiro": ".github/skills/graft-step/SKILL.md",
+      "linhas": 30
+    },
+    {
+      "ficheiro": ".github/skills/non-interrupting-boundary/SKILL.md",
+      "linhas": 28
+    },
+    {
+      "ficheiro": ".github/copilot-instructions.md",
+      "linhas": 20
+    },
+    {
+      "ficheiro": "AGENTS.md",
+      "linhas": 64
+    }
+  ]
+}

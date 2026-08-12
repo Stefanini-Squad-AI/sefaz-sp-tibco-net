@@ -1,0 +1,156 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/poc-concepts/v2",
+  "source": "Documento Prova de Conceito.docx, secao 2 (tabela Conceito / Objetivo da Validacao) e secao 5 (Resultado Esperado).",
+  "note": "Conteudo AUTORADO por transcricao, reduzido ao minimo irredutivel. As ETAPAS e os elementos que cada uma toca NAO estao aqui: gen-intent-map.ps1 os deriva do proprio documento e este catalogo os consome de intent-map.json. Ficam aqui apenas (a) a tabela de conceitos da secao 2, que o parser de etapas nao cobre, e (b) a regra 'detect' - como contar cada conceito nos artefatos - que nenhum artefato de origem pode declarar.",
+
+  "concepts": [
+    {
+      "id": "eventos-inicio-fim",
+      "name": "Eventos de Inicio e Fim",
+      "objective": "Controle do ciclo de vida do processo.",
+      "detect": { "nodeKinds": ["startEvent", "endEvent"] }
+    },
+    {
+      "id": "user-tasks",
+      "name": "User Tasks",
+      "objective": "Interacao humana atraves de telas e atividades manuais.",
+      "detect": { "nodeKinds": ["userTask"], "screens": true }
+    },
+    {
+      "id": "service-tasks",
+      "name": "Service Tasks",
+      "objective": "Execucao automatica de servicos e integracoes.",
+      "detect": { "nodeKinds": ["serviceTask"] }
+    },
+    {
+      "id": "gateways-xor",
+      "name": "Gateways Exclusivos (XOR)",
+      "objective": "Tomada de decisao baseada em regras de negocio.",
+      "detect": { "bpmnElements": ["exclusiveGateway"] }
+    },
+    {
+      "id": "gateways-and",
+      "name": "Gateways Paralelos (AND)",
+      "objective": "Divisao e sincronizacao de fluxos paralelos.",
+      "detect": { "bpmnElements": ["parallelGateway"] }
+    },
+    {
+      "id": "fluxos-paralelos",
+      "name": "Fluxos Paralelos",
+      "objective": "Processamento simultaneo de atividades independentes.",
+      "detect": { "bpmnElements": ["parallelGateway"] }
+    },
+    {
+      "id": "timers-deadlines",
+      "name": "Timers e Deadlines",
+      "objective": "Controle de prazo e vencimento de atividades.",
+      "detect": { "bpmnElements": ["timerEventDefinition"] }
+    },
+    {
+      "id": "eventos-mensagem",
+      "name": "Eventos de Mensagem",
+      "objective": "Comunicacao entre processos e sistemas externos.",
+      "detect": { "nodeKinds": ["receiveTask"] }
+    },
+    {
+      "id": "eventos-sinal",
+      "name": "Eventos de Sinal (Signal)",
+      "objective": "Disparo de eventos globais para sincronizacao de fluxos.",
+      "detect": { "nodeKinds": ["signalThrow", "signalCatch"] }
+    },
+    {
+      "id": "loops-retornos",
+      "name": "Loops e Retornos",
+      "objective": "Reprocessamento e correcao de atividades.",
+      "detect": { "nodeKinds": ["linkThrow", "linkCatch"] }
+    },
+    {
+      "id": "variaveis-processo",
+      "name": "Variaveis de Processo",
+      "objective": "Persistencia e compartilhamento de informacoes durante a execucao.",
+      "detect": { "caseFields": true }
+    },
+    {
+      "id": "envio-emails",
+      "name": "Envio de E-mails",
+      "objective": "Comunicacao automatica atraves de notificacoes.",
+      "detect": { "nodeKinds": ["emailTask"] }
+    },
+    {
+      "id": "correlacao-eventos",
+      "name": "Correlacao de Eventos",
+      "objective": "Associacao de eventos externos a instancias especificas do processo.",
+      "detect": { "hazardCategories": ["external-event"] }
+    },
+    {
+      "id": "espera-assincrona",
+      "name": "Espera Assincrona",
+      "objective": "Suspensao controlada ate o recebimento de eventos externos.",
+      "detect": { "nodeKinds": ["receiveTask"], "hazardCategories": ["external-event"] }
+    },
+    {
+      "id": "controle-prazo",
+      "name": "Controle de Prazo",
+      "objective": "Monitoramento de SLA e vencimentos.",
+      "detect": { "nodeKinds": ["timerEvent"], "hazardCategories": ["expression-deadline"] }
+    },
+    {
+      "id": "encadeamento-subprocessos",
+      "name": "Encadeamento de Subprocessos",
+      "objective": "Comunicacao e continuidade entre subprocessos.",
+      "detect": { "nodeKinds": ["callActivity", "subProcessScope"] }
+    },
+
+    {
+      "id": "graft-step",
+      "name": "Graft Step",
+      "headline": true,
+      "objective": "Acoplamento dinamico de um fluxo ou subprocesso durante a execucao do processo principal, sem que ele faca parte originalmente da sequencia de atividades.",
+      "detect": { "nodeNamePattern": "graft" }
+    },
+    {
+      "id": "decisions",
+      "name": "Decisions",
+      "headline": true,
+      "objective": "Mecanismo de decisao baseado em regras de negocio, que avalia informacoes do processo e retorna parametros que influenciam o fluxo subsequente.",
+      "detect": { "decisionRules": true }
+    },
+    {
+      "id": "procedures-dinamicas",
+      "name": "Procedures Dinamicas",
+      "headline": true,
+      "objective": "Determinar em tempo de execucao quais atividades, participantes ou caminhos serao criados dentro do processo, de acordo com regras e dados do negocio.",
+      "detect": { "hazardCategories": ["dynamic-subprocess"] }
+    }
+  ],
+
+  "stageConceptAnchors": {
+    "note": "Rede de seguranca para a etapa cujo TITULO nao casa com nome de no nenhum. O casamento por titulo ancorou seis das sete etapas; a etapa 7 chama-se 'Encerramento' e o no chama-se 'Fim'. A narrativa do documento e explicita - 'Apos a conclusao do subprocesso Controle Intimados, o fluxo e encerrado' - e os conceitos que a etapa declara dizem em que construto isso se le. Isto e transcricao do documento, nao inferencia: cada entrada corresponde a um conceito listado na propria etapa. 'apenasProcessoRaiz' existe porque encerrar a INSTANCIA e terminar o processo que ninguem chama; o endEvent de um subprocesso e um regresso, nao um encerramento.",
+    "byConcept": [
+      {
+        "concept": "Evento de Fim",
+        "nodeKinds": ["endEvent"],
+        "apenasProcessoRaiz": true
+      },
+      {
+        "concept": "Encerramento de Instancia",
+        "nodeKinds": ["endEvent"],
+        "apenasProcessoRaiz": true
+      }
+    ]
+  },
+
+  "expectedResults": [
+    { "id": "modelagem-bpmn", "text": "Capacidade de modelagem BPMN.", "concepts": ["gateways-xor", "gateways-and", "eventos-inicio-fim"] },
+    { "id": "subprocessos-encadeados", "text": "Execucao de subprocessos encadeados.", "concepts": ["encadeamento-subprocessos"] },
+    { "id": "integracao-servicos", "text": "Integracao com servicos externos.", "concepts": ["service-tasks"] },
+    { "id": "regras-decisao", "text": "Processamento de regras de decisao.", "concepts": ["decisions"] },
+    { "id": "criacao-dinamica", "text": "Criacao dinamica de etapas.", "concepts": ["graft-step", "procedures-dinamicas"] },
+    { "id": "correlacao-assincrona", "text": "Correlacao de eventos assincronos.", "concepts": ["correlacao-eventos", "espera-assincrona"] },
+    { "id": "sla-prazos", "text": "Controle de SLA e prazos.", "concepts": ["controle-prazo", "timers-deadlines"] },
+    { "id": "paralelo-sincronizacao", "text": "Processamento paralelo com sincronizacao.", "concepts": ["gateways-and", "fluxos-paralelos"] },
+    { "id": "notificacoes", "text": "Envio de notificacoes.", "concepts": ["envio-emails"] },
+    { "id": "variaveis", "text": "Manipulacao de variaveis de processo.", "concepts": ["variaveis-processo"] },
+    { "id": "compatibilidade-iprocess", "text": "Compatibilidade conceitual com recursos avancados utilizados atualmente no Tibco iProcess.", "concepts": ["graft-step", "procedures-dinamicas", "decisions"] }
+  ]
+}

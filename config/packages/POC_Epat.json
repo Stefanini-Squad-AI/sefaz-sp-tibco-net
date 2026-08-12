@@ -1,0 +1,31 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/package-manifest/v1",
+  "package": "POC_Epat",
+  "description": "TIBCO iProcess / AMX BPM capability test bench for SEFAZ-SP ePAT. See 'Documento Prova de Conceito.docx' - purpose-built to exercise ~70-80% of BPMN features.",
+
+  "root": "input/Arquivos Poc Camunda",
+
+  "sources": {
+    "xpdl": "POC_Camunda/POC_Epat/Process Packages/POC_Epat.xpdl",
+    "wsdl": [
+      "POC_Camunda/POC_Epat/Service Descriptors/EPAT.wsdl",
+      "POC_Camunda/POC_Epat/Service Descriptors/DecisionsEPAT.wsdl"
+    ],
+    "ers": "intimacoes_Parametros.ers",
+    "forms": "POC_Camunda/POC_Epat/Forms",
+    "telas": "Telas",
+    "doc": "Documento Prova de Conceito.docx"
+  },
+
+  "expected": {
+    "note": "Baseline counts. run-extraction.ps1 fails if the source drifts from these without the manifest being updated - a deliberate tripwire for silently changed inputs.",
+    "processes": 9,
+    "activities": 215,
+    "transitions": 221,
+    "activitySets": 5,
+    "caseFields": 209,
+    "operations": 127,
+    "invokedOperations": 5,
+    "decisionRules": 49
+  }
+}

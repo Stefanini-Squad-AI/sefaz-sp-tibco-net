@@ -1,0 +1,49 @@
+
+{ items: [
+
+	{ $param:'FLAGCONTRARAZAO', $value:						true
+	},
+	{ $param:'CNTPECA4', $value:						"Text"
+
+	},
+	{ $param:'SFPECA4', $value:						"Text"
+
+	},
+	{ $param:'QTPECASSEFAZ', $value:						1
+	},
+	{ $param:'CNTPECA3', $value:						"Text"
+
+	},
+	{ $param:'SFPECA2', $value:						"Text"
+
+	},
+	{ $param:'SFPECA3', $value:						"Text"
+
+	},
+	{ $param:'TIPOVISTAS', $value:						"Text"
+
+	},
+	{ $param:'SFPECA1', $value:						"Text"
+
+	},
+	{ $param:'CNTPECA1', $value:						"Text"
+
+	},
+	{ $param:'SFDIASREPRESENT', $value:						"Text"
+
+	},
+	{ $param:'QTPECASCNT', $value:						1
+	},
+	{ $param:'CNTPECA2', $value:						"Text"
+
+	},
+	{ $param:'DESCREGRA', $value:						"Text"
+
+	},
+	{ $param:'TEMPORESPOSTA', $value:						"Text"
+
+	},
+	{ $param:'CODTEXTO', $value:						"Text"
+
+	}
+]}

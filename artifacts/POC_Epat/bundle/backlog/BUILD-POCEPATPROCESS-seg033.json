@@ -1,0 +1,102 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg033",
+  "cardType": "build",
+  "title": "Notificação do AIIM: de 'Trocar Notificação?' ate 'Trocar Notificação?'",
+  "epic": "etapa-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Trocar Notificação?' a 'Trocar Notificação?', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 1 passo(s) da jornada do caso, de 'Trocar Notificação?' ate 'Trocar Notificação?', no processo POC_EpatProcess.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_0XWahFqNEfG5K7mY0I3I6w",
+        "nome": "Trocar Notificação?",
+        "kind": "gateway",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-POC_EpatProcess-TrocarNotificao"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-001].segmentos[6]",
+    "kind": "segment",
+    "nodeIds": [
+      "_0XWahFqNEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_0XWahFqNEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_0XWahFqNEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-001.json",
+      "immutable": true,
+      "caseCount": 39
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 14 ao 14 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-001",
+      "ordemNaJornada": 6,
+      "doPasso": 14,
+      "aoPasso": 14,
+      "abrePor": "Trocar Notificação?",
+      "fechaEm": "Trocar Notificação?"
+    },
+    "concepts": [],
+    "expectedResults": [],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 1,
+    "camadas": 1,
+    "pastas": 1,
+    "aEscrever": 1,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 1,
+    "peso": "pequeno"
+  },
+  "dependsOn": [
+    "BUILD-POCEPATPROCESS-seg001"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "DOUBLE-CTRINTPC-interface",
+  "cardType": "double",
+  "title": "Duble para a interface de processo CTRINTPC",
+  "epic": "fundacao",
+  "content": {
+    "intent": "Construir um duble fiel ao contrato de CTRINTPC, conduzido por cenario, para que o destino em falta falhe de forma visivel em vez de silenciosa.",
+    "injectedContext": {
+      "summary": "A chamada e resolvida em execucao. Implementacoes entregues no pacote: CONTROPC. O conjunto de destinos NAO e fechado, por isso o registo e validado no arranque: destino sem duble quebra o teste de registo, nao a producao.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Doubles",
+        "status": "scaffold",
+        "note": "Duble tipado a partir da ProcessInterface, conduzido por cenario."
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "process-model.json",
+    "pointer": "processInterfaces[CTRINTPC]",
+    "kind": "operation",
+    "nodeIds": []
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_BAx4zV6KEfGBBLgT-R5iuw",
+      "xpath": "//xpdExt:ProcessInterface[@Id='_BAx4zV6KEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": "A interface e transcricao do xpdExt:ProcessInterface.",
+    "verified": false,
+    "translation": "lossless"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "contract",
+      "fixture": "artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/Abstractions/Processes/ICTRINTPC.cs",
+      "immutable": true,
+      "caseCount": 1
+    },
+    "criteria": [
+      "O registo de destinos e validado no arranque",
+      "Destino sem implementacao falha de forma visivel"
+    ]
+  },
+  "scope": {
+    "process": "fundacao",
+    "inPocScope": true,
+    "scopeReason": "interface usada por chamada dinamica de um passo em escopo"
+  },
+  "fulfills": {
+    "etapas": [
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "interface",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 1,
+      "abrePor": "CTRINTPC",
+      "fechaEm": "CTRINTPC"
+    },
+    "concepts": [
+      "procedures-dinamicas"
+    ],
+    "expectedResults": [
+      "criacao-dinamica",
+      "compatibilidade-iprocess"
+    ],
+    "evidenceKind": "contract-test"
+  },
+  "dimensao": {
+    "nos": 1,
+    "camadas": 1,
+    "pastas": 1,
+    "aEscrever": 1,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "pequeno"
+  }
+}

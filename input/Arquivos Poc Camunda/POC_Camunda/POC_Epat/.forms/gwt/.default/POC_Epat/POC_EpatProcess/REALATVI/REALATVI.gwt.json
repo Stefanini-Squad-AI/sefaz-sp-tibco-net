@@ -1,0 +1,946 @@
+
+
+{
+	formModelId:'_Q7QYQGQwEfGUo9jzQD7qQQ',
+	name:'REALATVI',
+	formatVersion:'2.2.201.001',
+	externalResources:[{uri:'REALATVI.gwt.js'}, {uri:'REALATVI.gwt.css'}, {name:'resource.common', uri:'pathmap://FORMS_RESOURCES/common.properties'}, {name:'resource.form', uri:'REALATVI.properties'}],
+	bomJSNames:[],
+	styleName:' f2103146c-505f-416a-adcc-dd5a5715cdc6',
+	labelPosition:'top',
+	data:[{name:'data.SW_HOSTNAME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SW_HOSTNAME', inout:'IN', array:false, decimalPlaces:'0', length:'24', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_HOSTNAME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DUMP', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DUMP', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DUMP', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CRCONTRIBUINTE', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'crContribuinte', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CRCONTRIBUINTE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STATUS_CODE', datumType:'BomPrimitiveTypes::Text', type:'data', label:'STATUS_CODE', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STATUS_CODE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DOCSPERMITIDOS', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DocsPermitidos', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DOCSPERMITIDOS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CORRECAO', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'correcao', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CORRECAO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.RECAPIT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Recapitulacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.RECAPIT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.COORDENADOR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Coordenador', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.COORDENADOR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_CASENUM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'SW_CASENUM', inout:'IN', array:false, decimalPlaces:'0', length:'15', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_CASENUM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.PRAZOVISTA', datumType:'BomPrimitiveTypes::Date', type:'data', label:'PrazoVista', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.PRAZOVISTA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SFPECA2', datumType:'BomPrimitiveTypes::Text', type:'data', label:'sfPeca2', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SFPECA2', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDDECISAODEBITO', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'idDecisaoDebitoFiscal', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDDECISAODEBITO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.FLAGCRZ', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'FlagCrz', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.FLAGCRZ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.BCCRELATORIO', datumType:'BomPrimitiveTypes::Text', type:'data', label:'BCCRELATORIO', inout:'INOUT', array:false, decimalPlaces:'0', length:'150', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.BCCRELATORIO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CDIMPOSTO', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Código Imposto', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CDIMPOSTO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DTCIENCIA', datumType:'BomPrimitiveTypes::Date', type:'data', label:'dtCiencia', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DTCIENCIA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INDICESUBDIN', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'indiceSubDin', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INDICESUBDIN', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SFDIASREPRESENT', datumType:'BomPrimitiveTypes::Text', type:'data', label:'sfDiasRepresentacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SFDIASREPRESENT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STSRESPSF', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'statusRESPFazenda', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STSRESPSF', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.TEMPORESPOSTA', datumType:'BomPrimitiveTypes::Text', type:'data', label:'tempoResposta', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.TEMPORESPOSTA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDDECISAOAIIM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'idDecisaoAIIM', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDDECISAOAIIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CD_DRT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Código da DRT', inout:'INOUT', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CD_DRT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_CASENUMPOC', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'SW_CASENUMPOC', inout:'IN', array:false, decimalPlaces:'0', length:'15', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_CASENUMPOC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CODUADRT', datumType:'BomPrimitiveTypes::Text', type:'data', label:'codUADRT', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CODUADRT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DILIGENCIA', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'diligencia', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DILIGENCIA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SERVICE_NAME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SERVICE_NAME', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SERVICE_NAME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NR_RATORIG', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'NR_RAT', inout:'INOUT', array:false, decimalPlaces:'0', length:'11', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NR_RATORIG', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CRCASA', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'crCasa', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CRCASA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SITUACAOCARREGA', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Situação do carregamento do AIIM', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SITUACAOCARREGA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CNTPECA3', datumType:'BomPrimitiveTypes::Text', type:'data', label:'cntPeca3', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CNTPECA3', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CODMUNICIPIO', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'CodMunicipio', inout:'IN', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CODMUNICIPIO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.EMAILVISTAS', datumType:'BomPrimitiveTypes::Text', type:'data', label:'email Vistas', inout:'INOUT', array:false, decimalPlaces:'0', length:'255', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.EMAILVISTAS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.QTPECASSEFAZ', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'qtPecasSefaz', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.QTPECASSEFAZ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ISAPPERROR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'IsAppError', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ISAPPERROR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.REGRAINSDOC', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Regra de inserção de documentos', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.REGRAINSDOC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ISTECHERROR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'IsTechError', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ISTECHERROR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.OUTCOME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Outcome', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.OUTCOME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.QTDINTIMADOS', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'qtdeIntimados', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.QTDINTIMADOS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_PARENTPROC', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SW_PARENTPROC', inout:'INOUT', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_PARENTPROC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CODTEXTO', datumType:'BomPrimitiveTypes::Text', type:'data', label:'codTexto', inout:'INOUT', array:false, decimalPlaces:'0', length:'4', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CODTEXTO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_MAINCASEPOC', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'SW_MAINCASEPOC', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_MAINCASEPOC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDMOTIVOINTIMAC', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'idMotivoIntimacao', inout:'IN', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDMOTIVOINTIMAC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.POSICAOFIM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'posicaoFim', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.POSICAOFIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NR_AIIM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Número do AIIM', inout:'INOUT', array:false, decimalPlaces:'0', length:'11', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NR_AIIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ORIGEM', datumType:'BomPrimitiveTypes::Text', type:'data', label:'origem', inout:'INOUT', array:false, decimalPlaces:'0', length:'5', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ORIGEM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SFPECA4', datumType:'BomPrimitiveTypes::Text', type:'data', label:'sfPeca4', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SFPECA4', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.TIPODILIGENCIA', datumType:'BomPrimitiveTypes::Text', type:'data', label:'tipoDiligencia', inout:'INOUT', array:false, decimalPlaces:'0', length:'6', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.TIPODILIGENCIA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SFPECA1', datumType:'BomPrimitiveTypes::Text', type:'data', label:'sfPeca1', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SFPECA1', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.TROCATPNOTIFICA', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Trocar Tipo Notificacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.TROCATPNOTIFICA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.AUX', datumType:'BomPrimitiveTypes::Text', type:'data', label:'aux', inout:'INOUT', array:false, decimalPlaces:'0', length:'255', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.AUX', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DOCSREQUERIDOS', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DocsRequeridos', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DOCSREQUERIDOS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.LINKIPE', datumType:'BomPrimitiveTypes::Text', type:'data', label:'LinkIpe', inout:'INOUT', array:false, decimalPlaces:'0', length:'255', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.LINKIPE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CNTINSTANCIASUF', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'cntInstanciasUFC', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CNTINSTANCIASUF', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.EMAILRELATOR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'email Relator', inout:'INOUT', array:false, decimalPlaces:'0', length:'250', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.EMAILRELATOR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.PROCESS_ID', datumType:'BomPrimitiveTypes::Text', type:'data', label:'PROCESS_ID', inout:'INOUT', array:false, decimalPlaces:'0', length:'35', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.PROCESS_ID', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DATAENCPREPNOT', datumType:'BomPrimitiveTypes::Date', type:'data', label:'Data Encerramento Preparar Notifica', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DATAENCPREPNOT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_MAINCASE', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'SW_MAINCASE', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_MAINCASE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STSADMTITCNT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'StatusAdmissaoTITCNT', inout:'IN', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STSADMTITCNT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CTL_RETIRAT', datumType:'BomPrimitiveTypes::Text', type:'data', label:'CTL_RETIRAT', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CTL_RETIRAT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DAYSOVER', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'daysover', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DAYSOVER', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.PRAZORELATO', datumType:'BomPrimitiveTypes::Date', type:'data', label:'PrazoRelato', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.PRAZORELATO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.FIMSTRING', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'fimString', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.FIMSTRING', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.MAXRETRIES', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'MaxRetries', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.MAXRETRIES', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STSRESPCNT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'statusRESPCnt', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STSRESPCNT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STATUSRECURSOS', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'statusRecursos', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STATUSRECURSOS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NRSUBPRO', datumType:'BomPrimitiveTypes::Text', type:'data', label:'nrSubProc', inout:'INOUT', array:true, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NRSUBPRO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CHEFEUJ', datumType:'BomPrimitiveTypes::Text', type:'data', label:'ChefeUJ', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CHEFEUJ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ARRAYINT', datumType:'BomPrimitiveTypes::Text', type:'data', label:'arrayIntimados', inout:'INOUT', array:true, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ARRAYINT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DEFESAADMITIDA', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'defesaAdmitida', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DEFESAADMITIDA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SFPECA3', datumType:'BomPrimitiveTypes::Text', type:'data', label:'sfPeca3', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SFPECA3', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STSPRMSF', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'statusPRMFazenda', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STSPRMSF', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INTIMACAODE', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'intimacaoDE', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INTIMACAODE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.TIPOVISTAS', datumType:'BomPrimitiveTypes::Text', type:'data', label:'tipoVistas', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.TIPOVISTAS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.PARTICIPANTE', datumType:'BomPrimitiveTypes::Text', type:'data', label:'participante', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.PARTICIPANTE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDTIPOIMPUGNACA', datumType:'BomPrimitiveTypes::Text', type:'data', label:'idTipoImpugnacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDTIPOIMPUGNACA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CNTPECA2', datumType:'BomPrimitiveTypes::Text', type:'data', label:'cntPeca2', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CNTPECA2', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.EXCLUSAOSOLIDAR', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'ExclusaoSolidarios', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.EXCLUSAOSOLIDAR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.FORMACORRECAO', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Forma de Correção', inout:'INOUT', array:false, decimalPlaces:'0', length:'20', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.FORMACORRECAO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STERRORCODE', datumType:'BomPrimitiveTypes::Text', type:'data', label:'STErrorCode', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STERRORCODE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.FLGALC', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'FlagAlcada', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.FLGALC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NUMAPPRETRIES', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'NumAppRetries', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NUMAPPRETRIES', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CODMUNAIIM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Código do Município do AIIM', inout:'INOUT', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CODMUNAIIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CNTPECA4', datumType:'BomPrimitiveTypes::Text', type:'data', label:'cntPeca4', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CNTPECA4', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STSPETICAO', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'StatusPeticao', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STSPETICAO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DATETIME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DATETIME', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DATETIME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STSADMTITDRF', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'StatusAdmissaoTITDRF', inout:'IN', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STSADMTITDRF', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NOVOMODELO', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'novoModelo', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NOVOMODELO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDAIIMORIGINAL', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'idAiimOriginal', inout:'INOUT', array:false, decimalPlaces:'0', length:'11', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDAIIMORIGINAL', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.PRAZORETIRADAVI', datumType:'BomPrimitiveTypes::Date', type:'data', label:'PrazoRetiradaVista', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.PRAZORETIRADAVI', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INDNAORECORRER', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'indNaoRecorrer', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INDNAORECORRER', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ANULACAODTJ', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'AnulacaoDTJ', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ANULACAODTJ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.FLAGCONTRARAZAO', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'flagContraRazao', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.FLAGCONTRARAZAO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.QTPECASCNT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'qtPecasCNT', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.QTPECASCNT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_CASEDESC', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SW_CASEDESC', inout:'INOUT', array:false, decimalPlaces:'0', length:'24', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_CASEDESC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INTIMACAOCOUNT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'intimacaoCount', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INTIMACAOCOUNT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.VRAIIM', datumType:'BomPrimitiveTypes::Decimal', type:'data', label:'vrAIIM', inout:'IN', array:false, decimalPlaces:'3', length:'15', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.VRAIIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.POSICAOINICIO', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'posicaoInicio', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.POSICAOINICIO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDPROCESSO', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'idProcesso', inout:'IN', array:false, decimalPlaces:'0', length:'9', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDPROCESSO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CNTPECA1', datumType:'BomPrimitiveTypes::Text', type:'data', label:'cntPeca1', inout:'INOUT', array:false, decimalPlaces:'0', length:'3', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CNTPECA1', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INTIMACAOCARTA', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'intimacaoCarta', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INTIMACAOCARTA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDSINTIMADOS', datumType:'BomPrimitiveTypes::Text', type:'data', label:'idsIntimados', inout:'INOUT', array:false, decimalPlaces:'0', length:'250', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDSINTIMADOS', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DESCREGRA', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DescricaoRegra', inout:'INOUT', array:false, decimalPlaces:'0', length:'250', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DESCREGRA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NR_RAT', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Versão do AIIM', inout:'INOUT', array:false, decimalPlaces:'0', length:'11', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NR_RAT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NRAIIM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'nrAiim', inout:'IN', array:false, decimalPlaces:'0', length:'11', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NRAIIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NOTIFICACAO', datumType:'BomPrimitiveTypes::Text', type:'data', label:'notificacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NOTIFICACAO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CODUADTJ', datumType:'BomPrimitiveTypes::Text', type:'data', label:'cod UA DTJ', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CODUADTJ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DTPUBLICACAODE', datumType:'BomPrimitiveTypes::Date', type:'data', label:'dtPublicacaoDE', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DTPUBLICACAODE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.VICIOREPRESENTA', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'vicioRepresentacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.VICIOREPRESENTA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INDRESPPRM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'indRespPRM', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INDRESPPRM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_PARENTCASE', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'SW_PARENTCASE', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_PARENTCASE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDPECASCNT', datumType:'BomPrimitiveTypes::Text', type:'data', label:'idPecasCnt', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDPECASCNT', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDPECASSF', datumType:'BomPrimitiveTypes::Text', type:'data', label:'idPecasSf', inout:'INOUT', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDPECASSF', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DILIGENCIADESTI', datumType:'BomPrimitiveTypes::Text', type:'data', label:'diligenciaDestino', inout:'IN', array:false, decimalPlaces:'0', length:'20', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DILIGENCIADESTI', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.EXISTENOTIFICAC', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'existeNotificacao', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.EXISTENOTIFICAC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.RECURSOOFICIO', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'recursoOficio', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.RECURSOOFICIO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.HORAFINAL', datumType:'BomPrimitiveTypes::DateTime', type:'data', label:'horafinal', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.HORAFINAL', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DTFIMCQ', datumType:'BomPrimitiveTypes::Date', type:'data', label:'DTFIMCQ', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DTFIMCQ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STATUSPRJ', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'statusPrj', inout:'INOUT', array:false, decimalPlaces:'0', length:'2', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STATUSPRJ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.AFR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Agente Fiscal de Renda', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.AFR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.RESPOSTACQ', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Resposta do Contorle de Qualidade', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.RESPOSTACQ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.HRFIMCQ', datumType:'BomPrimitiveTypes::Time', type:'data', label:'HRFIMCQ', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.HRFIMCQ', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.NOMEETAPA', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Nome da Etapa', inout:'INOUT', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.NOMEETAPA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_MAINPROC', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SW_MAINPROC', inout:'INOUT', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_MAINPROC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.IDAIIM', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'idAIIM', inout:'IN', array:false, decimalPlaces:'0', length:'11', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.IDAIIM', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DOCCONTROL', datumType:'BomPrimitiveTypes::Text', type:'data', label:'docControl', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DOCCONTROL', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DEAT0050', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DEAT0050', inout:'INOUT', array:true, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DEAT0050', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STERRORDESC', datumType:'BomPrimitiveTypes::Text', type:'data', label:'STErrorDesc', inout:'INOUT', array:false, decimalPlaces:'0', length:'100', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STERRORDESC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.FLAGRETIRATE', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'flagretirate', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.FLAGRETIRATE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.INSTANCIA', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'Instancia', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.INSTANCIA', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CCRELATORIO', datumType:'BomPrimitiveTypes::Text', type:'data', label:'CCRELATORIO', inout:'INOUT', array:false, decimalPlaces:'0', length:'150', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CCRELATORIO', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.CTRLIATV', datumType:'BomPrimitiveTypes::Boolean', type:'data', label:'CTRLIATV', inout:'INOUT', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.CTRLIATV', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.VOLTARSEGINSTAN', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'voltarSegInstancia', inout:'INOUT', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.VOLTARSEGINSTAN', type:'control', destinationFeature:['value']}], rules: []}
+],
+	rules: [],
+	controlRefs:[{name:'control.DOCCONTROL', type:'control'}, {name:'control.SFPECA3', type:'control'}, {name:'control.SFDIASREPRESENT', type:'control'}, {name:'control.CNTPECA2', type:'control'}, {name:'control.CNTPECA4', type:'control'}, {name:'control.REGRAINSDOC', type:'control'}, {name:'control.CHEFEUJ', type:'control'}, {name:'control.ISAPPERROR', type:'control'}, {name:'control.HRFIMCQ', type:'control'}, {name:'control.SW_PARENTPROC', type:'control'}, {name:'control.OUTCOME', type:'control'}, {name:'control.DOCSPERMITIDOS', type:'control'}, {name:'control.CTRLIATV', type:'control'}, {name:'control.EMAILRELATOR', type:'control'}, {name:'control.ARRAYINT', type:'control'}, {name:'control.SERVICE_NAME', type:'control'}, {name:'control.VICIOREPRESENTA', type:'control'}, {name:'control.CTL_RETIRAT', type:'control'}, {name:'control.IDPECASCNT', type:'control'}, {name:'control.LINKIPE', type:'control'}, {name:'control.IDAIIM', type:'control'}, {name:'control.PRAZORELATO', type:'control'}, {name:'control.QTPECASCNT', type:'control'}, {name:'control.SFPECA1', type:'control'}, {name:'control.INTIMACAOCARTA', type:'control'}, {name:'control.DESCREGRA', type:'control'}, {name:'control.RESPOSTACQ', type:'control'}, {name:'control.NR_RATORIG', type:'control'}, {name:'control.CD_DRT', type:'control'}, {name:'control.STSADMTITCNT', type:'control'}, {name:'control.CODMUNAIIM', type:'control'}, {name:'control.IDTIPOIMPUGNACA', type:'control'}, {name:'control.EMAILVISTAS', type:'control'}, {name:'control.DTPUBLICACAODE', type:'control'}, {name:'control.DEFESAADMITIDA', type:'control'}, {name:'control.BCCRELATORIO', type:'control'}, {name:'control.CRCONTRIBUINTE', type:'control'}, {name:'control.IDAIIMORIGINAL', type:'control'}, {name:'control.NOTIFICACAO', type:'control'}, {name:'control.ORIGEM', type:'control'}, {name:'control.IDPECASSF', type:'control'}, {name:'control.ISTECHERROR', type:'control'}, {name:'control.FIMSTRING', type:'control'}, {name:'control.VRAIIM', type:'control'}, {name:'control.DEAT0050', type:'control'}, {name:'control.DAYSOVER', type:'control'}, {name:'control.DOCSREQUERIDOS', type:'control'}, {name:'control.RECURSOOFICIO', type:'control'}, {name:'control.AFR', type:'control'}, {name:'control.STERRORDESC', type:'control'}, {name:'control.cancel', type:'control'}, {name:'control.PROCESS_ID', type:'control'}, {name:'control.SFPECA2', type:'control'}, {name:'control.DTCIENCIA', type:'control'}, {name:'control.TROCATPNOTIFICA', type:'control'}, {name:'control.CRCASA', type:'control'}, {name:'control.submit', type:'control'}, {name:'control.STSADMTITDRF', type:'control'}, {name:'control.SW_CASENUM', type:'control'}, {name:'control.NRAIIM', type:'control'}, {name:'control.SW_MAINPROC', type:'control'}, {name:'control.DTFIMCQ', type:'control'}, {name:'control.IDMOTIVOINTIMAC', type:'control'}, {name:'control.CODTEXTO', type:'control'}, {name:'control.CCRELATORIO', type:'control'}, {name:'control.STSRESPCNT', type:'control'}, {name:'control.IDPROCESSO', type:'control'}, {name:'control.NR_RAT', type:'control'}, {name:'control.FORMACORRECAO', type:'control'}, {name:'control.close', type:'control'}, {name:'control.INTIMACAODE', type:'control'}, {name:'control.STSRESPSF', type:'control'}, {name:'control.TIPOVISTAS', type:'control'}, {name:'control.SW_PARENTCASE', type:'control'}, {name:'control.STATUSRECURSOS', type:'control'}, {name:'control.DUMP', type:'control'}, {name:'control.INDNAORECORRER', type:'control'}, {name:'control.CNTPECA1', type:'control'}, {name:'control.QTPECASSEFAZ', type:'control'}, {name:'control.MAXRETRIES', type:'control'}, {name:'control.NOMEETAPA', type:'control'}, {name:'control.CODUADRT', type:'control'}, {name:'control.CORRECAO', type:'control'}, {name:'control.SW_CASENUMPOC', type:'control'}, {name:'control.CDIMPOSTO', type:'control'}, {name:'control.NUMAPPRETRIES', type:'control'}, {name:'control.SW_HOSTNAME', type:'control'}, {name:'control.NRSUBPRO', type:'control'}, {name:'control.INSTANCIA', type:'control'}, {name:'control.CNTINSTANCIASUF', type:'control'}, {name:'control.HORAFINAL', type:'control'}, {name:'control.STSPRMSF', type:'control'}, {name:'control.TIPODILIGENCIA', type:'control'}, {name:'control.STATUSPRJ', type:'control'}, {name:'control.PRAZORETIRADAVI', type:'control'}, {name:'control.RECAPIT', type:'control'}, {name:'control.INDICESUBDIN', type:'control'}, {name:'control.EXISTENOTIFICAC', type:'control'}, {name:'control.POSICAOFIM', type:'control'}, {name:'control.POSICAOINICIO', type:'control'}, {name:'control.DILIGENCIA', type:'control'}, {name:'control.SFPECA4', type:'control'}, {name:'control.FLAGCONTRARAZAO', type:'control'}, {name:'control.DILIGENCIADESTI', type:'control'}, {name:'control.TEMPORESPOSTA', type:'control'}, {name:'control.DATAENCPREPNOT', type:'control'}, {name:'control.ANULACAODTJ', type:'control'}, {name:'control.INDRESPPRM', type:'control'}, {name:'control.STATUS_CODE', type:'control'}, {name:'control.NOVOMODELO', type:'control'}, {name:'control.SW_MAINCASE', type:'control'}, {name:'control.COORDENADOR', type:'control'}, {name:'control.CNTPECA3', type:'control'}, {name:'control.STSPETICAO', type:'control'}, {name:'control.AUX', type:'control'}, {name:'control.CODMUNICIPIO', type:'control'}, {name:'control.EXCLUSAOSOLIDAR', type:'control'}, {name:'control.PRAZOVISTA', type:'control'}, {name:'control.CODUADTJ', type:'control'}, {name:'control.FLAGRETIRATE', type:'control'}, {name:'control.SW_CASEDESC', type:'control'}, {name:'control.STERRORCODE', type:'control'}, {name:'control.INTIMACAOCOUNT', type:'control'}, {name:'control.SW_MAINCASEPOC', type:'control'}, {name:'control.SITUACAOCARREGA', type:'control'}, {name:'control.IDSINTIMADOS', type:'control'}, {name:'control.VOLTARSEGINSTAN', type:'control'}, {name:'control.FLAGCRZ', type:'control'}, {name:'control.QTDINTIMADOS', type:'control'}, {name:'control.DATETIME', type:'control'}, {name:'control.FLGALC', type:'control'}, {name:'control.NR_AIIM', type:'control'}, {name:'control.IDDECISAODEBITO', type:'control'}, {name:'control.IDDECISAOAIIM', type:'control'}, {name:'control.PARTICIPANTE', type:'control'}],
+	rootPaneRefs:[{name:'pane.root', type:'pane'}, {name:'pane.toolbar', type:'pane'}, {name:'pane.messages', type:'pane'}],
+	control:[{name:'control.DOCCONTROL', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.DOCCONTROL', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DOCCONTROL', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DOCCONTROL__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SFPECA3', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SFPECA3', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SFPECA3', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SFPECA3__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SFDIASREPRESENT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SFDIASREPRESENT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SFDIASREPRESENT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SFDIASREPRESENT__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CNTPECA2', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.CNTPECA2', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CNTPECA2', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CNTPECA2__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CNTPECA4', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.CNTPECA4', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CNTPECA4', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CNTPECA4__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.REGRAINSDOC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.REGRAINSDOC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.REGRAINSDOC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'REGRAINSDOC__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'REGRAINSDOC__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'REGRAINSDOC__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CHEFEUJ', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.CHEFEUJ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.ISAPPERROR', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:1, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.ISAPPERROR', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.ISAPPERROR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'ISAPPERROR__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.HRFIMCQ', componentType:'com.tibco.forms.controls.time', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.HRFIMCQ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.HRFIMCQ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.SW_PARENTPROC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:8, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SW_PARENTPROC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SW_PARENTPROC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_PARENTPROC__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.OUTCOME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.OUTCOME', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.OUTCOME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'OUTCOME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DOCSPERMITIDOS', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.DOCSPERMITIDOS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DOCSPERMITIDOS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DOCSPERMITIDOS__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CTRLIATV', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.CTRLIATV', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CTRLIATV', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.EMAILRELATOR', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:250,
+      bindings: [{sourceFeature:['value'], name:'data.EMAILRELATOR', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.EMAILRELATOR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'EMAILRELATOR__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.ARRAYINT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:true, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.ARRAYINT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.ARRAYINT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'ARRAYINT__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SERVICE_NAME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SERVICE_NAME', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SERVICE_NAME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SERVICE_NAME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.VICIOREPRESENTA', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.VICIOREPRESENTA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.VICIOREPRESENTA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.CTL_RETIRAT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.CTL_RETIRAT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CTL_RETIRAT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CTL_RETIRAT__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDPECASCNT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.IDPECASCNT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDPECASCNT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDPECASCNT__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.LINKIPE', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:255,
+      bindings: [{sourceFeature:['value'], name:'data.LINKIPE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.LINKIPE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'LINKIPE__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDAIIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:12, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.IDAIIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDAIIM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDAIIM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDAIIM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.PRAZORELATO', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.PRAZORELATO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.PRAZORELATO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.QTPECASCNT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.QTPECASCNT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.QTPECASCNT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'QTPECASCNT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'QTPECASCNT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'QTPECASCNT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SFPECA1', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SFPECA1', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SFPECA1', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SFPECA1__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.INTIMACAOCARTA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.INTIMACAOCARTA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INTIMACAOCARTA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'INTIMACAOCARTA__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'INTIMACAOCARTA__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'INTIMACAOCARTA__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DESCREGRA', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:250,
+      bindings: [{sourceFeature:['value'], name:'data.DESCREGRA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DESCREGRA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DESCREGRA__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.RESPOSTACQ', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.RESPOSTACQ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.RESPOSTACQ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'RESPOSTACQ__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NR_RATORIG', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:12, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.NR_RATORIG', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NR_RATORIG', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NR_RATORIG__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'NR_RATORIG__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'NR_RATORIG__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CD_DRT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:9, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.CD_DRT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CD_DRT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CD_DRT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CD_DRT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CD_DRT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STSADMTITCNT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.STSADMTITCNT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STSADMTITCNT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSADMTITCNT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSADMTITCNT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CODMUNAIIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:9, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.CODMUNAIIM', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CODMUNAIIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CODMUNAIIM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CODMUNAIIM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CODMUNAIIM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDTIPOIMPUGNACA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.IDTIPOIMPUGNACA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDTIPOIMPUGNACA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDTIPOIMPUGNACA__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.EMAILVISTAS', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:255,
+      bindings: [{sourceFeature:['value'], name:'data.EMAILVISTAS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.EMAILVISTAS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'EMAILVISTAS__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DTPUBLICACAODE', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.DTPUBLICACAODE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DTPUBLICACAODE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.DEFESAADMITIDA', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.DEFESAADMITIDA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DEFESAADMITIDA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.BCCRELATORIO', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:150,
+      bindings: [{sourceFeature:['value'], name:'data.BCCRELATORIO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.BCCRELATORIO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'BCCRELATORIO__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CRCONTRIBUINTE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.CRCONTRIBUINTE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CRCONTRIBUINTE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CRCONTRIBUINTE__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CRCONTRIBUINTE__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CRCONTRIBUINTE__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDAIIMORIGINAL', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:12, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.IDAIIMORIGINAL', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDAIIMORIGINAL', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDAIIMORIGINAL__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDAIIMORIGINAL__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDAIIMORIGINAL__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NOTIFICACAO', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [{sourceFeature:['value'], name:'data.NOTIFICACAO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NOTIFICACAO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.ORIGEM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:5, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.ORIGEM', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.ORIGEM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'ORIGEM__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDPECASSF', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.IDPECASSF', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDPECASSF', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDPECASSF__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.ISTECHERROR', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:1, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.ISTECHERROR', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.ISTECHERROR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'ISTECHERROR__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.FIMSTRING', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.FIMSTRING', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.FIMSTRING', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'FIMSTRING__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'FIMSTRING__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'FIMSTRING__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.VRAIIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:20, propSetTextBoxBaseMaxLen:17, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_decimal_3'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.VRAIIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'VRAIIM__fixed', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DEAT0050', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:true, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:8, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.DEAT0050', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DEAT0050', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DEAT0050__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DAYSOVER', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.DAYSOVER', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DAYSOVER', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DAYSOVER__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'DAYSOVER__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'DAYSOVER__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DOCSREQUERIDOS', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.DOCSREQUERIDOS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DOCSREQUERIDOS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DOCSREQUERIDOS__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.RECURSOOFICIO', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.RECURSOOFICIO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.AFR', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [{sourceFeature:['value'], name:'data.AFR', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.AFR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.STERRORDESC', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:100,
+      bindings: [{sourceFeature:['value'], name:'data.STERRORDESC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STERRORDESC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STERRORDESC__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.cancel', componentType:'com.tibco.forms.controls.button', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetButtonType:'peripheral'
+,
+      bindings: [], reverseBindings: [],
+      rules: [{name:'cancel',trigger:'select'}]      , validations: []}
+,{name:'control.PROCESS_ID', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:35, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.PROCESS_ID', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.PROCESS_ID', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'PROCESS_ID__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SFPECA2', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SFPECA2', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SFPECA2', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SFPECA2__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DTCIENCIA', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.DTCIENCIA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DTCIENCIA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.TROCATPNOTIFICA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.TROCATPNOTIFICA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.TROCATPNOTIFICA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'TROCATPNOTIFICA__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'TROCATPNOTIFICA__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'TROCATPNOTIFICA__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CRCASA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.CRCASA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CRCASA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CRCASA__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CRCASA__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CRCASA__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.submit', componentType:'com.tibco.forms.controls.button', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetButtonType:'primary'
+,
+      bindings: [], reverseBindings: [],
+      rules: [{name:'submit',trigger:'select'}]      , validations: []}
+,{name:'control.STSADMTITDRF', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.STSADMTITDRF', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STSADMTITDRF__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSADMTITDRF__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSADMTITDRF__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_CASENUM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:20, propSetTextBoxBaseMaxLen:16, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.SW_CASENUM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_CASENUM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_CASENUM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_CASENUM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NRAIIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:12, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.NRAIIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NRAIIM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'NRAIIM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'NRAIIM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_MAINPROC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:8, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SW_MAINPROC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SW_MAINPROC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_MAINPROC__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DTFIMCQ', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.DTFIMCQ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DTFIMCQ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.IDMOTIVOINTIMAC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.IDMOTIVOINTIMAC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDMOTIVOINTIMAC__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDMOTIVOINTIMAC__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDMOTIVOINTIMAC__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CODTEXTO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:4, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.CODTEXTO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CODTEXTO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CODTEXTO__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CCRELATORIO', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:150,
+      bindings: [{sourceFeature:['value'], name:'data.CCRELATORIO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CCRELATORIO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CCRELATORIO__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STSRESPCNT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.STSRESPCNT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STSRESPCNT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STSRESPCNT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSRESPCNT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSRESPCNT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDPROCESSO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.IDPROCESSO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDPROCESSO__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDPROCESSO__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDPROCESSO__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NR_RAT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:12, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.NR_RAT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NR_RAT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NR_RAT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'NR_RAT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'NR_RAT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.FORMACORRECAO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:25, propSetTextBoxBaseMaxLen:20, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.FORMACORRECAO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.FORMACORRECAO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'FORMACORRECAO__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.close', componentType:'com.tibco.forms.controls.button', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetButtonType:'peripheral'
+,
+      bindings: [], reverseBindings: [],
+      rules: [{name:'close',trigger:'select'}]      , validations: []}
+,{name:'control.INTIMACAODE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.INTIMACAODE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INTIMACAODE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'INTIMACAODE__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'INTIMACAODE__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'INTIMACAODE__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STSRESPSF', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.STSRESPSF', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STSRESPSF', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STSRESPSF__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSRESPSF__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSRESPSF__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.TIPOVISTAS', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.TIPOVISTAS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.TIPOVISTAS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'TIPOVISTAS__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_PARENTCASE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.SW_PARENTCASE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SW_PARENTCASE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_PARENTCASE__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_PARENTCASE__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_PARENTCASE__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STATUSRECURSOS', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.STATUSRECURSOS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STATUSRECURSOS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STATUSRECURSOS__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STATUSRECURSOS__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STATUSRECURSOS__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DUMP', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [{sourceFeature:['value'], name:'data.DUMP', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DUMP', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.INDNAORECORRER', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.INDNAORECORRER', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INDNAORECORRER', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.CNTPECA1', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.CNTPECA1', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CNTPECA1', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CNTPECA1__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.QTPECASSEFAZ', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.QTPECASSEFAZ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.QTPECASSEFAZ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'QTPECASSEFAZ__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'QTPECASSEFAZ__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'QTPECASSEFAZ__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.MAXRETRIES', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.MAXRETRIES', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.MAXRETRIES', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'MAXRETRIES__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'MAXRETRIES__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'MAXRETRIES__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NOMEETAPA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:8, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.NOMEETAPA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NOMEETAPA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NOMEETAPA__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CODUADRT', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.CODUADRT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.CORRECAO', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.CORRECAO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CORRECAO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.SW_CASENUMPOC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:20, propSetTextBoxBaseMaxLen:16, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.SW_CASENUMPOC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_CASENUMPOC__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_CASENUMPOC__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_CASENUMPOC__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CDIMPOSTO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.CDIMPOSTO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CDIMPOSTO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CDIMPOSTO__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CDIMPOSTO__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CDIMPOSTO__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NUMAPPRETRIES', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.NUMAPPRETRIES', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NUMAPPRETRIES', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NUMAPPRETRIES__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'NUMAPPRETRIES__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'NUMAPPRETRIES__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_HOSTNAME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:25, propSetTextBoxBaseMaxLen:24, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.SW_HOSTNAME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_HOSTNAME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NRSUBPRO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:true, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.NRSUBPRO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NRSUBPRO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NRSUBPRO__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.INSTANCIA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.INSTANCIA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INSTANCIA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'INSTANCIA__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'INSTANCIA__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'INSTANCIA__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CNTINSTANCIASUF', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.CNTINSTANCIASUF', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CNTINSTANCIASUF', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CNTINSTANCIASUF__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CNTINSTANCIASUF__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CNTINSTANCIASUF__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.HORAFINAL', componentType:'com.tibco.forms.controls.datetime', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.HORAFINAL', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.HORAFINAL', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.STSPRMSF', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.STSPRMSF', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STSPRMSF', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STSPRMSF__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSPRMSF__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSPRMSF__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.TIPODILIGENCIA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:6, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.TIPODILIGENCIA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.TIPODILIGENCIA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'TIPODILIGENCIA__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STATUSPRJ', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.STATUSPRJ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STATUSPRJ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STATUSPRJ__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STATUSPRJ__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STATUSPRJ__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.PRAZORETIRADAVI', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.PRAZORETIRADAVI', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.PRAZORETIRADAVI', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.RECAPIT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.RECAPIT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.RECAPIT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'RECAPIT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'RECAPIT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'RECAPIT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.INDICESUBDIN', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.INDICESUBDIN', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INDICESUBDIN', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'INDICESUBDIN__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'INDICESUBDIN__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'INDICESUBDIN__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.EXISTENOTIFICAC', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.EXISTENOTIFICAC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.EXISTENOTIFICAC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.POSICAOFIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.POSICAOFIM', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.POSICAOFIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'POSICAOFIM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'POSICAOFIM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'POSICAOFIM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.POSICAOINICIO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.POSICAOINICIO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.POSICAOINICIO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'POSICAOINICIO__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'POSICAOINICIO__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'POSICAOINICIO__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DILIGENCIA', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.DILIGENCIA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.SFPECA4', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SFPECA4', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SFPECA4', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SFPECA4__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.FLAGCONTRARAZAO', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.FLAGCONTRARAZAO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.FLAGCONTRARAZAO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.DILIGENCIADESTI', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:25, propSetTextBoxBaseMaxLen:20, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.DILIGENCIADESTI', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DILIGENCIADESTI__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.TEMPORESPOSTA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.TEMPORESPOSTA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.TEMPORESPOSTA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'TEMPORESPOSTA__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DATAENCPREPNOT', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.DATAENCPREPNOT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DATAENCPREPNOT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.ANULACAODTJ', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.ANULACAODTJ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.INDRESPPRM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.INDRESPPRM', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INDRESPPRM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'INDRESPPRM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'INDRESPPRM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'INDRESPPRM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STATUS_CODE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.STATUS_CODE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STATUS_CODE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STATUS_CODE__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.NOVOMODELO', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.NOVOMODELO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NOVOMODELO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.SW_MAINCASE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.SW_MAINCASE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SW_MAINCASE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_MAINCASE__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_MAINCASE__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_MAINCASE__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.COORDENADOR', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [{sourceFeature:['value'], name:'data.COORDENADOR', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.COORDENADOR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.CNTPECA3', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.CNTPECA3', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CNTPECA3', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CNTPECA3__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STSPETICAO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:3, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.STSPETICAO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STSPETICAO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STSPETICAO__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSPETICAO__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'STSPETICAO__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.AUX', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:255,
+      bindings: [{sourceFeature:['value'], name:'data.AUX', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.AUX', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'AUX__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.CODMUNICIPIO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:9, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.CODMUNICIPIO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'CODMUNICIPIO__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'CODMUNICIPIO__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'CODMUNICIPIO__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.EXCLUSAOSOLIDAR', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.EXCLUSAOSOLIDAR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.PRAZOVISTA', componentType:'com.tibco.forms.controls.date', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0,
+      bindings: [{sourceFeature:['value'], name:'data.PRAZOVISTA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.PRAZOVISTA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.CODUADTJ', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [{sourceFeature:['value'], name:'data.CODUADTJ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.CODUADTJ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.FLAGRETIRATE', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.FLAGRETIRATE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.FLAGRETIRATE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.SW_CASEDESC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:25, propSetTextBoxBaseMaxLen:24, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SW_CASEDESC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SW_CASEDESC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_CASEDESC__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STERRORCODE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.STERRORCODE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.STERRORCODE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STERRORCODE__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.INTIMACAOCOUNT', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.INTIMACAOCOUNT', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.INTIMACAOCOUNT', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'INTIMACAOCOUNT__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'INTIMACAOCOUNT__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'INTIMACAOCOUNT__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_MAINCASEPOC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.SW_MAINCASEPOC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SW_MAINCASEPOC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_MAINCASEPOC__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_MAINCASEPOC__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_MAINCASEPOC__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SITUACAOCARREGA', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.SITUACAOCARREGA', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.SITUACAOCARREGA', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SITUACAOCARREGA__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDSINTIMADOS', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:250,
+      bindings: [{sourceFeature:['value'], name:'data.IDSINTIMADOS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDSINTIMADOS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDSINTIMADOS__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.VOLTARSEGINSTAN', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.VOLTARSEGINSTAN', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.VOLTARSEGINSTAN', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'VOLTARSEGINSTAN__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'VOLTARSEGINSTAN__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'VOLTARSEGINSTAN__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.FLAGCRZ', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:['false'], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.FLAGCRZ', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.FLAGCRZ', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.QTDINTIMADOS', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.QTDINTIMADOS', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.QTDINTIMADOS', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'QTDINTIMADOS__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'QTDINTIMADOS__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'QTDINTIMADOS__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DATETIME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.DATETIME', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.DATETIME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DATETIME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.FLGALC', componentType:'com.tibco.forms.controls.checkbox', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  , 
+      bindings: [{sourceFeature:['value'], name:'data.FLGALC', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.FLGALC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.NR_AIIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:12, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.NR_AIIM', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.NR_AIIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'NR_AIIM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'NR_AIIM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'NR_AIIM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDDECISAODEBITO', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.IDDECISAODEBITO', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDDECISAODEBITO', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDDECISAODEBITO__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDDECISAODEBITO__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDDECISAODEBITO__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.IDDECISAOAIIM', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:2, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [{sourceFeature:['value'], name:'data.IDDECISAOAIIM', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.IDDECISAOAIIM', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'IDDECISAOAIIM__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDDECISAOAIIM__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'IDDECISAOAIIM__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.PARTICIPANTE', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [{sourceFeature:['value'], name:'data.PARTICIPANTE', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.PARTICIPANTE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+],
+	pane:[{name:'pane.root', componentType:'com.tibco.forms.panes.vertical', type:'pane', labelRef:'', hintRef:'', enabled:true, visible:true		, labelPosition:'left'
+		, styleName:''
+		, dataType: ''
+		, concreteClassifierLabels: []
+		, concreteClassifierNames: []
+		, 
+      bindings: [], reverseBindings: [],
+      rules: [],
+      children:[{name:'control.IDAIIM', type:'control'}
+, {name:'control.NRAIIM', type:'control'}
+, {name:'control.IDPROCESSO', type:'control'}
+, {name:'control.EMAILVISTAS', type:'control'}
+, {name:'control.CNTPECA2', type:'control'}
+, {name:'control.TIPODILIGENCIA', type:'control'}
+, {name:'control.STSRESPSF', type:'control'}
+, {name:'control.STSADMTITDRF', type:'control'}
+, {name:'control.QTPECASCNT', type:'control'}
+, {name:'control.IDTIPOIMPUGNACA', type:'control'}
+, {name:'control.SFPECA1', type:'control'}
+, {name:'control.STSRESPCNT', type:'control'}
+, {name:'control.FLAGCONTRARAZAO', type:'control'}
+, {name:'control.EXCLUSAOSOLIDAR', type:'control'}
+, {name:'control.INDNAORECORRER', type:'control'}
+, {name:'control.DESCREGRA', type:'control'}
+, {name:'control.IDMOTIVOINTIMAC', type:'control'}
+, {name:'control.SFDIASREPRESENT', type:'control'}
+, {name:'control.CODTEXTO', type:'control'}
+, {name:'control.RECURSOOFICIO', type:'control'}
+, {name:'control.QTPECASSEFAZ', type:'control'}
+, {name:'control.FLGALC', type:'control'}
+, {name:'control.VICIOREPRESENTA', type:'control'}
+, {name:'control.CNTPECA3', type:'control'}
+, {name:'control.SFPECA2', type:'control'}
+, {name:'control.IDDECISAODEBITO', type:'control'}
+, {name:'control.STSPETICAO', type:'control'}
+, {name:'control.DILIGENCIA', type:'control'}
+, {name:'control.DEFESAADMITIDA', type:'control'}
+, {name:'control.IDDECISAOAIIM', type:'control'}
+, {name:'control.ANULACAODTJ', type:'control'}
+, {name:'control.RECAPIT', type:'control'}
+, {name:'control.ORIGEM', type:'control'}
+, {name:'control.CNTPECA4', type:'control'}
+, {name:'control.STATUSRECURSOS', type:'control'}
+, {name:'control.INDRESPPRM', type:'control'}
+, {name:'control.CNTPECA1', type:'control'}
+, {name:'control.TEMPORESPOSTA', type:'control'}
+, {name:'control.INSTANCIA', type:'control'}
+, {name:'control.STSADMTITCNT', type:'control'}
+, {name:'control.VRAIIM', type:'control'}
+, {name:'control.SFPECA4', type:'control'}
+, {name:'control.STATUSPRJ', type:'control'}
+, {name:'control.DILIGENCIADESTI', type:'control'}
+, {name:'control.STSPRMSF', type:'control'}
+, {name:'control.INTIMACAOCOUNT', type:'control'}
+, {name:'control.SFPECA3', type:'control'}
+, {name:'control.CHEFEUJ', type:'control'}
+, {name:'control.CRCASA', type:'control'}
+, {name:'control.CODMUNICIPIO', type:'control'}
+, {name:'control.NR_RATORIG', type:'control'}
+, {name:'control.DOCCONTROL', type:'control'}
+, {name:'control.DTCIENCIA', type:'control'}
+, {name:'control.CRCONTRIBUINTE', type:'control'}
+, {name:'control.IDSINTIMADOS', type:'control'}
+, {name:'control.CODUADTJ', type:'control'}
+, {name:'control.QTDINTIMADOS', type:'control'}
+, {name:'control.CODUADRT', type:'control'}
+, {name:'control.DEAT0050', type:'control'}
+, {name:'control.EXISTENOTIFICAC', type:'control'}
+, {name:'control.TROCATPNOTIFICA', type:'control'}
+, {name:'control.FLAGRETIRATE', type:'control'}
+, {name:'control.BCCRELATORIO', type:'control'}
+, {name:'control.PRAZORETIRADAVI', type:'control'}
+, {name:'control.VOLTARSEGINSTAN', type:'control'}
+, {name:'control.TIPOVISTAS', type:'control'}
+, {name:'control.HORAFINAL', type:'control'}
+, {name:'control.PRAZOVISTA', type:'control'}
+, {name:'control.FLAGCRZ', type:'control'}
+, {name:'control.SW_CASENUMPOC', type:'control'}
+, {name:'control.NR_AIIM', type:'control'}
+, {name:'control.SW_MAINCASEPOC', type:'control'}
+, {name:'control.CNTINSTANCIASUF', type:'control'}
+, {name:'control.AFR', type:'control'}
+, {name:'control.CDIMPOSTO', type:'control'}
+, {name:'control.SITUACAOCARREGA', type:'control'}
+, {name:'control.DOCSREQUERIDOS', type:'control'}
+, {name:'control.NR_RAT', type:'control'}
+, {name:'control.DOCSPERMITIDOS', type:'control'}
+, {name:'control.REGRAINSDOC', type:'control'}
+, {name:'control.SW_CASEDESC', type:'control'}
+, {name:'control.CODMUNAIIM', type:'control'}
+, {name:'control.CD_DRT', type:'control'}
+, {name:'control.FORMACORRECAO', type:'control'}
+, {name:'control.CTL_RETIRAT', type:'control'}
+, {name:'control.NOMEETAPA', type:'control'}
+, {name:'control.RESPOSTACQ', type:'control'}
+, {name:'control.LINKIPE', type:'control'}
+, {name:'control.DAYSOVER', type:'control'}
+, {name:'control.DTFIMCQ', type:'control'}
+, {name:'control.HRFIMCQ', type:'control'}
+, {name:'control.COORDENADOR', type:'control'}
+, {name:'control.CORRECAO', type:'control'}
+, {name:'control.NOTIFICACAO', type:'control'}
+, {name:'control.PRAZORELATO', type:'control'}
+, {name:'control.EMAILRELATOR', type:'control'}
+, {name:'control.CCRELATORIO', type:'control'}
+, {name:'control.NRSUBPRO', type:'control'}
+, {name:'control.ARRAYINT', type:'control'}
+, {name:'control.INTIMACAOCARTA', type:'control'}
+, {name:'control.DTPUBLICACAODE', type:'control'}
+, {name:'control.INTIMACAODE', type:'control'}
+, {name:'control.NOVOMODELO', type:'control'}
+, {name:'control.INDICESUBDIN', type:'control'}
+, {name:'control.CTRLIATV', type:'control'}
+, {name:'control.AUX', type:'control'}
+, {name:'control.POSICAOINICIO', type:'control'}
+, {name:'control.IDPECASSF', type:'control'}
+, {name:'control.IDPECASCNT', type:'control'}
+, {name:'control.FIMSTRING', type:'control'}
+, {name:'control.POSICAOFIM', type:'control'}
+, {name:'control.DATAENCPREPNOT', type:'control'}
+, {name:'control.IDAIIMORIGINAL', type:'control'}
+, {name:'control.SW_PARENTPROC', type:'control'}
+, {name:'control.SW_CASENUM', type:'control'}
+, {name:'control.SW_PARENTCASE', type:'control'}
+, {name:'control.SW_HOSTNAME', type:'control'}
+, {name:'control.SW_MAINCASE', type:'control'}
+, {name:'control.ISAPPERROR', type:'control'}
+, {name:'control.SW_MAINPROC', type:'control'}
+, {name:'control.MAXRETRIES', type:'control'}
+, {name:'control.ISTECHERROR', type:'control'}
+, {name:'control.STATUS_CODE', type:'control'}
+, {name:'control.DATETIME', type:'control'}
+, {name:'control.OUTCOME', type:'control'}
+, {name:'control.DUMP', type:'control'}
+, {name:'control.STERRORDESC', type:'control'}
+, {name:'control.NUMAPPRETRIES', type:'control'}
+, {name:'control.PROCESS_ID', type:'control'}
+, {name:'control.STERRORCODE', type:'control'}
+, {name:'control.SERVICE_NAME', type:'control'}
+, {name:'control.PARTICIPANTE', type:'control'}
+]
+}
+, {name:'pane.toolbar', componentType:'com.tibco.forms.panes.horizontal', type:'pane', labelRef:'', hintRef:'', enabled:true, visible:true		, labelPosition:'left'
+		, styleName:'toolbar'
+		, dataType: ''
+		, concreteClassifierLabels: []
+		, concreteClassifierNames: []
+		, 
+      bindings: [], reverseBindings: [],
+      rules: [],
+      children:[{name:'control.cancel', type:'control'}
+, {name:'control.close', type:'control'}
+, {name:'control.submit', type:'control'}
+]
+}
+, {name:'pane.messages', componentType:'com.tibco.forms.panes.messages', type:'pane', labelRef:'', hintRef:'', enabled:true, visible:true		, labelPosition:'top'
+		, styleName:''
+		, dataType: ''
+		, concreteClassifierLabels: []
+		, concreteClassifierNames: []
+		, 
+      bindings: [], reverseBindings: [],
+      rules: [],
+      children:[]
+}
+
+]
+}

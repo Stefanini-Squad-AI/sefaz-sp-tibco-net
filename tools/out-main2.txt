@@ -1,0 +1,122 @@
+
+################ PROCESS POC_Epat-Process  [Name=POC_EpatProcess Id=_rPoioFp]
+  ---- MAIN ----
+  * NODES:
+      Início <_tO_yWVp>                                    START:None   [lane:FluxoPOC]
+      Inicia Graft Step <_0XWagFq>                         INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoGraftStep]
+      Aguardar evento de Notificacao do AIIM <_0XWagVq>    SUBFLOW->_jbIH91qjEfG5K7mY0I3I6w   [lane:ValidaoGraftStep]
+      Iniciar Aguardar Notificacao <_0XWaglq>              TASKRECEIVE   [lane:ValidaoGraftStep]
+      Trocar Notificação? <_0XWahFq>                       GATEWAY:Exclusive   [lane:ValidaoGraftStep]
+      Flag Retirati True GS <_0XWahVq>                     TASKSCRIPT   [lane:ValidaoGraftStep]
+      FimDRF <_CtQ66Fq>                                    INTERMEDIATE:Signal signal(name=fimDRF,catchThrow=THROW)   [lane:ValidaoParalelos]
+      Mista <_CtQ66Vq>                                     INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ66lq>                                 END:None   [lane:ValidaoParalelos]
+      Fim Vista Mista <_CtQ67Fq>                           INTERMEDIATE:Signal signal(name=Signal4,catchThrow=CATCH) attachedTo=_CtQ68lq   [lane:ValidaoParalelos]
+      Vistas Mista ? <_CtQ68Fq>                            GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ68Vq>                                 GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      Pedido de Vistas <_CtQ68lq>                          TASKRECEIVE   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ69Fq>                                 GATEWAY:Parallel   [lane:ValidaoParalelos]
+      Busca Emails <_CtQ691q>                              SUBFLOW->_qIDuk16BEfGBBLgT-R5iuw   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ6-lq>                                 GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      Vistas do Juiz <_CtQ6-1q>                            TASKRECEIVE   [lane:ValidaoParalelos]
+      Vistas Mista ? <_CtQ6_Vq>                            GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ6_1q>                                 INTERMEDIATE:Timer attachedTo=_CtQ6-1q   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ7AFq>                                 GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      VoltaAgenda <_CtQ7AVq>                               TASKSCRIPT   [lane:ValidaoParalelos]
+      Tipo de Vista Mista? <_CtQ7Alq>                      GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ7A1q>                                 INTERMEDIATE:Timer attachedTo=_CtQ68lq   [lane:ValidaoParalelos]
+      Vistas do Juiz ? <_CtQ7BFq>                          GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ7BVq>                                 GATEWAY:Parallel   [lane:ValidaoParalelos]
+      Validação Paralelos <_Ei94AFq>                       INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoParalelos]
+      Realizar Atividade Vista Mista <_tbOD4Fq>            TASKUSER   [lane:ValidaoParalelos]
+      Mista <_xAIVElq>                                     INTERMEDIATE:Link link(name=_CtQ66VqPEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:ValidaoParalelos]
+      Fim Vista Mista <_InbWgFq>                           INTERMEDIATE:Signal signal(name=Signal4,catchThrow=THROW)   [lane:ValidaoParalelos]
+      Catch Signal Event <_WvTQIFq>                        INTERMEDIATE:Signal signal(name=fimDRF,catchThrow=CATCH) attachedTo=_tbOD4Fq   [lane:ValidaoParalelos]
+      Fim de Prazo <_Xw86Ylq>                              END:None   [lane:ValidaoParalelos]
+      Verificar Anulacao <_CI6lx1q>                        TASKSCRIPT   [lane:ValidaoDecisions]
+      Prepara Intimação <_CI6lyFq>                         SUBFLOW->_KEwC3F6EEfGBBLgT-R5iuw   [lane:ValidaoDecisions]
+      Iniciar Decisions <_CI6l0Vq>                         INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoDecisions]
+      Finalizar AIIM <_xWNLe1q>                            TASKUSER   [lane:FluxoPOC]
+      (unnamed) <_Faq_Q1q>                                 END:None   [lane:FluxoPOC]
+      (unnamed) <_Faq_RFq>                                 GATEWAY:Parallel   [lane:FluxoPOC]
+      Inicia Graft Step <_Faq_RVq>                         INTERMEDIATE:Link link(name=_0XWagFqNEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:FluxoPOC]
+      Existe Notificação? <_IxqJMlq>                       GATEWAY:Exclusive   [lane:FluxoPOC]
+      Fim de Prazo Mantendo Atividade <_XWivFlq>           INTERMEDIATE:Timer attachedTo=_sfwu-Vq   [lane:FluxoPOC]
+      Set Nome Etapa 2 <_XWivF1q>                          TASKSCRIPT   [lane:FluxoPOC]
+      Corrigir? <_sJqYklq>                                 GATEWAY:Exclusive   [lane:FluxoPOC]
+      Corrigir Fechamento <_tN6q4lq>                       INTERMEDIATE:Link link(name=_5E444FqTEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:FluxoPOC]
+      Corrigir Fechamento <_5E444Fq>                       INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:FluxoPOC]
+      Email CQ Fechamento <_O-rPp1q>                       TASKSERVICE   [lane:FluxoPOC]
+      Fim E-mail <_RqXZ0lq>                                END:None   [lane:FluxoPOC]
+      Preparar Notificacao <_sfwu-Vq>                      TASKUSER   [lane:FluxoPOC]
+      Iniciar Decisions <_LeuhgFq>                         INTERMEDIATE:Link link(name=_CI6l0VqREfG5K7mY0I3I6w,catchThrow=THROW)   [lane:ValidaoGraftStep]
+      Verificar Retorno Decisions <_30jAcFq>               TASKUSER   [lane:ValidaoDecisions]
+      Validar Paralelos <_89MVQlq>                         INTERMEDIATE:Link link(name=_Ei94AFqPEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:ValidaoDecisions]
+      Fim <_H22mclq>                                       END:None   [lane:ValidaoParalelos]
+      Email Limite Rel 1 <_6WNq-lq>                        TASKSERVICE   [lane:ValidaoDecisions]
+      Define Destinatarios <_G4hU81q>                      TASKSCRIPT   [lane:ValidaoDecisions]
+      Encerra e retira <_T4Ma8Fq>                          INTERMEDIATE:Timer attachedTo=_sfwu-Vq   [lane:FluxoPOC]
+      End Event <_UiYAYFq>                                 END:None   [lane:FluxoPOC]
+      Controlar Intimados <_nQntZ16>                       SUBFLOW->_BAx4zV6KEfGBBLgT-R5iuw   [lane:ValidaoParalelos]
+      prepSub <_zE3XeV6>                                   TASKSCRIPT   [lane:ValidaoParalelos]
+      Criar Notificacao <_BQIgAF9>                         SUBFLOW->_NcJJ4F9KEfGqPfX31TKC3w   [lane:FluxoPOC]
+      (unnamed) <_O7K3MF9>                                 END:None   [lane:FluxoPOC]
+      Iniciar Novo Graft <_OAgPol9>                        TASKRECEIVE   [lane:FluxoPOC]
+  * FLOWS:
+      Início <_tO_yWVp>                                    --[]--> Finalizar AIIM <_xWNLe1q>
+      Flag Retirati True GS <_0XWahVq>                     --[]--> Aguardar evento de Notificacao do AIIM <_0XWagVq>
+      Inicia Graft Step <_0XWagFq>                         --[]--> Flag Retirati True GS <_0XWahVq>
+      Iniciar Aguardar Notificacao <_0XWaglq>              --[]--> Flag Retirati True GS <_0XWahVq>
+      Trocar Notificação? <_0XWahFq>                       --[Sim | CONDITION | TROCATPNOTIFICA == 1;]--> Flag Retirati True GS <_0XWahVq>
+      Aguardar evento de Notificacao do AIIM <_0XWagVq>    --[]--> Trocar Notificação? <_0XWahFq>
+      Trocar Notificação? <_0XWahFq>                       --[No | OTHERWISE]--> Iniciar Decisions <_LeuhgFq>
+      (unnamed) <_CtQ7A1q>                                 --[]--> FimDRF <_CtQ66Fq>
+      (unnamed) <_CtQ7BVq>                                 --[]--> Pedido de Vistas <_CtQ68lq>
+      FimDRF <_CtQ66Fq>                                    --[]--> Busca Emails <_CtQ691q>
+      Pedido de Vistas <_CtQ68lq>                          --[]--> Vistas Mista ? <_CtQ68Fq>
+      Tipo de Vista Mista? <_CtQ7Alq>                      --[No | OTHERWISE]--> (unnamed) <_CtQ6-lq>
+      Mista <_CtQ66Vq>                                     --[]--> (unnamed) <_CtQ68Vq>
+      Vistas do Juiz ? <_CtQ7BFq>                          --[CONDITION | TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;]--> Vistas do Juiz <_CtQ6-1q>
+      (unnamed) <_CtQ6_1q>                                 --[]--> Busca Emails <_CtQ691q>
+      Vistas Mista ? <_CtQ6_Vq>                            --[OTHERWISE]--> (unnamed) <_CtQ6-lq>
+      Vistas do Juiz ? <_CtQ7BFq>                          --[DRF | OTHERWISE]--> (unnamed) <_CtQ7BVq>
+      Vistas do Juiz <_CtQ6-1q>                            --[]--> Vistas Mista ? <_CtQ6_Vq>
+      Vistas Mista ? <_CtQ68Fq>                            --[OTHERWISE]--> (unnamed) <_CtQ6-lq>
+      (unnamed) <_CtQ68Vq>                                 --[]--> (unnamed) <_CtQ69Fq>
+      (unnamed) <_CtQ7AFq>                                 --[]--> (unnamed) <_CtQ69Fq>
+      (unnamed) <_CtQ69Fq>                                 --[]--> (unnamed) <_CtQ6-lq>
+      Vistas Mista ? <_CtQ6_Vq>                            --[CONDITION | TIPOVISTAS=='MISTA';]--> (unnamed) <_CtQ7AFq>
+      Vistas Mista ? <_CtQ68Fq>                            --[CONDITION | TIPOVISTAS=='MISTA';]--> (unnamed) <_CtQ68Vq>
+      Busca Emails <_CtQ691q>                              --[]--> VoltaAgenda <_CtQ7AVq>
+      Fim Vista Mista <_CtQ67Fq>                           --[]--> (unnamed) <_CtQ66lq>
+      VoltaAgenda <_CtQ7AVq>                               --[]--> Tipo de Vista Mista? <_CtQ7Alq>
+      Tipo de Vista Mista? <_CtQ7Alq>                      --[Sim | CONDITION | TIPOVISTAS == 'MISTA';]--> (unnamed) <_CtQ7AFq>
+      Validação Paralelos <_Ei94AFq>                       --[]--> Vistas do Juiz ? <_CtQ7BFq>
+      (unnamed) <_CtQ7BVq>                                 --[]--> Realizar Atividade Vista Mista <_tbOD4Fq>
+      Fim Vista Mista <_InbWgFq>                           --[]--> Mista <_xAIVElq>
+      Realizar Atividade Vista Mista <_tbOD4Fq>            --[]--> Fim Vista Mista <_InbWgFq>
+      Catch Signal Event <_WvTQIFq>                        --[]--> Fim de Prazo <_Xw86Ylq>
+      Verificar Anulacao <_CI6lx1q>                        --[]--> Prepara Intimação <_CI6lyFq>
+      Iniciar Decisions <_CI6l0Vq>                         --[]--> Verificar Anulacao <_CI6lx1q>
+      Finalizar AIIM <_xWNLe1q>                            --[]--> (unnamed) <_Faq_RFq>
+      (unnamed) <_Faq_RFq>                                 --[]--> Existe Notificação? <_IxqJMlq>
+      Existe Notificação? <_IxqJMlq>                       --[No | OTHERWISE]--> Inicia Graft Step <_Faq_RVq>
+      Existe Notificação? <_IxqJMlq>                       --[Sim | CONDITION | EXISTENOTIFICAC == true;]--> (unnamed) <_Faq_Q1q>
+      Set Nome Etapa 2 <_XWivF1q>                          --[]--> Preparar Notificacao <_sfwu-Vq>
+      (unnamed) <_Faq_RFq>                                 --[]--> Set Nome Etapa 2 <_XWivF1q>
+      Corrigir? <_sJqYklq>                                 --[Sim | CONDITION | CORRECAO == true;]--> Corrigir Fechamento <_tN6q4lq>
+      Corrigir Fechamento <_5E444Fq>                       --[]--> Finalizar AIIM <_xWNLe1q>
+      Fim de Prazo Mantendo Atividade <_XWivFlq>           --[]--> Email CQ Fechamento <_O-rPp1q>
+      Email CQ Fechamento <_O-rPp1q>                       --[]--> Fim E-mail <_RqXZ0lq>
+      Preparar Notificacao <_sfwu-Vq>                      --[]--> Corrigir? <_sJqYklq>
+      Corrigir? <_sJqYklq>                                 --[No | OTHERWISE]--> Criar Notificacao <_BQIgAF9>
+      Prepara Intimação <_CI6lyFq>                         --[]--> Define Destinatarios <_G4hU81q>
+      Verificar Retorno Decisions <_30jAcFq>               --[]--> Validar Paralelos <_89MVQlq>
+      (unnamed) <_CtQ6-lq>                                 --[]--> prepSub <_zE3XeV6>
+      Email Limite Rel 1 <_6WNq-lq>                        --[]--> Verificar Retorno Decisions <_30jAcFq>
+      Define Destinatarios <_G4hU81q>                      --[]--> Email Limite Rel 1 <_6WNq-lq>
+      Encerra e retira <_T4Ma8Fq>                          --[]--> End Event <_UiYAYFq>
+      Controlar Intimados <_nQntZ16>                       --[]--> Fim <_H22mclq>
+      prepSub <_zE3XeV6>                                   --[]--> Controlar Intimados <_nQntZ16>
+      Criar Notificacao <_BQIgAF9>                         --[]--> (unnamed) <_O7K3MF9>
+      Iniciar Novo Graft <_OAgPol9>                        --[]--> Set Nome Etapa 2 <_XWivF1q>

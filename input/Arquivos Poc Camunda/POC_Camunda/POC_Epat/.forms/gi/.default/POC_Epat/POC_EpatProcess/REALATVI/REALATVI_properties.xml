@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- N.B. GENERATED FILE - DO NOT EDIT! CHANGES WILL BE OVERWRITTEN BY THE BUILDER. -->
+<data jsxnamespace="propsbundle" >
+<locale>
+<record jsxid="control.SW_PARENTPROC.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.POSICAOINICIO.validation.POSICAOINICIO__lowerLimit.message" jsxtext="'posicaoInicio' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.INDRESPPRM.validation.INDRESPPRM__length.message" jsxtext="'indRespPRM' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.DEFESAADMITIDA.hint" jsxtext="Identifica se a defesa interposta foi admitida."/>
+<record jsxid="control.HRFIMCQ.label" jsxtext="HRFIMCQ"/>
+<record jsxid="control.QTPECASSEFAZ.hint" jsxtext="Identifica a quantidade de peças da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.MAXRETRIES.hint" jsxtext="numero maximo de tentativas antes que o processo caia em fila de tratamento de excessao"/>
+<record jsxid="control.CDIMPOSTO.validation.CDIMPOSTO__lowerLimit.message" jsxtext="'Código Imposto' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.VOLTARSEGINSTAN.validation.VOLTARSEGINSTAN__length.message" jsxtext="'voltarSegInstancia' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.NR_AIIM.validation.NR_AIIM__length.message" jsxtext="'Número do AIIM' not valid: expecting an integer with no more than 11 digits"/>
+<record jsxid="control.IDPECASCNT.label" jsxtext="idPecasCnt"/>
+<record jsxid="control.FLAGRETIRATE.label" jsxtext="flagretirate"/>
+<record jsxid="control.FLAGRETIRATE.hint" jsxtext="Identifica se há Retirrati."/>
+<record jsxid="control.SW_CASENUM.label" jsxtext="SW_CASENUM"/>
+<record jsxid="control.CODUADTJ.hint" jsxtext="Código da Delegacia Tributária de Julgamento (DTJ)."/>
+<record jsxid="control.CRCONTRIBUINTE.validation.CRCONTRIBUINTE__length.message" jsxtext="'crContribuinte' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.VRAIIM.label" jsxtext="vrAIIM"/>
+<record jsxid="control.NR_RAT.validation.NR_RAT__upperLimit.message" jsxtext="'Versão do AIIM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.RESPOSTACQ.hint" jsxtext="Roteamento do Controle de qualidade:&#xD;&#xA;-&quot;Fechar&quot;;&#xD;&#xA;-&quot;Desistir&quot;;&#xD;&#xA;-&quot;Corrigir&quot;."/>
+<record jsxid="control.ARRAYINT.validation.ARRAYINT__length.message" jsxtext="'arrayIntimados' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.SW_PARENTCASE.validation.SW_PARENTCASE__upperLimit.message" jsxtext="'SW_PARENTCASE' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.VICIOREPRESENTA.label" jsxtext="vicioRepresentacao"/>
+<record jsxid="control.QTPECASCNT.label" jsxtext="qtPecasCNT"/>
+<record jsxid="control.INDICESUBDIN.label" jsxtext="indiceSubDin"/>
+<record jsxid="control.TEMPORESPOSTA.hint" jsxtext="Período em dias para resposta do Contribuinte."/>
+<record jsxid="control.CRCONTRIBUINTE.validation.CRCONTRIBUINTE__upperLimit.message" jsxtext="'crContribuinte' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.DOCCONTROL.label" jsxtext="docControl"/>
+<record jsxid="control.SW_CASEDESC.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.IDDECISAODEBITO.validation.IDDECISAODEBITO__lowerLimit.message" jsxtext="'idDecisaoDebitoFiscal' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.IDPECASSF.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (SF)."/>
+<record jsxid="control.REGRAINSDOC.validation.REGRAINSDOC__lowerLimit.message" jsxtext="'Regra de inserção de documentos' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.INTIMACAOCOUNT.validation.INTIMACAOCOUNT__length.message" jsxtext="'intimacaoCount' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.NR_AIIM.hint" jsxtext="Número do  Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.CNTPECA1.label" jsxtext="cntPeca1"/>
+<record jsxid="control.SW_MAINPROC.validation.SW_MAINPROC__length.message" jsxtext="'SW_MAINPROC' not valid: expecting a value with no more than 8 characters"/>
+<record jsxid="control.STATUSRECURSOS.validation.STATUSRECURSOS__upperLimit.message" jsxtext="'statusRecursos' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.IDMOTIVOINTIMAC.hint" jsxtext="Identifica o motivo da intimação."/>
+<record jsxid="control.IDAIIMORIGINAL.validation.IDAIIMORIGINAL__upperLimit.message" jsxtext="'idAiimOriginal' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.FLAGCONTRARAZAO.label" jsxtext="flagContraRazao"/>
+<record jsxid="control.IDAIIM.validation.IDAIIM__upperLimit.message" jsxtext="'idAIIM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODMUNAIIM.validation.CODMUNAIIM__upperLimit.message" jsxtext="'Código do Município do AIIM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.SW_MAINCASEPOC.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.MAXRETRIES.validation.MAXRETRIES__lowerLimit.message" jsxtext="'MaxRetries' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="pane.messages.label" jsxtext="Invalid Entries"/>
+<record jsxid="control.STSPRMSF.validation.STSPRMSF__lowerLimit.message" jsxtext="'statusPRMFazenda' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.POSICAOFIM.validation.POSICAOFIM__length.message" jsxtext="'posicaoFim' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.RESPOSTACQ.validation.RESPOSTACQ__length.message" jsxtext="'Resposta do Contorle de Qualidade' not valid: expecting a value with no more than 10 characters"/>
+<record jsxid="control.NR_RAT.hint" jsxtext="Versão do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.PRAZOVISTA.label" jsxtext="PrazoVista"/>
+<record jsxid="control.SW_MAINCASE.validation.SW_MAINCASE__length.message" jsxtext="'SW_MAINCASE' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.CNTPECA2.validation.CNTPECA2__length.message" jsxtext="'cntPeca2' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.SW_MAINCASEPOC.label" jsxtext="SW_MAINCASEPOC"/>
+<record jsxid="control.NOMEETAPA.label" jsxtext="Nome da Etapa"/>
+<record jsxid="control.DTFIMCQ.label" jsxtext="DTFIMCQ"/>
+<record jsxid="control.CNTINSTANCIASUF.validation.CNTINSTANCIASUF__lowerLimit.message" jsxtext="'cntInstanciasUFC' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.CNTINSTANCIASUF.validation.CNTINSTANCIASUF__length.message" jsxtext="'cntInstanciasUFC' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="form.validation_error.message" jsxtext="Error in script for validation {0} of Control {1} ({2}): {3}"/>
+<record jsxid="control.ORIGEM.label" jsxtext="origem"/>
+<record jsxid="control.CODUADRT.hint" jsxtext="Código da Delegacia Reginal Tributária (DRT)."/>
+<record jsxid="control.CDIMPOSTO.hint" jsxtext="Código do Imposto."/>
+<record jsxid="control.SW_PARENTPROC.validation.SW_PARENTPROC__length.message" jsxtext="'SW_PARENTPROC' not valid: expecting a value with no more than 8 characters"/>
+<record jsxid="control.CDIMPOSTO.label" jsxtext="Código Imposto"/>
+<record jsxid="control.STSPRMSF.hint" jsxtext="Resultado da admissão do Pedido de Reforma de Julgado (PRM) da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.SFPECA3.validation.SFPECA3__length.message" jsxtext="'sfPeca3' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.DATETIME.label" jsxtext="DATETIME"/>
+<record jsxid="control.NUMAPPRETRIES.validation.NUMAPPRETRIES__lowerLimit.message" jsxtext="'NumAppRetries' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.DOCCONTROL.hint" jsxtext="Identifica qual processo será aberto dinâmicamente."/>
+<record jsxid="control.NOVOMODELO.hint" jsxtext="Identifica se o Auto de Infração e Imposição de Multa utiliza o novo modelo de intimações."/>
+<record jsxid="control.STSADMTITCNT.validation.STSADMTITCNT__length.message" jsxtext="'StatusAdmissaoTITCNT' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.INDRESPPRM.validation.INDRESPPRM__lowerLimit.message" jsxtext="'indRespPRM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.DILIGENCIA.hint" jsxtext="Identifica se foi solicitada Diligência."/>
+<record jsxid="control.CHEFEUJ.label" jsxtext="ChefeUJ"/>
+<record jsxid="control.CNTPECA4.label" jsxtext="cntPeca4"/>
+<record jsxid="control.DAYSOVER.validation.DAYSOVER__upperLimit.message" jsxtext="'daysover' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.DEAT0050.validation.DEAT0050__length.message" jsxtext="'DEAT0050' not valid: expecting a value with no more than 8 characters"/>
+<record jsxid="control.INSTANCIA.validation.INSTANCIA__lowerLimit.message" jsxtext="'Instancia' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.OUTCOME.validation.OUTCOME__length.message" jsxtext="'Outcome' not valid: expecting a value with no more than 10 characters"/>
+<record jsxid="control.SW_HOSTNAME.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.submit.label" jsxtext="Submit"/>
+<record jsxid="control.RECAPIT.validation.RECAPIT__upperLimit.message" jsxtext="'Recapitulacao' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.QTPECASSEFAZ.label" jsxtext="qtPecasSefaz"/>
+<record jsxid="control.FORMACORRECAO.label" jsxtext="Forma de Correção"/>
+<record jsxid="control.CNTINSTANCIASUF.label" jsxtext="cntInstanciasUFC"/>
+<record jsxid="control.ISAPPERROR.validation.ISAPPERROR__length.message" jsxtext="'IsAppError' not valid: expecting a value with no more than 1 characters"/>
+<record jsxid="control.DATETIME.validation.DATETIME__length.message" jsxtext="'DATETIME' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.OUTCOME.label" jsxtext="Outcome"/>
+<record jsxid="control.REGRAINSDOC.label" jsxtext="Regra de inserção de documentos"/>
+<record jsxid="control.CODUADTJ.label" jsxtext="cod UA DTJ"/>
+<record jsxid="control.STSRESPSF.hint" jsxtext="Resultado da admissão do Recurso Especial da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.SW_MAINCASEPOC.validation.SW_MAINCASEPOC__lowerLimit.message" jsxtext="'SW_MAINCASEPOC' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.CRCONTRIBUINTE.hint" jsxtext="Identifica se há contra razão do Contribuinte."/>
+<record jsxid="control.DILIGENCIADESTI.label" jsxtext="diligenciaDestino"/>
+<record jsxid="control.TROCATPNOTIFICA.validation.TROCATPNOTIFICA__lowerLimit.message" jsxtext="'Trocar Tipo Notificacao' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STATUSPRJ.hint" jsxtext="Identifica o tipo de status do PRJ.&#xD;&#xA;&#xD;&#xA;1 Admitido&#xD;&#xA;2 Não Admitido&#xD;&#xA;3 Em análise&#xD;&#xA;4 Sobrestado&#xD;&#xA;5 Não provido&#xD;&#xA;6 Provido&#xD;&#xA;7 Analisado&#xD;&#xA;8 Prejudicado"/>
+<record jsxid="control.DESCREGRA.hint" jsxtext="Identifica o conteúdo da regra."/>
+<record jsxid="form.action_error.message" jsxtext="Error in script for action {0} ({1}): {2}"/>
+<record jsxid="control.INDICESUBDIN.validation.INDICESUBDIN__length.message" jsxtext="'indiceSubDin' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.DESCREGRA.validation.DESCREGRA__length.message" jsxtext="'DescricaoRegra' not valid: expecting a value with no more than 250 characters"/>
+<record jsxid="control.ISTECHERROR.validation.ISTECHERROR__length.message" jsxtext="'IsTechError' not valid: expecting a value with no more than 1 characters"/>
+<record jsxid="control.CCRELATORIO.hint" jsxtext="Define destinatario de email que receberá a copia do relatorio."/>
+<record jsxid="control.INTIMACAOCARTA.validation.INTIMACAOCARTA__upperLimit.message" jsxtext="'intimacaoCarta' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CNTPECA4.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.CNTPECA4.validation.CNTPECA4__length.message" jsxtext="'cntPeca4' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.AUX.label" jsxtext="aux"/>
+<record jsxid="control.SFPECA4.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.FLGALC.label" jsxtext="FlagAlcada"/>
+<record jsxid="control.SW_PARENTCASE.label" jsxtext="SW_PARENTCASE"/>
+<record jsxid="control.INTIMACAOCARTA.hint" jsxtext="Identifica se a intimação é do tipo carta."/>
+<record jsxid="control.IDDECISAOAIIM.validation.IDDECISAOAIIM__upperLimit.message" jsxtext="'idDecisaoAIIM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODMUNAIIM.validation.CODMUNAIIM__length.message" jsxtext="'Código do Município do AIIM' not valid: expecting an integer with no more than 8 digits"/>
+<record jsxid="control.CD_DRT.validation.CD_DRT__length.message" jsxtext="'Código da DRT' not valid: expecting an integer with no more than 8 digits"/>
+<record jsxid="control.IDPROCESSO.label" jsxtext="idProcesso"/>
+<record jsxid="control.INDICESUBDIN.hint" jsxtext="Descontinuado."/>
+<record jsxid="control.PARTICIPANTE.hint" jsxtext="Identifica o responsável por fazer determinada atividade."/>
+<record jsxid="control.STSRESPCNT.label" jsxtext="statusRESPCnt"/>
+<record jsxid="control.DEAT0050.hint" jsxtext="Identifica o nome do processo que será aberto dinamicamente."/>
+<record jsxid="control.NRAIIM.validation.NRAIIM__upperLimit.message" jsxtext="'nrAiim' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.SW_CASENUM.validation.SW_CASENUM__lowerLimit.message" jsxtext="'SW_CASENUM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.DATETIME.hint" jsxtext="Data e Hora da entrada no subprocesso o campo sera enviado ao servico."/>
+<record jsxid="control.STATUSPRJ.validation.STATUSPRJ__upperLimit.message" jsxtext="'statusPrj' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.RECURSOOFICIO.label" jsxtext="recursoOficio"/>
+<record jsxid="control.DTCIENCIA.hint" jsxtext="Data que o contribuinte tomou ciência da Notificação."/>
+<record jsxid="control.STSADMTITDRF.validation.STSADMTITDRF__lowerLimit.message" jsxtext="'StatusAdmissaoTITDRF' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.NRSUBPRO.validation.NRSUBPRO__length.message" jsxtext="'nrSubProc' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.CDIMPOSTO.validation.CDIMPOSTO__length.message" jsxtext="'Código Imposto' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.COORDENADOR.label" jsxtext="Coordenador"/>
+<record jsxid="control.POSICAOFIM.validation.POSICAOFIM__upperLimit.message" jsxtext="'posicaoFim' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.INTIMACAOCOUNT.validation.INTIMACAOCOUNT__lowerLimit.message" jsxtext="'intimacaoCount' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.NR_AIIM.label" jsxtext="Número do AIIM"/>
+<record jsxid="control.DOCSPERMITIDOS.hint" jsxtext="Documentos Permitidos para esta fase."/>
+<record jsxid="control.TIPODILIGENCIA.hint" jsxtext="Identifica o tipo de diligência.&#xD;&#xA;&#xD;&#xA;Valores Possiveis&#xD;&#xA;RF, DRT, PGE, UE, CNT"/>
+<record jsxid="control.RESPOSTACQ.label" jsxtext="Resposta do Contorle de Qualidade"/>
+<record jsxid="control.ARRAYINT.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.STERRORCODE.validation.STERRORCODE__length.message" jsxtext="'STErrorCode' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.SFPECA4.label" jsxtext="sfPeca4"/>
+<record jsxid="control.STSRESPCNT.hint" jsxtext="Resultado da admissão do Recurso Especial do Contribuinte."/>
+<record jsxid="control.NR_AIIM.validation.NR_AIIM__upperLimit.message" jsxtext="'Número do AIIM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.IDTIPOIMPUGNACA.hint" jsxtext="Idenficador do tipo de impugnação."/>
+<record jsxid="control.TIPODILIGENCIA.validation.TIPODILIGENCIA__length.message" jsxtext="'tipoDiligencia' not valid: expecting a value with no more than 6 characters"/>
+<record jsxid="control.SFPECA2.validation.SFPECA2__length.message" jsxtext="'sfPeca2' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.VOLTARSEGINSTAN.validation.VOLTARSEGINSTAN__lowerLimit.message" jsxtext="'voltarSegInstancia' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.QTDINTIMADOS.validation.QTDINTIMADOS__lowerLimit.message" jsxtext="'qtdeIntimados' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.EXCLUSAOSOLIDAR.label" jsxtext="ExclusaoSolidarios"/>
+<record jsxid="control.TIPODILIGENCIA.label" jsxtext="tipoDiligencia"/>
+<record jsxid="control.SERVICE_NAME.label" jsxtext="SERVICE_NAME"/>
+<record jsxid="control.STSADMTITCNT.label" jsxtext="StatusAdmissaoTITCNT"/>
+<record jsxid="control.NOTIFICACAO.hint" jsxtext="Numero do Domicílio Eletronico do Contribuinte (DEC). Formato: &quot;[CPF];[TIPONOTIFICACAO];[IDNOTIFICACAO]|&quot;."/>
+<record jsxid="control.DTPUBLICACAODE.label" jsxtext="dtPublicacaoDE"/>
+<record jsxid="control.INDRESPPRM.label" jsxtext="indRespPRM"/>
+<record jsxid="control.REGRAINSDOC.hint" jsxtext="Define as situações de inserção de documento no ePat:&#xD;&#xA;1 - Indicando que foi feita a lavratura no programa AIIM2003 e o método BuscarPdfAuto do WebService retorna os pdfs do relato, Quadro1 e Quadro2; &#xD;&#xA;2 - Indicando que foi um auto feito manualmente pelo fiscal&#xD;&#xA;3 - Indicando que foi feita a lavratura no programa AIIM2003 e o método BuscarPdfAuto do WebService NÃO retorna os pdfs do relato, Quadro1 e Quadro2"/>
+<record jsxid="control.CCRELATORIO.validation.CCRELATORIO__length.message" jsxtext="'CCRELATORIO' not valid: expecting a value with no more than 150 characters"/>
+<record jsxid="control.CRCASA.hint" jsxtext="Identifica se há contra razão da Secretaria da Fazenda."/>
+<record jsxid="control.QTPECASSEFAZ.validation.QTPECASSEFAZ__lowerLimit.message" jsxtext="'qtPecasSefaz' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.POSICAOFIM.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.ISAPPERROR.label" jsxtext="IsAppError"/>
+<record jsxid="control.STSADMTITCNT.validation.STSADMTITCNT__lowerLimit.message" jsxtext="'StatusAdmissaoTITCNT' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.IDPROCESSO.validation.IDPROCESSO__length.message" jsxtext="'idProcesso' not valid: expecting an integer with no more than 9 digits"/>
+<record jsxid="control.REGRAINSDOC.validation.REGRAINSDOC__length.message" jsxtext="'Regra de inserção de documentos' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.STSPETICAO.label" jsxtext="StatusPeticao"/>
+<record jsxid="control.NOMEETAPA.hint" jsxtext="Nome da etapa que o processo entrou.&#xD;&#xA;Utilizado para retirar da atividade &quot;Arquivo Morto&quot;"/>
+<record jsxid="control.DOCSREQUERIDOS.hint" jsxtext="Documentos Permitidos para esta fase."/>
+<record jsxid="control.CNTPECA3.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.SFPECA3.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.INTIMACAODE.validation.INTIMACAODE__lowerLimit.message" jsxtext="'intimacaoDE' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.SERVICE_NAME.validation.SERVICE_NAME__length.message" jsxtext="'SERVICE_NAME' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.STSPETICAO.validation.STSPETICAO__length.message" jsxtext="'StatusPeticao' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.CD_DRT.label" jsxtext="Código da DRT"/>
+<record jsxid="control.STERRORDESC.hint" jsxtext="Descricao do erro da chamada do servico."/>
+<record jsxid="control.LINKIPE.label" jsxtext="LinkIpe"/>
+<record jsxid="control.CD_DRT.validation.CD_DRT__lowerLimit.message" jsxtext="'Código da DRT' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STSRESPSF.label" jsxtext="statusRESPFazenda"/>
+<record jsxid="control.NOMEETAPA.validation.NOMEETAPA__length.message" jsxtext="'Nome da Etapa' not valid: expecting a value with no more than 8 characters"/>
+<record jsxid="control.NR_RAT.validation.NR_RAT__lowerLimit.message" jsxtext="'Versão do AIIM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.EXISTENOTIFICAC.label" jsxtext="existeNotificacao"/>
+<record jsxid="control.SW_PARENTCASE.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.IDDECISAOAIIM.hint" jsxtext="Identifica a decisão referente ao Auto de Infração e Imposição de Multa (AIIM)."/>
+<record jsxid="control.INTIMACAODE.hint" jsxtext="Identifica se a intimação é do tipo Diário Eletrônico (DE)."/>
+<record jsxid="control.POSICAOINICIO.validation.POSICAOINICIO__upperLimit.message" jsxtext="'posicaoInicio' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.SITUACAOCARREGA.hint" jsxtext="Situação do carregamento do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.NRSUBPRO.label" jsxtext="nrSubProc"/>
+<record jsxid="control.VOLTARSEGINSTAN.hint" jsxtext="0 - nao devolver&#xD;&#xA;1 - devolver para agenda&#xD;&#xA;2 - devolver para parecer do relator"/>
+<record jsxid="control.SFDIASREPRESENT.validation.SFDIASREPRESENT__length.message" jsxtext="'sfDiasRepresentacao' not valid: expecting a value with no more than 2 characters"/>
+<record jsxid="control.SW_CASENUMPOC.validation.SW_CASENUMPOC__lowerLimit.message" jsxtext="'SW_CASENUMPOC' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.IDAIIM.label" jsxtext="idAIIM"/>
+<record jsxid="control.DAYSOVER.validation.DAYSOVER__length.message" jsxtext="'daysover' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.FIMSTRING.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.SW_CASENUMPOC.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.CDIMPOSTO.validation.CDIMPOSTO__upperLimit.message" jsxtext="'Código Imposto' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CRCONTRIBUINTE.validation.CRCONTRIBUINTE__lowerLimit.message" jsxtext="'crContribuinte' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.SFPECA3.label" jsxtext="sfPeca3"/>
+<record jsxid="control.CODMUNICIPIO.validation.CODMUNICIPIO__lowerLimit.message" jsxtext="'CodMunicipio' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.PARTICIPANTE.label" jsxtext="participante"/>
+<record jsxid="control.PROCESS_ID.validation.PROCESS_ID__length.message" jsxtext="'PROCESS_ID' not valid: expecting a value with no more than 35 characters"/>
+<record jsxid="control.DOCSREQUERIDOS.validation.DOCSREQUERIDOS__length.message" jsxtext="'DocsRequeridos' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.FORMACORRECAO.hint" jsxtext="Identifica a forma de correção da retirratificação: &quot;Correcao&quot;, &quot;Retirati&quot;."/>
+<record jsxid="control.BCCRELATORIO.validation.BCCRELATORIO__length.message" jsxtext="'BCCRELATORIO' not valid: expecting a value with no more than 150 characters"/>
+<record jsxid="control.IDAIIMORIGINAL.validation.IDAIIMORIGINAL__lowerLimit.message" jsxtext="'idAiimOriginal' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.INSTANCIA.label" jsxtext="Instancia"/>
+<record jsxid="control.DAYSOVER.label" jsxtext="daysover"/>
+<record jsxid="control.IDAIIM.validation.IDAIIM__lowerLimit.message" jsxtext="'idAIIM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.IDDECISAODEBITO.hint" jsxtext="Identifica o tipo de decisão de débito."/>
+<record jsxid="control.ISAPPERROR.hint" jsxtext="Indicador de que houve um erro de aplicacao (ex, ausencia da informacao no sistema/banco envolvido no servico)"/>
+<record jsxid="control.QTDINTIMADOS.label" jsxtext="qtdeIntimados"/>
+<record jsxid="control.TROCATPNOTIFICA.label" jsxtext="Trocar Tipo Notificacao"/>
+<record jsxid="control.CODMUNICIPIO.hint" jsxtext="Código do município do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.SW_PARENTPROC.label" jsxtext="SW_PARENTPROC"/>
+<record jsxid="control.IDAIIM.validation.IDAIIM__length.message" jsxtext="'idAIIM' not valid: expecting an integer with no more than 11 digits"/>
+<record jsxid="control.IDPECASSF.validation.IDPECASSF__length.message" jsxtext="'idPecasSf' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.DESCREGRA.label" jsxtext="DescricaoRegra"/>
+<record jsxid="control.RECURSOOFICIO.hint" jsxtext="Identifica se há recurso de ofício interposto."/>
+<record jsxid="control.CTRLIATV.label" jsxtext="CTRLIATV"/>
+<record jsxid="control.CHEFEUJ.hint" jsxtext="Identifica o chefe da Unidade de Julgamento."/>
+<record jsxid="control.SW_CASENUMPOC.validation.SW_CASENUMPOC__length.message" jsxtext="'SW_CASENUMPOC' not valid: expecting an integer with no more than 15 digits"/>
+<record jsxid="control.NR_RATORIG.hint" jsxtext="Número da versão Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.POSICAOFIM.label" jsxtext="posicaoFim"/>
+<record jsxid="control.IDPROCESSO.validation.IDPROCESSO__lowerLimit.message" jsxtext="'idProcesso' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.DOCCONTROL.validation.DOCCONTROL__length.message" jsxtext="'docControl' not valid: expecting a value with no more than 10 characters"/>
+<record jsxid="control.REGRAINSDOC.validation.REGRAINSDOC__upperLimit.message" jsxtext="'Regra de inserção de documentos' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.TIPOVISTAS.hint" jsxtext="Identifica o tipo de vista:&#xD;&#xA;&#xD;&#xA;MISTA&#xD;&#xA;JUIZ&#xD;&#xA;DRF"/>
+<record jsxid="control.BCCRELATORIO.hint" jsxtext="Define destinatario de email do relator como copia oculta."/>
+<record jsxid="control.NUMAPPRETRIES.hint" jsxtext="numero da tentativa corrente"/>
+<record jsxid="control.SW_MAINPROC.label" jsxtext="SW_MAINPROC"/>
+<record jsxid="control.QTPECASCNT.validation.QTPECASCNT__length.message" jsxtext="'qtPecasCNT' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.NRSUBPRO.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.DAYSOVER.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.IDPECASCNT.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.PRAZOVISTA.hint" jsxtext="Campo utilizado para controle de prazo."/>
+<record jsxid="control.TROCATPNOTIFICA.hint" jsxtext="Se verdadeiro, aiim está executando a troca do tipo de uma notificação."/>
+<record jsxid="control.MAXRETRIES.validation.MAXRETRIES__upperLimit.message" jsxtext="'MaxRetries' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.DUMP.hint" jsxtext="Dump do request executado no servico."/>
+<record jsxid="control.SFDIASREPRESENT.hint" jsxtext="Identifica a quantidade de dias para manifestação por parte da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.SW_HOSTNAME.label" jsxtext="SW_HOSTNAME"/>
+<record jsxid="control.STSPRMSF.validation.STSPRMSF__upperLimit.message" jsxtext="'statusPRMFazenda' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.SFPECA1.validation.SFPECA1__length.message" jsxtext="'sfPeca1' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.CRCASA.validation.CRCASA__length.message" jsxtext="'crCasa' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.SW_MAINCASEPOC.validation.SW_MAINCASEPOC__length.message" jsxtext="'SW_MAINCASEPOC' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.STSADMTITCNT.hint" jsxtext="Status da admissão da peça do contribuinte da câmara ordinária."/>
+<record jsxid="control.IDDECISAOAIIM.validation.IDDECISAOAIIM__length.message" jsxtext="'idDecisaoAIIM' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.SW_MAINCASE.validation.SW_MAINCASE__lowerLimit.message" jsxtext="'SW_MAINCASE' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.IDMOTIVOINTIMAC.label" jsxtext="idMotivoIntimacao"/>
+<record jsxid="control.NR_RATORIG.validation.NR_RATORIG__upperLimit.message" jsxtext="'NR_RAT' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.PRAZORELATO.hint" jsxtext="Campo utilizado para controle de prazo."/>
+<record jsxid="control.STSPRMSF.label" jsxtext="statusPRMFazenda"/>
+<record jsxid="control.CNTINSTANCIASUF.validation.CNTINSTANCIASUF__upperLimit.message" jsxtext="'cntInstanciasUFC' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.TROCATPNOTIFICA.validation.TROCATPNOTIFICA__length.message" jsxtext="'Trocar Tipo Notificacao' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.MAXRETRIES.label" jsxtext="MaxRetries"/>
+<record jsxid="control.CD_DRT.hint" jsxtext="Código da Delegacia Reginal Tributária (DRT)."/>
+<record jsxid="control.IDDECISAOAIIM.label" jsxtext="idDecisaoAIIM"/>
+<record jsxid="control.CTRLIATV.hint" jsxtext="Identifica se há ou não um subprocesso ativo."/>
+<record jsxid="control.POSICAOINICIO.validation.POSICAOINICIO__length.message" jsxtext="'posicaoInicio' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.STATUSPRJ.label" jsxtext="statusPrj"/>
+<record jsxid="control.CNTPECA2.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.SFPECA2.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.DEFESAADMITIDA.label" jsxtext="defesaAdmitida"/>
+<record jsxid="control.IDMOTIVOINTIMAC.validation.IDMOTIVOINTIMAC__lowerLimit.message" jsxtext="'idMotivoIntimacao' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STSADMTITDRF.hint" jsxtext="Status da admissão da peça da Secretaria da Fazenda (Sefaz) da câmara ordinária."/>
+<record jsxid="control.RECAPIT.validation.RECAPIT__lowerLimit.message" jsxtext="'Recapitulacao' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.DUMP.label" jsxtext="DUMP"/>
+<record jsxid="control.NUMAPPRETRIES.validation.NUMAPPRETRIES__upperLimit.message" jsxtext="'NumAppRetries' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.PROCESS_ID.label" jsxtext="PROCESS_ID"/>
+<record jsxid="control.INTIMACAODE.label" jsxtext="intimacaoDE"/>
+<record jsxid="control.SW_CASEDESC.label" jsxtext="SW_CASEDESC"/>
+<record jsxid="control.NR_RATORIG.validation.NR_RATORIG__length.message" jsxtext="'NR_RAT' not valid: expecting an integer with no more than 11 digits"/>
+<record jsxid="control.INDNAORECORRER.hint" jsxtext="Identifica se a representação fiscal vai recorrer ou não."/>
+<record jsxid="control.LINKIPE.validation.LINKIPE__length.message" jsxtext="'LinkIpe' not valid: expecting a value with no more than 255 characters"/>
+<record jsxid="control.NR_RATORIG.label" jsxtext="NR_RAT"/>
+<record jsxid="control.AFR.label" jsxtext="Agente Fiscal de Renda"/>
+<record jsxid="control.INDRESPPRM.validation.INDRESPPRM__upperLimit.message" jsxtext="'indRespPRM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.SW_CASENUMPOC.label" jsxtext="SW_CASENUMPOC"/>
+<record jsxid="control.STSRESPCNT.validation.STSRESPCNT__lowerLimit.message" jsxtext="'statusRESPCnt' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STATUS_CODE.label" jsxtext="STATUS_CODE"/>
+<record jsxid="control.QTPECASCNT.validation.QTPECASCNT__lowerLimit.message" jsxtext="'qtPecasCNT' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.NOTIFICACAO.label" jsxtext="notificacao"/>
+<record jsxid="control.INSTANCIA.validation.INSTANCIA__upperLimit.message" jsxtext="'Instancia' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.INTIMACAOCARTA.validation.INTIMACAOCARTA__lowerLimit.message" jsxtext="'intimacaoCarta' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STSPETICAO.validation.STSPETICAO__lowerLimit.message" jsxtext="'StatusPeticao' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.IDDECISAODEBITO.label" jsxtext="idDecisaoDebitoFiscal"/>
+<record jsxid="control.EMAILVISTAS.validation.EMAILVISTAS__length.message" jsxtext="'email Vistas' not valid: expecting a value with no more than 255 characters"/>
+<record jsxid="control.SFDIASREPRESENT.label" jsxtext="sfDiasRepresentacao"/>
+<record jsxid="control.STERRORDESC.validation.STERRORDESC__length.message" jsxtext="'STErrorDesc' not valid: expecting a value with no more than 100 characters"/>
+<record jsxid="control.SW_MAINPROC.hint" jsxtext="Nome do processo da procedure que iniciou o caso, no caso do epat, o numero se refere ao numero do caso do processo DEAT0010."/>
+<record jsxid="control.EMAILRELATOR.hint" jsxtext="Identifica o email do relator."/>
+<record jsxid="control.SW_MAINCASEPOC.validation.SW_MAINCASEPOC__upperLimit.message" jsxtext="'SW_MAINCASEPOC' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CNTPECA3.label" jsxtext="cntPeca3"/>
+<record jsxid="control.TROCATPNOTIFICA.validation.TROCATPNOTIFICA__upperLimit.message" jsxtext="'Trocar Tipo Notificacao' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.IDPROCESSO.hint" jsxtext="Identificador do Processo."/>
+<record jsxid="control.close.label" jsxtext="Close"/>
+<record jsxid="control.CODMUNICIPIO.validation.CODMUNICIPIO__length.message" jsxtext="'CodMunicipio' not valid: expecting an integer with no more than 8 digits"/>
+<record jsxid="control.CORRECAO.hint" jsxtext="Identifica se há ou não correção."/>
+<record jsxid="control.ANULACAODTJ.hint" jsxtext="Identifica se há ou não anulação."/>
+<record jsxid="control.EXISTENOTIFICAC.hint" jsxtext="Verifica se existe notificação."/>
+<record jsxid="control.INDRESPPRM.hint" jsxtext="Identifica se há ou não existência de Pedido de Reforma de Julgado (PRM).&#xD;&#xA;Valores possiveis:&#xD;&#xA;0 para nao tem Recurso Especial  e/ou Pedido de Reforma de Julgado &#xD;&#xA;1 para tem Recurso Especial ou Pedido de Reforma de Julgado &#xD;&#xA;2 para tem Recurso Especial (ambos os envolvidos) ou Pedido de Reforma de Julgado &#xD;&#xA;3 para  tem Recurso Especial (contribuinte) e Pedido de Reforma de Julgado"/>
+<record jsxid="control.FLGALC.hint" jsxtext="Define o critério para decidir se um processo deve ir para o TIT (1) ou para a DTJ (0) é o valor do débito fiscal exigido na data da lavratura do auto de infração."/>
+<record jsxid="control.CRCONTRIBUINTE.label" jsxtext="crContribuinte"/>
+<record jsxid="control.IDPECASCNT.validation.IDPECASCNT__length.message" jsxtext="'idPecasCnt' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.DOCSPERMITIDOS.validation.DOCSPERMITIDOS__length.message" jsxtext="'DocsPermitidos' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.FIMSTRING.validation.FIMSTRING__upperLimit.message" jsxtext="'fimString' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.TEMPORESPOSTA.label" jsxtext="tempoResposta"/>
+<record jsxid="control.ORIGEM.validation.ORIGEM__length.message" jsxtext="'origem' not valid: expecting a value with no more than 5 characters"/>
+<record jsxid="control.STATUSPRJ.validation.STATUSPRJ__length.message" jsxtext="'statusPrj' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.RECAPIT.hint" jsxtext="Recapitulação do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.QTDINTIMADOS.hint" jsxtext="Identificador dos intimados do processo."/>
+<record jsxid="control.POSICAOINICIO.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.NRAIIM.validation.NRAIIM__length.message" jsxtext="'nrAiim' not valid: expecting an integer with no more than 11 digits"/>
+<record jsxid="control.SW_CASENUM.validation.SW_CASENUM__upperLimit.message" jsxtext="'SW_CASENUM' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.STSRESPSF.validation.STSRESPSF__lowerLimit.message" jsxtext="'statusRESPFazenda' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STATUSRECURSOS.label" jsxtext="statusRecursos"/>
+<record jsxid="control.NR_AIIM.validation.NR_AIIM__lowerLimit.message" jsxtext="'Número do AIIM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.SW_PARENTCASE.validation.SW_PARENTCASE__length.message" jsxtext="'SW_PARENTCASE' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.RECAPIT.label" jsxtext="Recapitulacao"/>
+<record jsxid="control.CRCASA.validation.CRCASA__lowerLimit.message" jsxtext="'crCasa' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.CORRECAO.label" jsxtext="correcao"/>
+<record jsxid="control.QTPECASCNT.hint" jsxtext="Identifica a quantidade de peças do Contribuinte."/>
+<record jsxid="control.INDICESUBDIN.validation.INDICESUBDIN__lowerLimit.message" jsxtext="'indiceSubDin' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.EMAILVISTAS.label" jsxtext="email Vistas"/>
+<record jsxid="control.IDSINTIMADOS.label" jsxtext="idsIntimados"/>
+<record jsxid="control.IDAIIM.hint" jsxtext="Identificador do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.CNTPECA1.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.SFPECA1.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.VRAIIM.hint" jsxtext="Valor do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.PRAZORELATO.label" jsxtext="PrazoRelato"/>
+<record jsxid="control.INTIMACAOCOUNT.label" jsxtext="intimacaoCount"/>
+<record jsxid="control.CNTPECA3.validation.CNTPECA3__length.message" jsxtext="'cntPeca3' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.FIMSTRING.validation.FIMSTRING__length.message" jsxtext="'fimString' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.NOVOMODELO.label" jsxtext="novoModelo"/>
+<record jsxid="pane.toolbar.label" jsxtext="Toolbar"/>
+<record jsxid="control.PRAZORETIRADAVI.label" jsxtext="PrazoRetiradaVista"/>
+<record jsxid="control.SFPECA4.validation.SFPECA4__length.message" jsxtext="'sfPeca4' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.VOLTARSEGINSTAN.validation.VOLTARSEGINSTAN__upperLimit.message" jsxtext="'voltarSegInstancia' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.DTPUBLICACAODE.hint" jsxtext="Data da publicação no Diário Eletronico (DE)."/>
+<record jsxid="control.INDNAORECORRER.label" jsxtext="indNaoRecorrer"/>
+<record jsxid="control.SW_CASENUM.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.SW_PARENTCASE.validation.SW_PARENTCASE__lowerLimit.message" jsxtext="'SW_PARENTCASE' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.DILIGENCIADESTI.validation.DILIGENCIADESTI__length.message" jsxtext="'diligenciaDestino' not valid: expecting a value with no more than 20 characters"/>
+<record jsxid="control.HORAFINAL.label" jsxtext="horafinal"/>
+<record jsxid="control.CODTEXTO.label" jsxtext="codTexto"/>
+<record jsxid="control.IDDECISAODEBITO.validation.IDDECISAODEBITO__length.message" jsxtext="'idDecisaoDebitoFiscal' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.COORDENADOR.hint" jsxtext="Coordenador de Equipe."/>
+<record jsxid="control.SITUACAOCARREGA.validation.SITUACAOCARREGA__length.message" jsxtext="'Situação do carregamento do AIIM' not valid: expecting a value with no more than 10 characters"/>
+<record jsxid="control.TEMPORESPOSTA.validation.TEMPORESPOSTA__length.message" jsxtext="'tempoResposta' not valid: expecting a value with no more than 2 characters"/>
+<record jsxid="control.OUTCOME.hint" jsxtext="Resultado da consulta, valor validado para que o fluxo considere a chamada bem sucedida, OK"/>
+<record jsxid="control.SW_CASENUM.validation.SW_CASENUM__length.message" jsxtext="'SW_CASENUM' not valid: expecting an integer with no more than 15 digits"/>
+<record jsxid="control.STATUSRECURSOS.validation.STATUSRECURSOS__lowerLimit.message" jsxtext="'statusRecursos' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.QTPECASSEFAZ.validation.QTPECASSEFAZ__upperLimit.message" jsxtext="'qtPecasSefaz' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODMUNICIPIO.label" jsxtext="CodMunicipio"/>
+<record jsxid="control.CODMUNAIIM.validation.CODMUNAIIM__lowerLimit.message" jsxtext="'Código do Município do AIIM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STATUSRECURSOS.validation.STATUSRECURSOS__length.message" jsxtext="'statusRecursos' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.STSADMTITCNT.validation.STSADMTITCNT__upperLimit.message" jsxtext="'StatusAdmissaoTITCNT' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.EMAILVISTAS.hint" jsxtext="Identifica o email do responsavel."/>
+<record jsxid="control.INTIMACAODE.validation.INTIMACAODE__upperLimit.message" jsxtext="'intimacaoDE' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.ANULACAODTJ.label" jsxtext="AnulacaoDTJ"/>
+<record jsxid="control.CD_DRT.validation.CD_DRT__upperLimit.message" jsxtext="'Código da DRT' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.NUMAPPRETRIES.label" jsxtext="NumAppRetries"/>
+<record jsxid="control.IDDECISAODEBITO.validation.IDDECISAODEBITO__upperLimit.message" jsxtext="'idDecisaoDebitoFiscal' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.NR_RAT.label" jsxtext="Versão do AIIM"/>
+<record jsxid="control.AFR.hint" jsxtext="Agente Fiscal de Renda (AFR) identifica o nome do fiscal responsável."/>
+<record jsxid="control.STSADMTITDRF.label" jsxtext="StatusAdmissaoTITDRF"/>
+<record jsxid="control.IDTIPOIMPUGNACA.validation.IDTIPOIMPUGNACA__length.message" jsxtext="'idTipoImpugnacao' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.PRAZORETIRADAVI.hint" jsxtext="Campo utilizado para controle de prazo."/>
+<record jsxid="control.NR_RAT.validation.NR_RAT__length.message" jsxtext="'Versão do AIIM' not valid: expecting an integer with no more than 11 digits"/>
+<record jsxid="control.SW_CASENUMPOC.validation.SW_CASENUMPOC__upperLimit.message" jsxtext="'SW_CASENUMPOC' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODTEXTO.validation.CODTEXTO__length.message" jsxtext="'codTexto' not valid: expecting a value with no more than 4 characters"/>
+<record jsxid="control.DOCSPERMITIDOS.label" jsxtext="DocsPermitidos"/>
+<record jsxid="control.POSICAOINICIO.label" jsxtext="posicaoInicio"/>
+<record jsxid="control.FIMSTRING.label" jsxtext="fimString"/>
+<record jsxid="control.CODMUNICIPIO.validation.CODMUNICIPIO__upperLimit.message" jsxtext="'CodMunicipio' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.FORMACORRECAO.validation.FORMACORRECAO__length.message" jsxtext="'Forma de Correção' not valid: expecting a value with no more than 20 characters"/>
+<record jsxid="control.SERVICE_NAME.hint" jsxtext="Nome do servico retornado na chamada"/>
+<record jsxid="control.NRAIIM.label" jsxtext="nrAiim"/>
+<record jsxid="control.BCCRELATORIO.label" jsxtext="BCCRELATORIO"/>
+<record jsxid="control.PROCESS_ID.hint" jsxtext="identificador da chamada (para efeitos de log) nos casos do ePat, o valor padrao é:&#xD;&#xA;idAiim e idProcesso"/>
+<record jsxid="control.NUMAPPRETRIES.validation.NUMAPPRETRIES__length.message" jsxtext="'NumAppRetries' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.VICIOREPRESENTA.hint" jsxtext="Identifica se há vício de representação."/>
+<record jsxid="control.CODTEXTO.hint" jsxtext="Identifica o código de texto da intimação."/>
+<record jsxid="control.STSRESPSF.validation.STSRESPSF__length.message" jsxtext="'statusRESPFazenda' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.DAYSOVER.validation.DAYSOVER__lowerLimit.message" jsxtext="'daysover' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.TIPOVISTAS.label" jsxtext="tipoVistas"/>
+<record jsxid="control.SFPECA2.label" jsxtext="sfPeca2"/>
+<record jsxid="control.IDPROCESSO.validation.IDPROCESSO__upperLimit.message" jsxtext="'idProcesso' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.EMAILRELATOR.label" jsxtext="email Relator"/>
+<record jsxid="control.DILIGENCIADESTI.hint" jsxtext="Identifica o local de destino quando uma Diligência é solicitada."/>
+<record jsxid="control.STSADMTITDRF.validation.STSADMTITDRF__length.message" jsxtext="'StatusAdmissaoTITDRF' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.NR_RATORIG.validation.NR_RATORIG__lowerLimit.message" jsxtext="'NR_RAT' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.CCRELATORIO.label" jsxtext="CCRELATORIO"/>
+<record jsxid="control.RECAPIT.validation.RECAPIT__length.message" jsxtext="'Recapitulacao' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.DILIGENCIA.label" jsxtext="diligencia"/>
+<record jsxid="control.CRCASA.label" jsxtext="crCasa"/>
+<record jsxid="control.STSRESPCNT.validation.STSRESPCNT__length.message" jsxtext="'statusRESPCnt' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.SITUACAOCARREGA.label" jsxtext="Situação do carregamento do AIIM"/>
+<record jsxid="control.CTL_RETIRAT.validation.CTL_RETIRAT__length.message" jsxtext="'CTL_RETIRAT' not valid: expecting a value with no more than 10 characters"/>
+<record jsxid="control.FLAGCRZ.label" jsxtext="FlagCrz"/>
+<record jsxid="control.QTPECASSEFAZ.validation.QTPECASSEFAZ__length.message" jsxtext="'qtPecasSefaz' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.IDPECASSF.label" jsxtext="idPecasSf"/>
+<record jsxid="control.STATUS_CODE.validation.STATUS_CODE__length.message" jsxtext="'STATUS_CODE' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.cancel.label" jsxtext="Cancel"/>
+<record jsxid="control.SW_CASEDESC.validation.SW_CASEDESC__length.message" jsxtext="'SW_CASEDESC' not valid: expecting a value with no more than 24 characters"/>
+<record jsxid="form.required.message" jsxtext="{0} is a required field."/>
+<record jsxid="control.CNTINSTANCIASUF.hint" jsxtext="Contador de instancias de analise Unidade Fiscal de Cobrança (UFC)."/>
+<record jsxid="control.SW_MAINCASE.validation.SW_MAINCASE__upperLimit.message" jsxtext="'SW_MAINCASE' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.STERRORCODE.label" jsxtext="STErrorCode"/>
+<record jsxid="control.CNTPECA1.validation.CNTPECA1__length.message" jsxtext="'cntPeca1' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.ISTECHERROR.label" jsxtext="IsTechError"/>
+<record jsxid="control.CTL_RETIRAT.label" jsxtext="CTL_RETIRAT"/>
+<record jsxid="control.IDDECISAOAIIM.validation.IDDECISAOAIIM__lowerLimit.message" jsxtext="'idDecisaoAIIM' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.ARRAYINT.label" jsxtext="arrayIntimados"/>
+<record jsxid="control.IDSINTIMADOS.hint" jsxtext="Identicador do(s) Intimado(s)."/>
+<record jsxid="control.IDSINTIMADOS.validation.IDSINTIMADOS__length.message" jsxtext="'idsIntimados' not valid: expecting a value with no more than 250 characters"/>
+<record jsxid="control.DATAENCPREPNOT.label" jsxtext="Data Encerramento Preparar Notifica"/>
+<record jsxid="control.VRAIIM.validation.VRAIIM__fixed.message" jsxtext="'vrAIIM' not valid: expecting a fixed point decimal number with no more than 15 digits and 3 decimal places"/>
+<record jsxid="control.CTL_RETIRAT.hint" jsxtext="Cotrole  da Retirratificação."/>
+<record jsxid="control.INSTANCIA.hint" jsxtext="Identifica a instância do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.IDMOTIVOINTIMAC.validation.IDMOTIVOINTIMAC__upperLimit.message" jsxtext="'idMotivoIntimacao' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.HORAFINAL.hint" jsxtext="Hora limite para execução da atividade."/>
+<record jsxid="control.DEAT0050.label" jsxtext="DEAT0050"/>
+<record jsxid="control.NRAIIM.validation.NRAIIM__lowerLimit.message" jsxtext="'nrAiim' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.INTIMACAODE.validation.INTIMACAODE__length.message" jsxtext="'intimacaoDE' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.DATAENCPREPNOT.hint" jsxtext="Data do Enceramento da Preparação da Notificação."/>
+<record jsxid="control.IDAIIMORIGINAL.validation.IDAIIMORIGINAL__length.message" jsxtext="'idAiimOriginal' not valid: expecting an integer with no more than 11 digits"/>
+<record jsxid="control.STATUSPRJ.validation.STATUSPRJ__lowerLimit.message" jsxtext="'statusPrj' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.ORIGEM.hint" jsxtext="Identifica a origem da contra razão."/>
+<record jsxid="control.AUX.validation.AUX__length.message" jsxtext="'aux' not valid: expecting a value with no more than 255 characters"/>
+<record jsxid="control.INSTANCIA.validation.INSTANCIA__length.message" jsxtext="'Instancia' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.STSRESPCNT.validation.STSRESPCNT__upperLimit.message" jsxtext="'statusRESPCnt' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODMUNAIIM.label" jsxtext="Código do Município do AIIM"/>
+<record jsxid="control.IDAIIMORIGINAL.hint" jsxtext="Identificador do Auto de Infração e Imposição de Multa gerado na data de lavratura."/>
+<record jsxid="pane.root.label" jsxtext="Realizar Atividade Vista Mista"/>
+<record jsxid="control.STATUS_CODE.hint" jsxtext="Status da chamada, considera-se chamada bem sucedida quando o servico retorna o valor 0 para o campo."/>
+<record jsxid="control.SFPECA1.label" jsxtext="sfPeca1"/>
+<record jsxid="control.QTPECASCNT.validation.QTPECASCNT__upperLimit.message" jsxtext="'qtPecasCNT' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.POSICAOFIM.validation.POSICAOFIM__lowerLimit.message" jsxtext="'posicaoFim' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.EMAILRELATOR.validation.EMAILRELATOR__length.message" jsxtext="'email Relator' not valid: expecting a value with no more than 250 characters"/>
+<record jsxid="control.STSPRMSF.validation.STSPRMSF__length.message" jsxtext="'statusPRMFazenda' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.INTIMACAOCARTA.label" jsxtext="intimacaoCarta"/>
+<record jsxid="control.STSPETICAO.validation.STSPETICAO__upperLimit.message" jsxtext="'StatusPeticao' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODUADRT.label" jsxtext="codUADRT"/>
+<record jsxid="control.SW_MAINCASE.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.FIMSTRING.validation.FIMSTRING__lowerLimit.message" jsxtext="'fimString' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.AUX.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.MAXRETRIES.validation.MAXRETRIES__length.message" jsxtext="'MaxRetries' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.ISTECHERROR.hint" jsxtext="Indicador de que houve um erro de sistema (ex, servico indisponivel)"/>
+<record jsxid="control.STSADMTITDRF.validation.STSADMTITDRF__upperLimit.message" jsxtext="'StatusAdmissaoTITDRF' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.INTIMACAOCARTA.validation.INTIMACAOCARTA__length.message" jsxtext="'intimacaoCarta' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.STERRORDESC.label" jsxtext="STErrorDesc"/>
+<record jsxid="control.INTIMACAOCOUNT.hint" jsxtext="Campo interno utilizado pelo iProcess."/>
+<record jsxid="control.INTIMACAOCOUNT.validation.INTIMACAOCOUNT__upperLimit.message" jsxtext="'intimacaoCount' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.STERRORCODE.hint" jsxtext="Codigo do erro da chamada do servico."/>
+<record jsxid="control.SW_MAINCASE.label" jsxtext="SW_MAINCASE"/>
+<record jsxid="control.NRAIIM.hint" jsxtext="Número do  Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.DTCIENCIA.label" jsxtext="dtCiencia"/>
+<record jsxid="control.SW_HOSTNAME.validation.SW_HOSTNAME__length.message" jsxtext="'SW_HOSTNAME' not valid: expecting a value with no more than 24 characters"/>
+<record jsxid="control.IDTIPOIMPUGNACA.label" jsxtext="idTipoImpugnacao"/>
+<record jsxid="control.STATUSRECURSOS.hint" jsxtext="Identifica o tipo de status do Recurso.&#xD;&#xA;&#xD;&#xA;1 Admitido&#xD;&#xA;2 Não Admitido&#xD;&#xA;3 Em análise&#xD;&#xA;4 Sobrestado&#xD;&#xA;5 Não provido&#xD;&#xA;6 Provido&#xD;&#xA;7 Analisado&#xD;&#xA;8 Prejudicado"/>
+<record jsxid="control.QTDINTIMADOS.validation.QTDINTIMADOS__length.message" jsxtext="'qtdeIntimados' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.FLAGCONTRARAZAO.hint" jsxtext="Identifica se há ou não contra razão."/>
+<record jsxid="control.IDMOTIVOINTIMAC.validation.IDMOTIVOINTIMAC__length.message" jsxtext="'idMotivoIntimacao' not valid: expecting an integer with no more than 1 digits"/>
+<record jsxid="control.EXCLUSAOSOLIDAR.hint" jsxtext="Identifica se há ou não exclusão de solidários."/>
+<record jsxid="control.TIPOVISTAS.validation.TIPOVISTAS__length.message" jsxtext="'tipoVistas' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.CNTPECA2.label" jsxtext="cntPeca2"/>
+<record jsxid="control.QTDINTIMADOS.validation.QTDINTIMADOS__upperLimit.message" jsxtext="'qtdeIntimados' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.VOLTARSEGINSTAN.label" jsxtext="voltarSegInstancia"/>
+<record jsxid="control.IDAIIMORIGINAL.label" jsxtext="idAiimOriginal"/>
+<record jsxid="control.DOCSREQUERIDOS.label" jsxtext="DocsRequeridos"/>
+<record jsxid="control.STSRESPSF.validation.STSRESPSF__upperLimit.message" jsxtext="'statusRESPFazenda' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.CODMUNAIIM.hint" jsxtext="Código do município do Auto de Infração e Imposição de Multa."/>
+<record jsxid="control.CRCASA.validation.CRCASA__upperLimit.message" jsxtext="'crCasa' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.INDICESUBDIN.validation.INDICESUBDIN__upperLimit.message" jsxtext="'indiceSubDin' not valid: expecting a value less than or equal to 2147483647"/>
+</locale>
+</data>

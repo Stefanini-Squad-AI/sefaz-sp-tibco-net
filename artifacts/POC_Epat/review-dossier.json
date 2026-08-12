@@ -1,0 +1,4575 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/review-dossier/v3",
+  "package": "POC_Epat",
+  "note": "Questoes que a migracao nao pode responder mecanicamente, em ordem de prioridade. Cada item traz a evidencia de grafo necessaria para a decisao humana. P1/P2 sao construcoes SEM equivalente em .NET: ate serem decididas, qualquer implementacao dos nos afetados e um palpite. Respostas vao para config/glossary.yaml, nunca neste arquivo.",
+  "summary": {
+    "total": 34,
+    "blockers": 6,
+    "noNetEquivalent": 7,
+    "answered": 34,
+    "open": 0,
+    "comHipoteseAgentica": 19,
+    "byPriority": {
+      "P1": 3,
+      "P2": 10,
+      "P3": 10,
+      "P4": 11
+    },
+    "byCategory": {
+      "builtin-semantics": 1,
+      "clone-divergence": 1,
+      "label-conflict": 1,
+      "label-suggestion": 1,
+      "no-net-equivalent": 7,
+      "script-scaffolding": 2,
+      "sentinel-branch": 4,
+      "source-not-delivered": 3,
+      "type-conflict": 1,
+      "unlabeled-decision": 7,
+      "unresolved-identifier": 6
+    },
+    "byConfidence": {
+      "high": 27,
+      "medium": 7,
+      "low": 0
+    }
+  },
+  "items": [
+    {
+      "id": "NOEQ-dynamic-subprocess",
+      "category": "no-net-equivalent",
+      "severity": "high",
+      "priority": "P1",
+      "subject": "dynamic-subprocess",
+      "briefing": "Chamada de subprocesso cujo destino e resolvido em runtime pelo valor de um campo do caso (xpdExt:ProcessIdentifierField). NAO HA equivalente direto em .NET: Nao ha vinculo estatico a resolver em tempo de compilacao: o nome do processo a instanciar so existe quando o caso executa. Em .NET nao ha construcao equivalente que escolha o tipo a instanciar por um valor de dado sem abrir mao da verificacao em build. Ocorre em 3 ponto(s), nos processos CONTROPC, POC_EpatProcess. Risco de ignorar: Chamada nao resolvida em producao. E o legado NAO para nesse caso: os tres passos declaram HaltOnBadSubProcess=\"false\", ou seja, subprocesso invalido falha em silencio. As opcoes abaixo sao as alternativas conhecidas - a escolha e do gate humano e vale para todas as ocorrencias.",
+      "occurrenceCount": 3,
+      "usedInProcesses": [
+        "CONTROPC",
+        "POC_EpatProcess"
+      ],
+      "symbols": [],
+      "occurrences": [
+        {
+          "process": "CONTROPC",
+          "node": "Aguardar Retorno",
+          "nodeId": "_-bkw-V6JEfGBBLgT-R5iuw",
+          "detail": "Callee resolved at runtime from case field 'AGUARDAR', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Aguardar evento de Notificacao do AIIM",
+          "nodeId": "_0XWagVqNEfG5K7mY0I3I6w",
+          "detail": "Callee resolved at runtime from case field 'DEAT0050', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Controlar Intimados",
+          "nodeId": "_nQntZ16JEfGBBLgT-R5iuw",
+          "detail": "Callee resolved at runtime from case field 'NRSUBPRO', so it cannot be resolved statically - this is the iProcess graft step / dynamic procedure. The target may well exist in this package; what is unknown is which one is chosen. Requires a process-name registry + late binding in .NET."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "interface-registry-validated",
+          "approach": "Uma interface C# por xpdExt:ProcessInterface e uma implementacao por processo que a declara. Resolucao em runtime por chave (Keyed DI do .NET 8: AddKeyedScoped/GetRequiredKeyedService), com o registo GERADO a partir do XPDL e verificado no arranque contra o conjunto de ImplementedInterface.",
+          "consequence": "Mantem o comportamento dinamico do iProcess e recupera a verificacao em build: um destino em falta quebra o teste de registo, nao a producao. Custo: exige o passo de geracao do registo e um teste de conformidade.",
+          "suggested": true
+        },
+        {
+          "id": "closed-switch",
+          "approach": "Switch explicito sobre o conjunto de processos que implementam a interface, derivado do XPDL.",
+          "consequence": "Totalmente verificavel em build e simples de ler. Deixa de ser fiel se surgir uma implementacao nova (por exemplo, vinda de um pacote externo), porque exige recompilar.",
+          "suggested": false
+        },
+        {
+          "id": "registry-late-binding",
+          "approach": "Registo nome-para-tipo puro, resolvido apenas em runtime, com falha explicita quando o nome nao existe.",
+          "consequence": "Reproduz o comportamento dinamico com o minimo de cerimonia. Erros de destino so aparecem em execucao - o mesmo ponto fraco do legado, sem o ganho da verificacao antecipada.",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que nao existem implementacoes adicionais das mesmas interfaces nos pacotes externos nao entregues.",
+        "Qual opcao adotar para 'dynamic-subprocess'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "construcao detectada deterministicamente no XPDL; ausencia de equivalente e fato declarado no catalogo",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_-bkw-V6JEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_-bkw-V6JEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CONTROPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_0XWagVqNEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_0XWagVqNEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_nQntZ16JEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_nQntZ16JEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.dynamic-subprocess",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "A opcao 'interface-registry-validated' e a correcta, e o conjunto de destinos possiveis e derivavel do XPDL - ao contrario do que se julgava.",
+        "raciocinio": "O SubFlow nao aponta para um processo, aponta para um xpdExt:ProcessInterface. Ha tres interfaces no pacote (NOTFAIIM, CTRINTPC, AGURETPC) e cada uma tem exactamente UMA implementacao declarada via ImplementedInterface. O conjunto e portanto fechado e conhecido em tempo de compilacao, o que permite gerar o registo a partir do XPDL e validar no arranque.",
+        "oQueConfirmaria": "Confirmar que nao existem implementacoes adicionais das mesmas interfaces nos pacotes externos nao entregues.",
+        "riscoSeErrada": "Se houver implementacoes noutros pacotes, o registo validado em arranque rejeita um destino legitimo. E um erro visivel e barato de corrigir - preferivel ao inverso.",
+        "confianca": "alta"
+      },
+      "intent": {
+        "note": "Intencao DECLARADA no documento de POC, nao evidencia do XPDL - use como contexto da decisao, nao como prova.",
+        "stages": [
+          {
+            "stage": 6,
+            "title": "Controle de Intimados",
+            "concepts": [
+              "Processamento Dinâmico",
+              "User Tasks",
+              "Variáveis de Processo",
+              "Regras de Negócio",
+              "Encadeamento de Subprocessos"
+            ],
+            "matchedOn": "Controle Intimados"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NOEQ-graft-step",
+      "category": "no-net-equivalent",
+      "severity": "high",
+      "priority": "P1",
+      "subject": "graft-step",
+      "briefing": "Graft Step: o passo pai NAO inicia o subprocesso - aguarda que instancias se ANEXEM a ele, possivelmente em momentos diferentes, e so prossegue quando todas terminarem. NAO HA equivalente direto em .NET: A juncao e invertida e a cardinalidade e definida em execucao: o pai nao sabe quantos filhos existirao nem quando aparecerao. .NET nao tem construcao equivalente - fan-out/fan-in classico exige conhecer o conjunto no momento da divisao. Detectado pelo NOME dos passos - a palavra 'graft' - e nao por hazard: as chamadas do pacote resolvem-se todas, logo nenhum detector estrutural dispara aqui. Ocorre em 3 ponto(s), nos processos POC_EpatProcess. Risco de ignorar: O pai encerra antes dos filhos (perde trabalho) ou aguarda indefinidamente (caso preso). Nenhum dos dois gera erro visivel.",
+      "occurrenceCount": 3,
+      "usedInProcesses": [
+        "POC_EpatProcess"
+      ],
+      "symbols": [],
+      "occurrences": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "Inicia Graft Step",
+          "nodeId": "_0XWagFqNEfG5K7mY0I3I6w",
+          "detail": "Passo do tipo linkCatch cujo nome declara a construcao."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Inicia Graft Step",
+          "nodeId": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "detail": "Passo do tipo linkThrow cujo nome declara a construcao."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Iniciar Novo Graft",
+          "nodeId": "_OAgPol9UEfG6Lfb98zsREQ",
+          "detail": "Passo do tipo receiveTask cujo nome declara a construcao."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "correlation-join",
+          "approach": "O pai suspende num bookmark correlacionado pelo caso; cada filho, ao terminar, sinaliza; um contador de filhos registados decide o encerramento.",
+          "consequence": "Cobre fielmente a cardinalidade variavel e a anexacao em momentos diferentes. Exige definir formalmente a chave de correlacao e o criterio de encerramento (incluindo timeout), que hoje sao implicitos na identidade do caso iProcess.",
+          "suggested": true
+        },
+        {
+          "id": "child-registry",
+          "approach": "Cada instancia filha anuncia-se ao pai ao iniciar e reporta ao concluir; o pai mantem a lista e o contador.",
+          "consequence": "Mais simples de auditar e de mostrar numa demo, porque o estado e visivel. Altera o contrato dos processos filhos, que passam a ter de se registar - inclusive os que vierem de pacotes externos.",
+          "suggested": false
+        },
+        {
+          "id": "one-to-one-call",
+          "approach": "Tratar como chamada dinamica 1:1 e sincrona, seguindo a flag IsGraftStep=\"false\": o pai instancia um unico filho e aguarda a conclusao.",
+          "consequence": "Muito mais barato e coerente com o XPDL exportado, MAS nao valida o conceito de Graft Step que a POC exige demonstrar. So e aceitavel se o cliente confirmar a hipotese (a).",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar quantas instancias filhas podem ligar-se a um pai, e o que acontece se uma delas nunca terminar.",
+        "Qual opcao adotar para 'graft-step'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "deteccao por nome de passo, nao por estrutura: o pacote nomeia a construcao mas a flag exportada nao a declara",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_0XWagFqNEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_0XWagFqNEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_Faq_RVqTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_OAgPol9UEfG6Lfb98zsREQ",
+          "xpath": "//xpdl2:Activity[@Id='_OAgPol9UEfG6Lfb98zsREQ']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.graft-step",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "O graft step e usado a serio: cria uma instancia filha POR SOLIDARIO e liga-a a actividade que espera. Nao e uma chamada de subprocesso comum, apesar de a flag exportada dizer que nao.",
+        "raciocinio": "Os tres DynamicSubProcessTask trazem IsGraftStep=\"false\", mas a descricao que o autor escreveu no proprio XPDL diz o contrario: 'inicia um processo de Notificacao do AIIM para cada solidario e o vincula a actividade'. Os campos envolvidos sao IsArray=\"true\", o que confirma a cardinalidade multipla. A flag exportada e provavelmente artefacto da exportacao, nao a intencao.",
+        "oQueConfirmaria": "Confirmar quantas instancias filhas podem ligar-se a um pai, e o que acontece se uma delas nunca terminar.",
+        "riscoSeErrada": "Implementar como chamada simples de subprocesso faz a notificacao a multiplos solidarios deixar de funcionar - e esse e o conceito de destaque da etapa 2 da PoC.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "NOEQ-iprocess-builtin",
+      "category": "no-net-equivalent",
+      "severity": "high",
+      "priority": "P1",
+      "subject": "iprocess-builtin",
+      "briefing": "Valores e funcoes de runtime do iProcess (IPESystemValues.SW_NA, SW_CASENUM, SW_DATE, IPEStringUtil.*, IPEDateTimeUtil.CALCTIME). NAO HA equivalente direto em .NET: SW_NA e um TERCEIRO estado distinto: nao e null e nao e string vazia. C# nao possui esse estado. As funcoes utilitarias tem semantica propria de indice e de calendario que nao coincide com a BCL. Ocorre em 17 ponto(s), nos processos AGPECASPC, ATZINTPC, BSCENVPC, CALCPRPC, CONTROPC, CRNOTPC, DEAT0050, POC_EpatProcess, PRPINTPC. Risco de ignorar: Mapear SW_NA para null colapsa dois estados diferentes e muda silenciosamente qual ramo dispara. Nao ha erro de compilacao nem teste vermelho. As opcoes abaixo sao as alternativas conhecidas - a escolha e do gate humano e vale para todas as ocorrencias.",
+      "occurrenceCount": 17,
+      "usedInProcesses": [
+        "AGPECASPC",
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CONTROPC",
+        "CRNOTPC",
+        "DEAT0050",
+        "POC_EpatProcess",
+        "PRPINTPC"
+      ],
+      "symbols": [
+        "IPEDateTimeUtil.CALCTIME",
+        "IPEStringUtil.SEARCH",
+        "IPEStringUtil.STRLEN",
+        "IPEStringUtil.SUBSTR",
+        "IPESystemValues.SW_CASENUM",
+        "IPESystemValues.SW_DATE",
+        "IPESystemValues.SW_HOSTNAME",
+        "IPESystemValues.SW_NA",
+        "IPESystemValues.SW_PRONAME",
+        "IPESystemValues.SW_TIME"
+      ],
+      "occurrences": [
+        {
+          "process": "AGPECASPC",
+          "node": "Set Values",
+          "nodeId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_CASENUM, IPESystemValues.SW_NA, IPESystemValues.SW_PRONAME. Requires a compatibility shim."
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "SetParameters",
+          "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "Start Loop",
+          "nodeId": "_RNdJzF6PEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim."
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "SetParameters",
+          "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "Start Loop",
+          "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim."
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "SetParameters",
+          "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "Start Loop",
+          "nodeId": "_zJIHWFqiEfG5K7mY0I3I6w",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim."
+        },
+        {
+          "process": "CONTROPC",
+          "node": "ISetSubProc",
+          "nodeId": "_-bkw-F6JEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "SetParameters",
+          "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "Start Loop",
+          "nodeId": "_NcJJ5F9KEfGqPfX31TKC3w",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE. Requires a compatibility shim."
+        },
+        {
+          "process": "DEAT0050",
+          "node": "HoraFimSC",
+          "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
+          "detail": "Uses iProcess runtime built-ins: IPEDateTimeUtil.CALCTIME, IPESystemValues.SW_DATE, IPESystemValues.SW_HOSTNAME, IPESystemValues.SW_TIME. Requires a compatibility shim."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Define Destinatarios",
+          "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_HOSTNAME, IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPEStringUtil.SEARCH, IPEStringUtil.STRLEN, IPEStringUtil.SUBSTR, IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Set Nome Etapa 2",
+          "nodeId": "_XWivF1qTEfG5K7mY0I3I6w",
+          "detail": "Uses iProcess runtime built-ins: IPEDateTimeUtil.CALCTIME, IPESystemValues.SW_DATE. Requires a compatibility shim."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Verificar Anulacao",
+          "nodeId": "_CI6lx1qREfG5K7mY0I3I6w",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "SetParameters",
+          "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_NA. Requires a compatibility shim."
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "Start Loop",
+          "nodeId": "_KEwC4F6EEfGBBLgT-R5iuw",
+          "detail": "Uses iProcess runtime built-ins: IPESystemValues.SW_DATE, IPESystemValues.SW_NA. Requires a compatibility shim."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "shim-tri-state",
+          "approach": "Tipo de campo tri-estado dentro da camada anticorrupcao: readonly record struct FieldValue<T> com estados HasValue / IsNotAvailable / Empty, mais a classe IProcessValues com os utilitarios. O pattern matching exaustivo do C# obriga a tratar os tres casos.",
+          "consequence": "Preserva a semantica exata dos tres estados e o compilador passa a exigir a decisao em cada uso. Custo: todo campo sentinela deixa de ser tipo primitivo e o codigo gerado fica menos idiomatico.",
+          "suggested": true
+        },
+        {
+          "id": "map-to-null",
+          "approach": "Mapear SW_NA para null e usar tipos anulaveis.",
+          "consequence": "Codigo idiomatico, porem SO e seguro para campos que nunca sao legitimamente nulos - e sao 18 campos sentinela, cada um exigindo essa prova. Onde a prova falhar, o ramo trocado nao gera erro visivel.",
+          "suggested": false
+        },
+        {
+          "id": "preserve-literal",
+          "approach": "Preservar o literal como constante de string e comparar textualmente.",
+          "consequence": "Traducao literal e facil de auditar contra o XPDL, mas propaga tipagem fraca para todo o modelo de dominio e desiste da verificacao do compilador.",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Aprovar que SW_NA vire um sentinela explicito em C# - um tipo proprio ou constante bem conhecida - e nunca null.",
+        "Qual opcao adotar para 'iprocess-builtin'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "construcao detectada deterministicamente no XPDL; ausencia de equivalente e fato declarado no catalogo",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+          "xpath": "//xpdl2:Activity[@Id='_EvOwTF6eEfGJqLUhfbpFcQ']",
+          "artifact": "process-model.json",
+          "pointer": "processes[AGPECASPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJyl6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_RNdJyl6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJzF6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_RNdJzF6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDulV6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_qIDulV6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDul16BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_qIDul16BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_zJIHVlqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHWFqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_zJIHWFqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_-bkw-F6JEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_-bkw-F6JEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CONTROPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJJ4l9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Activity[@Id='_NcJJ4l9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJJ5F9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Activity[@Id='_NcJJ5F9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_lrer3VqhEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_lrer3VqhEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[DEAT0050].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_G4hU81qhEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_G4hU81qhEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_zE3XeV6JEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_XWivF1qTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_XWivF1qTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CI6lx1qREfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CI6lx1qREfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_KEwC3l6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC4F6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_KEwC4F6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.iprocess-builtin",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "As 17 ocorrencias resolvem-se com uma camada de compatibilidade unica e pequena, nao com traducao caso a caso. O ponto critico e SW_NA, nao as funcoes de texto.",
+        "raciocinio": "Sao 13 builtins em 30 chamadas, a maioria manipulacao de texto e data com equivalente directo em .NET. O que nao tem equivalente e o SW_NA: um terceiro estado que nao e nulo nem vazio, e que 18 campos usam. Traduzi-lo para null muda o ramo que dispara, em silencio.",
+        "oQueConfirmaria": "Aprovar que SW_NA vire um sentinela explicito em C# - um tipo proprio ou constante bem conhecida - e nunca null.",
+        "riscoSeErrada": "Cada campo com SW_NA tem tres caminhos possiveis. Colapsar dois deles muda o comportamento em pontos dispersos, sem erro de compilacao e sem teste vermelho.",
+        "confianca": "alta"
+      },
+      "intent": {
+        "note": "Intencao DECLARADA no documento de POC, nao evidencia do XPDL - use como contexto da decisao, nao como prova.",
+        "stages": [
+          {
+            "stage": 6,
+            "title": "Controle de Intimados",
+            "concepts": [
+              "Processamento Dinâmico",
+              "User Tasks",
+              "Variáveis de Processo",
+              "Regras de Negócio",
+              "Encadeamento de Subprocessos"
+            ],
+            "matchedOn": "Controle Intimados"
+          },
+          {
+            "stage": 2,
+            "title": "Notificação do AIIM",
+            "concepts": [
+              "Subprocessos",
+              "Eventos de Mensagem",
+              "Espera Assíncrona",
+              "Correlação de Eventos",
+              "Envio de E-mail",
+              "Loops de Processo"
+            ],
+            "matchedOn": "Notificacao do AIIM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "BUILTIN-SEMANTICS",
+      "category": "builtin-semantics",
+      "severity": "blocker",
+      "subject": "semantica dos builtins iProcess nao confirmada",
+      "briefing": "Estas funcoes nao tem equivalente direto em .NET e sua semantica NAO e derivavel da entrega: nao ha TIBCO em execucao nem documentacao do fornecedor. O risco concreto e SUBSTR/SEARCH: se forem base 1 no iProcess e forem portadas como base 0, o recorte perde um caractere e um id de documento chega truncado, sem excecao nenhuma. Ha um vetor de teste comportamental em builtin-contract.json que qualquer implementacao candidata precisa satisfazer.",
+      "occurrenceCount": 7,
+      "occurrences": [
+        {
+          "builtin": "IPEConversionUtil.DATESTR",
+          "callCount": 6,
+          "observedArity": [
+            1
+          ]
+        },
+        {
+          "builtin": "IPEConversionUtil.NUM",
+          "callCount": 1,
+          "observedArity": [
+            1
+          ]
+        },
+        {
+          "builtin": "IPEConversionUtil.STR",
+          "callCount": 16,
+          "observedArity": [
+            2
+          ]
+        },
+        {
+          "builtin": "IPEDateTimeUtil.CALCTIME",
+          "callCount": 3,
+          "observedArity": [
+            4
+          ]
+        },
+        {
+          "builtin": "IPEStringUtil.SEARCH",
+          "callCount": 1,
+          "observedArity": [
+            2
+          ]
+        },
+        {
+          "builtin": "IPEStringUtil.STRLEN",
+          "callCount": 1,
+          "observedArity": [
+            1
+          ]
+        },
+        {
+          "builtin": "IPEStringUtil.SUBSTR",
+          "callCount": 2,
+          "observedArity": [
+            3
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Uma pagina da documentacao TIBCO iProcess, ou uma execucao no ambiente legado com um caso conhecido, que fixe o indice inicial de SUBSTR e o valor de retorno de SEARCH quando nao encontra.",
+        "SUBSTR e SEARCH sao base 1 ou base 0? (confirmar na documentacao do iProcess)",
+        "O terceiro argumento de SUBSTR e COMPRIMENTO ou POSICAO FINAL? Os dados atuais nao distinguem os dois casos.",
+        "O que SEARCH retorna quando o separador nao existe, e o que SUBSTR faz com comprimento negativo?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "chamadas e aridade extraidas dos scriptTasks; a semantica permanece nao verificada por ausencia de fonte",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.BUILTIN-SEMANTICS",
+        "note": null
+      },
+      "priority": "P2",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "Os builtins iProcess seguem a convencao base-1 do iProcess classico, nao a base-0 do C#. SUBSTR e SEARCH sao os de maior risco.",
+        "raciocinio": "O builtin-contract.json fixou um vector comportamental a partir de dados literais que os proprios scripts carregam: a divisao da lista separada por barra vertical em IDSINTIMADOS. Esse vector so fecha se os indices forem base-1. Nao e prova formal, mas e o unico teste disponivel sem a documentacao do produto.",
+        "oQueConfirmaria": "Uma pagina da documentacao TIBCO iProcess, ou uma execucao no ambiente legado com um caso conhecido, que fixe o indice inicial de SUBSTR e o valor de retorno de SEARCH quando nao encontra.",
+        "riscoSeErrada": "Um desvio de uma posicao em SUBSTR nao gera erro: gera um valor errado que segue pelo fluxo. E a classe de defeito mais dificil de detectar depois, porque nao falha, so mente.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "CLONE-PRPINTPC",
+      "category": "clone-divergence",
+      "severity": "blocker",
+      "subject": "PRPINTPC",
+      "briefing": "PRPINTPC tem estrutura identica a ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, ou seja, sao copias do mesmo template. As condicoes, porem, divergem. Como esse template concentra o tratamento de erro e retentativa de TODAS as chamadas de servico, uma divergencia aqui muda a politica de erro de uma integracao especifica. E preciso decidir se e variacao intencional ou defeito de copia no original.",
+      "divergence": {
+        "onlyInThisProcess": [
+          "STATUS_CODE!=IPESystemValues.SW_NA;"
+        ],
+        "presentInSiblings": [
+          "STATUS_CODE!=\"0\";"
+        ],
+        "siblings": [
+          "ATZINTPC",
+          "BSCENVPC",
+          "CALCPRPC",
+          "CRNOTPC"
+        ]
+      },
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar com quem manteve o processo se houve alguma vez razao para o PRPINTPC tratar erro de forma diferente.",
+        "A diferenca em PRPINTPC e intencional ou e um defeito herdado do TIBCO?",
+        "Se for defeito: a migracao deve reproduzi-lo fielmente ou corrigi-lo? (decisao que precisa ficar registrada)"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "assinatura estrutural comparada de forma deterministica entre processos irmaos",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "PRPINTPC",
+          "xpath": "//xpdl2:WorkflowProcess[@Name='PRPINTPC']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.CLONE-PRPINTPC",
+        "note": null
+      },
+      "priority": "P2",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "A divergencia do PRPINTPC e defeito de copia, nao variacao deliberada. O passo de verificacao de erro ficou com o teste do template anterior.",
+        "raciocinio": "Os cinco subprocessos partilham assinatura estrutural identica: mesmo laco de retry, mesmos passos Start Loop, More Retries, Check Retries, Try Again, Manually Fixed. Quatro comparam STATUS_CODE com '0'; so o PRPINTPC compara com SW_NA. Nao ha nada no PRPINTPC que justifique um contrato de erro diferente - chama o mesmo tipo de servico pelo mesmo transporte. O padrao de defeito e o mesmo ja encontrado noutros pontos do pacote, como o 'if (CNTPECA1 != SW_NA || CNTPECA1 != 9)' sempre verdadeiro no AGPECASPC.",
+        "oQueConfirmaria": "Confirmar com quem manteve o processo se houve alguma vez razao para o PRPINTPC tratar erro de forma diferente.",
+        "riscoSeErrada": "Se for intencional e for corrigido, uma condicao de erro que hoje e ignorada passa a interromper o fluxo, e casos que hoje passam comecam a parar.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "LABEL-CONFLICT",
+      "category": "label-conflict",
+      "severity": "blocker",
+      "subject": "rotulo aponta para outro campo",
+      "briefing": "O rotulo que o formulario da a estes campos e, literalmente, o NOME DE OUTRO campo existente. Aceitar o rotulo renomearia o campo errado no modelo .NET, e o erro so apareceria em producao. Provavel defeito de copia no formulario TIBCO.",
+      "occurrenceCount": 2,
+      "occurrences": [
+        {
+          "field": "NR_RATORIG",
+          "label": "NR_RAT",
+          "collidesWith": "NR_RAT"
+        },
+        {
+          "field": "STSPETICAO",
+          "label": "StatusPeticao",
+          "collidesWith": "STATUSPETICAO"
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? O nome de negocio correcto para cada um dos campos afectados.",
+        "Para cada campo: qual e o nome de negocio correto?",
+        "O rotulo errado deve ser reportado a SEFAZ para correcao na origem?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "o rotulo normalizado coincide exatamente com o nome de outro campo declarado",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.LABEL-CONFLICT",
+        "note": null
+      },
+      "priority": "P2",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "E defeito de copia no formulario TIBCO: o rotulo foi copiado da linha de cima e nao foi editado.",
+        "raciocinio": "O rotulo coincide exactamente com o NOME de outro campo declarado, apos normalizacao. Nao e uma coincidencia plausivel de vocabulario: e o padrao classico de duplicar uma linha num editor de formularios e esquecer de mudar o texto.",
+        "oQueConfirmaria": "O nome de negocio correcto para cada um dos campos afectados.",
+        "riscoSeErrada": "Aceitar o rotulo renomeia o campo errado no modelo .NET. O codigo compila, os testes passam, e o ecra mostra um rotulo que descreve outro dado.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "NOEQ-expression-deadline",
+      "category": "no-net-equivalent",
+      "severity": "medium",
+      "priority": "P2",
+      "subject": "expression-deadline",
+      "briefing": "Prazo definido por expressao que combina um campo DATE e um campo TIME. NAO HA equivalente direto em .NET: O prazo nao e uma duracao: e um instante calculado a partir de dois campos de negocio, que podem mudar durante a execucao. Ocorre em 4 ponto(s), nos processos DEAT0050, POC_EpatProcess. Risco de ignorar: Tratar como duracao fixa dispara o timer no momento errado. As opcoes abaixo sao as alternativas conhecidas - a escolha e do gate humano e vale para todas as ocorrencias.",
+      "occurrenceCount": 4,
+      "usedInProcesses": [
+        "DEAT0050",
+        "POC_EpatProcess"
+      ],
+      "symbols": [],
+      "occurrences": [
+        {
+          "process": "DEAT0050",
+          "node": "Aguarda Defesa",
+          "nodeId": "_lrer2lqhEfG5K7mY0I3I6w",
+          "detail": "Deadline is a script expression ('PRAZODEFESA;\nPRAZODEFESAT;') combining a DATE and a TIME field, not a duration."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": null,
+          "nodeId": "_CtQ6_1qPEfG5K7mY0I3I6w",
+          "detail": "Deadline is a script expression ('PRAZORETIRADAVI;\nHORAFINAL.Time;') combining a DATE and a TIME field, not a duration."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": null,
+          "nodeId": "_CtQ7A1qPEfG5K7mY0I3I6w",
+          "detail": "Deadline is a script expression ('PRAZORETIRADAVI;\nHORAFINAL.Time;') combining a DATE and a TIME field, not a duration."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Fim de Prazo Mantendo Atividade",
+          "nodeId": "_XWivFlqTEfG5K7mY0I3I6w",
+          "detail": "Deadline is a script expression ('DTFIMCQ;\nHRFIMCQ;') combining a DATE and a TIME field, not a duration."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "absolute-instant",
+          "approach": "Combinar o campo de data e o de hora num DateTime absoluto no momento do agendamento e programar o timer para esse instante.",
+          "consequence": "Simples e previsivel. Nao reage a alteracao posterior dos campos: se o prazo for prorrogado depois do agendamento, o timer nao acompanha.",
+          "suggested": true
+        },
+        {
+          "id": "recompute-on-resume",
+          "approach": "Recalcular o instante sempre que o processo e retomado.",
+          "consequence": "Acompanha alteracoes dos campos, mas OBRIGA a definir a politica para o caso em que o novo instante ja passou: dispara imediatamente, ignora ou escala?",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar o fuso e, sobretudo, o que acontece se o campo de data for alterado DEPOIS de o temporizador ja estar armado - o prazo reajusta-se ou mantem-se?",
+        "Qual opcao adotar para 'expression-deadline'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "construcao detectada deterministicamente no XPDL; ausencia de equivalente e fato declarado no catalogo",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_lrer2lqhEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_lrer2lqhEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[DEAT0050].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ6_1qPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CtQ6_1qPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ7A1qPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CtQ7A1qPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_XWivFlqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_XWivFlqTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.expression-deadline",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "Os prazos por expressao ('DATA; HORA;') sao instantes absolutos calculados a partir de campos do caso, nao duracoes. O fuso e o de Sao Paulo.",
+        "raciocinio": "As expressoes referem pares de campos data e hora que o proprio processo escreve, como PRAZODEFESA e HORAFINAL. Uma duracao nao precisaria de dois campos nem de os ler do caso. O sistema e da SEFAZ-SP e os prazos sao administrativos, portanto contam em horario local.",
+        "oQueConfirmaria": "Confirmar o fuso e, sobretudo, o que acontece se o campo de data for alterado DEPOIS de o temporizador ja estar armado - o prazo reajusta-se ou mantem-se?",
+        "riscoSeErrada": "Tratar como duracao faz o prazo disparar no momento errado. Num processo administrativo fiscal, um prazo que dispara cedo ou tarde tem consequencia legal, nao apenas tecnica.",
+        "confianca": "media"
+      },
+      "intent": {
+        "note": "Intencao DECLARADA no documento de POC, nao evidencia do XPDL - use como contexto da decisao, nao como prova.",
+        "stages": [
+          {
+            "stage": 2,
+            "title": "Notificação do AIIM",
+            "concepts": [
+              "Subprocessos",
+              "Eventos de Mensagem",
+              "Espera Assíncrona",
+              "Correlação de Eventos",
+              "Envio de E-mail",
+              "Loops de Processo"
+            ],
+            "matchedOn": "Notificacao do AIIM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NOEQ-external-event",
+      "category": "no-net-equivalent",
+      "severity": "medium",
+      "priority": "P2",
+      "subject": "external-event",
+      "briefing": "Passo diferido / por evento do iProcess. NAO HA equivalente direto em .NET: O iProcess retoma o passo por identidade de caso implicita; .NET precisa de chave de correlacao explicita e de um ponto de entrada para o evento. Ocorre em 6 ponto(s), nos processos AGPECASPC, DEAT0050, POC_EpatProcess. Risco de ignorar: Sem chave de correlacao o processo nao sabe qual instancia retomar. As opcoes abaixo sao as alternativas conhecidas - a escolha e do gate humano e vale para todas as ocorrencias.",
+      "occurrenceCount": 6,
+      "usedInProcesses": [
+        "AGPECASPC",
+        "DEAT0050",
+        "POC_EpatProcess"
+      ],
+      "symbols": [],
+      "occurrences": [
+        {
+          "process": "AGPECASPC",
+          "node": "Aguardar Interposicoes",
+          "nodeId": "_EvOwQl6eEfGJqLUhfbpFcQ",
+          "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+        },
+        {
+          "process": "DEAT0050",
+          "node": "INICALC",
+          "nodeId": "_lrer81qhEfG5K7mY0I3I6w",
+          "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Iniciar Aguardar Notificacao",
+          "nodeId": "_0XWaglqNEfG5K7mY0I3I6w",
+          "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Iniciar Novo Graft",
+          "nodeId": "_OAgPol9UEfG6Lfb98zsREQ",
+          "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Pedido de Vistas",
+          "nodeId": "_CtQ68lqPEfG5K7mY0I3I6w",
+          "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Vistas do Juiz",
+          "nodeId": "_CtQ6-1qPEfG5K7mY0I3I6w",
+          "detail": "iProcess deferred/event step. Needs an explicit correlation key + inbound API in .NET."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "bookmark-correlation",
+          "approach": "Bookmark do motor com chave de correlacao derivada do caso, exposta por um endpoint de retomada. No Elsa 3 corresponde a suspender a atividade e retomar por sinal correlacionado.",
+          "consequence": "Alinhado ao modelo de longa duracao do Elsa e sem infraestrutura adicional. Exige definir formalmente a chave de correlacao e proteger o endpoint de retomada.",
+          "suggested": true
+        },
+        {
+          "id": "queue-saga",
+          "approach": "Mensageria com saga correlacionada (ex.: MassTransit).",
+          "consequence": "Escala melhor e desacopla os produtores de evento, ao custo de infraestrutura adicional fora do escopo da PoC.",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar se a fila garante entrega unica ou se pode entregar em duplicado, e se pode haver resposta atrasada depois de o caso ja ter seguido.",
+        "Qual opcao adotar para 'external-event'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "construcao detectada deterministicamente no XPDL; ausencia de equivalente e fato declarado no catalogo",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_EvOwQl6eEfGJqLUhfbpFcQ",
+          "xpath": "//xpdl2:Activity[@Id='_EvOwQl6eEfGJqLUhfbpFcQ']",
+          "artifact": "process-model.json",
+          "pointer": "processes[AGPECASPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_lrer81qhEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_lrer81qhEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[DEAT0050].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_0XWaglqNEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_0XWaglqNEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_OAgPol9UEfG6Lfb98zsREQ",
+          "xpath": "//xpdl2:Activity[@Id='_OAgPol9UEfG6Lfb98zsREQ']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ68lqPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CtQ68lqPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ6-1qPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CtQ6-1qPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.external-event",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "O evento externo e a resposta assincrona do BusinessWorks pela fila JMS, correlacionada pelo PROCESS_ID que os scripts ja constroem.",
+        "raciocinio": "Os scripts montam 'PROCESS_ID = \"idAiim-<n>idProc-<n>\"' antes de cada chamada. A chave de correlacao ja existe e ja e deterministica - nao e preciso inventar uma. O transporte e SOAP sobre JMS/EMS, declarado no WSDL.",
+        "oQueConfirmaria": "Confirmar se a fila garante entrega unica ou se pode entregar em duplicado, e se pode haver resposta atrasada depois de o caso ja ter seguido.",
+        "riscoSeErrada": "Sem idempotencia, uma entrega duplicada faz o caso avancar duas vezes. Com o graft step envolvido, pode gerar notificacoes a mais.",
+        "confianca": "alta"
+      },
+      "intent": {
+        "note": "Intencao DECLARADA no documento de POC, nao evidencia do XPDL - use como contexto da decisao, nao como prova.",
+        "stages": [
+          {
+            "stage": 2,
+            "title": "Notificação do AIIM",
+            "concepts": [
+              "Subprocessos",
+              "Eventos de Mensagem",
+              "Espera Assíncrona",
+              "Correlação de Eventos",
+              "Envio de E-mail",
+              "Loops de Processo"
+            ],
+            "matchedOn": "Notificacao do AIIM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NOEQ-link-goto",
+      "category": "no-net-equivalent",
+      "severity": "medium",
+      "priority": "P2",
+      "subject": "link-goto",
+      "briefing": "Evento Link do XPDL usado como GOTO entre raias. NAO HA equivalente direto em .NET: BPMN/Elsa nao tratam Link como desvio incondicional entre raias; e um artificio de diagramacao do iProcess. Ocorre em 20 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, POC_EpatProcess, PRPINTPC. Risco de ignorar: Manter o par throw/catch como evento cria estados de espera que nao existem no original. As opcoes abaixo sao as alternativas conhecidas - a escolha e do gate humano e vale para todas as ocorrencias.",
+      "occurrenceCount": 20,
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "POC_EpatProcess",
+        "PRPINTPC"
+      ],
+      "symbols": [],
+      "occurrences": [
+        {
+          "process": "ATZINTPC",
+          "node": "Link To: Try Task",
+          "nodeId": "_RNdJ1F6PEfGBBLgT-R5iuw",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "Try Task",
+          "nodeId": "_RNdJzV6PEfGBBLgT-R5iuw",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "Link To: Try Task",
+          "nodeId": "_qIDun16BEfGBBLgT-R5iuw",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "Try Task",
+          "nodeId": "_qIDumF6BEfGBBLgT-R5iuw",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "Link To: Try Task",
+          "nodeId": "_zJIHYFqiEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "Try Task",
+          "nodeId": "_zJIHWVqiEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "Link To: Try Task",
+          "nodeId": "_NcJJ7F9KEfGqPfX31TKC3w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "Try Task",
+          "nodeId": "_NcJJ5V9KEfGqPfX31TKC3w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Corrigir Fechamento",
+          "nodeId": "_5E444FqTEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Corrigir Fechamento",
+          "nodeId": "_tN6q4lqTEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Inicia Graft Step",
+          "nodeId": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Inicia Graft Step",
+          "nodeId": "_0XWagFqNEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Iniciar Decisions",
+          "nodeId": "_LeuhgFqVEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Iniciar Decisions",
+          "nodeId": "_CI6l0VqREfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Mista",
+          "nodeId": "_xAIVElqPEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Mista",
+          "nodeId": "_CtQ66VqPEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Validação Paralelos",
+          "nodeId": "_Ei94AFqPEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "Validar Paralelos",
+          "nodeId": "_89MVQlqVEfG5K7mY0I3I6w",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "Link To: Try Task",
+          "nodeId": "_KEwC6F6EEfGBBLgT-R5iuw",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "Try Task",
+          "nodeId": "_KEwC4V6EEfGBBLgT-R5iuw",
+          "detail": "XPDL Link event used as cross-lane GOTO; flatten to explicit edge."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "flatten-edge",
+          "approach": "Achatar cada par throw/catch em uma aresta explicita de fluxo (ja resolvido em derived.linkEdges: 10 throw / 10 catch, 10 resolvidos).",
+          "consequence": "Grafo mais simples e fiel a execucao. O diagrama perde a marcacao visual de salto entre raias.",
+          "suggested": true
+        },
+        {
+          "id": "keep-as-signal",
+          "approach": "Manter como evento de sinal intermediario no motor de workflow.",
+          "consequence": "Preserva o desenho original, mas INTRODUZ pontos de persistencia e espera inexistentes no TIBCO: o motor passa a parar onde o original nao parava.",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Nada do negocio - e decisao de arquitectura. Basta aprovar que o BPMN gerado mostre a seta explicita em vez do salto.",
+        "Qual opcao adotar para 'link-goto'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "construcao detectada deterministicamente no XPDL; ausencia de equivalente e fato declarado no catalogo",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ1F6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_RNdJ1F6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJzV6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_RNdJzV6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDun16BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_qIDun16BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDumF6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_qIDumF6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHYFqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_zJIHYFqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHWVqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_zJIHWVqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJJ7F9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Activity[@Id='_NcJJ7F9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJJ5V9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Activity[@Id='_NcJJ5V9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_5E444FqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_5E444FqTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_tN6q4lqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_tN6q4lqTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_Faq_RVqTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_0XWagFqNEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_0XWagFqNEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_LeuhgFqVEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_LeuhgFqVEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CI6l0VqREfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CI6l0VqREfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_xAIVElqPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_xAIVElqPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ66VqPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CtQ66VqPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_Ei94AFqPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_Ei94AFqPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_89MVQlqVEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_89MVQlqVEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC6F6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_KEwC6F6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC4V6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_KEwC4V6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.link-goto",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "Os 20 pares link/goto sao desvio de fluxo puro, sem semantica de negocio. Podem virar transicoes explicitas sem perda.",
+        "raciocinio": "Os 10 pares throw/catch resolvem-se todos deterministicamente no process-model, e cada catch tem exactamente um throw. Nenhum atravessa fronteira de processo. E a construcao classica de evitar cruzar setas num diagrama grande.",
+        "oQueConfirmaria": "Nada do negocio - e decisao de arquitectura. Basta aprovar que o BPMN gerado mostre a seta explicita em vez do salto.",
+        "riscoSeErrada": "Baixo. O pior caso e um diagrama mais dificil de ler.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "NOEQ-non-interrupting-boundary",
+      "category": "no-net-equivalent",
+      "severity": "medium",
+      "priority": "P2",
+      "subject": "non-interrupting-boundary",
+      "briefing": "Evento de borda nao interruptivo: a tarefa hospedeira continua executando enquanto um ramo lateral dispara. NAO HA equivalente direto em .NET: Exige execucao concorrente dentro do escopo da tarefa, sem cancelar a tarefa hospedeira. Ocorre em 1 ponto(s), nos processos POC_EpatProcess. Risco de ignorar: Implementar como interruptivo cancela a tarefa original e perde o trabalho em andamento. As opcoes abaixo sao as alternativas conhecidas - a escolha e do gate humano e vale para todas as ocorrencias.",
+      "occurrenceCount": 1,
+      "usedInProcesses": [
+        "POC_EpatProcess"
+      ],
+      "symbols": [],
+      "occurrences": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "Fim de Prazo Mantendo Atividade",
+          "nodeId": "_XWivFlqTEfG5K7mY0I3I6w",
+          "detail": "Non-interrupting boundary event on '_sfwu-VqUEfG5K7mY0I3I6w' - host task keeps running while a side branch fires."
+        }
+      ],
+      "suggestedOptions": [
+        {
+          "id": "parallel-branch",
+          "approach": "Ramo lateral paralelo dentro do mesmo escopo, sem cancelamento do hospedeiro.",
+          "consequence": "Fiel ao original e visivel no diagrama. Exige que o motor suporte ramos paralelos com escopos independentes.",
+          "suggested": true
+        },
+        {
+          "id": "external-subscription",
+          "approach": "Assinatura de evento fora do fluxo principal, reagindo em paralelo.",
+          "consequence": "Desacopla, mas o ramo lateral DEIXA DE APARECER no diagrama do processo - perde-se a rastreabilidade visual, que e justamente o que o cliente quer ver na PoC.",
+          "suggested": false
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar quem recebe o aviso e se a actividade principal pode mesmo terminar normalmente depois de o aviso ter disparado.",
+        "Qual opcao adotar para 'non-interrupting-boundary'? (indicar o id da opcao)",
+        "A opcao escolhida vale para todas as ocorrencias ou alguma exige tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "construcao detectada deterministicamente no XPDL; ausencia de equivalente e fato declarado no catalogo",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_XWivFlqTEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_XWivFlqTEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "gaps.non-interrupting-boundary",
+        "note": null
+      },
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "A fronteira nao interruptiva existe para avisar sem parar: o prazo expira, alguem e notificado, e a actividade principal continua a correr.",
+        "raciocinio": "Ha uma unica ocorrencia. O padrao em processos administrativos e o aviso de prazo a decorrer, que nao pode interromper o trabalho ja em curso.",
+        "oQueConfirmaria": "Confirmar quem recebe o aviso e se a actividade principal pode mesmo terminar normalmente depois de o aviso ter disparado.",
+        "riscoSeErrada": "Implementar como interruptiva cancela trabalho em curso quando o prazo passa - perda de trabalho do utilizador.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "SCRIPT-HARDCODED",
+      "category": "script-scaffolding",
+      "severity": "blocker",
+      "subject": "valores fixos embutidos em scriptTask",
+      "briefing": "Scripts atribuem valores literais a campos de caso. Entre eles ha uma lista de ids de teste que SOBRESCREVE a entrada real depois do processamento, e enderecos de e-mail nominais fixos no codigo. Portar isso literalmente carrega dado de teste e destinatario pessoal para producao.",
+      "occurrenceCount": 4,
+      "occurrences": [
+        {
+          "kind": "hardcoded-recipient",
+          "process": "POC_EpatProcess",
+          "node": "Define Destinatarios",
+          "variable": "CCRELATORIO",
+          "value": "acsimoes@fazenda.sp.gov.br"
+        },
+        {
+          "kind": "hardcoded-recipient",
+          "process": "POC_EpatProcess",
+          "node": "Define Destinatarios",
+          "variable": "BCCRELATORIO",
+          "value": "epat_tribunal@fazenda.sp.gov.br"
+        },
+        {
+          "kind": "hardcoded-literal",
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "variable": "IDSINTIMADOS",
+          "value": "278713|278712|"
+        },
+        {
+          "kind": "hardcoded-literal",
+          "process": "CONTROPC",
+          "node": "Desativa Subs",
+          "variable": "STATUSSUBPROC",
+          "value": "inativo"
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que 278713 e 278712 nao sao intimados reais em producao, e autorizar a remocao da linha na migracao.",
+        "Cada valor fixo e andaime de POC (remover) ou parametro legitimo (externalizar em configuracao)?",
+        "Os destinatarios de e-mail devem vir de configuracao ou de cadastro?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "atribuicao de literal detectada no corpo do script - fato textual",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SCRIPT-HARDCODED",
+        "note": null
+      },
+      "priority": "P2",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "Sao dados de teste esquecidos, nao configuracao. Em particular, o 'IDSINTIMADOS = \"278713|278712|\"' no fim do prepSub sobrepoe a lista real calculada acima.",
+        "raciocinio": "A atribuicao esta no FIM do script, depois de a lista ter sido montada a partir dos dados do caso, e usa dois identificadores concretos com aspecto de chave de base de dados. Um valor de configuracao estaria no inicio ou num parametro, nao a sobrepor o resultado do proprio script.",
+        "oQueConfirmaria": "Confirmar que 278713 e 278712 nao sao intimados reais em producao, e autorizar a remocao da linha na migracao.",
+        "riscoSeErrada": "Se for reproduzido fielmente, toda a demonstracao notifica sempre os mesmos dois solidarios, independentemente do AIIM - e o graft step, que e conceito de destaque da PoC, seria demonstrado com dados falsos.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "MISSING-EXTERNAL-PACKAGES",
+      "category": "source-not-delivered",
+      "severity": "blocker",
+      "subject": "pacotes externos referenciados e nao entregues",
+      "briefing": "O XPDL referencia estes pacotes, mas os arquivos nunca foram entregues. E a raiz de varios outros achados deste dossie: identificadores sem declaracao, o campo que nomeia o subprocesso grafado e nunca escrito, e campos de tela fora do dicionario. Nao e lacuna de analise - e lacuna de entrega, e nenhuma analise adicional a resolve.",
+      "occurrenceCount": 15,
+      "occurrences": [
+        {
+          "package": "_XWivN1qTEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_-bkx9V6JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_0XWaj1qNEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_-bkx9l6JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_CtQ7L1qPEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_lresZVqhEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_CI6mDFqREfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_CI6mDVqREfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_lresZlqhEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_lresZFqhEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_-bkx8F6JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_-bkx716JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_-bkx816JEfGBBLgT-R5iuw"
+        },
+        {
+          "package": "_CtQ7LlqPEfG5K7mY0I3I6w"
+        },
+        {
+          "package": "_-bkx8V6JEfGBBLgT-R5iuw"
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar, etapa a etapa, que nenhuma das sete precisa de um processo que nao foi entregue. Se precisar, decidir entre obter o ficheiro ou substituir por um duble com contrato acordado.",
+        "A SEFAZ pode entregar estes pacotes? Quais sao viaveis e em que prazo?",
+        "Para os que nao vierem: a semantica sera autorizada por escrito ou o escopo sera reduzido?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "declarados em xpdl2:ExternalPackages e ausentes da entrega - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.MISSING-EXTERNAL-PACKAGES",
+        "note": null
+      },
+      "priority": "P2",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "Os 15 pacotes nao entregues nao sao todos necessarios a PoC. A trilha narrada usa apenas os processos entregues; os pacotes em falta cobrem o resto do ePAT.",
+        "raciocinio": "O intent-map liga as sete etapas do documento a elementos que existem todos no pacote entregue. Os subprocessos invocados pela trilha - DEAT0050, CONTROPC e os cinco de servico - estao presentes. As referencias externas aparecem sobretudo em ramos fora da trilha.",
+        "oQueConfirmaria": "Confirmar, etapa a etapa, que nenhuma das sete precisa de um processo que nao foi entregue. Se precisar, decidir entre obter o ficheiro ou substituir por um duble com contrato acordado.",
+        "riscoSeErrada": "Descobrir a meio da demonstracao que uma etapa chama um processo inexistente. E pior do que parece: o legado declara HaltOnBadSubProcess=\"false\", ou seja, falha em silencio - a migracao pode herdar o mesmo comportamento e ninguem repara.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "TYPE-XPDL-VS-FORM",
+      "category": "type-conflict",
+      "severity": "blocker",
+      "subject": "tipo divergente entre XPDL e formulario",
+      "briefing": "A precisao declarada no XPDL implica um tipo mais largo do que o formulario TIBCO declara (tipicamente long contra Integer de 32 bits). Estreitar pode estourar em numero de AIIM; alargar pode quebrar o contrato com a tela. E UMA decisao de padrao, valida para todos os campos abaixo, nao uma decisao por campo.",
+      "occurrenceCount": 14,
+      "occurrences": [
+        {
+          "field": "IDAIIM",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 11,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "NRAIIM",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 11,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "NR_RATORIG",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 11,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "QTDINTIMADOS",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "SW_CASENUMPOC",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 15,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "NR_AIIM",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 11,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "SW_MAINCASEPOC",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "CDIMPOSTO",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "NR_RAT",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 11,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "INDICESUBDIN",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "POSICAOINICIO",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "FIMSTRING",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "POSICAOFIM",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 10,
+          "form": "POC_EpatProcess/REALATVI"
+        },
+        {
+          "field": "IDAIIMORIGINAL",
+          "fromXpdl": "long",
+          "fromForm": "int",
+          "xpdlPrecision": 11,
+          "form": "POC_EpatProcess/REALATVI"
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar a ordem de grandeza real de IDAIIM e NR_AIIM na base de producao. Se couberem folgadamente em int, a divergencia e irrelevante.",
+        "Qual fonte prevalece quando XPDL e formulario discordam: a precisao do XPDL ou o tipo do formulario?",
+        "Ha algum campo da lista que exija excecao a essa regra?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "comparacao deterministica entre a precisao declarada no XPDL e o BomPrimitiveType do formulario",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.TYPE-XPDL-VS-FORM",
+        "note": null
+      },
+      "priority": "P2",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "O XPDL esta certo e o formulario esta errado. A precisao declarada no XPDL vem do dominio (numero de AIIM, identificadores), enquanto o tipo do formulario e o que coube no controlo do ecra.",
+        "raciocinio": "Os 14 casos sao todos do mesmo feitio: XPDL declara long, formulario declara int. Sao campos como IDAIIM, NR_AIIM, NR_RAT, QTDINTIMADOS - identificadores e contadores que crescem com o tempo. A escolha conservadora e sempre o tipo mais largo, porque estreitar trunca em silencio.",
+        "oQueConfirmaria": "Confirmar a ordem de grandeza real de IDAIIM e NR_AIIM na base de producao. Se couberem folgadamente em int, a divergencia e irrelevante.",
+        "riscoSeErrada": "Adoptar int e ver o identificador exceder o limite so acontece anos depois, e quando acontece corrompe o numero sem erro visivel.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "SENTINEL-AGPECASPC-_EvOwZF6eE",
+      "category": "sentinel-branch",
+      "severity": "review",
+      "subject": "DATACONTROLE, PRAZORECEBIMENT",
+      "briefing": "Esta condicao testa o sentinela SW_NA do iProcess, que e um terceiro estado distinto: nao e null e nao e string vazia. O campo tem tres caminhos possiveis (valor definido / SW_NA / demais valores). Traduzir SW_NA para null em C# muda silenciosamente qual ramo dispara.",
+      "process": "AGPECASPC",
+      "scope": "MAIN",
+      "decision": "gateway «sem rotulo»",
+      "condition": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;",
+      "arrivesFrom": [
+        "scriptTask 'Controla Datas'",
+        "scriptTask 'Set Values'"
+      ],
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": null,
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "endEvent 'End Event'",
+          "thenPath": "endEvent 'End Event'"
+        },
+        {
+          "isThisOne": true,
+          "label": null,
+          "conditionType": "CONDITION",
+          "condition": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;",
+          "leadsTo": "scriptTask 'SetPrazo'",
+          "thenPath": [
+            "scriptTask 'SetPrazo'",
+            "receiveTask 'Aguardar Interposicoes'",
+            "scriptTask 'Controla Datas'",
+            "gateway «sem rotulo»",
+            "gateway «sem rotulo»",
+            "... (ramifica em 2 caminhos)"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "O que significa, no negocio, este campo estar \"nao preenchido\" neste ponto?",
+        "O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ocorrencia textual do sentinela SW_NA na condicao da transicao",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_EvOwZF6eEfGJqLUhfbpFcQ",
+          "xpath": "//xpdl2:Transition[@Id='_EvOwZF6eEfGJqLUhfbpFcQ']",
+          "artifact": "process-model.json",
+          "pointer": "processes[AGPECASPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SENTINEL-AGPECASPC-_EvOwZF6eE",
+        "note": null
+      },
+      "priority": "P3"
+    },
+    {
+      "id": "SENTINEL-DEAT0050-_lresFVqhE",
+      "category": "sentinel-branch",
+      "severity": "review",
+      "subject": "DATACONTROLE, PRAZODEFESA",
+      "briefing": "Esta condicao testa o sentinela SW_NA do iProcess, que e um terceiro estado distinto: nao e null e nao e string vazia. O campo tem tres caminhos possiveis (valor definido / SW_NA / demais valores). Traduzir SW_NA para null em C# muda silenciosamente qual ramo dispara.",
+      "process": "DEAT0050",
+      "scope": "MAIN",
+      "decision": "gateway «sem rotulo»",
+      "condition": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;",
+      "arrivesFrom": "scriptTask 'HoraFimSC'",
+      "branches": [
+        {
+          "isThisOne": true,
+          "label": null,
+          "conditionType": "CONDITION",
+          "condition": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;",
+          "leadsTo": "timerEvent 'Aguarda Defesa'",
+          "thenPath": [
+            "timerEvent 'Aguarda Defesa'",
+            "scriptTask 'Controlar Data'",
+            "callActivity 'CalculaPrazo' -> chama 'CALCPRPC'",
+            "scriptTask 'HoraFimSC'",
+            "gateway «sem rotulo»",
+            "... (ramifica em 2 caminhos)"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": null,
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "endEvent «sem rotulo»",
+          "thenPath": "endEvent «sem rotulo»"
+        }
+      ],
+      "questionsForAnalyst": [
+        "O que significa, no negocio, este campo estar \"nao preenchido\" neste ponto?",
+        "O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ocorrencia textual do sentinela SW_NA na condicao da transicao",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_lresFVqhEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_lresFVqhEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[DEAT0050].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SENTINEL-DEAT0050-_lresFVqhE",
+        "note": null
+      },
+      "priority": "P3",
+      "intent": {
+        "note": "Intencao DECLARADA no documento de POC, nao evidencia do XPDL - use como contexto da decisao, nao como prova.",
+        "stages": [
+          {
+            "stage": 2,
+            "title": "Notificação do AIIM",
+            "concepts": [
+              "Subprocessos",
+              "Eventos de Mensagem",
+              "Espera Assíncrona",
+              "Correlação de Eventos",
+              "Envio de E-mail",
+              "Loops de Processo"
+            ],
+            "matchedOn": "Notificacao do AIIM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "SENTINEL-POC_EpatProcess-_CtQ7DVqPE",
+      "category": "sentinel-branch",
+      "severity": "review",
+      "subject": "TIPOVISTAS",
+      "briefing": "Esta condicao testa o sentinela SW_NA do iProcess, que e um terceiro estado distinto: nao e null e nao e string vazia. O campo tem tres caminhos possiveis (valor definido / SW_NA / demais valores). Traduzir SW_NA para null em C# muda silenciosamente qual ramo dispara.",
+      "process": "POC_EpatProcess",
+      "scope": "MAIN",
+      "decision": "gateway 'Vistas do Juiz ?'",
+      "condition": "TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;",
+      "arrivesFrom": "linkCatch 'Validação Paralelos'",
+      "branches": [
+        {
+          "isThisOne": true,
+          "label": null,
+          "conditionType": "CONDITION",
+          "condition": "TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;",
+          "leadsTo": "receiveTask 'Vistas do Juiz'",
+          "thenPath": [
+            "receiveTask 'Vistas do Juiz'",
+            "gateway 'Vistas Mista ?'",
+            "... (ramifica em 2 caminhos)"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "DRF",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "... (ramifica em 2 caminhos)"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "O que significa, no negocio, este campo estar \"nao preenchido\" neste ponto?",
+        "O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ocorrencia textual do sentinela SW_NA na condicao da transicao",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ7DVqPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_CtQ7DVqPEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[POC_EpatProcess].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SENTINEL-POC_EpatProcess-_CtQ7DVqPE",
+        "note": null
+      },
+      "priority": "P3"
+    },
+    {
+      "id": "SENTINEL-PRPINTPC-_KEwDYl6EE",
+      "category": "sentinel-branch",
+      "severity": "review",
+      "subject": "STATUS_CODE",
+      "briefing": "Esta condicao testa o sentinela SW_NA do iProcess, que e um terceiro estado distinto: nao e null e nao e string vazia. O campo tem tres caminhos possiveis (valor definido / SW_NA / demais valores). Traduzir SW_NA para null em C# muda silenciosamente qual ramo dispara.",
+      "process": "PRPINTPC",
+      "scope": "ActivitySet",
+      "decision": "gateway «sem rotulo»",
+      "condition": "STATUS_CODE!=IPESystemValues.SW_NA;",
+      "arrivesFrom": "serviceTask 'CaptaParametros'",
+      "branches": [
+        {
+          "isThisOne": true,
+          "label": "AppError",
+          "conditionType": "CONDITION",
+          "condition": "STATUS_CODE!=IPESystemValues.SW_NA;",
+          "leadsTo": "scriptTask 'Set App Error'",
+          "thenPath": [
+            "scriptTask 'Set App Error'",
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "Good",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "O que significa, no negocio, este campo estar \"nao preenchido\" neste ponto?",
+        "O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ocorrencia textual do sentinela SW_NA na condicao da transicao",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwDYl6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwDYl6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SENTINEL-PRPINTPC-_KEwDYl6EE",
+        "note": null
+      },
+      "priority": "P3"
+    },
+    {
+      "id": "IDENT-ISAPPERROR",
+      "category": "unresolved-identifier",
+      "severity": "review",
+      "subject": "ISAPPERROR",
+      "declarationStatus": "declared-in-form",
+      "briefing": "'ISAPPERROR' nao e um dos 209 campos de negocio, mas TEM declaracao: o formulario TIBCO ATZINTPC/MANEXC, BSCENVPC/MANEXC, CALCPRPC/MANEXC, CRNOTPC/MANEXCPC, POC_EpatProcess/REALATVI, PRPINTPC/MANEXC o declara como Text (tamanho 1), e so e lido pelo processo (IN). Ele decide o fluxo em 5 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC, portanto o modelo .NET precisa expor esse valor - fora do modelo de dominio.",
+      "comparedAgainst": [
+        "== 'Y'"
+      ],
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "PRPINTPC"
+      ],
+      "usages": [
+        {
+          "process": "CALCPRPC",
+          "scope": "MAIN",
+          "decisionId": "_zJIHZFqiE",
+          "decisionElementId": "_zJIHZFqiEfG5K7mY0I3I6w",
+          "decision": "gateway 'App Error'",
+          "arrivesFrom": "gateway 'Tech Error'",
+          "condition": "ISAPPERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISAPPERROR=='Y';",
+              "leadsTo": "gateway 'More Retries'",
+              "thenPath": [
+                "gateway 'More Retries'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Success'",
+              "thenPath": "endEvent 'Done - Success'"
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "MAIN",
+          "decisionId": "_qIDuo16BE",
+          "decisionElementId": "_qIDuo16BEfGBBLgT-R5iuw",
+          "decision": "gateway 'App Error'",
+          "arrivesFrom": "gateway 'Tech Error'",
+          "condition": "ISAPPERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISAPPERROR=='Y';",
+              "leadsTo": "gateway 'More Retries'",
+              "thenPath": [
+                "gateway 'More Retries'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Success'",
+              "thenPath": "endEvent 'Done - Success'"
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "MAIN",
+          "decisionId": "_KEwC7F6EE",
+          "decisionElementId": "_KEwC7F6EEfGBBLgT-R5iuw",
+          "decision": "gateway 'App Error'",
+          "arrivesFrom": "gateway 'Tech Error'",
+          "condition": "ISAPPERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISAPPERROR=='Y';",
+              "leadsTo": "gateway 'More Retries'",
+              "thenPath": [
+                "gateway 'More Retries'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Success'",
+              "thenPath": "endEvent 'Done - Success'"
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "MAIN",
+          "decisionId": "_RNdJ2F6PE",
+          "decisionElementId": "_RNdJ2F6PEfGBBLgT-R5iuw",
+          "decision": "gateway 'App Error'",
+          "arrivesFrom": "gateway 'Tech Error'",
+          "condition": "ISAPPERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISAPPERROR=='Y';",
+              "leadsTo": "gateway 'More Retries'",
+              "thenPath": [
+                "gateway 'More Retries'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Success'",
+              "thenPath": "endEvent 'Done - Success'"
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "MAIN",
+          "decisionId": "_NcJJ8F9KE",
+          "decisionElementId": "_NcJJ8F9KEfGqPfX31TKC3w",
+          "decision": "gateway 'App Error'",
+          "arrivesFrom": "gateway 'Tech Error'",
+          "condition": "ISAPPERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Success'",
+              "thenPath": "endEvent 'Done - Success'"
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISAPPERROR=='Y';",
+              "leadsTo": "gateway 'More Retries'",
+              "thenPath": [
+                "gateway 'More Retries'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que 'N' e ausencia de erro e nao 'nao avaliado'. A diferenca importa porque o campo pode estar por preencher antes da primeira chamada.",
+        "Confirmar o dominio de valores de 'ISAPPERROR' e qual deles significa sucesso.",
+        "Definir onde 'ISAPPERROR' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?)."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "declaracao encontrada no formulario TIBCO; semantica dos valores nao confirmada",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHbFqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIHbFqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDuq16BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDuq16BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC9F6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwC9F6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ4F6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdJ4F6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJw9l9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJw9l9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "unresolved.ISAPPERROR",
+        "note": null
+      },
+      "priority": "P3",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "ISAPPERROR e um booleano codificado como texto 'Y'/'N' que marca falha de negocio devolvida pelo servico, por oposicao a falha de infraestrutura. 'N' significa ausencia de erro.",
+        "raciocinio": "So aparecem os literais 'N' e 'Y' em todo o pacote. Vive lado a lado com ISTECHERROR, com o mesmo dominio, e ambos sao lidos no formulario MANEXC - o formulario de excepcao manual que o operador ve quando o retry se esgota. A separacao aplicacao/tecnico e a mesma que o envelope tecnico do WSDL faz entre STATUS_CODE e ERROR_CODE.",
+        "oQueConfirmaria": "Confirmar que 'N' e ausencia de erro e nao 'nao avaliado'. A diferenca importa porque o campo pode estar por preencher antes da primeira chamada.",
+        "riscoSeErrada": "Se 'N' significar 'ainda nao avaliado', o ramo de sucesso dispara antes de haver resposta do servico, e o caso avanca sem ter sido processado.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "IDENT-ISTECHERROR",
+      "category": "unresolved-identifier",
+      "severity": "review",
+      "subject": "ISTECHERROR",
+      "declarationStatus": "declared-in-form",
+      "briefing": "'ISTECHERROR' nao e um dos 209 campos de negocio, mas TEM declaracao: o formulario TIBCO ATZINTPC/MANEXC, BSCENVPC/MANEXC, CALCPRPC/MANEXC, CRNOTPC/MANEXCPC, POC_EpatProcess/REALATVI, PRPINTPC/MANEXC o declara como Text (tamanho 1), e so e lido pelo processo (IN). Ele decide o fluxo em 5 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC, portanto o modelo .NET precisa expor esse valor - fora do modelo de dominio.",
+      "comparedAgainst": [
+        "== 'Y'"
+      ],
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "PRPINTPC"
+      ],
+      "usages": [
+        {
+          "process": "CALCPRPC",
+          "scope": "MAIN",
+          "decisionId": "_zJIHZVqiE",
+          "decisionElementId": "_zJIHZVqiEfG5K7mY0I3I6w",
+          "decision": "gateway 'Tech Error'",
+          "arrivesFrom": "subProcessScope 'Control System Task Call'",
+          "condition": "ISTECHERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'App Error'",
+              "thenPath": [
+                "gateway 'App Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISTECHERROR=='Y';",
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "MAIN",
+          "decisionId": "_qIDupF6BE",
+          "decisionElementId": "_qIDupF6BEfGBBLgT-R5iuw",
+          "decision": "gateway 'Tech Error'",
+          "arrivesFrom": "subProcessScope 'Control System Task Call'",
+          "condition": "ISTECHERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'App Error'",
+              "thenPath": [
+                "gateway 'App Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISTECHERROR=='Y';",
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "MAIN",
+          "decisionId": "_KEwC7V6EE",
+          "decisionElementId": "_KEwC7V6EEfGBBLgT-R5iuw",
+          "decision": "gateway 'Tech Error'",
+          "arrivesFrom": "subProcessScope 'Control System Task Call'",
+          "condition": "ISTECHERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISTECHERROR=='Y';",
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'App Error'",
+              "thenPath": [
+                "gateway 'App Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "MAIN",
+          "decisionId": "_RNdJ2V6PE",
+          "decisionElementId": "_RNdJ2V6PEfGBBLgT-R5iuw",
+          "decision": "gateway 'Tech Error'",
+          "arrivesFrom": "subProcessScope 'Control System Task Call'",
+          "condition": "ISTECHERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'App Error'",
+              "thenPath": [
+                "gateway 'App Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISTECHERROR=='Y';",
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "MAIN",
+          "decisionId": "_NcJJ8V9KE",
+          "decisionElementId": "_NcJJ8V9KEfGqPfX31TKC3w",
+          "decision": "gateway 'Tech Error'",
+          "arrivesFrom": "subProcessScope 'Control System Task Call'",
+          "condition": "ISTECHERROR=='Y';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'App Error'",
+              "thenPath": [
+                "gateway 'App Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "ISTECHERROR=='Y';",
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que so o erro tecnico e retentavel automaticamente, e que o erro de aplicacao vai sempre para o operador.",
+        "Confirmar o dominio de valores de 'ISTECHERROR' e qual deles significa sucesso.",
+        "Definir onde 'ISTECHERROR' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?)."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "declaracao encontrada no formulario TIBCO; semantica dos valores nao confirmada",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHdlqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIHdlqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDutV6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDutV6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC_l6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwC_l6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ6l6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdJ6l6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJxAF9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJxAF9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "unresolved.ISTECHERROR",
+        "note": null
+      },
+      "priority": "P3",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "ISTECHERROR e o par de ISAPPERROR para falha de infraestrutura - fila, rede, indisponibilidade - com o mesmo dominio 'Y'/'N'. Governa se a falha e retentavel automaticamente.",
+        "raciocinio": "Dominio identico e declaracao no mesmo conjunto de formularios MANEXC. A distincao aplicacao/tecnico e a que decide, no legado, se o caso volta ao laco de retry ou vai para tratamento manual: um erro de negocio nao se resolve repetindo a chamada, um erro tecnico resolve-se.",
+        "oQueConfirmaria": "Confirmar que so o erro tecnico e retentavel automaticamente, e que o erro de aplicacao vai sempre para o operador.",
+        "riscoSeErrada": "Repetir automaticamente uma chamada que falhou por regra de negocio consome as tentativas todas sem hipotese de sucesso, e atrasa a entrada em tratamento manual.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "IDENT-MAXRETRIES",
+      "category": "unresolved-identifier",
+      "severity": "review",
+      "subject": "MAXRETRIES",
+      "declarationStatus": "declared-in-form",
+      "briefing": "'MAXRETRIES' nao e um dos 209 campos de negocio, mas TEM declaracao: o formulario TIBCO ATZINTPC/MANEXC, BSCENVPC/MANEXC, CALCPRPC/MANEXC, CRNOTPC/MANEXCPC, POC_EpatProcess/REALATVI, PRPINTPC/MANEXC o declara como Integer (tamanho 10), e so e lido pelo processo (IN). Ele decide o fluxo em 10 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC, portanto o modelo .NET precisa expor esse valor - fora do modelo de dominio.",
+      "comparedAgainst": [],
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "PRPINTPC"
+      ],
+      "usages": [
+        {
+          "process": "CALCPRPC",
+          "scope": "MAIN",
+          "decisionId": "_zJIHYVqiE",
+          "decisionElementId": "_zJIHYVqiEfG5K7mY0I3I6w",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CALCPRPC",
+          "scope": "ActivitySet",
+          "decisionId": "_zJIubVqiE",
+          "decisionElementId": "_zJIubVqiEfG5K7mY0I3I6w",
+          "decision": "gateway 'Check Retries SW_QRETRYCOUNT'",
+          "arrivesFrom": "scriptTask 'Start TX'",
+          "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Maxretriesexceeded",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "scriptTask 'Set Technical Error'",
+              "thenPath": [
+                "scriptTask 'Set Technical Error'",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Stillgood",
+              "conditionType": "CONDITION",
+              "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+              "leadsTo": "serviceTask 'CalcularPrazo'",
+              "thenPath": [
+                "serviceTask 'CalcularPrazo'",
+                "gateway «sem rotulo»",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "MAIN",
+          "decisionId": "_qIDuoF6BE",
+          "decisionElementId": "_qIDuoF6BEfGBBLgT-R5iuw",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "ActivitySet",
+          "decisionId": "_qIDu3V6BE",
+          "decisionElementId": "_qIDu3V6BEfGBBLgT-R5iuw",
+          "decision": "gateway 'Check Retries SW_QRETRYCOUNT'",
+          "arrivesFrom": "scriptTask 'Start TX'",
+          "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Maxretriesexceeded",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "scriptTask 'Set Technical Error'",
+              "thenPath": [
+                "scriptTask 'Set Technical Error'",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Stillgood",
+              "conditionType": "CONDITION",
+              "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+              "leadsTo": "serviceTask 'Busca Envolvidos Vista Por AIIM'",
+              "thenPath": [
+                "serviceTask 'Busca Envolvidos Vista Por AIIM'",
+                "gateway «sem rotulo»",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "MAIN",
+          "decisionId": "_KEwC6V6EE",
+          "decisionElementId": "_KEwC6V6EEfGBBLgT-R5iuw",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "ActivitySet",
+          "decisionId": "_KEwDUV6EE",
+          "decisionElementId": "_KEwDUV6EEfGBBLgT-R5iuw",
+          "decision": "gateway 'Check Retries SW_QRETRYCOUNT'",
+          "arrivesFrom": "scriptTask 'Start TX'",
+          "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Maxretriesexceeded",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "scriptTask 'Set Technical Error'",
+              "thenPath": [
+                "scriptTask 'Set Technical Error'",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Stillgood",
+              "conditionType": "CONDITION",
+              "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+              "leadsTo": "serviceTask 'CaptaParametros'",
+              "thenPath": [
+                "serviceTask 'CaptaParametros'",
+                "gateway «sem rotulo»",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "MAIN",
+          "decisionId": "_RNdJ1V6PE",
+          "decisionElementId": "_RNdJ1V6PEfGBBLgT-R5iuw",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "ActivitySet",
+          "decisionId": "_RNdKFV6PE",
+          "decisionElementId": "_RNdKFV6PEfGBBLgT-R5iuw",
+          "decision": "gateway 'Check Retries SW_QRETRYCOUNT'",
+          "arrivesFrom": "scriptTask 'Start TX'",
+          "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Maxretriesexceeded",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "scriptTask 'Set Technical Error'",
+              "thenPath": [
+                "scriptTask 'Set Technical Error'",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Stillgood",
+              "conditionType": "CONDITION",
+              "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+              "leadsTo": "serviceTask 'AtualizarIntimacao'",
+              "thenPath": [
+                "serviceTask 'AtualizarIntimacao'",
+                "gateway «sem rotulo»",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "MAIN",
+          "decisionId": "_NcJJ7V9KE",
+          "decisionElementId": "_NcJJ7V9KEfGqPfX31TKC3w",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "ActivitySet",
+          "decisionId": "_NcJxKV9KE",
+          "decisionElementId": "_NcJxKV9KEfGqPfX31TKC3w",
+          "decision": "gateway 'Check Retries SW_QRETRYCOUNT'",
+          "arrivesFrom": "scriptTask 'Start TX'",
+          "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Maxretriesexceeded",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "scriptTask 'Set Technical Error'",
+              "thenPath": [
+                "scriptTask 'Set Technical Error'",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Stillgood",
+              "conditionType": "CONDITION",
+              "condition": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+              "leadsTo": "serviceTask 'CriaNotificacao'",
+              "thenPath": [
+                "serviceTask 'CriaNotificacao'",
+                "gateway «sem rotulo»",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que 5 e o valor de producao e que nao existe configuracao externa que o sobreponha por ambiente ou por servico.",
+        "Confirmar o dominio de valores de 'MAXRETRIES' e qual deles significa sucesso.",
+        "Definir onde 'MAXRETRIES' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?)."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "declaracao encontrada no formulario TIBCO; semantica dos valores nao confirmada",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHbVqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIHbVqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIudlqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIudlqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDurF6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDurF6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDu6V6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDu6V6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC9V6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwC9V6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwDXl6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwDXl6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ4V6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdJ4V6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdKIV6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdKIV6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJw919KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJw919KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJxNV9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJxNV9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "unresolved.MAXRETRIES",
+        "note": null
+      },
+      "priority": "P3",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "MAXRETRIES e o tecto de tentativas do laco de retry e vale 5 por omissao. Nao tem significado de negocio: e parametro de resiliencia da chamada de servico.",
+        "raciocinio": "Os cinco subprocessos de servico (CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC, CRNOTPC) tem no passo SetParameters a atribuicao 'if (MAXRETRIES == null) MAXRETRIES = 5', identica nos cinco. E lido em duas condicoes: 'NUMAPPRETRIES < MAXRETRIES' no passo More Retries, e 'IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES' no passo Check Retries. Nunca aparece num formulario visivel ao utilizador nem numa regra Corticon.",
+        "oQueConfirmaria": "Confirmar que 5 e o valor de producao e que nao existe configuracao externa que o sobreponha por ambiente ou por servico.",
+        "riscoSeErrada": "Se na producao o valor vier de configuracao e for diferente, o numero de tentativas muda e com ele o tempo ate o caso cair no tratamento manual. Nao quebra o fluxo, altera o SLA.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "IDENT-NUMAPPRETRIES",
+      "category": "unresolved-identifier",
+      "severity": "review",
+      "subject": "NUMAPPRETRIES",
+      "declarationStatus": "declared-in-form",
+      "briefing": "'NUMAPPRETRIES' nao e um dos 209 campos de negocio, mas TEM declaracao: o formulario TIBCO POC_EpatProcess/REALATVI o declara como Integer (tamanho 10), e e alterado pelo processo ou pelo usuario (INOUT). Ele decide o fluxo em 5 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC, portanto o modelo .NET precisa expor esse valor - fora do modelo de dominio.",
+      "comparedAgainst": [
+        "< MAXRETRIES"
+      ],
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "PRPINTPC"
+      ],
+      "usages": [
+        {
+          "process": "CALCPRPC",
+          "scope": "MAIN",
+          "decisionId": "_zJIHYVqiE",
+          "decisionElementId": "_zJIHYVqiEfG5K7mY0I3I6w",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "MAIN",
+          "decisionId": "_qIDuoF6BE",
+          "decisionElementId": "_qIDuoF6BEfGBBLgT-R5iuw",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "MAIN",
+          "decisionId": "_KEwC6V6EE",
+          "decisionElementId": "_KEwC6V6EEfGBBLgT-R5iuw",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "MAIN",
+          "decisionId": "_RNdJ1V6PE",
+          "decisionElementId": "_RNdJ1V6PEfGBBLgT-R5iuw",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "MAIN",
+          "decisionId": "_NcJJ7V9KE",
+          "decisionElementId": "_NcJJ7V9KEfGqPfX31TKC3w",
+          "decision": "gateway 'More Retries'",
+          "arrivesFrom": "gateway 'App Error'",
+          "condition": "NUMAPPRETRIES<MAXRETRIES;",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "userTask 'Manipular Excecao'",
+                "gateway 'Manually Fixed'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "NUMAPPRETRIES<MAXRETRIES;",
+              "leadsTo": "timerEvent 'Pause'",
+              "thenPath": [
+                "timerEvent 'Pause'",
+                "linkThrow 'Link To: Try Task'"
+              ]
+            }
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que sao mesmo dois contadores independentes com o mesmo tecto, e nao um engano em que se pretendia partilhar o mesmo contador.",
+        "Confirmar o dominio de valores de 'NUMAPPRETRIES' e qual deles significa sucesso.",
+        "Definir onde 'NUMAPPRETRIES' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?)."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "declaracao encontrada no formulario TIBCO; semantica dos valores nao confirmada",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHbVqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIHbVqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDurF6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDurF6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC9V6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwC9V6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ4V6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdJ4V6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJw919KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJw919KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "unresolved.NUMAPPRETRIES",
+        "note": null
+      },
+      "priority": "P3",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "NUMAPPRETRIES e o contador de tentativas de erro de APLICACAO, distinto do contador tecnico do motor. Comeca em zero e incrementa de um. Nao e campo de negocio.",
+        "raciocinio": "Inicializado com 'if (NUMAPPRETRIES == null)' no passo Start Loop dos cinco subprocessos. A condicao 'NUMAPPRETRIES < MAXRETRIES' vive no passo More Retries. Corre em paralelo com 'IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES', que e o contador do proprio motor iProcess. Ha portanto dois lacos de retry sobrepostos com o mesmo tecto: um conta falhas de aplicacao, o outro falhas de entrega da fila.",
+        "oQueConfirmaria": "Confirmar que sao mesmo dois contadores independentes com o mesmo tecto, e nao um engano em que se pretendia partilhar o mesmo contador.",
+        "riscoSeErrada": "Se forem o mesmo conceito duplicado por engano, o numero real de tentativas em .NET pode chegar ao dobro do pretendido.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "IDENT-OUTCOME",
+      "category": "unresolved-identifier",
+      "severity": "review",
+      "subject": "OUTCOME",
+      "declarationStatus": "declared-in-form",
+      "briefing": "'OUTCOME' nao e um dos 209 campos de negocio, mas TEM declaracao: o formulario TIBCO ATZINTPC/MANEXC, BSCENVPC/MANEXC, CALCPRPC/MANEXC, CRNOTPC/MANEXCPC, POC_EpatProcess/REALATVI, PRPINTPC/MANEXC o declara como Text (tamanho 10), e e alterado pelo processo ou pelo usuario (INOUT). Ele decide o fluxo em 10 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC, portanto o modelo .NET precisa expor esse valor - fora do modelo de dominio.",
+      "comparedAgainst": [
+        "== 'OK'",
+        "== 'R'"
+      ],
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "PRPINTPC"
+      ],
+      "usages": [
+        {
+          "process": "CALCPRPC",
+          "scope": "MAIN",
+          "decisionId": "_zJIHV1qiE",
+          "decisionElementId": "_zJIHV1qiEfG5K7mY0I3I6w",
+          "decision": "gateway 'Manually Fixed'",
+          "arrivesFrom": "userTask 'Manipular Excecao'",
+          "condition": "OUTCOME=='OK';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'Try Again'",
+              "thenPath": [
+                "gateway 'Try Again'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='OK';",
+              "leadsTo": "endEvent 'Done - Fixed'",
+              "thenPath": "endEvent 'Done - Fixed'"
+            }
+          ]
+        },
+        {
+          "process": "CALCPRPC",
+          "scope": "MAIN",
+          "decisionId": "_zJIHXFqiE",
+          "decisionElementId": "_zJIHXFqiEfG5K7mY0I3I6w",
+          "decision": "gateway 'Try Again'",
+          "arrivesFrom": "gateway 'Manually Fixed'",
+          "condition": "OUTCOME=='R';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Retry",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='R';",
+              "leadsTo": "scriptTask 'Start Loop'",
+              "thenPath": [
+                "scriptTask 'Start Loop'",
+                "subProcessScope 'Control System Task Call'",
+                "gateway 'Tech Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Bail'",
+              "thenPath": "endEvent 'Done - Bail'"
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "MAIN",
+          "decisionId": "_qIDull6BE",
+          "decisionElementId": "_qIDull6BEfGBBLgT-R5iuw",
+          "decision": "gateway 'Manually Fixed'",
+          "arrivesFrom": "userTask 'Manipular Excecao'",
+          "condition": "OUTCOME=='OK';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'Try Again'",
+              "thenPath": [
+                "gateway 'Try Again'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='OK';",
+              "leadsTo": "endEvent 'Done - Fixed'",
+              "thenPath": "endEvent 'Done - Fixed'"
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "MAIN",
+          "decisionId": "_qIDum16BE",
+          "decisionElementId": "_qIDum16BEfGBBLgT-R5iuw",
+          "decision": "gateway 'Try Again'",
+          "arrivesFrom": "gateway 'Manually Fixed'",
+          "condition": "OUTCOME=='R';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Bail'",
+              "thenPath": "endEvent 'Done - Bail'"
+            },
+            {
+              "isThisOne": true,
+              "label": "Retry",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='R';",
+              "leadsTo": "scriptTask 'Start Loop'",
+              "thenPath": [
+                "scriptTask 'Start Loop'",
+                "subProcessScope 'Control System Task Call'",
+                "gateway 'Tech Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "MAIN",
+          "decisionId": "_KEwC316EE",
+          "decisionElementId": "_KEwC316EEfGBBLgT-R5iuw",
+          "decision": "gateway 'Manually Fixed'",
+          "arrivesFrom": "userTask 'Manipular Excecao'",
+          "condition": "OUTCOME=='OK';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'Try Again'",
+              "thenPath": [
+                "gateway 'Try Again'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='OK';",
+              "leadsTo": "endEvent 'Done - Fixed'",
+              "thenPath": "endEvent 'Done - Fixed'"
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "MAIN",
+          "decisionId": "_KEwC5F6EE",
+          "decisionElementId": "_KEwC5F6EEfGBBLgT-R5iuw",
+          "decision": "gateway 'Try Again'",
+          "arrivesFrom": "gateway 'Manually Fixed'",
+          "condition": "OUTCOME=='R';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Retry",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='R';",
+              "leadsTo": "scriptTask 'Start Loop'",
+              "thenPath": [
+                "scriptTask 'Start Loop'",
+                "subProcessScope 'Control System Task Call'",
+                "gateway 'Tech Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Bail'",
+              "thenPath": "endEvent 'Done - Bail'"
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "MAIN",
+          "decisionId": "_RNdJy16PE",
+          "decisionElementId": "_RNdJy16PEfGBBLgT-R5iuw",
+          "decision": "gateway 'Manually Fixed'",
+          "arrivesFrom": "userTask 'Manipular Excecao'",
+          "condition": "OUTCOME=='OK';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'Try Again'",
+              "thenPath": [
+                "gateway 'Try Again'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='OK';",
+              "leadsTo": "endEvent 'Done - Fixed'",
+              "thenPath": "endEvent 'Done - Fixed'"
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "MAIN",
+          "decisionId": "_RNdJ0F6PE",
+          "decisionElementId": "_RNdJ0F6PEfGBBLgT-R5iuw",
+          "decision": "gateway 'Try Again'",
+          "arrivesFrom": "gateway 'Manually Fixed'",
+          "condition": "OUTCOME=='R';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Retry",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='R';",
+              "leadsTo": "scriptTask 'Start Loop'",
+              "thenPath": [
+                "scriptTask 'Start Loop'",
+                "subProcessScope 'Control System Task Call'",
+                "gateway 'Tech Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Bail'",
+              "thenPath": "endEvent 'Done - Bail'"
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "MAIN",
+          "decisionId": "_NcJJ419KE",
+          "decisionElementId": "_NcJJ419KEfGqPfX31TKC3w",
+          "decision": "gateway 'Manually Fixed'",
+          "arrivesFrom": "userTask 'Manipular Excecao'",
+          "condition": "OUTCOME=='OK';",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "Yes",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='OK';",
+              "leadsTo": "endEvent 'Done - Fixed'",
+              "thenPath": "endEvent 'Done - Fixed'"
+            },
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway 'Try Again'",
+              "thenPath": [
+                "gateway 'Try Again'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "MAIN",
+          "decisionId": "_NcJJ6F9KE",
+          "decisionElementId": "_NcJJ6F9KEfGqPfX31TKC3w",
+          "decision": "gateway 'Try Again'",
+          "arrivesFrom": "gateway 'Manually Fixed'",
+          "condition": "OUTCOME=='R';",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "No",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "endEvent 'Done - Bail'",
+              "thenPath": "endEvent 'Done - Bail'"
+            },
+            {
+              "isThisOne": true,
+              "label": "Retry",
+              "conditionType": "CONDITION",
+              "condition": "OUTCOME=='R';",
+              "leadsTo": "scriptTask 'Start Loop'",
+              "thenPath": [
+                "scriptTask 'Start Loop'",
+                "subProcessScope 'Control System Task Call'",
+                "gateway 'Tech Error'",
+                "... (ramifica em 2 caminhos)"
+              ]
+            }
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que o dominio e exactamente {'R', 'OK'} e que nao existe um terceiro valor - por exemplo abandonar o caso - tratado num pacote externo nao entregue.",
+        "Confirmar o dominio de valores de 'OUTCOME' e qual deles significa sucesso.",
+        "Definir onde 'OUTCOME' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?)."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "declaracao encontrada no formulario TIBCO; semantica dos valores nao confirmada",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHclqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIHclqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIHd1qiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIHd1qiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDusV6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDusV6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDutl6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDutl6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC-l6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwC-l6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwC_16EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwC_16EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ5l6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdJ5l6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdJ616PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdJ616PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJw_F9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJw_F9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJxAV9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJxAV9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "unresolved.OUTCOME",
+        "note": null
+      },
+      "priority": "P3",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "OUTCOME e a decisao que o operador toma no formulario de excepcao manual: 'R' para repetir a chamada, 'OK' para dar por resolvido. NAO ha divergencia entre clones - sao dois valores do mesmo dominio, lidos em passos diferentes.",
+        "raciocinio": "O literal 'R' aparece na condicao do passo Try Again e o literal 'OK' na condicao do passo Manually Fixed. Sao dois passos distintos do mesmo laco de tratamento de excepcao, nao duas versoes do mesmo passo. A leitura inicial de que os clones divergiam vem de os passos nao existirem todos em todos os subprocessos.",
+        "oQueConfirmaria": "Confirmar que o dominio e exactamente {'R', 'OK'} e que nao existe um terceiro valor - por exemplo abandonar o caso - tratado num pacote externo nao entregue.",
+        "riscoSeErrada": "Um terceiro valor nao previsto cai no ramo por omissao e o caso segue como se tivesse sido resolvido, sem o ter sido.",
+        "confianca": "media"
+      }
+    },
+    {
+      "id": "IDENT-STATUS_CODE",
+      "category": "unresolved-identifier",
+      "severity": "review",
+      "subject": "STATUS_CODE",
+      "declarationStatus": "declared-in-form",
+      "briefing": "'STATUS_CODE' nao e um dos 209 campos de negocio, mas TEM declaracao: o formulario TIBCO ATZINTPC/MANEXC, BSCENVPC/MANEXC, CALCPRPC/MANEXC, CRNOTPC/MANEXCPC, POC_EpatProcess/REALATVI, PRPINTPC/MANEXC o declara como Text (tamanho 50), e so e lido pelo processo (IN). Origem no envelope: RESULT/STATUS_CODE - elemento do envelope tecnico declarado em EPAT.wsdl. Ele decide o fluxo em 5 ponto(s), nos processos ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC, portanto o modelo .NET precisa expor esse valor - fora do modelo de dominio.",
+      "comparedAgainst": [
+        "!= \"0\"",
+        "!= IPESystemValues.SW_NA"
+      ],
+      "usedInProcesses": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC",
+        "PRPINTPC"
+      ],
+      "usages": [
+        {
+          "process": "CALCPRPC",
+          "scope": "ActivitySet",
+          "decisionId": "_zJIuclqiE",
+          "decisionElementId": "_zJIuclqiEfG5K7mY0I3I6w",
+          "decision": "gateway «sem rotulo»",
+          "arrivesFrom": "serviceTask 'CalcularPrazo'",
+          "condition": "STATUS_CODE!=\"0\";",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "AppError",
+              "conditionType": "CONDITION",
+              "condition": "STATUS_CODE!=\"0\";",
+              "leadsTo": "scriptTask 'Set App Error'",
+              "thenPath": [
+                "scriptTask 'Set App Error'",
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "Good",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "ActivitySet",
+          "decisionId": "_qIDu4l6BE",
+          "decisionElementId": "_qIDu4l6BEfGBBLgT-R5iuw",
+          "decision": "gateway «sem rotulo»",
+          "arrivesFrom": "serviceTask 'Busca Envolvidos Vista Por AIIM'",
+          "condition": "STATUS_CODE!=\"0\";",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "AppError",
+              "conditionType": "CONDITION",
+              "condition": "STATUS_CODE!=\"0\";",
+              "leadsTo": "scriptTask 'Set App Error'",
+              "thenPath": [
+                "scriptTask 'Set App Error'",
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "Good",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "scope": "ActivitySet",
+          "decisionId": "_KEwDVl6EE",
+          "decisionElementId": "_KEwDVl6EEfGBBLgT-R5iuw",
+          "decision": "gateway «sem rotulo»",
+          "arrivesFrom": "serviceTask 'CaptaParametros'",
+          "condition": "STATUS_CODE!=IPESystemValues.SW_NA;",
+          "branches": [
+            {
+              "isThisOne": true,
+              "label": "AppError",
+              "conditionType": "CONDITION",
+              "condition": "STATUS_CODE!=IPESystemValues.SW_NA;",
+              "leadsTo": "scriptTask 'Set App Error'",
+              "thenPath": [
+                "scriptTask 'Set App Error'",
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": false,
+              "label": "Good",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "scope": "ActivitySet",
+          "decisionId": "_RNdKGl6PE",
+          "decisionElementId": "_RNdKGl6PEfGBBLgT-R5iuw",
+          "decision": "gateway «sem rotulo»",
+          "arrivesFrom": "serviceTask 'AtualizarIntimacao'",
+          "condition": "STATUS_CODE!=\"0\";",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Good",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "AppError",
+              "conditionType": "CONDITION",
+              "condition": "STATUS_CODE!=\"0\";",
+              "leadsTo": "scriptTask 'Set App Error'",
+              "thenPath": [
+                "scriptTask 'Set App Error'",
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            }
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "ActivitySet",
+          "decisionId": "_NcJxLl9KE",
+          "decisionElementId": "_NcJxLl9KEfGqPfX31TKC3w",
+          "decision": "gateway «sem rotulo»",
+          "arrivesFrom": "serviceTask 'CriaNotificacao'",
+          "condition": "STATUS_CODE!=\"0\";",
+          "branches": [
+            {
+              "isThisOne": false,
+              "label": "Good",
+              "conditionType": "OTHERWISE",
+              "condition": null,
+              "leadsTo": "gateway «sem rotulo»",
+              "thenPath": [
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            },
+            {
+              "isThisOne": true,
+              "label": "AppError",
+              "conditionType": "CONDITION",
+              "condition": "STATUS_CODE!=\"0\";",
+              "leadsTo": "scriptTask 'Set App Error'",
+              "thenPath": [
+                "scriptTask 'Set App Error'",
+                "gateway «sem rotulo»",
+                "endEvent «sem rotulo»"
+              ]
+            }
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "CONFIRMA a hipotese? Confirmar que '0' e o unico codigo de sucesso, e decidir se a comparacao com SW_NA no PRPINTPC se corrige ou se reproduz fielmente.",
+        "Confirmar o dominio de valores de 'STATUS_CODE' e qual deles significa sucesso.",
+        "Definir onde 'STATUS_CODE' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?)."
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "declaracao encontrada no formulario TIBCO; semantica dos valores nao confirmada",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIue1qiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Transition[@Id='_zJIue1qiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDu7l6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_qIDu7l6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwDYl6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_KEwDYl6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdKJV6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Transition[@Id='_RNdKJV6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[ActivitySet]"
+        },
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJxOV9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Transition[@Id='_NcJxOV9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "unresolved.STATUS_CODE",
+        "note": null
+      },
+      "priority": "P3",
+      "analise": {
+        "origem": "analise agentica sobre os artefactos - NAO verificada com quem opera o processo",
+        "hipotese": "STATUS_CODE e o codigo de retorno do envelope tecnico do BusinessWorks, onde '0' e sucesso. Nao pertence ao dominio de negocio e deve viver no resultado da chamada, nao no estado do caso.",
+        "raciocinio": "Declarado no envelope tecnico do EPAT.wsdl. Comparado com '0' em quatro subprocessos (ATZINTPC, CRNOTPC, BSCENVPC, CALCPRPC) atraves de 'STATUS_CODE != \"0\"'. O PRPINTPC e a excepcao: usa 'STATUS_CODE != IPESystemValues.SW_NA'. Como os cinco subprocessos sao copias do mesmo template, esta diferenca e provavelmente defeito e nao intencao.",
+        "oQueConfirmaria": "Confirmar que '0' e o unico codigo de sucesso, e decidir se a comparacao com SW_NA no PRPINTPC se corrige ou se reproduz fielmente.",
+        "riscoSeErrada": "No PRPINTPC, um servico que devolva erro com codigo preenchido passa no teste 'diferente de nao preenchido' e o fluxo segue como se tivesse corrido bem. O erro fica invisivel.",
+        "confianca": "alta"
+      }
+    },
+    {
+      "id": "LABEL-SUGGESTION",
+      "category": "label-suggestion",
+      "severity": "review",
+      "subject": "rotulos de formulario nao verificados",
+      "briefing": "O formulario TIBCO da a estes campos um rotulo de negocio que NAO deriva do nome. Sao afirmacoes de terceiros nunca verificadas - ha erro de digitacao conhecido ('Contorle') e ao menos um rotulo truncado. Estao propostos como comentario no glossario, campo a campo, para aceitar ou recusar.",
+      "occurrenceCount": 21,
+      "occurrences": [
+        {
+          "field": "AFR",
+          "suggestion": "Agente Fiscal de Renda"
+        },
+        {
+          "field": "CD_DRT",
+          "suggestion": "Código da DRT"
+        },
+        {
+          "field": "CDIMPOSTO",
+          "suggestion": "Código Imposto"
+        },
+        {
+          "field": "CODMUNAIIM",
+          "suggestion": "Código do Município do AIIM"
+        },
+        {
+          "field": "DATAENCPREPNOT",
+          "suggestion": "Data Encerramento Preparar Notifica"
+        },
+        {
+          "field": "DESCREGRA",
+          "suggestion": "DescricaoRegra"
+        },
+        {
+          "field": "FLGALC",
+          "suggestion": "FlagAlcada"
+        },
+        {
+          "field": "FORMACORRECAO",
+          "suggestion": "Forma de Correção"
+        },
+        {
+          "field": "NOMEETAPA",
+          "suggestion": "Nome da Etapa"
+        },
+        {
+          "field": "NR_AIIM",
+          "suggestion": "Número do AIIM"
+        },
+        {
+          "field": "NR_RAT",
+          "suggestion": "Versão do AIIM"
+        },
+        {
+          "field": "QTDINTIMADOS",
+          "suggestion": "qtdeIntimados"
+        },
+        {
+          "field": "REGRAINSDOC",
+          "suggestion": "Regra de inserção de documentos"
+        },
+        {
+          "field": "RESPOSTACQ",
+          "suggestion": "Resposta do Contorle de Qualidade"
+        },
+        {
+          "field": "SITUACAOCARREGA",
+          "suggestion": "Situação do carregamento do AIIM"
+        },
+        {
+          "field": "STSADMTITCNT",
+          "suggestion": "StatusAdmissaoTITCNT"
+        },
+        {
+          "field": "STSADMTITDRF",
+          "suggestion": "StatusAdmissaoTITDRF"
+        },
+        {
+          "field": "STSPRMSF",
+          "suggestion": "statusPRMFazenda"
+        },
+        {
+          "field": "STSRESPCNT",
+          "suggestion": "statusRESPCnt"
+        },
+        {
+          "field": "STSRESPSF",
+          "suggestion": "statusRESPFazenda"
+        },
+        {
+          "field": "TROCATPNOTIFICA",
+          "suggestion": "Trocar Tipo Notificacao"
+        }
+      ],
+      "questionsForAnalyst": [
+        "Aceitar em bloco os rotulos do formulario como termo de negocio, ou revisar caso a caso?",
+        "Havendo divergencia com o vocabulario oficial da SEFAZ, qual prevalece?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "rotulo declarado no .form e diferente do nome do campo apos normalizacao",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.LABEL-SUGGESTION",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "SCRIPT-COMMENTED-LOGIC",
+      "category": "script-scaffolding",
+      "severity": "review",
+      "subject": "regra comentada divergente da ativa",
+      "briefing": "Ha logica comentada nos scripts. Em ao menos um caso a regra desativada testava codigos especificos e foi substituida por uma comparacao generica contra SW_NA - ou seja, o comportamento ATIVO e mais permissivo que o comentado. Precisa-se saber qual dos dois e a regra de negocio correta.",
+      "occurrenceCount": 3,
+      "occurrences": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "code": "if (CNTPECA1=='110' || CNTPECA1=='24' || CNTPECA1=='53' || CNTPECA1=='55' || CNTPECA1=='22'){\n   IDPECASCNT = CNTPECA1;}"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "code": "if (SFPECA1=='50' || SFPECA1=='24' || SFPECA1=='53' || SFPECA1=='49' || SFPECA1=='55' || SFPECA1=='110'){\n   IDPECASSF = SFPECA1;}"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "code": "--278711|278710|278709|278708|278707|278706|278705|278704|278703|278702|278701|278700|278699|278698|278697|278696|278695|278694|278693|278692|278691|';"
+        }
+      ],
+      "questionsForAnalyst": [
+        "A regra comentada foi desativada de proposito ou e residuo de teste?",
+        "A migracao deve reproduzir o comportamento ATIVO (mais permissivo) ou o COMENTADO (restrito)?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "bloco /* */ presente no corpo do script - fato textual",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SCRIPT-COMMENTED-LOGIC",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "SCREEN-MISSING-CONTROLS",
+      "category": "source-not-delivered",
+      "severity": "review",
+      "subject": "controles .ascx referenciados e nao entregues",
+      "briefing": "As telas registram estes controles de usuario, mas os arquivos nao vieram. A maior parte da interface das duas tarefas humanas esta dentro deles, entao o que o operador ve permanece desconhecido - o catalogo de telas so consegue descrever o contrato de work item.",
+      "occurrenceCount": 5,
+      "occurrences": [
+        {
+          "control": "../../../Controls/AdicionarPecas.ascx"
+        },
+        {
+          "control": "../../../Controls/Cabecalho_AIIM_DEAT.ascx"
+        },
+        {
+          "control": "../../../Controls/Cabecalho_AIIM.ascx"
+        },
+        {
+          "control": "../../../Controls/ListaNotificaveis.ascx"
+        },
+        {
+          "control": "../../../Controls/Pecas.ascx"
+        }
+      ],
+      "questionsForAnalyst": [
+        "Os controles serao entregues ou a interface sera redesenhada do zero em .NET?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "diretiva Register no .aspx apontando para arquivo inexistente na entrega",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SCREEN-MISSING-CONTROLS",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "SCREEN-UNDECLARED-FIELD",
+      "category": "source-not-delivered",
+      "severity": "review",
+      "subject": "campo lido pela tela e ausente do dicionario",
+      "briefing": "A tela ASP.NET trava o work item pedindo estes campos, mas eles nao estao entre os campos de caso do pacote. Vem provavelmente de um dos pacotes externos nao entregues. Sem eles a tarefa humana nao pode ser reproduzida por completo.",
+      "occurrenceCount": 1,
+      "occurrences": [
+        {
+          "field": "CPFCNPJNOTIFICA"
+        }
+      ],
+      "questionsForAnalyst": [
+        "De qual pacote vem cada campo, e qual o seu tipo e dominio?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "nome extraido de WorkItemLockField no code-behind e ausente do dicionario de campos",
+        "verified": false
+      },
+      "sourceRef": [],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "rulings.SCREEN-UNDECLARED-FIELD",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "DECISION-AGPECASPC-_EvOwVF6eE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "AGPECASPC / _EvOwVF6eE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "AGPECASPC",
+      "scope": "MAIN",
+      "arrivesFrom": [
+        "scriptTask 'Controla Datas'",
+        "scriptTask 'Set Values'"
+      ],
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": null,
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "endEvent 'End Event'",
+          "thenPath": "endEvent 'End Event'"
+        },
+        {
+          "isThisOne": false,
+          "label": null,
+          "conditionType": "CONDITION",
+          "condition": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;",
+          "leadsTo": "scriptTask 'SetPrazo'",
+          "thenPath": [
+            "scriptTask 'SetPrazo'",
+            "receiveTask 'Aguardar Interposicoes'",
+            "scriptTask 'Controla Datas'",
+            "gateway «sem rotulo»",
+            "gateway «sem rotulo»",
+            "... (ramifica em 2 caminhos)"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_EvOwVF6eEfGJqLUhfbpFcQ",
+          "xpath": "//xpdl2:Activity[@Id='_EvOwVF6eEfGJqLUhfbpFcQ']",
+          "artifact": "process-model.json",
+          "pointer": "processes[AGPECASPC].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.AGPECASPC/_EvOwVF6eE",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "DECISION-ATZINTPC-_RNdKGl6PE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "ATZINTPC / _RNdKGl6PE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "ATZINTPC",
+      "scope": "ActivitySet",
+      "arrivesFrom": "serviceTask 'AtualizarIntimacao'",
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": "Good",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "AppError",
+          "conditionType": "CONDITION",
+          "condition": "STATUS_CODE!=\"0\";",
+          "leadsTo": "scriptTask 'Set App Error'",
+          "thenPath": [
+            "scriptTask 'Set App Error'",
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_RNdKGl6PEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_RNdKGl6PEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[ATZINTPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.ATZINTPC/_RNdKGl6PE",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "DECISION-BSCENVPC-_qIDu4l6BE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "BSCENVPC / _qIDu4l6BE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "BSCENVPC",
+      "scope": "ActivitySet",
+      "arrivesFrom": "serviceTask 'Busca Envolvidos Vista Por AIIM'",
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": "AppError",
+          "conditionType": "CONDITION",
+          "condition": "STATUS_CODE!=\"0\";",
+          "leadsTo": "scriptTask 'Set App Error'",
+          "thenPath": [
+            "scriptTask 'Set App Error'",
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "Good",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_qIDu4l6BEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_qIDu4l6BEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[BSCENVPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.BSCENVPC/_qIDu4l6BE",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "DECISION-CALCPRPC-_zJIuclqiE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "CALCPRPC / _zJIuclqiE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "CALCPRPC",
+      "scope": "ActivitySet",
+      "arrivesFrom": "serviceTask 'CalcularPrazo'",
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": "AppError",
+          "conditionType": "CONDITION",
+          "condition": "STATUS_CODE!=\"0\";",
+          "leadsTo": "scriptTask 'Set App Error'",
+          "thenPath": [
+            "scriptTask 'Set App Error'",
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "Good",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_zJIuclqiEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_zJIuclqiEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CALCPRPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.CALCPRPC/_zJIuclqiE",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "DECISION-CRNOTPC-_NcJxLl9KE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "CRNOTPC / _NcJxLl9KE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "CRNOTPC",
+      "scope": "ActivitySet",
+      "arrivesFrom": "serviceTask 'CriaNotificacao'",
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": "Good",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "AppError",
+          "conditionType": "CONDITION",
+          "condition": "STATUS_CODE!=\"0\";",
+          "leadsTo": "scriptTask 'Set App Error'",
+          "thenPath": [
+            "scriptTask 'Set App Error'",
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_NcJxLl9KEfGqPfX31TKC3w",
+          "xpath": "//xpdl2:Activity[@Id='_NcJxLl9KEfGqPfX31TKC3w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[CRNOTPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.CRNOTPC/_NcJxLl9KE",
+        "note": null
+      },
+      "priority": "P4"
+    },
+    {
+      "id": "DECISION-DEAT0050-_lrer_VqhE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "DEAT0050 / _lrer_VqhE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "DEAT0050",
+      "scope": "MAIN",
+      "arrivesFrom": "scriptTask 'HoraFimSC'",
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": null,
+          "conditionType": "CONDITION",
+          "condition": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;",
+          "leadsTo": "timerEvent 'Aguarda Defesa'",
+          "thenPath": [
+            "timerEvent 'Aguarda Defesa'",
+            "scriptTask 'Controlar Data'",
+            "callActivity 'CalculaPrazo' -> chama 'CALCPRPC'",
+            "scriptTask 'HoraFimSC'",
+            "gateway «sem rotulo»",
+            "... (ramifica em 2 caminhos)"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": null,
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "endEvent «sem rotulo»",
+          "thenPath": "endEvent «sem rotulo»"
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_lrer_VqhEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_lrer_VqhEfG5K7mY0I3I6w']",
+          "artifact": "process-model.json",
+          "pointer": "processes[DEAT0050].scopes[MAIN]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.DEAT0050/_lrer_VqhE",
+        "note": null
+      },
+      "priority": "P4",
+      "intent": {
+        "note": "Intencao DECLARADA no documento de POC, nao evidencia do XPDL - use como contexto da decisao, nao como prova.",
+        "stages": [
+          {
+            "stage": 2,
+            "title": "Notificação do AIIM",
+            "concepts": [
+              "Subprocessos",
+              "Eventos de Mensagem",
+              "Espera Assíncrona",
+              "Correlação de Eventos",
+              "Envio de E-mail",
+              "Loops de Processo"
+            ],
+            "matchedOn": "Notificacao do AIIM"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DECISION-PRPINTPC-_KEwDVl6EE",
+      "category": "unlabeled-decision",
+      "severity": "review",
+      "subject": "PRPINTPC / _KEwDVl6EE",
+      "briefing": "Este ponto de decisao nao tem nome nenhum no XPDL - nem name, nem xpdExt:DisplayName. No diagrama BPMN ele aparece como um losango vazio, e nenhum revisor consegue aprovar o que nao consegue ler. O contexto abaixo (o que acontece antes e para onde cada ramo leva) existe para que se possa nomear a pergunta que este gateway faz.",
+      "process": "PRPINTPC",
+      "scope": "ActivitySet",
+      "arrivesFrom": "serviceTask 'CaptaParametros'",
+      "branches": [
+        {
+          "isThisOne": false,
+          "label": "AppError",
+          "conditionType": "CONDITION",
+          "condition": "STATUS_CODE!=IPESystemValues.SW_NA;",
+          "leadsTo": "scriptTask 'Set App Error'",
+          "thenPath": [
+            "scriptTask 'Set App Error'",
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        },
+        {
+          "isThisOne": false,
+          "label": "Good",
+          "conditionType": "OTHERWISE",
+          "condition": null,
+          "leadsTo": "gateway «sem rotulo»",
+          "thenPath": [
+            "gateway «sem rotulo»",
+            "endEvent «sem rotulo»"
+          ]
+        }
+      ],
+      "questionsForAnalyst": [
+        "Qual pergunta de negocio este gateway faz? (vira o rotulo do losango no BPMN)",
+        "Cada ramo esta rotulado com a resposta correspondente?"
+      ],
+      "confidence": {
+        "level": "high",
+        "basis": "ausencia de name e de xpdExt:DisplayName no XPDL - fato verificavel",
+        "verified": false
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_KEwDVl6EEfGBBLgT-R5iuw",
+          "xpath": "//xpdl2:Activity[@Id='_KEwDVl6EEfGBBLgT-R5iuw']",
+          "artifact": "process-model.json",
+          "pointer": "processes[PRPINTPC].scopes[ActivitySet]"
+        }
+      ],
+      "resolution": {
+        "status": "answered",
+        "answered": true,
+        "answerIn": "config/glossary/POC_Epat.yaml",
+        "key": "decisions.PRPINTPC/_KEwDVl6EE",
+        "note": null
+      },
+      "priority": "P4"
+    }
+  ]
+}

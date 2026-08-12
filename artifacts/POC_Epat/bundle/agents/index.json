@@ -1,0 +1,687 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/agents/v1",
+  "package": "POC_Epat",
+  "nota": "Elenco derivado do backlog. Um papel e um SITIO onde se pode escrever - a fronteira do menor privilegio, que ja vem calculada do mapa de camadas. A especialidade nao e papel: e conhecimento, e entra como skill do papel que dela precisa. O parecer agentico pode propor nome e nota; nunca permissao.",
+  "generatedAt": "2026-05-28T00:00:00Z",
+  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "parecerAgentico": {
+    "ficheiro": "analysis/backlog-review.json",
+    "presente": true,
+    "sha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf",
+    "elencoProposto": 6,
+    "nota": "Entrada fixada por sha256, como o XPDL e o glossario: se o parecer mudar, o elenco tem de ser regerado."
+  },
+  "ordemDeAtaque": {
+    "nota": "Ordem lida do RISCO, nao da topologia. O dependsOn dos cards sai da jornada e diz o que vem depois do que; isto diz por onde comecar para que um erro custe pouco. Regra: primeiro o que outros cards assumem existir, depois o que so falha na vespera, por fim o que falha alto e cedo. As contagens NAO estao aqui - sao calculadas pelo gerador a partir dos cards de cada papel, senao seria o parecer a inventar numeros.",
+    "sequencia": [
+      {
+        "passo": 1,
+        "quem": "fundacao-anticorrupcao",
+        "papel": "Fundacao: camada anticorrupcao do iProcess",
+        "porque": "29 cards assumem que existe. E esta bloqueado por uma pergunta P1 ainda em aberto - portanto e tambem o caminho critico da resposta humana, que nao esta nas nossas maos.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 80,
+        "escreveEm": [
+          "src/SefazSp.Epat.Infrastructure/Legacy/**"
+        ],
+        "confianca": "alta"
+      },
+      {
+        "passo": 2,
+        "quem": "fundacao-motor",
+        "papel": "Fundacao: ligacao da topologia ao motor",
+        "porque": "Sem ele nenhum oraculo de percurso corre, e e desse tipo de oraculo que depende a esmagadora maioria dos cards.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 80,
+        "escreveEm": [
+          "src/SefazSp.Epat.Infrastructure/Workflow.Elsa/**"
+        ],
+        "confianca": "alta"
+      },
+      {
+        "passo": 3,
+        "quem": "fundacao-motor-de-regras",
+        "papel": "Fundacao: motor de regras por tras da porta IDecisionService",
+        "porque": "A equivalencia DMN x Corticon ja esta provada em 3000 casos, mas nada a executa. A etapa 3 da POC depende de haver motor por tras da porta IDecisionService.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 80,
+        "escreveEm": [
+          "src/SefazSp.Epat.Infrastructure/Rules.Dmn/**"
+        ],
+        "confianca": "alta"
+      },
+      {
+        "passo": 4,
+        "quem": "fundacao-registo",
+        "papel": "Fundacao: raiz de composicao e registo de processos",
+        "porque": "Sem o registo validado no arranque, a decisao interface-registry-validated fica no papel e a migracao herda o falhar em silencio do legado.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 80,
+        "escreveEm": [
+          "src/SefazSp.Epat.Api/Composition/**"
+        ],
+        "confianca": "alta"
+      },
+      {
+        "passo": 5,
+        "quem": "implementador-integration-soap",
+        "papel": "Implementador de Integration.Soap",
+        "porque": "E o papel mais limpo do elenco: duas skills, contrato transcrito do WSDL. Serve de primeira volta completa do ciclo card -> codigo -> oraculo, com o menor numero de incognitas.",
+        "cardsNestaVolta": 22,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [
+          "iprocess-builtin",
+          "link-goto"
+        ],
+        "cardsQueDesbloqueia": 20,
+        "aindaPorAtacar": 58,
+        "escreveEm": [
+          "src/SefazSp.Epat.Infrastructure/Integration.Soap/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 6,
+        "quem": "molde-subprocesso-de-servico",
+        "papel": "Molde unico dos cinco subprocessos de servico",
+        "porque": "Depois do SOAP estar de pe, os cinco clones sao a maior massa de trabalho com a menor variedade: um so molde, cinco parametrizacoes.",
+        "cardsNestaVolta": 6,
+        "cardsJaAtacados": 20,
+        "bloqueadoresQueResolve": [
+          "iprocess-builtin",
+          "link-goto"
+        ],
+        "cardsQueDesbloqueia": 15,
+        "aindaPorAtacar": 52,
+        "escreveEm": [],
+        "confianca": "alta"
+      },
+      {
+        "passo": 7,
+        "quem": "implementador-rules",
+        "papel": "Implementador de Rules",
+        "porque": "Regras de dominio puras, sem I/O e sem relogio: as mais faceis de testar e as mais faceis de errar em silencio. Merecem entrar quando o shim ja existe, nao antes.",
+        "cardsNestaVolta": 4,
+        "cardsJaAtacados": 19,
+        "bloqueadoresQueResolve": [
+          "expression-deadline",
+          "external-event",
+          "iprocess-builtin",
+          "link-goto"
+        ],
+        "cardsQueDesbloqueia": 14,
+        "aindaPorAtacar": 48,
+        "escreveEm": [
+          "src/SefazSp.Epat.Domain/Rules/**"
+        ],
+        "confianca": "alta"
+      },
+      {
+        "passo": 8,
+        "quem": "implementador-usecases",
+        "papel": "Implementador de UseCases",
+        "porque": "As tarefas humanas dependem de tudo o que esta acima e sao o que o cliente vai ver na demonstracao.",
+        "cardsNestaVolta": 8,
+        "cardsJaAtacados": 14,
+        "bloqueadoresQueResolve": [
+          "expression-deadline",
+          "external-event",
+          "iprocess-builtin",
+          "link-goto",
+          "non-interrupting-boundary"
+        ],
+        "cardsQueDesbloqueia": 23,
+        "aindaPorAtacar": 40,
+        "escreveEm": [
+          "src/SefazSp.Epat.Application/UseCases/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 9,
+        "quem": "implementador-workflows",
+        "papel": "Implementador de Workflows",
+        "porque": "O papel mais carregado do elenco. So faz sentido depois de haver motor, shim e servicos - senao cada card fica parado a espera de outra coisa.",
+        "cardsNestaVolta": 8,
+        "cardsJaAtacados": 38,
+        "bloqueadoresQueResolve": [
+          "expression-deadline",
+          "external-event",
+          "graft-step",
+          "iprocess-builtin",
+          "link-goto",
+          "non-interrupting-boundary"
+        ],
+        "cardsQueDesbloqueia": 3,
+        "aindaPorAtacar": 32,
+        "escreveEm": [
+          "src/SefazSp.Epat.Application/Workflows/**"
+        ],
+        "confianca": "media"
+      },
+      {
+        "passo": 10,
+        "quem": "implementador-execution",
+        "papel": "Implementador de Execution",
+        "porque": "O envelope tecnico atravessa tudo; estabiliza melhor depois de os cinco clones terem um molde comum.",
+        "cardsNestaVolta": 3,
+        "cardsJaAtacados": 35,
+        "bloqueadoresQueResolve": [
+          "dynamic-subprocess",
+          "expression-deadline",
+          "external-event",
+          "graft-step",
+          "iprocess-builtin",
+          "link-goto"
+        ],
+        "cardsQueDesbloqueia": 8,
+        "aindaPorAtacar": 29,
+        "escreveEm": [
+          "src/SefazSp.Epat.Application/Execution/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 11,
+        "quem": "implementador-integration-doubles",
+        "papel": "Implementador de Integration.Doubles",
+        "porque": "Os dubles so precisam de existir quando houver quem os chame, e o contrato deles ja esta fixado pela ProcessInterface.",
+        "cardsNestaVolta": 5,
+        "cardsJaAtacados": 9,
+        "bloqueadoresQueResolve": [
+          "dynamic-subprocess",
+          "expression-deadline",
+          "external-event",
+          "iprocess-builtin",
+          "link-goto"
+        ],
+        "cardsQueDesbloqueia": 30,
+        "aindaPorAtacar": 24,
+        "escreveEm": [
+          "src/SefazSp.Epat.Infrastructure/Integration.Doubles/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 12,
+        "quem": "implementador-endpoints",
+        "papel": "Implementador de Endpoints",
+        "porque": "A superficie de API e o ultimo elo: conduz a demonstracao e nao tem logica propria.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 8,
+        "bloqueadoresQueResolve": [
+          "expression-deadline",
+          "external-event",
+          "graft-step",
+          "iprocess-builtin",
+          "link-goto"
+        ],
+        "cardsQueDesbloqueia": 29,
+        "aindaPorAtacar": 24,
+        "escreveEm": [
+          "src/SefazSp.Epat.Api/Endpoints/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 13,
+        "quem": "fundacao-persistencia",
+        "papel": "Fundacao: persistencia do caso e do estado de execucao",
+        "porque": "Fica para o fim de proposito: a demonstracao corre em memoria ate o graft step precisar de sobreviver a um reinicio. Confianca media - se a demonstracao exigir prazos reais, sobe na ordem.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 24,
+        "escreveEm": [
+          "src/SefazSp.Epat.Infrastructure/Persistence/**"
+        ],
+        "confianca": "media"
+      },
+      {
+        "passo": 14,
+        "quem": "autor-de-testes-oracles-tests",
+        "papel": "Autor de testes de Oracles.Tests",
+        "porque": "ACRESCENTADO DEPOIS DE O GERADOR O APANHAR: a primeira versao desta ordem sequenciava so implementadores, e o relatorio mostrou 16 cards de validacao fora da ordem. Os oraculos nao sao trabalho de fim de linha - correm em paralelo com cada volta -, mas tem de estar na sequencia para serem contados.",
+        "cardsNestaVolta": 16,
+        "cardsJaAtacados": 0,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 8,
+        "escreveEm": [
+          "tests/SefazSp.Epat.Oracles.Tests/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 15,
+        "quem": "autor-de-testes-domain-tests",
+        "papel": "Autor de testes de Domain.Tests",
+        "porque": "Testes unitarios das regras puras. Acompanham o implementador-rules, nao vem depois dele.",
+        "cardsNestaVolta": 0,
+        "cardsJaAtacados": 30,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 8,
+        "escreveEm": [
+          "tests/SefazSp.Epat.Domain.Tests/**"
+        ],
+        "confianca": null
+      },
+      {
+        "passo": 16,
+        "quem": "autor-de-testes-application-tests",
+        "papel": "Autor de testes de Application.Tests",
+        "porque": "Casos de uso com portas simuladas. Acompanham os papeis de Application.",
+        "cardsNestaVolta": 8,
+        "cardsJaAtacados": 53,
+        "bloqueadoresQueResolve": [],
+        "cardsQueDesbloqueia": 0,
+        "aindaPorAtacar": 0,
+        "escreveEm": [
+          "tests/SefazSp.Epat.Application.Tests/**"
+        ],
+        "confianca": null
+      }
+    ],
+    "cardsForaDaOrdem": []
+  },
+  "propostasRecusadas": [],
+  "summary": {
+    "papeis": 17,
+    "implementadores": 7,
+    "autoresDeTestes": 3,
+    "propostosPeloParecer": 6,
+    "propostasRecusadas": 0,
+    "cards": 80,
+    "cardsSemDono": 0,
+    "caminhosSoLeitura": 5,
+    "oraculosImutaveis": 52,
+    "fundacaoSemDono": 4,
+    "fundacaoSemPapelProposto": 0,
+    "cardsForaDaOrdemDeAtaque": 0,
+    "cardsForaDaOrdemPorLacuna": 0
+  },
+  "fundacaoSemDono": [
+    {
+      "caminho": "src/SefazSp.Epat.Infrastructure/Workflow.Elsa",
+      "camada": "Infrastructure",
+      "oQueLaVive": "Traduz a topologia de Application/Workflows para o motor. O motor e um detalhe: trocar de motor mexe so aqui.",
+      "cobertaPeloParecer": true,
+      "papelProposto": "fundacao-motor"
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Infrastructure/Rules.Dmn",
+      "camada": "Infrastructure",
+      "oQueLaVive": "As 49 colunas Corticon como DMN. Ficam aqui porque o motor de regras e um detalhe - a porta IDecisionService e que e o contrato. A equivalencia ja esta provada por 3000 casos.",
+      "cobertaPeloParecer": true,
+      "papelProposto": "fundacao-motor-de-regras"
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Infrastructure/Persistence",
+      "camada": "Infrastructure",
+      "oQueLaVive": "EF Core. Persistencia do caso e do estado de execucao.",
+      "cobertaPeloParecer": true,
+      "papelProposto": "fundacao-persistencia"
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Api/Composition",
+      "camada": "Api",
+      "oQueLaVive": "Registo de DI, incluindo o registo de processos gerado do XPDL e validado no arranque.",
+      "cobertaPeloParecer": true,
+      "papelProposto": "fundacao-registo"
+    }
+  ],
+  "cardsSemDono": [],
+  "papeis": [
+    {
+      "id": "implementador-endpoints",
+      "papel": "Implementador de Endpoints",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Api/Endpoints/**"
+      ],
+      "cards": 8,
+      "etapas": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "skills": [
+        "expression-deadline",
+        "external-event",
+        "graft-step",
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "atravessamOSistema": 5,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "implementador-execution",
+      "papel": "Implementador de Execution",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Application/Execution/**"
+      ],
+      "cards": 38,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skills": [
+        "dynamic-subprocess",
+        "expression-deadline",
+        "external-event",
+        "graft-step",
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "atravessamOSistema": 20,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "implementador-usecases",
+      "papel": "Implementador de UseCases",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Application/UseCases/**"
+      ],
+      "cards": 22,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skills": [
+        "expression-deadline",
+        "external-event",
+        "iprocess-builtin",
+        "link-goto",
+        "non-interrupting-boundary"
+      ],
+      "atravessamOSistema": 9,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "implementador-workflows",
+      "papel": "Implementador de Workflows",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Application/Workflows/**"
+      ],
+      "cards": 46,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skills": [
+        "expression-deadline",
+        "external-event",
+        "graft-step",
+        "iprocess-builtin",
+        "link-goto",
+        "non-interrupting-boundary"
+      ],
+      "atravessamOSistema": 21,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "implementador-rules",
+      "papel": "Implementador de Rules",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Domain/Rules/**"
+      ],
+      "cards": 23,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skills": [
+        "expression-deadline",
+        "external-event",
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "atravessamOSistema": 16,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "implementador-integration-doubles",
+      "papel": "Implementador de Integration.Doubles",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Infrastructure/Integration.Doubles/**"
+      ],
+      "cards": 14,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "skills": [
+        "dynamic-subprocess",
+        "expression-deadline",
+        "external-event",
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "atravessamOSistema": 6,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "implementador-integration-soap",
+      "papel": "Implementador de Integration.Soap",
+      "tipo": "implementador",
+      "escreveEm": [
+        "src/SefazSp.Epat.Infrastructure/Integration.Soap/**"
+      ],
+      "cards": 22,
+      "etapas": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "skills": [
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "atravessamOSistema": 15,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "autor-de-testes-domain-tests",
+      "papel": "Autor de testes de Domain.Tests",
+      "tipo": "autor-de-testes",
+      "escreveEm": [
+        "tests/SefazSp.Epat.Domain.Tests/**"
+      ],
+      "cards": 30,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "autor-de-testes-application-tests",
+      "papel": "Autor de testes de Application.Tests",
+      "tipo": "autor-de-testes",
+      "escreveEm": [
+        "tests/SefazSp.Epat.Application.Tests/**"
+      ],
+      "cards": 61,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "autor-de-testes-oracles-tests",
+      "papel": "Autor de testes de Oracles.Tests",
+      "tipo": "autor-de-testes",
+      "escreveEm": [
+        "tests/SefazSp.Epat.Oracles.Tests/**"
+      ],
+      "cards": 16,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": false
+    },
+    {
+      "id": "fundacao-anticorrupcao",
+      "papel": "Fundacao: camada anticorrupcao do iProcess",
+      "tipo": "fundacao",
+      "escreveEm": [
+        "src/SefazSp.Epat.Infrastructure/Legacy/**"
+      ],
+      "cards": 0,
+      "etapas": [],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": true
+    },
+    {
+      "id": "fundacao-motor",
+      "papel": "Fundacao: ligacao da topologia ao motor",
+      "tipo": "fundacao",
+      "escreveEm": [
+        "src/SefazSp.Epat.Infrastructure/Workflow.Elsa/**"
+      ],
+      "cards": 0,
+      "etapas": [],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": true
+    },
+    {
+      "id": "fundacao-registo",
+      "papel": "Fundacao: raiz de composicao e registo de processos",
+      "tipo": "fundacao",
+      "escreveEm": [
+        "src/SefazSp.Epat.Api/Composition/**"
+      ],
+      "cards": 0,
+      "etapas": [],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": true
+    },
+    {
+      "id": "fundacao-persistencia",
+      "papel": "Fundacao: persistencia do caso e do estado de execucao",
+      "tipo": "fundacao",
+      "escreveEm": [
+        "src/SefazSp.Epat.Infrastructure/Persistence/**"
+      ],
+      "cards": 0,
+      "etapas": [],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": true
+    },
+    {
+      "id": "fundacao-motor-de-regras",
+      "papel": "Fundacao: motor de regras por tras da porta IDecisionService",
+      "tipo": "fundacao",
+      "escreveEm": [
+        "src/SefazSp.Epat.Infrastructure/Rules.Dmn/**"
+      ],
+      "cards": 0,
+      "etapas": [],
+      "skills": [],
+      "atravessamOSistema": 0,
+      "propostoPeloParecer": true
+    },
+    {
+      "id": "molde-subprocesso-de-servico",
+      "papel": "Molde unico dos cinco subprocessos de servico",
+      "tipo": "coordenacao",
+      "escreveEm": [],
+      "cards": 26,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "skills": [
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "atravessamOSistema": 14,
+      "propostoPeloParecer": true
+    },
+    {
+      "id": "revisor",
+      "papel": "Revisor",
+      "tipo": "revisor",
+      "escreveEm": [],
+      "cards": 80,
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "skills": [],
+      "atravessamOSistema": 22,
+      "propostoPeloParecer": false
+    }
+  ]
+}

@@ -1,0 +1,5079 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/rule-inventory/v2",
+  "package": "POC_Epat",
+  "note": "Inventario das regras de negocio espalhadas pelo XPDL, em cinco portadores: script, transition, deadline, dataMapping e formScript. Expressoes e campos sao DERIVADOS. As explicacoes sao AUTORADAS e nao verificadas. A classificacao usa o eixo unico de tools/lib-classification.ps1, partilhado com as telas e com a planilha Corticon.",
+  "pocFlowProcesses": [
+    "BSCENVPC",
+    "CONTROPC",
+    "CRNOTPC",
+    "DEAT0050",
+    "POC_EpatProcess"
+  ],
+  "summary": {
+    "total": 104,
+    "regraDeNegocio": 34,
+    "tecnico": 70,
+    "naTrilhaPoc": 24,
+    "foraDaTrilhaPoc": 10,
+    "comExplicacao": 15,
+    "byEfeito": {
+      "calcula-valor": 7,
+      "decide-fluxo": 21,
+      "fixa-prazo": 6,
+      "tecnico": 70
+    },
+    "bySource": {
+      "dataMapping": {
+        "total": 8,
+        "regraDeNegocio": 2,
+        "naTrilhaPoc": 8
+      },
+      "deadline": {
+        "total": 11,
+        "regraDeNegocio": 6,
+        "naTrilhaPoc": 7
+      },
+      "formScript": {
+        "total": 1,
+        "regraDeNegocio": 1,
+        "naTrilhaPoc": 1
+      },
+      "script": {
+        "total": 40,
+        "regraDeNegocio": 11,
+        "naTrilhaPoc": 21
+      },
+      "transition": {
+        "total": 44,
+        "regraDeNegocio": 14,
+        "naTrilhaPoc": 22
+      }
+    }
+  },
+  "rules": [
+    {
+      "id": "RI-script-POC_EpatProcess-FlagRetiratiTrueGS",
+      "source": "script",
+      "process": "POC_EpatProcess",
+      "node": "Flag Retirati True GS",
+      "nodeId": "_0XWahVqNEfG5K7mY0I3I6w",
+      "xpdlLine": 1413,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [
+        "EXISTENOTIFICAC",
+        "FLAGRETIRATE"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-CRNOTPC-AppError",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "App Error",
+      "nodeId": "_NcJJ8F9KEfGqPfX31TKC3w",
+      "xpdlLine": 11783,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISAPPERROR=='Y';",
+      "conditions": [
+        "ISAPPERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISAPPERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para More Retries.",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "More Retries"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-gatewayqIDu4l6BEfGBBLgTR5iuw",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "gateway _qIDu4l6BEfGBBLgT-R5iuw",
+      "nodeId": "_qIDu4l6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5627,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "STATUS_CODE!=\"0\";",
+      "conditions": [
+        "STATUS_CODE!=\"0\";"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "STATUS_CODE e diferente de \"0\"",
+        "termos": [],
+        "literais": [
+          "0"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'AppError' para Set App Error.",
+        "naoSabemos": [
+          "o significado de \"0\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "AppError",
+      "leadsTo": "Set App Error"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-CheckRetriesSWQRETRYCOUNT",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "Check Retries SW_QRETRYCOUNT",
+      "nodeId": "_qIDu3V6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5522,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "conditions": [
+        "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;"
+      ],
+      "readsBusinessFields": [
+        "SW_QRETRYCOUNT"
+      ],
+      "leitura": {
+        "frase": "IPESystemValues.SW_QRETRYCOUNT e menor que MAXRETRIES",
+        "termos": [
+          {
+            "campo": "SW_QRETRYCOUNT",
+            "rotulo": null,
+            "tipo": "long (15 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Stillgood' para Busca Envolvidos Vista Por AIIM.",
+        "naoSabemos": [
+          "o nome completo de SW_QRETRYCOUNT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Stillgood",
+      "leadsTo": "Busca Envolvidos Vista Por AIIM"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-TryAgain",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "Try Again",
+      "nodeId": "_qIDum16BEfGBBLgT-R5iuw",
+      "xpdlLine": 5979,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='R';",
+      "conditions": [
+        "OUTCOME=='R';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"R\"",
+        "termos": [],
+        "literais": [
+          "R"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Retry' para Start Loop.",
+        "naoSabemos": [
+          "o significado de \"R\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Retry",
+      "leadsTo": "Start Loop"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-TechError",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "Tech Error",
+      "nodeId": "_qIDupF6BEfGBBLgT-R5iuw",
+      "xpdlLine": 6155,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISTECHERROR=='Y';",
+      "conditions": [
+        "ISTECHERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISTECHERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para gateway sem rotulo (_qIDupl6BEfGBBLgT-R5iuw).",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "gateway sem rotulo (_qIDupl6BEfGBBLgT-R5iuw)"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-ManuallyFixed",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "Manually Fixed",
+      "nodeId": "_qIDull6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5874,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='OK';",
+      "conditions": [
+        "OUTCOME=='OK';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"OK\"",
+        "termos": [],
+        "literais": [
+          "OK"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Done - Fixed.",
+        "naoSabemos": [
+          "o significado de \"OK\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Done - Fixed"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-MoreRetries",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "More Retries",
+      "nodeId": "_qIDuoF6BEfGBBLgT-R5iuw",
+      "xpdlLine": 6082,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "NUMAPPRETRIES<MAXRETRIES;",
+      "conditions": [
+        "NUMAPPRETRIES<MAXRETRIES;"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e menor que MAXRETRIES",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Pause.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Pause"
+    },
+    {
+      "id": "RI-transition-CRNOTPC-MoreRetries",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "More Retries",
+      "nodeId": "_NcJJ7V9KEfGqPfX31TKC3w",
+      "xpdlLine": 11730,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "NUMAPPRETRIES<MAXRETRIES;",
+      "conditions": [
+        "NUMAPPRETRIES<MAXRETRIES;"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e menor que MAXRETRIES",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Pause.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Pause"
+    },
+    {
+      "id": "RI-transition-BSCENVPC-AppError",
+      "source": "transition",
+      "process": "BSCENVPC",
+      "node": "App Error",
+      "nodeId": "_qIDuo16BEfGBBLgT-R5iuw",
+      "xpdlLine": 6135,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISAPPERROR=='Y';",
+      "conditions": [
+        "ISAPPERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISAPPERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para More Retries.",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "More Retries"
+    },
+    {
+      "id": "RI-transition-DEAT0050-gatewaylrerVqhEfG5K7mY0I3I6w",
+      "source": "transition",
+      "process": "DEAT0050",
+      "node": "gateway _lrer_VqhEfG5K7mY0I3I6w",
+      "nodeId": "_lrer_VqhEfG5K7mY0I3I6w",
+      "xpdlLine": 4005,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;",
+      "conditions": [
+        "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;"
+      ],
+      "readsBusinessFields": [
+        "DATACONTROLE",
+        "PRAZODEFESA"
+      ],
+      "leitura": {
+        "frase": "DATACONTROLE e igual a <nao preenchido> OU DATACONTROLE e diferente de PRAZODEFESA",
+        "termos": [
+          {
+            "campo": "DATACONTROLE",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "PRAZODEFESA",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por este ramo para Aguarda Defesa.",
+        "naoSabemos": [
+          "DATACONTROLE e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de DATACONTROLE nao esta declarado em lado nenhum do pacote",
+          "o nome completo de PRAZODEFESA nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": null,
+      "leadsTo": "Aguarda Defesa"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-Corrigir",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Corrigir?",
+      "nodeId": "_sJqYklqTEfG5K7mY0I3I6w",
+      "xpdlLine": 2339,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "CORRECAO == true;",
+      "conditions": [
+        "CORRECAO == true;"
+      ],
+      "readsBusinessFields": [
+        "CORRECAO"
+      ],
+      "leitura": {
+        "frase": "CORRECAO e verdadeiro",
+        "termos": [
+          {
+            "campo": "CORRECAO",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Sim' para Corrigir Fechamento.",
+        "naoSabemos": [
+          "o nome completo de CORRECAO nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Sim",
+      "leadsTo": "Corrigir Fechamento"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-ExisteNotificao",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Existe Notificação?",
+      "nodeId": "_IxqJMlqTEfG5K7mY0I3I6w",
+      "xpdlLine": 2249,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "EXISTENOTIFICAC == true;",
+      "conditions": [
+        "EXISTENOTIFICAC == true;"
+      ],
+      "readsBusinessFields": [
+        "EXISTENOTIFICAC"
+      ],
+      "leitura": {
+        "frase": "existeNotificacao e verdadeiro",
+        "termos": [
+          {
+            "campo": "EXISTENOTIFICAC",
+            "rotulo": "existeNotificacao",
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Sim' para endEvent sem rotulo (_Faq_Q1qTEfG5K7mY0I3I6w).",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Sim",
+      "leadsTo": "endEvent sem rotulo (_Faq_Q1qTEfG5K7mY0I3I6w)"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-TipodeVistaMista",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Tipo de Vista Mista?",
+      "nodeId": "_CtQ7AlqPEfG5K7mY0I3I6w",
+      "xpdlLine": 1713,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "TIPOVISTAS == 'MISTA';",
+      "conditions": [
+        "TIPOVISTAS == 'MISTA';"
+      ],
+      "readsBusinessFields": [
+        "TIPOVISTAS"
+      ],
+      "leitura": {
+        "frase": "TIPOVISTAS e igual a \"MISTA\"",
+        "termos": [
+          {
+            "campo": "TIPOVISTAS",
+            "rotulo": null,
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              "JUIZ",
+              "MISTA"
+            ]
+          }
+        ],
+        "literais": [
+          "MISTA"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Sim' para gateway sem rotulo (_CtQ7AFqPEfG5K7mY0I3I6w).",
+        "naoSabemos": [
+          "o nome completo de TIPOVISTAS nao esta declarado em lado nenhum do pacote",
+          "o significado de \"MISTA\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "TIPOVISTAS e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Sim",
+      "leadsTo": "gateway sem rotulo (_CtQ7AFqPEfG5K7mY0I3I6w)"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-VistasMista",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Vistas Mista ?",
+      "nodeId": "_CtQ68FqPEfG5K7mY0I3I6w",
+      "xpdlLine": 1502,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "TIPOVISTAS=='MISTA';",
+      "conditions": [
+        "TIPOVISTAS=='MISTA';"
+      ],
+      "readsBusinessFields": [
+        "TIPOVISTAS"
+      ],
+      "leitura": {
+        "frase": "TIPOVISTAS e igual a \"MISTA\"",
+        "termos": [
+          {
+            "campo": "TIPOVISTAS",
+            "rotulo": null,
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              "JUIZ",
+              "MISTA"
+            ]
+          }
+        ],
+        "literais": [
+          "MISTA"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por este ramo para gateway sem rotulo (_CtQ68VqPEfG5K7mY0I3I6w).",
+        "naoSabemos": [
+          "o nome completo de TIPOVISTAS nao esta declarado em lado nenhum do pacote",
+          "o significado de \"MISTA\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "TIPOVISTAS e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": null,
+      "leadsTo": "gateway sem rotulo (_CtQ68VqPEfG5K7mY0I3I6w)"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-VistasMista",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Vistas Mista ?",
+      "nodeId": "_CtQ6_VqPEfG5K7mY0I3I6w",
+      "xpdlLine": 1629,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "TIPOVISTAS=='MISTA';",
+      "conditions": [
+        "TIPOVISTAS=='MISTA';"
+      ],
+      "readsBusinessFields": [
+        "TIPOVISTAS"
+      ],
+      "leitura": {
+        "frase": "TIPOVISTAS e igual a \"MISTA\"",
+        "termos": [
+          {
+            "campo": "TIPOVISTAS",
+            "rotulo": null,
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              "JUIZ",
+              "MISTA"
+            ]
+          }
+        ],
+        "literais": [
+          "MISTA"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por este ramo para gateway sem rotulo (_CtQ7AFqPEfG5K7mY0I3I6w).",
+        "naoSabemos": [
+          "o nome completo de TIPOVISTAS nao esta declarado em lado nenhum do pacote",
+          "o significado de \"MISTA\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "TIPOVISTAS e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": null,
+      "leadsTo": "gateway sem rotulo (_CtQ7AFqPEfG5K7mY0I3I6w)"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-VistasdoJuiz",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Vistas do Juiz ?",
+      "nodeId": "_CtQ7BFqPEfG5K7mY0I3I6w",
+      "xpdlLine": 1755,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;",
+      "conditions": [
+        "TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;"
+      ],
+      "readsBusinessFields": [
+        "TIPOVISTAS"
+      ],
+      "leitura": {
+        "frase": "TIPOVISTAS e igual a \"JUIZ\" OU TIPOVISTAS e igual a <nao preenchido>",
+        "termos": [
+          {
+            "campo": "TIPOVISTAS",
+            "rotulo": null,
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              "JUIZ",
+              "MISTA"
+            ]
+          }
+        ],
+        "literais": [
+          "JUIZ"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por este ramo para Vistas do Juiz.",
+        "naoSabemos": [
+          "o nome completo de TIPOVISTAS nao esta declarado em lado nenhum do pacote",
+          "o significado de \"JUIZ\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "TIPOVISTAS e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": null,
+      "leadsTo": "Vistas do Juiz"
+    },
+    {
+      "id": "RI-dataMapping-DEAT0050-CalculaPrazo",
+      "source": "dataMapping",
+      "process": "DEAT0050",
+      "node": "CalculaPrazo",
+      "nodeId": "_lrer3lqhEfG5K7mY0I3I6w",
+      "xpdlLine": 3939,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "0",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "0",
+        "termos": [],
+        "literais": [],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro PERIODOEMDIAS.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "PERIODOEMDIAS",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-transition-POC_EpatProcess-TrocarNotificao",
+      "source": "transition",
+      "process": "POC_EpatProcess",
+      "node": "Trocar Notificação?",
+      "nodeId": "_0XWahFqNEfG5K7mY0I3I6w",
+      "xpdlLine": 1392,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "TROCATPNOTIFICA == 1;",
+      "conditions": [
+        "TROCATPNOTIFICA == 1;"
+      ],
+      "readsBusinessFields": [
+        "TROCATPNOTIFICA"
+      ],
+      "leitura": {
+        "frase": "Trocar Tipo Notificacao e igual a 1",
+        "termos": [
+          {
+            "campo": "TROCATPNOTIFICA",
+            "rotulo": "Trocar Tipo Notificacao",
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Sim' para Flag Retirati True GS.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Sim",
+      "leadsTo": "Flag Retirati True GS"
+    },
+    {
+      "id": "RI-transition-CRNOTPC-ManuallyFixed",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "Manually Fixed",
+      "nodeId": "_NcJJ419KEfGqPfX31TKC3w",
+      "xpdlLine": 11522,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='OK';",
+      "conditions": [
+        "OUTCOME=='OK';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"OK\"",
+        "termos": [],
+        "literais": [
+          "OK"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Done - Fixed.",
+        "naoSabemos": [
+          "o significado de \"OK\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Done - Fixed"
+    },
+    {
+      "id": "RI-transition-CRNOTPC-TryAgain",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "Try Again",
+      "nodeId": "_NcJJ6F9KEfGqPfX31TKC3w",
+      "xpdlLine": 11627,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='R';",
+      "conditions": [
+        "OUTCOME=='R';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"R\"",
+        "termos": [],
+        "literais": [
+          "R"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Retry' para Start Loop.",
+        "naoSabemos": [
+          "o significado de \"R\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Retry",
+      "leadsTo": "Start Loop"
+    },
+    {
+      "id": "RI-dataMapping-DEAT0050-CalculaPrazo",
+      "source": "dataMapping",
+      "process": "DEAT0050",
+      "node": "CalculaPrazo",
+      "nodeId": "_lrer3lqhEfG5K7mY0I3I6w",
+      "xpdlLine": 3939,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "100",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "100",
+        "termos": [],
+        "literais": [],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro CODIGOMUNICIPIO.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "CODIGOMUNICIPIO",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-dataMapping-POC_EpatProcess-PreparaIntimao",
+      "source": "dataMapping",
+      "process": "POC_EpatProcess",
+      "node": "Prepara Intimação",
+      "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpdlLine": 1929,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "if ((STSADMTITCNT == 19 || STSADMTITDRF == 19) && INDRESPPRM == IPESystemValues.SW_NA ) { INDRESPPRM = 0; } if (ANULACAODTJ == true && INDRESPPRM == IPESystemValues.SW_NA ) { INDRESPPRM = 0; } if (IDTIPOIMPUGNACA == '6' && INSTANCIA == 2 && (STSRESPCNT == 4 || STSRESPSF == 4 || STSPRMSF == 4)) { INDRESPPRM = 1; } else if (IDTIPOIMPUGNACA == '6' && INSTANCIA == 2 && (STSRESPCNT == 0 && STSRESPSF == 0)) { INDRESPPRM = 0; } else { INDRESPPRM = INDRESPPRM; }",
+      "conditions": [],
+      "readsBusinessFields": [
+        "ANULACAODTJ",
+        "IDTIPOIMPUGNACA",
+        "INDRESPPRM",
+        "INSTANCIA",
+        "STSADMTITCNT",
+        "STSADMTITDRF",
+        "STSPRMSF",
+        "STSRESPCNT",
+        "STSRESPSF"
+      ],
+      "leitura": {
+        "frase": "if ((StatusAdmissaoTITCNT e igual a 19 OU StatusAdmissaoTITDRF e igual a 19) E INDRESPPRM e igual a <nao preenchido> ) { INDRESPPRM = 0; } if (ANULACAODTJ e verdadeiro E INDRESPPRM e igual a <nao preenchido> ) { INDRESPPRM = 0; } if (idTipoImpugnacao e igual a \"6\" E INSTANCIA e igual a 2 E (statusRESPCnt e igual a 4 OU statusRESPFazenda e igual a 4 OU statusPRMFazenda e igual a 4)) { INDRESPPRM = 1; } else if (idTipoImpugnacao e igual a \"6\" E INSTANCIA e igual a 2 E (statusRESPCnt e igual a 0 E statusRESPFazenda e igual a 0)) { INDRESPPRM = 0; } else { INDRESPPRM = INDRESPPRM; }",
+        "termos": [
+          {
+            "campo": "ANULACAODTJ",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "IDTIPOIMPUGNACA",
+            "rotulo": "idTipoImpugnacao",
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "INDRESPPRM",
+            "rotulo": null,
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "INSTANCIA",
+            "rotulo": null,
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSADMTITCNT",
+            "rotulo": "StatusAdmissaoTITCNT",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSADMTITDRF",
+            "rotulo": "StatusAdmissaoTITDRF",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSPRMSF",
+            "rotulo": "statusPRMFazenda",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSRESPCNT",
+            "rotulo": "statusRESPCnt",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSRESPSF",
+            "rotulo": "statusRESPFazenda",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [
+          "6"
+        ],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro INDRESPPRM.",
+        "naoSabemos": [
+          "o nome completo de ANULACAODTJ nao esta declarado em lado nenhum do pacote",
+          "o nome completo de INDRESPPRM nao esta declarado em lado nenhum do pacote",
+          "o nome completo de INSTANCIA nao esta declarado em lado nenhum do pacote",
+          "o significado de \"6\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "STSADMTITCNT e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "STSADMTITDRF e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "INDRESPPRM",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-dataMapping-POC_EpatProcess-PreparaIntimao",
+      "source": "dataMapping",
+      "process": "POC_EpatProcess",
+      "node": "Prepara Intimação",
+      "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpdlLine": 1929,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "if (RECAPIT==1 || EXCLUSAOSOLIDAR==true ){1;} else {0;}",
+      "conditions": [],
+      "readsBusinessFields": [
+        "EXCLUSAOSOLIDAR",
+        "RECAPIT"
+      ],
+      "leitura": {
+        "frase": "if (Recapitulacao e igual a 1 OU ExclusaoSolidarios e verdadeiro ){1;} else {0;}",
+        "termos": [
+          {
+            "campo": "EXCLUSAOSOLIDAR",
+            "rotulo": "ExclusaoSolidarios",
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "RECAPIT",
+            "rotulo": "Recapitulacao",
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro EXCLUSAOSOLIDAR.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "EXCLUSAOSOLIDAR",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-dataMapping-POC_EpatProcess-PreparaIntimao",
+      "source": "dataMapping",
+      "process": "POC_EpatProcess",
+      "node": "Prepara Intimação",
+      "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpdlLine": 1929,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "IPEConversionUtil.STR(SW_CASENUM,0)",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "IPEConversionUtil.STR(SW_CASENUM,0)",
+        "termos": [],
+        "literais": [],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro IDFORNECEDOR.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "IDFORNECEDOR",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-dataMapping-POC_EpatProcess-PreparaIntimao",
+      "source": "dataMapping",
+      "process": "POC_EpatProcess",
+      "node": "Prepara Intimação",
+      "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpdlLine": 1929,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "IPEProcessNameUtil.GETPROCESSNAME('POC_EpatProcess');",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "IPEProcessNameUtil.GETPROCESSNAME(\"POC_EpatProcess\")",
+        "termos": [],
+        "literais": [
+          "POC_EpatProcess"
+        ],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro NOMEPROCESSO.",
+        "naoSabemos": [
+          "o significado de \"POC_EpatProcess\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "NOMEPROCESSO",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-dataMapping-POC_EpatProcess-PreparaIntimao",
+      "source": "dataMapping",
+      "process": "POC_EpatProcess",
+      "node": "Prepara Intimação",
+      "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpdlLine": 1929,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "'iProcess'",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "\"iProcess\"",
+        "termos": [],
+        "literais": [
+          "iProcess"
+        ],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro FORNECEDOR.",
+        "naoSabemos": [
+          "o significado de \"iProcess\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "FORNECEDOR",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-dataMapping-POC_EpatProcess-PreparaIntimao",
+      "source": "dataMapping",
+      "process": "POC_EpatProcess",
+      "node": "Prepara Intimação",
+      "nodeId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "xpdlLine": 1929,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "dataMapping",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "'ePAT'",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "\"ePAT\"",
+        "termos": [],
+        "literais": [
+          "ePAT"
+        ],
+        "consequencia": "O resultado desta expressao e o valor entregue ao parametro APLICACAO.",
+        "naoSabemos": [
+          "o significado de \"ePAT\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "formalParam": "APLICACAO",
+      "direction": "IN"
+    },
+    {
+      "id": "RI-transition-CRNOTPC-TechError",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "Tech Error",
+      "nodeId": "_NcJJ8V9KEfGqPfX31TKC3w",
+      "xpdlLine": 11803,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISTECHERROR=='Y';",
+      "conditions": [
+        "ISTECHERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISTECHERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para gateway sem rotulo (_NcJw8V9KEfGqPfX31TKC3w).",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "gateway sem rotulo (_NcJw8V9KEfGqPfX31TKC3w)"
+    },
+    {
+      "id": "RI-deadline-CRNOTPC-Pause",
+      "source": "deadline",
+      "process": "CRNOTPC",
+      "node": "Pause",
+      "nodeId": "_NcJJ7l9KEfGqPfX31TKC3w",
+      "xpdlLine": 11750,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "espera entre tentativas, nao e prazo de negocio"
+      },
+      "expression": "Minutes=30",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Minutes=30",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-deadline-DEAT0050-AguardaDefesa",
+      "source": "deadline",
+      "process": "DEAT0050",
+      "node": "Aguarda Defesa",
+      "nodeId": "_lrer2lqhEfG5K7mY0I3I6w",
+      "xpdlLine": 3872,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "fixa-prazo",
+        "efeitoDescricao": "compromisso de tempo",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "PRAZODEFESA; PRAZODEFESAT;",
+      "conditions": [],
+      "readsBusinessFields": [
+        "PRAZODEFESA",
+        "PRAZODEFESAT"
+      ],
+      "leitura": {
+        "frase": "PRAZODEFESA; PRAZODEFESAT",
+        "termos": [
+          {
+            "campo": "PRAZODEFESA",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "PRAZODEFESAT",
+            "rotulo": null,
+            "tipo": "TimeOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [
+          "o nome completo de PRAZODEFESA nao esta declarado em lado nenhum do pacote",
+          "o nome completo de PRAZODEFESAT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "expressao"
+    },
+    {
+      "id": "RI-deadline-POC_EpatProcess-Encerraeretira",
+      "source": "deadline",
+      "process": "POC_EpatProcess",
+      "node": "Encerra e retira",
+      "nodeId": "_T4Ma8FqiEfG5K7mY0I3I6w",
+      "xpdlLine": 2691,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "fixa-prazo",
+        "efeitoDescricao": "compromisso de tempo",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "Days=2",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Days=2",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-deadline-POC_EpatProcess-FimdePrazoMantendoAtividade",
+      "source": "deadline",
+      "process": "POC_EpatProcess",
+      "node": "Fim de Prazo Mantendo Atividade",
+      "nodeId": "_XWivFlqTEfG5K7mY0I3I6w",
+      "xpdlLine": 2269,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "fixa-prazo",
+        "efeitoDescricao": "compromisso de tempo",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "DTFIMCQ; HRFIMCQ;",
+      "conditions": [],
+      "readsBusinessFields": [
+        "DTFIMCQ",
+        "HRFIMCQ"
+      ],
+      "leitura": {
+        "frase": "DTFIMCQ; HRFIMCQ",
+        "termos": [
+          {
+            "campo": "DTFIMCQ",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "HRFIMCQ",
+            "rotulo": null,
+            "tipo": "TimeOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [
+          "o nome completo de DTFIMCQ nao esta declarado em lado nenhum do pacote",
+          "o nome completo de HRFIMCQ nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "expressao"
+    },
+    {
+      "id": "RI-deadline-POC_EpatProcess-passosemrotulo",
+      "source": "deadline",
+      "process": "POC_EpatProcess",
+      "node": "(passo sem rotulo)",
+      "nodeId": "_CtQ7A1qPEfG5K7mY0I3I6w",
+      "xpdlLine": 1733,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "fixa-prazo",
+        "efeitoDescricao": "compromisso de tempo",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "PRAZORETIRADAVI; HORAFINAL.Time;",
+      "conditions": [],
+      "readsBusinessFields": [
+        "HORAFINAL",
+        "PRAZORETIRADAVI"
+      ],
+      "leitura": {
+        "frase": "PrazoRetiradaVista; HORAFINAL.Time",
+        "termos": [
+          {
+            "campo": "HORAFINAL",
+            "rotulo": null,
+            "tipo": "DateTime",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "PRAZORETIRADAVI",
+            "rotulo": "PrazoRetiradaVista",
+            "tipo": "DateOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [
+          "o nome completo de HORAFINAL nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "expressao"
+    },
+    {
+      "id": "RI-deadline-POC_EpatProcess-passosemrotulo",
+      "source": "deadline",
+      "process": "POC_EpatProcess",
+      "node": "(passo sem rotulo)",
+      "nodeId": "_CtQ6_1qPEfG5K7mY0I3I6w",
+      "xpdlLine": 1649,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "fixa-prazo",
+        "efeitoDescricao": "compromisso de tempo",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "PRAZORETIRADAVI; HORAFINAL.Time;",
+      "conditions": [],
+      "readsBusinessFields": [
+        "HORAFINAL",
+        "PRAZORETIRADAVI"
+      ],
+      "leitura": {
+        "frase": "PrazoRetiradaVista; HORAFINAL.Time",
+        "termos": [
+          {
+            "campo": "HORAFINAL",
+            "rotulo": null,
+            "tipo": "DateTime",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "PRAZORETIRADAVI",
+            "rotulo": "PrazoRetiradaVista",
+            "tipo": "DateOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [
+          "o nome completo de HORAFINAL nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "expressao"
+    },
+    {
+      "id": "RI-transition-CRNOTPC-gatewayNcJxLl9KEfGqPfX31TKC3w",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "gateway _NcJxLl9KEfGqPfX31TKC3w",
+      "nodeId": "_NcJxLl9KEfGqPfX31TKC3w",
+      "xpdlLine": 11225,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "STATUS_CODE!=\"0\";",
+      "conditions": [
+        "STATUS_CODE!=\"0\";"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "STATUS_CODE e diferente de \"0\"",
+        "termos": [],
+        "literais": [
+          "0"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'AppError' para Set App Error.",
+        "naoSabemos": [
+          "o significado de \"0\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "AppError",
+      "leadsTo": "Set App Error"
+    },
+    {
+      "id": "RI-transition-CRNOTPC-CheckRetriesSWQRETRYCOUNT",
+      "source": "transition",
+      "process": "CRNOTPC",
+      "node": "Check Retries SW_QRETRYCOUNT",
+      "nodeId": "_NcJxKV9KEfGqPfX31TKC3w",
+      "xpdlLine": 11120,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "conditions": [
+        "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;"
+      ],
+      "readsBusinessFields": [
+        "SW_QRETRYCOUNT"
+      ],
+      "leitura": {
+        "frase": "IPESystemValues.SW_QRETRYCOUNT e menor que MAXRETRIES",
+        "termos": [
+          {
+            "campo": "SW_QRETRYCOUNT",
+            "rotulo": null,
+            "tipo": "long (15 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Stillgood' para CriaNotificacao.",
+        "naoSabemos": [
+          "o nome completo de SW_QRETRYCOUNT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Stillgood",
+      "leadsTo": "CriaNotificacao"
+    },
+    {
+      "id": "RI-deadline-BSCENVPC-Pause",
+      "source": "deadline",
+      "process": "BSCENVPC",
+      "node": "Pause",
+      "nodeId": "_qIDuoV6BEfGBBLgT-R5iuw",
+      "xpdlLine": 6102,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "espera entre tentativas, nao e prazo de negocio"
+      },
+      "expression": "Minutes=30",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Minutes=30",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-script-CRNOTPC-SetAppError",
+      "source": "script",
+      "process": "CRNOTPC",
+      "node": "Set App Error",
+      "nodeId": "_NcJxLV9KEfGqPfX31TKC3w",
+      "xpdlLine": 11195,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-formScript-POC_EpatProcess-FinalizarAIIM",
+      "source": "formScript",
+      "process": "POC_EpatProcess",
+      "node": "Finalizar AIIM",
+      "nodeId": "_xWNLe1qSEfG5K7mY0I3I6w",
+      "xpdlLine": 2124,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "formScript",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "AFR = IPEStarterUtil.GETATTRIBUTE(\"Name\"); CNTINSTANCIASUF = 0;",
+      "conditions": [],
+      "readsBusinessFields": [
+        "AFR",
+        "CNTINSTANCIASUF"
+      ],
+      "leitura": {
+        "frase": "Agente Fiscal de Renda = IPEStarterUtil.GETATTRIBUTE(\"Name\"); cntInstanciasUFC = 0",
+        "termos": [
+          {
+            "campo": "AFR",
+            "rotulo": "Agente Fiscal de Renda",
+            "tipo": "string",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTINSTANCIASUF",
+            "rotulo": "cntInstanciasUFC",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [
+          "Name"
+        ],
+        "consequencia": "Corre no momento em que o utilizador submete o formulario.",
+        "naoSabemos": [
+          "o significado de \"Name\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null
+    },
+    {
+      "id": "RI-script-CRNOTPC-StartTX",
+      "source": "script",
+      "process": "CRNOTPC",
+      "node": "Start TX",
+      "nodeId": "_NcJxKF9KEfGqPfX31TKC3w",
+      "xpdlLine": 11099,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 0,
+        "lines": 1
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CONTROPC-ISetSubProc",
+      "source": "script",
+      "process": "CONTROPC",
+      "node": "ISetSubProc",
+      "nodeId": "_-bkw-F6JEfGBBLgT-R5iuw",
+      "xpdlLine": 8554,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "IDMOTIVOINTIMAC == 1",
+        "(IDDECISAODEBITO == 3 || IDDECISAODEBITO == 0) && DEFESAADMITIDA == true",
+        "IDDECISAODEBITO == 0 && DEFESAADMITIDA == false",
+        "IDDECISAODEBITO == 1 || IDDECISAODEBITO == 2",
+        "RECURSOOFICIO == true",
+        "RECURSOOFICIO == false",
+        "IDTIPOIMPUGNACA == '4'",
+        "IDMOTIVOINTIMAC == 2",
+        "CRCONTRIBUINTE == 1",
+        "IDDECISAODEBITO == 1 || IDDECISAODEBITO == 2 && RECURSOOFICIO==true",
+        "DILIGENCIA == true",
+        "DSTIPOINTIMACAO=='DE' || DTCIENCIA==IPESystemValues.SW_NA",
+        "Instancia==2 || vicioRepresentacao == true || (Instancia == 1 && defesaAdmitida == false && diligencia!=true)",
+        "NOVOMODELO == true"
+      ],
+      "readsBusinessFields": [
+        "CRCONTRIBUINTE",
+        "DEFESAADMITIDA",
+        "DILIGENCIA",
+        "DSTIPOINTIMACAO",
+        "DTCIENCIA",
+        "IDDECISAODEBITO",
+        "IDMOTIVOINTIMAC",
+        "IDTIPOIMPUGNACA",
+        "NOVOMODELO",
+        "RECURSOOFICIO"
+      ],
+      "leitura": {
+        "frase": "(idDecisaoDebitoFiscal e igual a 3 OU idDecisaoDebitoFiscal e igual a 0) E DEFESAADMITIDA e verdadeiro E CRCONTRIBUINTE e igual a 1 E DILIGENCIA e verdadeiro E DSTIPOINTIMACAO e igual a \"DE\" OU DTCIENCIA e igual a <nao preenchido> E idDecisaoDebitoFiscal e igual a 0 E DEFESAADMITIDA e falso E idDecisaoDebitoFiscal e igual a 1 OU idDecisaoDebitoFiscal e igual a 2 E idDecisaoDebitoFiscal e igual a 1 OU idDecisaoDebitoFiscal e igual a 2 E RECURSOOFICIO e verdadeiro E idMotivoIntimacao e igual a 1 E idMotivoIntimacao e igual a 2 E idTipoImpugnacao e igual a \"4\" E Instancia e igual a 2 OU vicioRepresentacao e verdadeiro OU (Instancia e igual a 1 E defesaAdmitida e falso E diligencia nao e verdadeiro) E NOVOMODELO e verdadeiro E RECURSOOFICIO e falso E RECURSOOFICIO e verdadeiro",
+        "termos": [
+          {
+            "campo": "CRCONTRIBUINTE",
+            "rotulo": null,
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "DEFESAADMITIDA",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "DILIGENCIA",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "DSTIPOINTIMACAO",
+            "rotulo": null,
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "DTCIENCIA",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "IDDECISAODEBITO",
+            "rotulo": "idDecisaoDebitoFiscal",
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "IDMOTIVOINTIMAC",
+            "rotulo": "idMotivoIntimacao",
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "IDTIPOIMPUGNACA",
+            "rotulo": "idTipoImpugnacao",
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "NOVOMODELO",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "RECURSOOFICIO",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [
+          "4",
+          "DE"
+        ],
+        "consequencia": "Escreve AGUARDAR, PROCRETORNO.",
+        "naoSabemos": [
+          "DTCIENCIA e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de CRCONTRIBUINTE nao esta declarado em lado nenhum do pacote",
+          "o nome completo de DEFESAADMITIDA nao esta declarado em lado nenhum do pacote",
+          "o nome completo de DILIGENCIA nao esta declarado em lado nenhum do pacote",
+          "o nome completo de DSTIPOINTIMACAO nao esta declarado em lado nenhum do pacote",
+          "o nome completo de DTCIENCIA nao esta declarado em lado nenhum do pacote",
+          "o nome completo de NOVOMODELO nao esta declarado em lado nenhum do pacote",
+          "o nome completo de RECURSOOFICIO nao esta declarado em lado nenhum do pacote",
+          "o significado de \"4\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"DE\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Tabela de decisao disfarcada de script: escolhe qual subprocesso de espera sera instanciado, a partir do resultado do julgamento.",
+        "detail": "Le o motivo da intimacao, a decisao sobre o debito, se a defesa foi admitida, se houve recurso de oficio, o tipo de impugnacao, se ha contrarrazao do contribuinte e se houve diligencia. Combina esses fatores em 14 condicoes e grava em AGUARDAR[0] o nome do processo a aguardar, entre 7 valores possiveis: AgPRJ, AgRecPRJ, AgPRJR, AgPecas, AgRCRaz, AgCRaz e AgPetica. No fim copia o valor para PROCRETORNO. O proprio autor documentou os codigos no cabecalho: idmotivo 1=Decisao, 2=Vicio, 3=Diligencia; iddecisaodebito 1=mantido, 2=reduzido, 3=cancelado.",
+        "findings": [
+          "As atribuicoes NAO sao mutuamente exclusivas: os blocos sao avaliados em sequencia e um valor posterior sobrescreve o anterior. A ORDEM importa, tal como nas colunas do Corticon.",
+          "O ultimo bloco 'if (NOVOMODELO == true)' sobrescreve QUALQUER decisao anterior com AgPecas. E um interruptor global que anula a tabela inteira.",
+          "Ha um comentario do autor admitindo pendencia: 'falta implementar regras para PRJ'.",
+          "IDDECISAODEBITO == 0 e testado mas nao consta na legenda do autor (que so documenta 1, 2 e 3): valor sem significado declarado."
+        ],
+        "migration": "Candidato natural a virar tabela de decisao DMN/NRules ao lado das regras Corticon, e nao if/else em C#. O documento da POC exige justamente 'separacao entre fluxo operacional e regras de negocio' - hoje esta regra esta dentro do fluxo. Como as atribuicoes se sobrepoem, a tabela precisa de hit policy que preserve a ordem (RULE ORDER), igual ao espelho ja usado para o Corticon.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 14,
+        "assignments": 2,
+        "lines": 53
+      },
+      "writesBusinessFields": [
+        "AGUARDAR",
+        "PROCRETORNO"
+      ],
+      "valueDomain": [
+        {
+          "field": "AGUARDAR",
+          "value": "AgPRJ"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgRecPRJ"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgPRJ"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgRecPRJ"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgPRJR"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgPecas"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgRCRaz"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgCRaz"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgPetica"
+        },
+        {
+          "field": "AGUARDAR",
+          "value": "AgPecas"
+        }
+      ],
+      "authorComments": [
+        "idmotivos7",
+        "1 - Decisao",
+        "2 - Vicio",
+        "3 - Diligencia",
+        "iddeciaodebito",
+        "1 mantido",
+        "2 reduzido",
+        "3 cancelado",
+        "falta implementar regras para PRJ",
+        "alterado para verificar se a intimacao teve ciencia, se nao houver considerar a data da publicacao.",
+        "if (Instancia==2 || vicioRepresentacao == true || (Instancia == 1 && defesaAdmitida == false && diligencia!=true) ){"
+      ]
+    },
+    {
+      "id": "RI-script-CONTROPC-ControledePrazos",
+      "source": "script",
+      "process": "CONTROPC",
+      "node": "Controle de Prazos",
+      "nodeId": "_-bkw_V6JEfGBBLgT-R5iuw",
+      "xpdlLine": 8744,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "DSTIPOINTIMACAO==\"Carta com AR\"",
+        "DSTIPOINTIMACAO==\"DE\""
+      ],
+      "readsBusinessFields": [
+        "DSTIPOINTIMACAO"
+      ],
+      "leitura": {
+        "frase": "DSTIPOINTIMACAO e igual a \"Carta com AR\" E DSTIPOINTIMACAO e igual a \"DE\"",
+        "termos": [
+          {
+            "campo": "DSTIPOINTIMACAO",
+            "rotulo": null,
+            "tipo": "string (50 caracteres)",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [
+          "Carta com AR",
+          "DE"
+        ],
+        "consequencia": "Escreve PERIODOEMDIAS, PRAZOCIENCIA.",
+        "naoSabemos": [
+          "o nome completo de DSTIPOINTIMACAO nao esta declarado em lado nenhum do pacote",
+          "o significado de \"Carta com AR\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"DE\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "metrics": {
+        "conditions": 2,
+        "assignments": 2,
+        "lines": 12
+      },
+      "writesBusinessFields": [
+        "PERIODOEMDIAS",
+        "PRAZOCIENCIA"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CONTROPC-DesativaSubs",
+      "source": "script",
+      "process": "CONTROPC",
+      "node": "Desativa Subs",
+      "nodeId": "_-bkxKF6JEfGBBLgT-R5iuw",
+      "xpdlLine": 8860,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 1,
+        "lines": 1
+      },
+      "writesBusinessFields": [
+        "STATUSSUBPROC"
+      ],
+      "valueDomain": [
+        {
+          "field": "STATUSSUBPROC",
+          "value": "inativo"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-BSCENVPC-StartTX",
+      "source": "script",
+      "process": "BSCENVPC",
+      "node": "Start TX",
+      "nodeId": "_qIDu3F6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5501,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 0,
+        "lines": 1
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-BSCENVPC-SetTechnicalError",
+      "source": "script",
+      "process": "BSCENVPC",
+      "node": "Set Technical Error",
+      "nodeId": "_qIDu4F6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5567,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISTECHERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-BSCENVPC-SetAppError",
+      "source": "script",
+      "process": "BSCENVPC",
+      "node": "Set App Error",
+      "nodeId": "_qIDu4V6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5597,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-BSCENVPC-StartLoop",
+      "source": "script",
+      "process": "BSCENVPC",
+      "node": "Start Loop",
+      "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
+      "xpdlLine": 5894,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [
+        "NUMAPPRETRIES==null"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e igual a null",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Escreve DATETIME, ISAPPERROR, ISTECHERROR, NUMAPPRETRIES, OUTCOME.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Inicializa o contador de tentativas e o estado de erro antes de cada chamada de servico.",
+        "detail": "Inicia NUMAPPRETRIES em 0 na primeira passagem e incrementa nas seguintes. Zera os indicadores de erro com ISAPPERROR='N' e ISTECHERROR='N', define OUTCOME e carimba DATETIME com a data do sistema.",
+        "findings": [
+          "RESPONDE A PERGUNTAS EM ABERTO: o dominio de ISAPPERROR e ISTECHERROR e 'N'/'Y', e NUMAPPRETRIES comeca em 0 e incrementa de 1 em 1.",
+          "DIVERGENCIA ENTRE CLONES: CALCPRPC e BSCENVPC inicializam OUTCOME='OK'; PRPINTPC, ATZINTPC e CRNOTPC inicializam OUTCOME='R'. O script e identico em tudo o resto. E preciso decidir se a diferenca e intencional.",
+          "O valor inicial de OUTCOME importa porque OUTCOME e comparado com 'OK' e 'R' em condicoes de desvio."
+        ],
+        "migration": "A politica de retentativa vira configuracao explicita. A divergencia de OUTCOME tem de ser resolvida antes de gerar os cinco subprocessos a partir de um mesmo template.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 1,
+        "assignments": 5,
+        "lines": 10
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "N"
+        },
+        {
+          "field": "ISTECHERROR",
+          "value": "N"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "OK"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CRNOTPC-SetTechnicalError",
+      "source": "script",
+      "process": "CRNOTPC",
+      "node": "Set Technical Error",
+      "nodeId": "_NcJxLF9KEfGqPfX31TKC3w",
+      "xpdlLine": 11165,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISTECHERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-BSCENVPC-SetParameters",
+      "source": "script",
+      "process": "BSCENVPC",
+      "node": "SetParameters",
+      "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+      "xpdlLine": 5832,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "IDPROCESSO != IPESystemValues.SW_NA",
+        "MAXRETRIES==null"
+      ],
+      "readsBusinessFields": [
+        "IDPROCESSO"
+      ],
+      "leitura": {
+        "frase": "IDPROCESSO e diferente de <nao preenchido> E MAXRETRIES e igual a null",
+        "termos": [
+          {
+            "campo": "IDPROCESSO",
+            "rotulo": null,
+            "tipo": "int (9 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve MAXRETRIES, PROCESS_ID.",
+        "naoSabemos": [
+          "IDPROCESSO e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de IDPROCESSO nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Monta o identificador de correlacao da chamada de servico e fixa o limite de retentativas.",
+        "detail": "Compoe PROCESS_ID no formato 'idAiim-<n>idProc-<n>', usando o sufixo 'idProc-NA' quando IDPROCESSO esta em SW_NA. Define MAXRETRIES = 5 quando ainda nao tem valor.",
+        "findings": [
+          "RESPONDE A UMA PERGUNTA EM ABERTO: o valor inicial de MAXRETRIES e 5, definido aqui e nao no formulario nem em pacote externo.",
+          "PROCESS_ID e exatamente a chave de correlacao que a migracao precisa tornar explicita: ja existe, so nao esta declarada como contrato.",
+          "O script repete-se identico em CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC."
+        ],
+        "migration": "PROCESS_ID vira a chave de correlacao formal do bookmark. MAXRETRIES vira configuracao (options), nao literal no meio do fluxo.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 2,
+        "assignments": 2,
+        "lines": 8
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        },
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-DEAT0050-HoraFimSC",
+      "source": "script",
+      "process": "DEAT0050",
+      "node": "HoraFimSC",
+      "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
+      "xpdlLine": 3895,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [
+        "IPESystemValues.SW_HOSTNAME == 'des1'"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "IPESystemValues.SW_HOSTNAME e igual a \"des1\"",
+        "termos": [],
+        "literais": [
+          "des1"
+        ],
+        "consequencia": "Escreve DAYSOVER, PRAZODEFESA, PRAZODEFESAT.",
+        "naoSabemos": [
+          "o significado de \"des1\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "metrics": {
+        "conditions": 1,
+        "assignments": 3,
+        "lines": 8
+      },
+      "writesBusinessFields": [
+        "DAYSOVER",
+        "PRAZODEFESA",
+        "PRAZODEFESAT"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-POC_EpatProcess-prepSub",
+      "source": "script",
+      "process": "POC_EpatProcess",
+      "node": "prepSub",
+      "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "xpdlLine": 2848,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "CODUADTJ == IPESystemValues.SW_NA",
+        "CNTPECA1=='110' || CNTPECA1=='24' || CNTPECA1=='53' || CNTPECA1=='55' || CNTPECA1=='22'",
+        "CNTPECA1 != IPESystemValues.SW_NA",
+        "CNTPECA2 != IPESystemValues.SW_NA",
+        "CNTPECA3 != IPESystemValues.SW_NA",
+        "CNTPECA4 !=IPESystemValues.SW_NA",
+        "SFPECA1=='50' || SFPECA1=='24' || SFPECA1=='53' || SFPECA1=='49' || SFPECA1=='55' || SFPECA1=='110'",
+        "SFPECA1 != IPESystemValues.SW_NA",
+        "SFPECA2 != IPESystemValues.SW_NA",
+        "SFPECA3 != IPESystemValues.SW_NA",
+        "SFPECA4 != IPESystemValues.SW_NA"
+      ],
+      "readsBusinessFields": [
+        "CNTPECA1",
+        "CNTPECA2",
+        "CNTPECA3",
+        "CNTPECA4",
+        "CODUADTJ",
+        "SFPECA1",
+        "SFPECA2",
+        "SFPECA3",
+        "SFPECA4"
+      ],
+      "leitura": {
+        "frase": "CNTPECA1 e diferente de <nao preenchido> E CNTPECA1 e igual a \"110\" OU CNTPECA1 e igual a \"24\" OU CNTPECA1 e igual a \"53\" OU CNTPECA1 e igual a \"55\" OU CNTPECA1 e igual a \"22\" E CNTPECA2 e diferente de <nao preenchido> E CNTPECA3 e diferente de <nao preenchido> E CNTPECA4 e diferente de <nao preenchido> E CODUADTJ e igual a <nao preenchido> E SFPECA1 e diferente de <nao preenchido> E SFPECA1 e igual a \"50\" OU SFPECA1 e igual a \"24\" OU SFPECA1 e igual a \"53\" OU SFPECA1 e igual a \"49\" OU SFPECA1 e igual a \"55\" OU SFPECA1 e igual a \"110\" E SFPECA2 e diferente de <nao preenchido> E SFPECA3 e diferente de <nao preenchido> E SFPECA4 e diferente de <nao preenchido>",
+        "termos": [
+          {
+            "campo": "CNTPECA1",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTPECA2",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTPECA3",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTPECA4",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CODUADTJ",
+            "rotulo": null,
+            "tipo": "string",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "SFPECA1",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "SFPECA2",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "SFPECA3",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "SFPECA4",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [
+          "110",
+          "22",
+          "24",
+          "49",
+          "50",
+          "53",
+          "55"
+        ],
+        "consequencia": "Escreve ARRAYINT, AUX, CODUADTJ, FIMSTRING, IDPECASCNT, IDPECASSF, IDSINTIMADOS, NRSUBPRO, POSICAOFIM, POSICAOINICIO.",
+        "naoSabemos": [
+          "CNTPECA1 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CNTPECA2 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CNTPECA3 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CNTPECA4 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CODUADTJ e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de CNTPECA1 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CNTPECA2 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CNTPECA3 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CNTPECA4 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CODUADTJ nao esta declarado em lado nenhum do pacote",
+          "o nome completo de SFPECA1 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de SFPECA2 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de SFPECA3 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de SFPECA4 nao esta declarado em lado nenhum do pacote",
+          "o significado de \"110\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"22\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"24\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"49\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"50\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"53\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "o significado de \"55\" nao esta declarado; o pacote so mostra que o valor e usado",
+          "SFPECA1 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "SFPECA2 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "SFPECA3 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "SFPECA4 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Prepara a chamada dos subprocessos por solidario: quebra a lista de intimados e monta as listas de pecas do contribuinte e da fazenda.",
+        "detail": "Percorre QTDINTIMADOS posicoes e, para cada uma, marca NRSUBPRO como 'CONTROLE' e extrai da string IDSINTIMADOS o proximo identificador, usando o separador '|' com SEARCH/SUBSTR/STRLEN. Depois concatena CNTPECA1..4 em IDPECASCNT e SFPECA1..4 em IDPECASSF, sempre ignorando os que estao com SW_NA.",
+        "findings": [
+          "DEFEITO PROVAVEL: a ultima linha faz IDSINTIMADOS = '278713|278712|', sobrescrevendo a lista real DEPOIS de ela ja ter sido consumida. Ha ainda uma lista maior comentada logo abaixo. Tem cara de dado de teste esquecido no processo.",
+          "O parsing manual de string com separador '|' e fragil: nao trata lista vazia nem separador final ausente.",
+          "As listas de pecas usam concatenacao de string com '|' - o modelo .NET provavelmente quer uma colecao, nao uma string."
+        ],
+        "migration": "A quebra de string vira uma colecao no modelo .NET. O literal de IDSINTIMADOS precisa de decisao explicita: se for dado de teste, NAO deve ser reproduzido - e essa e uma divergencia deliberada que tem de ficar registada.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 11,
+        "assignments": 10,
+        "lines": 47
+      },
+      "writesBusinessFields": [
+        "ARRAYINT",
+        "AUX",
+        "CODUADTJ",
+        "FIMSTRING",
+        "IDPECASCNT",
+        "IDPECASSF",
+        "IDSINTIMADOS",
+        "NRSUBPRO",
+        "POSICAOFIM",
+        "POSICAOINICIO"
+      ],
+      "valueDomain": [
+        {
+          "field": "NRSUBPRO",
+          "value": "CONTROLE"
+        },
+        {
+          "field": "IDSINTIMADOS",
+          "value": "278713|278712|"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-POC_EpatProcess-DefineDestinatarios",
+      "source": "script",
+      "process": "POC_EpatProcess",
+      "node": "Define Destinatarios",
+      "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
+      "xpdlLine": 2657,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [
+        "IPESystemValues.SW_HOSTNAME == 'prod1'"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "IPESystemValues.SW_HOSTNAME e igual a \"prod1\"",
+        "termos": [],
+        "literais": [
+          "prod1"
+        ],
+        "consequencia": "Escreve BCCRELATORIO, CCRELATORIO.",
+        "naoSabemos": [
+          "o significado de \"prod1\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Define os destinatarios do relatorio enviado por e-mail.",
+        "detail": "Preenche os campos de destinatario usados pelas tarefas de e-mail do processo.",
+        "findings": [
+          "Contem enderecos de e-mail fixos no codigo (ja detetados como scriptHazards): um em copia e outro em copia oculta.",
+          "Enderecos fixos num script sao configuracao disfarcada de logica: mudam sem aviso e nao passam por revisao."
+        ],
+        "migration": "Mover para configuracao (appsettings/options) e nao para constantes em C#. Confirmar com o cliente se os enderecos atuais continuam validos.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 1,
+        "assignments": 2,
+        "lines": 6
+      },
+      "writesBusinessFields": [
+        "BCCRELATORIO",
+        "CCRELATORIO"
+      ],
+      "valueDomain": [
+        {
+          "field": "CCRELATORIO",
+          "value": "acsimoes@fazenda.sp.gov.br"
+        },
+        {
+          "field": "BCCRELATORIO",
+          "value": "epat_tribunal@fazenda.sp.gov.br"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-POC_EpatProcess-SetNomeEtapa2",
+      "source": "script",
+      "process": "POC_EpatProcess",
+      "node": "Set Nome Etapa 2",
+      "nodeId": "_XWivF1qTEfG5K7mY0I3I6w",
+      "xpdlLine": 2291,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 4,
+        "lines": 4
+      },
+      "writesBusinessFields": [
+        "DAYSOVER",
+        "DTFIMCQ",
+        "HRFIMCQ",
+        "NOMEETAPA"
+      ],
+      "valueDomain": [
+        {
+          "field": "NOMEETAPA",
+          "value": "CQ"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-POC_EpatProcess-VerificarAnulacao",
+      "source": "script",
+      "process": "POC_EpatProcess",
+      "node": "Verificar Anulacao",
+      "nodeId": "_CI6lx1qREfG5K7mY0I3I6w",
+      "xpdlLine": 1895,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "ANULACAODTJ == true && INSTANCIA == 2",
+        "INDNAORECORRER == true",
+        "INDNAORECORRER == false",
+        "ORIGEM == IPESystemValues.SW_NA"
+      ],
+      "readsBusinessFields": [
+        "ANULACAODTJ",
+        "INDNAORECORRER",
+        "INSTANCIA",
+        "ORIGEM"
+      ],
+      "leitura": {
+        "frase": "ANULACAODTJ e verdadeiro E INSTANCIA e igual a 2 E INDNAORECORRER e falso E INDNAORECORRER e verdadeiro E ORIGEM e igual a <nao preenchido>",
+        "termos": [
+          {
+            "campo": "ANULACAODTJ",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "INDNAORECORRER",
+            "rotulo": null,
+            "tipo": "bool",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "INSTANCIA",
+            "rotulo": null,
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "ORIGEM",
+            "rotulo": null,
+            "tipo": "string (5 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve FLAGCRZ, INDNAORECORRER, ORIGEM, STATUSRECURSOS.",
+        "naoSabemos": [
+          "o nome completo de ANULACAODTJ nao esta declarado em lado nenhum do pacote",
+          "o nome completo de INDNAORECORRER nao esta declarado em lado nenhum do pacote",
+          "o nome completo de INSTANCIA nao esta declarado em lado nenhum do pacote",
+          "o nome completo de ORIGEM nao esta declarado em lado nenhum do pacote",
+          "ORIGEM e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Zera o status de recursos quando houve anulacao pela DTJ em segunda instancia, e normaliza a origem nao preenchida.",
+        "detail": "Se ANULACAODTJ for verdadeiro e INSTANCIA for 2, zera STATUSRECURSOS. Em seguida, se ORIGEM estiver com o sentinela SW_NA, troca por 'NA'. Por fim copia FLAGCONTRARAZAO para FLAGCRZ.",
+        "findings": [
+          "O bloco if/else-if/else sobre INDNAORECORRER e um no-op nos dois primeiros ramos (atribui o valor a si proprio). O unico efeito real e o else: quando INDNAORECORRER nao e nem true nem false - isto e, quando esta em SW_NA - forca false.",
+          "A troca de SW_NA por 'NA' e uma conversao de sentinela para literal de dominio: confirma que o terceiro estado precisa de representacao explicita no modelo .NET."
+        ],
+        "migration": "Simplificar o bloco redundante preservando a unica regra real (SW_NA vira false) e registar a simplificacao. A normalizacao ORIGEM=SW_NA -> 'NA' e exatamente o caso de uso do tipo tri-estado.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 4,
+        "assignments": 4,
+        "lines": 14
+      },
+      "writesBusinessFields": [
+        "FLAGCRZ",
+        "INDNAORECORRER",
+        "ORIGEM",
+        "STATUSRECURSOS"
+      ],
+      "valueDomain": [
+        {
+          "field": "ORIGEM",
+          "value": "NA"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-POC_EpatProcess-VoltaAgenda",
+      "source": "script",
+      "process": "POC_EpatProcess",
+      "node": "VoltaAgenda",
+      "nodeId": "_CtQ7AVqPEfG5K7mY0I3I6w",
+      "xpdlLine": 1684,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 1,
+        "lines": 1
+      },
+      "writesBusinessFields": [
+        "VOLTARSEGINSTAN"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CRNOTPC-SetParameters",
+      "source": "script",
+      "process": "CRNOTPC",
+      "node": "SetParameters",
+      "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
+      "xpdlLine": 11480,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "IDPROCESSO != IPESystemValues.SW_NA",
+        "MAXRETRIES==null"
+      ],
+      "readsBusinessFields": [
+        "IDPROCESSO"
+      ],
+      "leitura": {
+        "frase": "IDPROCESSO e diferente de <nao preenchido> E MAXRETRIES e igual a null",
+        "termos": [
+          {
+            "campo": "IDPROCESSO",
+            "rotulo": null,
+            "tipo": "int (9 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve MAXRETRIES, PROCESS_ID.",
+        "naoSabemos": [
+          "IDPROCESSO e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de IDPROCESSO nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Monta o identificador de correlacao da chamada de servico e fixa o limite de retentativas.",
+        "detail": "Compoe PROCESS_ID no formato 'idAiim-<n>idProc-<n>', usando o sufixo 'idProc-NA' quando IDPROCESSO esta em SW_NA. Define MAXRETRIES = 5 quando ainda nao tem valor.",
+        "findings": [
+          "RESPONDE A UMA PERGUNTA EM ABERTO: o valor inicial de MAXRETRIES e 5, definido aqui e nao no formulario nem em pacote externo.",
+          "PROCESS_ID e exatamente a chave de correlacao que a migracao precisa tornar explicita: ja existe, so nao esta declarada como contrato.",
+          "O script repete-se identico em CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC."
+        ],
+        "migration": "PROCESS_ID vira a chave de correlacao formal do bookmark. MAXRETRIES vira configuracao (options), nao literal no meio do fluxo.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 2,
+        "assignments": 2,
+        "lines": 8
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        },
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CRNOTPC-StartLoop",
+      "source": "script",
+      "process": "CRNOTPC",
+      "node": "Start Loop",
+      "nodeId": "_NcJJ5F9KEfGqPfX31TKC3w",
+      "xpdlLine": 11542,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [
+        "NUMAPPRETRIES==null"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e igual a null",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Escreve DATETIME, ISAPPERROR, ISTECHERROR, NUMAPPRETRIES, OUTCOME.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Inicializa o contador de tentativas e o estado de erro antes de cada chamada de servico.",
+        "detail": "Inicia NUMAPPRETRIES em 0 na primeira passagem e incrementa nas seguintes. Zera os indicadores de erro com ISAPPERROR='N' e ISTECHERROR='N', define OUTCOME e carimba DATETIME com a data do sistema.",
+        "findings": [
+          "RESPONDE A PERGUNTAS EM ABERTO: o dominio de ISAPPERROR e ISTECHERROR e 'N'/'Y', e NUMAPPRETRIES comeca em 0 e incrementa de 1 em 1.",
+          "DIVERGENCIA ENTRE CLONES: CALCPRPC e BSCENVPC inicializam OUTCOME='OK'; PRPINTPC, ATZINTPC e CRNOTPC inicializam OUTCOME='R'. O script e identico em tudo o resto. E preciso decidir se a diferenca e intencional.",
+          "O valor inicial de OUTCOME importa porque OUTCOME e comparado com 'OK' e 'R' em condicoes de desvio."
+        ],
+        "migration": "A politica de retentativa vira configuracao explicita. A divergencia de OUTCOME tem de ser resolvida antes de gerar os cinco subprocessos a partir de um mesmo template.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 1,
+        "assignments": 5,
+        "lines": 10
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "N"
+        },
+        {
+          "field": "ISTECHERROR",
+          "value": "N"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-DEAT0050-ControlarData",
+      "source": "script",
+      "process": "DEAT0050",
+      "node": "Controlar Data",
+      "nodeId": "_lrer_lqhEfG5K7mY0I3I6w",
+      "xpdlLine": 4025,
+      "inPocFlow": true,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 1,
+        "lines": 1
+      },
+      "writesBusinessFields": [
+        "DATACONTROLE"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-PRPINTPC-StartTX",
+      "source": "script",
+      "process": "PRPINTPC",
+      "node": "Start TX",
+      "nodeId": "_KEwDUF6EEfGBBLgT-R5iuw",
+      "xpdlLine": 6949,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 1,
+        "lines": 2
+      },
+      "writesBusinessFields": [
+        "FLAGCONTRARAZAO"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-PRPINTPC-StartLoop",
+      "source": "script",
+      "process": "PRPINTPC",
+      "node": "Start Loop",
+      "nodeId": "_KEwC4F6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7429,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "NUMAPPRETRIES==null",
+        "INSTANCIA == 2",
+        "STSADMTITCNT == IPESystemValues.SW_NA",
+        "STSADMTITDRF == IPESystemValues.SW_NA"
+      ],
+      "readsBusinessFields": [
+        "INSTANCIA",
+        "STSADMTITCNT",
+        "STSADMTITDRF"
+      ],
+      "leitura": {
+        "frase": "INSTANCIA e igual a 2 E NUMAPPRETRIES e igual a null E StatusAdmissaoTITCNT e igual a <nao preenchido> E StatusAdmissaoTITDRF e igual a <nao preenchido>",
+        "termos": [
+          {
+            "campo": "INSTANCIA",
+            "rotulo": null,
+            "tipo": "int (1 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSADMTITCNT",
+            "rotulo": "StatusAdmissaoTITCNT",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "STSADMTITDRF",
+            "rotulo": "StatusAdmissaoTITDRF",
+            "tipo": "int (2 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve DATETIME, ISAPPERROR, ISTECHERROR, NUMAPPRETRIES, OUTCOME, STSADMTITCNT, STSADMTITDRF.",
+        "naoSabemos": [
+          "o nome completo de INSTANCIA nao esta declarado em lado nenhum do pacote",
+          "STSADMTITCNT e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "STSADMTITDRF e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Inicializa o contador de tentativas e o estado de erro antes de cada chamada de servico.",
+        "detail": "Inicia NUMAPPRETRIES em 0 na primeira passagem e incrementa nas seguintes. Zera os indicadores de erro com ISAPPERROR='N' e ISTECHERROR='N', define OUTCOME e carimba DATETIME com a data do sistema.",
+        "findings": [
+          "RESPONDE A PERGUNTAS EM ABERTO: o dominio de ISAPPERROR e ISTECHERROR e 'N'/'Y', e NUMAPPRETRIES comeca em 0 e incrementa de 1 em 1.",
+          "DIVERGENCIA ENTRE CLONES: CALCPRPC e BSCENVPC inicializam OUTCOME='OK'; PRPINTPC, ATZINTPC e CRNOTPC inicializam OUTCOME='R'. O script e identico em tudo o resto. E preciso decidir se a diferenca e intencional.",
+          "O valor inicial de OUTCOME importa porque OUTCOME e comparado com 'OK' e 'R' em condicoes de desvio."
+        ],
+        "migration": "A politica de retentativa vira configuracao explicita. A divergencia de OUTCOME tem de ser resolvida antes de gerar os cinco subprocessos a partir de um mesmo template.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 4,
+        "assignments": 7,
+        "lines": 21
+      },
+      "writesBusinessFields": [
+        "STSADMTITCNT",
+        "STSADMTITDRF"
+      ],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "N"
+        },
+        {
+          "field": "ISTECHERROR",
+          "value": "N"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-PRPINTPC-SetParameters",
+      "source": "script",
+      "process": "PRPINTPC",
+      "node": "SetParameters",
+      "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7367,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "IDPROCESSO != IPESystemValues.SW_NA",
+        "MAXRETRIES==null"
+      ],
+      "readsBusinessFields": [
+        "IDPROCESSO"
+      ],
+      "leitura": {
+        "frase": "IDPROCESSO e diferente de <nao preenchido> E MAXRETRIES e igual a null",
+        "termos": [
+          {
+            "campo": "IDPROCESSO",
+            "rotulo": null,
+            "tipo": "int (9 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve MAXRETRIES, PROCESS_ID.",
+        "naoSabemos": [
+          "IDPROCESSO e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de IDPROCESSO nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Monta o identificador de correlacao da chamada de servico e fixa o limite de retentativas.",
+        "detail": "Compoe PROCESS_ID no formato 'idAiim-<n>idProc-<n>', usando o sufixo 'idProc-NA' quando IDPROCESSO esta em SW_NA. Define MAXRETRIES = 5 quando ainda nao tem valor.",
+        "findings": [
+          "RESPONDE A UMA PERGUNTA EM ABERTO: o valor inicial de MAXRETRIES e 5, definido aqui e nao no formulario nem em pacote externo.",
+          "PROCESS_ID e exatamente a chave de correlacao que a migracao precisa tornar explicita: ja existe, so nao esta declarada como contrato.",
+          "O script repete-se identico em CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC."
+        ],
+        "migration": "PROCESS_ID vira a chave de correlacao formal do bookmark. MAXRETRIES vira configuracao (options), nao literal no meio do fluxo.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 2,
+        "assignments": 2,
+        "lines": 8
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        },
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-PRPINTPC-SetTechnicalError",
+      "source": "script",
+      "process": "PRPINTPC",
+      "node": "Set Technical Error",
+      "nodeId": "_KEwDVF6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7016,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISTECHERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CALCPRPC-StartTX",
+      "source": "script",
+      "process": "CALCPRPC",
+      "node": "Start TX",
+      "nodeId": "_zJIuaVqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4404,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 0,
+        "lines": 1
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CALCPRPC-SetTechnicalError",
+      "source": "script",
+      "process": "CALCPRPC",
+      "node": "Set Technical Error",
+      "nodeId": "_zJIucFqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4471,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISTECHERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-AGPECASPC-gatewayEvOwVF6eEfGJqLUhfbpFcQ",
+      "source": "transition",
+      "process": "AGPECASPC",
+      "node": "gateway _EvOwVF6eEfGJqLUhfbpFcQ",
+      "nodeId": "_EvOwVF6eEfGJqLUhfbpFcQ",
+      "xpdlLine": 10684,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;",
+      "conditions": [
+        "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;"
+      ],
+      "readsBusinessFields": [
+        "DATACONTROLE",
+        "PRAZORECEBIMENT"
+      ],
+      "leitura": {
+        "frase": "DATACONTROLE e igual a <nao preenchido> OU DATACONTROLE e diferente de PRAZORECEBIMENT",
+        "termos": [
+          {
+            "campo": "DATACONTROLE",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "PRAZORECEBIMENT",
+            "rotulo": null,
+            "tipo": "DateOnly",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por este ramo para SetPrazo.",
+        "naoSabemos": [
+          "DATACONTROLE e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de DATACONTROLE nao esta declarado em lado nenhum do pacote",
+          "o nome completo de PRAZORECEBIMENT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": null,
+      "leadsTo": "SetPrazo"
+    },
+    {
+      "id": "RI-deadline-CALCPRPC-Pause",
+      "source": "deadline",
+      "process": "CALCPRPC",
+      "node": "Pause",
+      "nodeId": "_zJIHYlqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4991,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "espera entre tentativas, nao e prazo de negocio"
+      },
+      "expression": "Minutes=30",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Minutes=30",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-script-CALCPRPC-StartLoop",
+      "source": "script",
+      "process": "CALCPRPC",
+      "node": "Start Loop",
+      "nodeId": "_zJIHWFqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4798,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [
+        "NUMAPPRETRIES==null"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e igual a null",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Escreve DATETIME, ISAPPERROR, ISTECHERROR, NUMAPPRETRIES, OUTCOME.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Inicializa o contador de tentativas e o estado de erro antes de cada chamada de servico.",
+        "detail": "Inicia NUMAPPRETRIES em 0 na primeira passagem e incrementa nas seguintes. Zera os indicadores de erro com ISAPPERROR='N' e ISTECHERROR='N', define OUTCOME e carimba DATETIME com a data do sistema.",
+        "findings": [
+          "RESPONDE A PERGUNTAS EM ABERTO: o dominio de ISAPPERROR e ISTECHERROR e 'N'/'Y', e NUMAPPRETRIES comeca em 0 e incrementa de 1 em 1.",
+          "DIVERGENCIA ENTRE CLONES: CALCPRPC e BSCENVPC inicializam OUTCOME='OK'; PRPINTPC, ATZINTPC e CRNOTPC inicializam OUTCOME='R'. O script e identico em tudo o resto. E preciso decidir se a diferenca e intencional.",
+          "O valor inicial de OUTCOME importa porque OUTCOME e comparado com 'OK' e 'R' em condicoes de desvio."
+        ],
+        "migration": "A politica de retentativa vira configuracao explicita. A divergencia de OUTCOME tem de ser resolvida antes de gerar os cinco subprocessos a partir de um mesmo template.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 1,
+        "assignments": 5,
+        "lines": 10
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "N"
+        },
+        {
+          "field": "ISTECHERROR",
+          "value": "N"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "OK"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-deadline-PRPINTPC-Pause",
+      "source": "deadline",
+      "process": "PRPINTPC",
+      "node": "Pause",
+      "nodeId": "_KEwC6l6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7652,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "espera entre tentativas, nao e prazo de negocio"
+      },
+      "expression": "Minutes=30",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Minutes=30",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-deadline-ATZINTPC-Pause",
+      "source": "deadline",
+      "process": "ATZINTPC",
+      "node": "Pause",
+      "nodeId": "_RNdJ1l6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9892,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "espera entre tentativas, nao e prazo de negocio"
+      },
+      "expression": "Minutes=30",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Minutes=30",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-deadline-AGPECASPC-passosemrotulo",
+      "source": "deadline",
+      "process": "AGPECASPC",
+      "node": "(passo sem rotulo)",
+      "nodeId": "_EvOwRF6eEfGJqLUhfbpFcQ",
+      "xpdlLine": 10527,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "fixa-prazo",
+        "efeitoDescricao": "compromisso de tempo",
+        "portador": "deadline",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "Hours=1",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "Hours=1",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Esgotado o prazo, o evento de fronteira dispara e desvia o fluxo.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "deadlineKind": "constante"
+    },
+    {
+      "id": "RI-script-CALCPRPC-SetParameters",
+      "source": "script",
+      "process": "CALCPRPC",
+      "node": "SetParameters",
+      "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4730,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "IDPROCESSO != IPESystemValues.SW_NA",
+        "MAXRETRIES==null"
+      ],
+      "readsBusinessFields": [
+        "IDPROCESSO"
+      ],
+      "leitura": {
+        "frase": "IDPROCESSO e diferente de <nao preenchido> E MAXRETRIES e igual a null",
+        "termos": [
+          {
+            "campo": "IDPROCESSO",
+            "rotulo": null,
+            "tipo": "int (9 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve DATETIME, MAXRETRIES, PROCESS_ID.",
+        "naoSabemos": [
+          "IDPROCESSO e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de IDPROCESSO nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Monta o identificador de correlacao da chamada de servico e fixa o limite de retentativas.",
+        "detail": "Compoe PROCESS_ID no formato 'idAiim-<n>idProc-<n>', usando o sufixo 'idProc-NA' quando IDPROCESSO esta em SW_NA. Define MAXRETRIES = 5 quando ainda nao tem valor.",
+        "findings": [
+          "RESPONDE A UMA PERGUNTA EM ABERTO: o valor inicial de MAXRETRIES e 5, definido aqui e nao no formulario nem em pacote externo.",
+          "PROCESS_ID e exatamente a chave de correlacao que a migracao precisa tornar explicita: ja existe, so nao esta declarada como contrato.",
+          "O script repete-se identico em CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC."
+        ],
+        "migration": "PROCESS_ID vira a chave de correlacao formal do bookmark. MAXRETRIES vira configuracao (options), nao literal no meio do fluxo.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 2,
+        "assignments": 3,
+        "lines": 9
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        },
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-CALCPRPC-SetAppError",
+      "source": "script",
+      "process": "CALCPRPC",
+      "node": "Set App Error",
+      "nodeId": "_zJIucVqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4494,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-ATZINTPC-gatewayRNdKGl6PEfGBBLgTR5iuw",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "gateway _RNdKGl6PEfGBBLgT-R5iuw",
+      "nodeId": "_RNdKGl6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9367,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "STATUS_CODE!=\"0\";",
+      "conditions": [
+        "STATUS_CODE!=\"0\";"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "STATUS_CODE e diferente de \"0\"",
+        "termos": [],
+        "literais": [
+          "0"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'AppError' para Set App Error.",
+        "naoSabemos": [
+          "o significado de \"0\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "AppError",
+      "leadsTo": "Set App Error"
+    },
+    {
+      "id": "RI-transition-ATZINTPC-ManuallyFixed",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "Manually Fixed",
+      "nodeId": "_RNdJy16PEfGBBLgT-R5iuw",
+      "xpdlLine": 9664,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='OK';",
+      "conditions": [
+        "OUTCOME=='OK';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"OK\"",
+        "termos": [],
+        "literais": [
+          "OK"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Done - Fixed.",
+        "naoSabemos": [
+          "o significado de \"OK\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Done - Fixed"
+    },
+    {
+      "id": "RI-transition-ATZINTPC-TryAgain",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "Try Again",
+      "nodeId": "_RNdJ0F6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9769,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='R';",
+      "conditions": [
+        "OUTCOME=='R';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"R\"",
+        "termos": [],
+        "literais": [
+          "R"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Retry' para Start Loop.",
+        "naoSabemos": [
+          "o significado de \"R\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Retry",
+      "leadsTo": "Start Loop"
+    },
+    {
+      "id": "RI-script-AGPECASPC-SetFlagDecurso",
+      "source": "script",
+      "process": "AGPECASPC",
+      "node": "Set Flag Decurso",
+      "nodeId": "_EvOwWV6eEfGJqLUhfbpFcQ",
+      "xpdlLine": 10704,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 1,
+        "lines": 1
+      },
+      "writesBusinessFields": [
+        "FLGTERMODEC"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-AGPECASPC-ControlaDatas",
+      "source": "script",
+      "process": "AGPECASPC",
+      "node": "Controla Datas",
+      "nodeId": "_EvOwU16eEfGJqLUhfbpFcQ",
+      "xpdlLine": 10650,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 1,
+        "lines": 1
+      },
+      "writesBusinessFields": [
+        "DATACONTROLE"
+      ],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-AGPECASPC-SetPrazo",
+      "source": "script",
+      "process": "AGPECASPC",
+      "node": "SetPrazo",
+      "nodeId": "_EvOwUl6eEfGJqLUhfbpFcQ",
+      "xpdlLine": 10619,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 0,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-AGPECASPC-SetValues",
+      "source": "script",
+      "process": "AGPECASPC",
+      "node": "Set Values",
+      "nodeId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+      "xpdlLine": 10549,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "calcula-valor",
+        "efeitoDescricao": "calcula ou atribui o valor de um campo do caso",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "CNTPECA1!=IPESystemValues.SW_NA || CNTPECA1!='9'",
+        "CNTPECA2!=IPESystemValues.SW_NA",
+        "CNTPECA3!=IPESystemValues.SW_NA",
+        "CNTPECA4!=IPESystemValues.SW_NA"
+      ],
+      "readsBusinessFields": [
+        "CNTPECA1",
+        "CNTPECA2",
+        "CNTPECA3",
+        "CNTPECA4"
+      ],
+      "leitura": {
+        "frase": "CNTPECA1 e diferente de <nao preenchido> OU CNTPECA1 e diferente de \"9\" E CNTPECA2 e diferente de <nao preenchido> E CNTPECA3 e diferente de <nao preenchido> E CNTPECA4 e diferente de <nao preenchido>",
+        "termos": [
+          {
+            "campo": "CNTPECA1",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTPECA2",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTPECA3",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          },
+          {
+            "campo": "CNTPECA4",
+            "rotulo": null,
+            "tipo": "string (3 caracteres)",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [
+          "9"
+        ],
+        "consequencia": "Escreve FIELDSNAMES, FIELDSTYPES, FIELDSVALUES, IDPECAS, PERIODOEMDIAS.",
+        "naoSabemos": [
+          "CNTPECA1 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CNTPECA2 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CNTPECA3 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "CNTPECA4 e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de CNTPECA1 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CNTPECA2 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CNTPECA3 nao esta declarado em lado nenhum do pacote",
+          "o nome completo de CNTPECA4 nao esta declarado em lado nenhum do pacote",
+          "o significado de \"9\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Monta o contrato de retorno do subprocesso e concatena as pecas do contribuinte.",
+        "detail": "Declara os campos de retorno (procRetorno, caseRetorno) com nome, tipo e valor vindos dos valores de sistema do iProcess, concatena CNTPECA1..4 em IDPECAS ignorando os que estao em SW_NA, e converte TEMPORESPOSTA para numero em PERIODOEMDIAS.",
+        "findings": [
+          "DEFEITO LOGICO na primeira condicao: 'if (CNTPECA1 != SW_NA || CNTPECA1 != '9')' e SEMPRE verdadeira, porque nenhum valor pode ser simultaneamente igual a SW_NA e igual a '9'. O operador pretendido era quase certamente &&. O efeito e que CNTPECA1 entra na lista mesmo quando vale '9' ou SW_NA.",
+          "As tres condicoes seguintes (CNTPECA2..4) testam so SW_NA, o que reforca que a primeira esta fora do padrao."
+        ],
+        "migration": "Decidir explicitamente se a migracao REPRODUZ o defeito ou o CORRIGE. Recomenda-se corrigir e registar, porque o valor '9' entrando na lista muda o conteudo enviado adiante.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 4,
+        "assignments": 5,
+        "lines": 17
+      },
+      "writesBusinessFields": [
+        "FIELDSNAMES",
+        "FIELDSTYPES",
+        "FIELDSVALUES",
+        "IDPECAS",
+        "PERIODOEMDIAS"
+      ],
+      "valueDomain": [
+        {
+          "field": "FIELDSNAMES",
+          "value": "procRetorno|caseRetorno|"
+        },
+        {
+          "field": "FIELDSTYPES",
+          "value": "swText|swNumeric|"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-ATZINTPC-SetAppError",
+      "source": "script",
+      "process": "ATZINTPC",
+      "node": "Set App Error",
+      "nodeId": "_RNdKGV6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9337,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-CALCPRPC-AppError",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "App Error",
+      "nodeId": "_zJIHZFqiEfG5K7mY0I3I6w",
+      "xpdlLine": 5024,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISAPPERROR=='Y';",
+      "conditions": [
+        "ISAPPERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISAPPERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para More Retries.",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "More Retries"
+    },
+    {
+      "id": "RI-transition-CALCPRPC-MoreRetries",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "More Retries",
+      "nodeId": "_zJIHYVqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4971,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "NUMAPPRETRIES<MAXRETRIES;",
+      "conditions": [
+        "NUMAPPRETRIES<MAXRETRIES;"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e menor que MAXRETRIES",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Pause.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Pause"
+    },
+    {
+      "id": "RI-transition-CALCPRPC-ManuallyFixed",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "Manually Fixed",
+      "nodeId": "_zJIHV1qiEfG5K7mY0I3I6w",
+      "xpdlLine": 4778,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='OK';",
+      "conditions": [
+        "OUTCOME=='OK';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"OK\"",
+        "termos": [],
+        "literais": [
+          "OK"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Done - Fixed.",
+        "naoSabemos": [
+          "o significado de \"OK\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Done - Fixed"
+    },
+    {
+      "id": "RI-script-ATZINTPC-SetTechnicalError",
+      "source": "script",
+      "process": "ATZINTPC",
+      "node": "Set Technical Error",
+      "nodeId": "_RNdKGF6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9307,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISTECHERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-CALCPRPC-TryAgain",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "Try Again",
+      "nodeId": "_zJIHXFqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4867,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='R';",
+      "conditions": [
+        "OUTCOME=='R';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"R\"",
+        "termos": [],
+        "literais": [
+          "R"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Retry' para Start Loop.",
+        "naoSabemos": [
+          "o significado de \"R\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Retry",
+      "leadsTo": "Start Loop"
+    },
+    {
+      "id": "RI-transition-CALCPRPC-CheckRetriesSWQRETRYCOUNT",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "Check Retries SW_QRETRYCOUNT",
+      "nodeId": "_zJIubVqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4426,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "conditions": [
+        "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;"
+      ],
+      "readsBusinessFields": [
+        "SW_QRETRYCOUNT"
+      ],
+      "leitura": {
+        "frase": "IPESystemValues.SW_QRETRYCOUNT e menor que MAXRETRIES",
+        "termos": [
+          {
+            "campo": "SW_QRETRYCOUNT",
+            "rotulo": null,
+            "tipo": "long (15 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Stillgood' para CalcularPrazo.",
+        "naoSabemos": [
+          "o nome completo de SW_QRETRYCOUNT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Stillgood",
+      "leadsTo": "CalcularPrazo"
+    },
+    {
+      "id": "RI-transition-CALCPRPC-gatewayzJIuclqiEfG5K7mY0I3I6w",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "gateway _zJIuclqiEfG5K7mY0I3I6w",
+      "nodeId": "_zJIuclqiEfG5K7mY0I3I6w",
+      "xpdlLine": 4517,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "STATUS_CODE!=\"0\";",
+      "conditions": [
+        "STATUS_CODE!=\"0\";"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "STATUS_CODE e diferente de \"0\"",
+        "termos": [],
+        "literais": [
+          "0"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'AppError' para Set App Error.",
+        "naoSabemos": [
+          "o significado de \"0\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "AppError",
+      "leadsTo": "Set App Error"
+    },
+    {
+      "id": "RI-transition-ATZINTPC-CheckRetriesSWQRETRYCOUNT",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "Check Retries SW_QRETRYCOUNT",
+      "nodeId": "_RNdKFV6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9262,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "conditions": [
+        "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;"
+      ],
+      "readsBusinessFields": [
+        "SW_QRETRYCOUNT"
+      ],
+      "leitura": {
+        "frase": "IPESystemValues.SW_QRETRYCOUNT e menor que MAXRETRIES",
+        "termos": [
+          {
+            "campo": "SW_QRETRYCOUNT",
+            "rotulo": null,
+            "tipo": "long (15 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Stillgood' para AtualizarIntimacao.",
+        "naoSabemos": [
+          "o nome completo de SW_QRETRYCOUNT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Stillgood",
+      "leadsTo": "AtualizarIntimacao"
+    },
+    {
+      "id": "RI-script-ATZINTPC-StartTX",
+      "source": "script",
+      "process": "ATZINTPC",
+      "node": "Start TX",
+      "nodeId": "_RNdKFF6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9241,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 0,
+        "lines": 1
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-ATZINTPC-SetParameters",
+      "source": "script",
+      "process": "ATZINTPC",
+      "node": "SetParameters",
+      "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9622,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "",
+      "conditions": [
+        "IDPROCESSO != IPESystemValues.SW_NA",
+        "MAXRETRIES==null"
+      ],
+      "readsBusinessFields": [
+        "IDPROCESSO"
+      ],
+      "leitura": {
+        "frase": "IDPROCESSO e diferente de <nao preenchido> E MAXRETRIES e igual a null",
+        "termos": [
+          {
+            "campo": "IDPROCESSO",
+            "rotulo": null,
+            "tipo": "int (9 digito(s))",
+            "sentinelaSwNa": true,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Escreve MAXRETRIES, PROCESS_ID.",
+        "naoSabemos": [
+          "IDPROCESSO e comparado com SW_NA, que nao e nulo nem vazio; em .NET precisa de sentinela explicita",
+          "o nome completo de IDPROCESSO nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Monta o identificador de correlacao da chamada de servico e fixa o limite de retentativas.",
+        "detail": "Compoe PROCESS_ID no formato 'idAiim-<n>idProc-<n>', usando o sufixo 'idProc-NA' quando IDPROCESSO esta em SW_NA. Define MAXRETRIES = 5 quando ainda nao tem valor.",
+        "findings": [
+          "RESPONDE A UMA PERGUNTA EM ABERTO: o valor inicial de MAXRETRIES e 5, definido aqui e nao no formulario nem em pacote externo.",
+          "PROCESS_ID e exatamente a chave de correlacao que a migracao precisa tornar explicita: ja existe, so nao esta declarada como contrato.",
+          "O script repete-se identico em CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC."
+        ],
+        "migration": "PROCESS_ID vira a chave de correlacao formal do bookmark. MAXRETRIES vira configuracao (options), nao literal no meio do fluxo.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 2,
+        "assignments": 2,
+        "lines": 8
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        },
+        {
+          "field": "PROCESS_ID",
+          "value": "idAiim-"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-script-PRPINTPC-SetAppError",
+      "source": "script",
+      "process": "PRPINTPC",
+      "node": "Set App Error",
+      "nodeId": "_KEwDVV6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7046,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [],
+      "readsBusinessFields": [],
+      "leitura": null,
+      "explanation": null,
+      "metrics": {
+        "conditions": 0,
+        "assignments": 2,
+        "lines": 2
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "Y"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-PRPINTPC-AppError",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "App Error",
+      "nodeId": "_KEwC7F6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7685,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISAPPERROR=='Y';",
+      "conditions": [
+        "ISAPPERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISAPPERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para More Retries.",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "More Retries"
+    },
+    {
+      "id": "RI-transition-PRPINTPC-MoreRetries",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "More Retries",
+      "nodeId": "_KEwC6V6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7632,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "NUMAPPRETRIES<MAXRETRIES;",
+      "conditions": [
+        "NUMAPPRETRIES<MAXRETRIES;"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e menor que MAXRETRIES",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Pause.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Pause"
+    },
+    {
+      "id": "RI-transition-PRPINTPC-ManuallyFixed",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "Manually Fixed",
+      "nodeId": "_KEwC316EEfGBBLgT-R5iuw",
+      "xpdlLine": 7409,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='OK';",
+      "conditions": [
+        "OUTCOME=='OK';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"OK\"",
+        "termos": [],
+        "literais": [
+          "OK"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Done - Fixed.",
+        "naoSabemos": [
+          "o significado de \"OK\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Done - Fixed"
+    },
+    {
+      "id": "RI-transition-PRPINTPC-TechError",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "Tech Error",
+      "nodeId": "_KEwC7V6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7705,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISTECHERROR=='Y';",
+      "conditions": [
+        "ISTECHERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISTECHERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para gateway sem rotulo (_KEwC716EEfGBBLgT-R5iuw).",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "gateway sem rotulo (_KEwC716EEfGBBLgT-R5iuw)"
+    },
+    {
+      "id": "RI-transition-PRPINTPC-TryAgain",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "Try Again",
+      "nodeId": "_KEwC5F6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7529,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "OUTCOME=='R';",
+      "conditions": [
+        "OUTCOME=='R';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "OUTCOME e igual a \"R\"",
+        "termos": [],
+        "literais": [
+          "R"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Retry' para Start Loop.",
+        "naoSabemos": [
+          "o significado de \"R\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Retry",
+      "leadsTo": "Start Loop"
+    },
+    {
+      "id": "RI-transition-PRPINTPC-CheckRetriesSWQRETRYCOUNT",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "Check Retries SW_QRETRYCOUNT",
+      "nodeId": "_KEwDUV6EEfGBBLgT-R5iuw",
+      "xpdlLine": 6971,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "decide-fluxo",
+        "efeitoDescricao": "escolhe por onde o caso segue",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": true,
+        "nota": null
+      },
+      "expression": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "conditions": [
+        "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;"
+      ],
+      "readsBusinessFields": [
+        "SW_QRETRYCOUNT"
+      ],
+      "leitura": {
+        "frase": "IPESystemValues.SW_QRETRYCOUNT e menor que MAXRETRIES",
+        "termos": [
+          {
+            "campo": "SW_QRETRYCOUNT",
+            "rotulo": null,
+            "tipo": "long (15 digito(s))",
+            "sentinelaSwNa": false,
+            "valoresObservadosNoPacote": [
+              null
+            ]
+          }
+        ],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Stillgood' para CaptaParametros.",
+        "naoSabemos": [
+          "o nome completo de SW_QRETRYCOUNT nao esta declarado em lado nenhum do pacote"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Stillgood",
+      "leadsTo": "CaptaParametros"
+    },
+    {
+      "id": "RI-transition-PRPINTPC-gatewayKEwDVl6EEfGBBLgTR5iuw",
+      "source": "transition",
+      "process": "PRPINTPC",
+      "node": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+      "nodeId": "_KEwDVl6EEfGBBLgT-R5iuw",
+      "xpdlLine": 7076,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "STATUS_CODE!=IPESystemValues.SW_NA;",
+      "conditions": [
+        "STATUS_CODE!=IPESystemValues.SW_NA;"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "STATUS_CODE e diferente de <nao preenchido>",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'AppError' para Set App Error.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "AppError",
+      "leadsTo": "Set App Error"
+    },
+    {
+      "id": "RI-transition-ATZINTPC-AppError",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "App Error",
+      "nodeId": "_RNdJ2F6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9925,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISAPPERROR=='Y';",
+      "conditions": [
+        "ISAPPERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISAPPERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para More Retries.",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "More Retries"
+    },
+    {
+      "id": "RI-transition-ATZINTPC-MoreRetries",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "More Retries",
+      "nodeId": "_RNdJ1V6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9872,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "NUMAPPRETRIES<MAXRETRIES;",
+      "conditions": [
+        "NUMAPPRETRIES<MAXRETRIES;"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e menor que MAXRETRIES",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para Pause.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "Pause"
+    },
+    {
+      "id": "RI-transition-ATZINTPC-TechError",
+      "source": "transition",
+      "process": "ATZINTPC",
+      "node": "Tech Error",
+      "nodeId": "_RNdJ2V6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9945,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISTECHERROR=='Y';",
+      "conditions": [
+        "ISTECHERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISTECHERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para gateway sem rotulo (_RNdJ216PEfGBBLgT-R5iuw).",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "gateway sem rotulo (_RNdJ216PEfGBBLgT-R5iuw)"
+    },
+    {
+      "id": "RI-script-ATZINTPC-StartLoop",
+      "source": "script",
+      "process": "ATZINTPC",
+      "node": "Start Loop",
+      "nodeId": "_RNdJzF6PEfGBBLgT-R5iuw",
+      "xpdlLine": 9684,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "script",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "",
+      "conditions": [
+        "NUMAPPRETRIES==null"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "NUMAPPRETRIES e igual a null",
+        "termos": [],
+        "literais": [],
+        "consequencia": "Escreve DATETIME, ISAPPERROR, ISTECHERROR, NUMAPPRETRIES, OUTCOME.",
+        "naoSabemos": [],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": {
+        "summary": "Inicializa o contador de tentativas e o estado de erro antes de cada chamada de servico.",
+        "detail": "Inicia NUMAPPRETRIES em 0 na primeira passagem e incrementa nas seguintes. Zera os indicadores de erro com ISAPPERROR='N' e ISTECHERROR='N', define OUTCOME e carimba DATETIME com a data do sistema.",
+        "findings": [
+          "RESPONDE A PERGUNTAS EM ABERTO: o dominio de ISAPPERROR e ISTECHERROR e 'N'/'Y', e NUMAPPRETRIES comeca em 0 e incrementa de 1 em 1.",
+          "DIVERGENCIA ENTRE CLONES: CALCPRPC e BSCENVPC inicializam OUTCOME='OK'; PRPINTPC, ATZINTPC e CRNOTPC inicializam OUTCOME='R'. O script e identico em tudo o resto. E preciso decidir se a diferenca e intencional.",
+          "O valor inicial de OUTCOME importa porque OUTCOME e comparado com 'OK' e 'R' em condicoes de desvio."
+        ],
+        "migration": "A politica de retentativa vira configuracao explicita. A divergencia de OUTCOME tem de ser resolvida antes de gerar os cinco subprocessos a partir de um mesmo template.",
+        "source": "autorado - NAO verificado com o cliente"
+      },
+      "metrics": {
+        "conditions": 1,
+        "assignments": 5,
+        "lines": 10
+      },
+      "writesBusinessFields": [],
+      "valueDomain": [
+        {
+          "field": "ISAPPERROR",
+          "value": "N"
+        },
+        {
+          "field": "ISTECHERROR",
+          "value": "N"
+        },
+        {
+          "field": "OUTCOME",
+          "value": "R"
+        }
+      ],
+      "authorComments": []
+    },
+    {
+      "id": "RI-transition-CALCPRPC-TechError",
+      "source": "transition",
+      "process": "CALCPRPC",
+      "node": "Tech Error",
+      "nodeId": "_zJIHZVqiEfG5K7mY0I3I6w",
+      "xpdlLine": 5044,
+      "inPocFlow": false,
+      "classification": {
+        "efeito": "tecnico",
+        "efeitoDescricao": "nao e regra de negocio: retry, nulo, sessao, envelope de erro",
+        "portador": "transition",
+        "alteracaoRequer": "reimplantar-processo",
+        "eRegraDeNegocio": false,
+        "nota": "nao le nenhum campo do caso; so envelope tecnico ou estado da pagina"
+      },
+      "expression": "ISTECHERROR=='Y';",
+      "conditions": [
+        "ISTECHERROR=='Y';"
+      ],
+      "readsBusinessFields": [],
+      "leitura": {
+        "frase": "ISTECHERROR e igual a \"Y\"",
+        "termos": [],
+        "literais": [
+          "Y"
+        ],
+        "consequencia": "Quando verdadeiro, o fluxo segue por 'Yes' para gateway sem rotulo (_zJIHZ1qiEfG5K7mY0I3I6w).",
+        "naoSabemos": [
+          "o significado de \"Y\" nao esta declarado; o pacote so mostra que o valor e usado"
+        ],
+        "origem": "derivado da expressao; nenhum significado foi acrescentado"
+      },
+      "explanation": null,
+      "branchLabel": "Yes",
+      "leadsTo": "gateway sem rotulo (_zJIHZ1qiEfG5K7mY0I3I6w)"
+    }
+  ]
+}

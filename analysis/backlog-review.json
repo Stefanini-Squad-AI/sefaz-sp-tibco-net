@@ -1,0 +1,236 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-review/v1",
+  "note": "PARECER AGENTICO sobre o backlog. Camada separada e rotulada, por uma razao: o backlog tem de ser reproduzivel a partir do sha256 da fonte - o mesmo XPDL tem de dar os mesmos cards, hoje e daqui a tres meses -, e um agente nao garante isso. Aqui entra o que um script nao consegue fazer: ler prosa e detectar contradicao, julgar se um troco e unidade de trabalho ou corte acidental, ordenar por risco lido do campo 'se estiver errado' do dossie, cruzar artefactos a procura de incoerencia, e nomear em linguagem de negocio.",
+  "contrato": {
+    "podeAlterar": [
+      "title - propor um nome em linguagem de negocio para substituir o rotulo tecnico",
+      "content.injectedContext.hypotheses - o que o implementador deve confirmar antes de assumir",
+      "elenco - propor papeis que a derivacao mecanica nao produz, e a ordem por que se atacam"
+    ],
+    "naoPodeAlterar": [
+      "qualquer contagem, escopo, etapa, dependencia, bloqueador ou oraculo",
+      "o conjunto de cards: o parecer nao cria nem remove trabalho",
+      "as permissoes de escrita de qualquer papel: saem sempre do mapa de camadas e do estado dos caminhos, nunca da proposta - senao quem esta a ser preso escolhia a corda"
+    ],
+    "formaDeCadaParecer": {
+      "alvo": "id do card, ou a chave do grupo de segmento",
+      "tituloSugerido": "opcional",
+      "hipoteses": "lista de frases a confirmar, nunca afirmadas como facto",
+      "raciocinio": "porque e que o agente pensa isto",
+      "oQueConfirmaria": "o facto concreto que resolveria a duvida",
+      "riscoSeErrada": "o que parte se a hipotese estiver errada",
+      "confianca": "alta | media | baixa"
+    },
+    "formaDeCadaPapelProposto": {
+      "id": "identificador do papel",
+      "nome": "nome em linguagem de negocio",
+      "cobre": "caminhos do mapa de camadas que este papel passa a ter dono - a permissao e derivada deles, nao declarada aqui",
+      "porque": "o facto nos artefactos que justifica a existencia do papel",
+      "ordem": "posicao na sequencia de ataque; 1 e o que tem de estar feito antes de tudo",
+      "riscoSeIgnorado": "o que acontece se ninguem fizer este trabalho",
+      "confianca": "alta | media | baixa"
+    }
+  },
+
+  "geradoEm": "2026-08-11",
+
+  "elenco": [
+    {
+      "id": "fundacao-anticorrupcao",
+      "nome": "Fundacao: camada anticorrupcao do iProcess",
+      "cobre": ["src/SefazSp.Epat.Infrastructure/Legacy"],
+      "ordem": 1,
+      "porque": "O detector mecanico ja mostra que esta pasta nao tem card: os cards nascem de tipos de no, e o shim nao e um no. Mas 29 dos 61 cards de build declaram iprocess-builtin como bloqueador, e a skill aparece em 7 de 7 papeis de implementacao. Nao e especialidade de um papel - e o chao em que os outros assentam. Aqui vivem SUBSTR, SEARCH, CALCTIME, a conversao SW_NA <-> FieldValue<T> e o mapeamento do envelope tecnico.",
+      "riscoSeIgnorado": "Sete papeis comecam a escrever conversoes de SW_NA cada um a sua maneira. Nao ha erro de compilacao nem teste vermelho: ha sete comportamentos diferentes para o mesmo terceiro estado, descobertos um a um em producao.",
+      "bloqueadoPor": "NOEQ-iprocess-builtin (P1). A semantica de SUBSTR e SEARCH continua por fixar na documentacao TIBCO, e um desvio de uma posicao nao falha - devolve valor errado.",
+      "confianca": "alta"
+    },
+    {
+      "id": "fundacao-motor",
+      "nome": "Fundacao: ligacao da topologia ao motor",
+      "cobre": ["src/SefazSp.Epat.Infrastructure/Workflow.Elsa"],
+      "ordem": 2,
+      "porque": "46 cards escrevem topologia em Application/Workflows como DADOS, o que e a decisao certa - trocar de motor mexe num sitio so. Mas dados nao correm. Alguem tem de os traduzir para o motor, e nenhum card o faz porque nenhum no do XPDL corresponde a essa traducao.",
+      "riscoSeIgnorado": "Os 46 cards de topologia ficam prontos e nao ha nada que os execute. Descobre-se na vespera da demonstracao, quando o oraculo de percurso for corrido pela primeira vez.",
+      "confianca": "alta"
+    },
+    {
+      "id": "fundacao-registo",
+      "nome": "Fundacao: raiz de composicao e registo de processos",
+      "cobre": ["src/SefazSp.Epat.Api/Composition"],
+      "ordem": 3,
+      "porque": "A decisao ratificada gaps.dynamic-subprocess = interface-registry-validated diz que o conjunto de destinos e derivado do XPDL e VALIDADO NO ARRANQUE, e que um destino sem implementacao quebra o teste de registo e nao a producao. Essa validacao vive na raiz de composicao, que nao tem card.",
+      "riscoSeIgnorado": "A decisao fica no papel. O legado declara HaltOnBadSubProcess='false' e falha em silencio; sem o registo validado, a migracao herda exactamente o comportamento que a decisao existia para impedir.",
+      "confianca": "alta"
+    },
+    {
+      "id": "fundacao-persistencia",
+      "nome": "Fundacao: persistencia do caso e do estado de execucao",
+      "cobre": ["src/SefazSp.Epat.Infrastructure/Persistence"],
+      "ordem": 4,
+      "porque": "O conceito 'Variaveis de Processo' e provado por um card de conformidade sobre os 209 campos, e o resultado esperado fala em persistencia. Um processo de longa duracao com prazos de meses nao se demonstra em memoria.",
+      "riscoSeIgnorado": "Os oraculos de percurso passam numa corrida unica e o graft step - que espera filhos anexados em momentos diferentes - nunca chega a ser exercitado a serio.",
+      "confianca": "media"
+    },
+    {
+      "id": "fundacao-motor-de-regras",
+      "nome": "Fundacao: motor de regras por tras da porta IDecisionService",
+      "cobre": ["src/SefazSp.Epat.Infrastructure/Rules.Dmn"],
+      "ordem": 3,
+      "porque": "ACRESCENTADO DEPOIS DE O DETECTOR MECANICO O APANHAR: a primeira versao deste parecer propos quatro papeis de fundacao e o gerador reportou cinco pastas orfas. Faltava esta. As 49 colunas Corticon ja estao traduzidas para DMN e a equivalencia esta provada em 3000 casos, mas nada as executa: o card VALID-CORTICON-tabela fixa a equivalencia como teste permanente e assume que existe um motor por tras de IDecisionService.",
+      "riscoSeIgnorado": "O unico card que prova o resultado esperado 'Processamento de regras de decisao' nao tem o que testar. E a etapa 3 da POC inteira depende dele.",
+      "confianca": "alta"
+    },
+    {
+      "id": "molde-subprocesso-de-servico",
+      "nome": "Molde unico dos cinco subprocessos de servico",
+      "cobre": [],
+      "cobreProcessos": ["CALCPRPC", "BSCENVPC", "PRPINTPC", "ATZINTPC", "CRNOTPC"],
+      "ordem": 6,
+      "porque": "CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC somam 26 cards e 450 nos, mas sao o MESMO template: SetParameters, Start Loop, Control System Task Call, gateways de erro, laco de retry. O dossie ja regista que o script se repete identico nos cinco. Trata-se de construir uma vez e parametrizar cinco.",
+      "riscoSeIgnorado": "Cinco implementacoes independentes do mesmo laco de retry, com cinco oportunidades de divergir. O pacote ja mostra que isso acontece: o PRPINTPC compara STATUS_CODE com SW_NA e os quatro irmaos com '0' - um defeito de copia que sobreviveu anos.",
+      "atencao": "A correccao ratificada em rulings.CLONE-PRPINTPC tem de ser aplicada ao molde, nao a uma copia. E o teste de equivalencia entre os cinco tem de existir, senao o molde diverge outra vez.",
+      "confianca": "alta"
+    }
+  ],
+
+  "ordemDeAtaque": {
+    "nota": "Ordem lida do RISCO, nao da topologia. O dependsOn dos cards sai da jornada e diz o que vem depois do que; isto diz por onde comecar para que um erro custe pouco. Regra: primeiro o que outros cards assumem existir, depois o que so falha na vespera, por fim o que falha alto e cedo. As contagens NAO estao aqui - sao calculadas pelo gerador a partir dos cards de cada papel, senao seria o parecer a inventar numeros.",
+    "sequencia": [
+      { "passo": 1, "quem": "fundacao-anticorrupcao", "porque": "29 cards assumem que existe. E esta bloqueado por uma pergunta P1 ainda em aberto - portanto e tambem o caminho critico da resposta humana, que nao esta nas nossas maos." },
+      { "passo": 2, "quem": "fundacao-motor", "porque": "Sem ele nenhum oraculo de percurso corre, e e desse tipo de oraculo que depende a esmagadora maioria dos cards." },
+      { "passo": 3, "quem": "fundacao-motor-de-regras", "porque": "A equivalencia DMN x Corticon ja esta provada em 3000 casos, mas nada a executa. A etapa 3 da POC depende de haver motor por tras da porta IDecisionService." },
+      { "passo": 4, "quem": "fundacao-registo", "porque": "Sem o registo validado no arranque, a decisao interface-registry-validated fica no papel e a migracao herda o falhar em silencio do legado." },
+      { "passo": 5, "quem": "implementador-integration-soap", "porque": "E o papel mais limpo do elenco: duas skills, contrato transcrito do WSDL. Serve de primeira volta completa do ciclo card -> codigo -> oraculo, com o menor numero de incognitas." },
+      { "passo": 6, "quem": "molde-subprocesso-de-servico", "porque": "Depois do SOAP estar de pe, os cinco clones sao a maior massa de trabalho com a menor variedade: um so molde, cinco parametrizacoes." },
+      { "passo": 7, "quem": "implementador-rules", "porque": "Regras de dominio puras, sem I/O e sem relogio: as mais faceis de testar e as mais faceis de errar em silencio. Merecem entrar quando o shim ja existe, nao antes." },
+      { "passo": 8, "quem": "implementador-usecases", "porque": "As tarefas humanas dependem de tudo o que esta acima e sao o que o cliente vai ver na demonstracao." },
+      { "passo": 9, "quem": "implementador-workflows", "porque": "O papel mais carregado do elenco. So faz sentido depois de haver motor, shim e servicos - senao cada card fica parado a espera de outra coisa." },
+      { "passo": 10, "quem": "implementador-execution", "porque": "O envelope tecnico atravessa tudo; estabiliza melhor depois de os cinco clones terem um molde comum." },
+      { "passo": 11, "quem": "implementador-integration-doubles", "porque": "Os dubles so precisam de existir quando houver quem os chame, e o contrato deles ja esta fixado pela ProcessInterface." },
+      { "passo": 12, "quem": "implementador-endpoints", "porque": "A superficie de API e o ultimo elo: conduz a demonstracao e nao tem logica propria." },
+      { "passo": 13, "quem": "fundacao-persistencia", "porque": "Fica para o fim de proposito: a demonstracao corre em memoria ate o graft step precisar de sobreviver a um reinicio. Confianca media - se a demonstracao exigir prazos reais, sobe na ordem." },
+      { "passo": 14, "quem": "autor-de-testes-oracles-tests", "porque": "ACRESCENTADO DEPOIS DE O GERADOR O APANHAR: a primeira versao desta ordem sequenciava so implementadores, e o relatorio mostrou 16 cards de validacao fora da ordem. Os oraculos nao sao trabalho de fim de linha - correm em paralelo com cada volta -, mas tem de estar na sequencia para serem contados." },
+      { "passo": 15, "quem": "autor-de-testes-domain-tests", "porque": "Testes unitarios das regras puras. Acompanham o implementador-rules, nao vem depois dele." },
+      { "passo": 16, "quem": "autor-de-testes-application-tests", "porque": "Casos de uso com portas simuladas. Acompanham os papeis de Application." }
+    ]
+  },
+
+  "avisos": [
+    {
+      "alvo": "implementador-workflows",
+      "aviso": "46 cards e 21 travessias do sistema fazem deste o papel mais carregado e mais exposto do elenco. A esmagadora maioria do seu trabalho e topologia, que ja vem derivada do XPDL: vale a pena separar quem preenche corpos de quem transcreve topologia, porque sao naturezas diferentes de trabalho e so a primeira precisa de julgamento.",
+      "confianca": "media"
+    },
+    {
+      "alvo": "implementador-rules",
+      "aviso": "E o unico papel cujos caminhos estao marcados 'draft' e nao 'scaffold' - ou seja, o unico onde a geracao e assumidamente lossy. 23 cards de regra de dominio pura, sem I/O e sem relogio, sao os mais faceis de testar e os mais faceis de escrever errado em silencio. Merece o oraculo mais apertado, nao o mais leve.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "revisor",
+      "aviso": "Os 22 cards que atravessam o sistema sao os candidatos naturais a revisao dedicada: um card que toca quatro projectos foi quase de certeza fechado por mais do que uma pessoa, e e ai que a checklist fica por cumprir sem ninguem dar por isso.",
+      "confianca": "alta"
+    }
+  ],
+
+  "pareceres": [
+    {
+      "alvo": "BUILD-CALCPRPC-seg029",
+      "tituloSugerido": "Calculo de prazo: laco de retry ate desistir",
+      "hipoteses": [
+        "Os dois contadores do laco - NUMAPPRETRIES e SW_QRETRYCOUNT - sao independentes e partilham o mesmo tecto MAXRETRIES=5; confirmar antes de os fundir num so.",
+        "OUTCOME inicializa em 'OK' neste processo e em 'R' no PRPINTPC, ATZINTPC e CRNOTPC. O dossie regista a divergencia sem a resolver: confirmar se e intencional antes de uniformizar."
+      ],
+      "raciocinio": "38 nos e 6 pastas fazem deste o maior card do backlog, e nao e por complexidade de negocio: e o template de retry inteiro, com o ActivitySet transaccional pelo meio. O trabalho de negocio - chamar CalcularPrazo - sao dois passos; o resto e resiliencia.",
+      "oQueConfirmaria": "Que os dois contadores sao mesmo independentes, e que o valor inicial de OUTCOME difere de proposito entre os cinco irmaos.",
+      "riscoSeErrada": "Fundir os contadores duplica ou reduz para metade o numero real de tentativas, e com ele o tempo ate o caso cair no tratamento manual. Nao quebra o fluxo: altera o SLA em silencio.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "BUILD-PRPINTPC-seg035",
+      "tituloSugerido": "Preparacao da intimacao: laco de retry, COM O DEFEITO DE COPIA A CORRIGIR",
+      "hipoteses": [
+        "A condicao de erro deste processo compara STATUS_CODE com SW_NA; os quatro irmaos comparam com '0'. Foi decidido corrigir para '!= \\\"0\\\"' - confirmar que a correccao foi aplicada e nao transcrita.",
+        "Corrigir muda comportamento observado: casos que hoje passam em silencio com erro passam a parar. A demonstracao precisa de nota sobre isto."
+      ],
+      "raciocinio": "E o unico dos cinco clones com uma decisao de correccao ratificada em cima. Se este card for implementado por transcricao fiel, reproduz o defeito; se for implementado a partir do molde comum, corrige-o sem ninguem reparar. Qualquer das duas sem nota e errada.",
+      "oQueConfirmaria": "Que o teste do molde comum cobre explicitamente o caso STATUS_CODE='0' neste processo, e que a diferenca face ao legado esta registada.",
+      "riscoSeErrada": "Um servico que devolva erro com codigo preenchido passa no teste 'diferente de nao preenchido' e o fluxo segue como se tivesse corrido bem. O erro fica invisivel.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "BUILD-POCEPATPROCESS-seg034",
+      "tituloSugerido": "Chamada ao Decisions e conferencia humana do retorno",
+      "hipoteses": [
+        "Entra-se neste troco por um par link throw/catch que NAO existe como transicao no XPDL: tem de ser escrito como aresta explicita, senao o fluxo parte-se em dois.",
+        "Os enderecos de e-mail em copia e copia oculta sao configuracao por ambiente e nao literais no codigo; um deles e nominal de uma pessoa e deixa de avisar quem devia se ela sair."
+      ],
+      "raciocinio": "Oito pastas num troco de sete passos. E o troco que o cliente colocou como etapa 3 e 4 da POC, portanto e o que vai ser visto na demonstracao, e atravessa da API ate ao dominio. A densidade nao vem do numero de passos: vem de cada passo aterrar numa camada diferente.",
+      "oQueConfirmaria": "Que os destinatarios de e-mail passaram para configuracao, e que a aresta do link aparece explicitamente no fluxo gerado.",
+      "riscoSeErrada": "Sem a aresta explicita o troco nao corre de ponta a ponta e o oraculo de percurso falha sem dizer porque. Com os enderecos fixos, a demonstracao envia correio a uma pessoa concreta.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "BUILD-POCEPATPROCESS-seg053",
+      "tituloSugerido": "Vistas do juiz e mistas, ate a preparacao dos intimados",
+      "hipoteses": [
+        "prepSub parte IDSINTIMADOS com SEARCH e SUBSTR assumindo base 1; a semantica continua por fixar na documentacao iProcess e um desvio de uma posicao nao falha - devolve valor errado.",
+        "A ultima atribuicao de IDSINTIMADOS neste troco e andaime de teste e nao migra; confirmar que foi removida e nao transcrita.",
+        "TIPOVISTAS nao preenchido segue deliberadamente para o juiz. O ramo 'DRF' e o por omissao e nao um terceiro valor de dominio: colapsar o sentinela em null inverte a regra sem erro visivel."
+      ],
+      "raciocinio": "Nove pastas, quatro projectos, quatro bloqueadores - e o card mais exposto do backlog. Tres dos quatro bloqueadores ja tem decisao ratificada; o quarto, a semantica dos builtins, e P1 em aberto e e precisamente dele que o prepSub depende.",
+      "oQueConfirmaria": "A base dos indices de SUBSTR e SEARCH na documentacao TIBCO, e o que SEARCH devolve quando o separador nao existe.",
+      "riscoSeErrada": "Um desvio de uma posicao devolve a lista de intimados errada, e o graft step notifica quem nao devia. E a classe de defeito mais dificil de apanhar depois, porque nao falha: mente.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "BUILD-DEAT0050-seg008",
+      "tituloSugerido": "Retomada por evento externo e entrada no laco de prazo",
+      "hipoteses": [
+        "A chave de correlacao ja existe e nao precisa de ser inventada: PROCESS_ID e montado pelos scripts antes de cada chamada.",
+        "O prazo e um instante absoluto combinado de data e hora no momento do agendamento, e nao uma duracao; o temporizador tem de ser rearmado sempre que o campo de prazo for reescrito.",
+        "O atalho que encurta o prazo para uma hora quando SW_HOSTNAME e 'des1' nao migra: os testes usam relogio controlavel."
+      ],
+      "raciocinio": "Seis passos e sete pastas, com tres bloqueadores diferentes - evento externo, prazo por expressao e builtins. E o ponto onde o processo sai do controlo do motor e volta, e por isso concentra as tres construcoes que .NET nao tem de graca.",
+      "oQueConfirmaria": "O fuso horario assumido para o par data+hora, e se UseWorkingDays do iProcess afecta o calculo.",
+      "riscoSeErrada": "Um prazo que dispara cedo ou tarde num processo administrativo fiscal tem consequencia legal, nao apenas tecnica.",
+      "confianca": "media"
+    },
+    {
+      "alvo": "BUILD-POCEPATPROCESS-seg015",
+      "tituloSugerido": "Aviso por e-mail ao controlo de qualidade do fechamento",
+      "hipoteses": [
+        "Os destinatarios saem do script para configuracao por ambiente: o proprio autor ja tentou fazer isso a mao, com um 'if (SW_HOSTNAME == prod1)'."
+      ],
+      "raciocinio": "Um unico passo, duas pastas, zero bloqueadores. E o card mais pequeno da primeira volta e serve de primeira volta completa do ciclo card -> codigo -> oraculo, com quase nenhuma incognita. Vale usa-lo para calibrar o processo antes de atacar os grandes.",
+      "oQueConfirmaria": "Quem deve receber o aviso em producao, agora que o endereco deixa de estar no codigo.",
+      "riscoSeErrada": "Baixo. O pior caso e o aviso ir para a caixa errada num ambiente de demonstracao.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "BUILD-AGPECASPC-seg040",
+      "tituloSugerido": "Espera pelas interposicoes, com prorrogacao de prazo",
+      "hipoteses": [
+        "DATACONTROLE em SW_NA significa PRIMEIRA VOLTA do laco e nao 'sem data': se o sentinela sair do ciclo em vez de entrar, o processo nunca espera, porque na primeira volta o campo esta sempre por preencher.",
+        "DATACONTROLE precisa de um estado 'nunca esperou' representavel e distinto de qualquer data valida - e o caso de uso directo do tipo tri-estado."
+      ],
+      "raciocinio": "E um laco de PRORROGACAO: guarda-se o prazo pelo qual ja se esperou e compara-se com o prazo actual; quando coincidem, termina. O legado ja faz o que a nossa decisao sobre prazos registou como mitigacao - voltar ao gateway e criar um timer novo. A mitigacao e transcricao, nao invencao.",
+      "oQueConfirmaria": "Que o ciclo termina mesmo quando o prazo deixa de mudar, e que nao ha caminho em que DATACONTROLE fique por escrever.",
+      "riscoSeErrada": "Ou o processo nunca espera, ou espera para sempre. Nenhum dos dois da erro visivel.",
+      "confianca": "alta"
+    },
+    {
+      "alvo": "BUILD-BSCENVPC-seg004",
+      "tituloSugerido": "Busca de envolvidos com vista aberta: caminho de sucesso",
+      "hipoteses": [
+        "ISAPPERROR='N' significa ausencia de erro e nao 'ainda nao avaliado'; se significar o segundo, o ramo de sucesso dispara antes de haver resposta do servico."
+      ],
+      "raciocinio": "Oito nos, quatro pastas, zero bloqueadores: e o caminho feliz mais curto dos cinco clones. Serve de molde para os outros tres desfechos do mesmo processo - Bail, Fixed e Try Task - que sao o mesmo troco com saida diferente.",
+      "oQueConfirmaria": "Que 'N' e escrito antes de a condicao ser avaliada, e nao deixado por preencher.",
+      "riscoSeErrada": "O caso avanca sem ter sido processado, e como o ramo e o de sucesso, ninguem procura o erro.",
+      "confianca": "media"
+    }
+  ]
+}
+

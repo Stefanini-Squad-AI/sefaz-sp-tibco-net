@@ -1,0 +1,206 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-BSCENVPC-seg011",
+  "cardType": "build",
+  "title": "Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'",
+  "epic": "etapa-1-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Start Event' a 'Check Retries SW_QRETRYCOUNT', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 7 passo(s) da jornada do caso, de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT', no processo BSCENVPC. ATENCAO: 1 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (descida) e tem de ser escrita explicitamente no fluxo .NET.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "Escopo embutido e topologia: a descida e o regresso tem de existir como transicao explicita, porque no XPDL nao existem."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Rules",
+        "status": "draft",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_qIDulF6BEfGBBLgT-R5iuw",
+        "nome": "Start Event",
+        "kind": "startEvent"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+        "nome": "SetParameters",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-script-BSCENVPC-SetParameters"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
+        "nome": "Start Loop",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_qIDupV6BEfGBBLgT-R5iuw",
+        "nome": "Control System Task Call",
+        "kind": "subProcessScope",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_qIDu3l6BEfGBBLgT-R5iuw",
+        "nome": "startEvent _qIDu3l6BEfGBBLgT-R5iuw",
+        "kind": "startEvent",
+        "entrouPor": "descida"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_qIDu3F6BEfGBBLgT-R5iuw",
+        "nome": "Start TX",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_qIDu3V6BEfGBBLgT-R5iuw",
+        "nome": "Check Retries SW_QRETRYCOUNT",
+        "kind": "gateway",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-BSCENVPC-CheckRetriesSWQRETRYCOUNT"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-BSCENVPC-001].segmentos[0]",
+    "kind": "segment",
+    "nodeIds": [
+      "_qIDulF6BEfGBBLgT-R5iuw",
+      "_qIDulV6BEfGBBLgT-R5iuw",
+      "_qIDul16BEfGBBLgT-R5iuw",
+      "_qIDupV6BEfGBBLgT-R5iuw",
+      "_qIDu3l6BEfGBBLgT-R5iuw",
+      "_qIDu3F6BEfGBBLgT-R5iuw",
+      "_qIDu3V6BEfGBBLgT-R5iuw"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDulF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDulF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDulV6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDulV6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDul16BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDul16BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDupV6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDupV6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu3l6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu3l6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu3F6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu3F6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu3V6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu3V6BEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-001.json",
+      "immutable": true,
+      "caseCount": 12
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 1 ao 7 do cenario SC-BSCENVPC-001 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "BSCENVPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: busca de envolvidos, etapa 6"
+  },
+  "fulfills": {
+    "etapas": [
+      1,
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-BSCENVPC-001",
+      "ordemNaJornada": 0,
+      "doPasso": 1,
+      "aoPasso": 7,
+      "abrePor": "Start Event",
+      "fechaEm": "Check Retries SW_QRETRYCOUNT",
+      "prologo": true
+    },
+    "concepts": [
+      "eventos-inicio-fim",
+      "encadeamento-subprocessos"
+    ],
+    "expectedResults": [
+      "modelagem-bpmn",
+      "subprocessos-encadeados"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 7,
+    "camadas": 2,
+    "pastas": 3,
+    "aEscrever": 3,
+    "bloqueadores": 1,
+    "regrasDeNegocio": 2,
+    "peso": "grande"
+  },
+  "gaps": [
+    {
+      "construct": "iprocess-builtin",
+      "detail": "2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-iprocess-builtin"
+  ]
+}

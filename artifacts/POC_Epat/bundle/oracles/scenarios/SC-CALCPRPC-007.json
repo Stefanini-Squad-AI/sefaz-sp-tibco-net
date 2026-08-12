@@ -1,0 +1,353 @@
+{
+  "id": "SC-CALCPRPC-007",
+  "process": "CALCPRPC",
+  "etapa": 2,
+  "etapas": [
+    2
+  ],
+  "etapaOrigem": "herdada-da-arvore-de-chamada",
+  "kind": "prazo",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 2,
+    "cadeia": [
+      "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+      "DEAT0050/CalculaPrazo"
+    ]
+  },
+  "origem": {
+    "id": "_zJIHVVqiEfG5K7mY0I3I6w",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "DEAT0050/CalculaPrazo"
+  },
+  "destino": {
+    "id": "_zJIHWVqiEfG5K7mY0I3I6w",
+    "nome": "Try Task",
+    "tipo": "linkCatch",
+    "como": "corte-de-laco",
+    "regressaA": null
+  },
+  "lengthNodes": 18,
+  "segmentos": [
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 18,
+      "abrePor": "Start Event",
+      "fechaEm": "Try Task",
+      "herdadoDe": "DEAT0050/CalculaPrazo",
+      "herdadoDeNoId": "_lrer3lqhEfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_zJIHVVqiEfG5K7mY0I3I6w",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "nome": "SetParameters",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIHWFqiEfG5K7mY0I3I6w",
+          "nome": "Start Loop",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIHZlqiEfG5K7mY0I3I6w",
+          "nome": "Control System Task Call",
+          "tipo": "subProcessScope"
+        },
+        {
+          "id": "_zJIublqiEfG5K7mY0I3I6w",
+          "nome": "startEvent _zJIublqiEfG5K7mY0I3I6w",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_zJIuaVqiEfG5K7mY0I3I6w",
+          "nome": "Start TX",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIubVqiEfG5K7mY0I3I6w",
+          "nome": "Check Retries SW_QRETRYCOUNT",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_AsZCkVqkEfG5K7mY0I3I6w",
+          "nome": "CalcularPrazo",
+          "tipo": "serviceTask"
+        },
+        {
+          "id": "_zJIuclqiEfG5K7mY0I3I6w",
+          "nome": "gateway _zJIuclqiEfG5K7mY0I3I6w",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIucVqiEfG5K7mY0I3I6w",
+          "nome": "Set App Error",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIuc1qiEfG5K7mY0I3I6w",
+          "nome": "gateway _zJIuc1qiEfG5K7mY0I3I6w",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIub1qiEfG5K7mY0I3I6w",
+          "nome": "endEvent _zJIub1qiEfG5K7mY0I3I6w",
+          "tipo": "endEvent"
+        },
+        {
+          "id": "_zJIHZVqiEfG5K7mY0I3I6w",
+          "nome": "Tech Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHZFqiEfG5K7mY0I3I6w",
+          "nome": "App Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHYVqiEfG5K7mY0I3I6w",
+          "nome": "More Retries",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHYlqiEfG5K7mY0I3I6w",
+          "nome": "Pause",
+          "tipo": "timerEvent"
+        },
+        {
+          "id": "_zJIHYFqiEfG5K7mY0I3I6w",
+          "nome": "Link To: Try Task",
+          "tipo": "linkThrow"
+        },
+        {
+          "id": "_zJIHWVqiEfG5K7mY0I3I6w",
+          "nome": "Try Task",
+          "tipo": "linkCatch"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_zJIHVVqiEfG5K7mY0I3I6w",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_zJIHVlqiEfG5K7mY0I3I6w",
+      "nome": "SetParameters",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHWFqiEfG5K7mY0I3I6w",
+      "nome": "Start Loop",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHZlqiEfG5K7mY0I3I6w",
+      "nome": "Control System Task Call",
+      "tipo": "subProcessScope",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIublqiEfG5K7mY0I3I6w",
+      "nome": "startEvent _zJIublqiEfG5K7mY0I3I6w",
+      "tipo": "startEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "descida"
+    },
+    {
+      "id": "_zJIuaVqiEfG5K7mY0I3I6w",
+      "nome": "Start TX",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIubVqiEfG5K7mY0I3I6w",
+      "nome": "Check Retries SW_QRETRYCOUNT",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_AsZCkVqkEfG5K7mY0I3I6w",
+      "nome": "CalcularPrazo",
+      "tipo": "serviceTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIuclqiEfG5K7mY0I3I6w",
+      "nome": "gateway _zJIuclqiEfG5K7mY0I3I6w",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIucVqiEfG5K7mY0I3I6w",
+      "nome": "Set App Error",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIuc1qiEfG5K7mY0I3I6w",
+      "nome": "gateway _zJIuc1qiEfG5K7mY0I3I6w",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIub1qiEfG5K7mY0I3I6w",
+      "nome": "endEvent _zJIub1qiEfG5K7mY0I3I6w",
+      "tipo": "endEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHZVqiEfG5K7mY0I3I6w",
+      "nome": "Tech Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "regresso"
+    },
+    {
+      "id": "_zJIHZFqiEfG5K7mY0I3I6w",
+      "nome": "App Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHYVqiEfG5K7mY0I3I6w",
+      "nome": "More Retries",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHYlqiEfG5K7mY0I3I6w",
+      "nome": "Pause",
+      "tipo": "timerEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHYFqiEfG5K7mY0I3I6w",
+      "nome": "Link To: Try Task",
+      "tipo": "linkThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHWVqiEfG5K7mY0I3I6w",
+      "nome": "Try Task",
+      "tipo": "linkCatch",
+      "escopo": "MAIN",
+      "entrouPor": "link"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Check Retries SW_QRETRYCOUNT",
+      "decisaoId": "_zJIubVqiEfG5K7mY0I3I6w",
+      "ramo": "Stillgood",
+      "tipo": "CONDITION",
+      "condicao": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "leva": "CalcularPrazo",
+      "exige": []
+    },
+    {
+      "decisao": "gateway _zJIuclqiEfG5K7mY0I3I6w",
+      "decisaoId": "_zJIuclqiEfG5K7mY0I3I6w",
+      "ramo": "AppError",
+      "tipo": "CONDITION",
+      "condicao": "STATUS_CODE!=\"0\";",
+      "leva": "Set App Error",
+      "exige": [
+        {
+          "campo": "STATUS_CODE",
+          "operador": "!=",
+          "valor": "0",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "Tech Error",
+      "decisaoId": "_zJIHZVqiEfG5K7mY0I3I6w",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "App Error",
+      "exige": []
+    },
+    {
+      "decisao": "App Error",
+      "decisaoId": "_zJIHZFqiEfG5K7mY0I3I6w",
+      "ramo": "Yes",
+      "tipo": "CONDITION",
+      "condicao": "ISAPPERROR=='Y';",
+      "leva": "More Retries",
+      "exige": [
+        {
+          "campo": "ISAPPERROR",
+          "operador": "==",
+          "valor": "Y",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "More Retries",
+      "decisaoId": "_zJIHYVqiEfG5K7mY0I3I6w",
+      "ramo": "Yes",
+      "tipo": "CONDITION",
+      "condicao": "NUMAPPRETRIES<MAXRETRIES;",
+      "leva": "Pause",
+      "exige": []
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "ISAPPERROR",
+      "operador": "==",
+      "valor": "Y",
+      "sentinelaSwNa": false
+    },
+    {
+      "campo": "STATUS_CODE",
+      "operador": "!=",
+      "valor": "0",
+      "sentinelaSwNa": false
+    }
+  ],
+  "serviceCalls": [
+    {
+      "passo": "CalcularPrazo",
+      "passoId": "_AsZCkVqkEfG5K7mY0I3I6w",
+      "operacao": null
+    }
+  ],
+  "descidas": []
+}

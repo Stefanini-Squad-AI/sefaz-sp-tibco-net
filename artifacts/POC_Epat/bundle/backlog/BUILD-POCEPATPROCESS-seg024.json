@@ -1,0 +1,122 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg024",
+  "cardType": "build",
+  "title": "Notificação do AIIM: de 'Preparar Notificacao' ate 'Corrigir?'",
+  "epic": "etapa-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Preparar Notificacao' a 'Corrigir?', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 2 passo(s) da jornada do caso, de 'Preparar Notificacao' ate 'Corrigir?', no processo POC_EpatProcess.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/UseCases",
+        "status": "scaffold",
+        "note": "Tarefa humana e um caso de uso. As regras do code-behind das telas aterram aqui porque decidem o desfecho do processo, nao a apresentacao."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_sfwu-VqUEfG5K7mY0I3I6w",
+        "nome": "Preparar Notificacao",
+        "kind": "userTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_sJqYklqTEfG5K7mY0I3I6w",
+        "nome": "Corrigir?",
+        "kind": "gateway",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-POC_EpatProcess-Corrigir"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-001].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_sfwu-VqUEfG5K7mY0I3I6w",
+      "_sJqYklqTEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_sfwu-VqUEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_sfwu-VqUEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_sJqYklqTEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_sJqYklqTEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-001.json",
+      "immutable": true,
+      "caseCount": 15
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 3 ao 4 do cenario SC-POC_EpatProcess-001 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-001",
+      "ordemNaJornada": 1,
+      "doPasso": 3,
+      "aoPasso": 4,
+      "abrePor": "Preparar Notificacao",
+      "fechaEm": "Corrigir?"
+    },
+    "concepts": [
+      "user-tasks"
+    ],
+    "expectedResults": [],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 2,
+    "camadas": 1,
+    "pastas": 2,
+    "aEscrever": 2,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 1,
+    "peso": "medio"
+  },
+  "dependsOn": [
+    "BUILD-POCEPATPROCESS-seg023"
+  ]
+}

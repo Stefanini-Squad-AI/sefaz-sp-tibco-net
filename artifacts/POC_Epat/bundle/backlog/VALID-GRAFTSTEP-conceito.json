@@ -1,0 +1,90 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "VALID-GRAFTSTEP-conceito",
+  "cardType": "validation",
+  "title": "Provar o conceito Graft Step",
+  "epic": "fundacao",
+  "content": {
+    "intent": "Montar o arnes que prova o conceito 'Graft Step': Acoplamento dinamico de um fluxo ou subprocesso durante a execucao do processo principal, sem que ele faca parte originalmente da sequencia de atividades. Nenhum passo do processo o demonstra sozinho, por isso nao cabe em card de segmento.",
+    "injectedContext": {
+      "summary": "Conceito da seccao 2 do documento, detectado por nome do passo ('graft') e nao por tipo de no - e por isso invisivel para os cards de segmento. Ocorre em 4 ponto(s). Etapa derivada dos nos onde o conceito ocorre - o documento nao o atribui a etapa nenhuma. Sustenta o(s) resultado(s) esperado(s) criacao-dinamica, compatibilidade-iprocess. Os valores esperados sao do kit e nao se editam.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "tests/SefazSp.Epat.Oracles.Tests",
+        "status": "scaffold",
+        "note": "O agente liga o arnes a fixture e nunca escreve o valor esperado."
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "process-model.json",
+    "pointer": "concepts[graft-step]",
+    "kind": "field",
+    "nodeIds": []
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "graft-step"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": "O oraculo e o proprio artefacto extraido; nao ha interpretacao no arnes.",
+    "verified": false,
+    "translation": "lossless"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/index.json",
+      "immutable": true,
+      "caseCount": 146
+    },
+    "criteria": [
+      "O conceito e observavel em execucao nos 4 ponto(s) onde o pacote o usa"
+    ]
+  },
+  "scope": {
+    "process": "fundacao",
+    "inPocScope": true,
+    "scopeReason": "conceito declarado na seccao 2 do documento da POC"
+  },
+  "fulfills": {
+    "etapas": [
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "graft-step",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 1,
+      "abrePor": "Graft Step",
+      "fechaEm": "Graft Step"
+    },
+    "concepts": [
+      "graft-step"
+    ],
+    "expectedResults": [
+      "criacao-dinamica",
+      "compatibilidade-iprocess"
+    ],
+    "evidenceKind": "parent-child-trace"
+  },
+  "dimensao": {
+    "nos": 4,
+    "camadas": 1,
+    "pastas": 1,
+    "aEscrever": 1,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "medio"
+  }
+}

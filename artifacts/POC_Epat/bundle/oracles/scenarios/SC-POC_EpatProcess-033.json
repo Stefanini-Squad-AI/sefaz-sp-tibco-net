@@ -1,0 +1,645 @@
+{
+  "id": "SC-POC_EpatProcess-033",
+  "process": "POC_EpatProcess",
+  "etapa": 1,
+  "etapas": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+  "kind": "prazo",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 0,
+    "cadeia": []
+  },
+  "origem": {
+    "id": "_tO_yWVp6EfG5K7mY0I3I6w",
+    "nome": "Início",
+    "tipo": "startEvent",
+    "como": "inicio-do-caso",
+    "chamadoPor": null
+  },
+  "destino": {
+    "id": "_H22mclqWEfG5K7mY0I3I6w",
+    "nome": "Fim",
+    "tipo": "endEvent",
+    "como": "fim-do-caso",
+    "regressaA": null
+  },
+  "lengthNodes": 28,
+  "segmentos": [
+    {
+      "etapas": [
+        1,
+        2
+      ],
+      "ordemNaJornada": 0,
+      "doPasso": 1,
+      "aoPasso": 1,
+      "abrePor": "Início",
+      "fechaEm": "Início",
+      "prologo": true,
+      "nos": [
+        {
+          "id": "_tO_yWVp6EfG5K7mY0I3I6w",
+          "nome": "Início",
+          "tipo": "startEvent"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1,
+        2
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 2,
+      "aoPasso": 3,
+      "abrePor": "Finalizar AIIM",
+      "fechaEm": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "nome": "Finalizar AIIM",
+          "tipo": "userTask"
+        },
+        {
+          "id": "_Faq_RFqTEfG5K7mY0I3I6w",
+          "nome": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+          "tipo": "gateway"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 2,
+      "doPasso": 4,
+      "aoPasso": 7,
+      "abrePor": "Existe Notificação?",
+      "fechaEm": "Flag Retirati True GS",
+      "nos": [
+        {
+          "id": "_IxqJMlqTEfG5K7mY0I3I6w",
+          "nome": "Existe Notificação?",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_Faq_RVqTEfG5K7mY0I3I6w",
+          "nome": "Inicia Graft Step",
+          "tipo": "linkThrow"
+        },
+        {
+          "id": "_0XWagFqNEfG5K7mY0I3I6w",
+          "nome": "Inicia Graft Step",
+          "tipo": "linkCatch"
+        },
+        {
+          "id": "_0XWahVqNEfG5K7mY0I3I6w",
+          "nome": "Flag Retirati True GS",
+          "tipo": "scriptTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1,
+        2
+      ],
+      "ordemNaJornada": 3,
+      "doPasso": 8,
+      "aoPasso": 8,
+      "abrePor": "Aguardar evento de Notificacao do AIIM",
+      "fechaEm": "Aguardar evento de Notificacao do AIIM",
+      "nos": [
+        {
+          "id": "_0XWagVqNEfG5K7mY0I3I6w",
+          "nome": "Aguardar evento de Notificacao do AIIM",
+          "tipo": "callActivity"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 4,
+      "doPasso": 9,
+      "aoPasso": 9,
+      "abrePor": "Trocar Notificação?",
+      "fechaEm": "Trocar Notificação?",
+      "nos": [
+        {
+          "id": "_0XWahFqNEfG5K7mY0I3I6w",
+          "nome": "Trocar Notificação?",
+          "tipo": "gateway"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        3,
+        4
+      ],
+      "ordemNaJornada": 5,
+      "doPasso": 10,
+      "aoPasso": 16,
+      "abrePor": "Iniciar Decisions",
+      "fechaEm": "Verificar Retorno Decisions",
+      "nos": [
+        {
+          "id": "_LeuhgFqVEfG5K7mY0I3I6w",
+          "nome": "Iniciar Decisions",
+          "tipo": "linkThrow"
+        },
+        {
+          "id": "_CI6l0VqREfG5K7mY0I3I6w",
+          "nome": "Iniciar Decisions",
+          "tipo": "linkCatch"
+        },
+        {
+          "id": "_CI6lx1qREfG5K7mY0I3I6w",
+          "nome": "Verificar Anulacao",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_CI6lyFqREfG5K7mY0I3I6w",
+          "nome": "Prepara Intimação",
+          "tipo": "callActivity"
+        },
+        {
+          "id": "_G4hU81qhEfG5K7mY0I3I6w",
+          "nome": "Define Destinatarios",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_6WNq-lqgEfG5K7mY0I3I6w",
+          "nome": "Email Limite Rel 1",
+          "tipo": "emailTask"
+        },
+        {
+          "id": "_30jAcFqVEfG5K7mY0I3I6w",
+          "nome": "Verificar Retorno Decisions",
+          "tipo": "userTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        5
+      ],
+      "ordemNaJornada": 6,
+      "doPasso": 17,
+      "aoPasso": 26,
+      "abrePor": "Validar Paralelos",
+      "fechaEm": "prepSub",
+      "nos": [
+        {
+          "id": "_89MVQlqVEfG5K7mY0I3I6w",
+          "nome": "Validar Paralelos",
+          "tipo": "linkThrow"
+        },
+        {
+          "id": "_Ei94AFqPEfG5K7mY0I3I6w",
+          "nome": "Validação Paralelos",
+          "tipo": "linkCatch"
+        },
+        {
+          "id": "_CtQ7BFqPEfG5K7mY0I3I6w",
+          "nome": "Vistas do Juiz ?",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_CtQ6-1qPEfG5K7mY0I3I6w",
+          "nome": "Vistas do Juiz",
+          "tipo": "receiveTask"
+        },
+        {
+          "id": "_CtQ6_1qPEfG5K7mY0I3I6w",
+          "nome": "timerEvent _CtQ6_1qPEfG5K7mY0I3I6w",
+          "tipo": "timerEvent"
+        },
+        {
+          "id": "_CtQ691qPEfG5K7mY0I3I6w",
+          "nome": "Busca Emails",
+          "tipo": "callActivity"
+        },
+        {
+          "id": "_CtQ7AVqPEfG5K7mY0I3I6w",
+          "nome": "VoltaAgenda",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_CtQ7AlqPEfG5K7mY0I3I6w",
+          "nome": "Tipo de Vista Mista?",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_CtQ6-lqPEfG5K7mY0I3I6w",
+          "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "nome": "prepSub",
+          "tipo": "scriptTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        6
+      ],
+      "ordemNaJornada": 7,
+      "doPasso": 27,
+      "aoPasso": 27,
+      "abrePor": "Controlar Intimados",
+      "fechaEm": "Controlar Intimados",
+      "nos": [
+        {
+          "id": "_nQntZ16JEfGBBLgT-R5iuw",
+          "nome": "Controlar Intimados",
+          "tipo": "callActivity"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        7
+      ],
+      "ordemNaJornada": 8,
+      "doPasso": 28,
+      "aoPasso": 28,
+      "abrePor": "Fim",
+      "fechaEm": "Fim",
+      "nos": [
+        {
+          "id": "_H22mclqWEfG5K7mY0I3I6w",
+          "nome": "Fim",
+          "tipo": "endEvent"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_tO_yWVp6EfG5K7mY0I3I6w",
+      "nome": "Início",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_xWNLe1qSEfG5K7mY0I3I6w",
+      "nome": "Finalizar AIIM",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_Faq_RFqTEfG5K7mY0I3I6w",
+      "nome": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_IxqJMlqTEfG5K7mY0I3I6w",
+      "nome": "Existe Notificação?",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_Faq_RVqTEfG5K7mY0I3I6w",
+      "nome": "Inicia Graft Step",
+      "tipo": "linkThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_0XWagFqNEfG5K7mY0I3I6w",
+      "nome": "Inicia Graft Step",
+      "tipo": "linkCatch",
+      "escopo": "MAIN",
+      "entrouPor": "link"
+    },
+    {
+      "id": "_0XWahVqNEfG5K7mY0I3I6w",
+      "nome": "Flag Retirati True GS",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_0XWagVqNEfG5K7mY0I3I6w",
+      "nome": "Aguardar evento de Notificacao do AIIM",
+      "tipo": "callActivity",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_0XWahFqNEfG5K7mY0I3I6w",
+      "nome": "Trocar Notificação?",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_LeuhgFqVEfG5K7mY0I3I6w",
+      "nome": "Iniciar Decisions",
+      "tipo": "linkThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CI6l0VqREfG5K7mY0I3I6w",
+      "nome": "Iniciar Decisions",
+      "tipo": "linkCatch",
+      "escopo": "MAIN",
+      "entrouPor": "link"
+    },
+    {
+      "id": "_CI6lx1qREfG5K7mY0I3I6w",
+      "nome": "Verificar Anulacao",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CI6lyFqREfG5K7mY0I3I6w",
+      "nome": "Prepara Intimação",
+      "tipo": "callActivity",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_G4hU81qhEfG5K7mY0I3I6w",
+      "nome": "Define Destinatarios",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_6WNq-lqgEfG5K7mY0I3I6w",
+      "nome": "Email Limite Rel 1",
+      "tipo": "emailTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_30jAcFqVEfG5K7mY0I3I6w",
+      "nome": "Verificar Retorno Decisions",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_89MVQlqVEfG5K7mY0I3I6w",
+      "nome": "Validar Paralelos",
+      "tipo": "linkThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_Ei94AFqPEfG5K7mY0I3I6w",
+      "nome": "Validação Paralelos",
+      "tipo": "linkCatch",
+      "escopo": "MAIN",
+      "entrouPor": "link"
+    },
+    {
+      "id": "_CtQ7BFqPEfG5K7mY0I3I6w",
+      "nome": "Vistas do Juiz ?",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CtQ6-1qPEfG5K7mY0I3I6w",
+      "nome": "Vistas do Juiz",
+      "tipo": "receiveTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CtQ6_1qPEfG5K7mY0I3I6w",
+      "nome": "timerEvent _CtQ6_1qPEfG5K7mY0I3I6w",
+      "tipo": "timerEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fronteira"
+    },
+    {
+      "id": "_CtQ691qPEfG5K7mY0I3I6w",
+      "nome": "Busca Emails",
+      "tipo": "callActivity",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CtQ7AVqPEfG5K7mY0I3I6w",
+      "nome": "VoltaAgenda",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CtQ7AlqPEfG5K7mY0I3I6w",
+      "nome": "Tipo de Vista Mista?",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_CtQ6-lqPEfG5K7mY0I3I6w",
+      "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "nome": "prepSub",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_nQntZ16JEfGBBLgT-R5iuw",
+      "nome": "Controlar Intimados",
+      "tipo": "callActivity",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_H22mclqWEfG5K7mY0I3I6w",
+      "nome": "Fim",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Existe Notificação?",
+      "decisaoId": "_IxqJMlqTEfG5K7mY0I3I6w",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Inicia Graft Step",
+      "exige": []
+    },
+    {
+      "decisao": "Trocar Notificação?",
+      "decisaoId": "_0XWahFqNEfG5K7mY0I3I6w",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Iniciar Decisions",
+      "exige": []
+    },
+    {
+      "decisao": "Vistas do Juiz ?",
+      "decisaoId": "_CtQ7BFqPEfG5K7mY0I3I6w",
+      "ramo": null,
+      "tipo": "CONDITION",
+      "condicao": "TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;",
+      "leva": "Vistas do Juiz",
+      "exige": [
+        {
+          "campo": "TIPOVISTAS",
+          "operador": "==",
+          "valor": "JUIZ",
+          "sentinelaSwNa": false
+        },
+        {
+          "campo": "TIPOVISTAS",
+          "operador": "==",
+          "valor": "SW_NA",
+          "sentinelaSwNa": true
+        }
+      ]
+    },
+    {
+      "decisao": "Tipo de Vista Mista?",
+      "decisaoId": "_CtQ7AlqPEfG5K7mY0I3I6w",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
+      "exige": []
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "TIPOVISTAS",
+      "operador": "==",
+      "valor": "JUIZ",
+      "sentinelaSwNa": false
+    },
+    {
+      "campo": "TIPOVISTAS",
+      "operador": "==",
+      "valor": "SW_NA",
+      "sentinelaSwNa": true
+    }
+  ],
+  "serviceCalls": [],
+  "descidas": [
+    {
+      "passo": "Aguardar evento de Notificacao do AIIM",
+      "passoId": "_0XWagVqNEfG5K7mY0I3I6w",
+      "continuaEm": "DEAT0050",
+      "resolvidaPor": "processInterface",
+      "dinamica": true,
+      "graftStep": false,
+      "cenarios": [
+        "SC-DEAT0050-001",
+        "SC-DEAT0050-002",
+        "SC-DEAT0050-003",
+        "SC-DEAT0050-004"
+      ],
+      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
+    },
+    {
+      "passo": "Prepara Intimação",
+      "passoId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "continuaEm": "PRPINTPC",
+      "resolvidaPor": "process",
+      "dinamica": false,
+      "graftStep": false,
+      "cenarios": [
+        "SC-PRPINTPC-001",
+        "SC-PRPINTPC-002",
+        "SC-PRPINTPC-003",
+        "SC-PRPINTPC-004",
+        "SC-PRPINTPC-005",
+        "SC-PRPINTPC-006",
+        "SC-PRPINTPC-007",
+        "SC-PRPINTPC-008",
+        "SC-PRPINTPC-009",
+        "SC-PRPINTPC-010",
+        "SC-PRPINTPC-011",
+        "SC-PRPINTPC-012",
+        "SC-PRPINTPC-013",
+        "SC-PRPINTPC-014",
+        "SC-PRPINTPC-015",
+        "SC-PRPINTPC-016",
+        "SC-PRPINTPC-017",
+        "SC-PRPINTPC-018"
+      ],
+      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
+    },
+    {
+      "passo": "Busca Emails",
+      "passoId": "_CtQ691qPEfG5K7mY0I3I6w",
+      "continuaEm": "BSCENVPC",
+      "resolvidaPor": "process",
+      "dinamica": false,
+      "graftStep": false,
+      "cenarios": [
+        "SC-BSCENVPC-001",
+        "SC-BSCENVPC-002",
+        "SC-BSCENVPC-003",
+        "SC-BSCENVPC-004",
+        "SC-BSCENVPC-005",
+        "SC-BSCENVPC-006",
+        "SC-BSCENVPC-007",
+        "SC-BSCENVPC-008",
+        "SC-BSCENVPC-009",
+        "SC-BSCENVPC-010",
+        "SC-BSCENVPC-011",
+        "SC-BSCENVPC-012",
+        "SC-BSCENVPC-013",
+        "SC-BSCENVPC-014",
+        "SC-BSCENVPC-015",
+        "SC-BSCENVPC-016",
+        "SC-BSCENVPC-017",
+        "SC-BSCENVPC-018"
+      ],
+      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
+    },
+    {
+      "passo": "Controlar Intimados",
+      "passoId": "_nQntZ16JEfGBBLgT-R5iuw",
+      "continuaEm": "CONTROPC",
+      "resolvidaPor": "processInterface",
+      "dinamica": true,
+      "graftStep": false,
+      "cenarios": [
+        "SC-CONTROPC-001"
+      ],
+      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
+    }
+  ]
+}

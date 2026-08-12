@@ -1,0 +1,41 @@
+
+{ items: [
+
+	{ $param:'DUMP', $value:						"Text"
+
+	},
+	{ $param:'STERRORCODE', $value:						"Text"
+
+	},
+	{ $param:'DATETIME', $value:						"Text"
+
+	},
+	{ $param:'ISAPPERROR', $value:						"Text"
+
+	},
+	{ $param:'PROCESS_ID', $value:						"Text"
+
+	},
+	{ $param:'STATUS_CODE', $value:						"Text"
+
+	},
+	{ $param:'MAXRETRIES', $value:						1
+	},
+	{ $param:'SERVICE_NAME', $value:						"Text"
+
+	},
+	{ $param:'SW_MAINPROC', $value:						"Text"
+
+	},
+	{ $param:'SW_MAINCASE', $value:						1
+	},
+	{ $param:'ISTECHERROR', $value:						"Text"
+
+	},
+	{ $param:'STERRORDESC', $value:						"Text"
+
+	},
+	{ $param:'OUTCOME', $value:						"Text"
+
+	}
+]}

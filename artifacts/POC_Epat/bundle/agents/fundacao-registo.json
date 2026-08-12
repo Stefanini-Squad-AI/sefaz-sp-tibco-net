@@ -1,0 +1,286 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/agent-manifest/v1",
+  "package": "POC_Epat",
+  "nota": "Manifesto de agente. NAO contem raciocinio: delimita-o. O que este agente pode escrever sai do mapa de camadas e do estado dos caminhos nos cards, nunca de uma proposta. O que o julga e o oraculo, que ele nao pode editar.",
+  "generatedAt": "2026-05-28T00:00:00Z",
+  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "id": "fundacao-registo",
+  "papel": "Fundacao: raiz de composicao e registo de processos",
+  "tipo": "fundacao",
+  "porqueExiste": "A decisao ratificada gaps.dynamic-subprocess = interface-registry-validated diz que o conjunto de destinos e derivado do XPDL e VALIDADO NO ARRANQUE, e que um destino sem implementacao quebra o teste de registo e nao a producao. Essa validacao vive na raiz de composicao, que nao tem card.",
+  "escreveEm": [
+    "src/SefazSp.Epat.Api/Composition/**"
+  ],
+  "cards": [],
+  "etapasQueToca": [],
+  "skills": [],
+  "tiposDeNoQueTrata": [],
+  "oraculosQueOJulgam": [],
+  "orcamento": {
+    "cards": 0,
+    "nos": 0.0,
+    "cardsQueAtravessamOSistema": 0,
+    "nota": "Papel proposto pelo parecer: nao nasce de cards, nasce de trabalho que os cards assumem existir."
+  },
+  "escalaQuando": [
+    "A decisao de que este papel depende continua sem resposta humana.",
+    "Um papel de implementacao precisa deste trabalho antes de poder comecar."
+  ],
+  "gapsPorResolver": [],
+  "propostoPeloParecer": true,
+  "parecer": {
+    "origem": "analise agentica sobre o backlog - proposta, nao facto",
+    "ordem": 3,
+    "riscoSeIgnorado": "A decisao fica no papel. O legado declara HaltOnBadSubProcess='false' e falha em silencio; sem o registo validado, a migracao herda exactamente o comportamento que a decisao existia para impedir.",
+    "atencao": null,
+    "confianca": "alta"
+  },
+  "naoEscreveEm": [
+    {
+      "caminho": "src/SefazSp.Epat.Application/Abstractions/Processes/**",
+      "porque": "Transcricao: A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Application/Abstractions/Runtime/**",
+      "porque": "Transcricao: Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Application/Abstractions/Services/**",
+      "porque": "Transcricao: A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Application/Workflows/**",
+      "porque": "Transcricao: Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento."
+    },
+    {
+      "caminho": "src/SefazSp.Epat.Domain/Abstractions/**",
+      "porque": "Transcricao: O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/dmn",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/Abstractions/Processes/IAGURETPC.cs",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/Abstractions/Processes/ICTRINTPC.cs",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/Abstractions/Processes/INOTFAIIM.cs",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/index.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-AGPECASPC-002.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-AGPECASPC-003.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-ATZINTPC-007.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-ATZINTPC-008.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-ATZINTPC-009.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-ATZINTPC-010.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-001.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-007.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-008.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-009.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-010.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-013.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-014.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-015.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-016.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CALCPRPC-007.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CALCPRPC-008.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CALCPRPC-009.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CALCPRPC-010.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CONTROPC-001.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CRNOTPC-001.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CRNOTPC-007.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CRNOTPC-008.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CRNOTPC-009.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-CRNOTPC-010.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-DEAT0050-001.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-DEAT0050-002.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-DEAT0050-003.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-DEAT0050-004.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-001.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-009.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-010.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-012.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-014.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-015.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-017.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-018.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-025.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-031.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-045.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-PRPINTPC-007.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-PRPINTPC-008.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-PRPINTPC-009.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/scenarios/SC-PRPINTPC-010.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/POC_Epat/service-contracts.json",
+      "porque": "Oraculo imutavel: o agente liga o arnes a fixture e nunca escreve o valor esperado."
+    },
+    {
+      "caminho": "artifacts/**",
+      "porque": "Saida do kit deterministico. Um agente que a altere quebra a rastreabilidade ate a fonte."
+    },
+    {
+      "caminho": "config/**",
+      "porque": "Decisoes autoradas - escopo, arquitectura, glossario. O agente propoe; nao edita."
+    }
+  ],
+  "le": [
+    {
+      "caminho": "context/**",
+      "porque": "A IR, os diagramas e as tabelas. So leitura: e o corpus de referencia."
+    },
+    {
+      "caminho": "backlog/**",
+      "porque": "O card que lhe foi atribuido e as suas dependencias."
+    }
+  ]
+}

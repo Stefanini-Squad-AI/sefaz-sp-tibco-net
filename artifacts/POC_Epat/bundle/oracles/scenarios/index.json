@@ -1,0 +1,3374 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/scenarios/v1",
+  "package": "POC_Epat",
+  "note": "Jornadas enumeradas do grafo RECOSIDO - arestas de link e descidas para ActivitySet repostas -, uma por ficheiro, para servir de oraculo scenario-path aos cards de build. Cada cenario declara origem, destino e a cadeia de chamada desde a raiz, e cada passo de chamada aponta para os cenarios que continuam no processo chamado: e assim que se le a jornada de ponta a ponta sem a enumerar. A SELECCAO do percurso representativo continua a ser humana. Percursos sao simples (sem no repetido); os lacos ficam registados como cortes. A medida honesta de completude e a cobertura de arestas.",
+  "summary": {
+    "scenarios": 146,
+    "processes": 9,
+    "edges": 245,
+    "edgesStitched": 29,
+    "edgesCovered": 245,
+    "edgeCoverage": "100%",
+    "semEtapa": 0,
+    "etapaHerdada": 73,
+    "nosSemSegmento": 0.0,
+    "representativeChosen": 0,
+    "byKind": {
+      "ate-ao-fim": 82,
+      "erro": 25,
+      "percurso": 2,
+      "prazo": 37
+    },
+    "byEtapa": {
+      "etapa 1": 62,
+      "etapa 2": 100,
+      "etapa 3": 57,
+      "etapa 4": 79,
+      "etapa 5": 45,
+      "etapa 6": 27,
+      "etapa 7": 47,
+      "sem-etapa": 0
+    }
+  },
+  "callTree": {
+    "roots": [
+      "POC_EpatProcess"
+    ],
+    "edges": [
+      {
+        "de": "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+        "para": "DEAT0050",
+        "dinamica": true,
+        "resolvidaPor": "processInterface"
+      },
+      {
+        "de": "POC_EpatProcess/Busca Emails",
+        "para": "BSCENVPC",
+        "dinamica": false,
+        "resolvidaPor": "process"
+      },
+      {
+        "de": "POC_EpatProcess/Prepara Intimação",
+        "para": "PRPINTPC",
+        "dinamica": false,
+        "resolvidaPor": "process"
+      },
+      {
+        "de": "POC_EpatProcess/Controlar Intimados",
+        "para": "CONTROPC",
+        "dinamica": true,
+        "resolvidaPor": "processInterface"
+      },
+      {
+        "de": "POC_EpatProcess/Criar Notificacao",
+        "para": "CRNOTPC",
+        "dinamica": false,
+        "resolvidaPor": "process"
+      },
+      {
+        "de": "DEAT0050/CalculaPrazo",
+        "para": "CALCPRPC",
+        "dinamica": false,
+        "resolvidaPor": "process"
+      },
+      {
+        "de": "CONTROPC/Aguardar Retorno",
+        "para": "AGPECASPC",
+        "dinamica": true,
+        "resolvidaPor": "processInterface"
+      },
+      {
+        "de": "CONTROPC/AtualizaIntimacao",
+        "para": "ATZINTPC",
+        "dinamica": false,
+        "resolvidaPor": "process"
+      }
+    ]
+  },
+  "etapas": {
+    "nota": "Pegada de cada etapa medida no SEGMENTO da jornada - da ancora da etapa ate a ancora da seguinte - e nao no percurso inteiro. Os bloqueadores sao os itens sem equivalente .NET cujo nodeId cai dentro dessa pegada, o que e uma medida exacta e nao herdada do processo. posicaoNaJornada diz em que ordem a etapa aparece de facto no fluxo, que pode nao ser a ordem do documento quando a jornada e de recuperacao.",
+    "footprint": [
+      {
+        "n": 1,
+        "name": "Fechamento do AIIM",
+        "nos": 41,
+        "cenarios": 62,
+        "ancoras": [
+          "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+          "POC_EpatProcess/Finalizar AIIM",
+          "POC_EpatProcess/Corrigir Fechamento",
+          "POC_EpatProcess/Corrigir Fechamento",
+          "POC_EpatProcess/Email CQ Fechamento",
+          "BSCENVPC/Busca Envolvidos Vista Por AIIM"
+        ],
+        "posicaoNaJornada": {
+          "minima": 0.0,
+          "maxima": 5.0
+        },
+        "bloqueadores": [
+          {
+            "id": "NOEQ-dynamic-subprocess",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 3,
+            "nos": [
+              "POC_EpatProcess/Aguardar evento de Notificacao do AIIM"
+            ]
+          },
+          {
+            "id": "NOEQ-iprocess-builtin",
+            "ocorrenciasNaEtapa": 4,
+            "ocorrenciasNoPacote": 17,
+            "nos": [
+              "BSCENVPC/SetParameters",
+              "BSCENVPC/Start Loop",
+              "DEAT0050/HoraFimSC",
+              "POC_EpatProcess/Set Nome Etapa 2"
+            ]
+          },
+          {
+            "id": "NOEQ-expression-deadline",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 4,
+            "nos": [
+              "DEAT0050/Aguarda Defesa"
+            ]
+          },
+          {
+            "id": "NOEQ-external-event",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 6,
+            "nos": [
+              "DEAT0050/INICALC"
+            ]
+          },
+          {
+            "id": "NOEQ-link-goto",
+            "ocorrenciasNaEtapa": 4,
+            "ocorrenciasNoPacote": 20,
+            "nos": [
+              "BSCENVPC/Link To: Try Task",
+              "BSCENVPC/Try Task",
+              "POC_EpatProcess/Corrigir Fechamento"
+            ]
+          }
+        ]
+      },
+      {
+        "n": 2,
+        "name": "Notificação do AIIM",
+        "nos": 102,
+        "cenarios": 100,
+        "ancoras": [
+          "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+          "POC_EpatProcess/Iniciar Aguardar Notificacao",
+          "POC_EpatProcess/Trocar Notificação?",
+          "POC_EpatProcess/Finalizar AIIM",
+          "POC_EpatProcess/Existe Notificação?",
+          "POC_EpatProcess/Preparar Notificacao",
+          "POC_EpatProcess/Criar Notificacao",
+          "BSCENVPC/Busca Envolvidos Vista Por AIIM",
+          "CRNOTPC/CriaNotificacao"
+        ],
+        "posicaoNaJornada": {
+          "minima": 0.0,
+          "maxima": 6.0
+        },
+        "bloqueadores": [
+          {
+            "id": "NOEQ-dynamic-subprocess",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 3,
+            "nos": [
+              "POC_EpatProcess/Aguardar evento de Notificacao do AIIM"
+            ]
+          },
+          {
+            "id": "NOEQ-graft-step",
+            "ocorrenciasNaEtapa": 3,
+            "ocorrenciasNoPacote": 3,
+            "nos": [
+              "POC_EpatProcess/Inicia Graft Step",
+              "POC_EpatProcess/Iniciar Novo Graft"
+            ]
+          },
+          {
+            "id": "NOEQ-iprocess-builtin",
+            "ocorrenciasNaEtapa": 8,
+            "ocorrenciasNoPacote": 17,
+            "nos": [
+              "BSCENVPC/SetParameters",
+              "BSCENVPC/Start Loop",
+              "CALCPRPC/SetParameters",
+              "CALCPRPC/Start Loop",
+              "CRNOTPC/SetParameters",
+              "CRNOTPC/Start Loop",
+              "DEAT0050/HoraFimSC",
+              "POC_EpatProcess/Set Nome Etapa 2"
+            ]
+          },
+          {
+            "id": "NOEQ-expression-deadline",
+            "ocorrenciasNaEtapa": 2,
+            "ocorrenciasNoPacote": 4,
+            "nos": [
+              "DEAT0050/Aguarda Defesa",
+              "POC_EpatProcess/Fim de Prazo Mantendo Atividade"
+            ]
+          },
+          {
+            "id": "NOEQ-external-event",
+            "ocorrenciasNaEtapa": 3,
+            "ocorrenciasNoPacote": 6,
+            "nos": [
+              "DEAT0050/INICALC",
+              "POC_EpatProcess/Iniciar Aguardar Notificacao",
+              "POC_EpatProcess/Iniciar Novo Graft"
+            ]
+          },
+          {
+            "id": "NOEQ-link-goto",
+            "ocorrenciasNaEtapa": 8,
+            "ocorrenciasNoPacote": 20,
+            "nos": [
+              "BSCENVPC/Link To: Try Task",
+              "BSCENVPC/Try Task",
+              "CALCPRPC/Link To: Try Task",
+              "CALCPRPC/Try Task",
+              "CRNOTPC/Link To: Try Task",
+              "CRNOTPC/Try Task",
+              "POC_EpatProcess/Inicia Graft Step"
+            ]
+          },
+          {
+            "id": "NOEQ-non-interrupting-boundary",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 1,
+            "nos": [
+              "POC_EpatProcess/Fim de Prazo Mantendo Atividade"
+            ]
+          }
+        ]
+      },
+      {
+        "n": 3,
+        "name": "Integração com Decisions",
+        "nos": 33,
+        "cenarios": 57,
+        "ancoras": [
+          "POC_EpatProcess/Iniciar Decisions",
+          "POC_EpatProcess/Iniciar Decisions",
+          "POC_EpatProcess/Verificar Retorno Decisions"
+        ],
+        "posicaoNaJornada": {
+          "minima": 1.0,
+          "maxima": 7.0
+        },
+        "bloqueadores": [
+          {
+            "id": "NOEQ-iprocess-builtin",
+            "ocorrenciasNaEtapa": 4,
+            "ocorrenciasNoPacote": 17,
+            "nos": [
+              "POC_EpatProcess/Define Destinatarios",
+              "POC_EpatProcess/Verificar Anulacao",
+              "PRPINTPC/SetParameters",
+              "PRPINTPC/Start Loop"
+            ]
+          },
+          {
+            "id": "NOEQ-link-goto",
+            "ocorrenciasNaEtapa": 4,
+            "ocorrenciasNoPacote": 20,
+            "nos": [
+              "POC_EpatProcess/Iniciar Decisions",
+              "PRPINTPC/Link To: Try Task",
+              "PRPINTPC/Try Task"
+            ]
+          }
+        ]
+      },
+      {
+        "n": 4,
+        "name": "Verificação do Retorno do Decisions",
+        "nos": 76,
+        "cenarios": 79,
+        "ancoras": [
+          "POC_EpatProcess/Iniciar Decisions",
+          "POC_EpatProcess/Iniciar Decisions",
+          "POC_EpatProcess/Verificar Retorno Decisions",
+          "CONTROPC/Aguardar Retorno"
+        ],
+        "posicaoNaJornada": {
+          "minima": 0.0,
+          "maxima": 7.0
+        },
+        "bloqueadores": [
+          {
+            "id": "NOEQ-dynamic-subprocess",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 3,
+            "nos": [
+              "CONTROPC/Aguardar Retorno"
+            ]
+          },
+          {
+            "id": "NOEQ-iprocess-builtin",
+            "ocorrenciasNaEtapa": 8,
+            "ocorrenciasNoPacote": 17,
+            "nos": [
+              "AGPECASPC/Set Values",
+              "ATZINTPC/SetParameters",
+              "ATZINTPC/Start Loop",
+              "CONTROPC/ISetSubProc",
+              "POC_EpatProcess/Define Destinatarios",
+              "POC_EpatProcess/Verificar Anulacao",
+              "PRPINTPC/SetParameters",
+              "PRPINTPC/Start Loop"
+            ]
+          },
+          {
+            "id": "NOEQ-external-event",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 6,
+            "nos": [
+              "AGPECASPC/Aguardar Interposicoes"
+            ]
+          },
+          {
+            "id": "NOEQ-link-goto",
+            "ocorrenciasNaEtapa": 6,
+            "ocorrenciasNoPacote": 20,
+            "nos": [
+              "ATZINTPC/Link To: Try Task",
+              "ATZINTPC/Try Task",
+              "POC_EpatProcess/Iniciar Decisions",
+              "PRPINTPC/Link To: Try Task",
+              "PRPINTPC/Try Task"
+            ]
+          }
+        ]
+      },
+      {
+        "n": 5,
+        "name": "Validação de Gateways Paralelos",
+        "nos": 47,
+        "cenarios": 45,
+        "ancoras": [
+          "POC_EpatProcess/Validação Paralelos",
+          "POC_EpatProcess/Validar Paralelos"
+        ],
+        "posicaoNaJornada": {
+          "minima": 1.0,
+          "maxima": 8.0
+        },
+        "bloqueadores": [
+          {
+            "id": "NOEQ-iprocess-builtin",
+            "ocorrenciasNaEtapa": 3,
+            "ocorrenciasNoPacote": 17,
+            "nos": [
+              "BSCENVPC/SetParameters",
+              "BSCENVPC/Start Loop",
+              "POC_EpatProcess/prepSub"
+            ]
+          },
+          {
+            "id": "NOEQ-expression-deadline",
+            "ocorrenciasNaEtapa": 2,
+            "ocorrenciasNoPacote": 4,
+            "nos": [
+              "POC_EpatProcess/"
+            ]
+          },
+          {
+            "id": "NOEQ-external-event",
+            "ocorrenciasNaEtapa": 2,
+            "ocorrenciasNoPacote": 6,
+            "nos": [
+              "POC_EpatProcess/Pedido de Vistas",
+              "POC_EpatProcess/Vistas do Juiz"
+            ]
+          },
+          {
+            "id": "NOEQ-link-goto",
+            "ocorrenciasNaEtapa": 6,
+            "ocorrenciasNoPacote": 20,
+            "nos": [
+              "BSCENVPC/Link To: Try Task",
+              "BSCENVPC/Try Task",
+              "POC_EpatProcess/Mista",
+              "POC_EpatProcess/Validação Paralelos",
+              "POC_EpatProcess/Validar Paralelos"
+            ]
+          }
+        ]
+      },
+      {
+        "n": 6,
+        "name": "Controle de Intimados",
+        "nos": 1,
+        "cenarios": 27,
+        "ancoras": [
+          "POC_EpatProcess/Controlar Intimados"
+        ],
+        "posicaoNaJornada": {
+          "minima": 6.0,
+          "maxima": 9.0
+        },
+        "bloqueadores": [
+          {
+            "id": "NOEQ-dynamic-subprocess",
+            "ocorrenciasNaEtapa": 1,
+            "ocorrenciasNoPacote": 3,
+            "nos": [
+              "POC_EpatProcess/Controlar Intimados"
+            ]
+          }
+        ]
+      },
+      {
+        "n": 7,
+        "name": "Encerramento",
+        "nos": 7,
+        "cenarios": 47,
+        "ancoras": [
+          "POC_EpatProcess/",
+          "POC_EpatProcess/",
+          "POC_EpatProcess/Fim",
+          "POC_EpatProcess/",
+          "POC_EpatProcess/Fim E-mail",
+          "POC_EpatProcess/End Event",
+          "POC_EpatProcess/Fim de Prazo"
+        ],
+        "posicaoNaJornada": {
+          "minima": 2.0,
+          "maxima": 10.0
+        },
+        "bloqueadores": []
+      }
+    ],
+    "colisoes": []
+  },
+  "stitches": [
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "link",
+      "de": "Mista",
+      "para": "Mista"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "link",
+      "de": "Validar Paralelos",
+      "para": "Validação Paralelos"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "link",
+      "de": "Iniciar Decisions",
+      "para": "Iniciar Decisions"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "link",
+      "de": "Corrigir Fechamento",
+      "para": "Corrigir Fechamento"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "link",
+      "de": "Inicia Graft Step",
+      "para": "Inicia Graft Step"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Preparar Notificacao",
+      "para": "Fim de Prazo Mantendo Atividade"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Pedido de Vistas",
+      "para": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Pedido de Vistas",
+      "para": "Fim Vista Mista"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Vistas do Juiz",
+      "para": "timerEvent _CtQ6_1qPEfG5K7mY0I3I6w"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Realizar Atividade Vista Mista",
+      "para": "Catch Signal Event"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "fronteira",
+      "de": "Preparar Notificacao",
+      "para": "Encerra e retira"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "sinal",
+      "de": "FimDRF",
+      "para": "Catch Signal Event"
+    },
+    {
+      "processo": "POC_EpatProcess",
+      "tipo": "sinal",
+      "de": "Fim Vista Mista",
+      "para": "Fim Vista Mista"
+    },
+    {
+      "processo": "CALCPRPC",
+      "tipo": "link",
+      "de": "Link To: Try Task",
+      "para": "Try Task"
+    },
+    {
+      "processo": "CALCPRPC",
+      "tipo": "activitySet",
+      "de": "Control System Task Call",
+      "para": "ActivitySet"
+    },
+    {
+      "processo": "BSCENVPC",
+      "tipo": "link",
+      "de": "Link To: Try Task",
+      "para": "Try Task"
+    },
+    {
+      "processo": "BSCENVPC",
+      "tipo": "activitySet",
+      "de": "Control System Task Call",
+      "para": "ActivitySet"
+    },
+    {
+      "processo": "PRPINTPC",
+      "tipo": "link",
+      "de": "Link To: Try Task",
+      "para": "Try Task"
+    },
+    {
+      "processo": "PRPINTPC",
+      "tipo": "activitySet",
+      "de": "Control System Task Call",
+      "para": "ActivitySet"
+    },
+    {
+      "processo": "ATZINTPC",
+      "tipo": "link",
+      "de": "Link To: Try Task",
+      "para": "Try Task"
+    },
+    {
+      "processo": "ATZINTPC",
+      "tipo": "activitySet",
+      "de": "Control System Task Call",
+      "para": "ActivitySet"
+    },
+    {
+      "processo": "AGPECASPC",
+      "tipo": "fronteira",
+      "de": "Aguardar Interposicoes",
+      "para": "timerEvent _EvOwRF6eEfGJqLUhfbpFcQ"
+    },
+    {
+      "processo": "CRNOTPC",
+      "tipo": "link",
+      "de": "Link To: Try Task",
+      "para": "Try Task"
+    },
+    {
+      "processo": "CRNOTPC",
+      "tipo": "activitySet",
+      "de": "Control System Task Call",
+      "para": "ActivitySet"
+    }
+  ],
+  "coverage": [
+    {
+      "process": "POC_EpatProcess",
+      "nodes": 60,
+      "edges": 70,
+      "edgesStitched": 13,
+      "edgesCovered": 70,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Iniciar Novo Graft",
+          "tipo": "receiveTask"
+        },
+        {
+          "nome": "Iniciar Aguardar Notificacao",
+          "tipo": "receiveTask"
+        },
+        {
+          "nome": "Início",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 48,
+      "loopCuts": 5,
+      "truncated": false
+    },
+    {
+      "process": "DEAT0050",
+      "nodes": 8,
+      "edges": 8,
+      "edgesStitched": 0,
+      "edgesCovered": 8,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "INICALC",
+          "tipo": "receiveTask"
+        },
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 4,
+      "loopCuts": 2,
+      "truncated": false
+    },
+    {
+      "process": "CALCPRPC",
+      "nodes": 26,
+      "edges": 30,
+      "edgesStitched": 3,
+      "edgesCovered": 30,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 18,
+      "loopCuts": 9,
+      "truncated": false
+    },
+    {
+      "process": "BSCENVPC",
+      "nodes": 26,
+      "edges": 30,
+      "edgesStitched": 3,
+      "edgesCovered": 30,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 18,
+      "loopCuts": 9,
+      "truncated": false
+    },
+    {
+      "process": "PRPINTPC",
+      "nodes": 26,
+      "edges": 30,
+      "edgesStitched": 3,
+      "edgesCovered": 30,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 18,
+      "loopCuts": 9,
+      "truncated": false
+    },
+    {
+      "process": "CONTROPC",
+      "nodes": 7,
+      "edges": 6,
+      "edgesStitched": 0,
+      "edgesCovered": 6,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 1,
+      "loopCuts": 0,
+      "truncated": false
+    },
+    {
+      "process": "ATZINTPC",
+      "nodes": 26,
+      "edges": 30,
+      "edgesStitched": 3,
+      "edgesCovered": 30,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 18,
+      "loopCuts": 9,
+      "truncated": false
+    },
+    {
+      "process": "AGPECASPC",
+      "nodes": 10,
+      "edges": 11,
+      "edgesStitched": 1,
+      "edgesCovered": 11,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 3,
+      "loopCuts": 2,
+      "truncated": false
+    },
+    {
+      "process": "CRNOTPC",
+      "nodes": 26,
+      "edges": 30,
+      "edgesStitched": 3,
+      "edgesCovered": 30,
+      "edgesUncovered": [],
+      "entryPoints": [
+        {
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        }
+      ],
+      "scenarios": 18,
+      "loopCuts": 9,
+      "truncated": false
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SC-POC_EpatProcess-001",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 30,
+      "decisoes": 5,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-002",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 32,
+      "decisoes": 5,
+      "entradas": 4
+    },
+    {
+      "id": "SC-POC_EpatProcess-003",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 33,
+      "decisoes": 5,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-004",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 35,
+      "decisoes": 5,
+      "entradas": 4
+    },
+    {
+      "id": "SC-POC_EpatProcess-005",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 31,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-006",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 33,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-007",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 35,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-008",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 37,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-009",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 30,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-010",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 28,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-011",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 35,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-012",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 29,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-013",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 28,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-014",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 10,
+      "decisoes": 2,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-015",
+      "process": "POC_EpatProcess",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Novo Graft",
+      "ate": "endEvent _O7K3MF9LEfGqPfX31TKC3w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        2,
+        7
+      ],
+      "passos": 6,
+      "decisoes": 1,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-016",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "Fim E-mail",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 6,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-017",
+      "process": "POC_EpatProcess",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Novo Graft",
+      "ate": "End Event",
+      "termina": "fim-do-caso",
+      "etapas": [
+        2,
+        7
+      ],
+      "passos": 5,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-018",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 20,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-019",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 22,
+      "decisoes": 3,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-020",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-021",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 3,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-022",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 21,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-023",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-024",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-025",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 27,
+      "decisoes": 3,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-026",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 20,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-027",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 18,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-028",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-029",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 19,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-030",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Iniciar Aguardar Notificacao",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 18,
+      "decisoes": 2,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-031",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-032",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 27,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-033",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 28,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-POC_EpatProcess-034",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 30,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-POC_EpatProcess-035",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 26,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-036",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 28,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-037",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 30,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-038",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 32,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-039",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 25,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-040",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-041",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "Fim",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "passos": 30,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-042",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 24,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-043",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "Fim de Prazo",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "passos": 23,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-044",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 5,
+      "decisoes": 1,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-045",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "percurso",
+      "de": "Início",
+      "ate": "Corrigir Fechamento",
+      "termina": "corte-de-laco",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 8,
+      "decisoes": 1,
+      "entradas": 1
+    },
+    {
+      "id": "SC-POC_EpatProcess-046",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Início",
+      "ate": "endEvent _O7K3MF9LEfGqPfX31TKC3w",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 8,
+      "decisoes": 1,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-047",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "Fim E-mail",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 8,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-POC_EpatProcess-048",
+      "process": "POC_EpatProcess",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Início",
+      "ate": "End Event",
+      "termina": "fim-do-caso",
+      "etapas": [
+        1,
+        2,
+        7
+      ],
+      "passos": 7,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-DEAT0050-001",
+      "process": "DEAT0050",
+      "etapa": 1,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "INICALC",
+      "ate": "Controlar Data",
+      "termina": "corte-de-laco",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 6,
+      "decisoes": 1,
+      "entradas": 1
+    },
+    {
+      "id": "SC-DEAT0050-002",
+      "process": "DEAT0050",
+      "etapa": 1,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "INICALC",
+      "ate": "endEvent _lrer2FqhEfG5K7mY0I3I6w",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 5,
+      "decisoes": 1,
+      "entradas": 0
+    },
+    {
+      "id": "SC-DEAT0050-003",
+      "process": "DEAT0050",
+      "etapa": 1,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Controlar Data",
+      "termina": "corte-de-laco",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 6,
+      "decisoes": 1,
+      "entradas": 1
+    },
+    {
+      "id": "SC-DEAT0050-004",
+      "process": "DEAT0050",
+      "etapa": 1,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "endEvent _lrer2FqhEfG5K7mY0I3I6w",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 5,
+      "decisoes": 1,
+      "entradas": 0
+    },
+    {
+      "id": "SC-CALCPRPC-001",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CALCPRPC-002",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 18,
+      "decisoes": 6,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-003",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 19,
+      "decisoes": 7,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CALCPRPC-004",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 14,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-CALCPRPC-005",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 16,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-006",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CALCPRPC-007",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        2
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-008",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 19,
+      "decisoes": 6,
+      "entradas": 3
+    },
+    {
+      "id": "SC-CALCPRPC-009",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 20,
+      "decisoes": 7,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-010",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CALCPRPC-011",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-CALCPRPC-012",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-013",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CALCPRPC-014",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 16,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-015",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 6,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CALCPRPC-016",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 12,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-CALCPRPC-017",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 14,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CALCPRPC-018",
+      "process": "CALCPRPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-001",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-002",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 18,
+      "decisoes": 6,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-003",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 19,
+      "decisoes": 7,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-004",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 14,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-BSCENVPC-005",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 16,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-006",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-007",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-008",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 19,
+      "decisoes": 6,
+      "entradas": 3
+    },
+    {
+      "id": "SC-BSCENVPC-009",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 20,
+      "decisoes": 7,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-010",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-011",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 17,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-BSCENVPC-012",
+      "process": "BSCENVPC",
+      "etapa": 1,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        1,
+        2
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-013",
+      "process": "BSCENVPC",
+      "etapa": 5,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        5
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-014",
+      "process": "BSCENVPC",
+      "etapa": 5,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        5
+      ],
+      "passos": 16,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-015",
+      "process": "BSCENVPC",
+      "etapa": 5,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        5
+      ],
+      "passos": 17,
+      "decisoes": 6,
+      "entradas": 1
+    },
+    {
+      "id": "SC-BSCENVPC-016",
+      "process": "BSCENVPC",
+      "etapa": 5,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        5
+      ],
+      "passos": 12,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-BSCENVPC-017",
+      "process": "BSCENVPC",
+      "etapa": 5,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        5
+      ],
+      "passos": 14,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-BSCENVPC-018",
+      "process": "BSCENVPC",
+      "etapa": 5,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        5
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-001",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-002",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 18,
+      "decisoes": 6,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-003",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 19,
+      "decisoes": 7,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-004",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 14,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-PRPINTPC-005",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 16,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-006",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-007",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-008",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 19,
+      "decisoes": 6,
+      "entradas": 3
+    },
+    {
+      "id": "SC-PRPINTPC-009",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 20,
+      "decisoes": 7,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-010",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-011",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 17,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-PRPINTPC-012",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-013",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-014",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 16,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-015",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 17,
+      "decisoes": 6,
+      "entradas": 1
+    },
+    {
+      "id": "SC-PRPINTPC-016",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 12,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-PRPINTPC-017",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 14,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-PRPINTPC-018",
+      "process": "PRPINTPC",
+      "etapa": 3,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        3,
+        4
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CONTROPC-001",
+      "process": "CONTROPC",
+      "etapa": 4,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "endEvent _-bkw8l6JEfGBBLgT-R5iuw",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 7,
+      "decisoes": 0,
+      "entradas": 0
+    },
+    {
+      "id": "SC-ATZINTPC-001",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        4
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-ATZINTPC-002",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 18,
+      "decisoes": 6,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-003",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 19,
+      "decisoes": 7,
+      "entradas": 1
+    },
+    {
+      "id": "SC-ATZINTPC-004",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 14,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-ATZINTPC-005",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 16,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-006",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-ATZINTPC-007",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        4
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-008",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 19,
+      "decisoes": 6,
+      "entradas": 3
+    },
+    {
+      "id": "SC-ATZINTPC-009",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 20,
+      "decisoes": 7,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-010",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-ATZINTPC-011",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 17,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-ATZINTPC-012",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-013",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        4
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-ATZINTPC-014",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 16,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-015",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 17,
+      "decisoes": 6,
+      "entradas": 1
+    },
+    {
+      "id": "SC-ATZINTPC-016",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 12,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-ATZINTPC-017",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 14,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-ATZINTPC-018",
+      "process": "ATZINTPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-AGPECASPC-001",
+      "process": "AGPECASPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "percurso",
+      "de": "Start Event",
+      "ate": "Controla Datas",
+      "termina": "corte-de-laco",
+      "etapas": [
+        4
+      ],
+      "passos": 7,
+      "decisoes": 1,
+      "entradas": 1
+    },
+    {
+      "id": "SC-AGPECASPC-002",
+      "process": "AGPECASPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Controla Datas",
+      "termina": "corte-de-laco",
+      "etapas": [
+        4
+      ],
+      "passos": 9,
+      "decisoes": 1,
+      "entradas": 1
+    },
+    {
+      "id": "SC-AGPECASPC-003",
+      "process": "AGPECASPC",
+      "etapa": 4,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "End Event",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        4
+      ],
+      "passos": 5,
+      "decisoes": 1,
+      "entradas": 0
+    },
+    {
+      "id": "SC-CRNOTPC-001",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CRNOTPC-002",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 18,
+      "decisoes": 6,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-003",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 19,
+      "decisoes": 7,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CRNOTPC-004",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 14,
+      "decisoes": 4,
+      "entradas": 0
+    },
+    {
+      "id": "SC-CRNOTPC-005",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 16,
+      "decisoes": 4,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-006",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 5,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CRNOTPC-007",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        2
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-008",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 19,
+      "decisoes": 6,
+      "entradas": 3
+    },
+    {
+      "id": "SC-CRNOTPC-009",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 20,
+      "decisoes": 7,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-010",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CRNOTPC-011",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 4,
+      "entradas": 3
+    },
+    {
+      "id": "SC-CRNOTPC-012",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+      "kind": "erro",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 18,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-013",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "prazo",
+      "de": "Start Event",
+      "ate": "Try Task",
+      "termina": "corte-de-laco",
+      "etapas": [
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CRNOTPC-014",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 16,
+      "decisoes": 5,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-015",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 17,
+      "decisoes": 6,
+      "entradas": 1
+    },
+    {
+      "id": "SC-CRNOTPC-016",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Success",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 12,
+      "decisoes": 3,
+      "entradas": 0
+    },
+    {
+      "id": "SC-CRNOTPC-017",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Fixed",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 14,
+      "decisoes": 3,
+      "entradas": 2
+    },
+    {
+      "id": "SC-CRNOTPC-018",
+      "process": "CRNOTPC",
+      "etapa": 2,
+      "etapaOrigem": "herdada-da-arvore-de-chamada",
+      "kind": "ate-ao-fim",
+      "de": "Start Event",
+      "ate": "Done - Bail",
+      "termina": "regressa-ao-chamador",
+      "etapas": [
+        2
+      ],
+      "passos": 15,
+      "decisoes": 4,
+      "entradas": 1
+    }
+  ]
+}

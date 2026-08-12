@@ -1,0 +1,289 @@
+{
+  "id": "SC-CALCPRPC-018",
+  "process": "CALCPRPC",
+  "etapa": 2,
+  "etapas": [
+    2
+  ],
+  "etapaOrigem": "herdada-da-arvore-de-chamada",
+  "kind": "ate-ao-fim",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 2,
+    "cadeia": [
+      "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+      "DEAT0050/CalculaPrazo"
+    ]
+  },
+  "origem": {
+    "id": "_zJIHVVqiEfG5K7mY0I3I6w",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "DEAT0050/CalculaPrazo"
+  },
+  "destino": {
+    "id": "_zJIHWlqiEfG5K7mY0I3I6w",
+    "nome": "Done - Bail",
+    "tipo": "endEvent",
+    "como": "regressa-ao-chamador",
+    "regressaA": "DEAT0050/CalculaPrazo"
+  },
+  "lengthNodes": 15,
+  "segmentos": [
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 15,
+      "abrePor": "Start Event",
+      "fechaEm": "Done - Bail",
+      "herdadoDe": "DEAT0050/CalculaPrazo",
+      "herdadoDeNoId": "_lrer3lqhEfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_zJIHVVqiEfG5K7mY0I3I6w",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "nome": "SetParameters",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIHWFqiEfG5K7mY0I3I6w",
+          "nome": "Start Loop",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIHZlqiEfG5K7mY0I3I6w",
+          "nome": "Control System Task Call",
+          "tipo": "subProcessScope"
+        },
+        {
+          "id": "_zJIublqiEfG5K7mY0I3I6w",
+          "nome": "startEvent _zJIublqiEfG5K7mY0I3I6w",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_zJIuaVqiEfG5K7mY0I3I6w",
+          "nome": "Start TX",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIubVqiEfG5K7mY0I3I6w",
+          "nome": "Check Retries SW_QRETRYCOUNT",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIucFqiEfG5K7mY0I3I6w",
+          "nome": "Set Technical Error",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_zJIub1qiEfG5K7mY0I3I6w",
+          "nome": "endEvent _zJIub1qiEfG5K7mY0I3I6w",
+          "tipo": "endEvent"
+        },
+        {
+          "id": "_zJIHZVqiEfG5K7mY0I3I6w",
+          "nome": "Tech Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHZ1qiEfG5K7mY0I3I6w",
+          "nome": "gateway _zJIHZ1qiEfG5K7mY0I3I6w",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHXVqiEfG5K7mY0I3I6w",
+          "nome": "Manipular Excecao",
+          "tipo": "userTask"
+        },
+        {
+          "id": "_zJIHV1qiEfG5K7mY0I3I6w",
+          "nome": "Manually Fixed",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHXFqiEfG5K7mY0I3I6w",
+          "nome": "Try Again",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_zJIHWlqiEfG5K7mY0I3I6w",
+          "nome": "Done - Bail",
+          "tipo": "endEvent"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_zJIHVVqiEfG5K7mY0I3I6w",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_zJIHVlqiEfG5K7mY0I3I6w",
+      "nome": "SetParameters",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHWFqiEfG5K7mY0I3I6w",
+      "nome": "Start Loop",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHZlqiEfG5K7mY0I3I6w",
+      "nome": "Control System Task Call",
+      "tipo": "subProcessScope",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIublqiEfG5K7mY0I3I6w",
+      "nome": "startEvent _zJIublqiEfG5K7mY0I3I6w",
+      "tipo": "startEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "descida"
+    },
+    {
+      "id": "_zJIuaVqiEfG5K7mY0I3I6w",
+      "nome": "Start TX",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIubVqiEfG5K7mY0I3I6w",
+      "nome": "Check Retries SW_QRETRYCOUNT",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIucFqiEfG5K7mY0I3I6w",
+      "nome": "Set Technical Error",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIub1qiEfG5K7mY0I3I6w",
+      "nome": "endEvent _zJIub1qiEfG5K7mY0I3I6w",
+      "tipo": "endEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHZVqiEfG5K7mY0I3I6w",
+      "nome": "Tech Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "regresso"
+    },
+    {
+      "id": "_zJIHZ1qiEfG5K7mY0I3I6w",
+      "nome": "gateway _zJIHZ1qiEfG5K7mY0I3I6w",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHXVqiEfG5K7mY0I3I6w",
+      "nome": "Manipular Excecao",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHV1qiEfG5K7mY0I3I6w",
+      "nome": "Manually Fixed",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHXFqiEfG5K7mY0I3I6w",
+      "nome": "Try Again",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_zJIHWlqiEfG5K7mY0I3I6w",
+      "nome": "Done - Bail",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Check Retries SW_QRETRYCOUNT",
+      "decisaoId": "_zJIubVqiEfG5K7mY0I3I6w",
+      "ramo": "Maxretriesexceeded",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Set Technical Error",
+      "exige": []
+    },
+    {
+      "decisao": "Tech Error",
+      "decisaoId": "_zJIHZVqiEfG5K7mY0I3I6w",
+      "ramo": "Yes",
+      "tipo": "CONDITION",
+      "condicao": "ISTECHERROR=='Y';",
+      "leva": "gateway _zJIHZ1qiEfG5K7mY0I3I6w",
+      "exige": [
+        {
+          "campo": "ISTECHERROR",
+          "operador": "==",
+          "valor": "Y",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "Manually Fixed",
+      "decisaoId": "_zJIHV1qiEfG5K7mY0I3I6w",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Try Again",
+      "exige": []
+    },
+    {
+      "decisao": "Try Again",
+      "decisaoId": "_zJIHXFqiEfG5K7mY0I3I6w",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Done - Bail",
+      "exige": []
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "ISTECHERROR",
+      "operador": "==",
+      "valor": "Y",
+      "sentinelaSwNa": false
+    }
+  ],
+  "serviceCalls": [],
+  "descidas": []
+}

@@ -1,0 +1,30 @@
+=== parecer no backlog
+{
+  "ficheiro": "analysis/backlog-review.json",
+  "presente": true,
+  "sha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf",
+  "pareceres": 8,
+  "aplicados": 8,
+  "nota": "Entrada do bundle, nao saida: pode alterar titulo e hipoteses, logo e fixada por sha256 como o XPDL e o glossario. Mesmas fontes + mesmo glossario + mesmo parecer = mesmo backlog."
+}
+cards com hipoteses          : 8
+cards com reviewSha256       : 8
+passos com pergunta ratificada: 26
+=== um card com parecer
+  Vistas do juiz e mistas, ate a preparacao dos intimados
+  sha do parecer: 0b947c09ae6f956d83a5
+   - prepSub parte IDSINTIMADOS com SEARCH e SUBSTR assumindo base 1; a semantica continua por fixar na documentacao iProcess e um desvio de uma posicao nao falha - devolve valor errado.
+   - A ultima atribuicao de IDSINTIMADOS neste troco e andaime de teste e nao migra; confirmar que foi removida e nao transcrita.
+   - TIPOVISTAS nao preenchido segue deliberadamente para o juiz. O ramo 'DRF' e o por omissao e nao um terceiro valor de dominio: colapsar o sentinela em null inverte a regra sem erro visivel.
+=== bundle
+  selo: 9a06e1eb9bfe3b99  ficheiros: 403  porFechar: 0
+InvalidOperation: C:\Users\e_rfdbarssoles\Documents\PoCs\SEFAZ-SP\tools\tmp-fin.ps1:19:77
+Line |
+  19 |  .  'fonte' }) { "  {0,-18} {1}" -f $_.tipo, $_.sha256.Substring(0,20) }
+     |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | You cannot call a method on a null-valued expression.
+InvalidOperation: C:\Users\e_rfdbarssoles\Documents\PoCs\SEFAZ-SP\tools\tmp-fin.ps1:19:77
+Line |
+  19 |  .  'fonte' }) { "  {0,-18} {1}" -f $_.tipo, $_.sha256.Substring(0,20) }
+     |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | You cannot call a method on a null-valued expression.

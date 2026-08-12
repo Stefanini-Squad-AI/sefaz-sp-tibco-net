@@ -1,0 +1,159 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-CONTROPC-seg039",
+  "cardType": "build",
+  "title": "Verificação do Retorno do Decisions: de 'Aguardar Retorno' ate 'endEvent _-bkw8l6JEfGBBLgT-R5iuw'",
+  "epic": "etapa-4",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Aguardar Retorno' a 'endEvent _-bkw8l6JEfGBBLgT-R5iuw', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 3 passo(s) da jornada do caso, de 'Aguardar Retorno' ate 'endEvent _-bkw8l6JEfGBBLgT-R5iuw', no processo CONTROPC.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Processes",
+        "status": "final",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "final",
+        "note": "Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Doubles",
+        "status": "scaffold",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_-bkw-V6JEfGBBLgT-R5iuw",
+        "nome": "Aguardar Retorno",
+        "kind": "callActivity",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_-bkxKF6JEfGBBLgT-R5iuw",
+        "nome": "Desativa Subs",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_-bkw8l6JEfGBBLgT-R5iuw",
+        "nome": "endEvent _-bkw8l6JEfGBBLgT-R5iuw",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-CONTROPC-001].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_-bkw-V6JEfGBBLgT-R5iuw",
+      "_-bkxKF6JEfGBBLgT-R5iuw",
+      "_-bkw8l6JEfGBBLgT-R5iuw"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_-bkw-V6JEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_-bkw-V6JEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_-bkxKF6JEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_-bkxKF6JEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_-bkw8l6JEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_-bkw8l6JEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-CONTROPC-001.json",
+      "immutable": true,
+      "caseCount": 1
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 5 ao 7 do cenario SC-CONTROPC-001 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "CONTROPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: controle de intimados, etapas 6 e 7"
+  },
+  "fulfills": {
+    "etapas": [
+      4
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-CONTROPC-001",
+      "ordemNaJornada": 1,
+      "doPasso": 5,
+      "aoPasso": 7,
+      "abrePor": "Aguardar Retorno",
+      "fechaEm": "endEvent _-bkw8l6JEfGBBLgT-R5iuw"
+    },
+    "concepts": [
+      "encadeamento-subprocessos",
+      "eventos-inicio-fim"
+    ],
+    "expectedResults": [
+      "subprocessos-encadeados",
+      "modelagem-bpmn"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 3,
+    "camadas": 2,
+    "pastas": 4,
+    "aEscrever": 2,
+    "bloqueadores": 1,
+    "regrasDeNegocio": 0,
+    "peso": "grande"
+  },
+  "gaps": [
+    {
+      "construct": "dynamic-subprocess",
+      "detail": "1 no(s) deste segmento, de 3 no pacote inteiro. Decisao ratificada em NOEQ-dynamic-subprocess.",
+      "status": "decided",
+      "decisionRef": "NOEQ-dynamic-subprocess"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-dynamic-subprocess"
+  ],
+  "dependsOn": [
+    "BUILD-CONTROPC-seg045"
+  ]
+}

@@ -1,0 +1,674 @@
+# Glossario de negocio - SEFAZ-SP ePAT
+#
+# ESTE ARQUIVO E PREENCHIDO POR HUMANOS. O gerador apenas SEMEIA as entradas e
+# atualiza os comentarios de evidencia; qualquer valor ja preenchido e preservado.
+#
+# term        nome de negocio, curto. Vira o rotulo no BPMN e o nome da propriedade C#.
+# description o que o campo significa e por que ele existe.
+# values      significado de cada valor do dominio.
+#
+# Os comentarios "evidencia:" sao gerados a partir dos artefatos - nao edite,
+# eles sao reescritos a cada execucao de gen-review-dossier.ps1.
+
+version: 1
+package: POC_Epat
+
+fields:
+  AFR:
+    # evidencia: tipo string; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Agente Fiscal de Renda' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  ARRAYINT:
+    # evidencia: tipo string(50); nao decide ramificacao
+    # evidencia: nome completo 'arrayIntimados' (nome abreviado no XPDL)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  CD_DRT:
+    # evidencia: tipo int; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Código da DRT' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  CDIMPOSTO:
+    # evidencia: tipo long; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Código Imposto' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  CNTINSTANCIASUF:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: nome completo 'cntInstanciasUFC' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  CODMUNAIIM:
+    # evidencia: tipo int; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Código do Município do AIIM' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  CORRECAO:
+    # evidencia: tipo bool; decide 1 ramificacao(oes)
+    # evidencia: comparado com == true
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  DATACONTROLE:
+    # evidencia: tipo DateOnly; decide 2 ramificacao(oes)
+    # evidencia: comparado com != PRAZODEFESA , != PRAZORECEBIMENT , == IPESystemValues.SW_NA
+    # evidencia: usa o sentinela SW_NA - campo de TRES estados, nao booleano
+    term: ""
+    description: ""
+    values: ""
+
+  DATAENCPREPNOT:
+    # evidencia: tipo DateOnly; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Data Encerramento Preparar Notifica' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  DESCREGRA:
+    # evidencia: tipo string(250); nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'DescricaoRegra' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI, VerificarRetornoDecisions
+    term: ""
+    description: ""
+    values: ""
+
+  DILIGENCIADESTI:
+    # evidencia: tipo string(20); nao decide ramificacao
+    # evidencia: nome completo 'diligenciaDestino' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  EXCLUSAOSOLIDAR:
+    # evidencia: tipo bool; nao decide ramificacao
+    # evidencia: nome completo 'ExclusaoSolidarios' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  EXISTENOTIFICAC:
+    # evidencia: tipo bool; decide 1 ramificacao(oes)
+    # evidencia: comparado com == true
+    # evidencia: nome completo 'existeNotificacao' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  FLGALC:
+    # evidencia: tipo bool; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'FlagAlcada' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  FORMACORRECAO:
+    # evidencia: tipo string(20); nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Forma de Correção' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  IDDECISAODEBITO:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: nome completo 'idDecisaoDebitoFiscal' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  IDMOTIVOINTIMAC:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: nome completo 'idMotivoIntimacao' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  IDTIPOIMPUGNACA:
+    # evidencia: tipo string(50); nao decide ramificacao
+    # evidencia: nome completo 'idTipoImpugnacao' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  NOMEETAPA:
+    # evidencia: tipo string(8); nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Nome da Etapa' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  NR_AIIM:
+    # evidencia: tipo long; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Número do AIIM' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  NR_RAT:
+    # evidencia: tipo long; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Versão do AIIM' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  NR_RATORIG:
+    # evidencia: tipo long; nao decide ramificacao
+    # ATENCAO: o formulario rotula este campo como 'NR_RAT', que e o nome de OUTRO campo (NR_RAT). Provavel defeito no formulario - nao aceite sem conferir.
+    # evidencia: preenchido no formulario REALATVI
+    term: "Numero do RAT original"
+    description: "Numero do RAT que deu origem ao AIIM, distinto de NR_RAT. Nome DEDUZIDO do identificador em 2026-08-06 por ruling LABEL-CONFLICT, porque o rotulo do formulario apontava para outro campo. PENDENTE DE RATIFICACAO pela SEFAZ."
+    values: ""
+
+  NRSUBPRO:
+    # evidencia: tipo string(50); nao decide ramificacao
+    # evidencia: nome completo 'nrSubProc' (nome abreviado no XPDL)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  PRAZODEFESA:
+    # evidencia: tipo DateOnly; decide 1 ramificacao(oes)
+    term: ""
+    description: ""
+    values: ""
+
+  PRAZORECEBIMENT:
+    # evidencia: tipo DateOnly; decide 1 ramificacao(oes)
+    term: ""
+    description: ""
+    values: ""
+
+  PRAZORETIRADAVI:
+    # evidencia: tipo DateOnly; nao decide ramificacao
+    # evidencia: nome completo 'PrazoRetiradaVista' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  QTDINTIMADOS:
+    # evidencia: tipo long; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'qtdeIntimados' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  RECAPIT:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: nome completo 'Recapitulacao' (nome abreviado no XPDL)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  REGRAINSDOC:
+    # evidencia: tipo int; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Regra de inserção de documentos' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  RESPOSTACQ:
+    # evidencia: tipo string(10); nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Resposta do Contorle de Qualidade' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  SFDIASREPRESENT:
+    # evidencia: tipo string(2); nao decide ramificacao
+    # evidencia: nome completo 'sfDiasRepresentacao' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI, VerificarRetornoDecisions
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  SITUACAOCARREGA:
+    # evidencia: tipo string(10); nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'Situação do carregamento do AIIM' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  STSADMTITCNT:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: usa o sentinela SW_NA - campo de TRES estados, nao booleano
+    # sugestao (rotulo do formulario, NAO verificado): 'StatusAdmissaoTITCNT' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  STSADMTITDRF:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: usa o sentinela SW_NA - campo de TRES estados, nao booleano
+    # sugestao (rotulo do formulario, NAO verificado): 'StatusAdmissaoTITDRF' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  STSPETICAO:
+    # evidencia: tipo int; nao decide ramificacao
+    # ATENCAO: o formulario rotula este campo como 'StatusPeticao', que e o nome de OUTRO campo (STATUSPETICAO). Provavel defeito no formulario - nao aceite sem conferir.
+    # evidencia: preenchido no formulario REALATVI
+    term: "Status da Peticao"
+    description: "Situacao da peticao, distinta do campo STATUSPETICAO. Nome DEDUZIDO do identificador em 2026-08-06 por ruling LABEL-CONFLICT, porque o rotulo do formulario colidia com outro campo. PENDENTE DE RATIFICACAO pela SEFAZ."
+    values: ""
+
+  STSPRMSF:
+    # evidencia: tipo int; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'statusPRMFazenda' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  STSRESPCNT:
+    # evidencia: tipo int; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'statusRESPCnt' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  STSRESPSF:
+    # evidencia: tipo int; nao decide ramificacao
+    # sugestao (rotulo do formulario, NAO verificado): 'statusRESPFazenda' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  TIPOVISTAS:
+    # evidencia: tipo string(50); decide 4 ramificacao(oes)
+    # evidencia: comparado com == 'JUIZ' , == 'MISTA' , == IPESystemValues.SW_NA
+    # evidencia: usa o sentinela SW_NA - campo de TRES estados, nao booleano
+    # evidencia: preenchido no formulario REALATVI, VerificarRetornoDecisions
+    term: ""
+    description: ""
+    values: ""
+
+  TROCATPNOTIFICA:
+    # evidencia: tipo int; decide 1 ramificacao(oes)
+    # evidencia: comparado com == 1
+    # sugestao (rotulo do formulario, NAO verificado): 'Trocar Tipo Notificacao' - copie para term: se estiver correto
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+  VICIOREPRESENTA:
+    # evidencia: tipo bool; nao decide ramificacao
+    # evidencia: nome completo 'vicioRepresentacao' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    # evidencia: trafega em 1 chamada(s) de servico
+    term: ""
+    description: ""
+    values: ""
+
+  VOLTARSEGINSTAN:
+    # evidencia: tipo int; nao decide ramificacao
+    # evidencia: nome completo 'voltarSegInstancia' (o iProcess corta o nome em 15 caracteres)
+    # evidencia: preenchido no formulario REALATVI
+    term: ""
+    description: ""
+    values: ""
+
+# gaps: construcoes do TIBCO sem equivalente direto em .NET.
+# Escolha UMA opcao pelo id e justifique. A decisao vale para todas as ocorrencias.
+gaps:
+  dynamic-subprocess:
+    # prioridade: P1; 3 ocorrencia(s) em CONTROPC, POC_EpatProcess
+    # opcao 'interface-registry-validated' [SUGERIDA - precisa de ratificacao] : Uma interface C# por xpdExt:ProcessInterface e uma implementacao por processo que a declara. Resolucao em runtime por chave (Keyed DI do .NET 8: AddKeyedScoped/GetRequiredKeyedService), com o registo GERADO a partir do XPDL e verificado no arranque contra o conjunto de ImplementedInterface.
+    #     consequencia: Mantem o comportamento dinamico do iProcess e recupera a verificacao em build: um destino em falta quebra o teste de registo, nao a producao. Custo: exige o passo de geracao do registo e um teste de conformidade.
+    # opcao 'closed-switch' : Switch explicito sobre o conjunto de processos que implementam a interface, derivado do XPDL.
+    #     consequencia: Totalmente verificavel em build e simples de ler. Deixa de ser fiel se surgir uma implementacao nova (por exemplo, vinda de um pacote externo), porque exige recompilar.
+    # opcao 'registry-late-binding' : Registo nome-para-tipo puro, resolvido apenas em runtime, com falha explicita quando o nome nao existe.
+    #     consequencia: Reproduz o comportamento dinamico com o minimo de cerimonia. Erros de destino so aparecem em execucao - o mesmo ponto fraco do legado, sem o ganho da verificacao antecipada.
+    opcaoEscolhida: "interface-registry-validated"
+    justificativa: "Ratificado em 2026-08-06. O xpdExt:ProcessInterface do TIBCO ja e a interface: NOTFAIIM (l.12028) -> DEAT0050, CTRINTPC (l.12179) -> CONTROPC, AGURETPC (l.12463) -> AGPECASPC. A traducao e transcricao, nao invencao. RESSALVA: o campo AGUARDAR recebe 7 valores em CONTROPC/ISetSubProc (AgPRJ, AgRecPRJ, AgPRJR, AgPecas, AgRCRaz, AgCRaz, AgPetica) e so 1 implementacao de AGURETPC foi entregue - confirmado que os outros 6 processos estao nos pacotes externos nao entregues. O conjunto NAO e fechado, e por isso o registo validado em arranque e a escolha certa: torna a falta visivel no CI em vez de em producao. closed-switch foi recusada exactamente por isso."
+
+  graft-step:
+    # prioridade: P1; 3 ocorrencia(s) em POC_EpatProcess
+    # opcao 'correlation-join' [SUGERIDA - precisa de ratificacao] : O pai suspende num bookmark correlacionado pelo caso; cada filho, ao terminar, sinaliza; um contador de filhos registados decide o encerramento.
+    #     consequencia: Cobre fielmente a cardinalidade variavel e a anexacao em momentos diferentes. Exige definir formalmente a chave de correlacao e o criterio de encerramento (incluindo timeout), que hoje sao implicitos na identidade do caso iProcess.
+    # opcao 'child-registry' : Cada instancia filha anuncia-se ao pai ao iniciar e reporta ao concluir; o pai mantem a lista e o contador.
+    #     consequencia: Mais simples de auditar e de mostrar numa demo, porque o estado e visivel. Altera o contrato dos processos filhos, que passam a ter de se registar - inclusive os que vierem de pacotes externos.
+    # opcao 'one-to-one-call' : Tratar como chamada dinamica 1:1 e sincrona, seguindo a flag IsGraftStep="false": o pai instancia um unico filho e aguarda a conclusao.
+    #     consequencia: Muito mais barato e coerente com o XPDL exportado, MAS nao valida o conceito de Graft Step que a POC exige demonstrar. So e aceitavel se o cliente confirmar a hipotese (a).
+    opcaoEscolhida: "correlation-join"
+    justificativa: "Ratificado em 2026-08-06. O contrato fica do lado do pai: o filho apenas sinaliza, o que evita obrigar processos de pacotes externos a registarem-se. child-registry foi recusada por empurrar contrato para os filhos. one-to-one-call foi recusada por nao demonstrar o conceito, que o cliente colocou em escopo a 2026-08-05. DECIDIDO TAMBEM: as duas valvulas de reinicio manual - 'Iniciar Aguardar Notificacao' (l.1370) e 'Iniciar Novo Graft' (l.3032), ambas TaskReceive - ficam EM ESCOPO, por serem hoje o unico mecanismo de recuperacao do graft. POR DEFINIR na implementacao: a chave de correlacao formal e o criterio de encerramento, incluindo timeout para filho que nunca termina - hoje ambos sao implicitos na identidade do caso iProcess."
+
+  iprocess-builtin:
+    # prioridade: P1; 17 ocorrencia(s) em AGPECASPC, ATZINTPC, BSCENVPC, CALCPRPC, CONTROPC, CRNOTPC, DEAT0050, POC_EpatProcess, PRPINTPC
+    # opcao 'shim-tri-state' [SUGERIDA - precisa de ratificacao] : Tipo de campo tri-estado dentro da camada anticorrupcao: readonly record struct FieldValue<T> com estados HasValue / IsNotAvailable / Empty, mais a classe IProcessValues com os utilitarios. O pattern matching exaustivo do C# obriga a tratar os tres casos.
+    #     consequencia: Preserva a semantica exata dos tres estados e o compilador passa a exigir a decisao em cada uso. Custo: todo campo sentinela deixa de ser tipo primitivo e o codigo gerado fica menos idiomatico.
+    # opcao 'map-to-null' : Mapear SW_NA para null e usar tipos anulaveis.
+    #     consequencia: Codigo idiomatico, porem SO e seguro para campos que nunca sao legitimamente nulos - e sao 18 campos sentinela, cada um exigindo essa prova. Onde a prova falhar, o ramo trocado nao gera erro visivel.
+    # opcao 'preserve-literal' : Preservar o literal como constante de string e comparar textualmente.
+    #     consequencia: Traducao literal e facil de auditar contra o XPDL, mas propaga tipagem fraca para todo o modelo de dominio e desiste da verificacao do compilador.
+    opcaoEscolhida: "shim-tri-state"
+    justificativa: "Ratificado em 2026-08-06. SW_NA e um terceiro estado distinto de null e de vazio, usado por 18 campos. O tipo tri-estado obriga o compilador a exigir a decisao em cada uso, atraves de pattern matching exaustivo. map-to-null foi recusada porque exigiria provar, campo a campo, que nenhum dos 18 e legitimamente nulo - e onde a prova falhasse o ramo trocado nao daria erro visivel. preserve-literal foi recusada por propagar tipagem fraca para todo o modelo de dominio."
+
+  expression-deadline:
+    # prioridade: P2; 4 ocorrencia(s) em DEAT0050, POC_EpatProcess
+    # opcao 'absolute-instant' [SUGERIDA - precisa de ratificacao] : Combinar o campo de data e o de hora num DateTime absoluto no momento do agendamento e programar o timer para esse instante.
+    #     consequencia: Simples e previsivel. Nao reage a alteracao posterior dos campos: se o prazo for prorrogado depois do agendamento, o timer nao acompanha.
+    # opcao 'recompute-on-resume' : Recalcular o instante sempre que o processo e retomado.
+    #     consequencia: Acompanha alteracoes dos campos, mas OBRIGA a definir a politica para o caso em que o novo instante ja passou: dispara imediatamente, ignora ou escala?
+    opcaoEscolhida: "absolute-instant"
+    justificativa: "Ratificado em 2026-08-06. recompute-on-resume chegou a ser escolhido e foi revertido no mesmo dia: obrigava a definir a politica para o instante recalculado que ja passou (dispara / ignora / escala), e essa politica nao existe no legado nem no documento da POC - ficaria a ser inventada em codigo. absolute-instant combina o par data+hora num DateTime absoluto no momento do agendamento. RISCO RESIDUAL ASSUMIDO: o timer nao acompanha prorrogacao do prazo feita depois do agendamento. MITIGACAO A IMPLEMENTAR: rearmar o temporizador sempre que o campo de prazo for escrito, o que cobre o caso real sem inventar politica para instante no passado. POR CONFIRMAR: fuso horario (assumido America/Sao_Paulo) e se UseWorkingDays=true do iProcess afecta o calculo."
+
+  external-event:
+    # prioridade: P2; 6 ocorrencia(s) em AGPECASPC, DEAT0050, POC_EpatProcess
+    # opcao 'bookmark-correlation' [SUGERIDA - precisa de ratificacao] : Bookmark do motor com chave de correlacao derivada do caso, exposta por um endpoint de retomada. No Elsa 3 corresponde a suspender a atividade e retomar por sinal correlacionado.
+    #     consequencia: Alinhado ao modelo de longa duracao do Elsa e sem infraestrutura adicional. Exige definir formalmente a chave de correlacao e proteger o endpoint de retomada.
+    # opcao 'queue-saga' : Mensageria com saga correlacionada (ex.: MassTransit).
+    #     consequencia: Escala melhor e desacopla os produtores de evento, ao custo de infraestrutura adicional fora do escopo da PoC.
+    opcaoEscolhida: "bookmark-correlation"
+    justificativa: "Ratificado em 2026-08-06. queue-saga chegou a ser escolhido e foi revertido no mesmo dia: exigia infraestrutura de mensageria adicional, fora do escopo declarado da POC, e ninguem estava designado para a provisionar na demonstracao. bookmark-correlation usa o modelo de longa duracao do proprio motor, sem infraestrutura extra. Chave de correlacao ja existe e nao precisa de ser inventada: PROCESS_ID = 'idAiim-<n>idProc-<n>', montado pelos scripts antes de cada chamada. POR DEFINIR: proteccao do endpoint de retomada, e politica de idempotencia para entrega duplicada ou resposta atrasada - o teste de evento duplicado e exigido pela etapa 5 do plano de cumprimento."
+
+  link-goto:
+    # prioridade: P2; 20 ocorrencia(s) em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, POC_EpatProcess, PRPINTPC
+    # opcao 'flatten-edge' [SUGERIDA - precisa de ratificacao] : Achatar cada par throw/catch em uma aresta explicita de fluxo (ja resolvido em derived.linkEdges: 10 throw / 10 catch, 10 resolvidos).
+    #     consequencia: Grafo mais simples e fiel a execucao. O diagrama perde a marcacao visual de salto entre raias.
+    # opcao 'keep-as-signal' : Manter como evento de sinal intermediario no motor de workflow.
+    #     consequencia: Preserva o desenho original, mas INTRODUZ pontos de persistencia e espera inexistentes no TIBCO: o motor passa a parar onde o original nao parava.
+    opcaoEscolhida: "flatten-edge"
+    justificativa: "Ratificado em 2026-08-06, de acordo com a sugestao. Os 10 pares throw/catch ja estao resolvidos em derived.linkEdges e nenhum atravessa fronteira de processo. keep-as-signal foi recusada por introduzir pontos de persistencia e espera que o TIBCO nao tem: o motor passaria a parar onde o original nao parava."
+
+  non-interrupting-boundary:
+    # prioridade: P2; 1 ocorrencia(s) em POC_EpatProcess
+    # opcao 'parallel-branch' [SUGERIDA - precisa de ratificacao] : Ramo lateral paralelo dentro do mesmo escopo, sem cancelamento do hospedeiro.
+    #     consequencia: Fiel ao original e visivel no diagrama. Exige que o motor suporte ramos paralelos com escopos independentes.
+    # opcao 'external-subscription' : Assinatura de evento fora do fluxo principal, reagindo em paralelo.
+    #     consequencia: Desacopla, mas o ramo lateral DEIXA DE APARECER no diagrama do processo - perde-se a rastreabilidade visual, que e justamente o que o cliente quer ver na PoC.
+    opcaoEscolhida: "parallel-branch"
+    justificativa: "Ratificado em 2026-08-06. external-subscription chegou a ser escolhido e foi revertido no mesmo dia: o catalogo regista que com ele o ramo lateral deixa de aparecer no diagrama do processo, e a rastreabilidade visual e um objectivo declarado da POC - um comportamento que funciona mas nao se ve nao serve para demonstrar aderencia funcional. parallel-branch mantem o ramo dentro do escopo, visivel no diagrama, e resolve de graca a limpeza exigida pela etapa 7 do plano: a subscricao morre com o escopo, em vez de ficar orfa. POR CONFIRMAR com o negocio: quem recebe o aviso, e se a actividade hospedeira pode mesmo terminar normalmente depois de o aviso ter disparado."
+
+# rulings: decisoes de comportamento e de padrao. Nao sao termos de negocio:
+# respondem "o que fazer", nao "o que significa". Preencha decisao e justificativa.
+rulings:
+  BUILTIN-SEMANTICS:
+    # prioridade: P2; categoria: builtin-semantics; assunto: semantica dos builtins iProcess nao confirmada
+    # ocorrencias: 7
+    # pergunta: CONFIRMA a hipotese? Uma pagina da documentacao TIBCO iProcess, ou uma execucao no ambiente legado com um caso conhecido, que fixe o indice inicial de SUBSTR e o valor de retorno de SEARCH quando nao encontra.
+    # pergunta: SUBSTR e SEARCH sao base 1 ou base 0? (confirmar na documentacao do iProcess)
+    # pergunta: O terceiro argumento de SUBSTR e COMPRIMENTO ou POSICAO FINAL? Os dados atuais nao distinguem os dois casos.
+    # pergunta: O que SEARCH retorna quando o separador nao existe, e o que SUBSTR faz com comprimento negativo?
+    decisao: "Consultar a documentacao TIBCO iProcess e fixar a semantica por escrito antes de implementar."
+    justificativa: "Decidido em 2026-08-06. Nao se assume base-1 por inferencia: o vector de teste de IDSINTIMADOS e compativel com base-1 mas nao a prova, e um desvio de uma posicao em SUBSTR nao falha, devolve valor errado. TRES PONTOS A FIXAR NA DOCUMENTACAO: (1) SUBSTR e SEARCH sao base 1 ou base 0; (2) o terceiro argumento de SUBSTR e COMPRIMENTO ou POSICAO FINAL - as duas chamadas existentes nao distinguem os casos; (3) o que SEARCH devolve quando o separador nao existe e o que SUBSTR faz com comprimento negativo. BLOQUEIA: prepSub do POC_EpatProcess, que e o script que alimenta o graft step - usa SEARCH, SUBSTR e STRLEN para partir IDSINTIMADOS. Ate estar fixado, qualquer implementacao do ciclo de intimados e palpite."
+
+  CLONE-PRPINTPC:
+    # prioridade: P2; categoria: clone-divergence; assunto: PRPINTPC
+    # so neste processo: STATUS_CODE!=IPESystemValues.SW_NA;
+    # presente nos irmaos: STATUS_CODE!="0";
+    # pergunta: CONFIRMA a hipotese? Confirmar com quem manteve o processo se houve alguma vez razao para o PRPINTPC tratar erro de forma diferente.
+    # pergunta: A diferenca em PRPINTPC e intencional ou e um defeito herdado do TIBCO?
+    # pergunta: Se for defeito: a migracao deve reproduzi-lo fielmente ou corrigi-lo? (decisao que precisa ficar registrada)
+    decisao: "Defeito de copia. Corrigir na migracao para STATUS_CODE != '0', alinhando com os quatro irmaos, e reportar a SEFAZ para correccao na origem."
+    justificativa: "Decidido em 2026-08-06. Os cinco gateways tem forma identica: ramo 'Good' sem condicao (default) e ramo 'AppError' para 'Set App Error'. So a condicao difere, e so num deles. Efeito em execucao: no PRPINTPC um STATUS_CODE = '0' (sucesso) e diferente de SW_NA, logo dispara o ramo de erro - a condicao esta invertida em relacao ao proposito. A unica leitura em que funcionaria e se CaptaParametros nunca preenchesse STATUS_CODE em sucesso, mas nesse caso seria estranho que so a condicao do gateway tivesse sido adaptada e nao o resto do template partilhado. ATENCAO NA MIGRACAO: corrigir muda comportamento observado - casos que hoje passam em silencio com erro passam a parar. Precisa de nota na demonstracao."
+
+  LABEL-CONFLICT:
+    # prioridade: P2; categoria: label-conflict; assunto: rotulo aponta para outro campo
+    # ocorrencias: 2
+    # pergunta: CONFIRMA a hipotese? O nome de negocio correcto para cada um dos campos afectados.
+    # pergunta: Para cada campo: qual e o nome de negocio correto?
+    # pergunta: O rotulo errado deve ser reportado a SEFAZ para correcao na origem?
+    decisao: "Recusar os dois rotulos do formulario e nomear por deducao: NR_RATORIG = 'Numero do RAT original', STSPETICAO = 'Status da Peticao'. Reportar o defeito a SEFAZ para correccao na origem."
+    justificativa: "Decidido em 2026-08-06. NR_RATORIG recebeu como rotulo o nome de outro campo existente (NR_RAT); STSPETICAO recebeu 'StatusPeticao', que colide com STATUSPETICAO. Aceitar qualquer um renomearia o campo errado no modelo .NET, e o erro so apareceria em producao. Os nomes deduzidos derivam do proprio identificador (RATORIG = RAT original; STS = status) e nao de interpretacao de negocio. PENDENTE DE RATIFICACAO pela SEFAZ: sao deducoes, nao confirmacao."
+
+  SCRIPT-HARDCODED:
+    # prioridade: P2; categoria: script-scaffolding; assunto: valores fixos embutidos em scriptTask
+    # ocorrencias: 4
+    # pergunta: CONFIRMA a hipotese? Confirmar que 278713 e 278712 nao sao intimados reais em producao, e autorizar a remocao da linha na migracao.
+    # pergunta: Cada valor fixo e andaime de POC (remover) ou parametro legitimo (externalizar em configuracao)?
+    # pergunta: Os destinatarios de e-mail devem vir de configuracao ou de cadastro?
+    decisao: "Tratamento diferente por valor. (1) IDSINTIMADOS = '278713|278712|' no fim do prepSub: REMOVER, e andaime de teste. (2) CCRELATORIO e BCCRELATORIO: EXTERNALIZAR em configuracao por ambiente. (3) STATUSSUBPROC = 'inativo': MANTER, e constante de dominio. (4) atalho de prazo do DEAT0050/HoraFimSC: REMOVER, a demonstracao usa relogio controlavel nos testes."
+    justificativa: "Decidido em 2026-08-06, valor a valor. IDSINTIMADOS: a atribuicao esta DEPOIS do ciclo que consome a lista, logo nao afecta a execucao corrente mas contamina a seguinte; ao lado ha um comentario com mais vinte ids que alguem foi cortando - e o registo de uma sessao de testes. Serve de oraculo: a lista '278713|278712|' com QTDINTIMADOS=2 e um caso pronto para validar o graft step com dois filhos. DESTINATARIOS: o script ja e configuracao por ambiente feita a mao - 'if (SW_HOSTNAME == prod1)' envia copia, senao poe SW_NA; alem disso acsimoes@ e endereco nominal de uma pessoa, logo o processo deixa de avisar quem devia se ela sair. Passa a configuracao por ambiente, que e o que o autor tentou fazer. STATUSSUBPROC: passo de uma linha so, transicao de estado do dominio, nao andaime; NOTA para a implementacao - 'inativo' deve virar valor de enumeracao, nao string literal. ATALHO des1 (achado em 2026-08-07, NAO estava na lista original dos quatro porque o detector so apanha atribuicao de literal): DEAT0050/HoraFimSC tem 'if (SW_HOSTNAME == des1) { PRAZODEFESA = SW_DATE; PRAZODEFESAT = CALCTIME(SW_TIME,1,0,DAYSOVER) }', que encurta o prazo de defesa para daqui a uma hora em ambiente de desenvolvimento. Decidido REMOVER: a demonstracao usa relogio controlavel nos testes, nao prazos encurtados por nome de maquina."
+
+  MISSING-EXTERNAL-PACKAGES:
+    # prioridade: P2; categoria: source-not-delivered; assunto: pacotes externos referenciados e nao entregues
+    # ocorrencias: 15
+    # pergunta: CONFIRMA a hipotese? Confirmar, etapa a etapa, que nenhuma das sete precisa de um processo que nao foi entregue. Se precisar, decidir entre obter o ficheiro ou substituir por um duble com contrato acordado.
+    # pergunta: A SEFAZ pode entregar estes pacotes? Quais sao viaveis e em que prazo?
+    # pergunta: Para os que nao vierem: a semantica sera autorizada por escrito ou o escopo sera reduzido?
+    decisao: "Substituir por dubles com contrato acordado, sem esperar pelos ficheiros. Cada duble e tipado a partir do WSDL ou da ProcessInterface correspondente e e conduzido por cenario."
+    justificativa: "Decidido em 2026-08-06. Nao e lacuna de analise, e lacuna de entrega, e nenhuma analise adicional a resolve. CONSEQUENCIA A ASSUMIR: ficou confirmado que os 6 destinos em falta de AGUARDAR (AgPRJ, AgRecPRJ, AgPRJR, AgRCRaz, AgCRaz, AgPetica) estao nestes pacotes, logo sao 6 dubles a construir, alem do AGPECASPC entregue. NAO SILENCIAR A FALHA: o legado declara HaltOnBadSubProcess='false' e falha em silencio; a migracao NAO deve herdar isso - destino sem duble tem de falhar de forma visivel, o que o registo validado em arranque (gaps.dynamic-subprocess) ja garante. POR REGISTAR na documentacao da POC: a lista dos dubles construidos e o contrato de cada um, como limitacao explicita e assumida."
+
+  TYPE-XPDL-VS-FORM:
+    # prioridade: P2; categoria: type-conflict; assunto: tipo divergente entre XPDL e formulario
+    # ocorrencias: 14
+    # pergunta: CONFIRMA a hipotese? Confirmar a ordem de grandeza real de IDAIIM e NR_AIIM na base de producao. Se couberem folgadamente em int, a divergencia e irrelevante.
+    # pergunta: Qual fonte prevalece quando XPDL e formulario discordam: a precisao do XPDL ou o tipo do formulario?
+    # pergunta: Ha algum campo da lista que exija excecao a essa regra?
+    decisao: "A precisao do XPDL prevalece. Os 14 campos passam a long (Int64) no modelo .NET. Sem excepcoes."
+    justificativa: "Decidido em 2026-08-06, como decisao de padrao unica e nao campo a campo. Alargar nunca trunca; estreitar trunca em silencio. Caso decisivo: SW_CASENUMPOC tem precisao 15, que nao cabe em Int32 de forma nenhuma - se houvesse duvida sobre os outros, este resolve-a. Os restantes sao identificadores e contadores que crescem com o tempo (IDAIIM, NR_AIIM, NR_RAT, NR_RATORIG, IDAIIMORIGINAL com precisao 11; QTDINTIMADOS, CDIMPOSTO e os auxiliares de string com precisao 10). CONSEQUENCIA: o contrato com a tela ASP.NET muda, porque o formulario REALATVI declara Integer - a conversao tem de ser explicita na fronteira, e um valor que nao caiba deve falhar de forma visivel em vez de truncar."
+
+  SENTINEL-AGPECASPC-_EvOwZF6eE:
+    # prioridade: P3; categoria: sentinel-branch; assunto: DATACONTROLE, PRAZORECEBIMENT
+    # condicao: DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;
+    # pergunta: O que significa, no negocio, este campo estar "nao preenchido" neste ponto?
+    # pergunta: O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?
+    decisao: "SW_NA significa PRIMEIRA VOLTA do laco de prazo: ainda nao se esperou por prazo nenhum. Segue junto com 'prazo mudou', unido pelo ||, exactamente como no legado. Nao merece ramo proprio."
+    justificativa: "Decidido em 2026-08-07. O ciclo e: [gateway] -> SetPrazo -> Aguardar Interposicoes -> Controla Datas -> [gateway]. O 'Controla Datas' faz DATACONTROLE = PRAZORECEBIMENT, ou seja, DATACONTROLE guarda o prazo pelo qual JA se esperou e PRAZORECEBIMENT e o prazo actual; quando coincidem, o ciclo termina. Se SW_NA saisse do ciclo em vez de entrar, o processo nunca esperaria, porque na primeira volta o campo esta sempre por preencher. IMPLEMENTACAO: DATACONTROLE e DateOnly com sentinela; o estado 'nunca esperou' tem de ser representavel e distinto de qualquer data valida - e o caso de uso directo do tipo tri-estado escolhido em gaps.iprocess-builtin."
+
+  SENTINEL-DEAT0050-_lresFVqhE:
+    # prioridade: P3; categoria: sentinel-branch; assunto: DATACONTROLE, PRAZODEFESA
+    # condicao: DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;
+    # pergunta: O que significa, no negocio, este campo estar "nao preenchido" neste ponto?
+    # pergunta: O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?
+    decisao: "Mesma decisao do SENTINEL-AGPECASPC: SW_NA e a primeira volta do laco de prazo. Segue junto com 'prazo mudou', unido pelo ||."
+    justificativa: "Decidido em 2026-08-07. Ciclo identico ao do AGPECASPC, com um passo a mais: [gateway] -> Aguarda Defesa (timer) -> Controlar Data (DATACONTROLE = PRAZODEFESA) -> CalculaPrazo (chama CALCPRPC) -> HoraFimSC -> [gateway]. O CALCPRPC RECALCULA o prazo a cada volta, e se ele mudou o processo volta a esperar: e um laco de PRORROGACAO de prazo. ISTO VALIDA a decisao tomada em gaps.expression-deadline: escolhemos absolute-instant e registamos como mitigacao 'rearmar o temporizador quando o prazo mudar' - o legado ja faz isso, nao rearmando mas voltando ao gateway e criando um timer novo. A mitigacao e transcricao, nao invencao. DATACONTROLE e a memoria que impede o ciclo infinito."
+
+  SENTINEL-POC_EpatProcess-_CtQ7DVqPE:
+    # prioridade: P3; categoria: sentinel-branch; assunto: TIPOVISTAS
+    # condicao: TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;
+    # pergunta: O que significa, no negocio, este campo estar "nao preenchido" neste ponto?
+    # pergunta: O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?
+    decisao: "INTENCIONAL e preservar. Tipo de vista igual a 'JUIZ' OU nao aplicavel segue o caminho de Vistas do Juiz. O ramo alternativo, rotulado 'DRF', e o ramo por omissao e significa 'tudo o que nao e JUIZ', incluindo MISTA - nao e um terceiro valor do dominio."
+    justificativa: "Decidido em 2026-08-07. E regra de negocio real, nao acidente: vista nao especificada e tratada deliberadamente como nao aplicavel e segue para o juiz. O dominio observado de TIPOVISTAS em todo o pacote e apenas {JUIZ, MISTA}; 'DRF' nunca aparece em condicao nenhuma, e apenas o rotulo do ramo por omissao. IMPLEMENTACAO: como SW_NA e agrupado com um valor de negocio concreto e nao com uma condicao de repeticao, o tipo tri-estado tem de preservar os tres casos - colapsar SW_NA em null faria o caso cair no ramo DRF em vez do ramo do juiz, invertendo a regra sem erro visivel."
+
+  SENTINEL-PRPINTPC-_KEwDYl6EE:
+    # prioridade: P3; categoria: sentinel-branch; assunto: STATUS_CODE
+    # condicao: STATUS_CODE!=IPESystemValues.SW_NA;
+    # pergunta: O que significa, no negocio, este campo estar "nao preenchido" neste ponto?
+    # pergunta: O ramo de SW_NA deve seguir junto com algum dos outros ou merece tratamento proprio?
+    decisao: "Nao ha decisao a tomar aqui: a sentinela DESAPARECE. Ver rulings.CLONE-PRPINTPC, onde ficou decidido corrigir a condicao para STATUS_CODE != '0', alinhando com os quatro processos irmaos."
+    justificativa: "Decidido em 2026-08-07. Esta sentinela e um sintoma do defeito de copia, nao uma regra: o PRPINTPC compara STATUS_CODE com SW_NA enquanto ATZINTPC, BSCENVPC, CALCPRPC e CRNOTPC comparam com '0'. Corrigida a condicao, o teste de SW_NA deixa de existir neste ponto e o campo passa a ser tratado como nos outros quatro. Fechada por remissao para nao ficar a aparecer como pergunta em aberto sem dono."
+
+  LABEL-SUGGESTION:
+    # prioridade: P4; categoria: label-suggestion; assunto: rotulos de formulario nao verificados
+    # ocorrencias: 21
+    # pergunta: Aceitar em bloco os rotulos do formulario como termo de negocio, ou revisar caso a caso?
+    # pergunta: Havendo divergencia com o vocabulario oficial da SEFAZ, qual prevalece?
+    decisao: "Aceitar em bloco os 21 rotulos do formulario como termo de negocio, corrigindo os erros de escrita evidentes (ex.: 'Contorle' -> 'Controle'). Havendo divergencia futura, o vocabulario oficial da SEFAZ prevalece sobre o rotulo do formulario."
+    justificativa: "Decidido em 2026-08-07. Sao a unica fonte de nome de negocio que o pacote oferece, e sem eles o modelo .NET fica com os identificadores truncados a 15 caracteres do iProcess. Risco baixo e reversivel: renomear uma propriedade e refactoring mecanico. EXCLUIDOS deste bloco os dois rotulos que apontam para o nome de OUTRO campo - esses foram recusados em rulings.LABEL-CONFLICT e nomeados por deducao."
+
+  SCRIPT-COMMENTED-LOGIC:
+    # prioridade: P4; categoria: script-scaffolding; assunto: regra comentada divergente da ativa
+    # ocorrencias: 3
+    # pergunta: A regra comentada foi desativada de proposito ou e residuo de teste?
+    # pergunta: A migracao deve reproduzir o comportamento ATIVO (mais permissivo) ou o COMENTADO (restrito)?
+    decisao: "A regra ATIVA prevalece. O codigo comentado e historico e nao migra."
+    justificativa: "Decidido em 2026-08-07. A migracao reproduz o que o sistema faz hoje, nao o que fez em alguma versao anterior. Nos tres casos o comentado e mais restritivo - por exemplo, no prepSub a versao comentada filtrava CNTPECA1 por uma lista de codigos ('110','24','53','55','22') e a activa aceita qualquer valor diferente de SW_NA. NOTA: o codigo comentado fica registado neste artefacto como evidencia; se a SEFAZ confirmar que a restricao devia estar activa, e uma alteracao de regra e nao um defeito de migracao."
+
+  SCREEN-MISSING-CONTROLS:
+    # prioridade: P4; categoria: source-not-delivered; assunto: controles .ascx referenciados e nao entregues
+    # ocorrencias: 5
+    # pergunta: Os controles serao entregues ou a interface sera redesenhada do zero em .NET?
+    decisao: "Limitacao assumida. Os 5 controlos .ascx nao sao pedidos nem reconstruidos: o front-end esta diferido para o MVP."
+    justificativa: "Decidido em 2026-08-07, coerente com a decisao de escopo ja tomada de diferir backend e frontend para o MVP. A POC valida a aderencia funcional do motor BPM, nao a interface. O que interessa das telas ja foi extraido e nao depende dos .ascx: o contrato tela-processo (que campos sao escritos de volta no motor) e as 154 decisoes do code-behind. FICA REGISTADO: Pecas.ascx, Cabecalho_AIIM.ascx, AdicionarPecas.ascx, Cabecalho_AIIM_DEAT.ascx e o quinto controlo continuam por entregar, e qualquer regra que viva dentro deles NAO foi analisada."
+
+  SCREEN-UNDECLARED-FIELD:
+    # prioridade: P4; categoria: source-not-delivered; assunto: campo lido pela tela e ausente do dicionario
+    # ocorrencias: 1
+    # pergunta: De qual pacote vem cada campo, e qual o seu tipo e dominio?
+    decisao: "Limitacao assumida, pela mesma razao do SCREEN-MISSING-CONTROLS: o front-end esta diferido para o MVP."
+    justificativa: "Decidido em 2026-08-07. E um unico campo, lido pela tela e ausente do dicionario de 209 campos - quase de certeza declarado num dos 15 pacotes externos nao entregues, que ja foram tratados em rulings.MISSING-EXTERNAL-PACKAGES com decisao de simular por dubles. Nao bloqueia nenhuma das sete etapas da POC."
+
+decisions:
+  "AGPECASPC/_EvOwVF6eE":
+    # evidencia: chega de scriptTask 'Controla Datas'
+    # evidencia: chega de scriptTask 'Set Values'
+    # evidencia: ramo [OTHERWISE] -> endEvent 'End Event'
+    # evidencia: ramo DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT; -> scriptTask 'SetPrazo'
+    question: "Ja se esperou pelo prazo em vigor?"
+    branches: "Nao (DATACONTROLE em SW_NA ou diferente de PRAZORECEBIMENT) -> SetPrazo, volta a esperar. Sim -> End Event, termina o processo."
+
+  "ATZINTPC/_RNdKGl6PE":
+    # evidencia: chega de serviceTask 'AtualizarIntimacao'
+    # evidencia: ramo [OTHERWISE] -> gateway «sem rotulo»
+    # evidencia: ramo STATUS_CODE!="0"; -> scriptTask 'Set App Error'
+    question: "A chamada a AtualizarIntimacao foi bem sucedida?"
+    branches: "Sim (ramo Good, STATUS_CODE = '0') -> continua. Nao (ramo AppError) -> Set App Error."
+
+  "BSCENVPC/_qIDu4l6BE":
+    # evidencia: chega de serviceTask 'Busca Envolvidos Vista Por AIIM'
+    # evidencia: ramo STATUS_CODE!="0"; -> scriptTask 'Set App Error'
+    # evidencia: ramo [OTHERWISE] -> gateway «sem rotulo»
+    question: "A chamada a Busca Envolvidos Vista Por AIIM foi bem sucedida?"
+    branches: "Sim (ramo Good, STATUS_CODE = '0') -> continua. Nao (ramo AppError) -> Set App Error."
+
+  "CALCPRPC/_zJIuclqiE":
+    # evidencia: chega de serviceTask 'CalcularPrazo'
+    # evidencia: ramo STATUS_CODE!="0"; -> scriptTask 'Set App Error'
+    # evidencia: ramo [OTHERWISE] -> gateway «sem rotulo»
+    question: "A chamada a CalcularPrazo foi bem sucedida?"
+    branches: "Sim (ramo Good, STATUS_CODE = '0') -> continua. Nao (ramo AppError) -> Set App Error."
+
+  "CRNOTPC/_NcJxLl9KE":
+    # evidencia: chega de serviceTask 'CriaNotificacao'
+    # evidencia: ramo [OTHERWISE] -> gateway «sem rotulo»
+    # evidencia: ramo STATUS_CODE!="0"; -> scriptTask 'Set App Error'
+    question: "A chamada a CriaNotificacao foi bem sucedida?"
+    branches: "Sim (ramo Good, STATUS_CODE = '0') -> continua. Nao (ramo AppError) -> Set App Error."
+
+  "DEAT0050/_lrer_VqhE":
+    # evidencia: chega de scriptTask 'HoraFimSC'
+    # evidencia: ramo DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA; -> timerEvent 'Aguarda Defesa'
+    # evidencia: ramo [OTHERWISE] -> endEvent «sem rotulo»
+    question: "Ja se esperou pelo prazo em vigor?"
+    branches: "Nao (DATACONTROLE em SW_NA ou diferente de PRAZODEFESA) -> Aguarda Defesa, volta a esperar e recalcula o prazo em CALCPRPC. Sim -> End Event, termina o processo."
+
+  "PRPINTPC/_KEwDVl6EE":
+    # evidencia: chega de serviceTask 'CaptaParametros'
+    # evidencia: ramo STATUS_CODE!=IPESystemValues.SW_NA; -> scriptTask 'Set App Error'
+    # evidencia: ramo [OTHERWISE] -> gateway «sem rotulo»
+    question: "A chamada a CaptaParametros foi bem sucedida?"
+    branches: "Sim (ramo Good) -> continua. Nao (ramo AppError) -> Set App Error. ATENCAO: a condicao actual compara com SW_NA em vez de '0'; ver rulings.CLONE-PRPINTPC, onde ficou decidido corrigir para STATUS_CODE != '0'. O rotulo acima descreve o comportamento JA CORRIGIDO."
+
+unresolved:
+  ISAPPERROR:
+    # evidencia: declared-in-form; usado em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC
+    # evidencia: comparado com == 'Y'
+    # pergunta: CONFIRMA a hipotese? Confirmar que 'N' e ausencia de erro e nao 'nao avaliado'. A diferenca importa porque o campo pode estar por preencher antes da primeira chamada.
+    # pergunta: Confirmar o dominio de valores de 'ISAPPERROR' e qual deles significa sucesso.
+    # pergunta: Definir onde 'ISAPPERROR' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?).
+    origin: "Contexto de execucao do workflow. Nao pertence ao modelo de dominio. Preenchido a partir da resposta do servico e lido pelo formulario MANEXC."
+    term: "Indicador de erro de aplicacao"
+    description: "Marca que a chamada de servico falhou por regra de negocio, por oposicao a falha de infraestrutura. E esta distincao que decide se o caso volta ao laco de retry ou vai para tratamento manual: erro de negocio nao se resolve repetindo a chamada. Confirmado em 2026-08-06 que 'N' e ausencia de erro, e nao 'ainda nao avaliado'."
+    values: "'N' = sem erro de aplicacao; 'Y' = erro de aplicacao. Dominio fechado, confirmado em 2026-08-06."
+
+  ISTECHERROR:
+    # evidencia: declared-in-form; usado em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC
+    # evidencia: comparado com == 'Y'
+    # pergunta: CONFIRMA a hipotese? Confirmar que so o erro tecnico e retentavel automaticamente, e que o erro de aplicacao vai sempre para o operador.
+    # pergunta: Confirmar o dominio de valores de 'ISTECHERROR' e qual deles significa sucesso.
+    # pergunta: Definir onde 'ISTECHERROR' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?).
+    origin: "Contexto de execucao do workflow. Nao pertence ao modelo de dominio. Preenchido a partir da resposta do servico e lido pelo formulario MANEXC."
+    term: "Indicador de erro tecnico"
+    description: "Marca que a chamada de servico falhou por infraestrutura - fila, rede, indisponibilidade - e nao por regra de negocio. E o par de ISAPPERROR: so o erro tecnico e retentavel automaticamente."
+    values: "'N' = sem erro tecnico; 'Y' = erro tecnico. Dominio fechado, confirmado em 2026-08-06."
+
+  MAXRETRIES:
+    # evidencia: declared-in-form; usado em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC
+    # pergunta: CONFIRMA a hipotese? Confirmar que 5 e o valor de producao e que nao existe configuracao externa que o sobreponha por ambiente ou por servico.
+    # pergunta: Confirmar o dominio de valores de 'MAXRETRIES' e qual deles significa sucesso.
+    # pergunta: Definir onde 'MAXRETRIES' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?).
+    origin: "Configuracao, por servico ou global. Nao e campo do caso nem do dominio. No legado e IN - so lido, nunca escrito pelo processo."
+    term: "Tecto de tentativas"
+    description: "Numero maximo de tentativas do laco de retry das chamadas de servico. Parametro de resiliencia, sem significado de negocio. Comparado contra DOIS contadores independentes: NUMAPPRETRIES (falhas de aplicacao) e IPESystemValues.SW_QRETRYCOUNT (falhas de entrega da fila) - confirmado em 2026-08-06 que sao mesmo independentes e devem ser reproduzidos tal e qual."
+    values: "5 por omissao, escrito no SetParameters dos cinco subprocessos de servico como 'if (MAXRETRIES == null) MAXRETRIES = 5'. Confirmado em 2026-08-06."
+
+  NUMAPPRETRIES:
+    # evidencia: declared-in-form; usado em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC
+    # evidencia: comparado com < MAXRETRIES
+    # pergunta: CONFIRMA a hipotese? Confirmar que sao mesmo dois contadores independentes com o mesmo tecto, e nao um engano em que se pretendia partilhar o mesmo contador.
+    # pergunta: Confirmar o dominio de valores de 'NUMAPPRETRIES' e qual deles significa sucesso.
+    # pergunta: Definir onde 'NUMAPPRETRIES' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?).
+    origin: "Contexto de execucao do workflow. Nao pertence ao modelo de dominio."
+    term: "Contador de tentativas de aplicacao"
+    description: "Conta as falhas de APLICACAO ja tentadas no laco de retry, distinto do contador tecnico do motor (SW_QRETRYCOUNT). Inicializado no passo Start Loop com 'if (NUMAPPRETRIES == null)' e comparado no passo More Retries contra MAXRETRIES."
+    values: "Comeca em 0 e incrementa de 1 a cada tentativa. Confirmado em 2026-08-06."
+
+  OUTCOME:
+    # evidencia: declared-in-form; usado em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC
+    # evidencia: comparado com == 'OK' , == 'R'
+    # pergunta: CONFIRMA a hipotese? Confirmar que o dominio e exactamente {'R', 'OK'} e que nao existe um terceiro valor - por exemplo abandonar o caso - tratado num pacote externo nao entregue.
+    # pergunta: Confirmar o dominio de valores de 'OUTCOME' e qual deles significa sucesso.
+    # pergunta: Definir onde 'OUTCOME' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?).
+    origin: "Entrada de tarefa humana. E preenchido pelo operador no formulario MANEXC, nao calculado pelo processo. Em .NET vira enumeracao tipada, nao string."
+    term: "Decisao do operador na excepcao"
+    description: "Decisao que uma pessoa toma quando o laco de retry se esgota e o caso cai em tratamento manual. Lido nos passos Try Again e Manually Fixed, que ficam depois do formulario MANEXC. Os dois literais NAO sao divergencia entre clones: sao passos diferentes do mesmo laco."
+    values: "'R' = repetir a chamada (passo Try Again); 'OK' = dar por resolvido manualmente (passo Manually Fixed). Dominio fechado, confirmado em 2026-08-06."
+
+  STATUS_CODE:
+    # evidencia: declared-in-form; usado em ATZINTPC, BSCENVPC, CALCPRPC, CRNOTPC, PRPINTPC
+    # evidencia: comparado com != "0" , != IPESystemValues.SW_NA
+    # pergunta: CONFIRMA a hipotese? Confirmar que '0' e o unico codigo de sucesso, e decidir se a comparacao com SW_NA no PRPINTPC se corrige ou se reproduz fielmente.
+    # pergunta: Confirmar o dominio de valores de 'STATUS_CODE' e qual deles significa sucesso.
+    # pergunta: Definir onde 'STATUS_CODE' passa a morar no modelo .NET (contexto de execucao? resultado da chamada?).
+    origin: "Contexto de execucao do workflow. NOTA DE IMPLEMENTACAO: o valor nasce no envelope tecnico da resposta do servico (declarado no EPAT.wsdl), logo tem de ser COPIADO do resultado da chamada para o contexto num passo explicito de mapeamento - nao aparece la sozinho."
+    term: "Codigo de retorno do servico"
+    description: "Codigo devolvido pelo envelope tecnico do BusinessWorks a cada chamada de servico. Decide o desvio para o ramo AppError em cinco subprocessos."
+    values: "'0' = sucesso. Confirmado em 2026-08-06. ATENCAO: o PRPINTPC compara com SW_NA em vez de '0' - ja tratado como defeito em rulings.CLONE-PRPINTPC, com decisao de corrigir."
+

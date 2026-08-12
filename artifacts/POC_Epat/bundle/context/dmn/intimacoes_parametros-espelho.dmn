@@ -1,0 +1,1896 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Defs_intimacoes_Parametros_Espelho" name="intimacoes_Parametros - espelho do rulesheet" namespace="http://sefaz.sp.gov.br/poc_epat/dmn">
+  <decision id="Decision_Espelho" name="Espelho do rulesheet Corticon">
+    <description>ESPELHO 1:1 do rulesheet Corticon (49 colunas x 21 condicoes), para rastreabilidade contra o .ers original. NAO USE ESTA TABELA PARA REVISAR COMPORTAMENTO. A politica RULE ORDER devolve a LISTA das linhas que casam, na ordem, e nao expressa a sobreposicao: no Corticon uma escrita posterior sobrepoe a anterior. Alem disso a celula vazia (null) aqui significa &quot;esta coluna nao escreve este atributo&quot;, e NAO &quot;define como nulo&quot;. Para revisar comportamento use intimacoes_parametros.dmn, onde cada atributo vira uma decisao FIRST equivalente.</description>
+    <decisionTable id="Table_Espelho" hitPolicy="RULE ORDER">
+      <input id="MIn_0" label="INSTANCIA (instancia)">
+        <inputExpression id="MInExpr_0" typeRef="string">
+          <text>Request.instancia</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_1" label="IDTIPOIMPUGNACA (tipoImpugnacao)">
+        <inputExpression id="MInExpr_1" typeRef="string">
+          <text>ResultadoJulgamento.request.tipoImpugnacao</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_2" label="IDMOTIVOINTIMAC (motivoIntimacao)">
+        <inputExpression id="MInExpr_2" typeRef="string">
+          <text>ResultadoJulgamento.request.motivoIntimacao</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_3" label="VICIOREPRESENTA (vicioRepresentacao)">
+        <inputExpression id="MInExpr_3" typeRef="string">
+          <text>ResultadoJulgamento.request.vicioRepresentacao</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_4" label="DEFESAADMITIDA (defesaAdmitida)">
+        <inputExpression id="MInExpr_4" typeRef="string">
+          <text>ResultadoJulgamento.request.defesaAdmitida</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_5" label="DILIGENCIA (diligencia)">
+        <inputExpression id="MInExpr_5" typeRef="string">
+          <text>ResultadoJulgamento.request.diligencia</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_6" label="DILIGENCIADESTI (destinoDiligencia)">
+        <inputExpression id="MInExpr_6" typeRef="string">
+          <text>ResultadoJulgamento.request.destinoDiligencia</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_7" label="IDDECISAOAIIM (idDecisaoAiim)">
+        <inputExpression id="MInExpr_7" typeRef="string">
+          <text>ResultadoJulgamento.request.idDecisaoAiim</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_8" label="IDDECISAODEBITO (idDecisaoDebito)">
+        <inputExpression id="MInExpr_8" typeRef="string">
+          <text>ResultadoJulgamento.request.idDecisaoDebito</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_9" label="RECURSOOFICIO (recursoOficio)">
+        <inputExpression id="MInExpr_9" typeRef="string">
+          <text>ResultadoJulgamento.request.recursoOficio</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_10" label="FLAGCONTRARAZAO (contraRazao)">
+        <inputExpression id="MInExpr_10" typeRef="string">
+          <text>ResultadoJulgamento.request.contraRazao</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_11" label="ORIGEM (origem)">
+        <inputExpression id="MInExpr_11" typeRef="string">
+          <text>ResultadoJulgamento.request.origem</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_13" label="FLGALC (flgAlcada)">
+        <inputExpression id="MInExpr_13" typeRef="string">
+          <text>Request.flgAlcada</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_14" label="STATUSRECURSOS (statusRecursos)">
+        <inputExpression id="MInExpr_14" typeRef="string">
+          <text>Request.statusRecursos</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_15" label="STATUSPETICAO (statusPeticao)">
+        <inputExpression id="MInExpr_15" typeRef="string">
+          <text>ResultadoJulgamento.request.statusPeticao</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_16" label="STATUSPRJ (statusPRJ)">
+        <inputExpression id="MInExpr_16" typeRef="string">
+          <text>Request.statusPRJ</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_17" label="ANULACAODTJ (anulacaoDefesa)">
+        <inputExpression id="MInExpr_17" typeRef="string">
+          <text>Request.anulacaoDefesa</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_18" label="EXCLUSAOSOLIDAR (exclusaoSolidarios)">
+        <inputExpression id="MInExpr_18" typeRef="string">
+          <text>Request.exclusaoSolidarios</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_19" label="INDRESPPRM (existeRespPRM)">
+        <inputExpression id="MInExpr_19" typeRef="string">
+          <text>Request.existeRespPRM</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_20" label="STSADMTITCNT (statusAdmissaoTitCNT)">
+        <inputExpression id="MInExpr_20" typeRef="string">
+          <text>Request.statusAdmissaoTitCNT</text>
+        </inputExpression>
+      </input>
+      <input id="MIn_21" label="STSADMTITDRF (statusAdmissaoTitDRF)">
+        <inputExpression id="MInExpr_21" typeRef="string">
+          <text>Request.statusAdmissaoTitDRF</text>
+        </inputExpression>
+      </input>
+      <output id="MOut_cntPeca1" label="CNTPECA1 (cntPeca1)" name="cntPeca1" typeRef="string" />
+      <output id="MOut_cntPeca2" label="CNTPECA2 (cntPeca2)" name="cntPeca2" typeRef="string" />
+      <output id="MOut_codTexto" label="CODTEXTO (codTexto)" name="codTexto" typeRef="string" />
+      <output id="MOut_contraRazao" label="FLAGCONTRARAZAO (contraRazao)" name="contraRazao" typeRef="string" />
+      <output id="MOut_qtPecasCNT" label="QTPECASCNT (qtPecasCNT)" name="qtPecasCNT" typeRef="number" />
+      <output id="MOut_qtPecasSefaz" label="QTPECASSEFAZ (qtPecasSefaz)" name="qtPecasSefaz" typeRef="number" />
+      <output id="MOut_sfDiasRepresentacao" label="SFDIASREPRESENT (sfDiasRepresentacao)" name="sfDiasRepresentacao" typeRef="string" />
+      <output id="MOut_sfPeca1" label="SFPECA1 (sfPeca1)" name="sfPeca1" typeRef="string" />
+      <output id="MOut_sfPeca2" label="SFPECA2 (sfPeca2)" name="sfPeca2" typeRef="string" />
+      <output id="MOut_sfPeca3" label="SFPECA3 (sfPeca3)" name="sfPeca3" typeRef="string" />
+      <output id="MOut_tempoResposta" label="TEMPORESPOSTA (tempoResposta)" name="tempoResposta" typeRef="string" />
+      <annotation name="coluna Corticon" />
+      <rule id="MRule_1">
+        <description>coluna 1 - Vicio de Representacao (1)</description>
+        <inputEntry id="MInE_1_0"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_1"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_2"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_1_3"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_1_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_5"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_1_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_1_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_1_cntPeca1"><text>&quot;6&quot;</text></outputEntry>
+        <outputEntry id="MOutE_1_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_1_codTexto"><text>&quot;2&quot;</text></outputEntry>
+        <outputEntry id="MOutE_1_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_1_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_1_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_1_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_1_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_1_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_1_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_1_tempoResposta"><text>&quot;5&quot;</text></outputEntry>
+        <annotationEntry><text>col. 1</text></annotationEntry>
+      </rule>
+      <rule id="MRule_2">
+        <description>coluna 2 - Tipo Impugnacao - DEFESA - Defesa nao Processada Recurso Para VO e PRJ (2)</description>
+        <inputEntry id="MInE_2_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_4"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_2_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_2_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_2_cntPeca1"><text>&quot;22&quot;</text></outputEntry>
+        <outputEntry id="MOutE_2_cntPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_2_codTexto"><text>&quot;31&quot;</text></outputEntry>
+        <outputEntry id="MOutE_2_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_2_qtPecasCNT"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_2_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_2_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_2_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_2_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_2_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_2_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 2</text></annotationEntry>
+      </rule>
+      <rule id="MRule_3">
+        <description>coluna 3 - Tipo Impugnacao - DEFESA - Defesa nao Processada Recurso Para RO e PRJ (3)</description>
+        <inputEntry id="MInE_3_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_4"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_3_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_3_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_3_cntPeca1"><text>&quot;23&quot;</text></outputEntry>
+        <outputEntry id="MOutE_3_cntPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_3_codTexto"><text>&quot;31&quot;</text></outputEntry>
+        <outputEntry id="MOutE_3_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_3_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_3_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_3_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_3_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_3_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_3_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_3_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 3</text></annotationEntry>
+      </rule>
+      <rule id="MRule_4">
+        <description>coluna 4 - Tipo Impugnacao - DEFESA - Contrarrazoes de RO para defesa nao processada. (4)</description>
+        <inputEntry id="MInE_4_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_1"><text>&quot;1&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_4"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_4_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_4_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_4_cntPeca1"><text>&quot;23&quot;</text></outputEntry>
+        <outputEntry id="MOutE_4_cntPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_4_codTexto"><text>&quot;31&quot;</text></outputEntry>
+        <outputEntry id="MOutE_4_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_4_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_4_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_4_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_4_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_4_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_4_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_4_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 4</text></annotationEntry>
+      </rule>
+      <rule id="MRule_5">
+        <description>coluna 5 - Tipo Impugnacao - TODOS - Diligencia por Retirratificacao (5)</description>
+        <inputEntry id="MInE_5_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_6"><text>&quot;RET&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_5_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_5_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_5_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_codTexto"><text>&quot;32&quot;</text></outputEntry>
+        <outputEntry id="MOutE_5_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_5_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 5</text></annotationEntry>
+      </rule>
+      <rule id="MRule_6">
+        <description>coluna 6 - Tipo Impugnacao - TODOS - Diligencia Contribuinte com manifestação contraria (6)</description>
+        <inputEntry id="MInE_6_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_6"><text>&quot;CNT&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_6_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_6_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_6_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_6_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_6_codTexto"><text>&quot;32&quot;</text></outputEntry>
+        <outputEntry id="MOutE_6_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_6_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_6_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_6_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_6_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_6_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_6_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_6_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 6</text></annotationEntry>
+      </rule>
+      <rule id="MRule_7">
+        <description>coluna 7 - Tipo Impugnacao - TODOS - Diligencia Contribuinte sem manifestação contraria (7)</description>
+        <inputEntry id="MInE_7_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_6"><text>&quot;CNTSMF&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_7_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_7_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_7_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_7_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_codTexto"><text>&quot;32&quot;</text></outputEntry>
+        <outputEntry id="MOutE_7_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_7_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_7_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 7</text></annotationEntry>
+      </rule>
+      <rule id="MRule_8">
+        <description>coluna 8 - Tipo Impugnacao - TODOS - Diligencia DRF com manifestação contraria (8)</description>
+        <inputEntry id="MInE_8_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_6"><text>&quot;RF&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_8_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_8_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_8_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_8_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_8_codTexto"><text>&quot;32&quot;</text></outputEntry>
+        <outputEntry id="MOutE_8_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_8_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_8_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_8_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_8_sfPeca1"><text>&quot;77&quot;</text></outputEntry>
+        <outputEntry id="MOutE_8_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_8_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_8_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 8</text></annotationEntry>
+      </rule>
+      <rule id="MRule_9">
+        <description>coluna 9 - Tipo Impugnacao - TODOS - Diligencia DRF sem manifestação contraria (9)</description>
+        <inputEntry id="MInE_9_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_6"><text>&quot;RFSMF&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_9_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_9_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_9_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_9_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_9_codTexto"><text>&quot;32&quot;</text></outputEntry>
+        <outputEntry id="MOutE_9_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_9_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_9_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_9_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_9_sfPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_9_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_9_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_9_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 9</text></annotationEntry>
+      </rule>
+      <rule id="MRule_10">
+        <description>coluna 10 - Tipo Impugnacao - TODOS - Diligencia UE com manifestação contraria (10)</description>
+        <inputEntry id="MInE_10_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_6"><text>&quot;UE&quot;,&quot;PGE&quot;,&quot;DRT&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_10_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_10_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_10_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_10_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_10_codTexto"><text>&quot;32&quot;</text></outputEntry>
+        <outputEntry id="MOutE_10_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_10_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_10_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_10_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_10_sfPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_10_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_10_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_10_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 10</text></annotationEntry>
+      </rule>
+      <rule id="MRule_11">
+        <description>coluna 11 - Tipo Impugnacao - TODOS - Retorno Diligencia UE com manifestação contraria (11)</description>
+        <inputEntry id="MInE_11_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_6"><text>&quot;UE&quot;,&quot;PGE&quot;,&quot;DRT&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_11_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_11_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_11_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_11_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_11_codTexto"><text>&quot;41&quot;</text></outputEntry>
+        <outputEntry id="MOutE_11_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_11_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_11_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_11_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_11_sfPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_11_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_11_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_11_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 11</text></annotationEntry>
+      </rule>
+      <rule id="MRule_12">
+        <description>coluna 12 - Tipo Impugnacao - TODOS - Retorno de Diligencia Contribuinte com manifestação contraria (12)</description>
+        <inputEntry id="MInE_12_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_6"><text>&quot;CNT&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_11"><text>&quot;CNT&quot;</text></inputEntry>
+        <inputEntry id="MInE_12_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_12_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_12_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_12_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_12_codTexto"><text>&quot;42&quot;</text></outputEntry>
+        <outputEntry id="MOutE_12_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_12_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_12_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_12_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_12_sfPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_12_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_12_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_12_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 12</text></annotationEntry>
+      </rule>
+      <rule id="MRule_13">
+        <description>coluna 13 - Tipo Impugnacao - TODOS - Retorno de Diligencia DRF com manifestação contraria (13)</description>
+        <inputEntry id="MInE_13_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_1"><text>&quot;1&quot;,&quot;4&quot;,&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_6"><text>&quot;RF&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_11"><text>&quot;SEFAZ&quot;</text></inputEntry>
+        <inputEntry id="MInE_13_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_13_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_13_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_13_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_codTexto"><text>&quot;42&quot;</text></outputEntry>
+        <outputEntry id="MOutE_13_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_13_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_13_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 13</text></annotationEntry>
+      </rule>
+      <rule id="MRule_14">
+        <description>coluna 14 - Tipo Impugnacao - DEFESA - Debito Cancelado - Contrarrazao de Parecer de Recurso de Oficio (14)</description>
+        <inputEntry id="MInE_14_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_8"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_14_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_14_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_14_cntPeca1"><text>&quot;27&quot;</text></outputEntry>
+        <outputEntry id="MOutE_14_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_14_codTexto"><text>&quot;51&quot;</text></outputEntry>
+        <outputEntry id="MOutE_14_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_14_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_14_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_14_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_14_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_14_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_14_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_14_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 14</text></annotationEntry>
+      </rule>
+      <rule id="MRule_15">
+        <description>coluna 15 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido com Oficio menor que 5000 - Contrarrazao de OF e VO para o Contribuinte (15)</description>
+        <inputEntry id="MInE_15_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_1"><text>&quot;1&quot;,&quot;6&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_11"><text>&quot;SEFAZ&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_15_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_15_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_15_cntPeca1"><text>&quot;22&quot;</text></outputEntry>
+        <outputEntry id="MOutE_15_cntPeca2"><text>&quot;27&quot;</text></outputEntry>
+        <outputEntry id="MOutE_15_codTexto"><text>&quot;52&quot;</text></outputEntry>
+        <outputEntry id="MOutE_15_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_15_qtPecasCNT"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_15_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_15_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_15_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_15_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_15_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_15_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 15</text></annotationEntry>
+      </rule>
+      <rule id="MRule_16">
+        <description>coluna 16 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido com Oficio maior que 5000 - Contrarrazao de OF e RO para o Contribuinte (16)</description>
+        <inputEntry id="MInE_16_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_1"><text>&quot;1&quot;,&quot;6&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_11"><text>&quot;SEFAZ&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_16_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_16_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_16_cntPeca1"><text>&quot;23&quot;</text></outputEntry>
+        <outputEntry id="MOutE_16_cntPeca2"><text>&quot;27&quot;</text></outputEntry>
+        <outputEntry id="MOutE_16_codTexto"><text>&quot;52&quot;</text></outputEntry>
+        <outputEntry id="MOutE_16_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_16_qtPecasCNT"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_16_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_16_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_16_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_16_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_16_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_16_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 16</text></annotationEntry>
+      </rule>
+      <rule id="MRule_17">
+        <description>coluna 17 - Tipo Impugnacao - DEFESA - Contrarrazoes de VO defesa nao processada. (17)</description>
+        <inputEntry id="MInE_17_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_1"><text>&quot;1&quot;,&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_4"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_17_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_17_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_17_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_17_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_17_codTexto"><text>&quot;53&quot;</text></outputEntry>
+        <outputEntry id="MOutE_17_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_17_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_17_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_17_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_17_sfPeca1"><text>&quot;26&quot;</text></outputEntry>
+        <outputEntry id="MOutE_17_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_17_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_17_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 17</text></annotationEntry>
+      </rule>
+      <rule id="MRule_18">
+        <description>coluna 18 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido sem Oficio menor que 5000 - Contrarrazao de VO para a fazenda (18)</description>
+        <inputEntry id="MInE_18_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_11"><text>&quot;CNT&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_18_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_18_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_18_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_18_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_18_codTexto"><text>&quot;53&quot;</text></outputEntry>
+        <outputEntry id="MOutE_18_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_18_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_18_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_18_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_18_sfPeca1"><text>&quot;26&quot;</text></outputEntry>
+        <outputEntry id="MOutE_18_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_18_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_18_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 18</text></annotationEntry>
+      </rule>
+      <rule id="MRule_19">
+        <description>coluna 19 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido com Oficio maior que 5000 - Contrarrazao de RO para a fazenda (19)</description>
+        <inputEntry id="MInE_19_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_11"><text>&quot;CNT&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_19_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_19_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_19_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_19_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_19_codTexto"><text>&quot;53&quot;</text></outputEntry>
+        <outputEntry id="MOutE_19_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_19_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_19_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_19_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_19_sfPeca1"><text>&quot;31&quot;</text></outputEntry>
+        <outputEntry id="MOutE_19_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_19_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_19_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 19</text></annotationEntry>
+      </rule>
+      <rule id="MRule_20">
+        <description>coluna 20 - Tipo Impugnacao - VO/OF - Recurso Provido com defesa nao conhecida (20)</description>
+        <inputEntry id="MInE_20_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_1"><text>&quot;3&quot;,&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_4"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_14"><text>&quot;1&quot;,&quot;6&quot;</text></inputEntry>
+        <inputEntry id="MInE_20_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_20_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_20_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_20_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_20_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_20_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_20_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_20_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_20_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_20_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_20_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_20_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_20_tempoResposta"><text>&quot;0&quot;</text></outputEntry>
+        <annotationEntry><text>col. 20</text></annotationEntry>
+      </rule>
+      <rule id="MRule_21">
+        <description>coluna 21 - Tipo Impugnacao - VO/OF - Recurso Nao Provido com defesa nao conhecida (21)</description>
+        <inputEntry id="MInE_21_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_1"><text>&quot;3&quot;,&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_4"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_9"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_14"><text>&quot;2&quot;,&quot;5&quot;</text></inputEntry>
+        <inputEntry id="MInE_21_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_21_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_21_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_21_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_21_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_21_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_21_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_21_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_21_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_21_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_21_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_21_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_21_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 21</text></annotationEntry>
+      </rule>
+      <rule id="MRule_22">
+        <description>coluna 22 - Tipo Impugnacao - VO - Recurso Nao Provido com defesa com Debito Mantido - sem Recurso de Oficio (22)</description>
+        <inputEntry id="MInE_22_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_1"><text>&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_7"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_14"><text>&quot;2&quot;,&quot;5&quot;</text></inputEntry>
+        <inputEntry id="MInE_22_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_22_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_22_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_22_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_22_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_22_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_22_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_22_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_22_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_22_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_22_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_22_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_22_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 22</text></annotationEntry>
+      </rule>
+      <rule id="MRule_23">
+        <description>coluna 23 - Tipo Impugnacao - VO - Recurso Nao Provido com defesa com Debito Mantido - com Recurso de Oficio (23)</description>
+        <inputEntry id="MInE_23_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_1"><text>&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_7"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_14"><text>&quot;2&quot;,&quot;5&quot;</text></inputEntry>
+        <inputEntry id="MInE_23_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_23_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_23_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_23_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_23_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_23_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_23_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_23_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_23_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_23_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_23_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_23_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_23_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 23</text></annotationEntry>
+      </rule>
+      <rule id="MRule_24">
+        <description>coluna 24 - Tipo Impugnacao - VO - Nao Admissão ou Provimento de Recurso - Debito Reduzido/Cancelado sem Recurso de Oficio (24)</description>
+        <inputEntry id="MInE_24_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_1"><text>&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_7"><text>&quot;2&quot;,&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_14"><text>&quot;2&quot;,&quot;5&quot;</text></inputEntry>
+        <inputEntry id="MInE_24_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_24_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_24_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_24_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_24_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_24_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_24_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_24_qtPecasSefaz"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_24_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_24_sfPeca1"><text>&quot;54&quot;</text></outputEntry>
+        <outputEntry id="MOutE_24_sfPeca2"><text>&quot;110&quot;</text></outputEntry>
+        <outputEntry id="MOutE_24_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_24_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 24</text></annotationEntry>
+      </rule>
+      <rule id="MRule_25">
+        <description>coluna 25 - Tipo Impugnacao - VO - Nao Admissão ou Provimento de Recurso - Debito Reduzido/Cancelado com Recurso de Oficio (25)</description>
+        <inputEntry id="MInE_25_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_1"><text>&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_7"><text>&quot;2&quot;,&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_14"><text>&quot;2&quot;,&quot;5&quot;</text></inputEntry>
+        <inputEntry id="MInE_25_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_25_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_25_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_25_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_25_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_25_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_25_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_25_qtPecasSefaz"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_25_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_25_sfPeca1"><text>&quot;54&quot;</text></outputEntry>
+        <outputEntry id="MOutE_25_sfPeca2"><text>&quot;110&quot;</text></outputEntry>
+        <outputEntry id="MOutE_25_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_25_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 25</text></annotationEntry>
+      </rule>
+      <rule id="MRule_26">
+        <description>coluna 26 - Tipo Impugnacao - Despacho de Peticao.(26)</description>
+        <inputEntry id="MInE_26_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_1"><text>&quot;11&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_4"><text>&quot;0&quot;,&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_13"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_15"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_26_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_26_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_26_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_26_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_26_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_26_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_26_tempoResposta"><text>&quot;0&quot;</text></outputEntry>
+        <annotationEntry><text>col. 26</text></annotationEntry>
+      </rule>
+      <rule id="MRule_27">
+        <description>coluna 27 - Tipo Impugnacao - Interrupcao de Contencioso.(27)</description>
+        <inputEntry id="MInE_27_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_1"><text>&quot;1&quot;,&quot;11&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;8&quot;,&quot;9&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_2"><text>&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_13"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_14"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_27_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_27_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_27_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_27_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_27_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 27</text></annotationEntry>
+      </rule>
+      <rule id="MRule_28">
+        <description>coluna 28 - Tipo Impugnacao - Peticao nao admitida.(28)</description>
+        <inputEntry id="MInE_28_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_1"><text>&quot;11&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_13"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_15"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_28_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_28_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_28_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_28_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_28_codTexto"><text>&quot;61&quot;</text></outputEntry>
+        <outputEntry id="MOutE_28_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_28_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_28_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_28_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_28_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_28_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_28_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_28_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 28</text></annotationEntry>
+      </rule>
+      <rule id="MRule_29">
+        <description>coluna 29 - Tipo Impugnacao - VO - OF - VO+OF - Anulacao de Julgamento de defesa (29)</description>
+        <inputEntry id="MInE_29_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_1"><text>&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_9"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_14"><text>&quot;0&quot;,&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_16"><text>&quot;0&quot;,&quot;4&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_17"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_29_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_29_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_29_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_29_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_29_codTexto"><text>&quot;62&quot;</text></outputEntry>
+        <outputEntry id="MOutE_29_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_29_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_29_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_29_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_29_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_29_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_29_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_29_tempoResposta"><text>&quot;0&quot;</text></outputEntry>
+        <annotationEntry><text>col. 29</text></annotationEntry>
+      </rule>
+      <rule id="MRule_30">
+        <description>coluna 30 - Tipo Impugnacao - RO - Anulacao de Julgamento de defesa - Reduzido/Cancelado (30)</description>
+        <inputEntry id="MInE_30_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_8"><text>&quot;2&quot;,&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_14"><text>&quot;1&quot;,&quot;6&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_17"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_30_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_30_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_30_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_30_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_30_codTexto"><text>&quot;62&quot;</text></outputEntry>
+        <outputEntry id="MOutE_30_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_30_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_30_qtPecasSefaz"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_30_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_30_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_30_sfPeca2"><text>&quot;39&quot;</text></outputEntry>
+        <outputEntry id="MOutE_30_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_30_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 30</text></annotationEntry>
+      </rule>
+      <rule id="MRule_31">
+        <description>coluna 31 - Tipo Impugnacao - RO - Anulacao de Julgamento de defesa - Mantido ou Defesa nao conhecida (31)</description>
+        <inputEntry id="MInE_31_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_8"><text>&quot;0&quot;,&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_14"><text>&quot;1&quot;,&quot;6&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_17"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_31_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_31_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_31_cntPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_31_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_31_codTexto"><text>&quot;62&quot;</text></outputEntry>
+        <outputEntry id="MOutE_31_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_31_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_31_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_31_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_31_sfPeca1"><text>&quot;50&quot;</text></outputEntry>
+        <outputEntry id="MOutE_31_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_31_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_31_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 31</text></annotationEntry>
+      </rule>
+      <rule id="MRule_32">
+        <description>coluna 32 - Tipo Impugnacao - RO - Nao Admissão - Sem Recurso de Oficio (32)</description>
+        <inputEntry id="MInE_32_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_14"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_32_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_32_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_32_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_32_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_32_codTexto"><text>&quot;71&quot;</text></outputEntry>
+        <outputEntry id="MOutE_32_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_32_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_32_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_32_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_32_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_32_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_32_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_32_tempoResposta"><text>&quot;0&quot;</text></outputEntry>
+        <annotationEntry><text>col. 32</text></annotationEntry>
+      </rule>
+      <rule id="MRule_33">
+        <description>coluna 33 - Tipo Impugnacao - RO - Nao Admissão - com Recurso de Oficio (33)</description>
+        <inputEntry id="MInE_33_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_14"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_33_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_33_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_33_cntPeca1"><text>&quot;9&quot;</text></outputEntry>
+        <outputEntry id="MOutE_33_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_33_codTexto"><text>&quot;72&quot;</text></outputEntry>
+        <outputEntry id="MOutE_33_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_33_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_33_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_33_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_33_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_33_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_33_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_33_tempoResposta"><text>&quot;0&quot;</text></outputEntry>
+        <annotationEntry><text>col. 33</text></annotationEntry>
+      </rule>
+      <rule id="MRule_34">
+        <description>coluna 34 - Tipo Impugnacao - RO - Recurso Admitido (34)</description>
+        <inputEntry id="MInE_34_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_2"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_14"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_34_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_34_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_34_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_34_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_34_codTexto"><text>&quot;73&quot;</text></outputEntry>
+        <outputEntry id="MOutE_34_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_34_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_34_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_34_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_34_sfPeca1"><text>&quot;31&quot;</text></outputEntry>
+        <outputEntry id="MOutE_34_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_34_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_34_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 34</text></annotationEntry>
+      </rule>
+      <rule id="MRule_35">
+        <description>coluna 35 - Segunda Instancia - RO - Decisao Anulada - Debito Mantido (35)</description>
+        <inputEntry id="MInE_35_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_5"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_8"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_14"><text>&quot;1&quot;,&quot;9&quot;,&quot;10&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_17"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_18"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_35_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_35_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_35_cntPeca1"><text>&quot;110&quot;</text></outputEntry>
+        <outputEntry id="MOutE_35_cntPeca2"><text>&quot;56&quot;</text></outputEntry>
+        <outputEntry id="MOutE_35_codTexto"><text>&quot;111&quot;</text></outputEntry>
+        <outputEntry id="MOutE_35_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_35_qtPecasCNT"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_35_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_35_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_35_sfPeca1"><text>&quot;110&quot;</text></outputEntry>
+        <outputEntry id="MOutE_35_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_35_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_35_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 35</text></annotationEntry>
+      </rule>
+      <rule id="MRule_36">
+        <description>coluna 36 - Segunda Instancia - RO - Decisao Anulada - Debito Cancelado (36)</description>
+        <inputEntry id="MInE_36_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_5"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_8"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_14"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_17"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_36_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_36_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_36_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_36_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_36_codTexto"><text>&quot;111&quot;</text></outputEntry>
+        <outputEntry id="MOutE_36_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_36_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_36_qtPecasSefaz"><text>3</text></outputEntry>
+        <outputEntry id="MOutE_36_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_36_sfPeca1"><text>&quot;110&quot;</text></outputEntry>
+        <outputEntry id="MOutE_36_sfPeca2"><text>&quot;39&quot;</text></outputEntry>
+        <outputEntry id="MOutE_36_sfPeca3"><text>&quot;38&quot;</text></outputEntry>
+        <outputEntry id="MOutE_36_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 36</text></annotationEntry>
+      </rule>
+      <rule id="MRule_37">
+        <description>coluna 37 - Segunda Instancia - RO - Decisao Anulada - Debito Mantido com exclusao de Solidario ou Debito Reduzido (37)</description>
+        <inputEntry id="MInE_37_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_1"><text>&quot;8&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_5"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_14"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_17"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_18"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_37_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_37_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_37_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_37_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_37_codTexto"><text>&quot;111&quot;</text></outputEntry>
+        <outputEntry id="MOutE_37_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_37_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_37_qtPecasSefaz"><text>3</text></outputEntry>
+        <outputEntry id="MOutE_37_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_37_sfPeca1"><text>&quot;110&quot;</text></outputEntry>
+        <outputEntry id="MOutE_37_sfPeca2"><text>&quot;39&quot;</text></outputEntry>
+        <outputEntry id="MOutE_37_sfPeca3"><text>&quot;38&quot;</text></outputEntry>
+        <outputEntry id="MOutE_37_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 37</text></annotationEntry>
+      </rule>
+      <rule id="MRule_38">
+        <description>coluna 38 - Segunda Instancia, diligencias DRF/Contribuinte (38)</description>
+        <inputEntry id="MInE_38_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_1"><text>-</text></inputEntry>
+        <inputEntry id="MInE_38_2"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_6"><text>&quot;CNT&quot;,&quot;RF&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_9"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_38_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_38_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_38_17"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_18"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_38_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_38_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_38_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_38_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_codTexto"><text>&quot;112&quot;</text></outputEntry>
+        <outputEntry id="MOutE_38_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_38_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_38_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 38</text></annotationEntry>
+      </rule>
+      <rule id="MRule_39">
+        <description>coluna 39 - Segunda Instancia, diligencias DRT/PGE/UE (39)</description>
+        <inputEntry id="MInE_39_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_1"><text>-</text></inputEntry>
+        <inputEntry id="MInE_39_2"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_6"><text>&quot;UE&quot;,&quot;PGE&quot;,&quot;DRT&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_9"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_39_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_39_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_39_17"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_18"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_39_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_39_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_39_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_39_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_codTexto"><text>&quot;112&quot;</text></outputEntry>
+        <outputEntry id="MOutE_39_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_39_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_39_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 39</text></annotationEntry>
+      </rule>
+      <rule id="MRule_40">
+        <description>coluna 40 - Segunda Instancia - Debitos Mantidos - Recursos do Contribuinte nao conhecidos com provimento de recursos da fazenda sem exclusao de solidarios (40)</description>
+        <inputEntry id="MInE_40_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_1"><text>&quot;10&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_5"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_8"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_14"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_16"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_40_18"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_19"><text>&quot;1&quot;,&quot;2&quot;,&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_20"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_40_21"><text>&quot;1&quot;</text></inputEntry>
+        <outputEntry id="MOutE_40_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_codTexto"><text>&quot;165&quot;</text></outputEntry>
+        <outputEntry id="MOutE_40_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_40_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 40</text></annotationEntry>
+      </rule>
+      <rule id="MRule_41">
+        <description>coluna 41 - Tipo Impugnacao - DEFESA - Debito Cancelado - sem Oficio - PRJ (ambos) (41)</description>
+        <inputEntry id="MInE_41_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_8"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_41_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_41_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_41_cntPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_41_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_41_codTexto"><text>&quot;331&quot;</text></outputEntry>
+        <outputEntry id="MOutE_41_contraRazao"><text>&quot;0&quot;</text></outputEntry>
+        <outputEntry id="MOutE_41_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_41_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_41_sfDiasRepresentacao"><text>&quot;30&quot;</text></outputEntry>
+        <outputEntry id="MOutE_41_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_41_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_41_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_41_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 41</text></annotationEntry>
+      </rule>
+      <rule id="MRule_42">
+        <description>coluna 42 - Tipo Impugnacao - DEFESA - Debito Cancelado - com Oficio - PRJ (ambos) e Parecer (sefaz) (42)</description>
+        <inputEntry id="MInE_42_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_8"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_42_13"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_42_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_42_cntPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_42_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_42_codTexto"><text>&quot;332&quot;</text></outputEntry>
+        <outputEntry id="MOutE_42_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_42_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_42_qtPecasSefaz"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_42_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_42_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_42_sfPeca2"><text>&quot;25&quot;</text></outputEntry>
+        <outputEntry id="MOutE_42_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_42_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 42</text></annotationEntry>
+      </rule>
+      <rule id="MRule_43">
+        <description>coluna 43 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido sem Oficio menor que 5000, Abertura de VO para contribuinte e PRJ para ambos (43)</description>
+        <inputEntry id="MInE_43_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_43_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_43_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_43_cntPeca1"><text>&quot;22&quot;</text></outputEntry>
+        <outputEntry id="MOutE_43_cntPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_43_codTexto"><text>&quot;333&quot;</text></outputEntry>
+        <outputEntry id="MOutE_43_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_43_qtPecasCNT"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_43_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_43_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_43_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_43_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_43_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_43_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 43</text></annotationEntry>
+      </rule>
+      <rule id="MRule_44">
+        <description>coluna 44 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido sem Oficio maior que 5000, Abertura de RO para contribuinte e PRJ para ambos (44)</description>
+        <inputEntry id="MInE_44_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_9"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_44_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_44_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_44_cntPeca1"><text>&quot;23&quot;</text></outputEntry>
+        <outputEntry id="MOutE_44_cntPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_44_codTexto"><text>&quot;333&quot;</text></outputEntry>
+        <outputEntry id="MOutE_44_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_44_qtPecasCNT"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_44_qtPecasSefaz"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_44_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_44_sfPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_44_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_44_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_44_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 44</text></annotationEntry>
+      </rule>
+      <rule id="MRule_45">
+        <description>coluna 45 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido com Oficio menor que 5000, Abertura de Parecer para a fazenda e PRJ para ambos (45)</description>
+        <inputEntry id="MInE_45_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_13"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_45_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_45_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_45_cntPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_45_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_45_codTexto"><text>&quot;334&quot;</text></outputEntry>
+        <outputEntry id="MOutE_45_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_45_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_45_qtPecasSefaz"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_45_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_45_sfPeca1"><text>&quot;25&quot;</text></outputEntry>
+        <outputEntry id="MOutE_45_sfPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_45_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_45_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 45</text></annotationEntry>
+      </rule>
+      <rule id="MRule_46">
+        <description>coluna 46 - Tipo Impugnacao - DEFESA - Debito Mantido/Reduzido com Oficio maior que 5000, Abertura de Parecer para a fazenda e PRJ para ambos (46)</description>
+        <inputEntry id="MInE_46_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_1"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_2"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_3"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_8"><text>&quot;1&quot;,&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_9"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_10"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_46_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_46_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_46_cntPeca1"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_46_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_46_codTexto"><text>&quot;334&quot;</text></outputEntry>
+        <outputEntry id="MOutE_46_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_46_qtPecasCNT"><text>1</text></outputEntry>
+        <outputEntry id="MOutE_46_qtPecasSefaz"><text>2</text></outputEntry>
+        <outputEntry id="MOutE_46_sfDiasRepresentacao"><text>&quot;60&quot;</text></outputEntry>
+        <outputEntry id="MOutE_46_sfPeca1"><text>&quot;25&quot;</text></outputEntry>
+        <outputEntry id="MOutE_46_sfPeca2"><text>&quot;49&quot;</text></outputEntry>
+        <outputEntry id="MOutE_46_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_46_tempoResposta"><text>&quot;30&quot;</text></outputEntry>
+        <annotationEntry><text>col. 46</text></annotationEntry>
+      </rule>
+      <rule id="MRule_47">
+        <description>coluna 47 - Segunda Instancia, Retorno de diligencias DRT/PGE/UE (47)</description>
+        <inputEntry id="MInE_47_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_1"><text>-</text></inputEntry>
+        <inputEntry id="MInE_47_2"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_6"><text>&quot;UE&quot;,&quot;PGE&quot;,&quot;DRT&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_9"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_47_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_47_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_47_17"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_18"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_47_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_47_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_47_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_47_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_codTexto"><text>&quot;1131&quot;</text></outputEntry>
+        <outputEntry id="MOutE_47_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_47_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_47_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 47</text></annotationEntry>
+      </rule>
+      <rule id="MRule_48">
+        <description>coluna 48 - Segunda Instancia, retorno de diligencias DRF/Contribuinte (48)</description>
+        <inputEntry id="MInE_48_0"><text>&quot;2&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_1"><text>-</text></inputEntry>
+        <inputEntry id="MInE_48_2"><text>&quot;3&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_4"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_5"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_6"><text>&quot;CNT&quot;,&quot;RF&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_7"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_8"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_9"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_10"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_13"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_14"><text>-</text></inputEntry>
+        <inputEntry id="MInE_48_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_48_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_48_17"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_18"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_48_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_48_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_48_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_48_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_codTexto"><text>&quot;1132&quot;</text></outputEntry>
+        <outputEntry id="MOutE_48_contraRazao"><text>&quot;1&quot;</text></outputEntry>
+        <outputEntry id="MOutE_48_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_48_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 48</text></annotationEntry>
+      </rule>
+      <rule id="MRule_49">
+        <description>coluna 49 - Tipo Impugnacao - Interrupcao de Contencioso UJ.(49)</description>
+        <inputEntry id="MInE_49_0"><text>&quot;1&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_1"><text>&quot;1&quot;,&quot;11&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;8&quot;,&quot;9&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_2"><text>&quot;5&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_3"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_4"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_5"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_6"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_7"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_8"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_9"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_10"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_11"><text>&quot;NA&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_13"><text>&quot;1&quot;,&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_14"><text>&quot;0&quot;</text></inputEntry>
+        <inputEntry id="MInE_49_15"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_16"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_17"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_18"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_19"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_20"><text>-</text></inputEntry>
+        <inputEntry id="MInE_49_21"><text>-</text></inputEntry>
+        <outputEntry id="MOutE_49_cntPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_cntPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_codTexto"><text>&quot;331&quot;</text></outputEntry>
+        <outputEntry id="MOutE_49_contraRazao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_qtPecasCNT"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_qtPecasSefaz"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_sfDiasRepresentacao"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_sfPeca1"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_sfPeca2"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_sfPeca3"><text>null</text></outputEntry>
+        <outputEntry id="MOutE_49_tempoResposta"><text>null</text></outputEntry>
+        <annotationEntry><text>col. 49</text></annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DRD_intimacoes_Parametros_Espelho">
+      <dmndi:DMNShape id="Shape_Decision_Espelho" dmnElementRef="Decision_Espelho">
+        <dc:Bounds height="80" width="240" x="60" y="60" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

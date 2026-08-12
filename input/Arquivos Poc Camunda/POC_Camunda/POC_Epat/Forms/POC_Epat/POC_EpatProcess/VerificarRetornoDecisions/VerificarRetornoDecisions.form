@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form:form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:et="http://www.tibco.com/forms/model/elemtypes" xmlns:form="http://www.tibco.com/forms/model/form" xmlns:gwt="http://www.tibco.com/forms/model/gwt" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" generated="true" generatorSource="POC_Epat.xpdl#_30jAcFqVEfG5K7mY0I3I6w" formatVersion="2.2.2">
+  <form:externalResources>
+    <form:externalResource name="resource.common" uri="pathmap://FORMS_RESOURCES/common.properties" internal="true" localized="true"/>
+    <form:externalResource name="resource.form" uri="POC_Epat/POC_EpatProcess/VerificarRetornoDecisions/VerificarRetornoDecisions.properties" sfRelative="true" internal="true" localized="true"/>
+  </form:externalResources>
+  <form:dataModel>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l4VqREfG5K7mY0I3I6w" name="data.FLAGCONTRARAZAO" label="flagContraRazao" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_pSJ7cHvAEdy0U8_1u7Q20g?BomPrimitiveTypes%3a%3aBoolean?" type="BomPrimitiveTypes::Boolean" inout="IN"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l-FqREfG5K7mY0I3I6w" name="data.CNTPECA4" label="cntPeca4" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6mAVqREfG5K7mY0I3I6w" name="data.SFPECA4" label="sfPeca4" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l6VqREfG5K7mY0I3I6w" name="data.QTPECASSEFAZ" label="qtPecasSefaz" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_BRY7wHvBEdy0U8_1u7Q20g?BomPrimitiveTypes%3a%3aInteger?" type="BomPrimitiveTypes::Integer" inout="IN" length="2"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l7FqREfG5K7mY0I3I6w" name="data.CNTPECA3" label="cntPeca3" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l7VqREfG5K7mY0I3I6w" name="data.SFPECA2" label="sfPeca2" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6mCFqREfG5K7mY0I3I6w" name="data.SFPECA3" label="sfPeca3" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CtQ7KVqPEfG5K7mY0I3I6w" name="data.TIPOVISTAS" label="tipoVistas" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="INOUT" length="50"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l31qREfG5K7mY0I3I6w" name="data.SFPECA1" label="sfPeca1" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l-1qREfG5K7mY0I3I6w" name="data.CNTPECA1" label="cntPeca1" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l5lqREfG5K7mY0I3I6w" name="data.SFDIASREPRESENT" label="sfDiasRepresentacao" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="2"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l3VqREfG5K7mY0I3I6w" name="data.QTPECASCNT" label="qtPecasCNT" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_BRY7wHvBEdy0U8_1u7Q20g?BomPrimitiveTypes%3a%3aInteger?" type="BomPrimitiveTypes::Integer" inout="IN" length="2"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l2FqREfG5K7mY0I3I6w" name="data.CNTPECA2" label="cntPeca2" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l5FqREfG5K7mY0I3I6w" name="data.DESCREGRA" label="DescricaoRegra" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="250"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l_FqREfG5K7mY0I3I6w" name="data.TEMPORESPOSTA" label="tempoResposta" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="2"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_CI6l51qREfG5K7mY0I3I6w" name="data.CODTEXTO" label="codTexto" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="4"/>
+  </form:dataModel>
+  <form:services/>
+  <form:actions/>
+  <form:conditions/>
+  <form:rules>
+    <form:rule name="rule.cancel" label="Cancel">
+      <form:event source="#control.cancel" eventType="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#select" subject="form.control.cancel.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.cancel"/>
+    </form:rule>
+    <form:rule name="rule.close" label="Close">
+      <form:event source="#control.close" eventType="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#select" subject="form.control.close.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.close"/>
+    </form:rule>
+    <form:rule name="rule.submit" label="Submit">
+      <form:event source="#control.submit" eventType="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#select" subject="form.control.submit.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.submit"/>
+    </form:rule>
+  </form:rules>
+  <form:bindings>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkIF6DEfGBBLgT-R5iuw">
+      <form:source target="data.FLAGCONTRARAZAO" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.FLAGCONTRARAZAO.value"></form:source>
+      <form:destination target="control.FLAGCONTRARAZAO" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.FLAGCONTRARAZAO.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkIV6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA4" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA4.value"></form:source>
+      <form:destination target="control.CNTPECA4" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA4.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkIl6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA4" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA4.value"></form:source>
+      <form:destination target="control.SFPECA4" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA4.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkI16DEfGBBLgT-R5iuw">
+      <form:source target="data.QTPECASSEFAZ" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.QTPECASSEFAZ.value"></form:source>
+      <form:destination target="control.QTPECASSEFAZ" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.QTPECASSEFAZ.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkJF6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA3" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA3.value"></form:source>
+      <form:destination target="control.CNTPECA3" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA3.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkJV6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA2" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA2.value"></form:source>
+      <form:destination target="control.SFPECA2" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA2.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkJl6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA3" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA3.value"></form:source>
+      <form:destination target="control.SFPECA3" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA3.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="bothways" name="_fKJkJ16DEfGBBLgT-R5iuw">
+      <form:source target="data.TIPOVISTAS" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.TIPOVISTAS.value"></form:source>
+      <form:destination target="control.TIPOVISTAS" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.TIPOVISTAS.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkKF6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA1" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA1.value"></form:source>
+      <form:destination target="control.SFPECA1" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA1.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkKV6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA1" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA1.value"></form:source>
+      <form:destination target="control.CNTPECA1" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA1.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkKl6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFDIASREPRESENT" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFDIASREPRESENT.value"></form:source>
+      <form:destination target="control.SFDIASREPRESENT" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFDIASREPRESENT.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkK16DEfGBBLgT-R5iuw">
+      <form:source target="data.QTPECASCNT" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.QTPECASCNT.value"></form:source>
+      <form:destination target="control.QTPECASCNT" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.QTPECASCNT.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_fKJkLF6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA2" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA2.value"></form:source>
+      <form:destination target="control.CNTPECA2" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA2.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_u87gYF6DEfGBBLgT-R5iuw">
+      <form:source target="data.DESCREGRA" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.DESCREGRA.value"></form:source>
+      <form:destination target="control.DESCREGRA" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.DESCREGRA.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_FhXhMF6FEfGBBLgT-R5iuw">
+      <form:source target="data.TEMPORESPOSTA" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.TEMPORESPOSTA.value"></form:source>
+      <form:destination target="control.TEMPORESPOSTA" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.TEMPORESPOSTA.value"></form:destination>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_FhakgF6FEfGBBLgT-R5iuw">
+      <form:source target="data.CODTEXTO" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CODTEXTO.value"></form:source>
+      <form:destination target="control.CODTEXTO" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CODTEXTO.value"></form:destination>
+    </form:binding>
+  </form:bindings>
+  <form:targets>
+    <form:target ref="iProcessWorkspace_10.7"/>
+  </form:targets>
+  <form:defaults>
+    <form:labelProperties position="top">
+      <form:font fontColor="#000000" fontName="verdana" fontSize="12"/>
+    </form:labelProperties>
+  </form:defaults>
+  <form:pane elementType="form:PaneType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.panes.vertical" name="pane.root" paneType="com.tibco.forms.panes.vertical">
+    <form:label>Verificar Retorno Decisions</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="true"/>
+    <form:defaults>
+      <form:labelProperties position="left"/>
+    </form:defaults>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l4VqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.checkbox" controlType="com.tibco.forms.controls.checkbox" name="control.FLAGCONTRARAZAO">
+      <form:label>flagContraRazao</form:label>
+      <form:hint>Identifica se há ou não contra razão.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l-FqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA4">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca4</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6mAVqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SFPECA4">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca4</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l6VqREfG5K7mY0I3I6w" syncFlags="524288" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.QTPECASSEFAZ">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+        <et:numeric>true</et:numeric>
+      </form:propertySet>
+      <form:label>qtPecasSefaz</form:label>
+      <form:hint>Identifica a quantidade de peças da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l7FqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA3">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca3</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l7VqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SFPECA2">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca2</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6mCFqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SFPECA3">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca3</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CtQ7KVqPEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.TIPOVISTAS">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>50</et:maxLength>
+      </form:propertySet>
+      <form:label>tipoVistas</form:label>
+      <form:hint>Identifica o tipo de vista:&#xD;
+&#xD;
+MISTA&#xD;
+JUIZ&#xD;
+DRF</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l31qREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SFPECA1">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca1</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l-1qREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA1">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca1</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l5lqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SFDIASREPRESENT">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>2</et:maxLength>
+      </form:propertySet>
+      <form:label>sfDiasRepresentacao</form:label>
+      <form:hint>Identifica a quantidade de dias para manifestação por parte da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l3VqREfG5K7mY0I3I6w" syncFlags="524288" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.QTPECASCNT">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+        <et:numeric>true</et:numeric>
+      </form:propertySet>
+      <form:label>qtPecasCNT</form:label>
+      <form:hint>Identifica a quantidade de peças do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l2FqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA2">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca2</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l5FqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textarea" controlType="com.tibco.forms.controls.textarea" name="control.DESCREGRA">
+      <form:propertySet xsi:type="et:TextAreaPropertySet">
+        <et:rows>10</et:rows>
+        <et:cols>25</et:cols>
+        <et:maxLength>250</et:maxLength>
+      </form:propertySet>
+      <form:label>DescricaoRegra</form:label>
+      <form:hint>Identifica o conteúdo da regra.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l_FqREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.TEMPORESPOSTA">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>2</et:maxLength>
+      </form:propertySet>
+      <form:label>tempoResposta</form:label>
+      <form:hint>Período em dias para resposta do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_CI6l51qREfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.CODTEXTO">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>4</et:maxLength>
+      </form:propertySet>
+      <form:label>codTexto</form:label>
+      <form:hint>Identifica o código de texto da intimação.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+  </form:pane>
+  <form:pane gwt:toolbar="true" styleClass="toolbar" elementType="form:PaneType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.panes.horizontal" name="pane.toolbar" paneType="com.tibco.forms.panes.horizontal">
+    <form:label>Toolbar</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="false"/>
+    <form:control elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.button" controlType="com.tibco.forms.controls.button" name="control.cancel">
+      <form:propertySet xsi:type="et:ButtonPropertySet"/>
+      <form:label>Cancel</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.button" controlType="com.tibco.forms.controls.button" name="control.close">
+      <form:propertySet xsi:type="et:ButtonPropertySet"/>
+      <form:label>Close</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.button" controlType="com.tibco.forms.controls.button" name="control.submit">
+      <form:propertySet xsi:type="et:ButtonPropertySet">
+        <et:type>primary</et:type>
+      </form:propertySet>
+      <form:label>Submit</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+  </form:pane>
+  <form:pane elementType="form:PaneType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.panes.messages" name="pane.messages" paneType="com.tibco.forms.panes.messages">
+    <form:label>Invalid Entries</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="false"/>
+  </form:pane>
+</form:form>

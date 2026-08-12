@@ -1,0 +1,240 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/net-equivalence-catalog/v1",
+  "note": "Construcoes do TIBCO/iProcess que NAO tem equivalente direto em .NET. Este arquivo e conteudo AUTORADO e irredutivel: nenhum artefato de origem declara opcoes de destino. O gerador apenas ENUMERA as opcoes aqui declaradas e nunca escolhe - a escolha e do gate humano, registrada em config/glossary/<pacote>.yaml na secao 'gaps'. O campo 'recomendada' e uma sugestao autorada, nao uma decisao: precisa de ratificacao explicita.",
+
+  "categories": {
+    "iprocess-builtin": {
+      "construct": "Valores e funcoes de runtime do iProcess (IPESystemValues.SW_NA, SW_CASENUM, SW_DATE, IPEStringUtil.*, IPEDateTimeUtil.CALCTIME)",
+      "whyNoEquivalent": "SW_NA e um TERCEIRO estado distinto: nao e null e nao e string vazia. C# nao possui esse estado. As funcoes utilitarias tem semantica propria de indice e de calendario que nao coincide com a BCL.",
+      "riskIfIgnored": "Mapear SW_NA para null colapsa dois estados diferentes e muda silenciosamente qual ramo dispara. Nao ha erro de compilacao nem teste vermelho.",
+      "architectureNote": "Toda a superficie de builtins deve viver numa CAMADA ANTICORRUPCAO (Anti-Corruption Layer, DDD): um projeto separado (ex.: Fazenda.ePAT.IProcess.Acl) que traduz a semantica legada e impede que ela contamine o dominio. E o padrao estruturante da migracao inteira: tudo o que e 'esquisito por causa do TIBCO' fica isolado e coberto por vetores de teste.",
+      "options": [
+        {
+          "id": "shim-tri-state",
+          "pattern": "Special Case (Fowler) + Value Object (DDD). NAO e Null Object: SW_NA nao representa ausencia, e um estado proprio.",
+          "approach": "Tipo de campo tri-estado dentro da camada anticorrupcao: readonly record struct FieldValue<T> com estados HasValue / IsNotAvailable / Empty, mais a classe IProcessValues com os utilitarios. O pattern matching exaustivo do C# obriga a tratar os tres casos.",
+          "consequence": "Preserva a semantica exata dos tres estados e o compilador passa a exigir a decisao em cada uso. Custo: todo campo sentinela deixa de ser tipo primitivo e o codigo gerado fica menos idiomatico.",
+          "recomendada": true
+        },
+        {
+          "id": "map-to-null",
+          "pattern": "Nullable reference/value types da BCL.",
+          "approach": "Mapear SW_NA para null e usar tipos anulaveis.",
+          "consequence": "Codigo idiomatico, porem SO e seguro para campos que nunca sao legitimamente nulos - e sao 18 campos sentinela, cada um exigindo essa prova. Onde a prova falhar, o ramo trocado nao gera erro visivel.",
+          "recomendada": false
+        },
+        {
+          "id": "preserve-literal",
+          "pattern": "Primitive Obsession (anti-padrao assumido conscientemente).",
+          "approach": "Preservar o literal como constante de string e comparar textualmente.",
+          "consequence": "Traducao literal e facil de auditar contra o XPDL, mas propaga tipagem fraca para todo o modelo de dominio e desiste da verificacao do compilador.",
+          "recomendada": false
+        }
+      ]
+    },
+
+    "link-goto": {
+      "construct": "Evento Link do XPDL usado como GOTO entre raias",
+      "whyNoEquivalent": "BPMN/Elsa nao tratam Link como desvio incondicional entre raias; e um artificio de diagramacao do iProcess.",
+      "riskIfIgnored": "Manter o par throw/catch como evento cria estados de espera que nao existem no original.",
+      "architectureNote": "Nao e um design pattern: e uma transformacao de grafo, equivalente a normalizacao de control-flow graph feita por compiladores. Por isso e a lacuna de menor risco das sete.",
+      "options": [
+        {
+          "id": "flatten-edge",
+          "pattern": "Normalizacao de CFG (tecnica de compiladores).",
+          "approach": "Achatar cada par throw/catch em uma aresta explicita de fluxo (ja resolvido em derived.linkEdges: 10 throw / 10 catch, 10 resolvidos).",
+          "consequence": "Grafo mais simples e fiel a execucao. O diagrama perde a marcacao visual de salto entre raias.",
+          "recomendada": true
+        },
+        {
+          "id": "keep-as-signal",
+          "pattern": "Publish/Subscribe interno ao motor.",
+          "approach": "Manter como evento de sinal intermediario no motor de workflow.",
+          "consequence": "Preserva o desenho original, mas INTRODUZ pontos de persistencia e espera inexistentes no TIBCO: o motor passa a parar onde o original nao parava.",
+          "recomendada": false
+        }
+      ]
+    },
+
+    "external-event": {
+      "construct": "Passo diferido / por evento do iProcess",
+      "whyNoEquivalent": "O iProcess retoma o passo por identidade de caso implicita; .NET precisa de chave de correlacao explicita e de um ponto de entrada para o evento.",
+      "riskIfIgnored": "Sem chave de correlacao o processo nao sabe qual instancia retomar.",
+      "architectureNote": "A chave de correlacao e hoje IMPLICITA na identidade do caso iProcess. Torna-la explicita e o verdadeiro trabalho: e um contrato novo que nao existe no legado. Nota de .NET: nao usar CancellationToken para modelar espera - espera nao e cancelamento.",
+      "options": [
+        {
+          "id": "bookmark-correlation",
+          "pattern": "Correlation Identifier (EIP, Hohpe) + bookmark/continuation do motor de workflow.",
+          "approach": "Bookmark do motor com chave de correlacao derivada do caso, exposta por um endpoint de retomada. No Elsa 3 corresponde a suspender a atividade e retomar por sinal correlacionado.",
+          "consequence": "Alinhado ao modelo de longa duracao do Elsa e sem infraestrutura adicional. Exige definir formalmente a chave de correlacao e proteger o endpoint de retomada.",
+          "recomendada": true
+        },
+        {
+          "id": "queue-saga",
+          "pattern": "Saga / Process Manager (EIP) sobre mensageria.",
+          "approach": "Mensageria com saga correlacionada (ex.: MassTransit).",
+          "consequence": "Escala melhor e desacopla os produtores de evento, ao custo de infraestrutura adicional fora do escopo da PoC.",
+          "recomendada": false
+        }
+      ]
+    },
+
+    "expression-deadline": {
+      "construct": "Prazo definido por expressao que combina um campo DATE e um campo TIME",
+      "whyNoEquivalent": "O prazo nao e uma duracao: e um instante calculado a partir de dois campos de negocio, que podem mudar durante a execucao.",
+      "riskIfIgnored": "Tratar como duracao fixa dispara o timer no momento errado.",
+      "architectureNote": "Isolar o calculo do instante numa estrategia propria, sobre TimeProvider (.NET 8) em vez de DateTime.Now: torna o prazo testavel sem esperas reais. Para aritmetica de calendario e fuso, considerar NodaTime.",
+      "options": [
+        {
+          "id": "absolute-instant",
+          "pattern": "Strategy para o calculo + abstracao de relogio (TimeProvider).",
+          "approach": "Combinar o campo de data e o de hora num DateTime absoluto no momento do agendamento e programar o timer para esse instante.",
+          "consequence": "Simples e previsivel. Nao reage a alteracao posterior dos campos: se o prazo for prorrogado depois do agendamento, o timer nao acompanha.",
+          "recomendada": true
+        },
+        {
+          "id": "recompute-on-resume",
+          "pattern": "Strategy reavaliada a cada retomada (recomputed policy).",
+          "approach": "Recalcular o instante sempre que o processo e retomado.",
+          "consequence": "Acompanha alteracoes dos campos, mas OBRIGA a definir a politica para o caso em que o novo instante ja passou: dispara imediatamente, ignora ou escala?",
+          "recomendada": false
+        }
+      ]
+    },
+
+    "dynamic-subprocess": {
+      "construct": "Chamada de subprocesso cujo destino e resolvido em runtime pelo valor de um campo do caso (xpdExt:ProcessIdentifierField)",
+      "whyNoEquivalent": "Nao ha vinculo estatico a resolver em tempo de compilacao: o nome do processo a instanciar so existe quando o caso executa. Em .NET nao ha construcao equivalente que escolha o tipo a instanciar por um valor de dado sem abrir mao da verificacao em build.",
+      "riskIfIgnored": "Chamada nao resolvida em producao. E o legado NAO para nesse caso: os tres passos declaram HaltOnBadSubProcess=\"false\", ou seja, subprocesso invalido falha em silencio.",
+
+      "findings": [
+        {
+          "id": "subflow-aponta-para-interface",
+          "text": "O SubFlow NAO aponta para um processo concreto: aponta para uma xpdExt:ProcessInterface. Os processos que a cumprem declaram xpdExt:ImplementedInterface. Isto e, literalmente, programacao a interfaces com resolucao dinamica - o TIBCO ja separa contrato de implementacao.",
+          "evidence": [
+            "linha 1356: SubFlow Id=_jbIH91qjEfG5K7mY0I3I6w ProcessIdentifierField=DEAT0050 -> ProcessInterface NOTFAIIM (linha 12028), implementada por DEAT0050 (linha 4155)",
+            "linha 2723: SubFlow Id=_BAx4zV6KEfGBBLgT-R5iuw ProcessIdentifierField=NRSUBPRO -> ProcessInterface CTRINTPC (linha 12179), implementada por CONTROPC (linha 8972)",
+            "linha 8674: SubFlow Id=__BAVLV6QEfGlneRUZ2ZhXA ProcessIdentifierField=AGUARDAR -> ProcessInterface AGURETPC (linha 12463), implementada por AGPECASPC (linha 10853)"
+          ],
+          "consequence": "O conjunto de destinos possiveis E derivavel do proprio XPDL: e o conjunto de processos que implementam a interface. No pacote entregue cada interface tem exatamente UMA implementacao. Isto viabiliza validacao em build, que antes se julgava impossivel."
+        },
+        {
+          "id": "ressalva-pacotes-externos",
+          "text": "A completude do conjunto fechado depende dos 15 pacotes externos referenciados e NAO entregues: se algum deles implementar as mesmas interfaces, existem destinos que este pacote nao enxerga.",
+          "consequence": "Confirmar com o cliente antes de tratar o conjunto como fechado em producao. Para a POC, o conjunto do pacote basta."
+        },
+        {
+          "id": "halt-on-bad-subprocess-false",
+          "text": "Os tres passos declaram HaltOnBadSubProcess=\"false\": o motor legado nao interrompe o caso quando o subprocesso e invalido.",
+          "consequence": "Decidir explicitamente se a migracao REPRODUZ a falha silenciosa ou CORRIGE com falha explicita. Recomenda-se corrigir e registar a divergencia."
+        }
+      ],
+
+      "options": [
+        {
+          "id": "interface-registry-validated",
+          "pattern": "Strategy (GoF) + Registry, com Dependency Inversion. O xpdExt:ProcessInterface do TIBCO JA e a interface; falta apenas traduzi-la.",
+          "approach": "Uma interface C# por xpdExt:ProcessInterface e uma implementacao por processo que a declara. Resolucao em runtime por chave (Keyed DI do .NET 8: AddKeyedScoped/GetRequiredKeyedService), com o registo GERADO a partir do XPDL e verificado no arranque contra o conjunto de ImplementedInterface.",
+          "consequence": "Mantem o comportamento dinamico do iProcess e recupera a verificacao em build: um destino em falta quebra o teste de registo, nao a producao. Custo: exige o passo de geracao do registo e um teste de conformidade.",
+          "recomendada": true
+        },
+        {
+          "id": "closed-switch",
+          "pattern": "Despacho estatico exaustivo (switch com pattern matching).",
+          "approach": "Switch explicito sobre o conjunto de processos que implementam a interface, derivado do XPDL.",
+          "consequence": "Totalmente verificavel em build e simples de ler. Deixa de ser fiel se surgir uma implementacao nova (por exemplo, vinda de um pacote externo), porque exige recompilar.",
+          "recomendada": false
+        },
+        {
+          "id": "registry-late-binding",
+          "pattern": "Service Locator confinado a uma unica fabrica (disperso pelo codigo seria anti-padrao).",
+          "approach": "Registo nome-para-tipo puro, resolvido apenas em runtime, com falha explicita quando o nome nao existe.",
+          "consequence": "Reproduz o comportamento dinamico com o minimo de cerimonia. Erros de destino so aparecem em execucao - o mesmo ponto fraco do legado, sem o ganho da verificacao antecipada.",
+          "recomendada": false
+        }
+      ]
+    },
+
+    "graft-step": {
+      "construct": "Graft Step: o passo pai NAO inicia o subprocesso - aguarda que instancias se ANEXEM a ele, possivelmente em momentos diferentes, e so prossegue quando todas terminarem",
+      "whyNoEquivalent": "A juncao e invertida e a cardinalidade e definida em execucao: o pai nao sabe quantos filhos existirao nem quando aparecerao. .NET nao tem construcao equivalente - fan-out/fan-in classico exige conhecer o conjunto no momento da divisao.",
+      "riskIfIgnored": "O pai encerra antes dos filhos (perde trabalho) ou aguarda indefinidamente (caso preso). Nenhum dos dois gera erro visivel.",
+      "detectByNodeName": "graft",
+
+      "scopeDecision": {
+        "status": "EM ESCOPO",
+        "rationale": "O Graft Step e um dos tres conceitos com secao propria de 'Importancia da Validacao' no documento da POC (etapa 2 - Notificacao do AIIM). Decisao do cliente: validar o conceito, independentemente do que a flag exportada indica.",
+        "decidedOn": "2026-08-05"
+      },
+
+      "findings": [
+        {
+          "id": "contradicao-isgraftstep",
+          "text": "A flag exportada CONTRADIZ a descricao escrita pelo autor do processo. Os tres DynamicSubProcessTask do pacote declaram IsGraftStep=\"false\" (linhas 1366, 2844, 8741), mas a descricao do passo 'graftnot' (linha 1350) afirma explicitamente que a chamada e um Graft Step.",
+          "evidence": [
+            "linha 1350, descricao do autor: 'Este chamada de sub-processo esta marcada como Graft Step. Isto significa que esta chamada nao inicia os sub-processos e sim aguarda que os sub_processos sejam vinculados a esta atividade para que ela possa dar prosseguimento ao processo ao termino de todos os sub-processos. Isto permite que sub-processos sejam iniciados em momentos diferentes utilizando a mesma chamada.'",
+            "linhas 1366, 2844, 8741: iProcessExt:DynamicSubProcessTask IsGraftStep=\"false\" em TODOS os tres passos"
+          ],
+          "hypotheses": [
+            "(a) A descricao esta desatualizada: foi graft no desenho original e depois simplificaram para chamada dinamica 1:1.",
+            "(b) O graft e configurado na procedure do motor iProcess, fora do XPDL exportado - a flag do modelo nao reflete a configuracao real.",
+            "(c) O graft e orquestrado a mao por eventos: existem 'Inicia Graft Step' (link catch, linha 1338), 'Iniciar Aguardar Notificacao' (TaskReceive, linha 1370) e 'Iniciar Novo Graft' (TaskReceive, linha 3032)."
+          ],
+          "consequence": "Se a flag estiver correta, o comportamento e chamada dinamica 1:1 e sincrona - e nao ha juncao a implementar. Se a descricao estiver correta, e necessaria juncao por correlacao com cardinalidade dinamica. A diferenca entre as duas e de ordem de grandeza no esforco."
+        },
+        {
+          "id": "reentrada-manual",
+          "text": "Os passos 'Iniciar Aguardar Notificacao' (linha 1370) e 'Iniciar Novo Graft' (linha 3032) sao TaskReceive com a mesma descricao do autor: 'Apos ocorrencia de erros de tela e procedimento humano, foi incluido esta atividade para possibilitar o reinicio do Aguardar evento de Notificacao do AIIM'.",
+          "consequence": "Nao sao passos de negocio: sao valvulas de recuperacao operacional. Hoje sao o UNICO mecanismo de recuperacao do graft, entao deixa-los de fora exige decisao explicita."
+        }
+      ],
+
+      "options": [
+        {
+          "id": "correlation-join",
+          "pattern": "Process Manager + Aggregator com completion condition dinamica (EIP, Hohpe). Equivale a um fan-in sem fan-out conhecido.",
+          "approach": "O pai suspende num bookmark correlacionado pelo caso; cada filho, ao terminar, sinaliza; um contador de filhos registados decide o encerramento.",
+          "consequence": "Cobre fielmente a cardinalidade variavel e a anexacao em momentos diferentes. Exige definir formalmente a chave de correlacao e o criterio de encerramento (incluindo timeout), que hoje sao implicitos na identidade do caso iProcess.",
+          "recomendada": true
+        },
+        {
+          "id": "child-registry",
+          "pattern": "Registry explicito com contador de conclusao (observador do lado do pai).",
+          "approach": "Cada instancia filha anuncia-se ao pai ao iniciar e reporta ao concluir; o pai mantem a lista e o contador.",
+          "consequence": "Mais simples de auditar e de mostrar numa demo, porque o estado e visivel. Altera o contrato dos processos filhos, que passam a ter de se registar - inclusive os que vierem de pacotes externos.",
+          "recomendada": false
+        },
+        {
+          "id": "one-to-one-call",
+          "pattern": "Chamada sincrona simples (sem juncao).",
+          "approach": "Tratar como chamada dinamica 1:1 e sincrona, seguindo a flag IsGraftStep=\"false\": o pai instancia um unico filho e aguarda a conclusao.",
+          "consequence": "Muito mais barato e coerente com o XPDL exportado, MAS nao valida o conceito de Graft Step que a POC exige demonstrar. So e aceitavel se o cliente confirmar a hipotese (a).",
+          "recomendada": false
+        }
+      ]
+    },
+
+    "non-interrupting-boundary": {
+      "construct": "Evento de borda nao interruptivo: a tarefa hospedeira continua executando enquanto um ramo lateral dispara",
+      "whyNoEquivalent": "Exige execucao concorrente dentro do escopo da tarefa, sem cancelar a tarefa hospedeira.",
+      "riskIfIgnored": "Implementar como interruptivo cancela a tarefa original e perde o trabalho em andamento.",
+      "architectureNote": "ARMADILHA DE .NET: o reflexo de usar CancellationToken ou Task.WhenAny CANCELA o hospedeiro - exatamente o oposto do comportamento pretendido. O discriminador no XPDL e o atributo ContinueOnTimeout: 'true' nao interrompe, 'false' interrompe. Comparar 'Fim de Prazo Mantendo Atividade' (true) com 'Aguarda Defesa' (false).",
+      "options": [
+        {
+          "id": "parallel-branch",
+          "pattern": "Fork paralelo com escopos independentes (fan-out sem cancelamento).",
+          "approach": "Ramo lateral paralelo dentro do mesmo escopo, sem cancelamento do hospedeiro.",
+          "consequence": "Fiel ao original e visivel no diagrama. Exige que o motor suporte ramos paralelos com escopos independentes.",
+          "recomendada": true
+        },
+        {
+          "id": "external-subscription",
+          "pattern": "Observer / Publish-Subscribe fora do fluxo.",
+          "approach": "Assinatura de evento fora do fluxo principal, reagindo em paralelo.",
+          "consequence": "Desacopla, mas o ramo lateral DEIXA DE APARECER no diagrama do processo - perde-se a rastreabilidade visual, que e justamente o que o cliente quer ver na PoC.",
+          "recomendada": false
+        }
+      ]
+    }
+  }
+}

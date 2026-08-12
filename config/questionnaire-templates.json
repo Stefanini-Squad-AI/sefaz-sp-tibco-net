@@ -1,0 +1,72 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/questionnaire-templates/v1",
+  "note": "Conteudo AUTORADO e irredutivel: nenhuma fonte declara COMO responder uma pergunta nem o que sugerir. As perguntas em si, a evidencia e a localizacao vem do review-dossier e do XPDL. Para 'no-net-equivalent' a sugestao NAO vem daqui: vem das opcoes declaradas em net-equivalence-catalog.json.",
+
+  "categories": {
+    "no-net-equivalent": {
+      "whyItMatters": "Construcao do iProcess sem traducao direta. Ate ser decidida, qualquer implementacao dos passos afetados e um palpite que falha em silencio.",
+      "howToAnswer": "Escolher UMA das opcoes pelo id e justificar. A decisao vale para todas as ocorrencias listadas.",
+      "answerFields": ["opcaoEscolhida", "justificativa"]
+    },
+    "sentinel-branch": {
+      "whyItMatters": "SW_NA e um terceiro estado, distinto de nulo e de vazio. Se ele virar null em C#, dois estados diferentes viram um so e o ramo que dispara muda sem erro de compilacao.",
+      "howToAnswer": "Dizer o que 'nao preenchido' significa no negocio neste ponto e se esse caso segue junto com algum outro ramo ou merece tratamento proprio.",
+      "suggestion": "Preservar os tres estados no modelo .NET e tratar o ramo SW_NA explicitamente ate que o negocio confirme que ele pode ser fundido com outro.",
+      "answerFields": ["significado", "ramoDestino"]
+    },
+    "unresolved-identifier": {
+      "whyItMatters": "O identificador decide ramificacao mas nao e um dos campos de negocio declarados. Sem o dominio de valores nao da para reproduzir a decisao.",
+      "howToAnswer": "Informar de onde vem o valor, quem escreve, quando, e a lista completa de valores possiveis com o significado de cada um.",
+      "suggestion": "Confirmar o dominio de valores com quem opera o processo hoje; nao assumir booleano so porque a unica comparacao vista e com um valor.",
+      "answerFields": ["origin", "term", "description", "values"]
+    },
+    "unlabeled-decision": {
+      "whyItMatters": "O gateway nao tem nome no XPDL. No diagrama e um losango vazio, e ninguem aprova o que nao consegue ler.",
+      "howToAnswer": "Escrever a pergunta de negocio que este ponto faz e o rotulo de cada ramo.",
+      "suggestion": "Derivar o nome a partir das condicoes dos ramos listados abaixo e validar com quem conhece o fluxo.",
+      "answerFields": ["question", "branches"]
+    },
+    "clone-divergence": {
+      "whyItMatters": "Processos identicos por estrutura divergem nas condicoes. Como o template concentra tratamento de erro e retentativa, a divergencia muda a politica de erro de uma integracao especifica.",
+      "howToAnswer": "Dizer se a diferenca e intencional ou defeito herdado. Se for defeito, decidir por escrito se a migracao reproduz ou corrige.",
+      "suggestion": "Comparar as condicoes divergentes listadas abaixo com o comportamento esperado em producao antes de decidir reproduzir o defeito.",
+      "answerFields": ["intencional", "acaoNaMigracao"]
+    },
+    "builtin-semantics": {
+      "whyItMatters": "A semantica dos builtins do iProcess nao e derivavel dos arquivos entregues. Sem confirmacao, qualquer shim em .NET e chute.",
+      "howToAnswer": "Confirmar o comportamento de cada builtin com a documentacao do fornecedor ou com uma execucao no TIBCO, e registrar vetores de teste (entrada -> saida esperada).",
+      "suggestion": "Priorizar os builtins com mais pontos de chamada e fixar o comportamento por vetor de teste, nao por descricao em prosa.",
+      "answerFields": ["comportamento", "vetoresDeTeste"]
+    },
+    "script-scaffolding": {
+      "whyItMatters": "O corpo do script e logica que precisa ser reescrita; a traducao exige entender a intencao, nao so a sintaxe.",
+      "howToAnswer": "Descrever o que o script deve garantir ao final, em termos de negocio.",
+      "suggestion": "Especificar o resultado esperado do script; a implementacao em C# fica a cargo da fase de construcao, validada por teste.",
+      "answerFields": ["intencao", "resultadoEsperado"]
+    },
+    "source-not-delivered": {
+      "whyItMatters": "O pacote referencia artefatos que nao vieram na entrega. O que eles fazem nao pode ser analisado nem reproduzido.",
+      "howToAnswer": "Solicitar o arquivo ao cliente ou registrar por escrito que o item fica fora do escopo.",
+      "suggestion": "Pedir a entrega do pacote externo; se nao houver, declarar explicitamente a limitacao no relatorio da POC.",
+      "answerFields": ["providencia", "foraDeEscopo"]
+    },
+    "type-conflict": {
+      "whyItMatters": "XPDL e formulario declaram tipos diferentes para o mesmo campo. Um dos dois esta errado, e a escolha muda faixa de valores e validacao.",
+      "howToAnswer": "Confirmar o tipo real com a base de dados de origem e registrar qual declaracao prevalece.",
+      "suggestion": "Adotar o tipo de maior precisao quando houver duvida, e validar contra o dado real antes de fechar.",
+      "answerFields": ["tipoCorreto", "fonteDaVerdade"]
+    },
+    "label-conflict": {
+      "whyItMatters": "O formulario rotula um campo com o nome de OUTRO campo. Aceitar o rotulo sem conferir propaga um erro de nomenclatura para todo o modelo.",
+      "howToAnswer": "Confirmar qual e o rotulo correto do campo.",
+      "suggestion": "Tratar como provavel defeito do formulario legado; nao copiar o rotulo sem confirmacao.",
+      "answerFields": ["rotuloCorreto"]
+    },
+    "label-suggestion": {
+      "whyItMatters": "O formulario sugere um nome de negocio para o campo, mas a sugestao nunca foi verificada.",
+      "howToAnswer": "Aprovar ou corrigir o rotulo sugerido.",
+      "suggestion": "Baixo risco: aprovar em lote com o time de negocio. Nao bloqueia implementacao.",
+      "answerFields": ["term", "description"]
+    }
+  }
+}

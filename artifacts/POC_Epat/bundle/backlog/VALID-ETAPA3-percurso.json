@@ -1,0 +1,100 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "VALID-ETAPA3-percurso",
+  "cardType": "validation",
+  "title": "Provar a etapa 3 - Integração com Decisions - por rasto de instancia",
+  "epic": "etapa-3",
+  "content": {
+    "intent": "Montar o arnes que corre os percursos da etapa 3 e compara o rasto com o cenario, para que a etapa deixe de estar extraida e passe a provada.",
+    "injectedContext": {
+      "summary": "A etapa toca 33 no(s) e e exercitada por 57 cenario(s). O percurso de referencia e SC-POC_EpatProcess-008, com 37 passos, de 'Iniciar Novo Graft' a 'Fim'. Os valores esperados sao do kit e nao se editam.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "tests/SefazSp.Epat.Oracles.Tests",
+        "status": "scaffold",
+        "note": "O agente liga o arnes a fixture e nunca escreve o valor esperado."
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "etapas.footprint[3]",
+    "kind": "segment",
+    "nodeIds": []
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CI6l0VqREfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CI6l0VqREfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_LeuhgFqVEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_LeuhgFqVEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_30jAcFqVEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_30jAcFqVEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": "O oraculo e o cenario derivado do grafo; nao ha interpretacao no arnes.",
+    "verified": false,
+    "translation": "lossless"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-008.json",
+      "immutable": true,
+      "caseCount": 57
+    },
+    "criteria": [
+      "O rasto de execucao bate passo a passo com o percurso do cenario"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "etapa declarada na seccao 1 do plano de cumprimento"
+  },
+  "fulfills": {
+    "etapas": [
+      3
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-008",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 37,
+      "abrePor": "Iniciar Novo Graft",
+      "fechaEm": "Fim"
+    },
+    "concepts": [
+      "variaveis-processo"
+    ],
+    "expectedResults": [
+      "variaveis"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 33,
+    "camadas": 1,
+    "pastas": 1,
+    "aEscrever": 1,
+    "bloqueadores": 2,
+    "regrasDeNegocio": 0,
+    "peso": "grande"
+  }
+}

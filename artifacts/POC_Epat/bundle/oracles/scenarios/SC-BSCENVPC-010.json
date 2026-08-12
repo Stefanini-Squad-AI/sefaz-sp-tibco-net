@@ -1,0 +1,308 @@
+{
+  "id": "SC-BSCENVPC-010",
+  "process": "BSCENVPC",
+  "etapa": 1,
+  "etapas": [
+    1,
+    2
+  ],
+  "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+  "kind": "erro",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 1,
+    "cadeia": [
+      "POC_EpatProcess/Busca Emails"
+    ]
+  },
+  "origem": {
+    "id": "_qIDulF6BEfGBBLgT-R5iuw",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "POC_EpatProcess/Busca Emails"
+  },
+  "destino": {
+    "id": "_qIDuol6BEfGBBLgT-R5iuw",
+    "nome": "Done - Success",
+    "tipo": "endEvent",
+    "como": "regressa-ao-chamador",
+    "regressaA": "POC_EpatProcess/Busca Emails"
+  },
+  "lengthNodes": 15,
+  "segmentos": [
+    {
+      "etapas": [
+        1,
+        2
+      ],
+      "ordemNaJornada": 0,
+      "doPasso": 1,
+      "aoPasso": 7,
+      "abrePor": "Start Event",
+      "fechaEm": "Check Retries SW_QRETRYCOUNT",
+      "prologo": true,
+      "nos": [
+        {
+          "id": "_qIDulF6BEfGBBLgT-R5iuw",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_qIDulV6BEfGBBLgT-R5iuw",
+          "nome": "SetParameters",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_qIDul16BEfGBBLgT-R5iuw",
+          "nome": "Start Loop",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_qIDupV6BEfGBBLgT-R5iuw",
+          "nome": "Control System Task Call",
+          "tipo": "subProcessScope"
+        },
+        {
+          "id": "_qIDu3l6BEfGBBLgT-R5iuw",
+          "nome": "startEvent _qIDu3l6BEfGBBLgT-R5iuw",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_qIDu3F6BEfGBBLgT-R5iuw",
+          "nome": "Start TX",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_qIDu3V6BEfGBBLgT-R5iuw",
+          "nome": "Check Retries SW_QRETRYCOUNT",
+          "tipo": "gateway"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1,
+        2
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 8,
+      "aoPasso": 15,
+      "abrePor": "Busca Envolvidos Vista Por AIIM",
+      "fechaEm": "Done - Success",
+      "nos": [
+        {
+          "id": "_qIDu5F6BEfGBBLgT-R5iuw",
+          "nome": "Busca Envolvidos Vista Por AIIM",
+          "tipo": "serviceTask"
+        },
+        {
+          "id": "_qIDu4l6BEfGBBLgT-R5iuw",
+          "nome": "gateway _qIDu4l6BEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_qIDu4V6BEfGBBLgT-R5iuw",
+          "nome": "Set App Error",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_qIDu416BEfGBBLgT-R5iuw",
+          "nome": "gateway _qIDu416BEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_qIDu316BEfGBBLgT-R5iuw",
+          "nome": "endEvent _qIDu316BEfGBBLgT-R5iuw",
+          "tipo": "endEvent"
+        },
+        {
+          "id": "_qIDupF6BEfGBBLgT-R5iuw",
+          "nome": "Tech Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_qIDuo16BEfGBBLgT-R5iuw",
+          "nome": "App Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_qIDuol6BEfGBBLgT-R5iuw",
+          "nome": "Done - Success",
+          "tipo": "endEvent"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_qIDulF6BEfGBBLgT-R5iuw",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_qIDulV6BEfGBBLgT-R5iuw",
+      "nome": "SetParameters",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDul16BEfGBBLgT-R5iuw",
+      "nome": "Start Loop",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDupV6BEfGBBLgT-R5iuw",
+      "nome": "Control System Task Call",
+      "tipo": "subProcessScope",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu3l6BEfGBBLgT-R5iuw",
+      "nome": "startEvent _qIDu3l6BEfGBBLgT-R5iuw",
+      "tipo": "startEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "descida"
+    },
+    {
+      "id": "_qIDu3F6BEfGBBLgT-R5iuw",
+      "nome": "Start TX",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu3V6BEfGBBLgT-R5iuw",
+      "nome": "Check Retries SW_QRETRYCOUNT",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu5F6BEfGBBLgT-R5iuw",
+      "nome": "Busca Envolvidos Vista Por AIIM",
+      "tipo": "serviceTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu4l6BEfGBBLgT-R5iuw",
+      "nome": "gateway _qIDu4l6BEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu4V6BEfGBBLgT-R5iuw",
+      "nome": "Set App Error",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu416BEfGBBLgT-R5iuw",
+      "nome": "gateway _qIDu416BEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDu316BEfGBBLgT-R5iuw",
+      "nome": "endEvent _qIDu316BEfGBBLgT-R5iuw",
+      "tipo": "endEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDupF6BEfGBBLgT-R5iuw",
+      "nome": "Tech Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "regresso"
+    },
+    {
+      "id": "_qIDuo16BEfGBBLgT-R5iuw",
+      "nome": "App Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_qIDuol6BEfGBBLgT-R5iuw",
+      "nome": "Done - Success",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Check Retries SW_QRETRYCOUNT",
+      "decisaoId": "_qIDu3V6BEfGBBLgT-R5iuw",
+      "ramo": "Stillgood",
+      "tipo": "CONDITION",
+      "condicao": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "leva": "Busca Envolvidos Vista Por AIIM",
+      "exige": []
+    },
+    {
+      "decisao": "gateway _qIDu4l6BEfGBBLgT-R5iuw",
+      "decisaoId": "_qIDu4l6BEfGBBLgT-R5iuw",
+      "ramo": "AppError",
+      "tipo": "CONDITION",
+      "condicao": "STATUS_CODE!=\"0\";",
+      "leva": "Set App Error",
+      "exige": [
+        {
+          "campo": "STATUS_CODE",
+          "operador": "!=",
+          "valor": "0",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "Tech Error",
+      "decisaoId": "_qIDupF6BEfGBBLgT-R5iuw",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "App Error",
+      "exige": []
+    },
+    {
+      "decisao": "App Error",
+      "decisaoId": "_qIDuo16BEfGBBLgT-R5iuw",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Done - Success",
+      "exige": []
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "STATUS_CODE",
+      "operador": "!=",
+      "valor": "0",
+      "sentinelaSwNa": false
+    }
+  ],
+  "serviceCalls": [
+    {
+      "passo": "Busca Envolvidos Vista Por AIIM",
+      "passoId": "_qIDu5F6BEfGBBLgT-R5iuw",
+      "operacao": null
+    }
+  ],
+  "descidas": []
+}

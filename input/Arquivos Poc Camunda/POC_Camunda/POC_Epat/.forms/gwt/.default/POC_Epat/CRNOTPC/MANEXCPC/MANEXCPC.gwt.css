@@ -1,0 +1,21 @@
+
+    .fd55be52b-81b4-4f70-92ee-b1dfa1c870f9 .pane_messages > .label {
+        display:none !important;
+    }
+    .fd55be52b-81b4-4f70-92ee-b1dfa1c870f9 .pane_toolbar > .label {
+        display:none !important;
+    }
+    .fd55be52b-81b4-4f70-92ee-b1dfa1c870f9 .pane_root > .label {
+        
+display:block !important;    }
+/** 
+ * The child label properties set at the form level apply only to the labels of the root panes. 
+ */
+.TibcoForms.fd55be52b-81b4-4f70-92ee-b1dfa1c870f9 > .container > .component > .pane-label {
+	font-family: verdana;
+ 	font-size: 12px;
+ 	color: #000000;
+ 	text-align: left;
+
+    display:table-cell;
+}

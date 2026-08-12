@@ -1,0 +1,355 @@
+{
+  "id": "SC-PRPINTPC-007",
+  "process": "PRPINTPC",
+  "etapa": 3,
+  "etapas": [
+    3,
+    4
+  ],
+  "etapaOrigem": "herdada-da-arvore-de-chamada",
+  "kind": "prazo",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 1,
+    "cadeia": [
+      "POC_EpatProcess/Prepara Intimação"
+    ]
+  },
+  "origem": {
+    "id": "_KEwC3V6EEfGBBLgT-R5iuw",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "POC_EpatProcess/Prepara Intimação"
+  },
+  "destino": {
+    "id": "_KEwC4V6EEfGBBLgT-R5iuw",
+    "nome": "Try Task",
+    "tipo": "linkCatch",
+    "como": "corte-de-laco",
+    "regressaA": null
+  },
+  "lengthNodes": 18,
+  "segmentos": [
+    {
+      "etapas": [
+        3,
+        4
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 18,
+      "abrePor": "Start Event",
+      "fechaEm": "Try Task",
+      "herdadoDe": "POC_EpatProcess/Prepara Intimação",
+      "herdadoDeNoId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_KEwC3V6EEfGBBLgT-R5iuw",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "nome": "SetParameters",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwC4F6EEfGBBLgT-R5iuw",
+          "nome": "Start Loop",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwC7l6EEfGBBLgT-R5iuw",
+          "nome": "Control System Task Call",
+          "tipo": "subProcessScope"
+        },
+        {
+          "id": "_KEwDUl6EEfGBBLgT-R5iuw",
+          "nome": "startEvent _KEwDUl6EEfGBBLgT-R5iuw",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_KEwDUF6EEfGBBLgT-R5iuw",
+          "nome": "Start TX",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwDUV6EEfGBBLgT-R5iuw",
+          "nome": "Check Retries SW_QRETRYCOUNT",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwDWF6EEfGBBLgT-R5iuw",
+          "nome": "CaptaParametros",
+          "tipo": "serviceTask"
+        },
+        {
+          "id": "_KEwDVl6EEfGBBLgT-R5iuw",
+          "nome": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwDVV6EEfGBBLgT-R5iuw",
+          "nome": "Set App Error",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwDV16EEfGBBLgT-R5iuw",
+          "nome": "gateway _KEwDV16EEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwDU16EEfGBBLgT-R5iuw",
+          "nome": "endEvent _KEwDU16EEfGBBLgT-R5iuw",
+          "tipo": "endEvent"
+        },
+        {
+          "id": "_KEwC7V6EEfGBBLgT-R5iuw",
+          "nome": "Tech Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC7F6EEfGBBLgT-R5iuw",
+          "nome": "App Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC6V6EEfGBBLgT-R5iuw",
+          "nome": "More Retries",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC6l6EEfGBBLgT-R5iuw",
+          "nome": "Pause",
+          "tipo": "timerEvent"
+        },
+        {
+          "id": "_KEwC6F6EEfGBBLgT-R5iuw",
+          "nome": "Link To: Try Task",
+          "tipo": "linkThrow"
+        },
+        {
+          "id": "_KEwC4V6EEfGBBLgT-R5iuw",
+          "nome": "Try Task",
+          "tipo": "linkCatch"
+        }
+      ],
+      "herdadoPor": "segmento-do-sitio-de-chamada"
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_KEwC3V6EEfGBBLgT-R5iuw",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_KEwC3l6EEfGBBLgT-R5iuw",
+      "nome": "SetParameters",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC4F6EEfGBBLgT-R5iuw",
+      "nome": "Start Loop",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC7l6EEfGBBLgT-R5iuw",
+      "nome": "Control System Task Call",
+      "tipo": "subProcessScope",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDUl6EEfGBBLgT-R5iuw",
+      "nome": "startEvent _KEwDUl6EEfGBBLgT-R5iuw",
+      "tipo": "startEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "descida"
+    },
+    {
+      "id": "_KEwDUF6EEfGBBLgT-R5iuw",
+      "nome": "Start TX",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDUV6EEfGBBLgT-R5iuw",
+      "nome": "Check Retries SW_QRETRYCOUNT",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDWF6EEfGBBLgT-R5iuw",
+      "nome": "CaptaParametros",
+      "tipo": "serviceTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDVl6EEfGBBLgT-R5iuw",
+      "nome": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDVV6EEfGBBLgT-R5iuw",
+      "nome": "Set App Error",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDV16EEfGBBLgT-R5iuw",
+      "nome": "gateway _KEwDV16EEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDU16EEfGBBLgT-R5iuw",
+      "nome": "endEvent _KEwDU16EEfGBBLgT-R5iuw",
+      "tipo": "endEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC7V6EEfGBBLgT-R5iuw",
+      "nome": "Tech Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "regresso"
+    },
+    {
+      "id": "_KEwC7F6EEfGBBLgT-R5iuw",
+      "nome": "App Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC6V6EEfGBBLgT-R5iuw",
+      "nome": "More Retries",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC6l6EEfGBBLgT-R5iuw",
+      "nome": "Pause",
+      "tipo": "timerEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC6F6EEfGBBLgT-R5iuw",
+      "nome": "Link To: Try Task",
+      "tipo": "linkThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC4V6EEfGBBLgT-R5iuw",
+      "nome": "Try Task",
+      "tipo": "linkCatch",
+      "escopo": "MAIN",
+      "entrouPor": "link"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Check Retries SW_QRETRYCOUNT",
+      "decisaoId": "_KEwDUV6EEfGBBLgT-R5iuw",
+      "ramo": "Stillgood",
+      "tipo": "CONDITION",
+      "condicao": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "leva": "CaptaParametros",
+      "exige": []
+    },
+    {
+      "decisao": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+      "decisaoId": "_KEwDVl6EEfGBBLgT-R5iuw",
+      "ramo": "AppError",
+      "tipo": "CONDITION",
+      "condicao": "STATUS_CODE!=IPESystemValues.SW_NA;",
+      "leva": "Set App Error",
+      "exige": [
+        {
+          "campo": "STATUS_CODE",
+          "operador": "!=",
+          "valor": "SW_NA",
+          "sentinelaSwNa": true
+        }
+      ]
+    },
+    {
+      "decisao": "Tech Error",
+      "decisaoId": "_KEwC7V6EEfGBBLgT-R5iuw",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "App Error",
+      "exige": []
+    },
+    {
+      "decisao": "App Error",
+      "decisaoId": "_KEwC7F6EEfGBBLgT-R5iuw",
+      "ramo": "Yes",
+      "tipo": "CONDITION",
+      "condicao": "ISAPPERROR=='Y';",
+      "leva": "More Retries",
+      "exige": [
+        {
+          "campo": "ISAPPERROR",
+          "operador": "==",
+          "valor": "Y",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "More Retries",
+      "decisaoId": "_KEwC6V6EEfGBBLgT-R5iuw",
+      "ramo": "Yes",
+      "tipo": "CONDITION",
+      "condicao": "NUMAPPRETRIES<MAXRETRIES;",
+      "leva": "Pause",
+      "exige": []
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "ISAPPERROR",
+      "operador": "==",
+      "valor": "Y",
+      "sentinelaSwNa": false
+    },
+    {
+      "campo": "STATUS_CODE",
+      "operador": "!=",
+      "valor": "SW_NA",
+      "sentinelaSwNa": true
+    }
+  ],
+  "serviceCalls": [
+    {
+      "passo": "CaptaParametros",
+      "passoId": "_KEwDWF6EEfGBBLgT-R5iuw",
+      "operacao": null
+    }
+  ],
+  "descidas": []
+}

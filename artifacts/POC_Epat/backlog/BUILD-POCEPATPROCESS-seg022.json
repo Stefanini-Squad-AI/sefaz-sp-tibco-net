@@ -1,0 +1,136 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg022",
+  "cardType": "build",
+  "title": "Notificação do AIIM: de 'Iniciar Aguardar Notificacao' ate 'Flag Retirati True GS'",
+  "epic": "etapa-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Iniciar Aguardar Notificacao' a 'Flag Retirati True GS', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 2 passo(s) da jornada do caso, de 'Iniciar Aguardar Notificacao' ate 'Flag Retirati True GS', no processo POC_EpatProcess.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Api/Endpoints",
+        "status": "scaffold",
+        "note": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Runtime",
+        "status": "final",
+        "note": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_0XWaglqNEfG5K7mY0I3I6w",
+        "nome": "Iniciar Aguardar Notificacao",
+        "kind": "receiveTask"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_0XWahVqNEfG5K7mY0I3I6w",
+        "nome": "Flag Retirati True GS",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-018].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_0XWaglqNEfG5K7mY0I3I6w",
+      "_0XWahVqNEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_0XWaglqNEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_0XWaglqNEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_0XWahVqNEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_0XWahVqNEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-018.json",
+      "immutable": true,
+      "caseCount": 13
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 1 ao 2 do cenario SC-POC_EpatProcess-018 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-018",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 2,
+      "abrePor": "Iniciar Aguardar Notificacao",
+      "fechaEm": "Flag Retirati True GS"
+    },
+    "concepts": [
+      "eventos-mensagem",
+      "espera-assincrona"
+    ],
+    "expectedResults": [
+      "correlacao-assincrona"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 2,
+    "camadas": 2,
+    "pastas": 3,
+    "aEscrever": 2,
+    "bloqueadores": 1,
+    "regrasDeNegocio": 0,
+    "peso": "grande"
+  },
+  "gaps": [
+    {
+      "construct": "external-event",
+      "detail": "1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.",
+      "status": "decided",
+      "decisionRef": "NOEQ-external-event"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-external-event"
+  ]
+}

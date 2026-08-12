@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- N.B. GENERATED FILE - DO NOT EDIT! CHANGES WILL BE OVERWRITTEN BY THE BUILDER. -->
+<data jsxnamespace="propsbundle" >
+<locale>
+<record jsxid="control.submit.label" jsxtext="Submit"/>
+<record jsxid="control.ISTECHERROR.validation.ISTECHERROR__length.message" jsxtext="'IsTechError' not valid: expecting a value with no more than 1 characters"/>
+<record jsxid="form.action_error.message" jsxtext="Error in script for action {0} ({1}): {2}"/>
+<record jsxid="control.SW_MAINCASE.label" jsxtext="SW_MAINCASE"/>
+<record jsxid="form.required.message" jsxtext="{0} is a required field."/>
+<record jsxid="control.ISAPPERROR.label" jsxtext="IsAppError"/>
+<record jsxid="control.ISAPPERROR.validation.ISAPPERROR__length.message" jsxtext="'IsAppError' not valid: expecting a value with no more than 1 characters"/>
+<record jsxid="control.MAXRETRIES.label" jsxtext="MaxRetries"/>
+<record jsxid="control.STATUS_CODE.validation.STATUS_CODE__length.message" jsxtext="'STATUS_CODE' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="pane.messages.label" jsxtext="Invalid Entries"/>
+<record jsxid="control.DATETIME.validation.DATETIME__length.message" jsxtext="'DATETIME' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="pane.root.label" jsxtext="Manipular Excecao"/>
+<record jsxid="control.DATETIME.label" jsxtext="DATETIME"/>
+<record jsxid="control.SW_MAINCASE.validation.SW_MAINCASE__length.message" jsxtext="'SW_MAINCASE' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="control.SERVICE_NAME.validation.SERVICE_NAME__length.message" jsxtext="'SERVICE_NAME' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.MAXRETRIES.validation.MAXRETRIES__length.message" jsxtext="'MaxRetries' not valid: expecting an integer with no more than 10 digits"/>
+<record jsxid="form.validation_error.message" jsxtext="Error in script for validation {0} of Control {1} ({2}): {3}"/>
+<record jsxid="control.PROCESS_ID.validation.PROCESS_ID__length.message" jsxtext="'PROCESS_ID' not valid: expecting a value with no more than 35 characters"/>
+<record jsxid="control.cancel.label" jsxtext="Cancel"/>
+<record jsxid="control.STATUS_CODE.label" jsxtext="STATUS_CODE"/>
+<record jsxid="control.OUTCOME.hint" jsxtext="Valores 'R' tentar novamente ou 'OK' para sair"/>
+<record jsxid="control.STERRORCODE.label" jsxtext="STErrorCode"/>
+<record jsxid="control.SW_MAINPROC.validation.SW_MAINPROC__length.message" jsxtext="'SW_MAINPROC' not valid: expecting a value with no more than 8 characters"/>
+<record jsxid="control.STERRORDESC.validation.STERRORDESC__length.message" jsxtext="'STErrorDesc' not valid: expecting a value with no more than 100 characters"/>
+<record jsxid="control.SERVICE_NAME.label" jsxtext="SERVICE_NAME"/>
+<record jsxid="control.SW_MAINPROC.label" jsxtext="SW_MAINPROC"/>
+<record jsxid="control.SW_MAINCASE.validation.SW_MAINCASE__upperLimit.message" jsxtext="'SW_MAINCASE' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.SW_MAINCASE.validation.SW_MAINCASE__lowerLimit.message" jsxtext="'SW_MAINCASE' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.STERRORDESC.label" jsxtext="STErrorDesc"/>
+<record jsxid="pane.toolbar.label" jsxtext="Toolbar"/>
+<record jsxid="control.OUTCOME.label" jsxtext="Outcome"/>
+<record jsxid="control.MAXRETRIES.validation.MAXRETRIES__lowerLimit.message" jsxtext="'MaxRetries' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.MAXRETRIES.validation.MAXRETRIES__upperLimit.message" jsxtext="'MaxRetries' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.OUTCOME.validation.OUTCOME__length.message" jsxtext="'Outcome' not valid: expecting a value with no more than 10 characters"/>
+<record jsxid="control.ISTECHERROR.label" jsxtext="IsTechError"/>
+<record jsxid="control.PROCESS_ID.label" jsxtext="PROCESS_ID"/>
+<record jsxid="control.STERRORCODE.validation.STERRORCODE__length.message" jsxtext="'STErrorCode' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.DUMP.label" jsxtext="DUMP"/>
+<record jsxid="control.close.label" jsxtext="Close"/>
+</locale>
+</data>

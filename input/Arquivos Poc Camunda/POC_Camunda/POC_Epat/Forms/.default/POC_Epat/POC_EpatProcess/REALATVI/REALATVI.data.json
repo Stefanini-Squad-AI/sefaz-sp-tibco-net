@@ -1,0 +1,362 @@
+
+{ items: [
+
+	{ $param:'IDAIIM', $value:						1
+	},
+	{ $param:'NRAIIM', $value:						1
+	},
+	{ $param:'IDPROCESSO', $value:						1
+	},
+	{ $param:'EMAILVISTAS', $value:						"Text"
+
+	},
+	{ $param:'CNTPECA2', $value:						"Text"
+
+	},
+	{ $param:'TIPODILIGENCIA', $value:						"Text"
+
+	},
+	{ $param:'STSRESPSF', $value:						1
+	},
+	{ $param:'STSADMTITDRF', $value:						1
+	},
+	{ $param:'QTPECASCNT', $value:						1
+	},
+	{ $param:'IDTIPOIMPUGNACA', $value:						"Text"
+
+	},
+	{ $param:'SFPECA1', $value:						"Text"
+
+	},
+	{ $param:'STSRESPCNT', $value:						1
+	},
+	{ $param:'FLAGCONTRARAZAO', $value:						true
+	},
+	{ $param:'EXCLUSAOSOLIDAR', $value:						true
+	},
+	{ $param:'INDNAORECORRER', $value:						true
+	},
+	{ $param:'DESCREGRA', $value:						"Text"
+
+	},
+	{ $param:'IDMOTIVOINTIMAC', $value:						1
+	},
+	{ $param:'SFDIASREPRESENT', $value:						"Text"
+
+	},
+	{ $param:'CODTEXTO', $value:						"Text"
+
+	},
+	{ $param:'RECURSOOFICIO', $value:						true
+	},
+	{ $param:'QTPECASSEFAZ', $value:						1
+	},
+	{ $param:'FLGALC', $value:						true
+	},
+	{ $param:'VICIOREPRESENTA', $value:						true
+	},
+	{ $param:'CNTPECA3', $value:						"Text"
+
+	},
+	{ $param:'SFPECA2', $value:						"Text"
+
+	},
+	{ $param:'IDDECISAODEBITO', $value:						1
+	},
+	{ $param:'STSPETICAO', $value:						1
+	},
+	{ $param:'DILIGENCIA', $value:						true
+	},
+	{ $param:'DEFESAADMITIDA', $value:						true
+	},
+	{ $param:'IDDECISAOAIIM', $value:						1
+	},
+	{ $param:'ANULACAODTJ', $value:						true
+	},
+	{ $param:'RECAPIT', $value:						1
+	},
+	{ $param:'ORIGEM', $value:						"Text"
+
+	},
+	{ $param:'CNTPECA4', $value:						"Text"
+
+	},
+	{ $param:'STATUSRECURSOS', $value:						1
+	},
+	{ $param:'INDRESPPRM', $value:						1
+	},
+	{ $param:'CNTPECA1', $value:						"Text"
+
+	},
+	{ $param:'TEMPORESPOSTA', $value:						"Text"
+
+	},
+	{ $param:'INSTANCIA', $value:						1
+	},
+	{ $param:'STSADMTITCNT', $value:						1
+	},
+	{ $param:'VRAIIM', $value:						1.00
+	},
+	{ $param:'SFPECA4', $value:						"Text"
+
+	},
+	{ $param:'STATUSPRJ', $value:						1
+	},
+	{ $param:'DILIGENCIADESTI', $value:						"Text"
+
+	},
+	{ $param:'STSPRMSF', $value:						1
+	},
+	{ $param:'INTIMACAOCOUNT', $value:						1
+	},
+	{ $param:'SFPECA3', $value:						"Text"
+
+	},
+	{ $param:'CHEFEUJ', $value:						"Text"
+
+	},
+	{ $param:'CRCASA', $value:						1
+	},
+	{ $param:'CODMUNICIPIO', $value:						1
+	},
+	{ $param:'NR_RATORIG', $value:						1
+	},
+	{ $param:'DOCCONTROL', $value:						"Text"
+
+	},
+	{ $param:'DTCIENCIA', $value:						"2026-06-09"
+
+	},
+	{ $param:'CRCONTRIBUINTE', $value:						1
+	},
+	{ $param:'IDSINTIMADOS', $value:						"Text"
+
+	},
+	{ $param:'CODUADTJ', $value:						"Text"
+
+	},
+	{ $param:'QTDINTIMADOS', $value:						1
+	},
+	{ $param:'CODUADRT', $value:						"Text"
+
+	},
+	{ $param:'DEAT0050', $value:						["Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+]
+	},
+	{ $param:'EXISTENOTIFICAC', $value:						true
+	},
+	{ $param:'TROCATPNOTIFICA', $value:						1
+	},
+	{ $param:'FLAGRETIRATE', $value:						true
+	},
+	{ $param:'BCCRELATORIO', $value:						"Text"
+
+	},
+	{ $param:'PRAZORETIRADAVI', $value:						"2026-06-09"
+
+	},
+	{ $param:'VOLTARSEGINSTAN', $value:						1
+	},
+	{ $param:'TIPOVISTAS', $value:						"Text"
+
+	},
+	{ $param:'HORAFINAL', $value:						"2026-06-09T15:23:08"
+
+	},
+	{ $param:'PRAZOVISTA', $value:						"2026-06-09"
+
+	},
+	{ $param:'FLAGCRZ', $value:						true
+	},
+	{ $param:'SW_CASENUMPOC', $value:						1
+	},
+	{ $param:'NR_AIIM', $value:						1
+	},
+	{ $param:'SW_MAINCASEPOC', $value:						1
+	},
+	{ $param:'CNTINSTANCIASUF', $value:						1
+	},
+	{ $param:'AFR', $value:						"Text"
+
+	},
+	{ $param:'CDIMPOSTO', $value:						1
+	},
+	{ $param:'SITUACAOCARREGA', $value:						"Text"
+
+	},
+	{ $param:'DOCSREQUERIDOS', $value:						"Text"
+
+	},
+	{ $param:'NR_RAT', $value:						1
+	},
+	{ $param:'DOCSPERMITIDOS', $value:						"Text"
+
+	},
+	{ $param:'REGRAINSDOC', $value:						1
+	},
+	{ $param:'SW_CASEDESC', $value:						"Text"
+
+	},
+	{ $param:'CODMUNAIIM', $value:						1
+	},
+	{ $param:'CD_DRT', $value:						1
+	},
+	{ $param:'FORMACORRECAO', $value:						"Text"
+
+	},
+	{ $param:'CTL_RETIRAT', $value:						"Text"
+
+	},
+	{ $param:'NOMEETAPA', $value:						"Text"
+
+	},
+	{ $param:'RESPOSTACQ', $value:						"Text"
+
+	},
+	{ $param:'LINKIPE', $value:						"Text"
+
+	},
+	{ $param:'DAYSOVER', $value:						1
+	},
+	{ $param:'DTFIMCQ', $value:						"2026-06-09"
+
+	},
+	{ $param:'HRFIMCQ', $value:						"15:23:08"
+
+	},
+	{ $param:'COORDENADOR', $value:						"Text"
+
+	},
+	{ $param:'CORRECAO', $value:						true
+	},
+	{ $param:'NOTIFICACAO', $value:						"Text"
+
+	},
+	{ $param:'PRAZORELATO', $value:						"2026-06-09"
+
+	},
+	{ $param:'EMAILRELATOR', $value:						"Text"
+
+	},
+	{ $param:'CCRELATORIO', $value:						"Text"
+
+	},
+	{ $param:'NRSUBPRO', $value:						["Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+]
+	},
+	{ $param:'ARRAYINT', $value:						["Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+,"Text"
+]
+	},
+	{ $param:'INTIMACAOCARTA', $value:						1
+	},
+	{ $param:'DTPUBLICACAODE', $value:						"2026-06-09"
+
+	},
+	{ $param:'INTIMACAODE', $value:						1
+	},
+	{ $param:'NOVOMODELO', $value:						true
+	},
+	{ $param:'INDICESUBDIN', $value:						1
+	},
+	{ $param:'CTRLIATV', $value:						true
+	},
+	{ $param:'AUX', $value:						"Text"
+
+	},
+	{ $param:'POSICAOINICIO', $value:						1
+	},
+	{ $param:'IDPECASSF', $value:						"Text"
+
+	},
+	{ $param:'IDPECASCNT', $value:						"Text"
+
+	},
+	{ $param:'FIMSTRING', $value:						1
+	},
+	{ $param:'POSICAOFIM', $value:						1
+	},
+	{ $param:'DATAENCPREPNOT', $value:						"2026-06-09"
+
+	},
+	{ $param:'IDAIIMORIGINAL', $value:						1
+	},
+	{ $param:'SW_PARENTPROC', $value:						"Text"
+
+	},
+	{ $param:'SW_CASENUM', $value:						1
+	},
+	{ $param:'SW_PARENTCASE', $value:						1
+	},
+	{ $param:'SW_HOSTNAME', $value:						"Text"
+
+	},
+	{ $param:'SW_MAINCASE', $value:						1
+	},
+	{ $param:'ISAPPERROR', $value:						"Text"
+
+	},
+	{ $param:'SW_MAINPROC', $value:						"Text"
+
+	},
+	{ $param:'MAXRETRIES', $value:						1
+	},
+	{ $param:'ISTECHERROR', $value:						"Text"
+
+	},
+	{ $param:'STATUS_CODE', $value:						"Text"
+
+	},
+	{ $param:'DATETIME', $value:						"Text"
+
+	},
+	{ $param:'OUTCOME', $value:						"Text"
+
+	},
+	{ $param:'DUMP', $value:						"Text"
+
+	},
+	{ $param:'STERRORDESC', $value:						"Text"
+
+	},
+	{ $param:'NUMAPPRETRIES', $value:						1
+	},
+	{ $param:'PROCESS_ID', $value:						"Text"
+
+	},
+	{ $param:'STERRORCODE', $value:						"Text"
+
+	},
+	{ $param:'SERVICE_NAME', $value:						"Text"
+
+	},
+	{ $param:'PARTICIPANTE', $value:						"Text"
+
+	}
+]}

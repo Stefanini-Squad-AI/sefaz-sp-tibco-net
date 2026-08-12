@@ -1,0 +1,283 @@
+{
+  "id": "SC-POC_EpatProcess-014",
+  "process": "POC_EpatProcess",
+  "etapa": 1,
+  "etapas": [
+    1,
+    2,
+    7
+  ],
+  "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+  "kind": "ate-ao-fim",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 0,
+    "cadeia": []
+  },
+  "origem": {
+    "id": "_OAgPol9UEfG6Lfb98zsREQ",
+    "nome": "Iniciar Novo Graft",
+    "tipo": "receiveTask",
+    "como": "evento-externo",
+    "chamadoPor": null
+  },
+  "destino": {
+    "id": "_Faq_Q1qTEfG5K7mY0I3I6w",
+    "nome": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+    "tipo": "endEvent",
+    "como": "fim-do-caso",
+    "regressaA": null
+  },
+  "lengthNodes": 10,
+  "segmentos": [
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 0,
+      "doPasso": 1,
+      "aoPasso": 2,
+      "abrePor": "Iniciar Novo Graft",
+      "fechaEm": "Set Nome Etapa 2",
+      "prologo": true,
+      "nos": [
+        {
+          "id": "_OAgPol9UEfG6Lfb98zsREQ",
+          "nome": "Iniciar Novo Graft",
+          "tipo": "receiveTask"
+        },
+        {
+          "id": "_XWivF1qTEfG5K7mY0I3I6w",
+          "nome": "Set Nome Etapa 2",
+          "tipo": "scriptTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 3,
+      "aoPasso": 4,
+      "abrePor": "Preparar Notificacao",
+      "fechaEm": "Corrigir?",
+      "nos": [
+        {
+          "id": "_sfwu-VqUEfG5K7mY0I3I6w",
+          "nome": "Preparar Notificacao",
+          "tipo": "userTask"
+        },
+        {
+          "id": "_sJqYklqTEfG5K7mY0I3I6w",
+          "nome": "Corrigir?",
+          "tipo": "gateway"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1
+      ],
+      "ordemNaJornada": 2,
+      "doPasso": 5,
+      "aoPasso": 6,
+      "abrePor": "Corrigir Fechamento",
+      "fechaEm": "Corrigir Fechamento",
+      "nos": [
+        {
+          "id": "_tN6q4lqTEfG5K7mY0I3I6w",
+          "nome": "Corrigir Fechamento",
+          "tipo": "linkThrow"
+        },
+        {
+          "id": "_5E444FqTEfG5K7mY0I3I6w",
+          "nome": "Corrigir Fechamento",
+          "tipo": "linkCatch"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1,
+        2
+      ],
+      "ordemNaJornada": 3,
+      "doPasso": 7,
+      "aoPasso": 8,
+      "abrePor": "Finalizar AIIM",
+      "fechaEm": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "nome": "Finalizar AIIM",
+          "tipo": "userTask"
+        },
+        {
+          "id": "_Faq_RFqTEfG5K7mY0I3I6w",
+          "nome": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+          "tipo": "gateway"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 4,
+      "doPasso": 9,
+      "aoPasso": 9,
+      "abrePor": "Existe Notificação?",
+      "fechaEm": "Existe Notificação?",
+      "nos": [
+        {
+          "id": "_IxqJMlqTEfG5K7mY0I3I6w",
+          "nome": "Existe Notificação?",
+          "tipo": "gateway"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        7
+      ],
+      "ordemNaJornada": 5,
+      "doPasso": 10,
+      "aoPasso": 10,
+      "abrePor": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+      "fechaEm": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_Faq_Q1qTEfG5K7mY0I3I6w",
+          "nome": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+          "tipo": "endEvent"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_OAgPol9UEfG6Lfb98zsREQ",
+      "nome": "Iniciar Novo Graft",
+      "tipo": "receiveTask",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_XWivF1qTEfG5K7mY0I3I6w",
+      "nome": "Set Nome Etapa 2",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_sfwu-VqUEfG5K7mY0I3I6w",
+      "nome": "Preparar Notificacao",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_sJqYklqTEfG5K7mY0I3I6w",
+      "nome": "Corrigir?",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_tN6q4lqTEfG5K7mY0I3I6w",
+      "nome": "Corrigir Fechamento",
+      "tipo": "linkThrow",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_5E444FqTEfG5K7mY0I3I6w",
+      "nome": "Corrigir Fechamento",
+      "tipo": "linkCatch",
+      "escopo": "MAIN",
+      "entrouPor": "link"
+    },
+    {
+      "id": "_xWNLe1qSEfG5K7mY0I3I6w",
+      "nome": "Finalizar AIIM",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_Faq_RFqTEfG5K7mY0I3I6w",
+      "nome": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_IxqJMlqTEfG5K7mY0I3I6w",
+      "nome": "Existe Notificação?",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_Faq_Q1qTEfG5K7mY0I3I6w",
+      "nome": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Corrigir?",
+      "decisaoId": "_sJqYklqTEfG5K7mY0I3I6w",
+      "ramo": "Sim",
+      "tipo": "CONDITION",
+      "condicao": "CORRECAO == true;",
+      "leva": "Corrigir Fechamento",
+      "exige": [
+        {
+          "campo": "CORRECAO",
+          "operador": "==",
+          "valor": "true",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "Existe Notificação?",
+      "decisaoId": "_IxqJMlqTEfG5K7mY0I3I6w",
+      "ramo": "Sim",
+      "tipo": "CONDITION",
+      "condicao": "EXISTENOTIFICAC == true;",
+      "leva": "endEvent _Faq_Q1qTEfG5K7mY0I3I6w",
+      "exige": [
+        {
+          "campo": "EXISTENOTIFICAC",
+          "operador": "==",
+          "valor": "true",
+          "sentinelaSwNa": false
+        }
+      ]
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "CORRECAO",
+      "operador": "==",
+      "valor": "true",
+      "sentinelaSwNa": false
+    },
+    {
+      "campo": "EXISTENOTIFICAC",
+      "operador": "==",
+      "valor": "true",
+      "sentinelaSwNa": false
+    }
+  ],
+  "serviceCalls": [],
+  "descidas": []
+}

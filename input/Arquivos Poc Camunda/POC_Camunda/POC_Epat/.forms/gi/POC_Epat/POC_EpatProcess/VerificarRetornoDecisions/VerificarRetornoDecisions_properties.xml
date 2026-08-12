@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- N.B. GENERATED FILE - DO NOT EDIT! CHANGES WILL BE OVERWRITTEN BY THE BUILDER. -->
+<data jsxnamespace="propsbundle" >
+<locale>
+<record jsxid="control.submit.label" jsxtext="Submit"/>
+<record jsxid="control.TIPOVISTAS.validation.TIPOVISTAS__length.message" jsxtext="'tipoVistas' not valid: expecting a value with no more than 50 characters"/>
+<record jsxid="control.TEMPORESPOSTA.hint" jsxtext="Período em dias para resposta do Contribuinte."/>
+<record jsxid="control.SFPECA1.label" jsxtext="sfPeca1"/>
+<record jsxid="control.SFPECA3.label" jsxtext="sfPeca3"/>
+<record jsxid="form.action_error.message" jsxtext="Error in script for action {0} ({1}): {2}"/>
+<record jsxid="control.SFPECA2.label" jsxtext="sfPeca2"/>
+<record jsxid="control.SFPECA4.label" jsxtext="sfPeca4"/>
+<record jsxid="control.DESCREGRA.hint" jsxtext="Identifica o conteúdo da regra."/>
+<record jsxid="control.CNTPECA2.validation.CNTPECA2__length.message" jsxtext="'cntPeca2' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.TIPOVISTAS.hint" jsxtext="Identifica o tipo de vista:&#xD;&#xA;&#xD;&#xA;MISTA&#xD;&#xA;JUIZ&#xD;&#xA;DRF"/>
+<record jsxid="control.DESCREGRA.label" jsxtext="DescricaoRegra"/>
+<record jsxid="form.required.message" jsxtext="{0} is a required field."/>
+<record jsxid="control.FLAGCONTRARAZAO.hint" jsxtext="Identifica se há ou não contra razão."/>
+<record jsxid="control.QTPECASSEFAZ.validation.QTPECASSEFAZ__upperLimit.message" jsxtext="'qtPecasSefaz' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.QTPECASSEFAZ.validation.QTPECASSEFAZ__lowerLimit.message" jsxtext="'qtPecasSefaz' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.QTPECASCNT.hint" jsxtext="Identifica a quantidade de peças do Contribuinte."/>
+<record jsxid="control.QTPECASSEFAZ.label" jsxtext="qtPecasSefaz"/>
+<record jsxid="control.SFDIASREPRESENT.validation.SFDIASREPRESENT__length.message" jsxtext="'sfDiasRepresentacao' not valid: expecting a value with no more than 2 characters"/>
+<record jsxid="control.CNTPECA2.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.CODTEXTO.label" jsxtext="codTexto"/>
+<record jsxid="pane.messages.label" jsxtext="Invalid Entries"/>
+<record jsxid="control.SFDIASREPRESENT.hint" jsxtext="Identifica a quantidade de dias para manifestação por parte da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.CNTPECA4.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.CNTPECA3.validation.CNTPECA3__length.message" jsxtext="'cntPeca3' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.CODTEXTO.hint" jsxtext="Identifica o código de texto da intimação."/>
+<record jsxid="pane.root.label" jsxtext="Verificar Retorno Decisions"/>
+<record jsxid="control.SFPECA2.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.SFPECA3.validation.SFPECA3__length.message" jsxtext="'sfPeca3' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.SFPECA4.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.SFPECA1.validation.SFPECA1__length.message" jsxtext="'sfPeca1' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="form.validation_error.message" jsxtext="Error in script for validation {0} of Control {1} ({2}): {3}"/>
+<record jsxid="control.cancel.label" jsxtext="Cancel"/>
+<record jsxid="control.QTPECASCNT.validation.QTPECASCNT__upperLimit.message" jsxtext="'qtPecasCNT' not valid: expecting a value less than or equal to 2147483647"/>
+<record jsxid="control.QTPECASCNT.validation.QTPECASCNT__lowerLimit.message" jsxtext="'qtPecasCNT' not valid: expecting a value greater than or equal to -2147483648"/>
+<record jsxid="control.CNTPECA4.validation.CNTPECA4__length.message" jsxtext="'cntPeca4' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.QTPECASSEFAZ.hint" jsxtext="Identifica a quantidade de peças da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.QTPECASSEFAZ.validation.QTPECASSEFAZ__length.message" jsxtext="'qtPecasSefaz' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.QTPECASCNT.validation.QTPECASCNT__length.message" jsxtext="'qtPecasCNT' not valid: expecting an integer with no more than 2 digits"/>
+<record jsxid="control.CODTEXTO.validation.CODTEXTO__length.message" jsxtext="'codTexto' not valid: expecting a value with no more than 4 characters"/>
+<record jsxid="control.TEMPORESPOSTA.validation.TEMPORESPOSTA__length.message" jsxtext="'tempoResposta' not valid: expecting a value with no more than 2 characters"/>
+<record jsxid="control.QTPECASCNT.label" jsxtext="qtPecasCNT"/>
+<record jsxid="control.DESCREGRA.validation.DESCREGRA__length.message" jsxtext="'DescricaoRegra' not valid: expecting a value with no more than 250 characters"/>
+<record jsxid="control.TEMPORESPOSTA.label" jsxtext="tempoResposta"/>
+<record jsxid="control.CNTPECA1.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="pane.toolbar.label" jsxtext="Toolbar"/>
+<record jsxid="control.CNTPECA3.hint" jsxtext="Idenficador do tipo de peça do Contribuinte."/>
+<record jsxid="control.TIPOVISTAS.label" jsxtext="tipoVistas"/>
+<record jsxid="control.CNTPECA1.validation.CNTPECA1__length.message" jsxtext="'cntPeca1' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.FLAGCONTRARAZAO.label" jsxtext="flagContraRazao"/>
+<record jsxid="control.close.label" jsxtext="Close"/>
+<record jsxid="control.SFPECA4.validation.SFPECA4__length.message" jsxtext="'sfPeca4' not valid: expecting a value with no more than 3 characters"/>
+<record jsxid="control.CNTPECA1.label" jsxtext="cntPeca1"/>
+<record jsxid="control.CNTPECA4.label" jsxtext="cntPeca4"/>
+<record jsxid="control.SFPECA1.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.CNTPECA3.label" jsxtext="cntPeca3"/>
+<record jsxid="control.SFDIASREPRESENT.label" jsxtext="sfDiasRepresentacao"/>
+<record jsxid="control.CNTPECA2.label" jsxtext="cntPeca2"/>
+<record jsxid="control.SFPECA3.hint" jsxtext="Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."/>
+<record jsxid="control.SFPECA2.validation.SFPECA2__length.message" jsxtext="'sfPeca2' not valid: expecting a value with no more than 3 characters"/>
+</locale>
+</data>

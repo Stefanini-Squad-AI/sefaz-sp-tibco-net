@@ -1,0 +1,102 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg056",
+  "cardType": "build",
+  "title": "Encerramento: de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' ate 'endEvent _CtQ66lqPEfG5K7mY0I3I6w'",
+  "epic": "etapa-7",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' a 'endEvent _CtQ66lqPEfG5K7mY0I3I6w', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 1 passo(s) da jornada do caso, de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' ate 'endEvent _CtQ66lqPEfG5K7mY0I3I6w', no processo POC_EpatProcess.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "final",
+        "note": "Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_CtQ66lqPEfG5K7mY0I3I6w",
+        "nome": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-010].segmentos[9]",
+    "kind": "segment",
+    "nodeIds": [
+      "_CtQ66lqPEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ66lqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ66lqPEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": "Topologia e ordem sao transcricao; o troco nao contem corpo a interpretar.",
+    "verified": false,
+    "translation": "lossless"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-010.json",
+      "immutable": true,
+      "caseCount": 6
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 28 ao 28 do cenario SC-POC_EpatProcess-010 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      7
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-010",
+      "ordemNaJornada": 9,
+      "doPasso": 28,
+      "aoPasso": 28,
+      "abrePor": "endEvent _CtQ66lqPEfG5K7mY0I3I6w",
+      "fechaEm": "endEvent _CtQ66lqPEfG5K7mY0I3I6w"
+    },
+    "concepts": [
+      "eventos-inicio-fim"
+    ],
+    "expectedResults": [
+      "modelagem-bpmn"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 1,
+    "camadas": 1,
+    "pastas": 1,
+    "aEscrever": 0,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "pequeno"
+  }
+}

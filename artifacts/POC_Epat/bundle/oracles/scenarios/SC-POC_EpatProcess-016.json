@@ -1,0 +1,164 @@
+{
+  "id": "SC-POC_EpatProcess-016",
+  "process": "POC_EpatProcess",
+  "etapa": 1,
+  "etapas": [
+    1,
+    2,
+    7
+  ],
+  "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+  "kind": "prazo",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 0,
+    "cadeia": []
+  },
+  "origem": {
+    "id": "_OAgPol9UEfG6Lfb98zsREQ",
+    "nome": "Iniciar Novo Graft",
+    "tipo": "receiveTask",
+    "como": "evento-externo",
+    "chamadoPor": null
+  },
+  "destino": {
+    "id": "_RqXZ0lqUEfG5K7mY0I3I6w",
+    "nome": "Fim E-mail",
+    "tipo": "endEvent",
+    "como": "fim-do-caso",
+    "regressaA": null
+  },
+  "lengthNodes": 6,
+  "segmentos": [
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 0,
+      "doPasso": 1,
+      "aoPasso": 2,
+      "abrePor": "Iniciar Novo Graft",
+      "fechaEm": "Set Nome Etapa 2",
+      "prologo": true,
+      "nos": [
+        {
+          "id": "_OAgPol9UEfG6Lfb98zsREQ",
+          "nome": "Iniciar Novo Graft",
+          "tipo": "receiveTask"
+        },
+        {
+          "id": "_XWivF1qTEfG5K7mY0I3I6w",
+          "nome": "Set Nome Etapa 2",
+          "tipo": "scriptTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        2
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 3,
+      "aoPasso": 4,
+      "abrePor": "Preparar Notificacao",
+      "fechaEm": "Fim de Prazo Mantendo Atividade",
+      "nos": [
+        {
+          "id": "_sfwu-VqUEfG5K7mY0I3I6w",
+          "nome": "Preparar Notificacao",
+          "tipo": "userTask"
+        },
+        {
+          "id": "_XWivFlqTEfG5K7mY0I3I6w",
+          "nome": "Fim de Prazo Mantendo Atividade",
+          "tipo": "timerEvent"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        1
+      ],
+      "ordemNaJornada": 2,
+      "doPasso": 5,
+      "aoPasso": 5,
+      "abrePor": "Email CQ Fechamento",
+      "fechaEm": "Email CQ Fechamento",
+      "nos": [
+        {
+          "id": "_O-rPp1qUEfG5K7mY0I3I6w",
+          "nome": "Email CQ Fechamento",
+          "tipo": "emailTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        7
+      ],
+      "ordemNaJornada": 3,
+      "doPasso": 6,
+      "aoPasso": 6,
+      "abrePor": "Fim E-mail",
+      "fechaEm": "Fim E-mail",
+      "nos": [
+        {
+          "id": "_RqXZ0lqUEfG5K7mY0I3I6w",
+          "nome": "Fim E-mail",
+          "tipo": "endEvent"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_OAgPol9UEfG6Lfb98zsREQ",
+      "nome": "Iniciar Novo Graft",
+      "tipo": "receiveTask",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_XWivF1qTEfG5K7mY0I3I6w",
+      "nome": "Set Nome Etapa 2",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_sfwu-VqUEfG5K7mY0I3I6w",
+      "nome": "Preparar Notificacao",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_XWivFlqTEfG5K7mY0I3I6w",
+      "nome": "Fim de Prazo Mantendo Atividade",
+      "tipo": "timerEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fronteira-paralela"
+    },
+    {
+      "id": "_O-rPp1qUEfG5K7mY0I3I6w",
+      "nome": "Email CQ Fechamento",
+      "tipo": "emailTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_RqXZ0lqUEfG5K7mY0I3I6w",
+      "nome": "Fim E-mail",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [],
+  "inputsRequired": [],
+  "serviceCalls": [],
+  "descidas": []
+}

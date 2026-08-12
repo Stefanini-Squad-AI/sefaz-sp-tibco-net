@@ -1,0 +1,166 @@
+{
+  "id": "SC-AGPECASPC-001",
+  "process": "AGPECASPC",
+  "etapa": 4,
+  "etapas": [
+    4
+  ],
+  "etapaOrigem": "herdada-da-arvore-de-chamada",
+  "kind": "percurso",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 2,
+    "cadeia": [
+      "POC_EpatProcess/Controlar Intimados",
+      "CONTROPC/Aguardar Retorno"
+    ]
+  },
+  "origem": {
+    "id": "_i4UpgF9IEfGqPfX31TKC3w",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "CONTROPC/Aguardar Retorno"
+  },
+  "destino": {
+    "id": "_EvOwU16eEfGJqLUhfbpFcQ",
+    "nome": "Controla Datas",
+    "tipo": "scriptTask",
+    "como": "corte-de-laco",
+    "regressaA": null
+  },
+  "lengthNodes": 7,
+  "segmentos": [
+    {
+      "etapas": [
+        4
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 7,
+      "abrePor": "Start Event",
+      "fechaEm": "Controla Datas",
+      "herdadoDe": "CONTROPC/Aguardar Retorno",
+      "herdadoDeNoId": "_-bkw-V6JEfGBBLgT-R5iuw",
+      "nos": [
+        {
+          "id": "_i4UpgF9IEfGqPfX31TKC3w",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_EvOwTF6eEfGJqLUhfbpFcQ",
+          "nome": "Set Values",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_vshgkF6fEfGJqLUhfbpFcQ",
+          "nome": "gateway _vshgkF6fEfGJqLUhfbpFcQ",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_EvOwVF6eEfGJqLUhfbpFcQ",
+          "nome": "gateway _EvOwVF6eEfGJqLUhfbpFcQ",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_EvOwUl6eEfGJqLUhfbpFcQ",
+          "nome": "SetPrazo",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_EvOwQl6eEfGJqLUhfbpFcQ",
+          "nome": "Aguardar Interposicoes",
+          "tipo": "receiveTask"
+        },
+        {
+          "id": "_EvOwU16eEfGJqLUhfbpFcQ",
+          "nome": "Controla Datas",
+          "tipo": "scriptTask"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_i4UpgF9IEfGqPfX31TKC3w",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_EvOwTF6eEfGJqLUhfbpFcQ",
+      "nome": "Set Values",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_vshgkF6fEfGJqLUhfbpFcQ",
+      "nome": "gateway _vshgkF6fEfGJqLUhfbpFcQ",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_EvOwVF6eEfGJqLUhfbpFcQ",
+      "nome": "gateway _EvOwVF6eEfGJqLUhfbpFcQ",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_EvOwUl6eEfGJqLUhfbpFcQ",
+      "nome": "SetPrazo",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_EvOwQl6eEfGJqLUhfbpFcQ",
+      "nome": "Aguardar Interposicoes",
+      "tipo": "receiveTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_EvOwU16eEfGJqLUhfbpFcQ",
+      "nome": "Controla Datas",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "gateway _EvOwVF6eEfGJqLUhfbpFcQ",
+      "decisaoId": "_EvOwVF6eEfGJqLUhfbpFcQ",
+      "ramo": null,
+      "tipo": "CONDITION",
+      "condicao": "DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;",
+      "leva": "SetPrazo",
+      "exige": [
+        {
+          "campo": "DATACONTROLE",
+          "operador": "==",
+          "valor": "SW_NA",
+          "sentinelaSwNa": true
+        }
+      ]
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "DATACONTROLE",
+      "operador": "==",
+      "valor": "SW_NA",
+      "sentinelaSwNa": true
+    }
+  ],
+  "serviceCalls": [],
+  "descidas": []
+}

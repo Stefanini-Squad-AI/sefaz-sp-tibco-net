@@ -1,0 +1,60 @@
+##### ACTIVITY DETAILS for PRPINTPC
+
+=== Start TX <_KEwDUF6EEfGBBLgT-R5iuw>
+SCRIPT (JavaScript):
+1=1;
+FLAGCONTRARAZAO = FLAGCRZ;
+
+=== Set Technical Error <_KEwDVF6EEfGBBLgT-R5iuw>
+SCRIPT (JavaScript):
+ISTECHERROR='Y';
+OUTCOME='R';
+
+=== Set App Error <_KEwDVV6EEfGBBLgT-R5iuw>
+SCRIPT (JavaScript):
+ISAPPERROR='Y';
+OUTCOME='R';
+
+=== CaptaParametros <_KEwDWF6EEfGBBLgT-R5iuw>
+SERVICE TASK in: out:
+
+=== SetParameters <_KEwC3l6EEfGBBLgT-R5iuw>
+SCRIPT (JavaScript):
+if(IDPROCESSO != IPESystemValues.SW_NA){
+	PROCESS_ID = 'idAiim-'+IPEConversionUtil.STR(IDAIIM,0)+'idProc-' + IPEConversionUtil.STR(IDPROCESSO,0);
+} else {
+	PROCESS_ID = 'idAiim-'+IPEConversionUtil.STR(IDAIIM,0)+'idProc-NA';
+}
+if (MAXRETRIES==null) {
+   MAXRETRIES=5;
+}
+
+
+=== Start Loop <_KEwC4F6EEfGBBLgT-R5iuw>
+SCRIPT (JavaScript):
+if (NUMAPPRETRIES==null) {
+   NUMAPPRETRIES=0;
+}
+else {
+   NUMAPPRETRIES=NUMAPPRETRIES+1;
+}
+ISAPPERROR='N';
+ISTECHERROR='N';
+OUTCOME='R';
+DATETIME = IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE);
+
+if (INSTANCIA == 2){
+	if (STSADMTITCNT == IPESystemValues.SW_NA)
+	{
+		STSADMTITCNT = 0;
+	}
+	if (STSADMTITDRF == IPESystemValues.SW_NA)
+	{
+		STSADMTITDRF = 0;
+	}
+}
+
+
+
+=== Manipular Excecao <_KEwC5V6EEfGBBLgT-R5iuw>
+USER TASK; performers: _zJIHQlqiEfG5K7mY0I3I6w

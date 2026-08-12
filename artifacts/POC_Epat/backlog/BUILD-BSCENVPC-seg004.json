@@ -1,0 +1,215 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-BSCENVPC-seg004",
+  "cardType": "build",
+  "title": "Busca de envolvidos com vista aberta: caminho de sucesso",
+  "epic": "etapa-1-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Busca Envolvidos Vista Por AIIM' a 'Done - Success', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 8 passo(s) da jornada do caso, de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Success', no processo BSCENVPC. ATENCAO: 1 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (regresso) e tem de ser escrita explicitamente no fluxo .NET.",
+      "hypotheses": [
+        "ISAPPERROR='N' significa ausencia de erro e nao 'ainda nao avaliado'; se significar o segundo, o ramo de sucesso dispara antes de haver resposta do servico."
+      ]
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Services",
+        "status": "final",
+        "note": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Soap",
+        "status": "scaffold",
+        "note": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_qIDu5F6BEfGBBLgT-R5iuw",
+        "nome": "Busca Envolvidos Vista Por AIIM",
+        "kind": "serviceTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_qIDu4l6BEfGBBLgT-R5iuw",
+        "nome": "gateway _qIDu4l6BEfGBBLgT-R5iuw",
+        "kind": "gateway",
+        "decideQue": "A chamada a Busca Envolvidos Vista Por AIIM foi bem sucedida?",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_qIDu4V6BEfGBBLgT-R5iuw",
+        "nome": "Set App Error",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_qIDu416BEfGBBLgT-R5iuw",
+        "nome": "gateway _qIDu416BEfGBBLgT-R5iuw",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_qIDu316BEfGBBLgT-R5iuw",
+        "nome": "endEvent _qIDu316BEfGBBLgT-R5iuw",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_qIDupF6BEfGBBLgT-R5iuw",
+        "nome": "Tech Error",
+        "kind": "gateway",
+        "entrouPor": "regresso"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_qIDuo16BEfGBBLgT-R5iuw",
+        "nome": "App Error",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 8,
+        "nodeId": "_qIDuol6BEfGBBLgT-R5iuw",
+        "nome": "Done - Success",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-BSCENVPC-010].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_qIDu5F6BEfGBBLgT-R5iuw",
+      "_qIDu4l6BEfGBBLgT-R5iuw",
+      "_qIDu4V6BEfGBBLgT-R5iuw",
+      "_qIDu416BEfGBBLgT-R5iuw",
+      "_qIDu316BEfGBBLgT-R5iuw",
+      "_qIDupF6BEfGBBLgT-R5iuw",
+      "_qIDuo16BEfGBBLgT-R5iuw",
+      "_qIDuol6BEfGBBLgT-R5iuw"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu5F6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu5F6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu4l6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu4l6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu4V6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu4V6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu416BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu416BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu316BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu316BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDupF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDupF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuo16BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuo16BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuol6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuol6BEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat",
+    "reviewSha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-010.json",
+      "immutable": true,
+      "caseCount": 2
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 8 ao 15 do cenario SC-BSCENVPC-010 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "BSCENVPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: busca de envolvidos, etapa 6"
+  },
+  "fulfills": {
+    "etapas": [
+      1,
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-BSCENVPC-010",
+      "ordemNaJornada": 1,
+      "doPasso": 8,
+      "aoPasso": 15,
+      "abrePor": "Busca Envolvidos Vista Por AIIM",
+      "fechaEm": "Done - Success"
+    },
+    "concepts": [
+      "service-tasks",
+      "eventos-inicio-fim"
+    ],
+    "expectedResults": [
+      "integracao-servicos",
+      "modelagem-bpmn"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 8,
+    "camadas": 2,
+    "pastas": 4,
+    "aEscrever": 3,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "grande"
+  }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.1/notation" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML">
+  <uml:Model xmi:id="_su6kEFp6EfG5K7mY0I3I6w" name="com.example.poc_epat">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_su6kEVp6EfG5K7mY0I3I6w" source="model.metadata">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_su6kElp6EfG5K7mY0I3I6w" key="author" value="accyrilo"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_su6kE1p6EfG5K7mY0I3I6w" key="created" value="1779961845969"/>
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_su6kFFp6EfG5K7mY0I3I6w" key="version" value="1"/>
+    </eAnnotations>
+  </uml:Model>
+  <notation:Diagram xmi:id="_szKK4Fp6EfG5K7mY0I3I6w" type="Business Object Model" element="_su6kEFp6EfG5K7mY0I3I6w?com.example.poc_epat?" name="POC_Epat.bom" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_szKK4Vp6EfG5K7mY0I3I6w"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_szKK4lp6EfG5K7mY0I3I6w"/>
+  </notation:Diagram>
+</xmi:XMI>

@@ -1,0 +1,1386 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/conformance/v1",
+  "package": "POC_Epat",
+  "source": "Documento Prova de Conceito.docx, secao 2 (tabela Conceito / Objetivo da Validacao) e secao 5 (Resultado Esperado).",
+  "objective": [
+    "Importante destacar que esta POC não contempla migração de processos legados, tendo como foco exclusivamente a validação dos recursos funcionais da ferramenta BPM."
+  ],
+  "coverageClaim": [
+    "A cobertura estimada corresponde a aproximadamente 70% a 80% dos recursos BPMN normalmente utilizados em processos corporativos."
+  ],
+  "note": "Duas dimensoes distintas: EXTRACTION = o conceito foi encontrado e descrito a partir da fonte; EXECUTION = o conceito foi demonstrado em execucao na plataforma alvo. Um conceito extraido nao e um conceito provado. As etapas vem de intent-map.json, derivado do proprio documento.",
+  "summary": {
+    "concepts": 19,
+    "extractionVerified": 19,
+    "extractionAbsent": 0,
+    "executionProven": 1,
+    "executionPending": 18,
+    "headlineConcepts": 3,
+    "headlineProven": 1,
+    "conceptsBlocked": 4,
+    "etapas": 7,
+    "etapasUnlinked": 0,
+    "etapasBlocked": 7
+  },
+  "externalPackagesNotDelivered": [
+    "_XWivN1qTEfG5K7mY0I3I6w",
+    "_-bkx9V6JEfGBBLgT-R5iuw",
+    "_0XWaj1qNEfG5K7mY0I3I6w",
+    "_-bkx9l6JEfGBBLgT-R5iuw",
+    "_CtQ7L1qPEfG5K7mY0I3I6w",
+    "_lresZVqhEfG5K7mY0I3I6w",
+    "_CI6mDFqREfG5K7mY0I3I6w",
+    "_CI6mDVqREfG5K7mY0I3I6w",
+    "_lresZlqhEfG5K7mY0I3I6w",
+    "_lresZFqhEfG5K7mY0I3I6w",
+    "_-bkx8F6JEfGBBLgT-R5iuw",
+    "_-bkx716JEfGBBLgT-R5iuw",
+    "_-bkx816JEfGBBLgT-R5iuw",
+    "_CtQ7LlqPEfG5K7mY0I3I6w",
+    "_-bkx8V6JEfGBBLgT-R5iuw"
+  ],
+  "concepts": [
+    {
+      "id": "eventos-inicio-fim",
+      "name": "Eventos de Inicio e Fim",
+      "headline": false,
+      "objective": "Controle do ciclo de vida do processo.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 44,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'startEvent'",
+          "count": 14,
+          "processes": [
+            "AGPECASPC",
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CONTROPC",
+            "CRNOTPC",
+            "DEAT0050",
+            "POC_EpatProcess",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "POC_EpatProcess/Início",
+            "DEAT0050/Start Event",
+            "CALCPRPC/Start Event"
+          ]
+        },
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'endEvent'",
+          "count": 30,
+          "processes": [
+            "AGPECASPC",
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CONTROPC",
+            "CRNOTPC",
+            "DEAT0050",
+            "POC_EpatProcess",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "POC_EpatProcess/",
+            "POC_EpatProcess/Fim de Prazo",
+            "POC_EpatProcess/"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "user-tasks",
+      "name": "User Tasks",
+      "headline": false,
+      "objective": "Interacao humana atraves de telas e atividades manuais.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 9,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'userTask'",
+          "count": 9,
+          "processes": [
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CRNOTPC",
+            "POC_EpatProcess",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "POC_EpatProcess/Realizar Atividade Vista Mista",
+            "POC_EpatProcess/Finalizar AIIM",
+            "POC_EpatProcess/Preparar Notificacao"
+          ]
+        },
+        {
+          "source": "screen-catalogue.json",
+          "what": "telas ligadas a userTask",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "service-tasks",
+      "name": "Service Tasks",
+      "headline": false,
+      "objective": "Execucao automatica de servicos e integracoes.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 5,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'serviceTask'",
+          "count": 5,
+          "processes": [
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CRNOTPC",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "CALCPRPC/CalcularPrazo",
+            "BSCENVPC/Busca Envolvidos Vista Por AIIM",
+            "PRPINTPC/CaptaParametros"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gateways-xor",
+      "name": "Gateways Exclusivos (XOR)",
+      "headline": false,
+      "objective": "Tomada de decisao baseada em regras de negocio.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 58,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "bpmn/",
+          "what": "elemento BPMN 'exclusiveGateway'",
+          "count": 58
+        }
+      ]
+    },
+    {
+      "id": "gateways-and",
+      "name": "Gateways Paralelos (AND)",
+      "headline": false,
+      "objective": "Divisao e sincronizacao de fluxos paralelos.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 3,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "bpmn/",
+          "what": "elemento BPMN 'parallelGateway'",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "fluxos-paralelos",
+      "name": "Fluxos Paralelos",
+      "headline": false,
+      "objective": "Processamento simultaneo de atividades independentes.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 3,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "bpmn/",
+          "what": "elemento BPMN 'parallelGateway'",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "id": "timers-deadlines",
+      "name": "Timers e Deadlines",
+      "headline": false,
+      "objective": "Controle de prazo e vencimento de atividades.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 11,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "bpmn/",
+          "what": "elemento BPMN 'timerEventDefinition'",
+          "count": 11
+        }
+      ]
+    },
+    {
+      "id": "eventos-mensagem",
+      "name": "Eventos de Mensagem",
+      "headline": false,
+      "objective": "Comunicacao entre processos e sistemas externos.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 6,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'receiveTask'",
+          "count": 6,
+          "processes": [
+            "AGPECASPC",
+            "DEAT0050",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Iniciar Aguardar Notificacao",
+            "POC_EpatProcess/Pedido de Vistas",
+            "POC_EpatProcess/Vistas do Juiz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eventos-sinal",
+      "name": "Eventos de Sinal (Signal)",
+      "headline": false,
+      "objective": "Disparo de eventos globais para sincronizacao de fluxos.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 4,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'signalThrow'",
+          "count": 2,
+          "processes": [
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/FimDRF",
+            "POC_EpatProcess/Fim Vista Mista"
+          ]
+        },
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'signalCatch'",
+          "count": 2,
+          "processes": [
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Fim Vista Mista",
+            "POC_EpatProcess/Catch Signal Event"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loops-retornos",
+      "name": "Loops e Retornos",
+      "headline": false,
+      "objective": "Reprocessamento e correcao de atividades.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 20,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'linkThrow'",
+          "count": 10,
+          "processes": [
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CRNOTPC",
+            "POC_EpatProcess",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "POC_EpatProcess/Mista",
+            "POC_EpatProcess/Inicia Graft Step",
+            "POC_EpatProcess/Corrigir Fechamento"
+          ]
+        },
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'linkCatch'",
+          "count": 10,
+          "processes": [
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CRNOTPC",
+            "POC_EpatProcess",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "POC_EpatProcess/Inicia Graft Step",
+            "POC_EpatProcess/Mista",
+            "POC_EpatProcess/Validação Paralelos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "variaveis-processo",
+      "name": "Variaveis de Processo",
+      "headline": false,
+      "objective": "Persistencia e compartilhamento de informacoes durante a execucao.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 209,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "case-field-dictionary.json",
+          "what": "campos de caso declarados",
+          "count": 209,
+          "note": "18 usam o sentinela SW_NA (tres estados)"
+        }
+      ]
+    },
+    {
+      "id": "envio-emails",
+      "name": "Envio de E-mails",
+      "headline": false,
+      "objective": "Comunicacao automatica atraves de notificacoes.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 2,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'emailTask'",
+          "count": 2,
+          "processes": [
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Email CQ Fechamento",
+            "POC_EpatProcess/Email Limite Rel 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "correlacao-eventos",
+      "name": "Correlacao de Eventos",
+      "headline": false,
+      "objective": "Associacao de eventos externos a instancias especificas do processo.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 6,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [
+        "NOEQ-external-event"
+      ],
+      "evidence": [
+        {
+          "source": "process-model.json (migrationHazards)",
+          "what": "construcao 'external-event'",
+          "count": 6,
+          "processes": [
+            "AGPECASPC",
+            "DEAT0050",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Vistas do Juiz",
+            "POC_EpatProcess/Iniciar Aguardar Notificacao",
+            "DEAT0050/INICALC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "espera-assincrona",
+      "name": "Espera Assincrona",
+      "headline": false,
+      "objective": "Suspensao controlada ate o recebimento de eventos externos.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 12,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [
+        "NOEQ-external-event"
+      ],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'receiveTask'",
+          "count": 6,
+          "processes": [
+            "AGPECASPC",
+            "DEAT0050",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Iniciar Aguardar Notificacao",
+            "POC_EpatProcess/Pedido de Vistas",
+            "POC_EpatProcess/Vistas do Juiz"
+          ]
+        },
+        {
+          "source": "process-model.json (migrationHazards)",
+          "what": "construcao 'external-event'",
+          "count": 6,
+          "processes": [
+            "AGPECASPC",
+            "DEAT0050",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Vistas do Juiz",
+            "POC_EpatProcess/Iniciar Aguardar Notificacao",
+            "DEAT0050/INICALC"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle-prazo",
+      "name": "Controle de Prazo",
+      "headline": false,
+      "objective": "Monitoramento de SLA e vencimentos.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 15,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [
+        "NOEQ-expression-deadline"
+      ],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'timerEvent'",
+          "count": 11,
+          "processes": [
+            "AGPECASPC",
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CRNOTPC",
+            "DEAT0050",
+            "POC_EpatProcess",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "POC_EpatProcess/",
+            "POC_EpatProcess/",
+            "POC_EpatProcess/Fim de Prazo Mantendo Atividade"
+          ]
+        },
+        {
+          "source": "process-model.json (migrationHazards)",
+          "what": "construcao 'expression-deadline'",
+          "count": 4,
+          "processes": [
+            "DEAT0050",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/",
+            "DEAT0050/Aguarda Defesa",
+            "POC_EpatProcess/Fim de Prazo Mantendo Atividade"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "encadeamento-subprocessos",
+      "name": "Encadeamento de Subprocessos",
+      "headline": false,
+      "objective": "Comunicacao e continuidade entre subprocessos.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 13,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'callActivity'",
+          "count": 8,
+          "processes": [
+            "CONTROPC",
+            "DEAT0050",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+            "POC_EpatProcess/Busca Emails",
+            "POC_EpatProcess/Prepara Intimação"
+          ]
+        },
+        {
+          "source": "process-model.json",
+          "what": "nodeKind 'subProcessScope'",
+          "count": 5,
+          "processes": [
+            "ATZINTPC",
+            "BSCENVPC",
+            "CALCPRPC",
+            "CRNOTPC",
+            "PRPINTPC"
+          ],
+          "samples": [
+            "CALCPRPC/Control System Task Call",
+            "BSCENVPC/Control System Task Call",
+            "PRPINTPC/Control System Task Call"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graft-step",
+      "name": "Graft Step",
+      "headline": true,
+      "objective": "Acoplamento dinamico de um fluxo ou subprocesso durante a execucao do processo principal, sem que ele faca parte originalmente da sequencia de atividades.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 4,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "process-model.json",
+          "what": "passos cujo nome casa com 'graft'",
+          "count": 4,
+          "processes": [
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "POC_EpatProcess/Inicia Graft Step",
+            "POC_EpatProcess/Aguardar evento de Notificacao do AIIM",
+            "POC_EpatProcess/Inicia Graft Step",
+            "POC_EpatProcess/Iniciar Novo Graft"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "decisions",
+      "name": "Decisions",
+      "headline": true,
+      "objective": "Mecanismo de decisao baseado em regras de negocio, que avalia informacoes do processo e retorna parametros que influenciam o fluxo subsequente.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 49,
+      "execution": "proven",
+      "executionEvidence": "verify-dmn-equivalence.ps1 - 3000 casos, 11 atributos, 0 divergencias",
+      "blockers": [],
+      "evidence": [
+        {
+          "source": "decision-tables.json + dmn/",
+          "what": "colunas de regra Corticon convertidas para DMN",
+          "count": 49,
+          "note": "equivalencia verificada por execucao sobre 3.000 casos aleatorios x 11 atributos, sem divergencia"
+        }
+      ]
+    },
+    {
+      "id": "procedures-dinamicas",
+      "name": "Procedures Dinamicas",
+      "headline": true,
+      "objective": "Determinar em tempo de execucao quais atividades, participantes ou caminhos serao criados dentro do processo, de acordo com regras e dados do negocio.",
+      "validationGoal": [
+        null
+      ],
+      "extraction": "verified",
+      "occurrences": 3,
+      "execution": "pending",
+      "executionEvidence": null,
+      "blockers": [
+        "NOEQ-dynamic-subprocess"
+      ],
+      "evidence": [
+        {
+          "source": "process-model.json (migrationHazards)",
+          "what": "construcao 'dynamic-subprocess'",
+          "count": 3,
+          "processes": [
+            "CONTROPC",
+            "POC_EpatProcess"
+          ],
+          "samples": [
+            "CONTROPC/Aguardar Retorno",
+            "POC_EpatProcess/Controlar Intimados",
+            "POC_EpatProcess/Aguardar evento de Notificacao do AIIM"
+          ]
+        }
+      ]
+    }
+  ],
+  "etapas": [
+    {
+      "n": 1,
+      "name": "Fechamento do AIIM",
+      "conceptsInDocument": [],
+      "matchedElements": [
+        {
+          "kind": "startEvent",
+          "id": "_tO_yWVp6EfG5K7mY0I3I6w",
+          "name": "Incio",
+          "label": "Início",
+          "process": "POC_EpatProcess",
+          "matchedOn": "Início"
+        },
+        {
+          "kind": "userTask",
+          "id": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "name": "FECHAR",
+          "label": "Finalizar AIIM",
+          "process": "POC_EpatProcess",
+          "matchedOn": "Finalizar AIIM"
+        }
+      ],
+      "anchorTerms": [
+        "AIIM",
+        "FECHAMENTO"
+      ],
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_0XWagVqNEfG5K7mY0I3I6w",
+          "node": "Aguardar evento de Notificacao do AIIM",
+          "kind": "callActivity",
+          "via": "titulo",
+          "termo": "AIIM"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "node": "Finalizar AIIM",
+          "kind": "userTask",
+          "via": "titulo",
+          "termo": "AIIM"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_tN6q4lqTEfG5K7mY0I3I6w",
+          "node": "Corrigir Fechamento",
+          "kind": "linkThrow",
+          "via": "titulo",
+          "termo": "FECHAMENTO"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_5E444FqTEfG5K7mY0I3I6w",
+          "node": "Corrigir Fechamento",
+          "kind": "linkCatch",
+          "via": "titulo",
+          "termo": "FECHAMENTO"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_O-rPp1qUEfG5K7mY0I3I6w",
+          "node": "Email CQ Fechamento",
+          "kind": "emailTask",
+          "via": "titulo",
+          "termo": "FECHAMENTO"
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "ActivitySet",
+          "nodeId": "_qIDu5F6BEfGBBLgT-R5iuw",
+          "node": "Busca Envolvidos Vista Por AIIM",
+          "kind": "serviceTask",
+          "via": "titulo",
+          "termo": "AIIM"
+        }
+      ],
+      "processes": [
+        "BSCENVPC",
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "extracted"
+    },
+    {
+      "n": 2,
+      "name": "Notificação do AIIM",
+      "conceptsInDocument": [
+        "Subprocessos",
+        "Eventos de Mensagem",
+        "Espera Assíncrona",
+        "Correlação de Eventos",
+        "Envio de E-mail",
+        "Loops de Processo"
+      ],
+      "matchedElements": [
+        {
+          "kind": "process",
+          "id": "_lrer1VqhEfG5K7mY0I3I6w",
+          "name": "DEAT0050",
+          "label": "Notificacao do AIIM",
+          "process": "DEAT0050",
+          "matchedOn": "Notificacao do AIIM"
+        }
+      ],
+      "anchorTerms": [
+        "AIIM",
+        "NOTIFICACAO"
+      ],
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_0XWagVqNEfG5K7mY0I3I6w",
+          "node": "Aguardar evento de Notificacao do AIIM",
+          "kind": "callActivity",
+          "via": "titulo",
+          "termo": "AIIM"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_0XWaglqNEfG5K7mY0I3I6w",
+          "node": "Iniciar Aguardar Notificacao",
+          "kind": "receiveTask",
+          "via": "titulo",
+          "termo": "NOTIFICACAO"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_0XWahFqNEfG5K7mY0I3I6w",
+          "node": "Trocar Notificação?",
+          "kind": "gateway",
+          "via": "titulo",
+          "termo": "NOTIFICACAO"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "node": "Finalizar AIIM",
+          "kind": "userTask",
+          "via": "titulo",
+          "termo": "AIIM"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_IxqJMlqTEfG5K7mY0I3I6w",
+          "node": "Existe Notificação?",
+          "kind": "gateway",
+          "via": "titulo",
+          "termo": "NOTIFICACAO"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_sfwu-VqUEfG5K7mY0I3I6w",
+          "node": "Preparar Notificacao",
+          "kind": "userTask",
+          "via": "titulo",
+          "termo": "NOTIFICACAO"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_BQIgAF9KEfGqPfX31TKC3w",
+          "node": "Criar Notificacao",
+          "kind": "callActivity",
+          "via": "titulo",
+          "termo": "NOTIFICACAO"
+        },
+        {
+          "process": "BSCENVPC",
+          "scope": "ActivitySet",
+          "nodeId": "_qIDu5F6BEfGBBLgT-R5iuw",
+          "node": "Busca Envolvidos Vista Por AIIM",
+          "kind": "serviceTask",
+          "via": "titulo",
+          "termo": "AIIM"
+        },
+        {
+          "process": "CRNOTPC",
+          "scope": "ActivitySet",
+          "nodeId": "_NcJxMF9KEfGqPfX31TKC3w",
+          "node": "CriaNotificacao",
+          "kind": "serviceTask",
+          "via": "titulo",
+          "termo": "NOTIFICACAO"
+        }
+      ],
+      "processes": [
+        "BSCENVPC",
+        "CRNOTPC",
+        "DEAT0050",
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "extracted"
+    },
+    {
+      "n": 3,
+      "name": "Integração com Decisions",
+      "conceptsInDocument": [
+        "Service Task",
+        "Integração Externa",
+        "Regras de Negócio",
+        "Variáveis de Processo"
+      ],
+      "matchedElements": [],
+      "anchorTerms": "DECISIONS",
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_CI6l0VqREfG5K7mY0I3I6w",
+          "node": "Iniciar Decisions",
+          "kind": "linkCatch",
+          "via": "titulo",
+          "termo": "DECISIONS"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_LeuhgFqVEfG5K7mY0I3I6w",
+          "node": "Iniciar Decisions",
+          "kind": "linkThrow",
+          "via": "titulo",
+          "termo": "DECISIONS"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_30jAcFqVEfG5K7mY0I3I6w",
+          "node": "Verificar Retorno Decisions",
+          "kind": "userTask",
+          "via": "titulo",
+          "termo": "DECISIONS"
+        }
+      ],
+      "processes": [
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "anchored-by-node"
+    },
+    {
+      "n": 4,
+      "name": "Verificação do Retorno do Decisions",
+      "conceptsInDocument": [
+        "Variáveis de Processo",
+        "Gateways Exclusivos (XOR)",
+        "Regras de Negócio"
+      ],
+      "matchedElements": [
+        {
+          "kind": "userTask",
+          "id": "_30jAcFqVEfG5K7mY0I3I6w",
+          "name": "VRFRETDE",
+          "label": "Verificar Retorno Decisions",
+          "process": "POC_EpatProcess",
+          "matchedOn": "Verificar Retorno Decisions"
+        }
+      ],
+      "anchorTerms": [
+        "DECISIONS",
+        "RETORNO",
+        "VERIFICACAO"
+      ],
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_CI6l0VqREfG5K7mY0I3I6w",
+          "node": "Iniciar Decisions",
+          "kind": "linkCatch",
+          "via": "titulo",
+          "termo": "DECISIONS"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_LeuhgFqVEfG5K7mY0I3I6w",
+          "node": "Iniciar Decisions",
+          "kind": "linkThrow",
+          "via": "titulo",
+          "termo": "DECISIONS"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_30jAcFqVEfG5K7mY0I3I6w",
+          "node": "Verificar Retorno Decisions",
+          "kind": "userTask",
+          "via": "titulo",
+          "termo": "DECISIONS"
+        },
+        {
+          "process": "CONTROPC",
+          "scope": "MAIN",
+          "nodeId": "_-bkw-V6JEfGBBLgT-R5iuw",
+          "node": "Aguardar Retorno",
+          "kind": "callActivity",
+          "via": "titulo",
+          "termo": "RETORNO"
+        }
+      ],
+      "processes": [
+        "CONTROPC",
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "extracted"
+    },
+    {
+      "n": 5,
+      "name": "Validação de Gateways Paralelos",
+      "conceptsInDocument": [
+        "Gateway Paralelo (AND)",
+        "Fluxos Paralelos",
+        "Sincronização de Fluxos",
+        "Eventos de Sinal"
+      ],
+      "matchedElements": [],
+      "anchorTerms": [
+        "GATEWAYS",
+        "PARALELOS"
+      ],
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_Ei94AFqPEfG5K7mY0I3I6w",
+          "node": "Validação Paralelos",
+          "kind": "linkCatch",
+          "via": "titulo",
+          "termo": "PARALELOS"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_89MVQlqVEfG5K7mY0I3I6w",
+          "node": "Validar Paralelos",
+          "kind": "linkThrow",
+          "via": "titulo",
+          "termo": "PARALELOS"
+        }
+      ],
+      "processes": [
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "anchored-by-node"
+    },
+    {
+      "n": 6,
+      "name": "Controle de Intimados",
+      "conceptsInDocument": [
+        "Processamento Dinâmico",
+        "User Tasks",
+        "Variáveis de Processo",
+        "Regras de Negócio",
+        "Encadeamento de Subprocessos"
+      ],
+      "matchedElements": [
+        {
+          "kind": "process",
+          "id": "_-bkw8V6JEfGBBLgT-R5iuw",
+          "name": "CONTROPC",
+          "label": "Controle Intimados",
+          "process": "CONTROPC",
+          "matchedOn": "Controle Intimados"
+        }
+      ],
+      "anchorTerms": "INTIMADOS",
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_nQntZ16JEfGBBLgT-R5iuw",
+          "node": "Controlar Intimados",
+          "kind": "callActivity",
+          "via": "titulo",
+          "termo": "INTIMADOS"
+        }
+      ],
+      "processes": [
+        "CONTROPC",
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "extracted"
+    },
+    {
+      "n": 7,
+      "name": "Encerramento",
+      "conceptsInDocument": [
+        "Evento de Fim",
+        "Encerramento de Instância",
+        "Persistência de Dados"
+      ],
+      "matchedElements": [
+        {
+          "kind": "process",
+          "id": "_-bkw8V6JEfGBBLgT-R5iuw",
+          "name": "CONTROPC",
+          "label": "Controle Intimados",
+          "process": "CONTROPC",
+          "matchedOn": "Controle Intimados"
+        }
+      ],
+      "anchorTerms": "ENCERRAMENTO",
+      "anchorNodes": [
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_CtQ66lqPEfG5K7mY0I3I6w",
+          "node": "",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_Faq_Q1qTEfG5K7mY0I3I6w",
+          "node": "",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_H22mclqWEfG5K7mY0I3I6w",
+          "node": "Fim",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_O7K3MF9LEfGqPfX31TKC3w",
+          "node": "",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_RqXZ0lqUEfG5K7mY0I3I6w",
+          "node": "Fim E-mail",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_UiYAYFqiEfG5K7mY0I3I6w",
+          "node": "End Event",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        },
+        {
+          "process": "POC_EpatProcess",
+          "scope": "MAIN",
+          "nodeId": "_Xw86YlqQEfG5K7mY0I3I6w",
+          "node": "Fim de Prazo",
+          "kind": "endEvent",
+          "via": "conceito-declarado",
+          "termo": "Evento de Fim"
+        }
+      ],
+      "processes": [
+        "CONTROPC",
+        "POC_EpatProcess"
+      ],
+      "ambiguousMentions": [],
+      "blockersPorProcesso": [
+        "NOEQ-dynamic-subprocess",
+        "NOEQ-expression-deadline",
+        "NOEQ-external-event",
+        "NOEQ-graft-step",
+        "NOEQ-iprocess-builtin",
+        "NOEQ-link-goto",
+        "NOEQ-non-interrupting-boundary"
+      ],
+      "blockersExactos": "ver scenarios/index.json -> etapas.footprint[].bloqueadores",
+      "status": "extracted"
+    }
+  ],
+  "expectedResults": [
+    {
+      "id": "modelagem-bpmn",
+      "text": "Capacidade de modelagem BPMN.",
+      "concepts": [
+        "gateways-xor",
+        "gateways-and",
+        "eventos-inicio-fim"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": []
+    },
+    {
+      "id": "subprocessos-encadeados",
+      "text": "Execucao de subprocessos encadeados.",
+      "concepts": [
+        "encadeamento-subprocessos"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": []
+    },
+    {
+      "id": "integracao-servicos",
+      "text": "Integracao com servicos externos.",
+      "concepts": [
+        "service-tasks"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": []
+    },
+    {
+      "id": "regras-decisao",
+      "text": "Processamento de regras de decisao.",
+      "concepts": [
+        "decisions"
+      ],
+      "extraction": "verified",
+      "execution": "proven",
+      "blockers": []
+    },
+    {
+      "id": "criacao-dinamica",
+      "text": "Criacao dinamica de etapas.",
+      "concepts": [
+        "graft-step",
+        "procedures-dinamicas"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": [
+        "NOEQ-dynamic-subprocess"
+      ]
+    },
+    {
+      "id": "correlacao-assincrona",
+      "text": "Correlacao de eventos assincronos.",
+      "concepts": [
+        "correlacao-eventos",
+        "espera-assincrona"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": [
+        "NOEQ-external-event"
+      ]
+    },
+    {
+      "id": "sla-prazos",
+      "text": "Controle de SLA e prazos.",
+      "concepts": [
+        "controle-prazo",
+        "timers-deadlines"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": [
+        "NOEQ-expression-deadline"
+      ]
+    },
+    {
+      "id": "paralelo-sincronizacao",
+      "text": "Processamento paralelo com sincronizacao.",
+      "concepts": [
+        "gateways-and",
+        "fluxos-paralelos"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": []
+    },
+    {
+      "id": "notificacoes",
+      "text": "Envio de notificacoes.",
+      "concepts": [
+        "envio-emails"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": []
+    },
+    {
+      "id": "variaveis",
+      "text": "Manipulacao de variaveis de processo.",
+      "concepts": [
+        "variaveis-processo"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": []
+    },
+    {
+      "id": "compatibilidade-iprocess",
+      "text": "Compatibilidade conceitual com recursos avancados utilizados atualmente no Tibco iProcess.",
+      "concepts": [
+        "graft-step",
+        "procedures-dinamicas",
+        "decisions"
+      ],
+      "extraction": "verified",
+      "execution": "pending",
+      "blockers": [
+        "NOEQ-dynamic-subprocess"
+      ]
+    }
+  ]
+}

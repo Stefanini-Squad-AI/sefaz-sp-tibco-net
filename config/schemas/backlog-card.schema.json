@@ -1,0 +1,509 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "title": "Backlog card (Phase 1 toolkit -> Phase 2 SAI APP 3.0)",
+  "description": "The unit that crosses the airlock between the deterministic migration toolkit and the agentic implementation phase. The receiving agent has no knowledge of TIBCO and cannot read the source artifacts: whatever is not carried here does not exist. A card is therefore a structured object - never prose - split into a content block (what to build) and a metadata block (where it came from, how far it can be trusted, and how done is proven).",
+
+  "type": "object",
+  "required": [
+    "$schema",
+    "id",
+    "cardType",
+    "title",
+    "content",
+    "irRef",
+    "sourceRef",
+    "confidence",
+    "provenance",
+    "acceptance",
+    "scope",
+    "fulfills",
+    "dimensao"
+  ],
+  "additionalProperties": false,
+
+  "properties": {
+    "$schema": { "const": "sefaz-sp/tibco-intermediate/backlog-card/v1" },
+
+    "id": {
+      "type": "string",
+      "pattern": "^(BUILD|VALID|DOUBLE)-[A-Z0-9]+-[A-Za-z0-9_.-]+$",
+      "description": "Stable, regenerable identity. Also the idempotency key for tracker writes: re-delivering the same card must update, never duplicate."
+    },
+
+    "cardType": {
+      "enum": ["build", "validation", "double"],
+      "description": "build = implement a lossy body. validation = implement the test harness that runs an oracle. double = build a contract-faithful test double for a source that was never delivered; e trabalho diferente de implementar, e o backlog tem de os distinguir. The three streams are generated from the same IR traversal so coverage is guaranteed."
+    },
+
+    "title": { "type": "string", "minLength": 5 },
+
+    "epic": {
+      "type": "string",
+      "description": "Grouping key, normally the owning process (e.g. POC_EpatProcess) or rulesheet."
+    },
+
+    "content": {
+      "type": "object",
+      "description": "CONTENT BLOCK - what the agent must produce. Reasoning material only; carries no authority about correctness (that lives in acceptance.oracle).",
+      "required": ["intent", "injectedContext"],
+      "additionalProperties": false,
+      "properties": {
+        "intent": {
+          "type": "string",
+          "description": "What must exist when this card is done, in business terms."
+        },
+        "injectedContext": {
+          "type": "object",
+          "description": "Explicit context injection across the airlock. The agent cannot see the coordinator's history nor the TIBCO artifacts; everything it needs to act is copied here verbatim.",
+          "required": ["summary"],
+          "additionalProperties": false,
+          "properties": {
+            "summary": { "type": "string" },
+            "irSlice": {
+              "type": "object",
+              "description": "The budget-scoped excerpt of the IR for this node: the node, its direct neighbours and the conditions that steer them. Never the whole IR.",
+              "additionalProperties": true
+            },
+            "domainTerms": {
+              "type": "array",
+              "description": "Glossary entries resolved for identifiers used here, so the agent does not re-derive business meaning.",
+              "items": {
+                "type": "object",
+                "required": ["identifier", "term"],
+                "additionalProperties": false,
+                "properties": {
+                  "identifier": { "type": "string" },
+                  "term": { "type": "string" },
+                  "description": { "type": "string" },
+                  "values": { "type": "string" },
+                  "source": { "type": "string", "description": "Glossary key the value came from." }
+                }
+              }
+            },
+            "hypotheses": {
+              "type": "array",
+              "description": "Prior findings that may have gone stale. Framed as hypotheses to validate, never as established facts.",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "scaffold": {
+          "type": "array",
+          "description": "Deterministically generated artifacts the agent must build ON, not regenerate (entities, DTOs, workflow skeleton, API signatures).",
+          "items": {
+            "type": "object",
+            "required": ["path", "status"],
+            "additionalProperties": false,
+            "properties": {
+              "path": { "type": "string" },
+              "status": {
+                "enum": ["final", "scaffold", "draft"],
+                "description": "final = lossless, do not modify. scaffold = fill the body. draft = lossy generation, verify against the oracle."
+              },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "checklist": {
+          "type": "array",
+          "description": "Os nos que vivem DENTRO do segmento, pela ordem em que sao percorridos. A unidade de planeamento passou a ser o troco da jornada, mas o detalhe fino nao desaparece: desce para aqui, como lista de verificacao. Um card fechado sem todos estes nos tratados esta incompleto, e a lista torna isso conferivel em vez de opinavel.",
+          "items": {
+            "type": "object",
+            "required": ["ordem", "nodeId", "nome", "kind"],
+            "additionalProperties": false,
+            "properties": {
+              "ordem": { "type": "integer", "minimum": 1 },
+              "nodeId": { "type": "string" },
+              "nome": { "type": "string" },
+              "kind": { "type": "string" },
+              "decideQue": {
+                "type": "string",
+                "description": "A pergunta que este passo decide, tal como um humano a respondeu na seccao decisions do glossario. Presente so nos passos que o XPDL deixou sem rotulo. Nao e interpretacao do gerador: e resposta ratificada, transportada para onde faz falta."
+              },
+              "entrouPor": {
+                "enum": ["fluxo", "link", "descida", "regresso", "fronteira", "fronteira-paralela", "sinal"],
+                "description": "Como se chega a este no. Tudo o que nao seja 'fluxo' NAO existe como transicao no XPDL e tem de ser escrito explicitamente no fluxo .NET - e a classe de omissao mais facil de cometer."
+              },
+              "linhaXpdl": { "type": "integer" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "irRef": {
+      "type": "object",
+      "description": "METADATA - o elemento da IR que este card projecta. Um card de build projecta um SEGMENTO da jornada: 'pointer' aponta para o no que o abre, e 'nodeIds' enumera os que ficam dentro. A cobertura continua a medir-se por no, que e o que mantem a conta fechavel.",
+      "required": ["artifact", "pointer"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "enum": [
+            "process-model.json",
+            "decision-tables.json",
+            "service-contracts.json",
+            "case-field-dictionary.json",
+            "screen-catalogue.json",
+            "scenarios/index.json"
+          ]
+        },
+        "pointer": {
+          "type": "string",
+          "description": "Addressable path inside the artifact, e.g. processes[CALCPRPC].scopes[MAIN].nodes[_zJIHbFqiE]."
+        },
+        "kind": {
+          "type": "string",
+          "description": "IR element kind: segment, activity, gateway, transition, rule, operation, field, screen."
+        },
+        "nodeIds": {
+          "type": "array",
+          "description": "Os nos cobertos por este card. Um card de segmento cobre varios; a soma dos nodeIds de todos os cards, contra os nos em escopo, e a medida de cobertura.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "sourceRef": {
+      "type": "array",
+      "minItems": 1,
+      "description": "METADATA - claim to source. Resolves back to the raw TIBCO element so any statement in this card can be audited against the original system.",
+      "items": {
+        "type": "object",
+        "required": ["tibcoFile", "elementId"],
+        "additionalProperties": false,
+        "properties": {
+          "tibcoFile": { "type": "string" },
+          "elementId": { "type": "string", "description": "Full XPDL/Corticon id - never the shortened display id, which cannot be resolved." },
+          "xpath": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+
+    "confidence": {
+      "type": "object",
+      "description": "METADATA - how far this card can be trusted before human review. Derived from the lossless/lossy split: lossless transcription is high, lossy interpretation is low.",
+      "required": ["level", "basis", "verified"],
+      "additionalProperties": false,
+      "properties": {
+        "level": { "enum": ["high", "medium", "low"] },
+        "basis": { "type": "string" },
+        "verified": {
+          "type": "boolean",
+          "description": "True only after human review or an oracle pass. Generators must emit false."
+        },
+        "translation": {
+          "enum": ["lossless", "lossy"],
+          "description": "lossless = transcription, one correct output, no judgment. lossy = interpretation, requires the agent."
+        }
+      }
+    },
+
+    "provenance": {
+      "type": "object",
+      "description": "METADATA - temporal validation. Lets a consumer detect that the card was built from a TIBCO export that has since been replaced; stale context is worse than no context.",
+      "required": ["generatedAt", "manifestSha256", "package"],
+      "additionalProperties": false,
+      "properties": {
+        "generatedAt": {
+          "type": "string", "format": "date-time",
+          "description": "NAO e o relogio da maquina que gerou o card: e a data de exportacao do pacote TIBCO, lida do cabecalho do XPDL. E o que este campo serve para dizer, e e a unica leitura que faz duas execucoes sobre a mesma fonte darem o mesmo card."
+        },
+        "manifestSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "sha256 da projeccao ESTAVEL do manifesto - fontes, artefactos e contagens -, excluindo o instante da corrida, a duracao e a maquina. Re-validar no ingest: uma diferenca significa que o card tem de ser regerado, nao implementado. Hashear o manifesto inteiro faria todos os cards mudar a cada corrida e treinava o consumidor a ignorar diferencas."
+        },
+        "reviewSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "description": "sha256 do parecer agentico que influenciou este card (analysis/backlog-review.json). O parecer pode alterar titulo e hipoteses, logo E uma entrada do bundle e tem de ser fixada como o XPDL e o glossario. Ausente quando nenhum parecer foi aplicado."
+        },
+        "package": { "type": "string" },
+        "toolVersion": { "type": "string" }
+      }
+    },
+
+    "acceptance": {
+      "type": "object",
+      "description": "METADATA - the definition of done. The oracle is the authority on correctness, not the card text and not the agent.",
+      "required": ["oracle"],
+      "additionalProperties": false,
+      "properties": {
+        "oracle": {
+          "type": "object",
+          "required": ["kind", "fixture", "immutable"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": ["decision-table", "scenario-path", "schema-conformance", "contract"],
+              "description": "decision-table = each Corticon row is a case. scenario-path = an XPDL journey with its mock outputs. schema-conformance = BOM/XSD shape."
+            },
+            "fixture": {
+              "type": "string",
+              "description": "Path to the golden fixture emitted by the toolkit."
+            },
+            "immutable": {
+              "const": true,
+              "description": "The agent wires the harness to the fixture and may never author or edit expected values - that would make the test mark its own homework."
+            },
+            "caseCount": { "type": "integer", "minimum": 1 },
+            "expectedValues": {
+              "readOnly": true,
+              "description": "Toolkit-owned. Present for reference only; any agent write here invalidates the card."
+            }
+          }
+        },
+        "criteria": {
+          "type": "array",
+          "description": "Additional deterministic checks (build, lint, contract test). Advisory LLM review may annotate but never gates.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+
+    "scope": {
+      "type": "object",
+      "description": "METADATA - a fronteira do trabalho. Impede o agente de propor alteracoes fora do seu grupo, e impede o backlog de encomendar a migracao inteira quando a POC so pede o cenario representativo.",
+      "required": ["process", "inPocScope", "scopeReason"],
+      "additionalProperties": false,
+      "properties": {
+        "process": { "type": "string" },
+        "cluster": { "type": "string" },
+        "inPocScope": {
+          "const": true,
+          "description": "So existe card para elemento DENTRO do escopo. O veredicto vem de artifacts/<pkg>/scope.json, que aplica a fronteira autorada em config/poc-scope.json. Um elemento fora nao gera card: nao e esquecimento, e recusa registada."
+        },
+        "scopeReason": {
+          "type": "string",
+          "description": "O motivo, copiado de scope.json, pelo qual este elemento esta dentro. Um card sem motivo rastreavel e trabalho que ninguem pediu."
+        },
+        "outOfScope": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "fulfills": {
+      "type": "object",
+      "description": "METADATA - a que parte do POC_FULFILLMENT_PLAN este card responde. Sem isto a cobertura seria medida contra o XPDL e nao contra o documento do cliente: seria possivel implementar todos os cards e continuar sem saber se a POC esta cumprida.",
+      "required": ["etapas", "segmento"],
+      "additionalProperties": false,
+      "properties": {
+        "etapas": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "As etapas do cenario de sete passos que este card faz avancar. E LISTA e nao numero unico porque um troco da jornada serve mesmo duas etapas ao mesmo tempo: 'Iniciar Decisions' fecha a integracao e abre a verificacao do retorno, e 'Finalizar AIIM' fecha o fechamento e abre a notificacao. Declarar so uma delas faria o relatorio de cobertura dar por descoberta uma etapa que esta coberta.",
+          "items": { "type": "integer", "minimum": 1, "maximum": 7 }
+        },
+        "segmento": {
+          "type": "object",
+          "description": "O troco da jornada que este card constroi. E isto que torna o oraculo executavel: sem o par de passos, 'cumpre a etapa 3' e uma frase; com ele, e um percurso que se corre e se compara.",
+          "required": ["cenarioReferencia", "ordemNaJornada", "doPasso", "aoPasso"],
+          "additionalProperties": false,
+          "properties": {
+            "cenarioReferencia": {
+              "type": "string",
+              "description": "Id do cenario em scenarios/ contra o qual os passos sao contados."
+            },
+            "ordemNaJornada": {
+              "type": "integer", "minimum": 0,
+              "description": "Posicao do segmento no fluxo REAL, que pode nao ser a ordem do documento: uma jornada de recuperacao entra a meio do caso e ve a etapa 2 antes da 1. E daqui que sai o dependsOn. ZERO e o prologo - os passos que correm antes da primeira ancora de etapa e que por isso pertencem a etapa para onde levam, por nao existir etapa anterior a que possam pertencer."
+            },
+            "prologo": {
+              "type": "boolean",
+              "description": "Verdadeiro quando o troco precede a primeira ancora. A etapa e emprestada do segmento seguinte, e nao delimitada pelo documento: fica rotulado para nao se confundir com prova."
+            },
+            "doPasso": { "type": "integer", "minimum": 1 },
+            "aoPasso": { "type": "integer", "minimum": 1 },
+            "abrePor": { "type": "string" },
+            "fechaEm": { "type": "string" },
+            "herdadoDe": {
+              "type": "string",
+              "description": "Presente quando o segmento pertence a um processo chamado e por isso nao tem ancora propria: nomeia o sitio de chamada de onde a etapa foi herdada."
+            }
+          }
+        },
+        "concepts": {
+          "type": "array",
+          "description": "Ids de conceito em conformance.json que este card faz avancar de extraido para provado.",
+          "items": { "type": "string" }
+        },
+        "expectedResults": {
+          "type": "array",
+          "description": "Ids da matriz de aceitacao, seccao 6 do plano.",
+          "items": { "type": "string" }
+        },
+        "evidenceKind": {
+          "enum": ["instance-trace", "parent-child-trace", "contract-test", "branch-test", "timer-timestamp", "concurrent-timeline", "state-snapshot", "recovery-audit"],
+          "description": "O artefacto de prova que este card tem de produzir, conforme a seccao 7 do plano. Diagrama ou contagem de nos nao serve de prova."
+        }
+      }
+    },
+
+    "dimensao": {
+      "type": "object",
+      "description": "METADATA - o tamanho do card, medido e nao estimado. Ficou decidido manter o segmento como unidade de entrega mesmo quando ele atravessa varias camadas, porque e o segmento que cumpre a etapa. A condicao para essa decisao ser honesta e o tamanho estar DECLARADO: um card que toca quatro projectos e seis pastas nao e trabalho para uma pessoa, e quem o recebe tem de saber isso antes de o aceitar, nao a meio.",
+      "required": ["nos", "camadas", "pastas", "peso"],
+      "additionalProperties": false,
+      "properties": {
+        "nos": { "type": "integer", "minimum": 0, "description": "Passos do troco, incluindo os visitados noutras passagens." },
+        "camadas": { "type": "integer", "minimum": 0, "description": "Projectos distintos onde o card aterra." },
+        "pastas": { "type": "integer", "minimum": 0, "description": "Pastas distintas onde o card aterra." },
+        "aEscrever": { "type": "integer", "minimum": 0, "description": "Pastas com status scaffold ou draft. As de status final sao transcricao e nao contam como trabalho." },
+        "bloqueadores": { "type": "integer", "minimum": 0 },
+        "regrasDeNegocio": { "type": "integer", "minimum": 0, "description": "Regras de negocio identificadas nos passos deste troco." },
+        "peso": {
+          "enum": ["pequeno", "medio", "grande", "atravessa-o-sistema"],
+          "description": "Classe derivada das medidas acima, com fronteiras fixas para nao depender de quem gera. 'atravessa-o-sistema' e um aviso, nao uma reprovacao: o card continua valido, mas nao deve ser atribuido a uma pessoa so nem estimado como os outros."
+        },
+        "nota": { "type": "string" }
+      }
+    },
+
+    "dependsOn": {
+      "type": "array",
+      "description": "Card ids that must complete first. Derived from the IR dependency graph, so ordering is not guessed.",
+      "items": { "type": "string" }
+    },
+
+    "gaps": {
+      "type": "array",
+      "description": "Constructs with no .NET equivalent found on this node. Their presence blocks autonomous implementation: they are escalated, never silently resolved by the agent.",
+      "items": {
+        "type": "object",
+        "required": ["construct", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "construct": { "type": "string", "description": "e.g. corticon-override-chain, iprocess-SYSTEM_DETERMINED-allocation, SW_NA-sentinel." },
+          "detail": { "type": "string" },
+          "status": {
+            "enum": ["unresolved", "decided", "waived"],
+            "description": "unresolved must escalate to the human gate. An agent may propose, never decide."
+          },
+          "decisionRef": { "type": "string", "description": "Where the human ruling is recorded, e.g. a glossary key." }
+        }
+      }
+    },
+
+    "reviewRefs": {
+      "type": "array",
+      "description": "Related review-dossier item ids, so an open analyst question is visibly attached to the work it blocks.",
+      "items": { "type": "string" }
+    }
+  },
+
+  "allOf": [
+    {
+      "if": { "properties": { "cardType": { "const": "build" } }, "required": ["cardType"] },
+      "then": {
+        "properties": {
+          "content": { "required": ["intent", "injectedContext", "scaffold"] }
+        },
+        "description": "A build card without scaffold would make the agent regenerate lossless artifacts it should be building on."
+      }
+    },
+    {
+      "if": {
+        "properties": { "confidence": { "properties": { "translation": { "const": "lossy" } }, "required": ["translation"] } },
+        "required": ["confidence"]
+      },
+      "then": {
+        "required": ["acceptance"],
+        "description": "Lossy work is exactly where translation could have gone wrong, so it may never ship without an oracle."
+      }
+    }
+  ],
+
+  "examples": [
+    {
+      "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+      "id": "BUILD-POCEPATPROCESS-seg07",
+      "cardType": "build",
+      "title": "Integracao com Decisions: de 'Iniciar Decisions' ate 'Verificar Retorno Decisions'",
+      "epic": "etapa-3-4",
+      "content": {
+        "intent": "Construir o troco que chama o motor de regras e devolve o caso ao operador para conferencia do retorno.",
+        "injectedContext": {
+          "summary": "Sete passos consecutivos da jornada do caso. Entra por um par link throw/catch - que no XPDL nao e transicao e tem de ser escrito como aresta explicita -, passa pela verificacao de anulacao, pela chamada a PRPINTPC, pela definicao de destinatarios e pelo aviso por e-mail, e termina na tarefa humana que confere o retorno.",
+          "hypotheses": [
+            "SUBSTR e SEARCH sao base 1; por confirmar na documentacao iProcess antes de implementar."
+          ]
+        },
+        "scaffold": [
+          { "path": "src/SefazSp.Epat.Application/Workflows/POC_EpatProcess.json", "status": "scaffold", "note": "Topologia gerada do XPDL; preencher os corpos." }
+        ],
+        "checklist": [
+          { "ordem": 1, "nodeId": "_CtQ7DVqPEfG5K7mY0I3I6w", "nome": "Iniciar Decisions", "kind": "linkThrow", "entrouPor": "fluxo" },
+          { "ordem": 2, "nodeId": "_CtQ7DlqPEfG5K7mY0I3I6w", "nome": "Iniciar Decisions", "kind": "linkCatch", "entrouPor": "link", "nota": "Aresta ausente do XPDL: tem de existir explicitamente no fluxo .NET." },
+          { "ordem": 3, "nodeId": "_tbOD4FqPEfG5K7mY0I3I6w", "nome": "Verificar Anulacao", "kind": "scriptTask", "entrouPor": "fluxo" },
+          { "ordem": 4, "nodeId": "_CtQ69VqPEfG5K7mY0I3I6w", "nome": "Prepara Intimacao", "kind": "callActivity", "entrouPor": "fluxo" },
+          { "ordem": 5, "nodeId": "_sfwu9VqUEfG5K7mY0I3I6w", "nome": "Define Destinatarios", "kind": "scriptTask", "entrouPor": "fluxo" },
+          { "ordem": 6, "nodeId": "_sfwu-VqUEfG5K7mY0I3I6w", "nome": "Email Limite Rel 1", "kind": "emailTask", "entrouPor": "fluxo" },
+          { "ordem": 7, "nodeId": "_CtQ7ClqPEfG5K7mY0I3I6w", "nome": "Verificar Retorno Decisions", "kind": "userTask", "entrouPor": "fluxo" }
+        ]
+      },
+      "irRef": {
+        "artifact": "scenarios/index.json",
+        "pointer": "scenarios[SC-POC_EpatProcess-001].segmentos[7]",
+        "kind": "segment",
+        "nodeIds": [
+          "_CtQ7DVqPEfG5K7mY0I3I6w", "_CtQ7DlqPEfG5K7mY0I3I6w", "_tbOD4FqPEfG5K7mY0I3I6w",
+          "_CtQ69VqPEfG5K7mY0I3I6w", "_sfwu9VqUEfG5K7mY0I3I6w", "_sfwu-VqUEfG5K7mY0I3I6w",
+          "_CtQ7ClqPEfG5K7mY0I3I6w"
+        ]
+      },
+      "sourceRef": [
+        {
+          "tibcoFile": "POC_Epat.xpdl",
+          "elementId": "_CtQ7ClqPEfG5K7mY0I3I6w",
+          "xpath": "//xpdl2:Activity[@Id='_CtQ7ClqPEfG5K7mY0I3I6w']"
+        }
+      ],
+      "confidence": {
+        "level": "medium",
+        "basis": "Topologia e ordem lossless; a semantica dos builtins usados no troco esta por fixar.",
+        "verified": false,
+        "translation": "lossy"
+      },
+      "provenance": {
+        "generatedAt": "2026-08-10T14:30:00-03:00",
+        "manifestSha256": "1ab99203fc33f66159a73e8400e9ada578bffaf48bef875af7e0c016072445f3",
+        "package": "POC_Epat"
+      },
+      "acceptance": {
+        "oracle": {
+          "kind": "scenario-path",
+          "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-001.json",
+          "immutable": true,
+          "caseCount": 57
+        },
+        "criteria": ["Build limpo", "O percurso do passo 15 ao 21 corre de ponta a ponta"]
+      },
+      "scope": {
+        "process": "POC_EpatProcess",
+        "inPocScope": true,
+        "scopeReason": "Processo raiz do cenario representativo declarado na seccao 1 do plano de cumprimento.",
+        "outOfScope": ["Implementar o motor Decisions: e substituido por duble com contrato acordado"]
+      },
+      "fulfills": {
+        "etapas": [3, 4],
+        "segmento": {
+          "cenarioReferencia": "SC-POC_EpatProcess-001",
+          "ordemNaJornada": 7,
+          "doPasso": 15,
+          "aoPasso": 21,
+          "abrePor": "Iniciar Decisions",
+          "fechaEm": "Verificar Retorno Decisions"
+        },
+        "concepts": ["service-tasks", "integracao-externa", "regras-de-negocio"],
+        "evidenceKind": "instance-trace"
+      },
+      "gaps": [
+        { "construct": "iprocess-builtin", "detail": "4 das 17 ocorrencias caem dentro deste segmento", "status": "unresolved", "decisionRef": "gaps.iprocess-builtin" }
+      ],
+      "reviewRefs": ["NOEQ-iprocess-builtin", "NOEQ-link-goto"]
+    }
+  ]
+}

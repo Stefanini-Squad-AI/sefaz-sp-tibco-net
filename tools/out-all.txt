@@ -1,0 +1,496 @@
+
+################ PROCESS POC_Epat-Process  [Name=POC_EpatProcess Id=_rPoioFp]
+  ---- MAIN ----
+  * NODES:
+      Início <_tO_yWVp>                                    START:None   [lane:FluxoPOC]
+      Inicia Graft Step <_0XWagFq>                         INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoGraftStep]
+      Aguardar evento de Notificacao do AIIM <_0XWagVq>    SUBFLOW->_jbIH91qjEfG5K7mY0I3I6w   [lane:ValidaoGraftStep]
+      Iniciar Aguardar Notificacao <_0XWaglq>              TASKRECEIVE   [lane:ValidaoGraftStep]
+      Trocar Notificação? <_0XWahFq>                       GATEWAY:Exclusive   [lane:ValidaoGraftStep]
+      Flag Retirati True GS <_0XWahVq>                     TASKSCRIPT   [lane:ValidaoGraftStep]
+      FimDRF <_CtQ66Fq>                                    INTERMEDIATE:Signal signal(name=fimDRF,catchThrow=THROW)   [lane:ValidaoParalelos]
+      Mista <_CtQ66Vq>                                     INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ66lq>                                 END:None   [lane:ValidaoParalelos]
+      Fim Vista Mista <_CtQ67Fq>                           INTERMEDIATE:Signal signal(name=Signal4,catchThrow=CATCH) attachedTo=_CtQ68lq   [lane:ValidaoParalelos]
+      Vistas Mista ? <_CtQ68Fq>                            GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ68Vq>                                 GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      Pedido de Vistas <_CtQ68lq>                          TASKRECEIVE   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ69Fq>                                 GATEWAY:Parallel   [lane:ValidaoParalelos]
+      Busca Emails <_CtQ691q>                              SUBFLOW->_qIDuk16BEfGBBLgT-R5iuw   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ6-lq>                                 GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      Vistas do Juiz <_CtQ6-1q>                            TASKRECEIVE   [lane:ValidaoParalelos]
+      Vistas Mista ? <_CtQ6_Vq>                            GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ6_1q>                                 INTERMEDIATE:Timer attachedTo=_CtQ6-1q   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ7AFq>                                 GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      VoltaAgenda <_CtQ7AVq>                               TASKSCRIPT   [lane:ValidaoParalelos]
+      Tipo de Vista Mista? <_CtQ7Alq>                      GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ7A1q>                                 INTERMEDIATE:Timer attachedTo=_CtQ68lq   [lane:ValidaoParalelos]
+      Vistas do Juiz ? <_CtQ7BFq>                          GATEWAY:Exclusive   [lane:ValidaoParalelos]
+      (unnamed) <_CtQ7BVq>                                 GATEWAY:Parallel   [lane:ValidaoParalelos]
+      Validação Paralelos <_Ei94AFq>                       INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoParalelos]
+      Realizar Atividade Vista Mista <_tbOD4Fq>            TASKUSER   [lane:ValidaoParalelos]
+      Mista <_xAIVElq>                                     INTERMEDIATE:Link link(name=_CtQ66VqPEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:ValidaoParalelos]
+      Fim Vista Mista <_InbWgFq>                           INTERMEDIATE:Signal signal(name=Signal4,catchThrow=THROW)   [lane:ValidaoParalelos]
+      Catch Signal Event <_WvTQIFq>                        INTERMEDIATE:Signal signal(name=fimDRF,catchThrow=CATCH) attachedTo=_tbOD4Fq   [lane:ValidaoParalelos]
+      Fim de Prazo <_Xw86Ylq>                              END:None   [lane:ValidaoParalelos]
+      Verificar Anulacao <_CI6lx1q>                        TASKSCRIPT   [lane:ValidaoDecisions]
+      Prepara Intimação <_CI6lyFq>                         SUBFLOW->_KEwC3F6EEfGBBLgT-R5iuw   [lane:ValidaoDecisions]
+      Iniciar Decisions <_CI6l0Vq>                         INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:ValidaoDecisions]
+      Finalizar AIIM <_xWNLe1q>                            TASKUSER   [lane:FluxoPOC]
+      (unnamed) <_Faq_Q1q>                                 END:None   [lane:FluxoPOC]
+      (unnamed) <_Faq_RFq>                                 GATEWAY:Parallel   [lane:FluxoPOC]
+      Inicia Graft Step <_Faq_RVq>                         INTERMEDIATE:Link link(name=_0XWagFqNEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:FluxoPOC]
+      Existe Notificação? <_IxqJMlq>                       GATEWAY:Exclusive   [lane:FluxoPOC]
+      Fim de Prazo Mantendo Atividade <_XWivFlq>           INTERMEDIATE:Timer attachedTo=_sfwu-Vq   [lane:FluxoPOC]
+      Set Nome Etapa 2 <_XWivF1q>                          TASKSCRIPT   [lane:FluxoPOC]
+      Corrigir? <_sJqYklq>                                 GATEWAY:Exclusive   [lane:FluxoPOC]
+      Corrigir Fechamento <_tN6q4lq>                       INTERMEDIATE:Link link(name=_5E444FqTEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:FluxoPOC]
+      Corrigir Fechamento <_5E444Fq>                       INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:FluxoPOC]
+      Email CQ Fechamento <_O-rPp1q>                       TASKSERVICE   [lane:FluxoPOC]
+      Fim E-mail <_RqXZ0lq>                                END:None   [lane:FluxoPOC]
+      Preparar Notificacao <_sfwu-Vq>                      TASKUSER   [lane:FluxoPOC]
+      Iniciar Decisions <_LeuhgFq>                         INTERMEDIATE:Link link(name=_CI6l0VqREfG5K7mY0I3I6w,catchThrow=THROW)   [lane:ValidaoGraftStep]
+      Verificar Retorno Decisions <_30jAcFq>               TASKUSER   [lane:ValidaoDecisions]
+      Validar Paralelos <_89MVQlq>                         INTERMEDIATE:Link link(name=_Ei94AFqPEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:ValidaoDecisions]
+      Fim <_H22mclq>                                       END:None   [lane:ValidaoParalelos]
+      Email Limite Rel 1 <_6WNq-lq>                        TASKSERVICE   [lane:ValidaoDecisions]
+      Define Destinatarios <_G4hU81q>                      TASKSCRIPT   [lane:ValidaoDecisions]
+      Encerra e retira <_T4Ma8Fq>                          INTERMEDIATE:Timer attachedTo=_sfwu-Vq   [lane:FluxoPOC]
+      End Event <_UiYAYFq>                                 END:None   [lane:FluxoPOC]
+      Controlar Intimados <_nQntZ16>                       SUBFLOW->_BAx4zV6KEfGBBLgT-R5iuw   [lane:ValidaoParalelos]
+      prepSub <_zE3XeV6>                                   TASKSCRIPT   [lane:ValidaoParalelos]
+      Criar Notificacao <_BQIgAF9>                         SUBFLOW->_NcJJ4F9KEfGqPfX31TKC3w   [lane:FluxoPOC]
+      (unnamed) <_O7K3MF9>                                 END:None   [lane:FluxoPOC]
+      Iniciar Novo Graft <_OAgPol9>                        TASKRECEIVE   [lane:FluxoPOC]
+  * FLOWS:
+      Início <_tO_yWVp>                                    --[]--> Finalizar AIIM <_xWNLe1q>
+      Flag Retirati True GS <_0XWahVq>                     --[]--> Aguardar evento de Notificacao do AIIM <_0XWagVq>
+      Inicia Graft Step <_0XWagFq>                         --[]--> Flag Retirati True GS <_0XWahVq>
+      Iniciar Aguardar Notificacao <_0XWaglq>              --[]--> Flag Retirati True GS <_0XWahVq>
+      Trocar Notificação? <_0XWahFq>                       --[Sim | CONDITION | TROCATPNOTIFICA == 1;]--> Flag Retirati True GS <_0XWahVq>
+      Aguardar evento de Notificacao do AIIM <_0XWagVq>    --[]--> Trocar Notificação? <_0XWahFq>
+      Trocar Notificação? <_0XWahFq>                       --[No | OTHERWISE]--> Iniciar Decisions <_LeuhgFq>
+      (unnamed) <_CtQ7A1q>                                 --[]--> FimDRF <_CtQ66Fq>
+      (unnamed) <_CtQ7BVq>                                 --[]--> Pedido de Vistas <_CtQ68lq>
+      FimDRF <_CtQ66Fq>                                    --[]--> Busca Emails <_CtQ691q>
+      Pedido de Vistas <_CtQ68lq>                          --[]--> Vistas Mista ? <_CtQ68Fq>
+      Tipo de Vista Mista? <_CtQ7Alq>                      --[No | OTHERWISE]--> (unnamed) <_CtQ6-lq>
+      Mista <_CtQ66Vq>                                     --[]--> (unnamed) <_CtQ68Vq>
+      Vistas do Juiz ? <_CtQ7BFq>                          --[CONDITION | TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;]--> Vistas do Juiz <_CtQ6-1q>
+      (unnamed) <_CtQ6_1q>                                 --[]--> Busca Emails <_CtQ691q>
+      Vistas Mista ? <_CtQ6_Vq>                            --[OTHERWISE]--> (unnamed) <_CtQ6-lq>
+      Vistas do Juiz ? <_CtQ7BFq>                          --[DRF | OTHERWISE]--> (unnamed) <_CtQ7BVq>
+      Vistas do Juiz <_CtQ6-1q>                            --[]--> Vistas Mista ? <_CtQ6_Vq>
+      Vistas Mista ? <_CtQ68Fq>                            --[OTHERWISE]--> (unnamed) <_CtQ6-lq>
+      (unnamed) <_CtQ68Vq>                                 --[]--> (unnamed) <_CtQ69Fq>
+      (unnamed) <_CtQ7AFq>                                 --[]--> (unnamed) <_CtQ69Fq>
+      (unnamed) <_CtQ69Fq>                                 --[]--> (unnamed) <_CtQ6-lq>
+      Vistas Mista ? <_CtQ6_Vq>                            --[CONDITION | TIPOVISTAS=='MISTA';]--> (unnamed) <_CtQ7AFq>
+      Vistas Mista ? <_CtQ68Fq>                            --[CONDITION | TIPOVISTAS=='MISTA';]--> (unnamed) <_CtQ68Vq>
+      Busca Emails <_CtQ691q>                              --[]--> VoltaAgenda <_CtQ7AVq>
+      Fim Vista Mista <_CtQ67Fq>                           --[]--> (unnamed) <_CtQ66lq>
+      VoltaAgenda <_CtQ7AVq>                               --[]--> Tipo de Vista Mista? <_CtQ7Alq>
+      Tipo de Vista Mista? <_CtQ7Alq>                      --[Sim | CONDITION | TIPOVISTAS == 'MISTA';]--> (unnamed) <_CtQ7AFq>
+      Validação Paralelos <_Ei94AFq>                       --[]--> Vistas do Juiz ? <_CtQ7BFq>
+      (unnamed) <_CtQ7BVq>                                 --[]--> Realizar Atividade Vista Mista <_tbOD4Fq>
+      Fim Vista Mista <_InbWgFq>                           --[]--> Mista <_xAIVElq>
+      Realizar Atividade Vista Mista <_tbOD4Fq>            --[]--> Fim Vista Mista <_InbWgFq>
+      Catch Signal Event <_WvTQIFq>                        --[]--> Fim de Prazo <_Xw86Ylq>
+      Verificar Anulacao <_CI6lx1q>                        --[]--> Prepara Intimação <_CI6lyFq>
+      Iniciar Decisions <_CI6l0Vq>                         --[]--> Verificar Anulacao <_CI6lx1q>
+      Finalizar AIIM <_xWNLe1q>                            --[]--> (unnamed) <_Faq_RFq>
+      (unnamed) <_Faq_RFq>                                 --[]--> Existe Notificação? <_IxqJMlq>
+      Existe Notificação? <_IxqJMlq>                       --[No | OTHERWISE]--> Inicia Graft Step <_Faq_RVq>
+      Existe Notificação? <_IxqJMlq>                       --[Sim | CONDITION | EXISTENOTIFICAC == true;]--> (unnamed) <_Faq_Q1q>
+      Set Nome Etapa 2 <_XWivF1q>                          --[]--> Preparar Notificacao <_sfwu-Vq>
+      (unnamed) <_Faq_RFq>                                 --[]--> Set Nome Etapa 2 <_XWivF1q>
+      Corrigir? <_sJqYklq>                                 --[Sim | CONDITION | CORRECAO == true;]--> Corrigir Fechamento <_tN6q4lq>
+      Corrigir Fechamento <_5E444Fq>                       --[]--> Finalizar AIIM <_xWNLe1q>
+      Fim de Prazo Mantendo Atividade <_XWivFlq>           --[]--> Email CQ Fechamento <_O-rPp1q>
+      Email CQ Fechamento <_O-rPp1q>                       --[]--> Fim E-mail <_RqXZ0lq>
+      Preparar Notificacao <_sfwu-Vq>                      --[]--> Corrigir? <_sJqYklq>
+      Corrigir? <_sJqYklq>                                 --[No | OTHERWISE]--> Criar Notificacao <_BQIgAF9>
+      Prepara Intimação <_CI6lyFq>                         --[]--> Define Destinatarios <_G4hU81q>
+      Verificar Retorno Decisions <_30jAcFq>               --[]--> Validar Paralelos <_89MVQlq>
+      (unnamed) <_CtQ6-lq>                                 --[]--> prepSub <_zE3XeV6>
+      Email Limite Rel 1 <_6WNq-lq>                        --[]--> Verificar Retorno Decisions <_30jAcFq>
+      Define Destinatarios <_G4hU81q>                      --[]--> Email Limite Rel 1 <_6WNq-lq>
+      Encerra e retira <_T4Ma8Fq>                          --[]--> End Event <_UiYAYFq>
+      Controlar Intimados <_nQntZ16>                       --[]--> Fim <_H22mclq>
+      prepSub <_zE3XeV6>                                   --[]--> Controlar Intimados <_nQntZ16>
+      Criar Notificacao <_BQIgAF9>                         --[]--> (unnamed) <_O7K3MF9>
+      Iniciar Novo Graft <_OAgPol9>                        --[]--> Set Nome Etapa 2 <_XWivF1q>
+
+################ PROCESS Notificacao do AIIM  [Name=DEAT0050 Id=_lrer1Vq]
+  ---- MAIN ----
+  * NODES:
+      (unnamed) <_lrer2Fq>                                 END:None   [lane:BPM]
+      Aguarda Defesa <_lrer2lq>                            INTERMEDIATE:Timer   [lane:BPM]
+      HoraFimSC <_lrer3Vq>                                 TASKSCRIPT   [lane:BPM]
+      CalculaPrazo <_lrer3lq>                              SUBFLOW->_zJIHVFqiEfG5K7mY0I3I6w   [lane:BPM]
+      INICALC <_lrer81q>                                   TASKRECEIVE   [lane:BPM]
+      (unnamed) <_lrer_Vq>                                 GATEWAY:Exclusive   [lane:BPM]
+      Controlar Data <_lrer_lq>                            TASKSCRIPT   [lane:BPM]
+      Start Event <_ppKXcFq>                               START:None   [lane:BPM]
+  * FLOWS:
+      (unnamed) <_lrer_Vq>                                 --[CONDITION | DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZODEFESA;]--> Aguarda Defesa <_lrer2lq>
+      Controlar Data <_lrer_lq>                            --[]--> CalculaPrazo <_lrer3lq>
+      CalculaPrazo <_lrer3lq>                              --[]--> HoraFimSC <_lrer3Vq>
+      INICALC <_lrer81q>                                   --[]--> CalculaPrazo <_lrer3lq>
+      HoraFimSC <_lrer3Vq>                                 --[]--> (unnamed) <_lrer_Vq>
+      (unnamed) <_lrer_Vq>                                 --[OTHERWISE]--> (unnamed) <_lrer2Fq>
+      Aguarda Defesa <_lrer2lq>                            --[]--> Controlar Data <_lrer_lq>
+      Start Event <_ppKXcFq>                               --[]--> CalculaPrazo <_lrer3lq>
+
+################ PROCESS CalculaPrazo  [Name=CALCPRPC Id=_zJIHVFq]
+  ---- MAIN ----
+  * NODES:
+      Start Event <_zJIHVVq>                               START:None   [lane:Services]
+      SetParameters <_zJIHVlq>                             TASKSCRIPT   [lane:Services]
+      Manually Fixed <_zJIHV1q>                            GATEWAY:Exclusive   [lane:Services]
+      Start Loop <_zJIHWFq>                                TASKSCRIPT   [lane:Services]
+      Try Task <_zJIHWVq>                                  INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:Services]
+      Done - Bail <_zJIHWlq>                               END:None   [lane:Services]
+      Done - Fixed <_zJIHW1q>                              END:None   [lane:Services]
+      Try Again <_zJIHXFq>                                 GATEWAY:Exclusive   [lane:Services]
+      Manipular Excecao <_zJIHXVq>                         TASKUSER   [lane:Services]
+      Link To: Try Task <_zJIHYFq>                         INTERMEDIATE:Link link(name=_zJIHWVqiEfG5K7mY0I3I6w,catchThrow=THROW)   [lane:Services]
+      More Retries <_zJIHYVq>                              GATEWAY:Exclusive   [lane:Services]
+      Pause <_zJIHYlq>                                     INTERMEDIATE:Timer   [lane:Services]
+      Done - Success <_zJIHY1q>                            END:None   [lane:Services]
+      App Error <_zJIHZFq>                                 GATEWAY:Exclusive   [lane:Services]
+      Tech Error <_zJIHZVq>                                GATEWAY:Exclusive   [lane:Services]
+      Control System Task Call <_zJIHZlq>                  BLOCK->_zJIuaFqiEfG5K7mY0I3I6w   [lane:Services]
+      (unnamed) <_zJIHZ1q>                                 GATEWAY:Exclusive   [lane:Services]
+  * FLOWS:
+      Start Event <_zJIHVVq>                               --[]--> SetParameters <_zJIHVlq>
+      Start Loop <_zJIHWFq>                                --[]--> Control System Task Call <_zJIHZlq>
+      Control System Task Call <_zJIHZlq>                  --[]--> Tech Error <_zJIHZVq>
+      Tech Error <_zJIHZVq>                                --[No | OTHERWISE]--> App Error <_zJIHZFq>
+      App Error <_zJIHZFq>                                 --[Yes | CONDITION | ISAPPERROR=='Y';]--> More Retries <_zJIHYVq>
+      More Retries <_zJIHYVq>                              --[Yes | CONDITION | NUMAPPRETRIES<MAXRETRIES;]--> Pause <_zJIHYlq>
+      App Error <_zJIHZFq>                                 --[No | OTHERWISE]--> Done - Success <_zJIHY1q>
+      Pause <_zJIHYlq>                                     --[]--> Link To: Try Task <_zJIHYFq>
+      Try Task <_zJIHWVq>                                  --[]--> Start Loop <_zJIHWFq>
+      Manipular Excecao <_zJIHXVq>                         --[]--> Manually Fixed <_zJIHV1q>
+      Manually Fixed <_zJIHV1q>                            --[Yes | CONDITION | OUTCOME=='OK';]--> Done - Fixed <_zJIHW1q>
+      Manually Fixed <_zJIHV1q>                            --[No | OTHERWISE]--> Try Again <_zJIHXFq>
+      Try Again <_zJIHXFq>                                 --[No | OTHERWISE]--> Done - Bail <_zJIHWlq>
+      More Retries <_zJIHYVq>                              --[No | OTHERWISE]--> (unnamed) <_zJIHZ1q>
+      Tech Error <_zJIHZVq>                                --[Yes | CONDITION | ISTECHERROR=='Y';]--> (unnamed) <_zJIHZ1q>
+      Try Again <_zJIHXFq>                                 --[Retry | CONDITION | OUTCOME=='R';]--> Start Loop <_zJIHWFq>
+      SetParameters <_zJIHVlq>                             --[]--> Start Loop <_zJIHWFq>
+      (unnamed) <_zJIHZ1q>                                 --[]--> Manipular Excecao <_zJIHXVq>
+  ---- ACTIVITYSET  <_zJIuaFq> ----
+  * NODES:
+      Start TX <_zJIuaVq>                                  TASKSCRIPT   [lane:]
+      Check Retries SW_QRETRYCOUNT <_zJIubVq>              GATEWAY:Exclusive   [lane:]
+      (unnamed) <_zJIublq>                                 START:None   [lane:]
+      (unnamed) <_zJIub1q>                                 END:None   [lane:]
+      Set Technical Error <_zJIucFq>                       TASKSCRIPT   [lane:]
+      Set App Error <_zJIucVq>                             TASKSCRIPT   [lane:]
+      (unnamed) <_zJIuclq>                                 GATEWAY:Exclusive   [lane:]
+      (unnamed) <_zJIuc1q>                                 GATEWAY:Exclusive   [lane:]
+      CalcularPrazo <_AsZCkVq>                             TASKSERVICE   [lane:]
+  * FLOWS:
+      (unnamed) <_zJIublq>                                 --[]--> Start TX <_zJIuaVq>
+      Start TX <_zJIuaVq>                                  --[]--> Check Retries SW_QRETRYCOUNT <_zJIubVq>
+      Check Retries SW_QRETRYCOUNT <_zJIubVq>              --[Stillgood | CONDITION | IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;]--> CalcularPrazo <_AsZCkVq>
+      Check Retries SW_QRETRYCOUNT <_zJIubVq>              --[Maxretriesexceeded | OTHERWISE]--> Set Technical Error <_zJIucFq>
+      Set Technical Error <_zJIucFq>                       --[]--> (unnamed) <_zJIub1q>
+      (unnamed) <_zJIuclq>                                 --[Good | OTHERWISE]--> (unnamed) <_zJIuc1q>
+      (unnamed) <_zJIuclq>                                 --[AppError | CONDITION | STATUS_CODE!="0";]--> Set App Error <_zJIucVq>
+      Set App Error <_zJIucVq>                             --[]--> (unnamed) <_zJIuc1q>
+      (unnamed) <_zJIuc1q>                                 --[]--> (unnamed) <_zJIub1q>
+      CalcularPrazo <_AsZCkVq>                             --[]--> (unnamed) <_zJIuclq>
+
+################ PROCESS Busca Env Vista AIIM  [Name=BSCENVPC Id=_qIDuk16]
+  ---- MAIN ----
+  * NODES:
+      Start Event <_qIDulF6>                               START:None   [lane:Services]
+      SetParameters <_qIDulV6>                             TASKSCRIPT   [lane:Services]
+      Manually Fixed <_qIDull6>                            GATEWAY:Exclusive   [lane:Services]
+      Start Loop <_qIDul16>                                TASKSCRIPT   [lane:Services]
+      Try Task <_qIDumF6>                                  INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:Services]
+      Done - Bail <_qIDumV6>                               END:None   [lane:Services]
+      Done - Fixed <_qIDuml6>                              END:None   [lane:Services]
+      Try Again <_qIDum16>                                 GATEWAY:Exclusive   [lane:Services]
+      Manipular Excecao <_qIDunF6>                         TASKUSER   [lane:Services]
+      Link To: Try Task <_qIDun16>                         INTERMEDIATE:Link link(name=_qIDumF6BEfGBBLgT-R5iuw,catchThrow=THROW)   [lane:Services]
+      More Retries <_qIDuoF6>                              GATEWAY:Exclusive   [lane:Services]
+      Pause <_qIDuoV6>                                     INTERMEDIATE:Timer   [lane:Services]
+      Done - Success <_qIDuol6>                            END:None   [lane:Services]
+      App Error <_qIDuo16>                                 GATEWAY:Exclusive   [lane:Services]
+      Tech Error <_qIDupF6>                                GATEWAY:Exclusive   [lane:Services]
+      Control System Task Call <_qIDupV6>                  BLOCK->_qIDu216BEfGBBLgT-R5iuw   [lane:Services]
+      (unnamed) <_qIDupl6>                                 GATEWAY:Exclusive   [lane:Services]
+  * FLOWS:
+      Start Event <_qIDulF6>                               --[]--> SetParameters <_qIDulV6>
+      Start Loop <_qIDul16>                                --[]--> Control System Task Call <_qIDupV6>
+      Control System Task Call <_qIDupV6>                  --[]--> Tech Error <_qIDupF6>
+      Tech Error <_qIDupF6>                                --[No | OTHERWISE]--> App Error <_qIDuo16>
+      App Error <_qIDuo16>                                 --[Yes | CONDITION | ISAPPERROR=='Y';]--> More Retries <_qIDuoF6>
+      More Retries <_qIDuoF6>                              --[Yes | CONDITION | NUMAPPRETRIES<MAXRETRIES;]--> Pause <_qIDuoV6>
+      App Error <_qIDuo16>                                 --[No | OTHERWISE]--> Done - Success <_qIDuol6>
+      Pause <_qIDuoV6>                                     --[]--> Link To: Try Task <_qIDun16>
+      Try Task <_qIDumF6>                                  --[]--> Start Loop <_qIDul16>
+      Manipular Excecao <_qIDunF6>                         --[]--> Manually Fixed <_qIDull6>
+      Manually Fixed <_qIDull6>                            --[Yes | CONDITION | OUTCOME=='OK';]--> Done - Fixed <_qIDuml6>
+      Manually Fixed <_qIDull6>                            --[No | OTHERWISE]--> Try Again <_qIDum16>
+      Try Again <_qIDum16>                                 --[No | OTHERWISE]--> Done - Bail <_qIDumV6>
+      More Retries <_qIDuoF6>                              --[No | OTHERWISE]--> (unnamed) <_qIDupl6>
+      Tech Error <_qIDupF6>                                --[Yes | CONDITION | ISTECHERROR=='Y';]--> (unnamed) <_qIDupl6>
+      Try Again <_qIDum16>                                 --[Retry | CONDITION | OUTCOME=='R';]--> Start Loop <_qIDul16>
+      SetParameters <_qIDulV6>                             --[]--> Start Loop <_qIDul16>
+      (unnamed) <_qIDupl6>                                 --[]--> Manipular Excecao <_qIDunF6>
+  ---- ACTIVITYSET  <_qIDu216> ----
+  * NODES:
+      Start TX <_qIDu3F6>                                  TASKSCRIPT   [lane:]
+      Check Retries SW_QRETRYCOUNT <_qIDu3V6>              GATEWAY:Exclusive   [lane:]
+      (unnamed) <_qIDu3l6>                                 START:None   [lane:]
+      (unnamed) <_qIDu316>                                 END:None   [lane:]
+      Set Technical Error <_qIDu4F6>                       TASKSCRIPT   [lane:]
+      Set App Error <_qIDu4V6>                             TASKSCRIPT   [lane:]
+      (unnamed) <_qIDu4l6>                                 GATEWAY:Exclusive   [lane:]
+      (unnamed) <_qIDu416>                                 GATEWAY:Exclusive   [lane:]
+      Busca Envolvidos Vista Por AIIM <_qIDu5F6>           TASKSERVICE   [lane:]
+  * FLOWS:
+      (unnamed) <_qIDu3l6>                                 --[]--> Start TX <_qIDu3F6>
+      Start TX <_qIDu3F6>                                  --[]--> Check Retries SW_QRETRYCOUNT <_qIDu3V6>
+      Check Retries SW_QRETRYCOUNT <_qIDu3V6>              --[Stillgood | CONDITION | IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;]--> Busca Envolvidos Vista Por AIIM <_qIDu5F6>
+      Check Retries SW_QRETRYCOUNT <_qIDu3V6>              --[Maxretriesexceeded | OTHERWISE]--> Set Technical Error <_qIDu4F6>
+      Busca Envolvidos Vista Por AIIM <_qIDu5F6>           --[]--> (unnamed) <_qIDu4l6>
+      Set Technical Error <_qIDu4F6>                       --[]--> (unnamed) <_qIDu316>
+      (unnamed) <_qIDu4l6>                                 --[Good | OTHERWISE]--> (unnamed) <_qIDu416>
+      (unnamed) <_qIDu4l6>                                 --[AppError | CONDITION | STATUS_CODE!="0";]--> Set App Error <_qIDu4V6>
+      Set App Error <_qIDu4V6>                             --[]--> (unnamed) <_qIDu416>
+      (unnamed) <_qIDu416>                                 --[]--> (unnamed) <_qIDu316>
+
+################ PROCESS PreparaIntimacao  [Name=PRPINTPC Id=_KEwC3F6]
+  ---- MAIN ----
+  * NODES:
+      Start Event <_KEwC3V6>                               START:None   [lane:Services]
+      SetParameters <_KEwC3l6>                             TASKSCRIPT   [lane:Services]
+      Manually Fixed <_KEwC316>                            GATEWAY:Exclusive   [lane:Services]
+      Start Loop <_KEwC4F6>                                TASKSCRIPT   [lane:Services]
+      Try Task <_KEwC4V6>                                  INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:Services]
+      Done - Bail <_KEwC4l6>                               END:None   [lane:Services]
+      Done - Fixed <_KEwC416>                              END:None   [lane:Services]
+      Try Again <_KEwC5F6>                                 GATEWAY:Exclusive   [lane:Services]
+      Manipular Excecao <_KEwC5V6>                         TASKUSER   [lane:Services]
+      Link To: Try Task <_KEwC6F6>                         INTERMEDIATE:Link link(name=_KEwC4V6EEfGBBLgT-R5iuw,catchThrow=THROW)   [lane:Services]
+      More Retries <_KEwC6V6>                              GATEWAY:Exclusive   [lane:Services]
+      Pause <_KEwC6l6>                                     INTERMEDIATE:Timer   [lane:Services]
+      Done - Success <_KEwC616>                            END:None   [lane:Services]
+      App Error <_KEwC7F6>                                 GATEWAY:Exclusive   [lane:Services]
+      Tech Error <_KEwC7V6>                                GATEWAY:Exclusive   [lane:Services]
+      Control System Task Call <_KEwC7l6>                  BLOCK->_KEwDT16EEfGBBLgT-R5iuw   [lane:Services]
+      (unnamed) <_KEwC716>                                 GATEWAY:Exclusive   [lane:Services]
+  * FLOWS:
+      Start Event <_KEwC3V6>                               --[]--> SetParameters <_KEwC3l6>
+      Start Loop <_KEwC4F6>                                --[]--> Control System Task Call <_KEwC7l6>
+      Control System Task Call <_KEwC7l6>                  --[]--> Tech Error <_KEwC7V6>
+      Tech Error <_KEwC7V6>                                --[No | OTHERWISE]--> App Error <_KEwC7F6>
+      App Error <_KEwC7F6>                                 --[Yes | CONDITION | ISAPPERROR=='Y';]--> More Retries <_KEwC6V6>
+      More Retries <_KEwC6V6>                              --[Yes | CONDITION | NUMAPPRETRIES<MAXRETRIES;]--> Pause <_KEwC6l6>
+      App Error <_KEwC7F6>                                 --[No | OTHERWISE]--> Done - Success <_KEwC616>
+      Pause <_KEwC6l6>                                     --[]--> Link To: Try Task <_KEwC6F6>
+      Try Task <_KEwC4V6>                                  --[]--> Start Loop <_KEwC4F6>
+      Manipular Excecao <_KEwC5V6>                         --[]--> Manually Fixed <_KEwC316>
+      Manually Fixed <_KEwC316>                            --[Yes | CONDITION | OUTCOME=='OK';]--> Done - Fixed <_KEwC416>
+      Manually Fixed <_KEwC316>                            --[No | OTHERWISE]--> Try Again <_KEwC5F6>
+      Try Again <_KEwC5F6>                                 --[No | OTHERWISE]--> Done - Bail <_KEwC4l6>
+      More Retries <_KEwC6V6>                              --[No | OTHERWISE]--> (unnamed) <_KEwC716>
+      Tech Error <_KEwC7V6>                                --[Yes | CONDITION | ISTECHERROR=='Y';]--> (unnamed) <_KEwC716>
+      Try Again <_KEwC5F6>                                 --[Retry | CONDITION | OUTCOME=='R';]--> Start Loop <_KEwC4F6>
+      SetParameters <_KEwC3l6>                             --[]--> Start Loop <_KEwC4F6>
+      (unnamed) <_KEwC716>                                 --[]--> Manipular Excecao <_KEwC5V6>
+  ---- ACTIVITYSET  <_KEwDT16> ----
+  * NODES:
+      Start TX <_KEwDUF6>                                  TASKSCRIPT   [lane:]
+      Check Retries SW_QRETRYCOUNT <_KEwDUV6>              GATEWAY:Exclusive   [lane:]
+      (unnamed) <_KEwDUl6>                                 START:None   [lane:]
+      (unnamed) <_KEwDU16>                                 END:None   [lane:]
+      Set Technical Error <_KEwDVF6>                       TASKSCRIPT   [lane:]
+      Set App Error <_KEwDVV6>                             TASKSCRIPT   [lane:]
+      (unnamed) <_KEwDVl6>                                 GATEWAY:Exclusive   [lane:]
+      (unnamed) <_KEwDV16>                                 GATEWAY:Exclusive   [lane:]
+      CaptaParametros <_KEwDWF6>                           TASKSERVICE   [lane:]
+  * FLOWS:
+      (unnamed) <_KEwDUl6>                                 --[]--> Start TX <_KEwDUF6>
+      Start TX <_KEwDUF6>                                  --[]--> Check Retries SW_QRETRYCOUNT <_KEwDUV6>
+      Check Retries SW_QRETRYCOUNT <_KEwDUV6>              --[Stillgood | CONDITION | IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;]--> CaptaParametros <_KEwDWF6>
+      Check Retries SW_QRETRYCOUNT <_KEwDUV6>              --[Maxretriesexceeded | OTHERWISE]--> Set Technical Error <_KEwDVF6>
+      Set Technical Error <_KEwDVF6>                       --[]--> (unnamed) <_KEwDU16>
+      (unnamed) <_KEwDVl6>                                 --[Good | OTHERWISE]--> (unnamed) <_KEwDV16>
+      (unnamed) <_KEwDVl6>                                 --[AppError | CONDITION | STATUS_CODE!=IPESystemValues.SW_NA;]--> Set App Error <_KEwDVV6>
+      Set App Error <_KEwDVV6>                             --[]--> (unnamed) <_KEwDV16>
+      (unnamed) <_KEwDV16>                                 --[]--> (unnamed) <_KEwDU16>
+      CaptaParametros <_KEwDWF6>                           --[]--> (unnamed) <_KEwDVl6>
+
+################ PROCESS Controle Intimados  [Name=CONTROPC Id=_-bkw8V6]
+  ---- MAIN ----
+  * NODES:
+      (unnamed) <_-bkw8l6>                                 END:None   [lane:Servicos]
+      ISetSubProc <_-bkw-F6>                               TASKSCRIPT   [lane:Servicos]
+      Aguardar Retorno <_-bkw-V6>                          SUBFLOW->__BAVLV6QEfGlneRUZ2ZhXA   [lane:Servicos]
+      Controle de Prazos <_-bkw_V6>                        TASKSCRIPT   [lane:Servicos]
+      AtualizaIntimacao <_-bkw_l6>                         SUBFLOW->_RNdJyF6PEfGBBLgT-R5iuw   [lane:Servicos]
+      Desativa Subs <_-bkxKF6>                             TASKSCRIPT   [lane:Servicos]
+      Start Event <_gFM6QF9>                               START:None   [lane:Servicos]
+  * FLOWS:
+      ISetSubProc <_-bkw-F6>                               --[]--> Aguardar Retorno <_-bkw-V6>
+      Desativa Subs <_-bkxKF6>                             --[]--> (unnamed) <_-bkw8l6>
+      AtualizaIntimacao <_-bkw_l6>                         --[]--> Controle de Prazos <_-bkw_V6>
+      Controle de Prazos <_-bkw_V6>                        --[]--> ISetSubProc <_-bkw-F6>
+      Aguardar Retorno <_-bkw-V6>                          --[]--> Desativa Subs <_-bkxKF6>
+      Start Event <_gFM6QF9>                               --[]--> AtualizaIntimacao <_-bkw_l6>
+
+################ PROCESS AtualizaIntimacaoPC  [Name=ATZINTPC Id=_RNdJyF6]
+  ---- MAIN ----
+  * NODES:
+      Start Event <_RNdJyV6>                               START:None   [lane:Services]
+      SetParameters <_RNdJyl6>                             TASKSCRIPT   [lane:Services]
+      Manually Fixed <_RNdJy16>                            GATEWAY:Exclusive   [lane:Services]
+      Start Loop <_RNdJzF6>                                TASKSCRIPT   [lane:Services]
+      Try Task <_RNdJzV6>                                  INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:Services]
+      Done - Bail <_RNdJzl6>                               END:None   [lane:Services]
+      Done - Fixed <_RNdJz16>                              END:None   [lane:Services]
+      Try Again <_RNdJ0F6>                                 GATEWAY:Exclusive   [lane:Services]
+      Manipular Excecao <_RNdJ0V6>                         TASKUSER   [lane:Services]
+      Link To: Try Task <_RNdJ1F6>                         INTERMEDIATE:Link link(name=_RNdJzV6PEfGBBLgT-R5iuw,catchThrow=THROW)   [lane:Services]
+      More Retries <_RNdJ1V6>                              GATEWAY:Exclusive   [lane:Services]
+      Pause <_RNdJ1l6>                                     INTERMEDIATE:Timer   [lane:Services]
+      Done - Success <_RNdJ116>                            END:None   [lane:Services]
+      App Error <_RNdJ2F6>                                 GATEWAY:Exclusive   [lane:Services]
+      Tech Error <_RNdJ2V6>                                GATEWAY:Exclusive   [lane:Services]
+      Control System Task Call <_RNdJ2l6>                  BLOCK->_RNdKE16PEfGBBLgT-R5iuw   [lane:Services]
+      (unnamed) <_RNdJ216>                                 GATEWAY:Exclusive   [lane:Services]
+  * FLOWS:
+      Start Event <_RNdJyV6>                               --[]--> SetParameters <_RNdJyl6>
+      Start Loop <_RNdJzF6>                                --[]--> Control System Task Call <_RNdJ2l6>
+      Control System Task Call <_RNdJ2l6>                  --[]--> Tech Error <_RNdJ2V6>
+      Tech Error <_RNdJ2V6>                                --[No | OTHERWISE]--> App Error <_RNdJ2F6>
+      App Error <_RNdJ2F6>                                 --[Yes | CONDITION | ISAPPERROR=='Y';]--> More Retries <_RNdJ1V6>
+      More Retries <_RNdJ1V6>                              --[Yes | CONDITION | NUMAPPRETRIES<MAXRETRIES;]--> Pause <_RNdJ1l6>
+      App Error <_RNdJ2F6>                                 --[No | OTHERWISE]--> Done - Success <_RNdJ116>
+      Pause <_RNdJ1l6>                                     --[]--> Link To: Try Task <_RNdJ1F6>
+      Try Task <_RNdJzV6>                                  --[]--> Start Loop <_RNdJzF6>
+      Manipular Excecao <_RNdJ0V6>                         --[]--> Manually Fixed <_RNdJy16>
+      Manually Fixed <_RNdJy16>                            --[Yes | CONDITION | OUTCOME=='OK';]--> Done - Fixed <_RNdJz16>
+      Manually Fixed <_RNdJy16>                            --[No | OTHERWISE]--> Try Again <_RNdJ0F6>
+      Try Again <_RNdJ0F6>                                 --[No | OTHERWISE]--> Done - Bail <_RNdJzl6>
+      More Retries <_RNdJ1V6>                              --[No | OTHERWISE]--> (unnamed) <_RNdJ216>
+      Tech Error <_RNdJ2V6>                                --[Yes | CONDITION | ISTECHERROR=='Y';]--> (unnamed) <_RNdJ216>
+      Try Again <_RNdJ0F6>                                 --[Retry | CONDITION | OUTCOME=='R';]--> Start Loop <_RNdJzF6>
+      SetParameters <_RNdJyl6>                             --[]--> Start Loop <_RNdJzF6>
+      (unnamed) <_RNdJ216>                                 --[]--> Manipular Excecao <_RNdJ0V6>
+  ---- ACTIVITYSET  <_RNdKE16> ----
+  * NODES:
+      Start TX <_RNdKFF6>                                  TASKSCRIPT   [lane:]
+      Check Retries SW_QRETRYCOUNT <_RNdKFV6>              GATEWAY:Exclusive   [lane:]
+      (unnamed) <_RNdKFl6>                                 START:None   [lane:]
+      (unnamed) <_RNdKF16>                                 END:None   [lane:]
+      Set Technical Error <_RNdKGF6>                       TASKSCRIPT   [lane:]
+      Set App Error <_RNdKGV6>                             TASKSCRIPT   [lane:]
+      (unnamed) <_RNdKGl6>                                 GATEWAY:Exclusive   [lane:]
+      (unnamed) <_RNdKG16>                                 GATEWAY:Exclusive   [lane:]
+      AtualizarIntimacao <_RNdKHF6>                        TASKSERVICE   [lane:]
+  * FLOWS:
+      (unnamed) <_RNdKFl6>                                 --[]--> Start TX <_RNdKFF6>
+      Start TX <_RNdKFF6>                                  --[]--> Check Retries SW_QRETRYCOUNT <_RNdKFV6>
+      Check Retries SW_QRETRYCOUNT <_RNdKFV6>              --[Stillgood | CONDITION | IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;]--> AtualizarIntimacao <_RNdKHF6>
+      Check Retries SW_QRETRYCOUNT <_RNdKFV6>              --[Maxretriesexceeded | OTHERWISE]--> Set Technical Error <_RNdKGF6>
+      Set Technical Error <_RNdKGF6>                       --[]--> (unnamed) <_RNdKF16>
+      (unnamed) <_RNdKGl6>                                 --[Good | OTHERWISE]--> (unnamed) <_RNdKG16>
+      (unnamed) <_RNdKGl6>                                 --[AppError | CONDITION | STATUS_CODE!="0";]--> Set App Error <_RNdKGV6>
+      Set App Error <_RNdKGV6>                             --[]--> (unnamed) <_RNdKG16>
+      (unnamed) <_RNdKG16>                                 --[]--> (unnamed) <_RNdKF16>
+      AtualizarIntimacao <_RNdKHF6>                        --[]--> (unnamed) <_RNdKGl6>
+
+################ PROCESS Aguarda PecasPC  [Name=AGPECASPC Id=_EvOwQF6]
+  ---- MAIN ----
+  * NODES:
+      End Event <_EvOwQV6>                                 END:None   [lane:ProcessInterface]
+      Aguardar Interposicoes <_EvOwQl6>                    TASKRECEIVE   [lane:ProcessInterface]
+      (unnamed) <_EvOwRF6>                                 INTERMEDIATE:Timer attachedTo=_EvOwQl6   [lane:ProcessInterface]
+      Set Values <_EvOwTF6>                                TASKSCRIPT   [lane:ProcessInterface]
+      SetPrazo <_EvOwUl6>                                  TASKSCRIPT   [lane:ProcessInterface]
+      Controla Datas <_EvOwU16>                            TASKSCRIPT   [lane:ProcessInterface]
+      (unnamed) <_EvOwVF6>                                 GATEWAY:Exclusive   [lane:ProcessInterface]
+      Set Flag Decurso <_EvOwWV6>                          TASKSCRIPT   [lane:ProcessInterface]
+      (unnamed) <_vshgkF6>                                 GATEWAY:Exclusive   [lane:ProcessInterface]
+      Start Event <_i4UpgF9>                               START:None   [lane:ProcessInterface]
+  * FLOWS:
+      Set Flag Decurso <_EvOwWV6>                          --[]--> Controla Datas <_EvOwU16>
+      SetPrazo <_EvOwUl6>                                  --[]--> Aguardar Interposicoes <_EvOwQl6>
+      (unnamed) <_EvOwVF6>                                 --[CONDITION | DATACONTROLE == IPESystemValues.SW_NA || DATACONTROLE != PRAZORECEBIMENT;]--> SetPrazo <_EvOwUl6>
+      (unnamed) <_EvOwVF6>                                 --[OTHERWISE]--> End Event <_EvOwQV6>
+      Aguardar Interposicoes <_EvOwQl6>                    --[]--> Controla Datas <_EvOwU16>
+      (unnamed) <_EvOwRF6>                                 --[]--> Set Flag Decurso <_EvOwWV6>
+      (unnamed) <_vshgkF6>                                 --[]--> (unnamed) <_EvOwVF6>
+      Controla Datas <_EvOwU16>                            --[]--> (unnamed) <_vshgkF6>
+      Set Values <_EvOwTF6>                                --[]--> (unnamed) <_vshgkF6>
+      Start Event <_i4UpgF9>                               --[]--> Set Values <_EvOwTF6>
+
+################ PROCESS CriaNotificacao  [Name=CRNOTPC Id=_NcJJ4F9]
+  ---- MAIN ----
+  * NODES:
+      Start Event <_NcJJ4V9>                               START:None   [lane:Services]
+      SetParameters <_NcJJ4l9>                             TASKSCRIPT   [lane:Services]
+      Manually Fixed <_NcJJ419>                            GATEWAY:Exclusive   [lane:Services]
+      Start Loop <_NcJJ5F9>                                TASKSCRIPT   [lane:Services]
+      Try Task <_NcJJ5V9>                                  INTERMEDIATE:Link link(name=0,catchThrow=CATCH)   [lane:Services]
+      Done - Bail <_NcJJ5l9>                               END:None   [lane:Services]
+      Done - Fixed <_NcJJ519>                              END:None   [lane:Services]
+      Try Again <_NcJJ6F9>                                 GATEWAY:Exclusive   [lane:Services]
+      Manipular Excecao <_NcJJ6V9>                         TASKUSER   [lane:Services]
+      Link To: Try Task <_NcJJ7F9>                         INTERMEDIATE:Link link(name=_NcJJ5V9KEfGqPfX31TKC3w,catchThrow=THROW)   [lane:Services]
+      More Retries <_NcJJ7V9>                              GATEWAY:Exclusive   [lane:Services]
+      Pause <_NcJJ7l9>                                     INTERMEDIATE:Timer   [lane:Services]
+      Done - Success <_NcJJ719>                            END:None   [lane:Services]
+      App Error <_NcJJ8F9>                                 GATEWAY:Exclusive   [lane:Services]
+      Tech Error <_NcJJ8V9>                                GATEWAY:Exclusive   [lane:Services]
+      Control System Task Call <_NcJw8F9>                  BLOCK->_NcJxJ19KEfGqPfX31TKC3w   [lane:Services]
+      (unnamed) <_NcJw8V9>                                 GATEWAY:Exclusive   [lane:Services]
+  * FLOWS:
+      Start Event <_NcJJ4V9>                               --[]--> SetParameters <_NcJJ4l9>
+      Start Loop <_NcJJ5F9>                                --[]--> Control System Task Call <_NcJw8F9>
+      Control System Task Call <_NcJw8F9>                  --[]--> Tech Error <_NcJJ8V9>
+      Tech Error <_NcJJ8V9>                                --[No | OTHERWISE]--> App Error <_NcJJ8F9>
+      App Error <_NcJJ8F9>                                 --[Yes | CONDITION | ISAPPERROR=='Y';]--> More Retries <_NcJJ7V9>
+      More Retries <_NcJJ7V9>                              --[Yes | CONDITION | NUMAPPRETRIES<MAXRETRIES;]--> Pause <_NcJJ7l9>
+      App Error <_NcJJ8F9>                                 --[No | OTHERWISE]--> Done - Success <_NcJJ719>
+      Pause <_NcJJ7l9>                                     --[]--> Link To: Try Task <_NcJJ7F9>
+      Try Task <_NcJJ5V9>                                  --[]--> Start Loop <_NcJJ5F9>
+      Manipular Excecao <_NcJJ6V9>                         --[]--> Manually Fixed <_NcJJ419>
+      Manually Fixed <_NcJJ419>                            --[Yes | CONDITION | OUTCOME=='OK';]--> Done - Fixed <_NcJJ519>
+      Manually Fixed <_NcJJ419>                            --[No | OTHERWISE]--> Try Again <_NcJJ6F9>
+      Try Again <_NcJJ6F9>                                 --[No | OTHERWISE]--> Done - Bail <_NcJJ5l9>
+      More Retries <_NcJJ7V9>                              --[No | OTHERWISE]--> (unnamed) <_NcJw8V9>
+      Tech Error <_NcJJ8V9>                                --[Yes | CONDITION | ISTECHERROR=='Y';]--> (unnamed) <_NcJw8V9>
+      Try Again <_NcJJ6F9>                                 --[Retry | CONDITION | OUTCOME=='R';]--> Start Loop <_NcJJ5F9>
+      SetParameters <_NcJJ4l9>                             --[]--> Start Loop <_NcJJ5F9>
+      (unnamed) <_NcJw8V9>                                 --[]--> Manipular Excecao <_NcJJ6V9>
+  ---- ACTIVITYSET  <_NcJxJ19> ----
+  * NODES:
+      Start TX <_NcJxKF9>                                  TASKSCRIPT   [lane:]
+      Check Retries SW_QRETRYCOUNT <_NcJxKV9>              GATEWAY:Exclusive   [lane:]
+      (unnamed) <_NcJxKl9>                                 START:None   [lane:]
+      (unnamed) <_NcJxK19>                                 END:None   [lane:]
+      Set Technical Error <_NcJxLF9>                       TASKSCRIPT   [lane:]
+      Set App Error <_NcJxLV9>                             TASKSCRIPT   [lane:]
+      (unnamed) <_NcJxLl9>                                 GATEWAY:Exclusive   [lane:]
+      (unnamed) <_NcJxL19>                                 GATEWAY:Exclusive   [lane:]
+      CriaNotificacao <_NcJxMF9>                           TASKSERVICE   [lane:]
+  * FLOWS:
+      (unnamed) <_NcJxKl9>                                 --[]--> Start TX <_NcJxKF9>
+      Start TX <_NcJxKF9>                                  --[]--> Check Retries SW_QRETRYCOUNT <_NcJxKV9>
+      Check Retries SW_QRETRYCOUNT <_NcJxKV9>              --[Stillgood | CONDITION | IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;]--> CriaNotificacao <_NcJxMF9>
+      Check Retries SW_QRETRYCOUNT <_NcJxKV9>              --[Maxretriesexceeded | OTHERWISE]--> Set Technical Error <_NcJxLF9>
+      Set Technical Error <_NcJxLF9>                       --[]--> (unnamed) <_NcJxK19>
+      (unnamed) <_NcJxLl9>                                 --[Good | OTHERWISE]--> (unnamed) <_NcJxL19>
+      (unnamed) <_NcJxLl9>                                 --[AppError | CONDITION | STATUS_CODE!="0";]--> Set App Error <_NcJxLV9>
+      Set App Error <_NcJxLV9>                             --[]--> (unnamed) <_NcJxL19>
+      (unnamed) <_NcJxL19>                                 --[]--> (unnamed) <_NcJxK19>
+      CriaNotificacao <_NcJxMF9>                           --[]--> (unnamed) <_NcJxLl9>

@@ -1,0 +1,173 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-AGPECASPC-seg044",
+  "cardType": "build",
+  "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'End Event'",
+  "epic": "etapa-4",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Start Event' a 'End Event', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 5 passo(s) da jornada do caso, de 'Start Event' ate 'End Event', no processo AGPECASPC. O troco corre dentro de um processo chamado a partir de 'CONTROPC/Aguardar Retorno', e e dai que herda a etapa.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Rules",
+        "status": "draft",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_i4UpgF9IEfGqPfX31TKC3w",
+        "nome": "Start Event",
+        "kind": "startEvent"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+        "nome": "Set Values",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-script-AGPECASPC-SetValues"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_vshgkF6fEfGJqLUhfbpFcQ",
+        "nome": "gateway _vshgkF6fEfGJqLUhfbpFcQ",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_EvOwVF6eEfGJqLUhfbpFcQ",
+        "nome": "gateway _EvOwVF6eEfGJqLUhfbpFcQ",
+        "kind": "gateway",
+        "decideQue": "Ja se esperou pelo prazo em vigor?",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-AGPECASPC-gatewayEvOwVF6eEfGJqLUhfbpFcQ"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_EvOwQV6eEfGJqLUhfbpFcQ",
+        "nome": "End Event",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-AGPECASPC-003].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_i4UpgF9IEfGqPfX31TKC3w",
+      "_EvOwTF6eEfGJqLUhfbpFcQ",
+      "_vshgkF6fEfGJqLUhfbpFcQ",
+      "_EvOwVF6eEfGJqLUhfbpFcQ",
+      "_EvOwQV6eEfGJqLUhfbpFcQ"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_i4UpgF9IEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_i4UpgF9IEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+      "xpath": "//xpdl2:Activity[@Id='_EvOwTF6eEfGJqLUhfbpFcQ']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_vshgkF6fEfGJqLUhfbpFcQ",
+      "xpath": "//xpdl2:Activity[@Id='_vshgkF6fEfGJqLUhfbpFcQ']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_EvOwVF6eEfGJqLUhfbpFcQ",
+      "xpath": "//xpdl2:Activity[@Id='_EvOwVF6eEfGJqLUhfbpFcQ']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_EvOwQV6eEfGJqLUhfbpFcQ",
+      "xpath": "//xpdl2:Activity[@Id='_EvOwQV6eEfGJqLUhfbpFcQ']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-AGPECASPC-003.json",
+      "immutable": true,
+      "caseCount": 1
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 1 ao 5 do cenario SC-AGPECASPC-003 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "AGPECASPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: aguardar pecas, invocado pela trilha"
+  },
+  "fulfills": {
+    "etapas": [
+      4
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-AGPECASPC-003",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 5,
+      "abrePor": "Start Event",
+      "fechaEm": "End Event",
+      "herdadoDe": "CONTROPC/Aguardar Retorno"
+    },
+    "concepts": [
+      "eventos-inicio-fim"
+    ],
+    "expectedResults": [
+      "modelagem-bpmn"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 5,
+    "camadas": 2,
+    "pastas": 2,
+    "aEscrever": 2,
+    "bloqueadores": 1,
+    "regrasDeNegocio": 2,
+    "peso": "grande"
+  },
+  "gaps": [
+    {
+      "construct": "iprocess-builtin",
+      "detail": "1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-iprocess-builtin"
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/intent-map/v1",
+  "source": "Documento Prova de Conceito.docx",
+  "note": "Design intent recovered from the POC document. A stage is linked to an element only when that element display name occurs verbatim (accent- and case-insensitive) in the stage text; matchedOn records the string that matched. Absence of intent means the document is silent, not that the element is unimportant.",
+  "scopeStatement": [
+    "Importante destacar que esta POC não contempla migração de processos legados, tendo como foco exclusivamente a validação dos recursos funcionais da ferramenta BPM."
+  ],
+  "coverageClaim": [
+    "A cobertura estimada corresponde a aproximadamente 70% a 80% dos recursos BPMN normalmente utilizados em processos corporativos."
+  ],
+  "statistics": {
+    "stageCount": 7,
+    "linkedElementCount": 5,
+    "modelElementCount": 182
+  },
+  "stages": [
+    {
+      "stage": 1,
+      "title": "Fechamento do AIIM",
+      "narrative": [
+        "O processo é iniciado através da atividade Finalizar AIIM, representando uma ação humana realizada pelo usuário.",
+        "Conceitos Validados",
+        "Evento de Início",
+        "User Task",
+        "Variáveis de Processo"
+      ],
+      "concepts": [],
+      "matchedElements": [
+        {
+          "kind": "startEvent",
+          "id": "_tO_yWVp6EfG5K7mY0I3I6w",
+          "name": "Incio",
+          "label": "Início",
+          "process": "POC_EpatProcess",
+          "matchedOn": "Início"
+        },
+        {
+          "kind": "userTask",
+          "id": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "name": "FECHAR",
+          "label": "Finalizar AIIM",
+          "process": "POC_EpatProcess",
+          "matchedOn": "Finalizar AIIM"
+        }
+      ],
+      "ambiguousMentions": []
+    },
+    {
+      "stage": 2,
+      "title": "Notificação do AIIM",
+      "narrative": [
+        "Após o fechamento do AIIM, o fluxo segue para o subprocesso Notificação do AIIM.",
+        "Esta etapa tem como principal objetivo validar o conceito de Graft Step.",
+        "Conceito: Graft Step",
+        "O Graft Step é um recurso presente no Tibco iProcess que permite o acoplamento dinâmico de um fluxo ou subprocesso durante a execução do processo principal, sem que ele faça parte originalmente da sequência de atividades.",
+        "Importância da Validação",
+        "A validação deste conceito é fundamental para comprovar que a nova plataforma é capaz de suportar:",
+        "Inclusão dinâmica de etapas durante a execução.",
+        "Encadeamento flexível de subprocessos.",
+        "Processos adaptativos baseados em regras de negócio.",
+        "Cenários de expansão dinâmica do fluxo.",
+        "Conceitos BPM Validados",
+        "Subprocessos",
+        "Eventos de Mensagem",
+        "Espera Assíncrona",
+        "Correlação de Eventos",
+        "Envio de E-mail",
+        "Loops de Processo"
+      ],
+      "concepts": [
+        "Subprocessos",
+        "Eventos de Mensagem",
+        "Espera Assíncrona",
+        "Correlação de Eventos",
+        "Envio de E-mail",
+        "Loops de Processo"
+      ],
+      "matchedElements": [
+        {
+          "kind": "process",
+          "id": "_lrer1VqhEfG5K7mY0I3I6w",
+          "name": "DEAT0050",
+          "label": "Notificacao do AIIM",
+          "process": "DEAT0050",
+          "matchedOn": "Notificacao do AIIM"
+        }
+      ],
+      "ambiguousMentions": []
+    },
+    {
+      "stage": 3,
+      "title": "Integração com Decisions",
+      "narrative": [
+        "Após a conclusão da etapa de notificação, o processo realiza uma chamada ao componente Decisions.",
+        "Conceito: Decisions",
+        "O Decisions representa um mecanismo de decisão baseado em regras de negócio, responsável por avaliar informações do processo e retornar parâmetros que influenciarão o fluxo subsequente.",
+        "Importância da Validação",
+        "A validação desta funcionalidade é importante para comprovar:",
+        "Integração com motores de decisão.",
+        "Execução de regras externas ao processo.",
+        "Separação entre fluxo operacional e regras de negócio.",
+        "Flexibilidade para alteração de regras sem impacto no desenho do processo.",
+        "Conceitos BPM Validados",
+        "Service Task",
+        "Integração Externa",
+        "Regras de Negócio",
+        "Variáveis de Processo"
+      ],
+      "concepts": [
+        "Service Task",
+        "Integração Externa",
+        "Regras de Negócio",
+        "Variáveis de Processo"
+      ],
+      "matchedElements": [],
+      "ambiguousMentions": []
+    },
+    {
+      "stage": 4,
+      "title": "Verificação do Retorno do Decisions",
+      "narrative": [
+        "Após a execução do Decisions, a atividade Verificar Retorno Decisions recebe e valida os dados retornados.",
+        "Nesta etapa será disponibilizado um campo para definição da variável:",
+        "TIPOVISTAS",
+        "Essa variável será utilizada para direcionar o processo para os diferentes caminhos de execução previstos na fase seguinte.",
+        "Conceitos BPM Validados",
+        "Variáveis de Processo",
+        "Gateways Exclusivos (XOR)",
+        "Regras de Negócio"
+      ],
+      "concepts": [
+        "Variáveis de Processo",
+        "Gateways Exclusivos (XOR)",
+        "Regras de Negócio"
+      ],
+      "matchedElements": [
+        {
+          "kind": "userTask",
+          "id": "_30jAcFqVEfG5K7mY0I3I6w",
+          "name": "VRFRETDE",
+          "label": "Verificar Retorno Decisions",
+          "process": "POC_EpatProcess",
+          "matchedOn": "Verificar Retorno Decisions"
+        }
+      ],
+      "ambiguousMentions": []
+    },
+    {
+      "stage": 5,
+      "title": "Validação de Gateways Paralelos",
+      "narrative": [
+        "Com base no valor definido para TIPOVISTAS, o fluxo entra na fase de validação dos conceitos de paralelismo.",
+        "São executados cenários de:",
+        "Divisão paralela do fluxo.",
+        "Processamento simultâneo.",
+        "Sincronização das ramificações.",
+        "Continuidade após conclusão das atividades paralelas.",
+        "Importância da Validação",
+        "Permite comprovar a capacidade da ferramenta de:",
+        "Executar atividades simultaneamente.",
+        "Controlar sincronização entre múltiplos caminhos.",
+        "Garantir consistência de dados em fluxos concorrentes.",
+        "Conceitos BPM Validados",
+        "Gateway Paralelo (AND)",
+        "Fluxos Paralelos",
+        "Sincronização de Fluxos",
+        "Eventos de Sinal"
+      ],
+      "concepts": [
+        "Gateway Paralelo (AND)",
+        "Fluxos Paralelos",
+        "Sincronização de Fluxos",
+        "Eventos de Sinal"
+      ],
+      "matchedElements": [],
+      "ambiguousMentions": []
+    },
+    {
+      "stage": 6,
+      "title": "Controle de Intimados",
+      "narrative": [
+        "Após a sincronização dos fluxos paralelos, o processo segue para o subprocesso Controle Intimados.",
+        "Esta etapa tem como principal objetivo validar o conceito de Procedures Dinâmicas existente no Tibco iProcess.",
+        "Conceito: Procedures Dinâmicas",
+        "Procedures Dinâmicas são mecanismos que permitem determinar em tempo de execução quais atividades, participantes ou caminhos serão criados dentro do processo, de acordo com regras e dados do negócio.",
+        "Importância da Validação",
+        "A validação deste conceito é necessária para comprovar que a nova plataforma suporta:",
+        "Criação dinâmica de atividades.",
+        "Definição dinâmica de participantes.",
+        "Flexibilidade de roteamento.",
+        "Processos orientados por configuração e regras de negócio.",
+        "Conceitos BPM Validados",
+        "Processamento Dinâmico",
+        "User Tasks",
+        "Variáveis de Processo",
+        "Regras de Negócio",
+        "Encadeamento de Subprocessos"
+      ],
+      "concepts": [
+        "Processamento Dinâmico",
+        "User Tasks",
+        "Variáveis de Processo",
+        "Regras de Negócio",
+        "Encadeamento de Subprocessos"
+      ],
+      "matchedElements": [
+        {
+          "kind": "process",
+          "id": "_-bkw8V6JEfGBBLgT-R5iuw",
+          "name": "CONTROPC",
+          "label": "Controle Intimados",
+          "process": "CONTROPC",
+          "matchedOn": "Controle Intimados"
+        }
+      ],
+      "ambiguousMentions": []
+    },
+    {
+      "stage": 7,
+      "title": "Encerramento",
+      "narrative": [
+        "Após a conclusão do subprocesso Controle Intimados, o fluxo é encerrado.",
+        "Conceitos BPM Validados",
+        "Evento de Fim",
+        "Encerramento de Instância",
+        "Persistência de Dados"
+      ],
+      "concepts": [
+        "Evento de Fim",
+        "Encerramento de Instância",
+        "Persistência de Dados"
+      ],
+      "matchedElements": [
+        {
+          "kind": "process",
+          "id": "_-bkw8V6JEfGBBLgT-R5iuw",
+          "name": "CONTROPC",
+          "label": "Controle Intimados",
+          "process": "CONTROPC",
+          "matchedOn": "Controle Intimados"
+        }
+      ],
+      "ambiguousMentions": []
+    }
+  ]
+}

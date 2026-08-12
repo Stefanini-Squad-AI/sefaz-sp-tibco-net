@@ -1,0 +1,432 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg053",
+  "cardType": "build",
+  "title": "Vistas do juiz e mistas, ate a preparacao dos intimados",
+  "epic": "etapa-5",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Validar Paralelos' a 'prepSub', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 14 passo(s) da jornada do caso, de 'Validar Paralelos' ate 'prepSub', no processo POC_EpatProcess. ATENCAO: 2 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (fronteira, link) e tem de ser escrita explicitamente no fluxo .NET.",
+      "hypotheses": [
+        "prepSub parte IDSINTIMADOS com SEARCH e SUBSTR assumindo base 1; a semantica continua por fixar na documentacao iProcess e um desvio de uma posicao nao falha - devolve valor errado.",
+        "A ultima atribuicao de IDSINTIMADOS neste troco e andaime de teste e nao migra; confirmar que foi removida e nao transcrita.",
+        "TIPOVISTAS nao preenchido segue deliberadamente para o juiz. O ramo 'DRF' e o por omissao e nao um terceiro valor de dominio: colapsar o sentinela em null inverte a regra sem erro visivel."
+      ]
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Api/Endpoints",
+        "status": "scaffold",
+        "note": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Processes",
+        "status": "final",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Runtime",
+        "status": "final",
+        "note": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/UseCases",
+        "status": "scaffold",
+        "note": "Tarefa humana e um caso de uso. As regras do code-behind das telas aterram aqui porque decidem o desfecho do processo, nao a apresentacao."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "GOTO implicito. Decidido flatten-edge: vira aresta explicita, porque manter como sinal introduziria pontos de espera que o TIBCO nao tem."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Abstractions",
+        "status": "final",
+        "note": "O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Rules",
+        "status": "draft",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Doubles",
+        "status": "scaffold",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_89MVQlqVEfG5K7mY0I3I6w",
+        "nome": "Validar Paralelos",
+        "kind": "linkThrow",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_Ei94AFqPEfG5K7mY0I3I6w",
+        "nome": "Validação Paralelos",
+        "kind": "linkCatch",
+        "entrouPor": "link"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_CtQ7BFqPEfG5K7mY0I3I6w",
+        "nome": "Vistas do Juiz ?",
+        "kind": "gateway",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-POC_EpatProcess-VistasdoJuiz"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_CtQ7BVqPEfG5K7mY0I3I6w",
+        "nome": "gateway _CtQ7BVqPEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_CtQ68lqPEfG5K7mY0I3I6w",
+        "nome": "Pedido de Vistas",
+        "kind": "receiveTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_CtQ7A1qPEfG5K7mY0I3I6w",
+        "nome": "timerEvent _CtQ7A1qPEfG5K7mY0I3I6w",
+        "kind": "timerEvent",
+        "entrouPor": "fronteira"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_CtQ66FqPEfG5K7mY0I3I6w",
+        "nome": "FimDRF",
+        "kind": "signalThrow",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 8,
+        "nodeId": "_CtQ691qPEfG5K7mY0I3I6w",
+        "nome": "Busca Emails",
+        "kind": "callActivity",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 9,
+        "nodeId": "_CtQ7AVqPEfG5K7mY0I3I6w",
+        "nome": "VoltaAgenda",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 10,
+        "nodeId": "_CtQ7AlqPEfG5K7mY0I3I6w",
+        "nome": "Tipo de Vista Mista?",
+        "kind": "gateway",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-POC_EpatProcess-TipodeVistaMista"
+      },
+      {
+        "ordem": 11,
+        "nodeId": "_CtQ7AFqPEfG5K7mY0I3I6w",
+        "nome": "gateway _CtQ7AFqPEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 12,
+        "nodeId": "_CtQ69FqPEfG5K7mY0I3I6w",
+        "nome": "gateway _CtQ69FqPEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 13,
+        "nodeId": "_CtQ6-lqPEfG5K7mY0I3I6w",
+        "nome": "gateway _CtQ6-lqPEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 14,
+        "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+        "nome": "prepSub",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-script-POC_EpatProcess-prepSub"
+      },
+      {
+        "ordem": 15,
+        "nodeId": "_CtQ6-1qPEfG5K7mY0I3I6w",
+        "nome": "Vistas do Juiz",
+        "kind": "receiveTask",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-001); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 16,
+        "nodeId": "_CtQ6_VqPEfG5K7mY0I3I6w",
+        "nome": "Vistas Mista ?",
+        "kind": "gateway",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-001); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 17,
+        "nodeId": "_CtQ6_1qPEfG5K7mY0I3I6w",
+        "nome": "timerEvent _CtQ6_1qPEfG5K7mY0I3I6w",
+        "kind": "timerEvent",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-003); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 18,
+        "nodeId": "_CtQ68FqPEfG5K7mY0I3I6w",
+        "nome": "Vistas Mista ?",
+        "kind": "gateway",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-005); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 19,
+        "nodeId": "_CtQ68VqPEfG5K7mY0I3I6w",
+        "nome": "gateway _CtQ68VqPEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-006); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 20,
+        "nodeId": "_tbOD4FqPEfG5K7mY0I3I6w",
+        "nome": "Realizar Atividade Vista Mista",
+        "kind": "userTask",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-011); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 21,
+        "nodeId": "_InbWgFqQEfG5K7mY0I3I6w",
+        "nome": "Fim Vista Mista",
+        "kind": "signalThrow",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-011); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 22,
+        "nodeId": "_xAIVElqPEfG5K7mY0I3I6w",
+        "nome": "Mista",
+        "kind": "linkThrow",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-011); nao aparece no percurso de referencia."
+      },
+      {
+        "ordem": 23,
+        "nodeId": "_CtQ66VqPEfG5K7mY0I3I6w",
+        "nome": "Mista",
+        "kind": "linkCatch",
+        "nota": "Visitado noutra passagem por este mesmo troco (SC-POC_EpatProcess-011); nao aparece no percurso de referencia."
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-025].segmentos[5]",
+    "kind": "segment",
+    "nodeIds": [
+      "_89MVQlqVEfG5K7mY0I3I6w",
+      "_Ei94AFqPEfG5K7mY0I3I6w",
+      "_CtQ7BFqPEfG5K7mY0I3I6w",
+      "_CtQ7BVqPEfG5K7mY0I3I6w",
+      "_CtQ68lqPEfG5K7mY0I3I6w",
+      "_CtQ7A1qPEfG5K7mY0I3I6w",
+      "_CtQ66FqPEfG5K7mY0I3I6w",
+      "_CtQ691qPEfG5K7mY0I3I6w",
+      "_CtQ7AVqPEfG5K7mY0I3I6w",
+      "_CtQ7AlqPEfG5K7mY0I3I6w",
+      "_CtQ7AFqPEfG5K7mY0I3I6w",
+      "_CtQ69FqPEfG5K7mY0I3I6w",
+      "_CtQ6-lqPEfG5K7mY0I3I6w",
+      "_zE3XeV6JEfGBBLgT-R5iuw",
+      "_CtQ6-1qPEfG5K7mY0I3I6w",
+      "_CtQ6_VqPEfG5K7mY0I3I6w",
+      "_CtQ6_1qPEfG5K7mY0I3I6w",
+      "_CtQ68FqPEfG5K7mY0I3I6w",
+      "_CtQ68VqPEfG5K7mY0I3I6w",
+      "_tbOD4FqPEfG5K7mY0I3I6w",
+      "_InbWgFqQEfG5K7mY0I3I6w",
+      "_xAIVElqPEfG5K7mY0I3I6w",
+      "_CtQ66VqPEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_89MVQlqVEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_89MVQlqVEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_Ei94AFqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_Ei94AFqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ7BFqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ7BFqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ7BVqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ7BVqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ68lqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ68lqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ7A1qPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ7A1qPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ66FqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ66FqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ691qPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ691qPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ7AVqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ7AVqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ7AlqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ7AlqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ7AFqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ7AFqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ69FqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ69FqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_CtQ6-lqPEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_CtQ6-lqPEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_zE3XeV6JEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat",
+    "reviewSha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-025.json",
+      "immutable": true,
+      "caseCount": 27
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 12 ao 25 do cenario SC-POC_EpatProcess-025 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      5
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-025",
+      "ordemNaJornada": 5,
+      "doPasso": 12,
+      "aoPasso": 25,
+      "abrePor": "Validar Paralelos",
+      "fechaEm": "prepSub"
+    },
+    "concepts": [
+      "loops-retornos",
+      "eventos-mensagem",
+      "espera-assincrona",
+      "controle-prazo",
+      "eventos-sinal",
+      "encadeamento-subprocessos",
+      "user-tasks"
+    ],
+    "expectedResults": [
+      "correlacao-assincrona",
+      "sla-prazos",
+      "subprocessos-encadeados"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 23,
+    "camadas": 4,
+    "pastas": 9,
+    "aEscrever": 6,
+    "bloqueadores": 4,
+    "regrasDeNegocio": 7,
+    "peso": "atravessa-o-sistema",
+    "nota": "Toca 4 projecto(s) e 6 pasta(s) por escrever. Continua a ser um card valido - e o troco que cumpre a etapa -, mas nao deve ser atribuido a uma pessoa so nem estimado como os outros."
+  },
+  "gaps": [
+    {
+      "construct": "link-goto",
+      "detail": "4 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.",
+      "status": "decided",
+      "decisionRef": "NOEQ-link-goto"
+    },
+    {
+      "construct": "external-event",
+      "detail": "2 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.",
+      "status": "decided",
+      "decisionRef": "NOEQ-external-event"
+    },
+    {
+      "construct": "expression-deadline",
+      "detail": "2 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.",
+      "status": "decided",
+      "decisionRef": "NOEQ-expression-deadline"
+    },
+    {
+      "construct": "iprocess-builtin",
+      "detail": "1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-link-goto",
+    "NOEQ-external-event",
+    "NOEQ-expression-deadline",
+    "NOEQ-iprocess-builtin"
+  ]
+}

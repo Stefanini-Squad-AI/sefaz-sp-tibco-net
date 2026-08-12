@@ -1,0 +1,100 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/dmn-index/v1",
+  "package": "POC_Epat",
+  "rulesheet": "intimacoes_Parametros.ers",
+  "primary": "intimacoes_parametros.dmn",
+  "mirror": "intimacoes_parametros-espelho.dmn",
+  "note": "DMN 1.3. intimacoes_parametros.dmn e a representacao REVISAVEL (uma decisao FIRST por atributo, colunas invertidas, equivalente ao fold do Corticon). intimacoes_parametros-espelho.dmn e apenas rastreabilidade 1:1 com o .ers e NAO deve ser usado para revisar comportamento.",
+  "soundness": {
+    "conditionsReadOnlyRequest": true,
+    "actionsWriteOnlyResponse": true,
+    "chainedAttributes": [],
+    "justification": "Nenhum atributo lido por condicao e escrito por acao, portanto nenhuma acao altera a avaliacao de outra coluna e a ordem pode ser invertida sem mudar o resultado."
+  },
+  "totals": {
+    "sourceRules": 49,
+    "sourceConditions": 21,
+    "sourceActionCells": 276,
+    "decisions": 11,
+    "emittedRules": 276
+  },
+  "decisions": [
+    {
+      "id": "Decision_cntPeca1",
+      "attribute": "cntPeca1",
+      "typeRef": "string",
+      "rules": 31,
+      "inputs": 18
+    },
+    {
+      "id": "Decision_cntPeca2",
+      "attribute": "cntPeca2",
+      "typeRef": "string",
+      "rules": 8,
+      "inputs": 15
+    },
+    {
+      "id": "Decision_codTexto",
+      "attribute": "codTexto",
+      "typeRef": "string",
+      "rules": 49,
+      "inputs": 21
+    },
+    {
+      "id": "Decision_contraRazao",
+      "attribute": "contraRazao",
+      "typeRef": "string",
+      "rules": 31,
+      "inputs": 17
+    },
+    {
+      "id": "Decision_qtPecasCNT",
+      "attribute": "qtPecasCNT",
+      "typeRef": "number",
+      "rules": 31,
+      "inputs": 18
+    },
+    {
+      "id": "Decision_qtPecasSefaz",
+      "attribute": "qtPecasSefaz",
+      "typeRef": "number",
+      "rules": 30,
+      "inputs": 17
+    },
+    {
+      "id": "Decision_sfDiasRepresentacao",
+      "attribute": "sfDiasRepresentacao",
+      "typeRef": "string",
+      "rules": 25,
+      "inputs": 17
+    },
+    {
+      "id": "Decision_sfPeca1",
+      "attribute": "sfPeca1",
+      "typeRef": "string",
+      "rules": 30,
+      "inputs": 17
+    },
+    {
+      "id": "Decision_sfPeca2",
+      "attribute": "sfPeca2",
+      "typeRef": "string",
+      "rules": 8,
+      "inputs": 15
+    },
+    {
+      "id": "Decision_sfPeca3",
+      "attribute": "sfPeca3",
+      "typeRef": "string",
+      "rules": 2,
+      "inputs": 10
+    },
+    {
+      "id": "Decision_tempoResposta",
+      "attribute": "tempoResposta",
+      "typeRef": "string",
+      "rules": 31,
+      "inputs": 18
+    }
+  ]
+}

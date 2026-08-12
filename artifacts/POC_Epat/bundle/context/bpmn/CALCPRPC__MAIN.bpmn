@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Defs_P_CALCPRPC_MAIN" targetNamespace="http://sefaz.sp.gov.br/epat">
+  <bpmn:signal id="Signal_fimDRF" name="fimDRF" />
+  <bpmn:signal id="Signal_Signal4" name="Signal4" />
+  <bpmn:process id="P_CALCPRPC_MAIN" name="CalculaPrazo" isExecutable="false">
+    <bpmn:documentation>Processo TIBCO: CalculaPrazo  |  escopo: MAIN Gerado a partir de process-model.json. ARTEFATO DE ESPECIFICACAO - nao e executavel. ESQUELETO COMPARTILHADO com: ATZINTPC, BSCENVPC, CRNOTPC. Mesma estrutura de controle e mesmas condicoes; o que muda e a operacao invocada. Revise o esqueleto uma vez e depois apenas as diferencas.</bpmn:documentation>
+    <bpmn:startEvent id="_zJIHVVqiEfG5K7mY0I3I6w" name="Start Event">
+      <bpmn:documentation>TIBCO id: _zJIHVVqiEfG5K7mY0I3I6w | kind XPDL: startEvent | faixa: Services</bpmn:documentation>
+      <bpmn:outgoing>F__zJIHaFqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:scriptTask id="_zJIHVlqiEfG5K7mY0I3I6w" name="SetParameters">
+      <bpmn:documentation>TIBCO id: _zJIHVlqiEfG5K7mY0I3I6w | kind XPDL: scriptTask | faixa: Services | script: @{grammar=JavaScript; body=DATETIME = IPEConversionUtil.DATESTR(DATAINICIOPERIO);
+if(IDPROCESSO != IPESystemValues.SW_NA){
+	PROCESS_ID = 'idAiim-'+IPEConversionUtil.STR(IDAIIM,0)+'idProc-' + IPEConversionUtil.STR(IDPROCESSO,0);
+} else {
+	PROCESS_ID = 'idAiim-'+IPEConversionUtil.STR(IDAIIM,0)+'idProc-NA';
+}
+if (MAXRETRIES==null) {
+   MAXRETRIES=5;
+}} | descricao: Script para inicializacao de parametros utilizados no fluxo ou na chamada de servico na primeira vez em que o fluxo é inciado.</bpmn:documentation>
+      <bpmn:incoming>F__zJIHaFqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHeFqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="_zJIHV1qiEfG5K7mY0I3I6w" name="Manually Fixed" default="F__zJIHc1qiEfG5K7mY0I3I6w">
+      <bpmn:documentation>TIBCO id: _zJIHV1qiEfG5K7mY0I3I6w | kind XPDL: gateway | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHcVqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHclqiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:outgoing>F__zJIHc1qiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:scriptTask id="_zJIHWFqiEfG5K7mY0I3I6w" name="Start Loop">
+      <bpmn:documentation>TIBCO id: _zJIHWFqiEfG5K7mY0I3I6w | kind XPDL: scriptTask | faixa: Services | script: @{grammar=JavaScript; body=if (NUMAPPRETRIES==null) {
+   NUMAPPRETRIES=0;
+}
+else {
+   NUMAPPRETRIES=NUMAPPRETRIES+1;
+}
+ISAPPERROR='N';
+ISTECHERROR='N';
+OUTCOME='OK';
+DATETIME = IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE);} | descricao: Inicializador de contadores do servico e definicao de parametros iniciais de erro</bpmn:documentation>
+      <bpmn:incoming>F__zJIHcFqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:incoming>F__zJIHd1qiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:incoming>F__zJIHeFqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHaVqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:intermediateCatchEvent id="_zJIHWVqiEfG5K7mY0I3I6w" name="Try Task">
+      <bpmn:documentation>TIBCO id: _zJIHWVqiEfG5K7mY0I3I6w | kind XPDL: linkCatch | faixa: Services</bpmn:documentation>
+      <bpmn:outgoing>F__zJIHcFqiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:linkEventDefinition name="0" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="_zJIHWlqiEfG5K7mY0I3I6w" name="Done - Bail">
+      <bpmn:documentation>TIBCO id: _zJIHWlqiEfG5K7mY0I3I6w | kind XPDL: endEvent | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHdFqiEfG5K7mY0I3I6w</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="_zJIHW1qiEfG5K7mY0I3I6w" name="Done - Fixed">
+      <bpmn:documentation>TIBCO id: _zJIHW1qiEfG5K7mY0I3I6w | kind XPDL: endEvent | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHclqiEfG5K7mY0I3I6w</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="_zJIHXFqiEfG5K7mY0I3I6w" name="Try Again" default="F__zJIHdFqiEfG5K7mY0I3I6w">
+      <bpmn:documentation>TIBCO id: _zJIHXFqiEfG5K7mY0I3I6w | kind XPDL: gateway | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHc1qiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHdFqiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:outgoing>F__zJIHd1qiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="_zJIHXVqiEfG5K7mY0I3I6w" name="Manipular Excecao">
+      <bpmn:documentation>TIBCO id: _zJIHXVqiEfG5K7mY0I3I6w | kind XPDL: userTask | faixa: Services | descricao: Atividade de definicao de manipulacao dos dados e informações para verificar se o servico deve ser novamente invocado ou entao alterar os dados manualmente, a fim de dar continuidade do fluxo.</bpmn:documentation>
+      <bpmn:incoming>F__zJIHeVqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHcVqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:intermediateThrowEvent id="_zJIHYFqiEfG5K7mY0I3I6w" name="Link To: Try Task">
+      <bpmn:documentation>TIBCO id: _zJIHYFqiEfG5K7mY0I3I6w | kind XPDL: linkThrow | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHb1qiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:linkEventDefinition name="_zJIHWVqiEfG5K7mY0I3I6w" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:exclusiveGateway id="_zJIHYVqiEfG5K7mY0I3I6w" name="More Retries" default="F__zJIHdVqiEfG5K7mY0I3I6w">
+      <bpmn:documentation>TIBCO id: _zJIHYVqiEfG5K7mY0I3I6w | kind XPDL: gateway | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHbFqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHbVqiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:outgoing>F__zJIHdVqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:intermediateCatchEvent id="_zJIHYlqiEfG5K7mY0I3I6w" name="Pause">
+      <bpmn:documentation>TIBCO id: _zJIHYlqiEfG5K7mY0I3I6w | kind XPDL: timerEvent | faixa: Services | prazo: {&quot;grammar&quot;:&quot;ConstantPeriod&quot;,&quot;expression&quot;:null,&quot;days&quot;:&quot;&quot;,&quot;hours&quot;:&quot;&quot;,&quot;minutes&quot;:&quot;30&quot;}</bpmn:documentation>
+      <bpmn:incoming>F__zJIHbVqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHb1qiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:timerEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="_zJIHY1qiEfG5K7mY0I3I6w" name="Done - Success">
+      <bpmn:documentation>TIBCO id: _zJIHY1qiEfG5K7mY0I3I6w | kind XPDL: endEvent | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHblqiEfG5K7mY0I3I6w</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="_zJIHZFqiEfG5K7mY0I3I6w" name="App Error" default="F__zJIHblqiEfG5K7mY0I3I6w">
+      <bpmn:documentation>TIBCO id: _zJIHZFqiEfG5K7mY0I3I6w | kind XPDL: gateway | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHa1qiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHbFqiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:outgoing>F__zJIHblqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="_zJIHZVqiEfG5K7mY0I3I6w" name="Tech Error" default="F__zJIHa1qiEfG5K7mY0I3I6w">
+      <bpmn:documentation>TIBCO id: _zJIHZVqiEfG5K7mY0I3I6w | kind XPDL: gateway | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHalqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHa1qiEfG5K7mY0I3I6w</bpmn:outgoing>
+      <bpmn:outgoing>F__zJIHdlqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:callActivity id="_zJIHZlqiEfG5K7mY0I3I6w" name="Control System Task Call" calledElement="P_CALCPRPC__zJIuaFqiEfG5K7mY0I3I6w">
+      <bpmn:documentation>TIBCO id: _zJIHZlqiEfG5K7mY0I3I6w | kind XPDL: subProcessScope | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHaVqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHalqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="_zJIHZ1qiEfG5K7mY0I3I6w" name="Convergencia">
+      <bpmn:documentation>TIBCO id: _zJIHZ1qiEfG5K7mY0I3I6w | kind XPDL: gateway | faixa: Services</bpmn:documentation>
+      <bpmn:incoming>F__zJIHdVqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:incoming>F__zJIHdlqiEfG5K7mY0I3I6w</bpmn:incoming>
+      <bpmn:outgoing>F__zJIHeVqiEfG5K7mY0I3I6w</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="F__zJIHaFqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHVVqiEfG5K7mY0I3I6w" targetRef="_zJIHVlqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHaVqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHWFqiEfG5K7mY0I3I6w" targetRef="_zJIHZlqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHalqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHZlqiEfG5K7mY0I3I6w" targetRef="_zJIHZVqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHa1qiEfG5K7mY0I3I6w" name="No" sourceRef="_zJIHZVqiEfG5K7mY0I3I6w" targetRef="_zJIHZFqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHbFqiEfG5K7mY0I3I6w" name="Yes" sourceRef="_zJIHZFqiEfG5K7mY0I3I6w" targetRef="_zJIHYVqiEfG5K7mY0I3I6w">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">ISAPPERROR=='Y';</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F__zJIHbVqiEfG5K7mY0I3I6w" name="Yes" sourceRef="_zJIHYVqiEfG5K7mY0I3I6w" targetRef="_zJIHYlqiEfG5K7mY0I3I6w">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">NUMAPPRETRIES&lt;MAXRETRIES;</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F__zJIHblqiEfG5K7mY0I3I6w" name="No" sourceRef="_zJIHZFqiEfG5K7mY0I3I6w" targetRef="_zJIHY1qiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHb1qiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHYlqiEfG5K7mY0I3I6w" targetRef="_zJIHYFqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHcFqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHWVqiEfG5K7mY0I3I6w" targetRef="_zJIHWFqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHcVqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHXVqiEfG5K7mY0I3I6w" targetRef="_zJIHV1qiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHclqiEfG5K7mY0I3I6w" name="Yes" sourceRef="_zJIHV1qiEfG5K7mY0I3I6w" targetRef="_zJIHW1qiEfG5K7mY0I3I6w">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">OUTCOME=='OK';</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F__zJIHc1qiEfG5K7mY0I3I6w" name="No" sourceRef="_zJIHV1qiEfG5K7mY0I3I6w" targetRef="_zJIHXFqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHdFqiEfG5K7mY0I3I6w" name="No" sourceRef="_zJIHXFqiEfG5K7mY0I3I6w" targetRef="_zJIHWlqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHdVqiEfG5K7mY0I3I6w" name="No" sourceRef="_zJIHYVqiEfG5K7mY0I3I6w" targetRef="_zJIHZ1qiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHdlqiEfG5K7mY0I3I6w" name="Yes" sourceRef="_zJIHZVqiEfG5K7mY0I3I6w" targetRef="_zJIHZ1qiEfG5K7mY0I3I6w">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">ISTECHERROR=='Y';</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F__zJIHd1qiEfG5K7mY0I3I6w" name="Retry" sourceRef="_zJIHXFqiEfG5K7mY0I3I6w" targetRef="_zJIHWFqiEfG5K7mY0I3I6w">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">OUTCOME=='R';</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F__zJIHeFqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHVlqiEfG5K7mY0I3I6w" targetRef="_zJIHWFqiEfG5K7mY0I3I6w" />
+    <bpmn:sequenceFlow id="F__zJIHeVqiEfG5K7mY0I3I6w" name="" sourceRef="_zJIHZ1qiEfG5K7mY0I3I6w" targetRef="_zJIHXVqiEfG5K7mY0I3I6w" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="D_P_CALCPRPC_MAIN">
+    <bpmndi:BPMNPlane id="Plane_P_CALCPRPC_MAIN" bpmnElement="P_CALCPRPC_MAIN">
+      <bpmndi:BPMNShape id="S__zJIHVVqiEfG5K7mY0I3I6w" bpmnElement="_zJIHVVqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="97" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHVlqiEfG5K7mY0I3I6w" bpmnElement="_zJIHVlqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="260" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHV1qiEfG5K7mY0I3I6w" bpmnElement="_zJIHV1qiEfG5K7mY0I3I6w">
+        <dc:Bounds x="14690" y="75" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHWFqiEfG5K7mY0I3I6w" bpmnElement="_zJIHWFqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15060" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHWVqiEfG5K7mY0I3I6w" bpmnElement="_zJIHWVqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="97" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHWlqiEfG5K7mY0I3I6w" bpmnElement="_zJIHWlqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15097" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHW1qiEfG5K7mY0I3I6w" bpmnElement="_zJIHW1qiEfG5K7mY0I3I6w">
+        <dc:Bounds x="14897" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHXFqiEfG5K7mY0I3I6w" bpmnElement="_zJIHXFqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="14890" y="205" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHXVqiEfG5K7mY0I3I6w" bpmnElement="_zJIHXVqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15660" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHYFqiEfG5K7mY0I3I6w" bpmnElement="_zJIHYFqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15697" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHYVqiEfG5K7mY0I3I6w" bpmnElement="_zJIHYVqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15290" y="75" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHYlqiEfG5K7mY0I3I6w" bpmnElement="_zJIHYlqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15497" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHY1qiEfG5K7mY0I3I6w" bpmnElement="_zJIHY1qiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15297" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHZFqiEfG5K7mY0I3I6w" bpmnElement="_zJIHZFqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15090" y="335" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHZVqiEfG5K7mY0I3I6w" bpmnElement="_zJIHZVqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="14890" y="335" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHZlqiEfG5K7mY0I3I6w" bpmnElement="_zJIHZlqiEfG5K7mY0I3I6w">
+        <dc:Bounds x="14660" y="190" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__zJIHZ1qiEfG5K7mY0I3I6w" bpmnElement="_zJIHZ1qiEfG5K7mY0I3I6w">
+        <dc:Bounds x="15490" y="205" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="E_F__zJIHaFqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHaFqiEfG5K7mY0I3I6w">
+        <di:waypoint x="133" y="100" />
+        <di:waypoint x="260" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHaVqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHaVqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15170" y="100" />
+        <di:waypoint x="15200" y="100" />
+        <di:waypoint x="15200" y="230" />
+        <di:waypoint x="14660" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHalqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHalqiEfG5K7mY0I3I6w">
+        <di:waypoint x="14770" y="230" />
+        <di:waypoint x="14830" y="230" />
+        <di:waypoint x="14830" y="360" />
+        <di:waypoint x="14890" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHa1qiEfG5K7mY0I3I6w" bpmnElement="F__zJIHa1qiEfG5K7mY0I3I6w">
+        <di:waypoint x="14940" y="360" />
+        <di:waypoint x="15090" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHbFqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHbFqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15140" y="360" />
+        <di:waypoint x="15215" y="360" />
+        <di:waypoint x="15215" y="100" />
+        <di:waypoint x="15290" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHbVqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHbVqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15340" y="100" />
+        <di:waypoint x="15497" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHblqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHblqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15140" y="360" />
+        <di:waypoint x="15218" y="360" />
+        <di:waypoint x="15218" y="230" />
+        <di:waypoint x="15297" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHb1qiEfG5K7mY0I3I6w" bpmnElement="F__zJIHb1qiEfG5K7mY0I3I6w">
+        <di:waypoint x="15533" y="100" />
+        <di:waypoint x="15615" y="100" />
+        <di:waypoint x="15615" y="230" />
+        <di:waypoint x="15697" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHcFqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHcFqiEfG5K7mY0I3I6w">
+        <di:waypoint x="133" y="230" />
+        <di:waypoint x="7596" y="230" />
+        <di:waypoint x="7596" y="100" />
+        <di:waypoint x="15060" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHcVqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHcVqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15770" y="100" />
+        <di:waypoint x="14690" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHclqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHclqiEfG5K7mY0I3I6w">
+        <di:waypoint x="14740" y="100" />
+        <di:waypoint x="14897" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHc1qiEfG5K7mY0I3I6w" bpmnElement="F__zJIHc1qiEfG5K7mY0I3I6w">
+        <di:waypoint x="14740" y="100" />
+        <di:waypoint x="14815" y="100" />
+        <di:waypoint x="14815" y="230" />
+        <di:waypoint x="14890" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHdFqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHdFqiEfG5K7mY0I3I6w">
+        <di:waypoint x="14940" y="230" />
+        <di:waypoint x="15097" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHdVqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHdVqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15340" y="100" />
+        <di:waypoint x="15415" y="100" />
+        <di:waypoint x="15415" y="230" />
+        <di:waypoint x="15490" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHdlqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHdlqiEfG5K7mY0I3I6w">
+        <di:waypoint x="14940" y="360" />
+        <di:waypoint x="15215" y="360" />
+        <di:waypoint x="15215" y="230" />
+        <di:waypoint x="15490" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHd1qiEfG5K7mY0I3I6w" bpmnElement="F__zJIHd1qiEfG5K7mY0I3I6w">
+        <di:waypoint x="14940" y="230" />
+        <di:waypoint x="15000" y="230" />
+        <di:waypoint x="15000" y="100" />
+        <di:waypoint x="15060" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHeFqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHeFqiEfG5K7mY0I3I6w">
+        <di:waypoint x="370" y="100" />
+        <di:waypoint x="15060" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__zJIHeVqiEfG5K7mY0I3I6w" bpmnElement="F__zJIHeVqiEfG5K7mY0I3I6w">
+        <di:waypoint x="15540" y="230" />
+        <di:waypoint x="15600" y="230" />
+        <di:waypoint x="15600" y="100" />
+        <di:waypoint x="15660" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+

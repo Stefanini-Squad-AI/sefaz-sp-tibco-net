@@ -1,0 +1,699 @@
+{"control_DATAENCPREPNOT_hint":
+  "Data do Enceramento da Preparação da Notificação.",
+  "control_POSICAOINICIO_validation_POSICAOINICIO__lowerLimit_message":
+  "\u0027posicaoInicio\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_HRFIMCQ_label":"HRFIMCQ",
+  "control_IDAIIM_validation_IDAIIM__upperLimit_message":
+  "\u0027idAIIM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_DTPUBLICACAODE_hint":
+  "Data da publicação no Diário Eletronico (DE).",
+  "control_INTIMACAOCOUNT_validation_INTIMACAOCOUNT__length_message":
+  "\u0027intimacaoCount\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_SW_MAINPROC_validation_SW_MAINPROC__length_message":
+  "\u0027SW_MAINPROC\u0027 not valid: expecting a value with no more than 8 characters",
+  "control_TIPOVISTAS_label":"tipoVistas",
+  "control_STSADMTITCNT_validation_STSADMTITCNT__length_message":
+  "\u0027StatusAdmissaoTITCNT\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_CRCASA_validation_CRCASA__length_message":
+  "\u0027crCasa\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_VOLTARSEGINSTAN_validation_VOLTARSEGINSTAN__lowerLimit_message":
+  "\u0027voltarSegInstancia\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_PRAZORELATO_hint":"Campo utilizado para controle de prazo.",
+  "control_CDIMPOSTO_validation_CDIMPOSTO__upperLimit_message":
+  "\u0027Código Imposto\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CODTEXTO_hint":"Identifica o código de texto da intimação.",
+  "control_VOLTARSEGINSTAN_label":"voltarSegInstancia",
+  "control_NR_AIIM_label":"Número do AIIM",
+  "control_CDIMPOSTO_validation_CDIMPOSTO__length_message":
+  "\u0027Código Imposto\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_DOCCONTROL_label":"docControl",
+  "control_QTDINTIMADOS_validation_QTDINTIMADOS__upperLimit_message":
+  "\u0027qtdeIntimados\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_STSADMTITCNT_hint":
+  "Status da admissão da peça do contribuinte da câmara ordinária.",
+  "control_STSPETICAO_validation_STSPETICAO__lowerLimit_message":
+  "\u0027StatusPeticao\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_SW_CASENUMPOC_hint":"Campo interno utilizado pelo iProcess.",
+  "control_RECAPIT_validation_RECAPIT__upperLimit_message":
+  "\u0027Recapitulacao\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_DEAT0050_hint":
+  "Identifica o nome do processo que será aberto dinamicamente.",
+  "control_EXCLUSAOSOLIDAR_hint":
+  "Identifica se há ou não exclusão de solidários.",
+  "control_SW_MAINPROC_label":"SW_MAINPROC","control_NR_RATORIG_hint":
+  "Número da versão Auto de Infração e Imposição de Multa.",
+  "control_CD_DRT_validation_CD_DRT__lowerLimit_message":
+  "\u0027Código da DRT\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NRSUBPRO_label":"nrSubProc",
+  "control_SW_PARENTCASE_validation_SW_PARENTCASE__upperLimit_message":
+  "\u0027SW_PARENTCASE\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_TROCATPNOTIFICA_label":"Trocar Tipo Notificacao",
+  "control_NRSUBPRO_validation_NRSUBPRO__length_message":
+  "\u0027nrSubProc\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_SFPECA3_validation_SFPECA3__length_message":
+  "\u0027sfPeca3\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_QTPECASCNT_validation_QTPECASCNT__lowerLimit_message":
+  "\u0027qtPecasCNT\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_DUMP_label":"DUMP","control_INTIMACAODE_label":"intimacaoDE",
+  "control_DESCREGRA_hint":"Identifica o conteúdo da regra.",
+  "control_INTIMACAOCOUNT_label":"intimacaoCount",
+  "control_DATETIME_validation_DATETIME__length_message":
+  "\u0027DATETIME\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_IDPECASSF_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (SF).",
+  "control_INDICESUBDIN_label":"indiceSubDin",
+  "control_DAYSOVER_validation_DAYSOVER__upperLimit_message":
+  "\u0027daysover\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_INDNAORECORRER_label":"indNaoRecorrer",
+  "control_MAXRETRIES_validation_MAXRETRIES__length_message":
+  "\u0027MaxRetries\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_IDTIPOIMPUGNACA_hint":"Idenficador do tipo de impugnação.",
+  "control_TIPODILIGENCIA_validation_TIPODILIGENCIA__length_message":
+  "\u0027tipoDiligencia\u0027 not valid: expecting a value with no more than 6 characters",
+  "control_STATUSRECURSOS_hint":
+  "Identifica o tipo de status do Recurso.\r\n\r\n1 Admitido\r\n2 Não Admitido\r\n3 Em análise\r\n4 Sobrestado\r\n5 Não provido\r\n6 Provido\r\n7 Analisado\r\n8 Prejudicado",
+  "control_SW_HOSTNAME_validation_SW_HOSTNAME__length_message":
+  "\u0027SW_HOSTNAME\u0027 not valid: expecting a value with no more than 24 characters",
+  "control_ISAPPERROR_hint":
+  "Indicador de que houve um erro de aplicacao (ex, ausencia da informacao no sistema/banco envolvido no servico)",
+  "control_CODUADTJ_hint":
+  "Código da Delegacia Tributária de Julgamento (DTJ).",
+  "control_SFDIASREPRESENT_validation_SFDIASREPRESENT__length_message":
+  "\u0027sfDiasRepresentacao\u0027 not valid: expecting a value with no more than 2 characters",
+  "control_STSRESPCNT_label":"statusRESPCnt",
+  "control_CODMUNICIPIO_validation_CODMUNICIPIO__length_message":
+  "\u0027CodMunicipio\u0027 not valid: expecting an integer with no more than 8 digits",
+  "control_CD_DRT_validation_CD_DRT__length_message":
+  "\u0027Código da DRT\u0027 not valid: expecting an integer with no more than 8 digits",
+  "control_NRAIIM_hint":
+  "Número do  Auto de Infração e Imposição de Multa.",
+  "control_CRCONTRIBUINTE_validation_CRCONTRIBUINTE__length_message":
+  "\u0027crContribuinte\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_INSTANCIA_hint":
+  "Identifica a instância do Auto de Infração e Imposição de Multa.",
+  "control_NUMAPPRETRIES_validation_NUMAPPRETRIES__upperLimit_message":
+  "\u0027NumAppRetries\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CDIMPOSTO_label":"Código Imposto","control_IDAIIM_hint":
+  "Identificador do Auto de Infração e Imposição de Multa.",
+  "control_STSADMTITDRF_validation_STSADMTITDRF__lowerLimit_message":
+  "\u0027StatusAdmissaoTITDRF\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NR_AIIM_hint":
+  "Número do  Auto de Infração e Imposição de Multa.",
+  "form_action_error_message":"Error in script for action {0} ({1}): {2}",
+  "control_NRAIIM_validation_NRAIIM__upperLimit_message":
+  "\u0027nrAiim\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_IDPROCESSO_hint":"Identificador do Processo.",
+  "control_STATUSPRJ_hint":
+  "Identifica o tipo de status do PRJ.\r\n\r\n1 Admitido\r\n2 Não Admitido\r\n3 Em análise\r\n4 Sobrestado\r\n5 Não provido\r\n6 Provido\r\n7 Analisado\r\n8 Prejudicado",
+  "control_IDDECISAOAIIM_validation_IDDECISAOAIIM__lowerLimit_message":
+  "\u0027idDecisaoAIIM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STSRESPSF_validation_STSRESPSF__length_message":
+  "\u0027statusRESPFazenda\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_REGRAINSDOC_hint":
+  "Define as situações de inserção de documento no ePat:\r\n1 - Indicando que foi feita a lavratura no programa AIIM2003 e o método BuscarPdfAuto do WebService retorna os pdfs do relato, Quadro1 e Quadro2; \r\n2 - Indicando que foi um auto feito manualmente pelo fiscal\r\n3 - Indicando que foi feita a lavratura no programa AIIM2003 e o método BuscarPdfAuto do WebService NÃO retorna os pdfs do relato, Quadro1 e Quadro2",
+  "control_AUX_label":"aux","control_INSTANCIA_label":"Instancia",
+  "control_SW_PARENTPROC_hint":"Campo interno utilizado pelo iProcess.",
+  "control_SW_CASENUM_validation_SW_CASENUM__length_message":
+  "\u0027SW_CASENUM\u0027 not valid: expecting an integer with no more than 15 digits",
+  "control_CD_DRT_validation_CD_DRT__upperLimit_message":
+  "\u0027Código da DRT\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_REGRAINSDOC_validation_REGRAINSDOC__length_message":
+  "\u0027Regra de inserção de documentos\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_TIPODILIGENCIA_hint":
+  "Identifica o tipo de diligência.\r\n\r\nValores Possiveis\r\nRF, DRT, PGE, UE, CNT",
+  "control_IDDECISAOAIIM_label":"idDecisaoAIIM",
+  "control_CRCONTRIBUINTE_hint":
+  "Identifica se há contra razão do Contribuinte.","control_VRAIIM_label":
+  "vrAIIM","control_INDRESPPRM_validation_INDRESPPRM__upperLimit_message":
+  "\u0027indRespPRM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SFPECA3_label":"sfPeca3",
+  "control_DESCREGRA_validation_DESCREGRA__length_message":
+  "\u0027DescricaoRegra\u0027 not valid: expecting a value with no more than 250 characters",
+  "control_STATUS_CODE_hint":
+  "Status da chamada, considera-se chamada bem sucedida quando o servico retorna o valor 0 para o campo.",
+  "control_FLAGCONTRARAZAO_hint":"Identifica se há ou não contra razão.",
+  "control_DTCIENCIA_label":"dtCiencia","control_NR_RAT_hint":
+  "Versão do Auto de Infração e Imposição de Multa.",
+  "control_QTPECASSEFAZ_validation_QTPECASSEFAZ__lowerLimit_message":
+  "\u0027qtPecasSefaz\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STSPETICAO_label":"StatusPeticao",
+  "control_IDDECISAODEBITO_validation_IDDECISAODEBITO__lowerLimit_message":
+  "\u0027idDecisaoDebitoFiscal\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDAIIM_validation_IDAIIM__lowerLimit_message":
+  "\u0027idAIIM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_REGRAINSDOC_validation_REGRAINSDOC__lowerLimit_message":
+  "\u0027Regra de inserção de documentos\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NR_RATORIG_validation_NR_RATORIG__upperLimit_message":
+  "\u0027NR_RAT\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_PRAZORETIRADAVI_hint":"Campo utilizado para controle de prazo.",
+  "control_NOMEETAPA_label":"Nome da Etapa","control_SW_MAINCASEPOC_hint":
+  "Campo interno utilizado pelo iProcess.",
+  "control_AUX_validation_AUX__length_message":
+  "\u0027aux\u0027 not valid: expecting a value with no more than 255 characters",
+  "control_TROCATPNOTIFICA_validation_TROCATPNOTIFICA__length_message":
+  "\u0027Trocar Tipo Notificacao\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_ISAPPERROR_validation_ISAPPERROR__length_message":
+  "\u0027IsAppError\u0027 not valid: expecting a value with no more than 1 characters",
+  "control_cancel_label":"Cancel","control_DATETIME_hint":
+  "Data e Hora da entrada no subprocesso o campo sera enviado ao servico.",
+  "control_STSRESPCNT_validation_STSRESPCNT__upperLimit_message":
+  "\u0027statusRESPCnt\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_PARTICIPANTE_label":"participante","control_CCRELATORIO_label":
+  "CCRELATORIO","control_CNTPECA2_validation_CNTPECA2__length_message":
+  "\u0027cntPeca2\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_CODMUNICIPIO_hint":
+  "Código do município do Auto de Infração e Imposição de Multa.",
+  "control_STSADMTITCNT_label":"StatusAdmissaoTITCNT",
+  "control_SERVICE_NAME_label":"SERVICE_NAME","control_FIMSTRING_label":
+  "fimString","control_FLGALC_label":"FlagAlcada","control_INDRESPPRM_hint":
+  "Identifica se há ou não existência de Pedido de Reforma de Julgado (PRM).\r\nValores possiveis:\r\n0 para nao tem Recurso Especial  e/ou Pedido de Reforma de Julgado \r\n1 para tem Recurso Especial ou Pedido de Reforma de Julgado \r\n2 para tem Recurso Especial (ambos os envolvidos) ou Pedido de Reforma de Julgado \r\n3 para  tem Recurso Especial (contribuinte) e Pedido de Reforma de Julgado",
+  "control_SW_MAINPROC_hint":
+  "Nome do processo da procedure que iniciou o caso, no caso do epat, o numero se refere ao numero do caso do processo DEAT0010.",
+  "control_RECAPIT_validation_RECAPIT__lowerLimit_message":
+  "\u0027Recapitulacao\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_DUMP_hint":"Dump do request executado no servico.",
+  "control_ORIGEM_hint":"Identifica a origem da contra razão.",
+  "control_INTIMACAOCARTA_label":"intimacaoCarta",
+  "control_FIMSTRING_validation_FIMSTRING__lowerLimit_message":
+  "\u0027fimString\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_SW_CASENUM_label":"SW_CASENUM",
+  "control_CRCASA_validation_CRCASA__upperLimit_message":
+  "\u0027crCasa\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_INTIMACAODE_validation_INTIMACAODE__upperLimit_message":
+  "\u0027intimacaoDE\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_DATAENCPREPNOT_label":"Data Encerramento Preparar Notifica",
+  "control_SW_CASEDESC_label":"SW_CASEDESC",
+  "control_POSICAOFIM_validation_POSICAOFIM__length_message":
+  "\u0027posicaoFim\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_CHEFEUJ_label":"ChefeUJ","control_SFPECA4_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_TIPOVISTAS_validation_TIPOVISTAS__length_message":
+  "\u0027tipoVistas\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_NR_RATORIG_validation_NR_RATORIG__lowerLimit_message":
+  "\u0027NR_RAT\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDAIIMORIGINAL_validation_IDAIIMORIGINAL__lowerLimit_message":
+  "\u0027idAiimOriginal\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STSRESPSF_validation_STSRESPSF__lowerLimit_message":
+  "\u0027statusRESPFazenda\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NUMAPPRETRIES_hint":"numero da tentativa corrente",
+  "control_STSRESPSF_label":"statusRESPFazenda",
+  "control_CODMUNICIPIO_validation_CODMUNICIPIO__lowerLimit_message":
+  "\u0027CodMunicipio\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STATUSRECURSOS_label":"statusRecursos","control_ISAPPERROR_label":
+  "IsAppError",
+  "control_IDTIPOIMPUGNACA_validation_IDTIPOIMPUGNACA__length_message":
+  "\u0027idTipoImpugnacao\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_CRCASA_validation_CRCASA__lowerLimit_message":
+  "\u0027crCasa\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_RECAPIT_validation_RECAPIT__length_message":
+  "\u0027Recapitulacao\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_DOCCONTROL_validation_DOCCONTROL__length_message":
+  "\u0027docControl\u0027 not valid: expecting a value with no more than 10 characters",
+  "control_EMAILRELATOR_hint":"Identifica o email do relator.",
+  "control_TIPOVISTAS_hint":
+  "Identifica o tipo de vista:\r\n\r\nMISTA\r\nJUIZ\r\nDRF",
+  "control_CNTPECA1_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_NR_RAT_validation_NR_RAT__length_message":
+  "\u0027Versão do AIIM\u0027 not valid: expecting an integer with no more than 11 digits",
+  "control_TEMPORESPOSTA_validation_TEMPORESPOSTA__length_message":
+  "\u0027tempoResposta\u0027 not valid: expecting a value with no more than 2 characters",
+  "control_STERRORDESC_label":"STErrorDesc",
+  "control_VRAIIM_validation_VRAIIM__fixed_message":
+  "\u0027vrAIIM\u0027 not valid: expecting a fixed point decimal number with no more than 15 digits and 3 decimal places",
+  "control_INTIMACAOCOUNT_hint":"Campo interno utilizado pelo iProcess.",
+  "control_INTIMACAODE_validation_INTIMACAODE__length_message":
+  "\u0027intimacaoDE\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_STATUS_CODE_validation_STATUS_CODE__length_message":
+  "\u0027STATUS_CODE\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_INDICESUBDIN_hint":"Descontinuado.","control_IDPECASCNT_hint":
+  "Idenficador do tipo de peça do Contribuinte.",
+  "control_STSRESPCNT_validation_STSRESPCNT__length_message":
+  "\u0027statusRESPCnt\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_SERVICE_NAME_hint":"Nome do servico retornado na chamada",
+  "control_QTPECASCNT_validation_QTPECASCNT__upperLimit_message":
+  "\u0027qtPecasCNT\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CNTPECA4_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_HORAFINAL_label":"horafinal",
+  "control_STSPRMSF_validation_STSPRMSF__length_message":
+  "\u0027statusPRMFazenda\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_STERRORCODE_hint":"Codigo do erro da chamada do servico.",
+  "control_CCRELATORIO_validation_CCRELATORIO__length_message":
+  "\u0027CCRELATORIO\u0027 not valid: expecting a value with no more than 150 characters",
+  "control_IDSINTIMADOS_hint":"Identicador do(s) Intimado(s).",
+  "control_CRCASA_hint":
+  "Identifica se há contra razão da Secretaria da Fazenda.",
+  "control_CNTPECA2_label":"cntPeca2","control_SFPECA4_label":"sfPeca4",
+  "control_SFPECA2_label":"sfPeca2","control_FORMACORRECAO_hint":
+  "Identifica a forma de correção da retirratificação: \"Correcao\", \"Retirati\".",
+  "control_NR_RAT_label":"Versão do AIIM",
+  "control_SW_CASENUMPOC_validation_SW_CASENUMPOC__lowerLimit_message":
+  "\u0027SW_CASENUMPOC\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NR_AIIM_validation_NR_AIIM__lowerLimit_message":
+  "\u0027Número do AIIM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STSRESPCNT_hint":
+  "Resultado da admissão do Recurso Especial do Contribuinte.",
+  "control_DAYSOVER_hint":"Campo interno utilizado pelo iProcess.",
+  "control_NUMAPPRETRIES_label":"NumAppRetries",
+  "control_STATUSPRJ_validation_STATUSPRJ__upperLimit_message":
+  "\u0027statusPrj\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_COORDENADOR_hint":"Coordenador de Equipe.","pane_toolbar_label":
+  "Toolbar","control_ARRAYINT_label":"arrayIntimados",
+  "control_QTDINTIMADOS_validation_QTDINTIMADOS__length_message":
+  "\u0027qtdeIntimados\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_NOTIFICACAO_hint":
+  "Numero do Domicílio Eletronico do Contribuinte (DEC). Formato: \"[CPF];[TIPONOTIFICACAO];[IDNOTIFICACAO]|\".",
+  "control_SW_CASEDESC_validation_SW_CASEDESC__length_message":
+  "\u0027SW_CASEDESC\u0027 not valid: expecting a value with no more than 24 characters",
+  "control_ISTECHERROR_hint":
+  "Indicador de que houve um erro de sistema (ex, servico indisponivel)",
+  "control_DILIGENCIA_label":"diligencia",
+  "control_FORMACORRECAO_validation_FORMACORRECAO__length_message":
+  "\u0027Forma de Correção\u0027 not valid: expecting a value with no more than 20 characters",
+  "control_SW_MAINCASEPOC_validation_SW_MAINCASEPOC__lowerLimit_message":
+  "\u0027SW_MAINCASEPOC\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDPECASSF_validation_IDPECASSF__length_message":
+  "\u0027idPecasSf\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_NRSUBPRO_hint":"Campo interno utilizado pelo iProcess.",
+  "control_INTIMACAOCOUNT_validation_INTIMACAOCOUNT__upperLimit_message":
+  "\u0027intimacaoCount\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_POSICAOINICIO_hint":"Campo interno utilizado pelo iProcess.",
+  "control_NR_AIIM_validation_NR_AIIM__upperLimit_message":
+  "\u0027Número do AIIM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_INTIMACAOCARTA_validation_INTIMACAOCARTA__upperLimit_message":
+  "\u0027intimacaoCarta\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_STSPRMSF_validation_STSPRMSF__upperLimit_message":
+  "\u0027statusPRMFazenda\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SW_MAINCASEPOC_validation_SW_MAINCASEPOC__length_message":
+  "\u0027SW_MAINCASEPOC\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_REGRAINSDOC_validation_REGRAINSDOC__upperLimit_message":
+  "\u0027Regra de inserção de documentos\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CNTPECA2_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_STERRORCODE_label":"STErrorCode","control_ANULACAODTJ_label":
+  "AnulacaoDTJ",
+  "control_QTPECASSEFAZ_validation_QTPECASSEFAZ__upperLimit_message":
+  "\u0027qtPecasSefaz\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_NOVOMODELO_hint":
+  "Identifica se o Auto de Infração e Imposição de Multa utiliza o novo modelo de intimações.",
+  "control_LINKIPE_validation_LINKIPE__length_message":
+  "\u0027LinkIpe\u0027 not valid: expecting a value with no more than 255 characters",
+  "control_QTPECASSEFAZ_hint":
+  "Identifica a quantidade de peças da Secretaria da Fazenda (Sefaz).",
+  "control_STSPETICAO_validation_STSPETICAO__upperLimit_message":
+  "\u0027StatusPeticao\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_INDICESUBDIN_validation_INDICESUBDIN__length_message":
+  "\u0027indiceSubDin\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_EXCLUSAOSOLIDAR_label":"ExclusaoSolidarios",
+  "control_CNTPECA1_validation_CNTPECA1__length_message":
+  "\u0027cntPeca1\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_CNTPECA1_label":"cntPeca1","control_STATUS_CODE_label":
+  "STATUS_CODE","control_SFDIASREPRESENT_hint":
+  "Identifica a quantidade de dias para manifestação por parte da Secretaria da Fazenda (Sefaz).",
+  "control_STSADMTITDRF_validation_STSADMTITDRF__length_message":
+  "\u0027StatusAdmissaoTITDRF\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_IDPECASSF_label":"idPecasSf","control_AFR_label":
+  "Agente Fiscal de Renda","control_CODMUNAIIM_label":
+  "Código do Município do AIIM","control_DOCCONTROL_hint":
+  "Identifica qual processo será aberto dinâmicamente.",
+  "control_ORIGEM_label":"origem",
+  "control_CNTPECA3_validation_CNTPECA3__length_message":
+  "\u0027cntPeca3\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_STSADMTITDRF_validation_STSADMTITDRF__upperLimit_message":
+  "\u0027StatusAdmissaoTITDRF\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_RECURSOOFICIO_label":"recursoOficio",
+  "control_CNTINSTANCIASUF_validation_CNTINSTANCIASUF__lowerLimit_message":
+  "\u0027cntInstanciasUFC\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_ARRAYINT_validation_ARRAYINT__length_message":
+  "\u0027arrayIntimados\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_IDPECASCNT_validation_IDPECASCNT__length_message":
+  "\u0027idPecasCnt\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_CHEFEUJ_hint":"Identifica o chefe da Unidade de Julgamento.",
+  "control_STERRORDESC_validation_STERRORDESC__length_message":
+  "\u0027STErrorDesc\u0027 not valid: expecting a value with no more than 100 characters",
+  "control_BCCRELATORIO_validation_BCCRELATORIO__length_message":
+  "\u0027BCCRELATORIO\u0027 not valid: expecting a value with no more than 150 characters",
+  "control_INTIMACAODE_validation_INTIMACAODE__lowerLimit_message":
+  "\u0027intimacaoDE\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_INDICESUBDIN_validation_INDICESUBDIN__upperLimit_message":
+  "\u0027indiceSubDin\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_FORMACORRECAO_label":"Forma de Correção","control_DEAT0050_label":
+  "DEAT0050","control_IDPROCESSO_validation_IDPROCESSO__upperLimit_message":
+  "\u0027idProcesso\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_ISTECHERROR_label":"IsTechError",
+  "control_SW_PARENTCASE_validation_SW_PARENTCASE__length_message":
+  "\u0027SW_PARENTCASE\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_SFPECA3_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_STATUSRECURSOS_validation_STATUSRECURSOS__length_message":
+  "\u0027statusRecursos\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_IDMOTIVOINTIMAC_validation_IDMOTIVOINTIMAC__lowerLimit_message":
+  "\u0027idMotivoIntimacao\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STSPRMSF_label":"statusPRMFazenda",
+  "control_POSICAOINICIO_validation_POSICAOINICIO__upperLimit_message":
+  "\u0027posicaoInicio\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_STATUSRECURSOS_validation_STATUSRECURSOS__lowerLimit_message":
+  "\u0027statusRecursos\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_RESPOSTACQ_validation_RESPOSTACQ__length_message":
+  "\u0027Resposta do Contorle de Qualidade\u0027 not valid: expecting a value with no more than 10 characters",
+  "control_INSTANCIA_validation_INSTANCIA__upperLimit_message":
+  "\u0027Instancia\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SW_PARENTPROC_label":"SW_PARENTPROC",
+  "control_IDDECISAOAIIM_validation_IDDECISAOAIIM__length_message":
+  "\u0027idDecisaoAIIM\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_IDDECISAOAIIM_hint":
+  "Identifica a decisão referente ao Auto de Infração e Imposição de Multa (AIIM).",
+  "control_IDPROCESSO_label":"idProcesso",
+  "control_DILIGENCIADESTI_validation_DILIGENCIADESTI__length_message":
+  "\u0027diligenciaDestino\u0027 not valid: expecting a value with no more than 20 characters",
+  "control_FLAGRETIRATE_label":"flagretirate","form_required_message":
+  "{0} is a required field.",
+  "control_INDRESPPRM_validation_INDRESPPRM__length_message":
+  "\u0027indRespPRM\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_CRCONTRIBUINTE_label":"crContribuinte",
+  "control_SITUACAOCARREGA_label":"Situação do carregamento do AIIM",
+  "control_SW_MAINCASE_validation_SW_MAINCASE__length_message":
+  "\u0027SW_MAINCASE\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_INTIMACAODE_hint":
+  "Identifica se a intimação é do tipo Diário Eletrônico (DE).",
+  "control_CODUADRT_hint":"Código da Delegacia Reginal Tributária (DRT).",
+  "control_VICIOREPRESENTA_hint":
+  "Identifica se há vício de representação.","control_TIPODILIGENCIA_label":
+  "tipoDiligencia",
+  "control_IDMOTIVOINTIMAC_validation_IDMOTIVOINTIMAC__upperLimit_message":
+  "\u0027idMotivoIntimacao\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_IDPROCESSO_validation_IDPROCESSO__lowerLimit_message":
+  "\u0027idProcesso\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_CNTPECA4_validation_CNTPECA4__length_message":
+  "\u0027cntPeca4\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_NOMEETAPA_hint":
+  "Nome da etapa que o processo entrou.\r\nUtilizado para retirar da atividade \"Arquivo Morto\"",
+  "control_NOTIFICACAO_label":"notificacao",
+  "control_MAXRETRIES_validation_MAXRETRIES__upperLimit_message":
+  "\u0027MaxRetries\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_REGRAINSDOC_label":"Regra de inserção de documentos",
+  "control_BCCRELATORIO_label":"BCCRELATORIO","control_STSADMTITDRF_hint":
+  "Status da admissão da peça da Secretaria da Fazenda (Sefaz) da câmara ordinária.",
+  "control_DILIGENCIA_hint":"Identifica se foi solicitada Diligência.",
+  "control_DEFESAADMITIDA_label":"defesaAdmitida","control_NOVOMODELO_label":
+  "novoModelo","control_RESPOSTACQ_hint":
+  "Roteamento do Controle de qualidade:\r\n-\"Fechar\";\r\n-\"Desistir\";\r\n-\"Corrigir\".",
+  "control_INTIMACAOCARTA_hint":
+  "Identifica se a intimação é do tipo carta.","control_CORRECAO_hint":
+  "Identifica se há ou não correção.",
+  "control_CRCONTRIBUINTE_validation_CRCONTRIBUINTE__lowerLimit_message":
+  "\u0027crContribuinte\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STSADMTITDRF_label":"StatusAdmissaoTITDRF",
+  "control_CNTPECA3_label":"cntPeca3","control_PARTICIPANTE_hint":
+  "Identifica o responsável por fazer determinada atividade.",
+  "control_PROCESS_ID_label":"PROCESS_ID","control_RECURSOOFICIO_hint":
+  "Identifica se há recurso de ofício interposto.","control_RECAPIT_label":
+  "Recapitulacao","control_POSICAOFIM_label":"posicaoFim",
+  "control_SW_CASENUM_hint":"Campo interno utilizado pelo iProcess.",
+  "control_INSTANCIA_validation_INSTANCIA__length_message":
+  "\u0027Instancia\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_FLGALC_hint":
+  "Define o critério para decidir se um processo deve ir para o TIT (1) ou para a DTJ (0) é o valor do débito fiscal exigido na data da lavratura do auto de infração.",
+  "control_NOMEETAPA_validation_NOMEETAPA__length_message":
+  "\u0027Nome da Etapa\u0027 not valid: expecting a value with no more than 8 characters",
+  "control_DAYSOVER_validation_DAYSOVER__length_message":
+  "\u0027daysover\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_STERRORDESC_hint":"Descricao do erro da chamada do servico.",
+  "control_TEMPORESPOSTA_hint":
+  "Período em dias para resposta do Contribuinte.",
+  "control_DILIGENCIADESTI_hint":
+  "Identifica o local de destino quando uma Diligência é solicitada.",
+  "control_SW_PARENTPROC_validation_SW_PARENTPROC__length_message":
+  "\u0027SW_PARENTPROC\u0027 not valid: expecting a value with no more than 8 characters",
+  "control_IDMOTIVOINTIMAC_hint":"Identifica o motivo da intimação.",
+  "control_CODTEXTO_label":"codTexto",
+  "control_STSRESPSF_validation_STSRESPSF__upperLimit_message":
+  "\u0027statusRESPFazenda\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_NR_AIIM_validation_NR_AIIM__length_message":
+  "\u0027Número do AIIM\u0027 not valid: expecting an integer with no more than 11 digits",
+  "control_FLAGCONTRARAZAO_label":"flagContraRazao","control_CORRECAO_label":
+  "correcao","control_DOCSREQUERIDOS_hint":
+  "Documentos Permitidos para esta fase.",
+  "control_SW_MAINCASE_validation_SW_MAINCASE__lowerLimit_message":
+  "\u0027SW_MAINCASE\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_CTRLIATV_label":"CTRLIATV","control_CODUADRT_label":"codUADRT",
+  "control_PRAZOVISTA_label":"PrazoVista","control_CNTPECA4_label":
+  "cntPeca4","control_EXISTENOTIFICAC_label":"existeNotificacao",
+  "control_IDSINTIMADOS_validation_IDSINTIMADOS__length_message":
+  "\u0027idsIntimados\u0027 not valid: expecting a value with no more than 250 characters",
+  "control_STATUSRECURSOS_validation_STATUSRECURSOS__upperLimit_message":
+  "\u0027statusRecursos\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_INDICESUBDIN_validation_INDICESUBDIN__lowerLimit_message":
+  "\u0027indiceSubDin\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_CNTINSTANCIASUF_hint":
+  "Contador de instancias de analise Unidade Fiscal de Cobrança (UFC).",
+  "control_STERRORCODE_validation_STERRORCODE__length_message":
+  "\u0027STErrorCode\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_CODMUNICIPIO_validation_CODMUNICIPIO__upperLimit_message":
+  "\u0027CodMunicipio\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SFPECA2_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_CNTINSTANCIASUF_label":"cntInstanciasUFC",
+  "control_CODUADTJ_label":"cod UA DTJ","pane_root_label":
+  "Realizar Atividade Vista Mista",
+  "control_SW_MAINCASEPOC_validation_SW_MAINCASEPOC__upperLimit_message":
+  "\u0027SW_MAINCASEPOC\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_OUTCOME_label":"Outcome","control_IDMOTIVOINTIMAC_label":
+  "idMotivoIntimacao","control_DTFIMCQ_label":"DTFIMCQ","control_AFR_hint":
+  "Agente Fiscal de Renda (AFR) identifica o nome do fiscal responsável.",
+  "control_EMAILVISTAS_hint":"Identifica o email do responsavel.",
+  "control_CODMUNAIIM_validation_CODMUNAIIM__upperLimit_message":
+  "\u0027Código do Município do AIIM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CODTEXTO_validation_CODTEXTO__length_message":
+  "\u0027codTexto\u0027 not valid: expecting a value with no more than 4 characters",
+  "control_POSICAOINICIO_validation_POSICAOINICIO__length_message":
+  "\u0027posicaoInicio\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_CTRLIATV_hint":"Identifica se há ou não um subprocesso ativo.",
+  "control_SFPECA4_validation_SFPECA4__length_message":
+  "\u0027sfPeca4\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_TEMPORESPOSTA_label":"tempoResposta","control_NR_RATORIG_label":
+  "NR_RAT","control_LINKIPE_label":"LinkIpe",
+  "control_SW_MAINCASE_validation_SW_MAINCASE__upperLimit_message":
+  "\u0027SW_MAINCASE\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_QTDINTIMADOS_hint":"Identificador dos intimados do processo.",
+  "control_STSRESPCNT_validation_STSRESPCNT__lowerLimit_message":
+  "\u0027statusRESPCnt\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_CTL_RETIRAT_validation_CTL_RETIRAT__length_message":
+  "\u0027CTL_RETIRAT\u0027 not valid: expecting a value with no more than 10 characters",
+  "control_SW_CASENUM_validation_SW_CASENUM__upperLimit_message":
+  "\u0027SW_CASENUM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_NRAIIM_validation_NRAIIM__length_message":
+  "\u0027nrAiim\u0027 not valid: expecting an integer with no more than 11 digits",
+  "control_MAXRETRIES_label":"MaxRetries","control_QTPECASCNT_hint":
+  "Identifica a quantidade de peças do Contribuinte.",
+  "control_QTPECASCNT_validation_QTPECASCNT__length_message":
+  "\u0027qtPecasCNT\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_ISTECHERROR_validation_ISTECHERROR__length_message":
+  "\u0027IsTechError\u0027 not valid: expecting a value with no more than 1 characters",
+  "control_QTPECASSEFAZ_validation_QTPECASSEFAZ__length_message":
+  "\u0027qtPecasSefaz\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_IDTIPOIMPUGNACA_label":"idTipoImpugnacao",
+  "control_EMAILVISTAS_label":"email Vistas","control_DAYSOVER_label":
+  "daysover","control_SW_PARENTCASE_hint":
+  "Campo interno utilizado pelo iProcess.","control_VICIOREPRESENTA_label":
+  "vicioRepresentacao","control_AUX_hint":
+  "Campo interno utilizado pelo iProcess.","control_SFPECA1_label":
+  "sfPeca1","control_CODMUNAIIM_validation_CODMUNAIIM__lowerLimit_message":
+  "\u0027Código do Município do AIIM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_INTIMACAOCARTA_validation_INTIMACAOCARTA__length_message":
+  "\u0027intimacaoCarta\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_CODMUNAIIM_validation_CODMUNAIIM__length_message":
+  "\u0027Código do Município do AIIM\u0027 not valid: expecting an integer with no more than 8 digits",
+  "form_validation_error_message":
+  "Error in script for validation {0} of Control {1} ({2}): {3}",
+  "control_DEAT0050_validation_DEAT0050__length_message":
+  "\u0027DEAT0050\u0027 not valid: expecting a value with no more than 8 characters",
+  "control_FIMSTRING_validation_FIMSTRING__upperLimit_message":
+  "\u0027fimString\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SFDIASREPRESENT_label":"sfDiasRepresentacao",
+  "control_VOLTARSEGINSTAN_validation_VOLTARSEGINSTAN__upperLimit_message":
+  "\u0027voltarSegInstancia\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_STATUSPRJ_validation_STATUSPRJ__length_message":
+  "\u0027statusPrj\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_FLAGCRZ_label":"FlagCrz","control_SW_PARENTCASE_label":
+  "SW_PARENTCASE","control_FLAGRETIRATE_hint":
+  "Identifica se há Retirrati.",
+  "control_STSADMTITCNT_validation_STSADMTITCNT__upperLimit_message":
+  "\u0027StatusAdmissaoTITCNT\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_QTPECASSEFAZ_label":"qtPecasSefaz",
+  "control_INTIMACAOCARTA_validation_INTIMACAOCARTA__lowerLimit_message":
+  "\u0027intimacaoCarta\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_TROCATPNOTIFICA_validation_TROCATPNOTIFICA__upperLimit_message":
+  "\u0027Trocar Tipo Notificacao\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_IDDECISAODEBITO_label":"idDecisaoDebitoFiscal",
+  "control_CODMUNICIPIO_label":"CodMunicipio",
+  "control_NR_RATORIG_validation_NR_RATORIG__length_message":
+  "\u0027NR_RAT\u0027 not valid: expecting an integer with no more than 11 digits",
+  "control_STSRESPSF_hint":
+  "Resultado da admissão do Recurso Especial da Secretaria da Fazenda (Sefaz).",
+  "control_IDDECISAODEBITO_validation_IDDECISAODEBITO__length_message":
+  "\u0027idDecisaoDebitoFiscal\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_CDIMPOSTO_hint":"Código do Imposto.",
+  "control_STSPETICAO_validation_STSPETICAO__length_message":
+  "\u0027StatusPeticao\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_TROCATPNOTIFICA_validation_TROCATPNOTIFICA__lowerLimit_message":
+  "\u0027Trocar Tipo Notificacao\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NR_RAT_validation_NR_RAT__lowerLimit_message":
+  "\u0027Versão do AIIM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDDECISAODEBITO_hint":"Identifica o tipo de decisão de débito.",
+  "control_CDIMPOSTO_validation_CDIMPOSTO__lowerLimit_message":
+  "\u0027Código Imposto\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDAIIMORIGINAL_label":"idAiimOriginal",
+  "control_DAYSOVER_validation_DAYSOVER__lowerLimit_message":
+  "\u0027daysover\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_PROCESS_ID_hint":
+  "identificador da chamada (para efeitos de log) nos casos do ePat, o valor padrao é:\r\nidAiim e idProcesso",
+  "control_QTDINTIMADOS_validation_QTDINTIMADOS__lowerLimit_message":
+  "\u0027qtdeIntimados\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_PROCESS_ID_validation_PROCESS_ID__length_message":
+  "\u0027PROCESS_ID\u0027 not valid: expecting a value with no more than 35 characters",
+  "control_NRAIIM_label":"nrAiim","control_SFPECA1_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_IDAIIM_label":"idAIIM","control_CODMUNAIIM_hint":
+  "Código do município do Auto de Infração e Imposição de Multa.",
+  "control_SITUACAOCARREGA_validation_SITUACAOCARREGA__length_message":
+  "\u0027Situação do carregamento do AIIM\u0027 not valid: expecting a value with no more than 10 characters",
+  "control_DATETIME_label":"DATETIME",
+  "control_OUTCOME_validation_OUTCOME__length_message":
+  "\u0027Outcome\u0027 not valid: expecting a value with no more than 10 characters",
+  "control_SITUACAOCARREGA_hint":
+  "Situação do carregamento do Auto de Infração e Imposição de Multa.",
+  "control_POSICAOINICIO_label":"posicaoInicio",
+  "control_IDDECISAODEBITO_validation_IDDECISAODEBITO__upperLimit_message":
+  "\u0027idDecisaoDebitoFiscal\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_ORIGEM_validation_ORIGEM__length_message":
+  "\u0027origem\u0027 not valid: expecting a value with no more than 5 characters",
+  "control_INSTANCIA_validation_INSTANCIA__lowerLimit_message":
+  "\u0027Instancia\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_DEFESAADMITIDA_hint":
+  "Identifica se a defesa interposta foi admitida.",
+  "control_INDRESPPRM_validation_INDRESPPRM__lowerLimit_message":
+  "\u0027indRespPRM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_close_label":"Close","control_ARRAYINT_hint":
+  "Campo interno utilizado pelo iProcess.",
+  "control_IDAIIMORIGINAL_validation_IDAIIMORIGINAL__length_message":
+  "\u0027idAiimOriginal\u0027 not valid: expecting an integer with no more than 11 digits",
+  "control_DOCSPERMITIDOS_label":"DocsPermitidos",
+  "control_VOLTARSEGINSTAN_validation_VOLTARSEGINSTAN__length_message":
+  "\u0027voltarSegInstancia\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_INDNAORECORRER_hint":
+  "Identifica se a representação fiscal vai recorrer ou não.",
+  "control_CTL_RETIRAT_hint":"Cotrole  da Retirratificação.",
+  "control_DTPUBLICACAODE_label":"dtPublicacaoDE",
+  "control_IDAIIM_validation_IDAIIM__length_message":
+  "\u0027idAIIM\u0027 not valid: expecting an integer with no more than 11 digits",
+  "control_OUTCOME_hint":
+  "Resultado da consulta, valor validado para que o fluxo considere a chamada bem sucedida, OK",
+  "control_CNTPECA3_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_TROCATPNOTIFICA_hint":
+  "Se verdadeiro, aiim está executando a troca do tipo de uma notificação.",
+  "control_CD_DRT_hint":"Código da Delegacia Reginal Tributária (DRT).",
+  "control_DOCSREQUERIDOS_label":"DocsRequeridos","control_FIMSTRING_hint":
+  "Campo interno utilizado pelo iProcess.","control_EMAILRELATOR_label":
+  "email Relator",
+  "control_STSADMTITCNT_validation_STSADMTITCNT__lowerLimit_message":
+  "\u0027StatusAdmissaoTITCNT\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_POSICAOFIM_validation_POSICAOFIM__lowerLimit_message":
+  "\u0027posicaoFim\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDAIIMORIGINAL_hint":
+  "Identificador do Auto de Infração e Imposição de Multa gerado na data de lavratura.",
+  "control_FIMSTRING_validation_FIMSTRING__length_message":
+  "\u0027fimString\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_CNTINSTANCIASUF_validation_CNTINSTANCIASUF__length_message":
+  "\u0027cntInstanciasUFC\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_CRCONTRIBUINTE_validation_CRCONTRIBUINTE__upperLimit_message":
+  "\u0027crContribuinte\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_STSPRMSF_validation_STSPRMSF__lowerLimit_message":
+  "\u0027statusPRMFazenda\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_IDMOTIVOINTIMAC_validation_IDMOTIVOINTIMAC__length_message":
+  "\u0027idMotivoIntimacao\u0027 not valid: expecting an integer with no more than 1 digits",
+  "control_NR_RAT_validation_NR_RAT__upperLimit_message":
+  "\u0027Versão do AIIM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_DTCIENCIA_hint":
+  "Data que o contribuinte tomou ciência da Notificação.",
+  "control_MAXRETRIES_hint":
+  "numero maximo de tentativas antes que o processo caia em fila de tratamento de excessao",
+  "control_SFPECA2_validation_SFPECA2__length_message":
+  "\u0027sfPeca2\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_CRCASA_label":"crCasa",
+  "control_DOCSREQUERIDOS_validation_DOCSREQUERIDOS__length_message":
+  "\u0027DocsRequeridos\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_IDAIIMORIGINAL_validation_IDAIIMORIGINAL__upperLimit_message":
+  "\u0027idAiimOriginal\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_DOCSPERMITIDOS_hint":"Documentos Permitidos para esta fase.",
+  "control_STATUSPRJ_validation_STATUSPRJ__lowerLimit_message":
+  "\u0027statusPrj\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_STATUSPRJ_label":"statusPrj",
+  "control_SW_CASENUM_validation_SW_CASENUM__lowerLimit_message":
+  "\u0027SW_CASENUM\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_VRAIIM_hint":"Valor do Auto de Infração e Imposição de Multa.",
+  "control_MAXRETRIES_validation_MAXRETRIES__lowerLimit_message":
+  "\u0027MaxRetries\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_SW_CASENUMPOC_validation_SW_CASENUMPOC__upperLimit_message":
+  "\u0027SW_CASENUMPOC\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_IDDECISAOAIIM_validation_IDDECISAOAIIM__upperLimit_message":
+  "\u0027idDecisaoAIIM\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_submit_label":"Submit","control_PRAZORETIRADAVI_label":
+  "PrazoRetiradaVista","control_RECAPIT_hint":
+  "Recapitulação do Auto de Infração e Imposição de Multa.",
+  "control_SW_MAINCASE_label":"SW_MAINCASE","control_QTPECASCNT_label":
+  "qtPecasCNT","control_COORDENADOR_label":"Coordenador",
+  "control_SW_MAINCASEPOC_label":"SW_MAINCASEPOC","control_RESPOSTACQ_label":
+  "Resposta do Contorle de Qualidade",
+  "control_SW_CASENUMPOC_validation_SW_CASENUMPOC__length_message":
+  "\u0027SW_CASENUMPOC\u0027 not valid: expecting an integer with no more than 15 digits",
+  "control_NUMAPPRETRIES_validation_NUMAPPRETRIES__length_message":
+  "\u0027NumAppRetries\u0027 not valid: expecting an integer with no more than 10 digits",
+  "control_CTL_RETIRAT_label":"CTL_RETIRAT","control_DILIGENCIADESTI_label":
+  "diligenciaDestino","control_VOLTARSEGINSTAN_hint":
+  "0 - nao devolver\r\n1 - devolver para agenda\r\n2 - devolver para parecer do relator",
+  "control_IDPROCESSO_validation_IDPROCESSO__length_message":
+  "\u0027idProcesso\u0027 not valid: expecting an integer with no more than 9 digits",
+  "control_NRAIIM_validation_NRAIIM__lowerLimit_message":
+  "\u0027nrAiim\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_NUMAPPRETRIES_validation_NUMAPPRETRIES__lowerLimit_message":
+  "\u0027NumAppRetries\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_SW_HOSTNAME_label":"SW_HOSTNAME","control_SW_HOSTNAME_hint":
+  "Campo interno utilizado pelo iProcess.","pane_messages_label":
+  "Invalid Entries",
+  "control_SW_PARENTCASE_validation_SW_PARENTCASE__lowerLimit_message":
+  "\u0027SW_PARENTCASE\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_DOCSPERMITIDOS_validation_DOCSPERMITIDOS__length_message":
+  "\u0027DocsPermitidos\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_PRAZORELATO_label":"PrazoRelato","control_PRAZOVISTA_hint":
+  "Campo utilizado para controle de prazo.","control_SW_CASENUMPOC_label":
+  "SW_CASENUMPOC","control_DESCREGRA_label":"DescricaoRegra",
+  "control_EMAILRELATOR_validation_EMAILRELATOR__length_message":
+  "\u0027email Relator\u0027 not valid: expecting a value with no more than 250 characters",
+  "control_EXISTENOTIFICAC_hint":"Verifica se existe notificação.",
+  "control_CD_DRT_label":"Código da DRT","control_IDSINTIMADOS_label":
+  "idsIntimados","control_ANULACAODTJ_hint":
+  "Identifica se há ou não anulação.","control_INDRESPPRM_label":
+  "indRespPRM",
+  "control_CNTINSTANCIASUF_validation_CNTINSTANCIASUF__upperLimit_message":
+  "\u0027cntInstanciasUFC\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_SERVICE_NAME_validation_SERVICE_NAME__length_message":
+  "\u0027SERVICE_NAME\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_POSICAOFIM_validation_POSICAOFIM__upperLimit_message":
+  "\u0027posicaoFim\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_STSPRMSF_hint":
+  "Resultado da admissão do Pedido de Reforma de Julgado (PRM) da Secretaria da Fazenda (Sefaz).",
+  "control_HORAFINAL_hint":"Hora limite para execução da atividade.",
+  "control_IDPECASCNT_label":"idPecasCnt","control_SW_MAINCASE_hint":
+  "Campo interno utilizado pelo iProcess.","control_QTDINTIMADOS_label":
+  "qtdeIntimados",
+  "control_INTIMACAOCOUNT_validation_INTIMACAOCOUNT__lowerLimit_message":
+  "\u0027intimacaoCount\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_POSICAOFIM_hint":"Campo interno utilizado pelo iProcess.",
+  "control_EMAILVISTAS_validation_EMAILVISTAS__length_message":
+  "\u0027email Vistas\u0027 not valid: expecting a value with no more than 255 characters",
+  "control_CCRELATORIO_hint":
+  "Define destinatario de email que receberá a copia do relatorio.",
+  "control_SW_CASEDESC_hint":"Campo interno utilizado pelo iProcess.",
+  "control_SFPECA1_validation_SFPECA1__length_message":
+  "\u0027sfPeca1\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_BCCRELATORIO_hint":
+  "Define destinatario de email do relator como copia oculta."}

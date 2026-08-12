@@ -1,0 +1,80 @@
+{"pane_root_label":"Verificar Retorno Decisions","form_action_error_message":
+  "Error in script for action {0} ({1}): {2}","pane_toolbar_label":
+  "Toolbar","control_TIPOVISTAS_label":"tipoVistas","control_CODTEXTO_hint":
+  "Identifica o código de texto da intimação.","control_submit_label":
+  "Submit","control_CODTEXTO_validation_CODTEXTO__length_message":
+  "\u0027codTexto\u0027 not valid: expecting a value with no more than 4 characters",
+  "form_required_message":"{0} is a required field.",
+  "control_SFPECA4_validation_SFPECA4__length_message":
+  "\u0027sfPeca4\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_TEMPORESPOSTA_label":"tempoResposta","control_QTPECASCNT_label":
+  "qtPecasCNT","control_SFPECA1_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_QTPECASCNT_hint":
+  "Identifica a quantidade de peças do Contribuinte.",
+  "control_QTPECASCNT_validation_QTPECASCNT__length_message":
+  "\u0027qtPecasCNT\u0027 not valid: expecting an integer with no more than 2 digits",
+  "control_SFPECA4_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_CNTPECA4_validation_CNTPECA4__length_message":
+  "\u0027cntPeca4\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_TIPOVISTAS_validation_TIPOVISTAS__length_message":
+  "\u0027tipoVistas\u0027 not valid: expecting a value with no more than 50 characters",
+  "control_SFPECA3_validation_SFPECA3__length_message":
+  "\u0027sfPeca3\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_SFPECA3_label":"sfPeca3",
+  "control_DESCREGRA_validation_DESCREGRA__length_message":
+  "\u0027DescricaoRegra\u0027 not valid: expecting a value with no more than 250 characters",
+  "control_QTPECASCNT_validation_QTPECASCNT__lowerLimit_message":
+  "\u0027qtPecasCNT\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_QTPECASSEFAZ_validation_QTPECASSEFAZ__length_message":
+  "\u0027qtPecasSefaz\u0027 not valid: expecting an integer with no more than 2 digits",
+  "pane_messages_label":"Invalid Entries","control_DESCREGRA_hint":
+  "Identifica o conteúdo da regra.","control_CNTPECA2_hint":
+  "Idenficador do tipo de peça do Contribuinte.","control_close_label":
+  "Close","control_FLAGCONTRARAZAO_hint":
+  "Identifica se há ou não contra razão.",
+  "control_QTPECASSEFAZ_validation_QTPECASSEFAZ__upperLimit_message":
+  "\u0027qtPecasSefaz\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CNTPECA3_label":"cntPeca3",
+  "control_QTPECASSEFAZ_validation_QTPECASSEFAZ__lowerLimit_message":
+  "\u0027qtPecasSefaz\u0027 not valid: expecting a value greater than or equal to -2147483648",
+  "control_DESCREGRA_label":"DescricaoRegra","control_SFPECA1_label":
+  "sfPeca1","control_QTPECASSEFAZ_hint":
+  "Identifica a quantidade de peças da Secretaria da Fazenda (Sefaz).",
+  "control_CNTPECA3_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_CNTPECA1_validation_CNTPECA1__length_message":
+  "\u0027cntPeca1\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_TIPOVISTAS_hint":
+  "Identifica o tipo de vista:\r\n\r\nMISTA\r\nJUIZ\r\nDRF",
+  "control_CNTPECA1_label":"cntPeca1","form_validation_error_message":
+  "Error in script for validation {0} of Control {1} ({2}): {3}",
+  "control_CNTPECA1_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_SFDIASREPRESENT_hint":
+  "Identifica a quantidade de dias para manifestação por parte da Secretaria da Fazenda (Sefaz).",
+  "control_TEMPORESPOSTA_validation_TEMPORESPOSTA__length_message":
+  "\u0027tempoResposta\u0027 not valid: expecting a value with no more than 2 characters",
+  "control_SFDIASREPRESENT_validation_SFDIASREPRESENT__length_message":
+  "\u0027sfDiasRepresentacao\u0027 not valid: expecting a value with no more than 2 characters",
+  "control_SFDIASREPRESENT_label":"sfDiasRepresentacao",
+  "control_CNTPECA3_validation_CNTPECA3__length_message":
+  "\u0027cntPeca3\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_TEMPORESPOSTA_hint":
+  "Período em dias para resposta do Contribuinte.","control_cancel_label":
+  "Cancel","control_CODTEXTO_label":"codTexto",
+  "control_FLAGCONTRARAZAO_label":"flagContraRazao",
+  "control_QTPECASCNT_validation_QTPECASCNT__upperLimit_message":
+  "\u0027qtPecasCNT\u0027 not valid: expecting a value less than or equal to 2147483647",
+  "control_CNTPECA4_hint":"Idenficador do tipo de peça do Contribuinte.",
+  "control_QTPECASSEFAZ_label":"qtPecasSefaz","control_CNTPECA4_label":
+  "cntPeca4","control_CNTPECA2_validation_CNTPECA2__length_message":
+  "\u0027cntPeca2\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_SFPECA2_validation_SFPECA2__length_message":
+  "\u0027sfPeca2\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_SFPECA3_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).",
+  "control_CNTPECA2_label":"cntPeca2","control_SFPECA4_label":"sfPeca4",
+  "control_SFPECA1_validation_SFPECA1__length_message":
+  "\u0027sfPeca1\u0027 not valid: expecting a value with no more than 3 characters",
+  "control_SFPECA2_label":"sfPeca2","control_SFPECA2_hint":
+  "Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz)."}

@@ -1,0 +1,238 @@
+
+################################################################
+# PROCESS: POC_Epat-Process  (Name=POC_EpatProcess)
+################################################################
+--- FORMAL PARAMETERS ---
+  [IN] IDAIIM : <xpdl2:DeclaredType Id="_CtQ7LVqPEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [IN] NRAIIM : <xpdl2:DeclaredType Id="_CtQ7LFqPEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [IN] IDPROCESSO : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>9</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] EMAILVISTAS : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>255</xpdl2:Length></xpdl2:BasicType>
+  [OUT] CNTPECA2 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] TIPODILIGENCIA : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>6</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] STSRESPSF : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [IN] STSADMTITDRF : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] QTPECASCNT : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] IDTIPOIMPUGNACA : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  [OUT] SFPECA1 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] STSRESPCNT : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] FLAGCONTRARAZAO : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [IN] EXCLUSAOSOLIDAR : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] INDNAORECORRER : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] DESCREGRA : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>250</xpdl2:Length></xpdl2:BasicType>
+  [IN] IDMOTIVOINTIMAC : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [OUT] SFDIASREPRESENT : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>2</xpdl2:Length></xpdl2:BasicType>
+  [OUT] CODTEXTO : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>4</xpdl2:Length></xpdl2:BasicType>
+  [IN] RECURSOOFICIO : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] QTPECASSEFAZ : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] FLGALC : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] VICIOREPRESENTA : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [OUT] CNTPECA3 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [OUT] SFPECA2 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] IDDECISAODEBITO : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] STSPETICAO : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [IN] DILIGENCIA : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] DEFESAADMITIDA : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] IDDECISAOAIIM : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [IN] ANULACAODTJ : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] RECAPIT : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] ORIGEM : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>5</xpdl2:Length></xpdl2:BasicType>
+  [OUT] CNTPECA4 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] STATUSRECURSOS : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] INDRESPPRM : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [OUT] CNTPECA1 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] TEMPORESPOSTA : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>2</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] INSTANCIA : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [IN] STSADMTITCNT : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [IN] VRAIIM : <xpdl2:BasicType Type="FLOAT" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>15</xpdl2:Precision><xpdl2:Scale>3</xpdl2:Scale></xpdl2:BasicType>
+  [OUT] SFPECA4 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] STATUSPRJ : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [IN] DILIGENCIADESTI : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>20</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] STSPRMSF : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] INTIMACAOCOUNT : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [OUT] SFPECA3 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>3</xpdl2:Length></xpdl2:BasicType>
+  [IN] CHEFEUJ : <xpdl2:BasicType Type="PERFORMER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] CRCASA : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [IN] CODMUNICIPIO : <xpdl2:DeclaredType Id="_xWNLk1qSEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] NR_RATORIG : <xpdl2:DeclaredType Id="_CtQ7LVqPEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] DOCCONTROL : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>10</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] DTCIENCIA : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] CRCONTRIBUINTE : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  [INOUT] IDSINTIMADOS : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>250</xpdl2:Length></xpdl2:BasicType>
+  [INOUT] CODUADTJ : <xpdl2:BasicType Type="PERFORMER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  [INOUT] QTDINTIMADOS : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  [IN] CODUADRT : <xpdl2:BasicType Type="PERFORMER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+--- DATA FIELDS ---
+  DEAT0050 : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>8</xpdl2:Length></xpdl2:BasicType>
+  EXISTENOTIFICAC : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  TROCATPNOTIFICA : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  FLAGRETIRATE : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  BCCRELATORIO : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>150</xpdl2:Length></xpdl2:BasicType>
+  PRAZORETIRADAVI : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  VOLTARSEGINSTAN : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  TIPOVISTAS : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  HORAFINAL : <xpdl2:BasicType Type="DATETIME" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  PRAZOVISTA : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  FLAGCRZ : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  SW_CASENUMPOC : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>15</xpdl2:Precision></xpdl2:BasicType>
+  NR_AIIM : <xpdl2:DeclaredType Id="_CtQ7LFqPEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  SW_MAINCASEPOC : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  CNTINSTANCIASUF : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>2</xpdl2:Precision></xpdl2:BasicType>
+  AFR : <xpdl2:BasicType Type="PERFORMER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  CDIMPOSTO : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  SITUACAOCARREGA : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>10</xpdl2:Length></xpdl2:BasicType>
+  DOCSREQUERIDOS : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  NR_RAT : <xpdl2:DeclaredType Id="_CtQ7LVqPEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  DOCSPERMITIDOS : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  REGRAINSDOC : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  SW_CASEDESC : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>24</xpdl2:Length></xpdl2:BasicType>
+  CODMUNAIIM : <xpdl2:DeclaredType Id="_xWNLk1qSEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  CD_DRT : <xpdl2:DeclaredType Id="_xWNLlFqSEfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  FORMACORRECAO : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>20</xpdl2:Length></xpdl2:BasicType>
+  CTL_RETIRAT : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>10</xpdl2:Length></xpdl2:BasicType>
+  NOMEETAPA : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>8</xpdl2:Length></xpdl2:BasicType>
+  RESPOSTACQ : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>10</xpdl2:Length></xpdl2:BasicType>
+  LINKIPE : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>255</xpdl2:Length></xpdl2:BasicType>
+  DAYSOVER : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  DTFIMCQ : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  HRFIMCQ : <xpdl2:BasicType Type="TIME" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  COORDENADOR : <xpdl2:BasicType Type="PERFORMER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  CORRECAO : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  NOTIFICACAO : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  PRAZORELATO : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  EMAILRELATOR : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>250</xpdl2:Length></xpdl2:BasicType>
+  CCRELATORIO : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>150</xpdl2:Length></xpdl2:BasicType>
+  NRSUBPRO : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  ARRAYINT : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  INTIMACAOCARTA : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  DTPUBLICACAODE : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  INTIMACAODE : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>1</xpdl2:Precision></xpdl2:BasicType>
+  NOVOMODELO : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  INDICESUBDIN : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  CTRLIATV : <xpdl2:BasicType Type="BOOLEAN" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  AUX : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>255</xpdl2:Length></xpdl2:BasicType>
+  POSICAOINICIO : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  IDPECASSF : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  IDPECASCNT : <xpdl2:BasicType Type="STRING" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Length>50</xpdl2:Length></xpdl2:BasicType>
+  FIMSTRING : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  POSICAOFIM : <xpdl2:BasicType Type="INTEGER" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1"><xpdl2:Precision>10</xpdl2:Precision></xpdl2:BasicType>
+  DATAENCPREPNOT : <xpdl2:BasicType Type="DATE" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+  IDAIIMORIGINAL : <xpdl2:DeclaredType Id="_CI6mCVqREfG5K7mY0I3I6w" xmlns:xpdl2="http://www.wfmc.org/2008/XPDL2.1" />
+--- ACTIVITIES ---
+  _tO_yWVp6EfG5K7mY0I3I6w | Início | START[None] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _0XWagFqNEfG5K7mY0I3I6w | Inicia Graft Step | INTERMEDIATE[Link] | lane=_PR25EFqOEfG5K7mY0I3I6w
+  _0XWagVqNEfG5K7mY0I3I6w | Aguardar evento de Notificacao do AIIM | SUBFLOW->_jbIH91qjEfG5K7mY0I3I6w | lane=_PR25EFqOEfG5K7mY0I3I6w
+  _0XWaglqNEfG5K7mY0I3I6w | Iniciar Aguardar Notificacao | RECEIVE_TASK | lane=_PR25EFqOEfG5K7mY0I3I6w
+  _0XWahFqNEfG5K7mY0I3I6w | Trocar Notificação? | GATEWAY[Exclusive] | lane=_PR25EFqOEfG5K7mY0I3I6w
+  _0XWahVqNEfG5K7mY0I3I6w | Flag Retirati True GS | SCRIPT_TASK | lane=_PR25EFqOEfG5K7mY0I3I6w
+  _CtQ66FqPEfG5K7mY0I3I6w | FimDRF | INTERMEDIATE[Signal] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ66VqPEfG5K7mY0I3I6w | Mista | INTERMEDIATE[Link] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ66lqPEfG5K7mY0I3I6w |  | END[None] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ67FqPEfG5K7mY0I3I6w | Fim Vista Mista | INTERMEDIATE[Signal] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ68FqPEfG5K7mY0I3I6w | Vistas Mista ? | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ68VqPEfG5K7mY0I3I6w |  | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ68lqPEfG5K7mY0I3I6w | Pedido de Vistas | RECEIVE_TASK | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ69FqPEfG5K7mY0I3I6w |  | GATEWAY[Parallel] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ691qPEfG5K7mY0I3I6w | Busca Emails | SUBFLOW->_qIDuk16BEfGBBLgT-R5iuw | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ6-lqPEfG5K7mY0I3I6w |  | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ6-1qPEfG5K7mY0I3I6w | Vistas do Juiz | RECEIVE_TASK | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ6_VqPEfG5K7mY0I3I6w | Vistas Mista ? | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ6_1qPEfG5K7mY0I3I6w |  | INTERMEDIATE[Timer] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ7AFqPEfG5K7mY0I3I6w |  | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ7AVqPEfG5K7mY0I3I6w | VoltaAgenda | SCRIPT_TASK | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ7AlqPEfG5K7mY0I3I6w | Tipo de Vista Mista? | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ7A1qPEfG5K7mY0I3I6w |  | INTERMEDIATE[Timer] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ7BFqPEfG5K7mY0I3I6w | Vistas do Juiz ? | GATEWAY[Exclusive] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CtQ7BVqPEfG5K7mY0I3I6w |  | GATEWAY[Parallel] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _Ei94AFqPEfG5K7mY0I3I6w | Validação Paralelos | INTERMEDIATE[Link] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _tbOD4FqPEfG5K7mY0I3I6w | Realizar Atividade Vista Mista | USER_TASK | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _xAIVElqPEfG5K7mY0I3I6w | Mista | INTERMEDIATE[Link] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _InbWgFqQEfG5K7mY0I3I6w | Fim Vista Mista | INTERMEDIATE[Signal] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _WvTQIFqQEfG5K7mY0I3I6w | Catch Signal Event | INTERMEDIATE[Signal] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _Xw86YlqQEfG5K7mY0I3I6w | Fim de Prazo | END[None] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _CI6lx1qREfG5K7mY0I3I6w | Verificar Anulacao | SCRIPT_TASK | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _CI6lyFqREfG5K7mY0I3I6w | Prepara Intimação | SUBFLOW->_KEwC3F6EEfGBBLgT-R5iuw | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _CI6l0VqREfG5K7mY0I3I6w | Iniciar Decisions | INTERMEDIATE[Link] | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _xWNLe1qSEfG5K7mY0I3I6w | Finalizar AIIM | USER_TASK | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _Faq_Q1qTEfG5K7mY0I3I6w |  | END[None] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _Faq_RFqTEfG5K7mY0I3I6w |  | GATEWAY[Parallel] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _Faq_RVqTEfG5K7mY0I3I6w | Inicia Graft Step | INTERMEDIATE[Link] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _IxqJMlqTEfG5K7mY0I3I6w | Existe Notificação? | GATEWAY[Exclusive] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _XWivFlqTEfG5K7mY0I3I6w | Fim de Prazo Mantendo Atividade | INTERMEDIATE[Timer] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _XWivF1qTEfG5K7mY0I3I6w | Set Nome Etapa 2 | SCRIPT_TASK | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _sJqYklqTEfG5K7mY0I3I6w | Corrigir? | GATEWAY[Exclusive] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _tN6q4lqTEfG5K7mY0I3I6w | Corrigir Fechamento | INTERMEDIATE[Link] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _5E444FqTEfG5K7mY0I3I6w | Corrigir Fechamento | INTERMEDIATE[Link] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _O-rPp1qUEfG5K7mY0I3I6w | Email CQ Fechamento | SERVICE_TASK | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _RqXZ0lqUEfG5K7mY0I3I6w | Fim E-mail | END[None] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _sfwu-VqUEfG5K7mY0I3I6w | Preparar Notificacao | USER_TASK | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _LeuhgFqVEfG5K7mY0I3I6w | Iniciar Decisions | INTERMEDIATE[Link] | lane=_PR25EFqOEfG5K7mY0I3I6w
+  _30jAcFqVEfG5K7mY0I3I6w | Verificar Retorno Decisions | USER_TASK | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _89MVQlqVEfG5K7mY0I3I6w | Validar Paralelos | INTERMEDIATE[Link] | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _H22mclqWEfG5K7mY0I3I6w | Fim | END[None] | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _6WNq-lqgEfG5K7mY0I3I6w | Email Limite Rel 1 | SERVICE_TASK | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _G4hU81qhEfG5K7mY0I3I6w | Define Destinatarios | SCRIPT_TASK | lane=_aTSmMFqOEfG5K7mY0I3I6w
+  _T4Ma8FqiEfG5K7mY0I3I6w | Encerra e retira | INTERMEDIATE[Timer] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _UiYAYFqiEfG5K7mY0I3I6w | End Event | END[None] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _nQntZ16JEfGBBLgT-R5iuw | Controlar Intimados | SUBFLOW->_BAx4zV6KEfGBBLgT-R5iuw | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _zE3XeV6JEfGBBLgT-R5iuw | prepSub | SCRIPT_TASK | lane=_6VIyEFqOEfG5K7mY0I3I6w
+  _BQIgAF9KEfGqPfX31TKC3w | Criar Notificacao | SUBFLOW->_NcJJ4F9KEfGqPfX31TKC3w | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _O7K3MF9LEfGqPfX31TKC3w |  | END[None] | lane=_tO_yWFp6EfG5K7mY0I3I6w
+  _OAgPol9UEfG6Lfb98zsREQ | Iniciar Novo Graft | RECEIVE_TASK | lane=_tO_yWFp6EfG5K7mY0I3I6w
+--- TRANSITIONS ---
+  Início  --[]-->  Finalizar AIIM
+  Flag Retirati True GS  --[]-->  Aguardar evento de Notificacao do AIIM
+  Inicia Graft Step  --[]-->  Flag Retirati True GS
+  Iniciar Aguardar Notificacao  --[]-->  Flag Retirati True GS
+  Trocar Notificação?  --[Sim CONDITION : TROCATPNOTIFICA == 1;]-->  Flag Retirati True GS
+  Aguardar evento de Notificacao do AIIM  --[]-->  Trocar Notificação?
+  Trocar Notificação?  --[NoOTHERWISE]-->  Iniciar Decisions
+    --[]-->  FimDRF
+    --[]-->  Pedido de Vistas
+  FimDRF  --[]-->  Busca Emails
+  Pedido de Vistas  --[]-->  Vistas Mista ?
+  Tipo de Vista Mista?  --[NoOTHERWISE]-->  
+  Mista  --[]-->  
+  Vistas do Juiz ?  --[ CONDITION : TIPOVISTAS=='JUIZ' || TIPOVISTAS == IPESystemValues.SW_NA;]-->  Vistas do Juiz
+    --[]-->  Busca Emails
+  Vistas Mista ?  --[OTHERWISE]-->  
+  Vistas do Juiz ?  --[DRFOTHERWISE]-->  
+  Vistas do Juiz  --[]-->  Vistas Mista ?
+  Vistas Mista ?  --[OTHERWISE]-->  
+    --[]-->  
+    --[]-->  
+    --[]-->  
+  Vistas Mista ?  --[ CONDITION : TIPOVISTAS=='MISTA';]-->  
+  Vistas Mista ?  --[ CONDITION : TIPOVISTAS=='MISTA';]-->  
+  Busca Emails  --[]-->  VoltaAgenda
+  Fim Vista Mista  --[]-->  
+  VoltaAgenda  --[]-->  Tipo de Vista Mista?
+  Tipo de Vista Mista?  --[Sim CONDITION : TIPOVISTAS == 'MISTA';]-->  
+  Validação Paralelos  --[]-->  Vistas do Juiz ?
+    --[]-->  Realizar Atividade Vista Mista
+  Fim Vista Mista  --[]-->  Mista
+  Realizar Atividade Vista Mista  --[]-->  Fim Vista Mista
+  Catch Signal Event  --[]-->  Fim de Prazo
+  Verificar Anulacao  --[]-->  Prepara Intimação
+  Iniciar Decisions  --[]-->  Verificar Anulacao
+  Finalizar AIIM  --[]-->  
+    --[]-->  Existe Notificação?
+  Existe Notificação?  --[NoOTHERWISE]-->  Inicia Graft Step
+  Existe Notificação?  --[Sim CONDITION : EXISTENOTIFICAC == true;]-->  
+  Set Nome Etapa 2  --[]-->  Preparar Notificacao
+    --[]-->  Set Nome Etapa 2
+  Corrigir?  --[Sim CONDITION : CORRECAO == true;]-->  Corrigir Fechamento
+  Corrigir Fechamento  --[]-->  Finalizar AIIM
+  Fim de Prazo Mantendo Atividade  --[]-->  Email CQ Fechamento
+  Email CQ Fechamento  --[]-->  Fim E-mail
+  Preparar Notificacao  --[]-->  Corrigir?
+  Corrigir?  --[NoOTHERWISE]-->  Criar Notificacao
+  Prepara Intimação  --[]-->  Define Destinatarios
+  Verificar Retorno Decisions  --[]-->  Validar Paralelos
+    --[]-->  prepSub
+  Email Limite Rel 1  --[]-->  Verificar Retorno Decisions
+  Define Destinatarios  --[]-->  Email Limite Rel 1
+  Encerra e retira  --[]-->  End Event
+  Controlar Intimados  --[]-->  Fim
+  prepSub  --[]-->  Controlar Intimados
+  Criar Notificacao  --[]-->  
+  Iniciar Novo Graft  --[]-->  Set Nome Etapa 2

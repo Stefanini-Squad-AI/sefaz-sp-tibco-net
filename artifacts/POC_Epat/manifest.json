@@ -1,0 +1,115 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/run-manifest/v1",
+  "package": "POC_Epat",
+  "generatedAt": "2026-08-12T10:50:09.5879885-03:00",
+  "durationMs": 23705,
+  "host": {
+    "machine": "RAMONSTEFANINI",
+    "powershell": "7.6.4"
+  },
+  "sources": [
+    {
+      "file": "input/Arquivos Poc Camunda/POC_Camunda/POC_Epat/Process Packages/POC_Epat.xpdl",
+      "bytes": 783827,
+      "sha256": "1ab99203fc33f66159a73e8400e9ada578bffaf48bef875af7e0c016072445f3"
+    },
+    {
+      "file": "input/Arquivos Poc Camunda/intimacoes_Parametros.ers",
+      "bytes": 1065936,
+      "sha256": "ad862907cdd3401551ba17333f1ca2a72c31540ea25ec1f2bac1237362219173"
+    },
+    {
+      "file": "input/Arquivos Poc Camunda/POC_Camunda/POC_Epat/Service Descriptors/EPAT.wsdl",
+      "bytes": 562217,
+      "sha256": "79e72f60f0b2b2eebcab01bcee01cc677045a42dd2caf66750134fa85758189f"
+    },
+    {
+      "file": "input/Arquivos Poc Camunda/POC_Camunda/POC_Epat/Service Descriptors/DecisionsEPAT.wsdl",
+      "bytes": 56953,
+      "sha256": "2e4ec2922813b495efb67b218423817bfd63e6cc86d961b768e1eb30d67b7b78"
+    },
+    {
+      "file": "input/Arquivos Poc Camunda/Documento Prova de Conceito.docx",
+      "bytes": 21733,
+      "sha256": "dc3fb59db03dfedfbffa82bf95d4077b753ffb4b0c6b540e6358b16e2ab4b257"
+    }
+  ],
+  "counts": {
+    "processes": 9,
+    "activities": 215,
+    "transitions": 221,
+    "activitySets": 5,
+    "caseFields": 209,
+    "operations": 127,
+    "invokedOperations": 5,
+    "decisionRules": 49
+  },
+  "drift": [],
+  "artifacts": [
+    {
+      "name": "process-model.json",
+      "bytes": 417698,
+      "sha256": "62da8cceda2d9c78a8eb2735665618d7c8998f20b15467870afecb6d8dfb7ebc"
+    },
+    {
+      "name": "case-field-dictionary.json",
+      "bytes": 326845,
+      "sha256": "27240501c0c2d727755b4e4b61cfb83d67a43001df6d2d35ed73f57d8ab38b92"
+    },
+    {
+      "name": "service-contracts.json",
+      "bytes": 894494,
+      "sha256": "a370b044fb97eb4afdd78665ddbe1a646390d3338651a56b031ab872a109bfb0"
+    },
+    {
+      "name": "decision-tables.json",
+      "bytes": 307810,
+      "sha256": "6835a6de70dac5cc98b214b0e184517baec1195bb9998a5d3a332618f8987410"
+    },
+    {
+      "name": "screen-catalogue.json",
+      "bytes": 11074,
+      "sha256": "042b05c397ec8d09e8a006d4d3553dd762e5e778e88a94b996220fa72d41bf95"
+    },
+    {
+      "name": "builtin-contract.json",
+      "bytes": 15711,
+      "sha256": "cadba7735b2396bbed72c6b5ede59721c0d2abc26d9ff9f936defa284c80cf29"
+    },
+    {
+      "name": "intent-map.json",
+      "bytes": 9480,
+      "sha256": "a3484e128ef2327d0f715c100f32c46981a5242c2eae8d9b7dd70ba4d1194384"
+    },
+    {
+      "name": "review-dossier.json",
+      "bytes": 193795,
+      "sha256": "6c4ed01c3d72d3396e4782c7e2777548ef2cff88e4f5e6eddfa56a4719f513ba"
+    },
+    {
+      "name": "conformance.json",
+      "bytes": 39576,
+      "sha256": "b59de6d1c387bccca630541c877e31c37d176041c3092c84f4240e013fa47a2f"
+    },
+    {
+      "name": "rule-inventory.json",
+      "bytes": 182104,
+      "sha256": "da5144a9c78db91814d1d46b3f199d775caf11bbb554d56db5a0c756895be95b"
+    },
+    {
+      "name": "screen-rules.json",
+      "bytes": 235740,
+      "sha256": "703e292f08bb9ae5bbfdcfd5582eacf1bc2113399b7b4a1f2b3dbf70ef9a276d"
+    },
+    {
+      "name": "rule-catalogue.json",
+      "bytes": 454804,
+      "sha256": "968909c293755a7d815a5c7862d8d185eadb9aa11094a6286bfa1091e74a92ae"
+    },
+    {
+      "name": "scope.json",
+      "bytes": 274075,
+      "sha256": "3a8d853f0242194d6403c1eb2ea0979755e05f8a83e425e88144d64dfc2f653b"
+    }
+  ]
+}

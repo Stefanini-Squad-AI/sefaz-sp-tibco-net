@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SefazSp.Epat.Infrastructure/1.0.0": {
+        "dependencies": {
+          "SefazSp.Epat.Application": "1.0.0",
+          "SefazSp.Epat.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SefazSp.Epat.Infrastructure.dll": {}
+        }
+      },
+      "SefazSp.Epat.Application/1.0.0": {
+        "dependencies": {
+          "SefazSp.Epat.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SefazSp.Epat.Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SefazSp.Epat.Domain/1.0.0": {
+        "runtime": {
+          "SefazSp.Epat.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SefazSp.Epat.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SefazSp.Epat.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SefazSp.Epat.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+# src/SefazSp.Epat.Domain
+# src/SefazSp.Epat.Application
+# src/SefazSp.Epat.Infrastructure
+# src/SefazSp.Epat.Api
+# tests/SefazSp.Epat.Domain.Tests
+# tests/SefazSp.Epat.Application.Tests
+# tests/SefazSp.Epat.Oracles.Tests
+
+# Gerado por tools/gen-scaffold.ps1. Use 'dotnet sln add' para materializar.
+

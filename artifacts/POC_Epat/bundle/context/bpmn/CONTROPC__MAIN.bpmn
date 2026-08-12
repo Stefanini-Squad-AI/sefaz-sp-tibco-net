@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Defs_P_CONTROPC_MAIN" targetNamespace="http://sefaz.sp.gov.br/epat">
+  <bpmn:signal id="Signal_fimDRF" name="fimDRF" />
+  <bpmn:signal id="Signal_Signal4" name="Signal4" />
+  <bpmn:process id="P_CONTROPC_MAIN" name="Controle Intimados" isExecutable="false">
+    <bpmn:documentation>Processo TIBCO: Controle Intimados  |  escopo: MAIN Gerado a partir de process-model.json. ARTEFATO DE ESPECIFICACAO - nao e executavel.</bpmn:documentation>
+    <bpmn:endEvent id="_-bkw8l6JEfGBBLgT-R5iuw" name="Fim">
+      <bpmn:documentation>TIBCO id: _-bkw8l6JEfGBBLgT-R5iuw | kind XPDL: endEvent | faixa: Servicos</bpmn:documentation>
+      <bpmn:incoming>F__-bkxTV6JEfGBBLgT-R5iuw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="_-bkw-F6JEfGBBLgT-R5iuw" name="ISetSubProc">
+      <bpmn:documentation>TIBCO id: _-bkw-F6JEfGBBLgT-R5iuw | kind XPDL: scriptTask | faixa: Servicos | script: @{grammar=JavaScript; body=//idmotivos7
+//1 - Decisao
+//2 - Vicio
+//3 - Diligencia
+//
+//iddeciaodebito
+// 1 mantido
+// 2 reduzido
+// 3 cancelado
+//
+
+if(IDMOTIVOINTIMAC == 1){
+	if ((IDDECISAODEBITO == 3 || IDDECISAODEBITO == 0) &amp;&amp; DEFESAADMITIDA == true)
+		{AGUARDAR[0] = &quot;AgPRJ&quot;;}
+	else if (IDDECISAODEBITO == 0 &amp;&amp; DEFESAADMITIDA == false)
+		{AGUARDAR[0] = &quot;AgRecPRJ&quot;;}	
+	
+	if (IDDECISAODEBITO == 1 || IDDECISAODEBITO == 2){
+		if (RECURSOOFICIO == true)
+		{AGUARDAR[0] = &quot;AgPRJ&quot;;}
+		else if (RECURSOOFICIO == false)
+		{AGUARDAR[0] = &quot;AgRecPRJ&quot;;}
+	}
+	if (IDTIPOIMPUGNACA == '4' )
+		{AGUARDAR[0] = &quot;AgPRJR&quot;;}
+}
+//falta implementar regras para PRJ
+if (IDMOTIVOINTIMAC == 2){
+	AGUARDAR[0] = &quot;AgPecas&quot;;
+} 
+if (CRCONTRIBUINTE == 1 ){
+	if (IDDECISAODEBITO == 1 || IDDECISAODEBITO == 2 &amp;&amp; RECURSOOFICIO==true){
+		AGUARDAR[0] = &quot;AgRCRaz&quot;;}
+	else {
+		AGUARDAR[0] = &quot;AgCRaz&quot;;}
+	}
+
+
+if (DILIGENCIA == true){
+	AGUARDAR[0] = &quot;AgPetica&quot;;
+}
+PROCRETORNO = AGUARDAR[0];
+
+//alterado para verificar se a intimacao teve ciencia, se nao houver considerar a data da publicacao.
+if (DSTIPOINTIMACAO=='DE' || DTCIENCIA==IPESystemValues.SW_NA )
+	{DTCIENCIA=DTPUBLICACAODE;}
+
+
+//if (Instancia==2 || vicioRepresentacao == true || (Instancia == 1 &amp;&amp; defesaAdmitida == false &amp;&amp; diligencia!=true) ){
+if (NOVOMODELO == true) {
+	AGUARDAR[0] = &quot;AgPecas&quot;;
+	PROCRETORNO = AGUARDAR[0];
+	}}</bpmn:documentation>
+      <bpmn:incoming>F__hBNA0F6NEfGBBLgT-R5iuw</bpmn:incoming>
+      <bpmn:outgoing>F__-bkxSF6JEfGBBLgT-R5iuw</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:callActivity id="_-bkw-V6JEfGBBLgT-R5iuw" name="Aguardar Retorno" calledElement="P_AGPECASPC_MAIN">
+      <bpmn:documentation>TIBCO id: _-bkw-V6JEfGBBLgT-R5iuw | kind XPDL: callActivity | faixa: Servicos</bpmn:documentation>
+      <bpmn:incoming>F__-bkxSF6JEfGBBLgT-R5iuw</bpmn:incoming>
+      <bpmn:outgoing>F__R4XkAF6OEfGBBLgT-R5iuw</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:scriptTask id="_-bkw_V6JEfGBBLgT-R5iuw" name="Controle de Prazos">
+      <bpmn:documentation>TIBCO id: _-bkw_V6JEfGBBLgT-R5iuw | kind XPDL: scriptTask | faixa: Servicos | script: @{grammar=JavaScript; body=if (DSTIPOINTIMACAO==&quot;Carta com AR&quot;){
+   PERIODOEMDIAS=360;}
+else if (DSTIPOINTIMACAO==&quot;DE&quot;){
+	PRAZOCIENCIA = DTPUBLICACAODE;
+	PERIODOEMDIAS=0;
+	}
+else {
+	PERIODOEMDIAS=10;
+	}
+
+
+NOVOMODELO == true;}</bpmn:documentation>
+      <bpmn:incoming>F__-bkxkl6JEfGBBLgT-R5iuw</bpmn:incoming>
+      <bpmn:outgoing>F__hBNA0F6NEfGBBLgT-R5iuw</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:callActivity id="_-bkw_l6JEfGBBLgT-R5iuw" name="AtualizaIntimacao" calledElement="P_ATZINTPC_MAIN">
+      <bpmn:documentation>TIBCO id: _-bkw_l6JEfGBBLgT-R5iuw | kind XPDL: callActivity | faixa: Servicos</bpmn:documentation>
+      <bpmn:incoming>F__g63W8F9LEfGqPfX31TKC3w</bpmn:incoming>
+      <bpmn:outgoing>F__-bkxkl6JEfGBBLgT-R5iuw</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:scriptTask id="_-bkxKF6JEfGBBLgT-R5iuw" name="Desativa Subs">
+      <bpmn:documentation>TIBCO id: _-bkxKF6JEfGBBLgT-R5iuw | kind XPDL: scriptTask | faixa: Servicos | script: @{grammar=JavaScript; body=STATUSSUBPROC='inativo';}</bpmn:documentation>
+      <bpmn:incoming>F__R4XkAF6OEfGBBLgT-R5iuw</bpmn:incoming>
+      <bpmn:outgoing>F__-bkxTV6JEfGBBLgT-R5iuw</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:startEvent id="_gFM6QF9LEfGqPfX31TKC3w" name="Start Event">
+      <bpmn:documentation>TIBCO id: _gFM6QF9LEfGqPfX31TKC3w | kind XPDL: startEvent | faixa: Servicos</bpmn:documentation>
+      <bpmn:outgoing>F__g63W8F9LEfGqPfX31TKC3w</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="F__-bkxSF6JEfGBBLgT-R5iuw" name="" sourceRef="_-bkw-F6JEfGBBLgT-R5iuw" targetRef="_-bkw-V6JEfGBBLgT-R5iuw" />
+    <bpmn:sequenceFlow id="F__-bkxTV6JEfGBBLgT-R5iuw" name="" sourceRef="_-bkxKF6JEfGBBLgT-R5iuw" targetRef="_-bkw8l6JEfGBBLgT-R5iuw" />
+    <bpmn:sequenceFlow id="F__-bkxkl6JEfGBBLgT-R5iuw" name="" sourceRef="_-bkw_l6JEfGBBLgT-R5iuw" targetRef="_-bkw_V6JEfGBBLgT-R5iuw" />
+    <bpmn:sequenceFlow id="F__hBNA0F6NEfGBBLgT-R5iuw" name="" sourceRef="_-bkw_V6JEfGBBLgT-R5iuw" targetRef="_-bkw-F6JEfGBBLgT-R5iuw" />
+    <bpmn:sequenceFlow id="F__R4XkAF6OEfGBBLgT-R5iuw" name="" sourceRef="_-bkw-V6JEfGBBLgT-R5iuw" targetRef="_-bkxKF6JEfGBBLgT-R5iuw" />
+    <bpmn:sequenceFlow id="F__g63W8F9LEfGqPfX31TKC3w" name="" sourceRef="_gFM6QF9LEfGqPfX31TKC3w" targetRef="_-bkw_l6JEfGBBLgT-R5iuw" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="D_P_CONTROPC_MAIN">
+    <bpmndi:BPMNPlane id="Plane_P_CONTROPC_MAIN" bpmnElement="P_CONTROPC_MAIN">
+      <bpmndi:BPMNShape id="S__-bkw8l6JEfGBBLgT-R5iuw" bpmnElement="_-bkw8l6JEfGBBLgT-R5iuw">
+        <dc:Bounds x="1297" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__-bkw-F6JEfGBBLgT-R5iuw" bpmnElement="_-bkw-F6JEfGBBLgT-R5iuw">
+        <dc:Bounds x="660" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__-bkw-V6JEfGBBLgT-R5iuw" bpmnElement="_-bkw-V6JEfGBBLgT-R5iuw">
+        <dc:Bounds x="860" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__-bkw_V6JEfGBBLgT-R5iuw" bpmnElement="_-bkw_V6JEfGBBLgT-R5iuw">
+        <dc:Bounds x="460" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__-bkw_l6JEfGBBLgT-R5iuw" bpmnElement="_-bkw_l6JEfGBBLgT-R5iuw">
+        <dc:Bounds x="260" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__-bkxKF6JEfGBBLgT-R5iuw" bpmnElement="_-bkxKF6JEfGBBLgT-R5iuw">
+        <dc:Bounds x="1060" y="60" width="110" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S__gFM6QF9LEfGqPfX31TKC3w" bpmnElement="_gFM6QF9LEfGqPfX31TKC3w">
+        <dc:Bounds x="97" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="E_F__-bkxSF6JEfGBBLgT-R5iuw" bpmnElement="F__-bkxSF6JEfGBBLgT-R5iuw">
+        <di:waypoint x="770" y="100" />
+        <di:waypoint x="860" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__-bkxTV6JEfGBBLgT-R5iuw" bpmnElement="F__-bkxTV6JEfGBBLgT-R5iuw">
+        <di:waypoint x="1170" y="100" />
+        <di:waypoint x="1297" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__-bkxkl6JEfGBBLgT-R5iuw" bpmnElement="F__-bkxkl6JEfGBBLgT-R5iuw">
+        <di:waypoint x="370" y="100" />
+        <di:waypoint x="460" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__hBNA0F6NEfGBBLgT-R5iuw" bpmnElement="F__hBNA0F6NEfGBBLgT-R5iuw">
+        <di:waypoint x="570" y="100" />
+        <di:waypoint x="660" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__R4XkAF6OEfGBBLgT-R5iuw" bpmnElement="F__R4XkAF6OEfGBBLgT-R5iuw">
+        <di:waypoint x="970" y="100" />
+        <di:waypoint x="1060" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="E_F__g63W8F9LEfGqPfX31TKC3w" bpmnElement="F__g63W8F9LEfGqPfX31TKC3w">
+        <di:waypoint x="133" y="100" />
+        <di:waypoint x="260" y="100" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+

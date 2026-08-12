@@ -1,0 +1,149 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg007",
+  "cardType": "build",
+  "title": "Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'Set Nome Etapa 2'",
+  "epic": "etapa-1-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Finalizar AIIM' a 'Set Nome Etapa 2', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 3 passo(s) da jornada do caso, de 'Finalizar AIIM' ate 'Set Nome Etapa 2', no processo POC_EpatProcess.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/UseCases",
+        "status": "scaffold",
+        "note": "Tarefa humana e um caso de uso. As regras do code-behind das telas aterram aqui porque decidem o desfecho do processo, nao a apresentacao."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_xWNLe1qSEfG5K7mY0I3I6w",
+        "nome": "Finalizar AIIM",
+        "kind": "userTask",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-formScript-POC_EpatProcess-FinalizarAIIM"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_Faq_RFqTEfG5K7mY0I3I6w",
+        "nome": "gateway _Faq_RFqTEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_XWivF1qTEfG5K7mY0I3I6w",
+        "nome": "Set Nome Etapa 2",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-045].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_xWNLe1qSEfG5K7mY0I3I6w",
+      "_Faq_RFqTEfG5K7mY0I3I6w",
+      "_XWivF1qTEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_xWNLe1qSEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_xWNLe1qSEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_Faq_RFqTEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_Faq_RFqTEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_XWivF1qTEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_XWivF1qTEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-045.json",
+      "immutable": true,
+      "caseCount": 4
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 2 ao 4 do cenario SC-POC_EpatProcess-045 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      1,
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-045",
+      "ordemNaJornada": 1,
+      "doPasso": 2,
+      "aoPasso": 4,
+      "abrePor": "Finalizar AIIM",
+      "fechaEm": "Set Nome Etapa 2"
+    },
+    "concepts": [
+      "user-tasks"
+    ],
+    "expectedResults": [],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 3,
+    "camadas": 1,
+    "pastas": 3,
+    "aEscrever": 3,
+    "bloqueadores": 1,
+    "regrasDeNegocio": 1,
+    "peso": "grande"
+  },
+  "gaps": [
+    {
+      "construct": "iprocess-builtin",
+      "detail": "1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-iprocess-builtin"
+  ]
+}

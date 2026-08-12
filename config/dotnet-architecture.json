@@ -1,0 +1,167 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/dotnet-architecture/v1",
+  "note": "Mapa de camadas para o codigo gerado. Este ficheiro e AUTORADO: e a decisao de arquitectura. O gerador de scaffold nao decide nada - le este mapa e projecta a IR nele. A regra da dependencia de Clean Architecture nao fica escrita num documento: fica gravada nas ProjectReference dos .csproj, portanto uma violacao quebra a compilacao em vez de quebrar uma revisao.",
+
+  "porqueEncaixa": "A IR ja e o limite de inversao de dependencia. O process-model.json e, por construcao, uma representacao independente de motor; o case-field-dictionary separa os 190 campos de dominio dos 19 do envelope tecnico; e o xpdExt:ProcessInterface do XPDL ja e literalmente uma interface. Clean Architecture nao e uma camada que estamos a impor por cima - e a forma que os artefactos ja tem.",
+
+  "solution": "SefazSp.Epat",
+
+  "layers": [
+    {
+      "name": "Domain",
+      "project": "SefazSp.Epat.Domain",
+      "dependsOn": [],
+      "regra": "Zero dependencias, incluindo de pacotes NuGet de infraestrutura. Nada aqui sabe que existe TIBCO, Elsa, SOAP ou base de dados.",
+      "contains": [
+        { "folder": "Cases", "what": "O agregado do caso, com os 190 campos de negocio. Os 19 do envelope tecnico NAO entram." },
+        { "folder": "ValueObjects", "what": "FieldValue<T> tri-estado (HasValue / IsNotAvailable / Empty), decidido em gaps.iprocess-builtin. O tipo vive aqui porque tres estados sao um facto do dominio; a CONVERSAO a partir de SW_NA vive na infraestrutura." },
+        { "folder": "Enums", "what": "Dominios fechados observados no pacote: TIPOVISTAS {JUIZ, MISTA}, decisao do operador {R, OK}, REGRAINSDOC {1,2,3}, estado do subprocesso {inativo}." },
+        { "folder": "Rules", "what": "As 32 regras de negocio do XPDL como funcoes puras sobre o caso. Sem I/O, sem relogio, sem motor." },
+        { "folder": "Abstractions", "what": "IClock. O prazo por expressao precisa de tempo, e tempo e uma dependencia - injectada, nunca DateTime.Now." }
+      ]
+    },
+    {
+      "name": "Application",
+      "project": "SefazSp.Epat.Application",
+      "dependsOn": ["Domain"],
+      "regra": "Depende so do Dominio. Declara PORTAS; nao conhece nenhuma implementacao.",
+      "contains": [
+        { "folder": "Abstractions/Services", "what": "Uma porta por operacao invocada pelo processo (5 das 127 catalogadas)." },
+        { "folder": "Abstractions/Processes", "what": "Uma interface por xpdExt:ProcessInterface do XPDL: NOTFAIIM, CTRINTPC, AGURETPC. Decidido em gaps.dynamic-subprocess: o registo e gerado do XPDL e validado no arranque." },
+        { "folder": "Abstractions/Runtime", "what": "IWorkflowRuntime, ICorrelationStore, IGraftJoin. O graft step (gaps.graft-step, correlation-join) declara-se aqui e implementa-se la fora." },
+        { "folder": "Execution", "what": "Os 19 campos do envelope tecnico. STATUS_CODE, ISAPPERROR, MAXRETRIES e companhia vivem aqui, nao no dominio - foi o que ficou decidido na ronda dos identificadores." },
+        { "folder": "UseCases", "what": "Um caso de uso por tarefa humana e por etapa da POC. As 32 regras de negocio do code-behind das telas aterram aqui, porque decidem o desfecho do processo (CORRECAO, NOTIFICACAO) e nao a apresentacao." },
+        { "folder": "Workflows", "what": "A topologia do processo como DADOS, independente de motor - a projeccao directa do process-model.json." }
+      ]
+    },
+    {
+      "name": "Infrastructure",
+      "project": "SefazSp.Epat.Infrastructure",
+      "dependsOn": ["Application", "Domain"],
+      "regra": "Implementa as portas. Toda a dependencia externa entra por aqui.",
+      "contains": [
+        { "folder": "Legacy", "what": "CAMADA ANTICORRUPCAO. O shim dos builtins iProcess (SUBSTR, SEARCH, CALCTIME), a conversao SW_NA <-> FieldValue<T>, e o mapeamento do envelope tecnico. E o unico sitio do codigo onde a palavra iProcess aparece." },
+        { "folder": "Workflow.Elsa", "what": "Traduz a topologia de Application/Workflows para o motor. O motor e um detalhe: trocar de motor mexe so aqui." },
+        { "folder": "Integration.Soap", "what": "As 5 operacoes realmente invocadas, sobre SOAP/JMS." },
+        { "folder": "Integration.Doubles", "what": "Os dubles decididos em rulings.MISSING-EXTERNAL-PACKAGES, incluindo os 6 destinos em falta de AGUARDAR. Tipados a partir do WSDL ou da ProcessInterface, conduzidos por cenario." },
+        { "folder": "Rules.Dmn", "what": "As 49 colunas Corticon como DMN. Ficam aqui porque o motor de regras e um detalhe - a porta IDecisionService e que e o contrato. A equivalencia ja esta provada por 3000 casos." },
+        { "folder": "Persistence", "what": "EF Core. Persistencia do caso e do estado de execucao." }
+      ]
+    },
+    {
+      "name": "Api",
+      "project": "SefazSp.Epat.Api",
+      "dependsOn": ["Application", "Infrastructure", "Domain"],
+      "regra": "Raiz de composicao. E o unico projecto que conhece toda a gente, e nao tem logica nenhuma.",
+      "contains": [
+        { "folder": "Endpoints", "what": "Superficie minima para conduzir a demonstracao: iniciar caso, listar tarefas, submeter tarefa, retomar por correlacao." },
+        { "folder": "Composition", "what": "Registo de DI, incluindo o registo de processos gerado do XPDL e validado no arranque." }
+      ]
+    }
+  ],
+
+  "landing": {
+    "note": "ONDE CADA CONSTRUTO DO XPDL ATERRA. As pastas acima ja dizem isto em prosa - 'um caso de uso por tarefa humana', 'a topologia como DADOS' -, o que um humano le e uma maquina nao. Sem este mapa em dados, todos os cards de build apontam para o mesmo ficheiro e o manifesto do agente nao tem de onde derivar permissao de escrita. E autorado, como o resto do ficheiro: e a mesma decisao, so que legivel por codigo.",
+
+    "porqueImporta": "Duas consequencias praticas. (1) O card diz ao implementador em que projecto e pasta trabalhar, e um card que toca Domain e Infrastructure ao mesmo tempo fica visivel como o que e - trabalho que atravessa camadas. (2) O manifesto do agente deriva daqui a permissao de escrita minima: quem trata de um card de userTask escreve em Application/UseCases e em mais lado nenhum.",
+
+    "byNodeKind": [
+      {
+        "kind": "userTask",
+        "layer": "Application", "folder": "UseCases", "status": "scaffold",
+        "porque": "Tarefa humana e um caso de uso. As regras do code-behind das telas aterram aqui porque decidem o desfecho do processo, nao a apresentacao."
+      },
+      {
+        "kind": "serviceTask",
+        "layer": "Application", "folder": "Abstractions/Services", "status": "final",
+        "tambem": [{ "layer": "Infrastructure", "folder": "Integration.Soap", "status": "scaffold" }],
+        "porque": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      },
+      {
+        "kind": "scriptTask",
+        "layer": "Application", "folder": "Execution", "status": "scaffold",
+        "quandoRegraDeNegocio": { "layer": "Domain", "folder": "Rules", "status": "draft" },
+        "porque": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "kind": "gateway",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "porque": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      },
+      {
+        "kind": "callActivity",
+        "layer": "Application", "folder": "Abstractions/Processes", "status": "final",
+        "tambem": [{ "layer": "Infrastructure", "folder": "Integration.Doubles", "status": "scaffold" }],
+        "porque": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      },
+      {
+        "kind": "subProcessScope",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "porque": "Escopo embutido e topologia: a descida e o regresso tem de existir como transicao explicita, porque no XPDL nao existem."
+      },
+      {
+        "kind": "receiveTask",
+        "layer": "Application", "folder": "Abstractions/Runtime", "status": "final",
+        "tambem": [{ "layer": "Api", "folder": "Endpoints", "status": "scaffold" }],
+        "porque": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "kind": "timerEvent",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "tambem": [{ "layer": "Domain", "folder": "Abstractions", "status": "final" }],
+        "porque": "O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel."
+      },
+      {
+        "kind": "emailTask",
+        "layer": "Application", "folder": "Abstractions/Services", "status": "final",
+        "tambem": [{ "layer": "Infrastructure", "folder": "Integration.Soap", "status": "scaffold" }],
+        "porque": "Envio de e-mail e integracao externa como outra qualquer. Os destinatarios saem do script para configuracao por ambiente, decidido em rulings.HARDCODED-VALUES."
+      },
+      {
+        "kind": "linkThrow",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "porque": "GOTO implicito. Decidido flatten-edge: vira aresta explicita, porque manter como sinal introduziria pontos de espera que o TIBCO nao tem."
+      },
+      {
+        "kind": "linkCatch",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "porque": "O outro lado do GOTO. Sem a aresta reposta, o fluxo parte-se em dois."
+      },
+      {
+        "kind": "signalThrow",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "porque": "Difusao entre ramos paralelos. Vive na topologia, dentro do escopo, para continuar visivel no diagrama."
+      },
+      {
+        "kind": "signalCatch",
+        "layer": "Application", "folder": "Workflows", "status": "scaffold",
+        "porque": "O par do sinal. gaps.non-interrupting-boundary = parallel-branch: o ramo lateral fica dentro do escopo e morre com ele."
+      },
+      {
+        "kind": "startEvent",
+        "layer": "Application", "folder": "Workflows", "status": "final",
+        "porque": "Ciclo de vida da instancia. Transcricao: nao ha corpo a escrever."
+      },
+      {
+        "kind": "endEvent",
+        "layer": "Application", "folder": "Workflows", "status": "final",
+        "porque": "Encerramento de instancia. Transcricao, com a ressalva de que o endEvent de um subprocesso e um regresso e nao um encerramento."
+      }
+    ]
+  },
+
+  "tests": [
+    { "project": "SefazSp.Epat.Domain.Tests", "dependsOn": ["Domain"], "what": "Regras puras e o tri-estado. Sem infraestrutura." },
+    { "project": "SefazSp.Epat.Application.Tests", "dependsOn": ["Application"], "what": "Casos de uso com portas simuladas." },
+    { "project": "SefazSp.Epat.Oracles.Tests", "dependsOn": ["Application", "Infrastructure"], "what": "Os oraculos imutaveis: equivalencia DMN, percursos de cenario, conformidade de contrato. O agente liga o harness a fixture e nunca escreve o valor esperado." }
+  ],
+
+  "regrasDeDependencia": [
+    "A direccao e sempre para dentro: Api -> Infrastructure -> Application -> Domain.",
+    "Domain nao referencia projecto nenhum, e nenhum pacote de infraestrutura.",
+    "Application declara porta; Infrastructure implementa. Nunca o contrario.",
+    "Cada regra acima e uma ProjectReference: a violacao nao compila."
+  ],
+
+  "namingRule": "Os identificadores originais sao preservados como nomes de propriedade - EXISTENOTIFICAC continua EXISTENOTIFICAC. O termo de negocio do glossario entra como comentario XML, nunca como renomeacao. O toolkit transcreve, nao baptiza."
+}

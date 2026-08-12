@@ -1,0 +1,146 @@
+##### ACTIVITY DETAILS for POC_EpatProcess
+
+=== Aguardar evento de Notificacao do AIIM <_0XWagVqNEfG5K7mY0I3I6w>
+SUBFLOW -> EXTERNAL/UNRESOLVED _jbIH91qjEfG5K7mY0I3I6w (Execution=)
+
+=== Iniciar Aguardar Notificacao <_0XWaglqNEfG5K7mY0I3I6w>
+RECEIVE TASK; message= Instantiate=
+
+=== Flag Retirati True GS <_0XWahVqNEfG5K7mY0I3I6w>
+SCRIPT (JavaScript):
+FLAGRETIRATE = true;
+EXISTENOTIFICAC=true;
+
+
+=== Pedido de Vistas <_CtQ68lqPEfG5K7mY0I3I6w>
+RECEIVE TASK; message= Instantiate=
+
+=== Busca Emails <_CtQ691qPEfG5K7mY0I3I6w>
+SUBFLOW -> Busca Env Vista AIIM [BSCENVPC] (Execution=)
+
+=== Vistas do Juiz <_CtQ6-1qPEfG5K7mY0I3I6w>
+RECEIVE TASK; message= Instantiate=
+
+=== VoltaAgenda <_CtQ7AVqPEfG5K7mY0I3I6w>
+SCRIPT (JavaScript):
+VOLTARSEGINSTAN=1;
+
+
+=== Realizar Atividade Vista Mista <_tbOD4FqPEfG5K7mY0I3I6w>
+USER TASK; performers: _nBlBIV6IEfGBBLgT-R5iuw
+   Information: <xpdExt:Information ScriptGrammar="JavaScript" xmlns:xpdExt="http://www.tibco.com/XPD/xpdExtension1.0.0">PARTICIPANTE = '1001030';</xpdExt:Information>
+
+=== Verificar Anulacao <_CI6lx1qREfG5K7mY0I3I6w>
+SCRIPT (JavaScript):
+if(ANULACAODTJ == true && INSTANCIA == 2){
+	STATUSRECURSOS = 0;
+	if(INDNAORECORRER == true){
+		INDNAORECORRER = true;
+	}else if(INDNAORECORRER == false){
+		INDNAORECORRER = false;
+	}else{
+		INDNAORECORRER = false;
+	}
+}
+if(ORIGEM == IPESystemValues.SW_NA){
+	ORIGEM = 'NA';
+}
+FLAGCRZ = FLAGCONTRARAZAO;
+
+=== Prepara Intimação <_CI6lyFqREfG5K7mY0I3I6w>
+SUBFLOW -> PreparaIntimacao [PRPINTPC] (Execution=)
+
+=== Finalizar AIIM <_xWNLe1qSEfG5K7mY0I3I6w>
+USER TASK; performers: _xWNLlVqSEfG5K7mY0I3I6w
+   FormImplementation: <xpdExt:FormImplementation FormType="UserDefined" FormURI="ePAT/WebPages/PAT/PrimeiraInstancia/FechamentoAIIMRedirect.aspx" xmlns:xpdExt="http://www.tibco.com/XPD/xpdExtension1.0.0" />
+
+=== Set Nome Etapa 2 <_XWivF1qTEfG5K7mY0I3I6w>
+SCRIPT (JavaScript):
+NOMEETAPA = "CQ";
+DAYSOVER=0;
+DTFIMCQ = IPESystemValues.SW_DATE;
+HRFIMCQ = IPEDateTimeUtil.CALCTIME('23:59',0,0,DAYSOVER);
+
+
+=== Email CQ Fechamento <_O-rPp1qUEfG5K7mY0I3I6w>
+SERVICE TASK in: out:
+
+=== Preparar Notificacao <_sfwu-VqUEfG5K7mY0I3I6w>
+USER TASK; performers: _zJIHQlqiEfG5K7mY0I3I6w
+   FormImplementation: <xpdExt:FormImplementation FormType="UserDefined" FormURI="ePAT/WebPages/PAT/PrimeiraInstancia/NotificacaoPreparar.aspx" xmlns:xpdExt="http://www.tibco.com/XPD/xpdExtension1.0.0" />
+
+=== Verificar Retorno Decisions <_30jAcFqVEfG5K7mY0I3I6w>
+USER TASK; performers: _zJIHQlqiEfG5K7mY0I3I6w
+   FormImplementation: <xpdExt:FormImplementation FormType="Form" FormURI="form://POC_Epat/POC_EpatProcess/VerificarRetornoDecisions/VerificarRetornoDecisions.form" xmlns:xpdExt="http://www.tibco.com/XPD/xpdExtension1.0.0" />
+
+=== Email Limite Rel 1 <_6WNq-lqgEfG5K7mY0I3I6w>
+SERVICE TASK in: out:
+
+=== Define Destinatarios <_G4hU81qhEfG5K7mY0I3I6w>
+SCRIPT (JavaScript):
+if (IPESystemValues.SW_HOSTNAME == 'prod1'){
+	CCRELATORIO='acsimoes@fazenda.sp.gov.br';
+	BCCRELATORIO='epat_tribunal@fazenda.sp.gov.br';
+}
+else {CCRELATORIO=IPESystemValues.SW_NA;
+	BCCRELATORIO=IPESystemValues.SW_NA;}
+
+=== Controlar Intimados <_nQntZ16JEfGBBLgT-R5iuw>
+SUBFLOW -> EXTERNAL/UNRESOLVED _BAx4zV6KEfGBBLgT-R5iuw (Execution=)
+
+=== prepSub <_zE3XeV6JEfGBBLgT-R5iuw>
+SCRIPT (JavaScript):
+POSICAOINICIO = 0;
+POSICAOFIM = 0;
+AUX = IDSINTIMADOS;
+for(INDICESUBDIN = 0; INDICESUBDIN <= QTDINTIMADOS-1; INDICESUBDIN ++) {
+	NRSUBPRO[INDICESUBDIN] = "CONTROLE";
+	POSICAOFIM = IPEStringUtil.SEARCH("|",AUX);
+	ARRAYINT[INDICESUBDIN]=IPEStringUtil.SUBSTR(AUX,1,POSICAOFIM-1);
+	POSICAOINICIO = POSICAOFIM+1;
+    FIMSTRING = IPEStringUtil.STRLEN(AUX);
+	AUX = IPEStringUtil.SUBSTR(AUX,POSICAOINICIO,FIMSTRING);
+}
+if (CODUADTJ == IPESystemValues.SW_NA){
+	CODUADTJ = CODUADRT;
+	}
+/*if (CNTPECA1=='110' || CNTPECA1=='24' || CNTPECA1=='53' || CNTPECA1=='55' || CNTPECA1=='22'){
+   IDPECASCNT = CNTPECA1;}*/
+
+if(CNTPECA1 != IPESystemValues.SW_NA){
+   	IDPECASCNT = CNTPECA1;}
+   	
+if(CNTPECA2 != IPESystemValues.SW_NA){
+   	IDPECASCNT = IDPECASCNT + '|' + CNTPECA2;}
+   	
+if (CNTPECA3 != IPESystemValues.SW_NA){
+   IDPECASCNT = IDPECASCNT + '|' + CNTPECA3;}
+
+if (CNTPECA4 !=IPESystemValues.SW_NA){
+   IDPECASCNT = IDPECASCNT + '|' + CNTPECA4;}
+
+
+/*if (SFPECA1=='50' || SFPECA1=='24' || SFPECA1=='53' || SFPECA1=='49' || SFPECA1=='55' || SFPECA1=='110'){
+   IDPECASSF = SFPECA1;}*/
+
+if (SFPECA1 != IPESystemValues.SW_NA){
+   IDPECASSF = SFPECA1;}
+
+if (SFPECA2 != IPESystemValues.SW_NA){
+   IDPECASSF = IDPECASSF + '|' + SFPECA2;}
+
+if (SFPECA3 != IPESystemValues.SW_NA){
+   IDPECASSF = IDPECASSF + '|' + SFPECA3;}
+
+if (SFPECA4 != IPESystemValues.SW_NA){
+   IDPECASSF = IDPECASSF + '|' + SFPECA4;}
+   
+   IDSINTIMADOS = '278713|278712|';
+   /*--278711|278710|278709|278708|278707|278706|278705|278704|278703|278702|278701|278700|278699|278698|278697|278696|278695|278694|278693|278692|278691|';*/
+
+
+=== Criar Notificacao <_BQIgAF9KEfGqPfX31TKC3w>
+SUBFLOW -> CriaNotificacao [CRNOTPC] (Execution=)
+
+=== Iniciar Novo Graft <_OAgPol9UEfG6Lfb98zsREQ>
+RECEIVE TASK; message= Instantiate=

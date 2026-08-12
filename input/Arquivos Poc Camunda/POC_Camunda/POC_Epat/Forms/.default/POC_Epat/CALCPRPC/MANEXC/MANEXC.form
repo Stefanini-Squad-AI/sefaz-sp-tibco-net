@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<form:form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:et="http://www.tibco.com/forms/model/elemtypes" xmlns:form="http://www.tibco.com/forms/model/form" xmlns:gwt="http://www.tibco.com/forms/model/gwt" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" generated="true" generatorSource="POC_Epat.xpdl#_zJIHXVqiEfG5K7mY0I3I6w" formatVersion="2.2.2">
+  <form:externalResources>
+    <form:externalResource name="resource.common" uri="pathmap://FORMS_RESOURCES/common.properties" internal="true" localized="true"/>
+    <form:externalResource name="resource.form" uri=".default/POC_Epat/CALCPRPC/MANEXC/MANEXC.properties" sfRelative="true" internal="true" localized="true"/>
+  </form:externalResources>
+  <form:dataModel>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHSlqiEfG5K7mY0I3I6w" name="data.DUMP" label="DUMP" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHUlqiEfG5K7mY0I3I6w" name="data.STERRORCODE" label="STErrorCode" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="50"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHSFqiEfG5K7mY0I3I6w" name="data.DATETIME" label="DATETIME" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="50"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHQFqiEfG5K7mY0I3I6w" name="data.ISAPPERROR" label="IsAppError" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="1"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHUVqiEfG5K7mY0I3I6w" name="data.PROCESS_ID" label="PROCESS_ID" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="35"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHR1qiEfG5K7mY0I3I6w" name="data.STATUS_CODE" label="STATUS_CODE" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="50"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHQ1qiEfG5K7mY0I3I6w" name="data.MAXRETRIES" label="MaxRetries" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_BRY7wHvBEdy0U8_1u7Q20g?BomPrimitiveTypes%3a%3aInteger?" type="BomPrimitiveTypes::Integer" inout="IN" length="10"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHU1qiEfG5K7mY0I3I6w" name="data.SERVICE_NAME" label="SERVICE_NAME" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="50"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHQVqiEfG5K7mY0I3I6w" name="data.SW_MAINPROC" label="SW_MAINPROC" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="8"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_lresYlqhEfG5K7mY0I3I6w" name="data.SW_MAINCASE" label="SW_MAINCASE" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_BRY7wHvBEdy0U8_1u7Q20g?BomPrimitiveTypes%3a%3aInteger?" type="BomPrimitiveTypes::Integer" inout="IN" length="10"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHRFqiEfG5K7mY0I3I6w" name="data.ISTECHERROR" label="IsTechError" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="1"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHT1qiEfG5K7mY0I3I6w" name="data.STERRORDESC" label="STErrorDesc" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="IN" length="100"/>
+    <form:parameter generated="true" generatorSource="POC_Epat.xpdl#_zJIHSVqiEfG5K7mY0I3I6w" name="data.OUTCOME" label="Outcome" dataType="uml:PrimitiveType pathmap://BOM_TYPES/BomPrimitiveTypes.library.uml#_AGoC4HcNEdytQ9AWEvOuug?BomPrimitiveTypes%3a%3aText?" type="BomPrimitiveTypes::Text" inout="INOUT" length="10"/>
+  </form:dataModel>
+  <form:services/>
+  <form:actions/>
+  <form:conditions/>
+  <form:rules>
+    <form:rule name="rule.cancel" label="Cancel">
+      <form:event source="#control.cancel" eventType="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#select" subject="form.control.cancel.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.cancel"/>
+    </form:rule>
+    <form:rule name="rule.close" label="Close">
+      <form:event source="#control.close" eventType="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#select" subject="form.control.close.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.close"/>
+    </form:rule>
+    <form:rule name="rule.submit" label="Submit">
+      <form:event source="#control.submit" eventType="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#select" subject="form.control.submit.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.submit"/>
+    </form:rule>
+  </form:rules>
+  <form:bindings>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2M5IGQwEfGUo9jzQD7qQQ">
+      <form:source target="data.DUMP" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.DUMP.value"/>
+      <form:destination target="control.DUMP" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.DUMP.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2M5IWQwEfGUo9jzQD7qQQ">
+      <form:source target="data.STERRORCODE" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.STERRORCODE.value"/>
+      <form:destination target="control.STERRORCODE" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.STERRORCODE.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2M5ImQwEfGUo9jzQD7qQQ">
+      <form:source target="data.DATETIME" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.DATETIME.value"/>
+      <form:destination target="control.DATETIME" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.DATETIME.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqIGQwEfGUo9jzQD7qQQ">
+      <form:source target="data.ISAPPERROR" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.ISAPPERROR.value"/>
+      <form:destination target="control.ISAPPERROR" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.ISAPPERROR.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqIWQwEfGUo9jzQD7qQQ">
+      <form:source target="data.PROCESS_ID" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.PROCESS_ID.value"/>
+      <form:destination target="control.PROCESS_ID" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.PROCESS_ID.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqImQwEfGUo9jzQD7qQQ">
+      <form:source target="data.STATUS_CODE" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.STATUS_CODE.value"/>
+      <form:destination target="control.STATUS_CODE" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.STATUS_CODE.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqI2QwEfGUo9jzQD7qQQ">
+      <form:source target="data.MAXRETRIES" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.MAXRETRIES.value"/>
+      <form:destination target="control.MAXRETRIES" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.MAXRETRIES.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqJGQwEfGUo9jzQD7qQQ">
+      <form:source target="data.SERVICE_NAME" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SERVICE_NAME.value"/>
+      <form:destination target="control.SERVICE_NAME" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SERVICE_NAME.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqJWQwEfGUo9jzQD7qQQ">
+      <form:source target="data.SW_MAINPROC" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SW_MAINPROC.value"/>
+      <form:destination target="control.SW_MAINPROC" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SW_MAINPROC.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqJmQwEfGUo9jzQD7qQQ">
+      <form:source target="data.SW_MAINCASE" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SW_MAINCASE.value"/>
+      <form:destination target="control.SW_MAINCASE" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SW_MAINCASE.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqJ2QwEfGUo9jzQD7qQQ">
+      <form:source target="data.ISTECHERROR" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.ISTECHERROR.value"/>
+      <form:destination target="control.ISTECHERROR" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.ISTECHERROR.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="sourceToDest" name="_Q2WqKGQwEfGUo9jzQD7qQQ">
+      <form:source target="data.STERRORDESC" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.STERRORDESC.value"/>
+      <form:destination target="control.STERRORDESC" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.STERRORDESC.value"/>
+    </form:binding>
+    <form:binding generated="true" direction="bothways" name="_Q2WqKWQwEfGUo9jzQD7qQQ">
+      <form:source target="data.OUTCOME" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.OUTCOME.value"/>
+      <form:destination target="control.OUTCOME" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.OUTCOME.value"/>
+    </form:binding>
+  </form:bindings>
+  <form:targets>
+    <form:target ref="iProcessWorkspace_10.7"/>
+  </form:targets>
+  <form:defaults>
+    <form:labelProperties position="top">
+      <form:font fontColor="#000000" fontName="verdana" fontSize="12"/>
+    </form:labelProperties>
+  </form:defaults>
+  <form:pane elementType="form:PaneType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.panes.vertical" name="pane.root" paneType="com.tibco.forms.panes.vertical">
+    <form:label>Manipular Excecao</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="true"/>
+    <form:defaults>
+      <form:labelProperties position="left"/>
+    </form:defaults>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHSlqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textarea" controlType="com.tibco.forms.controls.textarea" name="control.DUMP">
+      <form:propertySet xsi:type="et:TextAreaPropertySet">
+        <et:rows>10</et:rows>
+        <et:cols>25</et:cols>
+      </form:propertySet>
+      <form:label>DUMP</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHUlqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.STERRORCODE">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>50</et:maxLength>
+      </form:propertySet>
+      <form:label>STErrorCode</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHSFqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.DATETIME">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>50</et:maxLength>
+      </form:propertySet>
+      <form:label>DATETIME</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHQFqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.ISAPPERROR">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>1</et:maxLength>
+      </form:propertySet>
+      <form:label>IsAppError</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHUVqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.PROCESS_ID">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>35</et:maxLength>
+      </form:propertySet>
+      <form:label>PROCESS_ID</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHR1qiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.STATUS_CODE">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>50</et:maxLength>
+      </form:propertySet>
+      <form:label>STATUS_CODE</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHQ1qiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.MAXRETRIES">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>15</et:displayLength>
+        <et:maxLength>11</et:maxLength>
+        <et:numeric>true</et:numeric>
+        <et:formatRef>resource.common.format_integer</et:formatRef>
+      </form:propertySet>
+      <form:label>MaxRetries</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHU1qiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SERVICE_NAME">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>50</et:maxLength>
+      </form:propertySet>
+      <form:label>SERVICE_NAME</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHQVqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SW_MAINPROC">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>10</et:displayLength>
+        <et:maxLength>8</et:maxLength>
+      </form:propertySet>
+      <form:label>SW_MAINPROC</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_lresYlqhEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.SW_MAINCASE">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>15</et:displayLength>
+        <et:maxLength>11</et:maxLength>
+        <et:numeric>true</et:numeric>
+        <et:formatRef>resource.common.format_integer</et:formatRef>
+      </form:propertySet>
+      <form:label>SW_MAINCASE</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHRFqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.ISTECHERROR">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>1</et:maxLength>
+      </form:propertySet>
+      <form:label>IsTechError</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHT1qiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textarea" controlType="com.tibco.forms.controls.textarea" name="control.STERRORDESC">
+      <form:propertySet xsi:type="et:TextAreaPropertySet">
+        <et:rows>10</et:rows>
+        <et:cols>25</et:cols>
+        <et:maxLength>100</et:maxLength>
+      </form:propertySet>
+      <form:label>STErrorDesc</form:label>
+      <form:hint/>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control generated="true" generatorSource="POC_Epat.xpdl#_zJIHSVqiEfG5K7mY0I3I6w" elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.textinput" controlType="com.tibco.forms.controls.textinput" name="control.OUTCOME">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>15</et:displayLength>
+        <et:maxLength>10</et:maxLength>
+      </form:propertySet>
+      <form:label>Outcome</form:label>
+      <form:hint>Valores 'R' tentar novamente ou 'OK' para sair</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+  </form:pane>
+  <form:pane gwt:toolbar="true" styleClass="toolbar" elementType="form:PaneType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.panes.horizontal" name="pane.toolbar" paneType="com.tibco.forms.panes.horizontal">
+    <form:label>Toolbar</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="false"/>
+    <form:control elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.button" controlType="com.tibco.forms.controls.button" name="control.cancel">
+      <form:propertySet xsi:type="et:ButtonPropertySet"/>
+      <form:label>Cancel</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.button" controlType="com.tibco.forms.controls.button" name="control.close">
+      <form:propertySet xsi:type="et:ButtonPropertySet"/>
+      <form:label>Close</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control elementType="form:ControlType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.controls.button" controlType="com.tibco.forms.controls.button" name="control.submit">
+      <form:propertySet xsi:type="et:ButtonPropertySet">
+        <et:type>primary</et:type>
+      </form:propertySet>
+      <form:label>Submit</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+  </form:pane>
+  <form:pane elementType="form:PaneType pathmap://FORMS_UI_ELEMENT_TYPES/UIElementTypes.library.elemtypes#com.tibco.forms.panes.messages" name="pane.messages" paneType="com.tibco.forms.panes.messages">
+    <form:label>Invalid Entries</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="false"/>
+  </form:pane>
+</form:form>

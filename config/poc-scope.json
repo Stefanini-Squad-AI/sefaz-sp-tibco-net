@@ -1,0 +1,77 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/poc-scope/v1",
+  "note": "A fronteira do escopo da POC, transcrita de POC_FULFILLMENT_PLAN.md seccao 1. Este ficheiro e AUTORADO: e a decisao de escopo. O gerador de escopo nao decide nada - le esta fronteira e marca cada elemento da IR. Serve de porta ao backlog: elemento fora de escopo nao gera card.",
+
+  "porqueExiste": "A POC nao migra o ePAT completo: valida que a plataforma BPM alvo executa o cenario representativo. Sem esta fronteira o backlog encomendaria a migracao inteira - 127 operacoes de servico em vez de 5, e 209 campos em vez dos que o cenario toca.",
+
+  "conflitoResolvido": "conformance.json deriva pocFlowProcesses casando o nome do passo com o texto do documento, e obtem apenas 3 processos porque as etapas 3 e 5 nao casaram com elemento nenhum. Isso e heuristica de deteccao, nao fronteira. A autoridade e a seccao 1 do plano, que lista 9 processos por extenso. Usar os 3 perderia o CALCPRPC, que a etapa 2 nomeia explicitamente.",
+
+  "cenario": {
+    "comeca": "Quando o AFR inicia 'Finalizar AIIM' para um AIIM que ja existe no AIIMWeb.",
+    "termina": "Depois de 'Controle Intimados' concluir e a instancia do processo fechar."
+  },
+
+  "incluido": {
+    "processes": [
+      { "name": "POC_EpatProcess", "papel": "processo principal" },
+      { "name": "DEAT0050",        "papel": "notificacao do AIIM, etapa 2" },
+      { "name": "CALCPRPC",        "papel": "calculo de prazo, nomeado na etapa 2" },
+      { "name": "BSCENVPC",        "papel": "busca de envolvidos, etapa 6" },
+      { "name": "PRPINTPC",        "papel": "preparacao de intimacao, etapa 6" },
+      { "name": "CONTROPC",        "papel": "controle de intimados, etapas 6 e 7" },
+      { "name": "ATZINTPC",        "papel": "atualizacao de intimacao, etapa 6" },
+      { "name": "AGPECASPC",       "papel": "aguardar pecas, invocado pela trilha" },
+      { "name": "CRNOTPC",         "papel": "criacao de notificacao, etapa 6" }
+    ],
+    "conceitos": "Tarefas humanas, chamadas de servico, regras Decisions, temporizadores, sinais, e-mail, execucao paralela, correlacao assincrona e subprocesso dinamico.",
+    "estado": "O estado que este cenario exige, incluindo os campos de negocio e o envelope tecnico separado."
+  },
+
+  "excluido": [
+    {
+      "id": "operacoes-nao-invocadas",
+      "regra": "Operacao de servico catalogada no WSDL mas nunca invocada por um serviceTask dos processos incluidos.",
+      "porque": "O WSDL descreve a superficie inteira do ePAT. O cenario toca uma fracao dela. Gerar card para as restantes seria encomendar a migracao completa da integracao.",
+      "planoRef": "seccao 1, 'Migration of the complete ePAT application or every legacy process'"
+    },
+    {
+      "id": "campos-nao-referenciados",
+      "regra": "Campo declarado no XPDL que nenhum processo incluido le, escreve, testa em condicao, mapeia para servico, ou expoe em formulario.",
+      "porque": "Campo que ninguem toca nao tem comportamento a demonstrar. Continua no dicionario como facto do legado, mas nao gera trabalho.",
+      "planoRef": "seccao 1, 'State required by this scenario'"
+    },
+    {
+      "id": "decisao-de-tela-tecnica",
+      "regra": "Decisao no code-behind sem peso de negocio: nulo, sessao, postback, excepcao.",
+      "porque": "Backend e frontend estao diferidos para o MVP por decisao do cliente. Da tela interessa o contrato com o motor, nao a mecanica da pagina.",
+      "planoRef": "decisao de escopo registada em SOLUTION_ARCHITECTURE"
+    },
+    {
+      "id": "atividade-anterior-ao-cenario",
+      "regra": "Qualquer passo que ocorra antes de o AFR seleccionar um AIIM existente.",
+      "porque": "O cenario comeca com o AIIM ja lavrado no AIIMWeb.",
+      "planoRef": "seccao 1, 'Business activity before the AFR selects an existing AIIM'"
+    },
+    {
+      "id": "ciclo-apos-controle-intimados",
+      "regra": "O ciclo legal ou administrativo completo posterior ao Controle Intimados.",
+      "porque": "O cenario termina com o fecho da instancia.",
+      "planoRef": "seccao 1, 'The complete legal or administrative lifecycle after Controle Intimados'"
+    },
+    {
+      "id": "pacote-externo-nao-entregue",
+      "regra": "Processo referenciado por um dos 15 pacotes externos nunca entregues.",
+      "porque": "Nao ha fonte para migrar. Onde o cenario precisa deles, entram dubles com contrato acordado - decidido em rulings.MISSING-EXTERNAL-PACKAGES.",
+      "planoRef": "seccao 1, 'Undelivered external packages except where a test double is required'"
+    }
+  ],
+
+  "regraDoDuble": "Um elemento fora de escopo por falta de fonte, mas que o cenario invoca, NAO desaparece: vira card de duble tipado e conduzido por cenario, nao card de implementacao. Sao coisas diferentes e o backlog tem de as distinguir.",
+
+  "regraDoEstado": {
+    "decisao": "Campo fora do cenario CONTINUA no modelo gerado, marcado com [OutOfPocScope] e o motivo. Nao gera card.",
+    "decidiaoEm": "2026-08-10",
+    "porque": "Cortar dados do caso e diferente de cortar trabalho. O legado carrega estes 62 campos na mesma, e removê-los do modelo criaria uma divergencia silenciosa com a origem no dia em que alguem os ligar. O atributo torna a fronteira visivel no codigo e consultavel por ferramenta, em vez de viver so num relatorio.",
+    "efeito": "O escopo corta o BACKLOG, nao o MODELO. AiimCase tem os 209 campos; 147 sem marca, 62 marcados."
+  }
+}

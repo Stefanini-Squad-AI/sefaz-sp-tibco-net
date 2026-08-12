@@ -1,0 +1,270 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-BSCENVPC-seg003",
+  "cardType": "build",
+  "title": "Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Fixed'",
+  "epic": "etapa-1-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Busca Envolvidos Vista Por AIIM' a 'Done - Fixed', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 12 passo(s) da jornada do caso, de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Fixed', no processo BSCENVPC. ATENCAO: 1 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (regresso) e tem de ser escrita explicitamente no fluxo .NET.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Services",
+        "status": "final",
+        "note": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/UseCases",
+        "status": "scaffold",
+        "note": "Tarefa humana e um caso de uso. As regras do code-behind das telas aterram aqui porque decidem o desfecho do processo, nao a apresentacao."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Soap",
+        "status": "scaffold",
+        "note": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_qIDu5F6BEfGBBLgT-R5iuw",
+        "nome": "Busca Envolvidos Vista Por AIIM",
+        "kind": "serviceTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_qIDu4l6BEfGBBLgT-R5iuw",
+        "nome": "gateway _qIDu4l6BEfGBBLgT-R5iuw",
+        "kind": "gateway",
+        "decideQue": "A chamada a Busca Envolvidos Vista Por AIIM foi bem sucedida?",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_qIDu4V6BEfGBBLgT-R5iuw",
+        "nome": "Set App Error",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_qIDu416BEfGBBLgT-R5iuw",
+        "nome": "gateway _qIDu416BEfGBBLgT-R5iuw",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_qIDu316BEfGBBLgT-R5iuw",
+        "nome": "endEvent _qIDu316BEfGBBLgT-R5iuw",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_qIDupF6BEfGBBLgT-R5iuw",
+        "nome": "Tech Error",
+        "kind": "gateway",
+        "entrouPor": "regresso"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_qIDuo16BEfGBBLgT-R5iuw",
+        "nome": "App Error",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 8,
+        "nodeId": "_qIDuoF6BEfGBBLgT-R5iuw",
+        "nome": "More Retries",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 9,
+        "nodeId": "_qIDupl6BEfGBBLgT-R5iuw",
+        "nome": "gateway _qIDupl6BEfGBBLgT-R5iuw",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 10,
+        "nodeId": "_qIDunF6BEfGBBLgT-R5iuw",
+        "nome": "Manipular Excecao",
+        "kind": "userTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 11,
+        "nodeId": "_qIDull6BEfGBBLgT-R5iuw",
+        "nome": "Manually Fixed",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 12,
+        "nodeId": "_qIDuml6BEfGBBLgT-R5iuw",
+        "nome": "Done - Fixed",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-BSCENVPC-008].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_qIDu5F6BEfGBBLgT-R5iuw",
+      "_qIDu4l6BEfGBBLgT-R5iuw",
+      "_qIDu4V6BEfGBBLgT-R5iuw",
+      "_qIDu416BEfGBBLgT-R5iuw",
+      "_qIDu316BEfGBBLgT-R5iuw",
+      "_qIDupF6BEfGBBLgT-R5iuw",
+      "_qIDuo16BEfGBBLgT-R5iuw",
+      "_qIDuoF6BEfGBBLgT-R5iuw",
+      "_qIDupl6BEfGBBLgT-R5iuw",
+      "_qIDunF6BEfGBBLgT-R5iuw",
+      "_qIDull6BEfGBBLgT-R5iuw",
+      "_qIDuml6BEfGBBLgT-R5iuw"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu5F6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu5F6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu4l6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu4l6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu4V6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu4V6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu416BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu416BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu316BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu316BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDupF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDupF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuo16BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuo16BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuoF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuoF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDupl6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDupl6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDunF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDunF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDull6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDull6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuml6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuml6BEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-008.json",
+      "immutable": true,
+      "caseCount": 4
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 8 ao 19 do cenario SC-BSCENVPC-008 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "BSCENVPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: busca de envolvidos, etapa 6"
+  },
+  "fulfills": {
+    "etapas": [
+      1,
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-BSCENVPC-008",
+      "ordemNaJornada": 1,
+      "doPasso": 8,
+      "aoPasso": 19,
+      "abrePor": "Busca Envolvidos Vista Por AIIM",
+      "fechaEm": "Done - Fixed"
+    },
+    "concepts": [
+      "service-tasks",
+      "eventos-inicio-fim",
+      "user-tasks"
+    ],
+    "expectedResults": [
+      "integracao-servicos",
+      "modelagem-bpmn"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 12,
+    "camadas": 2,
+    "pastas": 5,
+    "aEscrever": 4,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "grande"
+  }
+}

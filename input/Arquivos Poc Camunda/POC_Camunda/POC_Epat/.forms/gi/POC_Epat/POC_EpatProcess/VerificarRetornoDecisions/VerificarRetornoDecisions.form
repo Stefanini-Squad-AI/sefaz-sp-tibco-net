@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form:form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:et="http://www.tibco.com/forms/model/elemtypes" xmlns:form="http://www.tibco.com/forms/model/form" xmlns:gwt="http://www.tibco.com/forms/model/gwt" id="_hl5-YF9TEfG6Lfb98zsREQ" formatVersion="2.2.2">
+  <form:runtimeDependencies/>
+  <form:externalResources>
+    <form:externalResource name="resource.form" uri="VerificarRetornoDecisions.properties" internal="true" localized="true"/>
+  </form:externalResources>
+  <form:dataModel>
+    <form:parameter name="data.FLAGCONTRARAZAO" type="BomPrimitiveTypes::Boolean" inout="IN"/>
+    <form:parameter name="data.CNTPECA4" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.SFPECA4" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.QTPECASSEFAZ" type="BomPrimitiveTypes::Integer" inout="IN" length="2"/>
+    <form:parameter name="data.CNTPECA3" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.SFPECA2" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.SFPECA3" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.TIPOVISTAS" type="BomPrimitiveTypes::Text" inout="INOUT" length="50"/>
+    <form:parameter name="data.SFPECA1" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.CNTPECA1" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.SFDIASREPRESENT" type="BomPrimitiveTypes::Text" inout="IN" length="2"/>
+    <form:parameter name="data.QTPECASCNT" type="BomPrimitiveTypes::Integer" inout="IN" length="2"/>
+    <form:parameter name="data.CNTPECA2" type="BomPrimitiveTypes::Text" inout="IN" length="3"/>
+    <form:parameter name="data.DESCREGRA" type="BomPrimitiveTypes::Text" inout="IN" length="250"/>
+    <form:parameter name="data.TEMPORESPOSTA" type="BomPrimitiveTypes::Text" inout="IN" length="2"/>
+    <form:parameter name="data.CODTEXTO" type="BomPrimitiveTypes::Text" inout="IN" length="4"/>
+  </form:dataModel>
+  <form:services/>
+  <form:actions/>
+  <form:conditions/>
+  <form:rules>
+    <form:rule name="rule.cancel" label="Cancel">
+      <form:event subject="form.control.cancel.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.cancel"/>
+    </form:rule>
+    <form:rule name="rule.close" label="Close">
+      <form:event subject="form.control.close.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.close"/>
+    </form:rule>
+    <form:rule name="rule.submit" label="Submit">
+      <form:event subject="form.control.submit.select"/>
+      <form:action ref="pathmap://FORMS_LIBRARIES/Standard.library.elemtypes#action.submit"/>
+    </form:rule>
+  </form:rules>
+  <form:bindings>
+    <form:binding direction="sourceToDest" name="_fKJkIF6DEfGBBLgT-R5iuw">
+      <form:source target="data.FLAGCONTRARAZAO" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.FLAGCONTRARAZAO.value"></form:source>
+      <form:destination target="control.FLAGCONTRARAZAO" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.FLAGCONTRARAZAO.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkIV6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA4" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA4.value"></form:source>
+      <form:destination target="control.CNTPECA4" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA4.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkIl6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA4" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA4.value"></form:source>
+      <form:destination target="control.SFPECA4" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA4.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkI16DEfGBBLgT-R5iuw">
+      <form:source target="data.QTPECASSEFAZ" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.QTPECASSEFAZ.value"></form:source>
+      <form:destination target="control.QTPECASSEFAZ" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.QTPECASSEFAZ.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkJF6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA3" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA3.value"></form:source>
+      <form:destination target="control.CNTPECA3" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA3.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkJV6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA2" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA2.value"></form:source>
+      <form:destination target="control.SFPECA2" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA2.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkJl6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA3" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA3.value"></form:source>
+      <form:destination target="control.SFPECA3" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA3.value"></form:destination>
+    </form:binding>
+    <form:binding direction="bothways" name="_fKJkJ16DEfGBBLgT-R5iuw">
+      <form:source target="data.TIPOVISTAS" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.TIPOVISTAS.value"></form:source>
+      <form:destination target="control.TIPOVISTAS" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.TIPOVISTAS.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkKF6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFPECA1" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFPECA1.value"></form:source>
+      <form:destination target="control.SFPECA1" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFPECA1.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkKV6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA1" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA1.value"></form:source>
+      <form:destination target="control.CNTPECA1" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA1.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkKl6DEfGBBLgT-R5iuw">
+      <form:source target="data.SFDIASREPRESENT" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.SFDIASREPRESENT.value"></form:source>
+      <form:destination target="control.SFDIASREPRESENT" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.SFDIASREPRESENT.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkK16DEfGBBLgT-R5iuw">
+      <form:source target="data.QTPECASCNT" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.QTPECASCNT.value"></form:source>
+      <form:destination target="control.QTPECASCNT" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.QTPECASCNT.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_fKJkLF6DEfGBBLgT-R5iuw">
+      <form:source target="data.CNTPECA2" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CNTPECA2.value"></form:source>
+      <form:destination target="control.CNTPECA2" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CNTPECA2.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_u87gYF6DEfGBBLgT-R5iuw">
+      <form:source target="data.DESCREGRA" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.DESCREGRA.value"></form:source>
+      <form:destination target="control.DESCREGRA" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.DESCREGRA.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_FhXhMF6FEfGBBLgT-R5iuw">
+      <form:source target="data.TEMPORESPOSTA" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.TEMPORESPOSTA.value"></form:source>
+      <form:destination target="control.TEMPORESPOSTA" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.TEMPORESPOSTA.value"></form:destination>
+    </form:binding>
+    <form:binding direction="sourceToDest" name="_FhakgF6FEfGBBLgT-R5iuw">
+      <form:source target="data.CODTEXTO" feature="http://www.tibco.com/forms/model/form#//Datum/value" data="form.data.CODTEXTO.value"></form:source>
+      <form:destination target="control.CODTEXTO" feature="http://www.tibco.com/forms/model/form#//Control/value" data="form.control.CODTEXTO.value"></form:destination>
+    </form:binding>
+  </form:bindings>
+  <form:targets>
+    <form:target ref="iProcessWorkspace_10.7"/>
+  </form:targets>
+  <form:defaults>
+    <form:labelProperties position="top">
+      <form:font fontColor="#000000" fontName="verdana" fontSize="12"/>
+    </form:labelProperties>
+  </form:defaults>
+  <form:pane name="pane.root" paneType="com.tibco.forms.panes.vertical">
+    <form:label>Verificar Retorno Decisions</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="true"/>
+    <form:defaults>
+      <form:labelProperties position="left"/>
+    </form:defaults>
+    <form:control controlType="com.tibco.forms.controls.checkbox" name="control.FLAGCONTRARAZAO">
+      <form:label>flagContraRazao</form:label>
+      <form:hint>Identifica se há ou não contra razão.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA4">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca4</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="CNTPECA4__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'cntPeca4' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.SFPECA4">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca4</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="SFPECA4__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'sfPeca4' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.QTPECASSEFAZ">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+        <et:numeric>true</et:numeric>
+      </form:propertySet>
+      <form:label>qtPecasSefaz</form:label>
+      <form:hint>Identifica a quantidade de peças da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="QTPECASSEFAZ__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>!isNaN(context.value) &amp;&amp; this.getForm().numberFormat(context.value.valueOf(), 2, 0);</form:script>
+        <form:message>'qtPecasSefaz' not valid: expecting an integer with no more than 2 digits</form:message>
+      </form:validation>
+      <form:validation generated="true" name="QTPECASSEFAZ__lowerLimit" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>isNaN(context.value) || context.value.valueOf() >= -2147483648;</form:script>
+        <form:message>'qtPecasSefaz' not valid: expecting a value greater than or equal to -2147483648</form:message>
+      </form:validation>
+      <form:validation generated="true" name="QTPECASSEFAZ__upperLimit" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>isNaN(context.value) || context.value.valueOf() &lt;= 2147483647;</form:script>
+        <form:message>'qtPecasSefaz' not valid: expecting a value less than or equal to 2147483647</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA3">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca3</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="CNTPECA3__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'cntPeca3' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.SFPECA2">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca2</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="SFPECA2__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'sfPeca2' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.SFPECA3">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca3</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="SFPECA3__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'sfPeca3' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.TIPOVISTAS">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>40</et:displayLength>
+        <et:maxLength>50</et:maxLength>
+      </form:propertySet>
+      <form:label>tipoVistas</form:label>
+      <form:hint>Identifica o tipo de vista:&#xD;
+&#xD;
+MISTA&#xD;
+JUIZ&#xD;
+DRF</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:validation generated="true" name="TIPOVISTAS__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 50;</form:script>
+        <form:message>'tipoVistas' not valid: expecting a value with no more than 50 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.SFPECA1">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>sfPeca1</form:label>
+      <form:hint>Idenficador do tipo de peça da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="SFPECA1__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'sfPeca1' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA1">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca1</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="CNTPECA1__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'cntPeca1' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.SFDIASREPRESENT">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>2</et:maxLength>
+      </form:propertySet>
+      <form:label>sfDiasRepresentacao</form:label>
+      <form:hint>Identifica a quantidade de dias para manifestação por parte da Secretaria da Fazenda (Sefaz).</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="SFDIASREPRESENT__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 2;</form:script>
+        <form:message>'sfDiasRepresentacao' not valid: expecting a value with no more than 2 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.QTPECASCNT">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+        <et:numeric>true</et:numeric>
+      </form:propertySet>
+      <form:label>qtPecasCNT</form:label>
+      <form:hint>Identifica a quantidade de peças do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="QTPECASCNT__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>!isNaN(context.value) &amp;&amp; this.getForm().numberFormat(context.value.valueOf(), 2, 0);</form:script>
+        <form:message>'qtPecasCNT' not valid: expecting an integer with no more than 2 digits</form:message>
+      </form:validation>
+      <form:validation generated="true" name="QTPECASCNT__lowerLimit" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>isNaN(context.value) || context.value.valueOf() >= -2147483648;</form:script>
+        <form:message>'qtPecasCNT' not valid: expecting a value greater than or equal to -2147483648</form:message>
+      </form:validation>
+      <form:validation generated="true" name="QTPECASCNT__upperLimit" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>isNaN(context.value) || context.value.valueOf() &lt;= 2147483647;</form:script>
+        <form:message>'qtPecasCNT' not valid: expecting a value less than or equal to 2147483647</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.CNTPECA2">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>3</et:maxLength>
+      </form:propertySet>
+      <form:label>cntPeca2</form:label>
+      <form:hint>Idenficador do tipo de peça do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="CNTPECA2__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 3;</form:script>
+        <form:message>'cntPeca2' not valid: expecting a value with no more than 3 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textarea" name="control.DESCREGRA">
+      <form:propertySet xsi:type="et:TextAreaPropertySet">
+        <et:rows>10</et:rows>
+        <et:cols>25</et:cols>
+        <et:maxLength>250</et:maxLength>
+      </form:propertySet>
+      <form:label>DescricaoRegra</form:label>
+      <form:hint>Identifica o conteúdo da regra.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="DESCREGRA__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 250;</form:script>
+        <form:message>'DescricaoRegra' not valid: expecting a value with no more than 250 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.TEMPORESPOSTA">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>2</et:maxLength>
+      </form:propertySet>
+      <form:label>tempoResposta</form:label>
+      <form:hint>Período em dias para resposta do Contribuinte.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="TEMPORESPOSTA__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 2;</form:script>
+        <form:message>'tempoResposta' not valid: expecting a value with no more than 2 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.textinput" name="control.CODTEXTO">
+      <form:propertySet xsi:type="et:TextPropertySet">
+        <et:displayLength>5</et:displayLength>
+        <et:maxLength>4</et:maxLength>
+      </form:propertySet>
+      <form:label>codTexto</form:label>
+      <form:hint>Identifica o código de texto da intimação.</form:hint>
+      <form:visible>true</form:visible>
+      <form:enabled>false</form:enabled>
+      <form:validation generated="true" name="CODTEXTO__length" type="javascript" when="oncontrolchange" simple="true">
+        <form:script>context.value.length &lt;= 4;</form:script>
+        <form:message>'codTexto' not valid: expecting a value with no more than 4 characters</form:message>
+      </form:validation>
+      <form:required>false</form:required>
+    </form:control>
+  </form:pane>
+  <form:pane gwt:toolbar="true" styleClass="toolbar" name="pane.toolbar" paneType="com.tibco.forms.panes.horizontal">
+    <form:label>Toolbar</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="false"/>
+    <form:control controlType="com.tibco.forms.controls.button" name="control.cancel">
+      <form:propertySet xsi:type="et:ButtonPropertySet"/>
+      <form:label>Cancel</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.button" name="control.close">
+      <form:propertySet xsi:type="et:ButtonPropertySet"/>
+      <form:label>Close</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+    <form:control controlType="com.tibco.forms.controls.button" name="control.submit">
+      <form:propertySet xsi:type="et:ButtonPropertySet">
+        <et:type>primary</et:type>
+      </form:propertySet>
+      <form:label>Submit</form:label>
+      <form:visible>true</form:visible>
+      <form:enabled>true</form:enabled>
+      <form:required>false</form:required>
+    </form:control>
+  </form:pane>
+  <form:pane name="pane.messages" paneType="com.tibco.forms.panes.messages">
+    <form:label>Invalid Entries</form:label>
+    <form:visible>true</form:visible>
+    <form:enabled>true</form:enabled>
+    <form:labelProperties visible="false"/>
+  </form:pane>
+</form:form>

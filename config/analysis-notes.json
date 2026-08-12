@@ -1,0 +1,165 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/analysis-notes/v1",
+  "note": "ANALISE AGENTICA. Autorada por um modelo de linguagem a partir dos artefactos extraidos, NAO derivada mecanicamente e NAO verificada com quem opera o processo. Entra no dossie como HIPOTESE a confirmar, nunca como facto. Nenhuma decisao do gerador depende deste ficheiro, e o pipeline corre igual se ele nao existir. O objectivo e unico: transformar uma pergunta aberta ('o que significa isto?') numa pergunta fechada ('confirma que e isto?'), que custa ao analista uma leitura em vez de uma investigacao.",
+  "campos": {
+    "hipotese": "O que a analise acredita ser a resposta.",
+    "raciocinio": "A prova nos artefactos que sustenta a hipotese. Se nao houver prova, a hipotese nao devia existir.",
+    "oQueConfirmaria": "O facto minimo que o analista tem de dizer para fechar a questao.",
+    "riscoSeErrada": "O que parte se a hipotese for aceite e estiver errada.",
+    "confianca": "alta = a prova esta no pacote e e inequivoca. media = a prova e forte mas admite outra leitura. baixa = e inferencia por analogia."
+  },
+
+  "items": {
+    "IDENT-MAXRETRIES": {
+      "hipotese": "MAXRETRIES e o tecto de tentativas do laco de retry e vale 5 por omissao. Nao tem significado de negocio: e parametro de resiliencia da chamada de servico.",
+      "raciocinio": "Os cinco subprocessos de servico (CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC, CRNOTPC) tem no passo SetParameters a atribuicao 'if (MAXRETRIES == null) MAXRETRIES = 5', identica nos cinco. E lido em duas condicoes: 'NUMAPPRETRIES < MAXRETRIES' no passo More Retries, e 'IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES' no passo Check Retries. Nunca aparece num formulario visivel ao utilizador nem numa regra Corticon.",
+      "oQueConfirmaria": "Confirmar que 5 e o valor de producao e que nao existe configuracao externa que o sobreponha por ambiente ou por servico.",
+      "riscoSeErrada": "Se na producao o valor vier de configuracao e for diferente, o numero de tentativas muda e com ele o tempo ate o caso cair no tratamento manual. Nao quebra o fluxo, altera o SLA.",
+      "confianca": "alta"
+    },
+
+    "IDENT-NUMAPPRETRIES": {
+      "hipotese": "NUMAPPRETRIES e o contador de tentativas de erro de APLICACAO, distinto do contador tecnico do motor. Comeca em zero e incrementa de um. Nao e campo de negocio.",
+      "raciocinio": "Inicializado com 'if (NUMAPPRETRIES == null)' no passo Start Loop dos cinco subprocessos. A condicao 'NUMAPPRETRIES < MAXRETRIES' vive no passo More Retries. Corre em paralelo com 'IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES', que e o contador do proprio motor iProcess. Ha portanto dois lacos de retry sobrepostos com o mesmo tecto: um conta falhas de aplicacao, o outro falhas de entrega da fila.",
+      "oQueConfirmaria": "Confirmar que sao mesmo dois contadores independentes com o mesmo tecto, e nao um engano em que se pretendia partilhar o mesmo contador.",
+      "riscoSeErrada": "Se forem o mesmo conceito duplicado por engano, o numero real de tentativas em .NET pode chegar ao dobro do pretendido.",
+      "confianca": "alta"
+    },
+
+    "IDENT-ISAPPERROR": {
+      "hipotese": "ISAPPERROR e um booleano codificado como texto 'Y'/'N' que marca falha de negocio devolvida pelo servico, por oposicao a falha de infraestrutura. 'N' significa ausencia de erro.",
+      "raciocinio": "So aparecem os literais 'N' e 'Y' em todo o pacote. Vive lado a lado com ISTECHERROR, com o mesmo dominio, e ambos sao lidos no formulario MANEXC - o formulario de excepcao manual que o operador ve quando o retry se esgota. A separacao aplicacao/tecnico e a mesma que o envelope tecnico do WSDL faz entre STATUS_CODE e ERROR_CODE.",
+      "oQueConfirmaria": "Confirmar que 'N' e ausencia de erro e nao 'nao avaliado'. A diferenca importa porque o campo pode estar por preencher antes da primeira chamada.",
+      "riscoSeErrada": "Se 'N' significar 'ainda nao avaliado', o ramo de sucesso dispara antes de haver resposta do servico, e o caso avanca sem ter sido processado.",
+      "confianca": "media"
+    },
+
+    "IDENT-ISTECHERROR": {
+      "hipotese": "ISTECHERROR e o par de ISAPPERROR para falha de infraestrutura - fila, rede, indisponibilidade - com o mesmo dominio 'Y'/'N'. Governa se a falha e retentavel automaticamente.",
+      "raciocinio": "Dominio identico e declaracao no mesmo conjunto de formularios MANEXC. A distincao aplicacao/tecnico e a que decide, no legado, se o caso volta ao laco de retry ou vai para tratamento manual: um erro de negocio nao se resolve repetindo a chamada, um erro tecnico resolve-se.",
+      "oQueConfirmaria": "Confirmar que so o erro tecnico e retentavel automaticamente, e que o erro de aplicacao vai sempre para o operador.",
+      "riscoSeErrada": "Repetir automaticamente uma chamada que falhou por regra de negocio consome as tentativas todas sem hipotese de sucesso, e atrasa a entrada em tratamento manual.",
+      "confianca": "media"
+    },
+
+    "IDENT-OUTCOME": {
+      "hipotese": "OUTCOME e a decisao que o operador toma no formulario de excepcao manual: 'R' para repetir a chamada, 'OK' para dar por resolvido. NAO ha divergencia entre clones - sao dois valores do mesmo dominio, lidos em passos diferentes.",
+      "raciocinio": "O literal 'R' aparece na condicao do passo Try Again e o literal 'OK' na condicao do passo Manually Fixed. Sao dois passos distintos do mesmo laco de tratamento de excepcao, nao duas versoes do mesmo passo. A leitura inicial de que os clones divergiam vem de os passos nao existirem todos em todos os subprocessos.",
+      "oQueConfirmaria": "Confirmar que o dominio e exactamente {'R', 'OK'} e que nao existe um terceiro valor - por exemplo abandonar o caso - tratado num pacote externo nao entregue.",
+      "riscoSeErrada": "Um terceiro valor nao previsto cai no ramo por omissao e o caso segue como se tivesse sido resolvido, sem o ter sido.",
+      "confianca": "media"
+    },
+
+    "IDENT-STATUS_CODE": {
+      "hipotese": "STATUS_CODE e o codigo de retorno do envelope tecnico do BusinessWorks, onde '0' e sucesso. Nao pertence ao dominio de negocio e deve viver no resultado da chamada, nao no estado do caso.",
+      "raciocinio": "Declarado no envelope tecnico do EPAT.wsdl. Comparado com '0' em quatro subprocessos (ATZINTPC, CRNOTPC, BSCENVPC, CALCPRPC) atraves de 'STATUS_CODE != \"0\"'. O PRPINTPC e a excepcao: usa 'STATUS_CODE != IPESystemValues.SW_NA'. Como os cinco subprocessos sao copias do mesmo template, esta diferenca e provavelmente defeito e nao intencao.",
+      "oQueConfirmaria": "Confirmar que '0' e o unico codigo de sucesso, e decidir se a comparacao com SW_NA no PRPINTPC se corrige ou se reproduz fielmente.",
+      "riscoSeErrada": "No PRPINTPC, um servico que devolva erro com codigo preenchido passa no teste 'diferente de nao preenchido' e o fluxo segue como se tivesse corrido bem. O erro fica invisivel.",
+      "confianca": "alta"
+    },
+
+    "CLONE-PRPINTPC": {
+      "hipotese": "A divergencia do PRPINTPC e defeito de copia, nao variacao deliberada. O passo de verificacao de erro ficou com o teste do template anterior.",
+      "raciocinio": "Os cinco subprocessos partilham assinatura estrutural identica: mesmo laco de retry, mesmos passos Start Loop, More Retries, Check Retries, Try Again, Manually Fixed. Quatro comparam STATUS_CODE com '0'; so o PRPINTPC compara com SW_NA. Nao ha nada no PRPINTPC que justifique um contrato de erro diferente - chama o mesmo tipo de servico pelo mesmo transporte. O padrao de defeito e o mesmo ja encontrado noutros pontos do pacote, como o 'if (CNTPECA1 != SW_NA || CNTPECA1 != 9)' sempre verdadeiro no AGPECASPC.",
+      "oQueConfirmaria": "Confirmar com quem manteve o processo se houve alguma vez razao para o PRPINTPC tratar erro de forma diferente.",
+      "riscoSeErrada": "Se for intencional e for corrigido, uma condicao de erro que hoje e ignorada passa a interromper o fluxo, e casos que hoje passam comecam a parar.",
+      "confianca": "media"
+    },
+
+    "BUILTIN-SEMANTICS": {
+      "hipotese": "Os builtins iProcess seguem a convencao base-1 do iProcess classico, nao a base-0 do C#. SUBSTR e SEARCH sao os de maior risco.",
+      "raciocinio": "O builtin-contract.json fixou um vector comportamental a partir de dados literais que os proprios scripts carregam: a divisao da lista separada por barra vertical em IDSINTIMADOS. Esse vector so fecha se os indices forem base-1. Nao e prova formal, mas e o unico teste disponivel sem a documentacao do produto.",
+      "oQueConfirmaria": "Uma pagina da documentacao TIBCO iProcess, ou uma execucao no ambiente legado com um caso conhecido, que fixe o indice inicial de SUBSTR e o valor de retorno de SEARCH quando nao encontra.",
+      "riscoSeErrada": "Um desvio de uma posicao em SUBSTR nao gera erro: gera um valor errado que segue pelo fluxo. E a classe de defeito mais dificil de detectar depois, porque nao falha, so mente.",
+      "confianca": "media"
+    },
+
+    "SCRIPT-HARDCODED": {
+      "hipotese": "Sao dados de teste esquecidos, nao configuracao. Em particular, o 'IDSINTIMADOS = \"278713|278712|\"' no fim do prepSub sobrepoe a lista real calculada acima.",
+      "raciocinio": "A atribuicao esta no FIM do script, depois de a lista ter sido montada a partir dos dados do caso, e usa dois identificadores concretos com aspecto de chave de base de dados. Um valor de configuracao estaria no inicio ou num parametro, nao a sobrepor o resultado do proprio script.",
+      "oQueConfirmaria": "Confirmar que 278713 e 278712 nao sao intimados reais em producao, e autorizar a remocao da linha na migracao.",
+      "riscoSeErrada": "Se for reproduzido fielmente, toda a demonstracao notifica sempre os mesmos dois solidarios, independentemente do AIIM - e o graft step, que e conceito de destaque da PoC, seria demonstrado com dados falsos.",
+      "confianca": "alta"
+    },
+
+    "TYPE-XPDL-VS-FORM": {
+      "hipotese": "O XPDL esta certo e o formulario esta errado. A precisao declarada no XPDL vem do dominio (numero de AIIM, identificadores), enquanto o tipo do formulario e o que coube no controlo do ecra.",
+      "raciocinio": "Os 14 casos sao todos do mesmo feitio: XPDL declara long, formulario declara int. Sao campos como IDAIIM, NR_AIIM, NR_RAT, QTDINTIMADOS - identificadores e contadores que crescem com o tempo. A escolha conservadora e sempre o tipo mais largo, porque estreitar trunca em silencio.",
+      "oQueConfirmaria": "Confirmar a ordem de grandeza real de IDAIIM e NR_AIIM na base de producao. Se couberem folgadamente em int, a divergencia e irrelevante.",
+      "riscoSeErrada": "Adoptar int e ver o identificador exceder o limite so acontece anos depois, e quando acontece corrompe o numero sem erro visivel.",
+      "confianca": "alta"
+    },
+
+    "LABEL-CONFLICT": {
+      "hipotese": "E defeito de copia no formulario TIBCO: o rotulo foi copiado da linha de cima e nao foi editado.",
+      "raciocinio": "O rotulo coincide exactamente com o NOME de outro campo declarado, apos normalizacao. Nao e uma coincidencia plausivel de vocabulario: e o padrao classico de duplicar uma linha num editor de formularios e esquecer de mudar o texto.",
+      "oQueConfirmaria": "O nome de negocio correcto para cada um dos campos afectados.",
+      "riscoSeErrada": "Aceitar o rotulo renomeia o campo errado no modelo .NET. O codigo compila, os testes passam, e o ecra mostra um rotulo que descreve outro dado.",
+      "confianca": "alta"
+    },
+
+    "MISSING-EXTERNAL-PACKAGES": {
+      "hipotese": "Os 15 pacotes nao entregues nao sao todos necessarios a PoC. A trilha narrada usa apenas os processos entregues; os pacotes em falta cobrem o resto do ePAT.",
+      "raciocinio": "O intent-map liga as sete etapas do documento a elementos que existem todos no pacote entregue. Os subprocessos invocados pela trilha - DEAT0050, CONTROPC e os cinco de servico - estao presentes. As referencias externas aparecem sobretudo em ramos fora da trilha.",
+      "oQueConfirmaria": "Confirmar, etapa a etapa, que nenhuma das sete precisa de um processo que nao foi entregue. Se precisar, decidir entre obter o ficheiro ou substituir por um duble com contrato acordado.",
+      "riscoSeErrada": "Descobrir a meio da demonstracao que uma etapa chama um processo inexistente. E pior do que parece: o legado declara HaltOnBadSubProcess=\"false\", ou seja, falha em silencio - a migracao pode herdar o mesmo comportamento e ninguem repara.",
+      "confianca": "media"
+    },
+
+    "NOEQ-dynamic-subprocess": {
+      "hipotese": "A opcao 'interface-registry-validated' e a correcta, e o conjunto de destinos possiveis e derivavel do XPDL - ao contrario do que se julgava.",
+      "raciocinio": "O SubFlow nao aponta para um processo, aponta para um xpdExt:ProcessInterface. Ha tres interfaces no pacote (NOTFAIIM, CTRINTPC, AGURETPC) e cada uma tem exactamente UMA implementacao declarada via ImplementedInterface. O conjunto e portanto fechado e conhecido em tempo de compilacao, o que permite gerar o registo a partir do XPDL e validar no arranque.",
+      "oQueConfirmaria": "Confirmar que nao existem implementacoes adicionais das mesmas interfaces nos pacotes externos nao entregues.",
+      "riscoSeErrada": "Se houver implementacoes noutros pacotes, o registo validado em arranque rejeita um destino legitimo. E um erro visivel e barato de corrigir - preferivel ao inverso.",
+      "confianca": "alta"
+    },
+
+    "NOEQ-graft-step": {
+      "hipotese": "O graft step e usado a serio: cria uma instancia filha POR SOLIDARIO e liga-a a actividade que espera. Nao e uma chamada de subprocesso comum, apesar de a flag exportada dizer que nao.",
+      "raciocinio": "Os tres DynamicSubProcessTask trazem IsGraftStep=\"false\", mas a descricao que o autor escreveu no proprio XPDL diz o contrario: 'inicia um processo de Notificacao do AIIM para cada solidario e o vincula a actividade'. Os campos envolvidos sao IsArray=\"true\", o que confirma a cardinalidade multipla. A flag exportada e provavelmente artefacto da exportacao, nao a intencao.",
+      "oQueConfirmaria": "Confirmar quantas instancias filhas podem ligar-se a um pai, e o que acontece se uma delas nunca terminar.",
+      "riscoSeErrada": "Implementar como chamada simples de subprocesso faz a notificacao a multiplos solidarios deixar de funcionar - e esse e o conceito de destaque da etapa 2 da PoC.",
+      "confianca": "alta"
+    },
+
+    "NOEQ-expression-deadline": {
+      "hipotese": "Os prazos por expressao ('DATA; HORA;') sao instantes absolutos calculados a partir de campos do caso, nao duracoes. O fuso e o de Sao Paulo.",
+      "raciocinio": "As expressoes referem pares de campos data e hora que o proprio processo escreve, como PRAZODEFESA e HORAFINAL. Uma duracao nao precisaria de dois campos nem de os ler do caso. O sistema e da SEFAZ-SP e os prazos sao administrativos, portanto contam em horario local.",
+      "oQueConfirmaria": "Confirmar o fuso e, sobretudo, o que acontece se o campo de data for alterado DEPOIS de o temporizador ja estar armado - o prazo reajusta-se ou mantem-se?",
+      "riscoSeErrada": "Tratar como duracao faz o prazo disparar no momento errado. Num processo administrativo fiscal, um prazo que dispara cedo ou tarde tem consequencia legal, nao apenas tecnica.",
+      "confianca": "media"
+    },
+
+    "NOEQ-external-event": {
+      "hipotese": "O evento externo e a resposta assincrona do BusinessWorks pela fila JMS, correlacionada pelo PROCESS_ID que os scripts ja constroem.",
+      "raciocinio": "Os scripts montam 'PROCESS_ID = \"idAiim-<n>idProc-<n>\"' antes de cada chamada. A chave de correlacao ja existe e ja e deterministica - nao e preciso inventar uma. O transporte e SOAP sobre JMS/EMS, declarado no WSDL.",
+      "oQueConfirmaria": "Confirmar se a fila garante entrega unica ou se pode entregar em duplicado, e se pode haver resposta atrasada depois de o caso ja ter seguido.",
+      "riscoSeErrada": "Sem idempotencia, uma entrega duplicada faz o caso avancar duas vezes. Com o graft step envolvido, pode gerar notificacoes a mais.",
+      "confianca": "alta"
+    },
+
+    "NOEQ-link-goto": {
+      "hipotese": "Os 20 pares link/goto sao desvio de fluxo puro, sem semantica de negocio. Podem virar transicoes explicitas sem perda.",
+      "raciocinio": "Os 10 pares throw/catch resolvem-se todos deterministicamente no process-model, e cada catch tem exactamente um throw. Nenhum atravessa fronteira de processo. E a construcao classica de evitar cruzar setas num diagrama grande.",
+      "oQueConfirmaria": "Nada do negocio - e decisao de arquitectura. Basta aprovar que o BPMN gerado mostre a seta explicita em vez do salto.",
+      "riscoSeErrada": "Baixo. O pior caso e um diagrama mais dificil de ler.",
+      "confianca": "alta"
+    },
+
+    "NOEQ-non-interrupting-boundary": {
+      "hipotese": "A fronteira nao interruptiva existe para avisar sem parar: o prazo expira, alguem e notificado, e a actividade principal continua a correr.",
+      "raciocinio": "Ha uma unica ocorrencia. O padrao em processos administrativos e o aviso de prazo a decorrer, que nao pode interromper o trabalho ja em curso.",
+      "oQueConfirmaria": "Confirmar quem recebe o aviso e se a actividade principal pode mesmo terminar normalmente depois de o aviso ter disparado.",
+      "riscoSeErrada": "Implementar como interruptiva cancela trabalho em curso quando o prazo passa - perda de trabalho do utilizador.",
+      "confianca": "media"
+    },
+
+    "NOEQ-iprocess-builtin": {
+      "hipotese": "As 17 ocorrencias resolvem-se com uma camada de compatibilidade unica e pequena, nao com traducao caso a caso. O ponto critico e SW_NA, nao as funcoes de texto.",
+      "raciocinio": "Sao 13 builtins em 30 chamadas, a maioria manipulacao de texto e data com equivalente directo em .NET. O que nao tem equivalente e o SW_NA: um terceiro estado que nao e nulo nem vazio, e que 18 campos usam. Traduzi-lo para null muda o ramo que dispara, em silencio.",
+      "oQueConfirmaria": "Aprovar que SW_NA vire um sentinela explicito em C# - um tipo proprio ou constante bem conhecida - e nunca null.",
+      "riscoSeErrada": "Cada campo com SW_NA tem tres caminhos possiveis. Colapsar dois deles muda o comportamento em pontos dispersos, sem erro de compilacao e sem teste vermelho.",
+      "confianca": "alta"
+    }
+  }
+}

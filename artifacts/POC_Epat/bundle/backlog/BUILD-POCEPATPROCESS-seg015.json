@@ -1,0 +1,113 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-POCEPATPROCESS-seg015",
+  "cardType": "build",
+  "title": "Aviso por e-mail ao controlo de qualidade do fechamento",
+  "epic": "etapa-1",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Email CQ Fechamento' a 'Email CQ Fechamento', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 1 passo(s) da jornada do caso, de 'Email CQ Fechamento' ate 'Email CQ Fechamento', no processo POC_EpatProcess.",
+      "hypotheses": [
+        "Os destinatarios saem do script para configuracao por ambiente: o proprio autor ja tentou fazer isso a mao, com um 'if (SW_HOSTNAME == prod1)'."
+      ]
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Services",
+        "status": "final",
+        "note": "Envio de e-mail e integracao externa como outra qualquer. Os destinatarios saem do script para configuracao por ambiente, decidido em rulings.HARDCODED-VALUES."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Soap",
+        "status": "scaffold",
+        "note": "Envio de e-mail e integracao externa como outra qualquer. Os destinatarios saem do script para configuracao por ambiente, decidido em rulings.HARDCODED-VALUES."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_O-rPp1qUEfG5K7mY0I3I6w",
+        "nome": "Email CQ Fechamento",
+        "kind": "emailTask",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-POC_EpatProcess-016].segmentos[2]",
+    "kind": "segment",
+    "nodeIds": [
+      "_O-rPp1qUEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_O-rPp1qUEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_O-rPp1qUEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": "Topologia e ordem sao transcricao; o troco nao contem corpo a interpretar.",
+    "verified": false,
+    "translation": "lossless"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat",
+    "reviewSha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-POC_EpatProcess-016.json",
+      "immutable": true,
+      "caseCount": 2
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 5 ao 5 do cenario SC-POC_EpatProcess-016 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "POC_EpatProcess",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: processo principal"
+  },
+  "fulfills": {
+    "etapas": [
+      1
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-POC_EpatProcess-016",
+      "ordemNaJornada": 2,
+      "doPasso": 5,
+      "aoPasso": 5,
+      "abrePor": "Email CQ Fechamento",
+      "fechaEm": "Email CQ Fechamento"
+    },
+    "concepts": [
+      "envio-emails"
+    ],
+    "expectedResults": [
+      "notificacoes"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 1,
+    "camadas": 2,
+    "pastas": 2,
+    "aEscrever": 1,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "grande"
+  },
+  "dependsOn": [
+    "BUILD-POCEPATPROCESS-seg027"
+  ]
+}

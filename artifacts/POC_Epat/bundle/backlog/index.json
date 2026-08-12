@@ -1,0 +1,1754 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog/v1",
+  "package": "POC_Epat",
+  "note": "Backlog projectado dos artefactos. A unidade de trabalho e o SEGMENTO da jornada: tem oraculo pronto (o troco do cenario) e etapa exacta, e o detalhe fino desce para content.checklist. Nada aqui e criativo - card, ordem, dependencia, bloqueador e cobertura sao leituras de factos ja extraidos. O julgamento entra apenas por analysis/backlog-review.json, como parecer anexo, e nunca altera uma contagem.",
+  "generatedAt": "2026-05-28T00:00:00Z",
+  "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+  "parecerAgentico": {
+    "ficheiro": "analysis/backlog-review.json",
+    "presente": true,
+    "sha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf",
+    "pareceres": 8,
+    "aplicados": 8,
+    "nota": "Entrada do bundle, nao saida: pode alterar titulo e hipoteses, logo e fixada por sha256 como o XPDL e o glossario. Mesmas fontes + mesmo glossario + mesmo parecer = mesmo backlog."
+  },
+  "summary": {
+    "total": 80,
+    "build": 61,
+    "validation": 16,
+    "double": 3,
+    "invalidos": 0,
+    "nosEmEscopo": 215,
+    "nosComCard": 215,
+    "nosSemCard": 0,
+    "conceitosTocados": "19/19",
+    "conceitosSemCard": 0,
+    "resultadosSemCard": 0
+  },
+  "porPeso": {
+    "atravessa-o-sistema": 22,
+    "grande": 30,
+    "medio": 8,
+    "pequeno": 20
+  },
+  "atravessamOSistema": [
+    {
+      "id": "BUILD-BSCENVPC-seg005",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "nos": 11,
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Try Task'"
+    },
+    {
+      "id": "BUILD-DEAT0050-seg008",
+      "camadas": 4,
+      "pastasPorEscrever": 4,
+      "nos": 6,
+      "title": "Retomada por evento externo e entrada no laco de prazo"
+    },
+    {
+      "id": "BUILD-DEAT0050-seg009",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 5,
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'INICALC' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'"
+    },
+    {
+      "id": "BUILD-DEAT0050-seg012",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "nos": 6,
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Controlar Data'"
+    },
+    {
+      "id": "BUILD-CRNOTPC-seg019",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "nos": 11,
+      "title": "Notificação do AIIM: de 'CriaNotificacao' ate 'Try Task'"
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg029",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "nos": 38,
+      "title": "Calculo de prazo: laco de retry ate desistir"
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg030",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "nos": 36,
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Done - Fixed'"
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg031",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 28,
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Done - Success'"
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg032",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 34,
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Try Task'"
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg034",
+      "camadas": 3,
+      "pastasPorEscrever": 6,
+      "nos": 7,
+      "title": "Chamada ao Decisions e conferencia humana do retorno"
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg035",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "nos": 21,
+      "title": "Preparacao da intimacao: laco de retry, COM O DEFEITO DE COPIA A CORRIGIR"
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg036",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "nos": 20,
+      "title": "Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'"
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg037",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 16,
+      "title": "Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'"
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg038",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 19,
+      "title": "Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'"
+    },
+    {
+      "id": "BUILD-AGPECASPC-seg040",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 9,
+      "title": "Espera pelas interposicoes, com prorrogacao de prazo"
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg041",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "nos": 21,
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Bail'"
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg042",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "nos": 20,
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'"
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg043",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 16,
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'"
+    },
+    {
+      "id": "BUILD-CONTROPC-seg045",
+      "camadas": 3,
+      "pastasPorEscrever": 2,
+      "nos": 4,
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'ISetSubProc'"
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg046",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "nos": 19,
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'"
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg051",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "nos": 9,
+      "title": "Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Catch Signal Event'"
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg053",
+      "camadas": 4,
+      "pastasPorEscrever": 6,
+      "nos": 23,
+      "title": "Vistas do juiz e mistas, ate a preparacao dos intimados"
+    }
+  ],
+  "porEtapa": {
+    "etapa 1": {
+      "nome": "Fechamento do AIIM",
+      "build": 15,
+      "validation": 3,
+      "double": 0
+    },
+    "etapa 2": {
+      "nome": "Notificação do AIIM",
+      "build": 31,
+      "validation": 4,
+      "double": 3
+    },
+    "etapa 3": {
+      "nome": "Integração com Decisions",
+      "build": 5,
+      "validation": 8,
+      "double": 0
+    },
+    "etapa 4": {
+      "nome": "Verificação do Retorno do Decisions",
+      "build": 13,
+      "validation": 2,
+      "double": 0
+    },
+    "etapa 5": {
+      "nome": "Validação de Gateways Paralelos",
+      "build": 7,
+      "validation": 3,
+      "double": 0
+    },
+    "etapa 6": {
+      "nome": "Controle de Intimados",
+      "build": 1,
+      "validation": 1,
+      "double": 0
+    },
+    "etapa 7": {
+      "nome": "Encerramento",
+      "build": 7,
+      "validation": 1,
+      "double": 0
+    }
+  },
+  "conceitosSemCard": [],
+  "resultadosSemCard": [],
+  "nosSemCard": [],
+  "invalidos": [],
+  "cards": [
+    {
+      "id": "BUILD-POCEPATPROCESS-seg001",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Aguardar evento de Notificacao do AIIM' ate 'Aguardar evento de Notificacao do AIIM'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 1,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 39,
+      "bloqueadores": [
+        "dynamic-subprocess"
+      ],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg021"
+      ]
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg002",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Bail'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 13,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg003",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Done - Fixed'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 12,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg004",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Busca de envolvidos com vista aberta: caminho de sucesso",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 8,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg005",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Busca Envolvidos Vista Por AIIM' ate 'Try Task'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 11,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [
+        "link-goto"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg006",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'gateway _Faq_RFqTEfG5K7mY0I3I6w'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 2,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 28,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg014"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg007",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Finalizar AIIM' ate 'Set Nome Etapa 2'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 3,
+      "peso": "grande",
+      "camadas": 1,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-DEAT0050-seg008",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Retomada por evento externo e entrada no laco de prazo",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 6,
+      "peso": "atravessa-o-sistema",
+      "camadas": 4,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "external-event",
+        "iprocess-builtin",
+        "expression-deadline"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-DEAT0050-seg009",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'INICALC' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 5,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "external-event",
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg010",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Início' ate 'Início'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 18,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg011",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 7,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 12,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-DEAT0050-seg012",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'Controlar Data'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 6,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "iprocess-builtin",
+        "expression-deadline"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-DEAT0050-seg013",
+      "cardType": "build",
+      "epic": "etapa-1-2",
+      "title": "Fechamento do AIIM + Notificação do AIIM: de 'Start Event' ate 'endEvent _lrer2FqhEfG5K7mY0I3I6w'",
+      "etapas": [
+        1,
+        2
+      ],
+      "nos": 5,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg014",
+      "cardType": "build",
+      "epic": "etapa-1",
+      "title": "Fechamento do AIIM: de 'Corrigir Fechamento' ate 'Corrigir Fechamento'",
+      "etapas": [
+        1
+      ],
+      "nos": 2,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 15,
+      "bloqueadores": [
+        "link-goto"
+      ],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg024"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg015",
+      "cardType": "build",
+      "epic": "etapa-1",
+      "title": "Aviso por e-mail ao controlo de qualidade do fechamento",
+      "etapas": [
+        1
+      ],
+      "nos": 1,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg027"
+      ]
+    },
+    {
+      "id": "BUILD-CRNOTPC-seg016",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Bail'",
+      "etapas": [
+        2
+      ],
+      "nos": 13,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CRNOTPC-seg017",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Fixed'",
+      "etapas": [
+        2
+      ],
+      "nos": 12,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CRNOTPC-seg018",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'CriaNotificacao' ate 'Done - Success'",
+      "etapas": [
+        2
+      ],
+      "nos": 8,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CRNOTPC-seg019",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'CriaNotificacao' ate 'Try Task'",
+      "etapas": [
+        2
+      ],
+      "nos": 11,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [
+        "link-goto"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg020",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Existe Notificação?' ate 'Existe Notificação?'",
+      "etapas": [
+        2
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg021",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Existe Notificação?' ate 'Flag Retirati True GS'",
+      "etapas": [
+        2
+      ],
+      "nos": 4,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 26,
+      "bloqueadores": [
+        "graft-step",
+        "link-goto"
+      ],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg006"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg022",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Iniciar Aguardar Notificacao' ate 'Flag Retirati True GS'",
+      "etapas": [
+        2
+      ],
+      "nos": 2,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 13,
+      "bloqueadores": [
+        "external-event"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg023",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Iniciar Novo Graft' ate 'Set Nome Etapa 2'",
+      "etapas": [
+        2
+      ],
+      "nos": 2,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 17,
+      "bloqueadores": [
+        "graft-step",
+        "external-event",
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg024",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Preparar Notificacao' ate 'Corrigir?'",
+      "etapas": [
+        2
+      ],
+      "nos": 2,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 15,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg023"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg025",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Preparar Notificacao' ate 'Criar Notificacao'",
+      "etapas": [
+        2
+      ],
+      "nos": 3,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg026",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Preparar Notificacao' ate 'Encerra e retira'",
+      "etapas": [
+        2
+      ],
+      "nos": 2,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg027",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Preparar Notificacao' ate 'Fim de Prazo Mantendo Atividade'",
+      "etapas": [
+        2
+      ],
+      "nos": 2,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [
+        "expression-deadline",
+        "non-interrupting-boundary"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CRNOTPC-seg028",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Check Retries SW_QRETRYCOUNT'",
+      "etapas": [
+        2
+      ],
+      "nos": 7,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 12,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg029",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Calculo de prazo: laco de retry ate desistir",
+      "etapas": [
+        2
+      ],
+      "nos": 38,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "oraculo": "scenario-path",
+      "casos": 8,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg030",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Done - Fixed'",
+      "etapas": [
+        2
+      ],
+      "nos": 36,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "oraculo": "scenario-path",
+      "casos": 8,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg031",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Done - Success'",
+      "etapas": [
+        2
+      ],
+      "nos": 28,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CALCPRPC-seg032",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Start Event' ate 'Try Task'",
+      "etapas": [
+        2
+      ],
+      "nos": 34,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 4,
+      "bloqueadores": [
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg033",
+      "cardType": "build",
+      "epic": "etapa-2",
+      "title": "Notificação do AIIM: de 'Trocar Notificação?' ate 'Trocar Notificação?'",
+      "etapas": [
+        2
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 39,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg001"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg034",
+      "cardType": "build",
+      "epic": "etapa-3-4",
+      "title": "Chamada ao Decisions e conferencia humana do retorno",
+      "etapas": [
+        3,
+        4
+      ],
+      "nos": 7,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 6,
+      "oraculo": "scenario-path",
+      "casos": 39,
+      "bloqueadores": [
+        "link-goto",
+        "iprocess-builtin"
+      ],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg033"
+      ]
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg035",
+      "cardType": "build",
+      "epic": "etapa-3-4",
+      "title": "Preparacao da intimacao: laco de retry, COM O DEFEITO DE COPIA A CORRIGIR",
+      "etapas": [
+        3,
+        4
+      ],
+      "nos": 21,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg036",
+      "cardType": "build",
+      "epic": "etapa-3-4",
+      "title": "Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'",
+      "etapas": [
+        3,
+        4
+      ],
+      "nos": 20,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg037",
+      "cardType": "build",
+      "epic": "etapa-3-4",
+      "title": "Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'",
+      "etapas": [
+        3,
+        4
+      ],
+      "nos": 16,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 3,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-PRPINTPC-seg038",
+      "cardType": "build",
+      "epic": "etapa-3-4",
+      "title": "Integração com Decisions + Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'",
+      "etapas": [
+        3,
+        4
+      ],
+      "nos": 19,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 3,
+      "bloqueadores": [
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CONTROPC-seg039",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Aguardar Retorno' ate 'endEvent _-bkw8l6JEfGBBLgT-R5iuw'",
+      "etapas": [
+        4
+      ],
+      "nos": 3,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "dynamic-subprocess"
+      ],
+      "dependsOn": [
+        "BUILD-CONTROPC-seg045"
+      ]
+    },
+    {
+      "id": "BUILD-AGPECASPC-seg040",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Espera pelas interposicoes, com prorrogacao de prazo",
+      "etapas": [
+        4
+      ],
+      "nos": 9,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [
+        "iprocess-builtin",
+        "external-event"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg041",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Bail'",
+      "etapas": [
+        4
+      ],
+      "nos": 21,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg042",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Fixed'",
+      "etapas": [
+        4
+      ],
+      "nos": 20,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 5,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg043",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Done - Success'",
+      "etapas": [
+        4
+      ],
+      "nos": 16,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 3,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-AGPECASPC-seg044",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'End Event'",
+      "etapas": [
+        4
+      ],
+      "nos": 5,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-CONTROPC-seg045",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'ISetSubProc'",
+      "etapas": [
+        4
+      ],
+      "nos": 4,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 2,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-ATZINTPC-seg046",
+      "cardType": "build",
+      "epic": "etapa-4",
+      "title": "Verificação do Retorno do Decisions: de 'Start Event' ate 'Try Task'",
+      "etapas": [
+        4
+      ],
+      "nos": 19,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 3,
+      "bloqueadores": [
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg047",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Bail'",
+      "etapas": [
+        5
+      ],
+      "nos": 17,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg048",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Fixed'",
+      "etapas": [
+        5
+      ],
+      "nos": 16,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 4,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg049",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Validação de Gateways Paralelos: de 'Start Event' ate 'Done - Success'",
+      "etapas": [
+        5
+      ],
+      "nos": 12,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-BSCENVPC-seg050",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Validação de Gateways Paralelos: de 'Start Event' ate 'Try Task'",
+      "etapas": [
+        5
+      ],
+      "nos": 15,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 1,
+      "bloqueadores": [
+        "iprocess-builtin",
+        "link-goto"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg051",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Catch Signal Event'",
+      "etapas": [
+        5
+      ],
+      "nos": 9,
+      "peso": "atravessa-o-sistema",
+      "camadas": 3,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [
+        "link-goto",
+        "external-event",
+        "expression-deadline"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg052",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Validação de Gateways Paralelos: de 'Validar Paralelos' ate 'Fim Vista Mista'",
+      "etapas": [
+        5
+      ],
+      "nos": 8,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 3,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [
+        "link-goto",
+        "external-event"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg053",
+      "cardType": "build",
+      "epic": "etapa-5",
+      "title": "Vistas do juiz e mistas, ate a preparacao dos intimados",
+      "etapas": [
+        5
+      ],
+      "nos": 23,
+      "peso": "atravessa-o-sistema",
+      "camadas": 4,
+      "pastasPorEscrever": 6,
+      "oraculo": "scenario-path",
+      "casos": 27,
+      "bloqueadores": [
+        "link-goto",
+        "external-event",
+        "expression-deadline",
+        "iprocess-builtin"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg054",
+      "cardType": "build",
+      "epic": "etapa-6",
+      "title": "Controle de Intimados: de 'Controlar Intimados' ate 'Controlar Intimados'",
+      "etapas": [
+        6
+      ],
+      "nos": 1,
+      "peso": "grande",
+      "camadas": 2,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 27,
+      "bloqueadores": [
+        "dynamic-subprocess"
+      ],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg055",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'End Event' ate 'End Event'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg026"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg056",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'endEvent _CtQ66lqPEfG5K7mY0I3I6w' ate 'endEvent _CtQ66lqPEfG5K7mY0I3I6w'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg057",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w' ate 'endEvent _Faq_Q1qTEfG5K7mY0I3I6w'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg020"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg058",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'endEvent _O7K3MF9LEfGqPfX31TKC3w' ate 'endEvent _O7K3MF9LEfGqPfX31TKC3w'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg025"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg059",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'Fim de Prazo' ate 'Fim de Prazo'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 6,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg051"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg060",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'Fim E-mail' ate 'Fim E-mail'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 2,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg015"
+      ]
+    },
+    {
+      "id": "BUILD-POCEPATPROCESS-seg061",
+      "cardType": "build",
+      "epic": "etapa-7",
+      "title": "Encerramento: de 'Fim' ate 'Fim'",
+      "etapas": [
+        7
+      ],
+      "nos": 1,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 0,
+      "oraculo": "scenario-path",
+      "casos": 27,
+      "bloqueadores": [],
+      "dependsOn": [
+        "BUILD-POCEPATPROCESS-seg054"
+      ]
+    },
+    {
+      "id": "VALID-ETAPA1-percurso",
+      "cardType": "validation",
+      "epic": "etapa-1",
+      "title": "Provar a etapa 1 - Fechamento do AIIM - por rasto de instancia",
+      "etapas": [
+        1
+      ],
+      "nos": 0,
+      "peso": "grande",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 62,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-ETAPA2-percurso",
+      "cardType": "validation",
+      "epic": "etapa-2",
+      "title": "Provar a etapa 2 - Notificação do AIIM - por rasto de instancia",
+      "etapas": [
+        2
+      ],
+      "nos": 0,
+      "peso": "grande",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 100,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-ETAPA3-percurso",
+      "cardType": "validation",
+      "epic": "etapa-3",
+      "title": "Provar a etapa 3 - Integração com Decisions - por rasto de instancia",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "grande",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 57,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-ETAPA4-percurso",
+      "cardType": "validation",
+      "epic": "etapa-4",
+      "title": "Provar a etapa 4 - Verificação do Retorno do Decisions - por rasto de instancia",
+      "etapas": [
+        4
+      ],
+      "nos": 0,
+      "peso": "grande",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 79,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-ETAPA5-percurso",
+      "cardType": "validation",
+      "epic": "etapa-5",
+      "title": "Provar a etapa 5 - Validação de Gateways Paralelos - por rasto de instancia",
+      "etapas": [
+        5
+      ],
+      "nos": 0,
+      "peso": "grande",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 45,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-ETAPA6-percurso",
+      "cardType": "validation",
+      "epic": "etapa-6",
+      "title": "Provar a etapa 6 - Controle de Intimados - por rasto de instancia",
+      "etapas": [
+        6
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 27,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-ETAPA7-percurso",
+      "cardType": "validation",
+      "epic": "etapa-7",
+      "title": "Provar a etapa 7 - Encerramento - por rasto de instancia",
+      "etapas": [
+        7
+      ],
+      "nos": 0,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 47,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-SOLBUSINESSSPPROCESSESSOLDECISIONSOLSUBSPPROCESSESSOLINTIMACAOSOLPREPARARINTIMACAO-contrato",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o contrato da operacao __sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLBUSCARVISTASATIVASPORAIIM1-contrato",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_buscarVistasAtivasPorAiim.1",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLCRIARNOTIFICACOESAIIM1-contrato",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLOBTERPRIMEIRODIAUTILAPOSPERIODODEDIASCORRIDOSDEAT1-contrato",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-CORTICON-tabela",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar a equivalencia entre o DMN gerado e as planilhas Corticon",
+      "etapas": [
+        3
+      ],
+      "nos": 0,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "decision-table",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-GATEWAYSAND-conceito",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o conceito Gateways Paralelos (AND)",
+      "etapas": [
+        1,
+        2,
+        5
+      ],
+      "nos": 0,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 146,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-TIMERSDEADLINES-conceito",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o conceito Timers e Deadlines",
+      "etapas": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "nos": 0,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 146,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "VALID-GRAFTSTEP-conceito",
+      "cardType": "validation",
+      "epic": "fundacao",
+      "title": "Provar o conceito Graft Step",
+      "etapas": [
+        2
+      ],
+      "nos": 0,
+      "peso": "medio",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "scenario-path",
+      "casos": 146,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "DOUBLE-NOTFAIIM-interface",
+      "cardType": "double",
+      "epic": "fundacao",
+      "title": "Duble para a interface de processo NOTFAIIM",
+      "etapas": [
+        2
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "DOUBLE-CTRINTPC-interface",
+      "cardType": "double",
+      "epic": "fundacao",
+      "title": "Duble para a interface de processo CTRINTPC",
+      "etapas": [
+        2
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    },
+    {
+      "id": "DOUBLE-AGURETPC-interface",
+      "cardType": "double",
+      "epic": "fundacao",
+      "title": "Duble para a interface de processo AGURETPC",
+      "etapas": [
+        2
+      ],
+      "nos": 0,
+      "peso": "pequeno",
+      "camadas": 1,
+      "pastasPorEscrever": 1,
+      "oraculo": "contract",
+      "casos": 1,
+      "bloqueadores": [],
+      "dependsOn": []
+    }
+  ]
+}

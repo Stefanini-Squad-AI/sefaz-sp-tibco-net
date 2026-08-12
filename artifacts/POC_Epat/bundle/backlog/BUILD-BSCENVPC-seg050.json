@@ -1,0 +1,324 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-BSCENVPC-seg050",
+  "cardType": "build",
+  "title": "Validação de Gateways Paralelos: de 'Start Event' ate 'Try Task'",
+  "epic": "etapa-5",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'Start Event' a 'Try Task', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 15 passo(s) da jornada do caso, de 'Start Event' ate 'Try Task', no processo BSCENVPC. ATENCAO: 3 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (descida, link, regresso) e tem de ser escrita explicitamente no fluxo .NET. O troco corre dentro de um processo chamado a partir de 'POC_EpatProcess/Busca Emails', e e dai que herda a etapa.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "Escopo embutido e topologia: a descida e o regresso tem de existir como transicao explicita, porque no XPDL nao existem."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Abstractions",
+        "status": "final",
+        "note": "O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Rules",
+        "status": "draft",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_qIDulF6BEfGBBLgT-R5iuw",
+        "nome": "Start Event",
+        "kind": "startEvent"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+        "nome": "SetParameters",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-script-BSCENVPC-SetParameters"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
+        "nome": "Start Loop",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_qIDupV6BEfGBBLgT-R5iuw",
+        "nome": "Control System Task Call",
+        "kind": "subProcessScope",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_qIDu3l6BEfGBBLgT-R5iuw",
+        "nome": "startEvent _qIDu3l6BEfGBBLgT-R5iuw",
+        "kind": "startEvent",
+        "entrouPor": "descida"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_qIDu3F6BEfGBBLgT-R5iuw",
+        "nome": "Start TX",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_qIDu3V6BEfGBBLgT-R5iuw",
+        "nome": "Check Retries SW_QRETRYCOUNT",
+        "kind": "gateway",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-BSCENVPC-CheckRetriesSWQRETRYCOUNT"
+      },
+      {
+        "ordem": 8,
+        "nodeId": "_qIDu4F6BEfGBBLgT-R5iuw",
+        "nome": "Set Technical Error",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 9,
+        "nodeId": "_qIDu316BEfGBBLgT-R5iuw",
+        "nome": "endEvent _qIDu316BEfGBBLgT-R5iuw",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 10,
+        "nodeId": "_qIDupF6BEfGBBLgT-R5iuw",
+        "nome": "Tech Error",
+        "kind": "gateway",
+        "entrouPor": "regresso"
+      },
+      {
+        "ordem": 11,
+        "nodeId": "_qIDuo16BEfGBBLgT-R5iuw",
+        "nome": "App Error",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 12,
+        "nodeId": "_qIDuoF6BEfGBBLgT-R5iuw",
+        "nome": "More Retries",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 13,
+        "nodeId": "_qIDuoV6BEfGBBLgT-R5iuw",
+        "nome": "Pause",
+        "kind": "timerEvent",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 14,
+        "nodeId": "_qIDun16BEfGBBLgT-R5iuw",
+        "nome": "Link To: Try Task",
+        "kind": "linkThrow",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 15,
+        "nodeId": "_qIDumF6BEfGBBLgT-R5iuw",
+        "nome": "Try Task",
+        "kind": "linkCatch",
+        "entrouPor": "link"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-BSCENVPC-013].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_qIDulF6BEfGBBLgT-R5iuw",
+      "_qIDulV6BEfGBBLgT-R5iuw",
+      "_qIDul16BEfGBBLgT-R5iuw",
+      "_qIDupV6BEfGBBLgT-R5iuw",
+      "_qIDu3l6BEfGBBLgT-R5iuw",
+      "_qIDu3F6BEfGBBLgT-R5iuw",
+      "_qIDu3V6BEfGBBLgT-R5iuw",
+      "_qIDu4F6BEfGBBLgT-R5iuw",
+      "_qIDu316BEfGBBLgT-R5iuw",
+      "_qIDupF6BEfGBBLgT-R5iuw",
+      "_qIDuo16BEfGBBLgT-R5iuw",
+      "_qIDuoF6BEfGBBLgT-R5iuw",
+      "_qIDuoV6BEfGBBLgT-R5iuw",
+      "_qIDun16BEfGBBLgT-R5iuw",
+      "_qIDumF6BEfGBBLgT-R5iuw"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDulF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDulF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDulV6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDulV6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDul16BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDul16BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDupV6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDupV6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu3l6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu3l6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu3F6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu3F6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu3V6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu3V6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu4F6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu4F6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDu316BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDu316BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDupF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDupF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuo16BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuo16BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuoF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuoF6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDuoV6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDuoV6BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDun16BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDun16BEfGBBLgT-R5iuw']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_qIDumF6BEfGBBLgT-R5iuw",
+      "xpath": "//xpdl2:Activity[@Id='_qIDumF6BEfGBBLgT-R5iuw']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-BSCENVPC-013.json",
+      "immutable": true,
+      "caseCount": 1
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 1 ao 15 do cenario SC-BSCENVPC-013 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "BSCENVPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: busca de envolvidos, etapa 6"
+  },
+  "fulfills": {
+    "etapas": [
+      5
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-BSCENVPC-013",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 15,
+      "abrePor": "Start Event",
+      "fechaEm": "Try Task",
+      "herdadoDe": "POC_EpatProcess/Busca Emails"
+    },
+    "concepts": [
+      "eventos-inicio-fim",
+      "encadeamento-subprocessos",
+      "controle-prazo",
+      "loops-retornos"
+    ],
+    "expectedResults": [
+      "modelagem-bpmn",
+      "subprocessos-encadeados",
+      "sla-prazos"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 15,
+    "camadas": 2,
+    "pastas": 4,
+    "aEscrever": 3,
+    "bloqueadores": 2,
+    "regrasDeNegocio": 2,
+    "peso": "grande"
+  },
+  "gaps": [
+    {
+      "construct": "iprocess-builtin",
+      "detail": "2 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    },
+    {
+      "construct": "link-goto",
+      "detail": "2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.",
+      "status": "decided",
+      "decisionRef": "NOEQ-link-goto"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-iprocess-builtin",
+    "NOEQ-link-goto"
+  ]
+}

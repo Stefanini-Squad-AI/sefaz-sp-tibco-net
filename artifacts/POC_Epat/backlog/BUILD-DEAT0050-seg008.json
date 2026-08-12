@@ -1,0 +1,237 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-DEAT0050-seg008",
+  "cardType": "build",
+  "title": "Retomada por evento externo e entrada no laco de prazo",
+  "epic": "etapa-1-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'INICALC' a 'Controlar Data', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 6 passo(s) da jornada do caso, de 'INICALC' ate 'Controlar Data', no processo DEAT0050. O troco corre dentro de um processo chamado a partir de 'POC_EpatProcess/Aguardar evento de Notificacao do AIIM', e e dai que herda a etapa.",
+      "hypotheses": [
+        "A chave de correlacao ja existe e nao precisa de ser inventada: PROCESS_ID e montado pelos scripts antes de cada chamada.",
+        "O prazo e um instante absoluto combinado de data e hora no momento do agendamento, e nao uma duracao; o temporizador tem de ser rearmado sempre que o campo de prazo for reescrito.",
+        "O atalho que encurta o prazo para uma hora quando SW_HOSTNAME e 'des1' nao migra: os testes usam relogio controlavel."
+      ]
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Api/Endpoints",
+        "status": "scaffold",
+        "note": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Processes",
+        "status": "final",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Runtime",
+        "status": "final",
+        "note": "Evento externo precisa de chave de correlacao (ICorrelationStore) e de um ponto de entrada para a retomada. gaps.external-event = bookmark-correlation."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Abstractions",
+        "status": "final",
+        "note": "O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Doubles",
+        "status": "scaffold",
+        "note": "A interface e transcricao do xpdExt:ProcessInterface. O destino resolve-se em execucao contra o registo validado no arranque; onde nao houver implementacao entregue, ha duble."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_lrer81qhEfG5K7mY0I3I6w",
+        "nome": "INICALC",
+        "kind": "receiveTask"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_lrer3lqhEfG5K7mY0I3I6w",
+        "nome": "CalculaPrazo",
+        "kind": "callActivity",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
+        "nome": "HoraFimSC",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_lrer_VqhEfG5K7mY0I3I6w",
+        "nome": "gateway _lrer_VqhEfG5K7mY0I3I6w",
+        "kind": "gateway",
+        "decideQue": "Ja se esperou pelo prazo em vigor?",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-transition-DEAT0050-gatewaylrerVqhEfG5K7mY0I3I6w"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_lrer2lqhEfG5K7mY0I3I6w",
+        "nome": "Aguarda Defesa",
+        "kind": "timerEvent",
+        "entrouPor": "fluxo",
+        "nota": "1 regra(s) de negocio neste passo: RI-deadline-DEAT0050-AguardaDefesa"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_lrer_lqhEfG5K7mY0I3I6w",
+        "nome": "Controlar Data",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-DEAT0050-001].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_lrer81qhEfG5K7mY0I3I6w",
+      "_lrer3lqhEfG5K7mY0I3I6w",
+      "_lrer3VqhEfG5K7mY0I3I6w",
+      "_lrer_VqhEfG5K7mY0I3I6w",
+      "_lrer2lqhEfG5K7mY0I3I6w",
+      "_lrer_lqhEfG5K7mY0I3I6w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_lrer81qhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_lrer81qhEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_lrer3lqhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_lrer3lqhEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_lrer3VqhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_lrer3VqhEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_lrer_VqhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_lrer_VqhEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_lrer2lqhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_lrer2lqhEfG5K7mY0I3I6w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_lrer_lqhEfG5K7mY0I3I6w",
+      "xpath": "//xpdl2:Activity[@Id='_lrer_lqhEfG5K7mY0I3I6w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat",
+    "reviewSha256": "0b947c09ae6f956d83a5c617f9ecd89afa24fb757a45a8faa3fe086d461453bf"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-DEAT0050-001.json",
+      "immutable": true,
+      "caseCount": 1
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 1 ao 6 do cenario SC-DEAT0050-001 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "DEAT0050",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: notificacao do AIIM, etapa 2"
+  },
+  "fulfills": {
+    "etapas": [
+      1,
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-DEAT0050-001",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 6,
+      "abrePor": "INICALC",
+      "fechaEm": "Controlar Data",
+      "herdadoDe": "POC_EpatProcess/Aguardar evento de Notificacao do AIIM"
+    },
+    "concepts": [
+      "eventos-mensagem",
+      "espera-assincrona",
+      "encadeamento-subprocessos",
+      "controle-prazo"
+    ],
+    "expectedResults": [
+      "correlacao-assincrona",
+      "subprocessos-encadeados",
+      "sla-prazos"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 6,
+    "camadas": 4,
+    "pastas": 7,
+    "aEscrever": 4,
+    "bloqueadores": 3,
+    "regrasDeNegocio": 2,
+    "peso": "atravessa-o-sistema",
+    "nota": "Toca 4 projecto(s) e 4 pasta(s) por escrever. Continua a ser um card valido - e o troco que cumpre a etapa -, mas nao deve ser atribuido a uma pessoa so nem estimado como os outros."
+  },
+  "gaps": [
+    {
+      "construct": "external-event",
+      "detail": "1 no(s) deste segmento, de 6 no pacote inteiro. Decisao ratificada em NOEQ-external-event.",
+      "status": "decided",
+      "decisionRef": "NOEQ-external-event"
+    },
+    {
+      "construct": "iprocess-builtin",
+      "detail": "1 no(s) deste segmento, de 17 no pacote inteiro. Decisao ratificada em NOEQ-iprocess-builtin.",
+      "status": "decided",
+      "decisionRef": "NOEQ-iprocess-builtin"
+    },
+    {
+      "construct": "expression-deadline",
+      "detail": "1 no(s) deste segmento, de 4 no pacote inteiro. Decisao ratificada em NOEQ-expression-deadline.",
+      "status": "decided",
+      "decisionRef": "NOEQ-expression-deadline"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-external-event",
+    "NOEQ-iprocess-builtin",
+    "NOEQ-expression-deadline"
+  ]
+}

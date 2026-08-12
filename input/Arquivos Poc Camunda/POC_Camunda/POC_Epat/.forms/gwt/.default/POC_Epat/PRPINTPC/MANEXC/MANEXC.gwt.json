@@ -1,0 +1,152 @@
+
+
+{
+	formModelId:'_Q8r7oGQwEfGUo9jzQD7qQQ',
+	name:'MANEXC',
+	formatVersion:'2.2.201.001',
+	externalResources:[{uri:'MANEXC.gwt.js'}, {uri:'MANEXC.gwt.css'}, {name:'resource.common', uri:'pathmap://FORMS_RESOURCES/common.properties'}, {name:'resource.form', uri:'MANEXC.properties'}],
+	bomJSNames:[],
+	styleName:' f5207be90-eec9-42b4-ab72-d474b6f28e42',
+	labelPosition:'top',
+	data:[{name:'data.SERVICE_NAME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SERVICE_NAME', inout:'IN', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SERVICE_NAME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_MAINCASE', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'SW_MAINCASE', inout:'IN', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_MAINCASE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.OUTCOME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'Outcome', inout:'INOUT', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.OUTCOME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.PROCESS_ID', datumType:'BomPrimitiveTypes::Text', type:'data', label:'PROCESS_ID', inout:'IN', array:false, decimalPlaces:'0', length:'35', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.PROCESS_ID', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ISTECHERROR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'IsTechError', inout:'IN', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ISTECHERROR', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STERRORDESC', datumType:'BomPrimitiveTypes::Text', type:'data', label:'STErrorDesc', inout:'IN', array:false, decimalPlaces:'0', length:'100', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STERRORDESC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STERRORCODE', datumType:'BomPrimitiveTypes::Text', type:'data', label:'STErrorCode', inout:'IN', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STERRORCODE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.SW_MAINPROC', datumType:'BomPrimitiveTypes::Text', type:'data', label:'SW_MAINPROC', inout:'IN', array:false, decimalPlaces:'0', length:'8', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.SW_MAINPROC', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DUMP', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DUMP', inout:'IN', array:false, decimalPlaces:'0', length:'0', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DUMP', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.MAXRETRIES', datumType:'BomPrimitiveTypes::Integer', type:'data', label:'MaxRetries', inout:'IN', array:false, decimalPlaces:'0', length:'10', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.MAXRETRIES', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.STATUS_CODE', datumType:'BomPrimitiveTypes::Text', type:'data', label:'STATUS_CODE', inout:'IN', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.STATUS_CODE', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.DATETIME', datumType:'BomPrimitiveTypes::Text', type:'data', label:'DATETIME', inout:'IN', array:false, decimalPlaces:'0', length:'50', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.DATETIME', type:'control', destinationFeature:['value']}], rules: []}
+,{name:'data.ISAPPERROR', datumType:'BomPrimitiveTypes::Text', type:'data', label:'IsAppError', inout:'IN', array:false, decimalPlaces:'0', length:'1', primitive:true,
+      bindings: [{sourceFeature:['value'], name:'control.ISAPPERROR', type:'control', destinationFeature:['value']}], rules: []}
+],
+	rules: [],
+	controlRefs:[{name:'control.PROCESS_ID', type:'control'}, {name:'control.ISTECHERROR', type:'control'}, {name:'control.cancel', type:'control'}, {name:'control.SERVICE_NAME', type:'control'}, {name:'control.DATETIME', type:'control'}, {name:'control.submit', type:'control'}, {name:'control.MAXRETRIES', type:'control'}, {name:'control.ISAPPERROR', type:'control'}, {name:'control.STERRORCODE', type:'control'}, {name:'control.DUMP', type:'control'}, {name:'control.STERRORDESC', type:'control'}, {name:'control.SW_MAINCASE', type:'control'}, {name:'control.close', type:'control'}, {name:'control.OUTCOME', type:'control'}, {name:'control.SW_MAINPROC', type:'control'}, {name:'control.STATUS_CODE', type:'control'}],
+	rootPaneRefs:[{name:'pane.root', type:'pane'}, {name:'pane.toolbar', type:'pane'}, {name:'pane.messages', type:'pane'}],
+	control:[{name:'control.PROCESS_ID', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:35, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.PROCESS_ID', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'PROCESS_ID__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.ISTECHERROR', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:1, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.ISTECHERROR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'ISTECHERROR__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.cancel', componentType:'com.tibco.forms.controls.button', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetButtonType:'peripheral'
+,
+      bindings: [], reverseBindings: [],
+      rules: [{name:'cancel',trigger:'select'}]      , validations: []}
+,{name:'control.SERVICE_NAME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.SERVICE_NAME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SERVICE_NAME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DATETIME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.DATETIME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'DATETIME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.submit', componentType:'com.tibco.forms.controls.button', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetButtonType:'primary'
+,
+      bindings: [], reverseBindings: [],
+      rules: [{name:'submit',trigger:'select'}]      , validations: []}
+,{name:'control.MAXRETRIES', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.MAXRETRIES', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'MAXRETRIES__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'MAXRETRIES__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'MAXRETRIES__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.ISAPPERROR', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:5, propSetTextBoxBaseMaxLen:1, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.ISAPPERROR', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'ISAPPERROR__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STERRORCODE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.STERRORCODE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STERRORCODE__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.DUMP', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:0,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.DUMP', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: []}
+,{name:'control.STERRORDESC', componentType:'com.tibco.forms.controls.textarea', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextAreaRows:10, propSetTextAreaCols:25, propSetTextBoxBaseMaxLen:100,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.STERRORDESC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STERRORDESC__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_MAINCASE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:11, propSetTextSecret:false, propSetTextNumeric:true , propSetFormat:'', propSetFormatRef:'resource.common.format_integer'
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.SW_MAINCASE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_MAINCASE__length', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_MAINCASE__lowerLimit', messageRef:'', when:'oncontrolchange', list:false}, {name:'SW_MAINCASE__upperLimit', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.close', componentType:'com.tibco.forms.controls.button', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetButtonType:'peripheral'
+,
+      bindings: [], reverseBindings: [],
+      rules: [{name:'close',trigger:'select'}]      , validations: []}
+,{name:'control.OUTCOME', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:true, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:15, propSetTextBoxBaseMaxLen:10, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [{sourceFeature:['value'], name:'data.OUTCOME', type:'data', destinationFeature:['value']}], reverseBindings: [{sourceFeature:['value'], name:'data.OUTCOME', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'OUTCOME__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.SW_MAINPROC', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:10, propSetTextBoxBaseMaxLen:8, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.SW_MAINPROC', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'SW_MAINPROC__length', messageRef:'', when:'oncontrolchange', list:false}]}
+,{name:'control.STATUS_CODE', componentType:'com.tibco.forms.controls.textinput', type:'control', labelRef:'', hintRef:'', required:false, enabled:false, visible:true, value:[], styleName:'', tabIndex: 0	  ,  propSetList:false, propSetMaxVisibleRows:0, propSetTextDisLen:40, propSetTextBoxBaseMaxLen:50, propSetTextSecret:false, propSetTextNumeric:false , propSetFormat:'', propSetFormatRef:''
+,
+      bindings: [], reverseBindings: [{sourceFeature:['value'], name:'data.STATUS_CODE', type:'data', destinationFeature:['value']}],
+      rules: []      , validations: [{name:'STATUS_CODE__length', messageRef:'', when:'oncontrolchange', list:false}]}
+],
+	pane:[{name:'pane.root', componentType:'com.tibco.forms.panes.vertical', type:'pane', labelRef:'', hintRef:'', enabled:true, visible:true		, labelPosition:'left'
+		, styleName:''
+		, dataType: ''
+		, concreteClassifierLabels: []
+		, concreteClassifierNames: []
+		, 
+      bindings: [], reverseBindings: [],
+      rules: [],
+      children:[{name:'control.DUMP', type:'control'}
+, {name:'control.STERRORCODE', type:'control'}
+, {name:'control.DATETIME', type:'control'}
+, {name:'control.ISAPPERROR', type:'control'}
+, {name:'control.PROCESS_ID', type:'control'}
+, {name:'control.STATUS_CODE', type:'control'}
+, {name:'control.MAXRETRIES', type:'control'}
+, {name:'control.SERVICE_NAME', type:'control'}
+, {name:'control.SW_MAINPROC', type:'control'}
+, {name:'control.SW_MAINCASE', type:'control'}
+, {name:'control.ISTECHERROR', type:'control'}
+, {name:'control.STERRORDESC', type:'control'}
+, {name:'control.OUTCOME', type:'control'}
+]
+}
+, {name:'pane.toolbar', componentType:'com.tibco.forms.panes.horizontal', type:'pane', labelRef:'', hintRef:'', enabled:true, visible:true		, labelPosition:'left'
+		, styleName:'toolbar'
+		, dataType: ''
+		, concreteClassifierLabels: []
+		, concreteClassifierNames: []
+		, 
+      bindings: [], reverseBindings: [],
+      rules: [],
+      children:[{name:'control.cancel', type:'control'}
+, {name:'control.close', type:'control'}
+, {name:'control.submit', type:'control'}
+]
+}
+, {name:'pane.messages', componentType:'com.tibco.forms.panes.messages', type:'pane', labelRef:'', hintRef:'', enabled:true, visible:true		, labelPosition:'top'
+		, styleName:''
+		, dataType: ''
+		, concreteClassifierLabels: []
+		, concreteClassifierNames: []
+		, 
+      bindings: [], reverseBindings: [],
+      rules: [],
+      children:[]
+}
+
+]
+}

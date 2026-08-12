@@ -1,0 +1,330 @@
+{
+  "id": "SC-PRPINTPC-006",
+  "process": "PRPINTPC",
+  "etapa": 3,
+  "etapas": [
+    3,
+    4
+  ],
+  "etapaOrigem": "herdada-da-arvore-de-chamada",
+  "kind": "ate-ao-fim",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 1,
+    "cadeia": [
+      "POC_EpatProcess/Prepara Intimação"
+    ]
+  },
+  "origem": {
+    "id": "_KEwC3V6EEfGBBLgT-R5iuw",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "POC_EpatProcess/Prepara Intimação"
+  },
+  "destino": {
+    "id": "_KEwC4l6EEfGBBLgT-R5iuw",
+    "nome": "Done - Bail",
+    "tipo": "endEvent",
+    "como": "regressa-ao-chamador",
+    "regressaA": "POC_EpatProcess/Prepara Intimação"
+  },
+  "lengthNodes": 17,
+  "segmentos": [
+    {
+      "etapas": [
+        3,
+        4
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 17,
+      "abrePor": "Start Event",
+      "fechaEm": "Done - Bail",
+      "herdadoDe": "POC_EpatProcess/Prepara Intimação",
+      "herdadoDeNoId": "_CI6lyFqREfG5K7mY0I3I6w",
+      "nos": [
+        {
+          "id": "_KEwC3V6EEfGBBLgT-R5iuw",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "nome": "SetParameters",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwC4F6EEfGBBLgT-R5iuw",
+          "nome": "Start Loop",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwC7l6EEfGBBLgT-R5iuw",
+          "nome": "Control System Task Call",
+          "tipo": "subProcessScope"
+        },
+        {
+          "id": "_KEwDUl6EEfGBBLgT-R5iuw",
+          "nome": "startEvent _KEwDUl6EEfGBBLgT-R5iuw",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_KEwDUF6EEfGBBLgT-R5iuw",
+          "nome": "Start TX",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_KEwDUV6EEfGBBLgT-R5iuw",
+          "nome": "Check Retries SW_QRETRYCOUNT",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwDWF6EEfGBBLgT-R5iuw",
+          "nome": "CaptaParametros",
+          "tipo": "serviceTask"
+        },
+        {
+          "id": "_KEwDVl6EEfGBBLgT-R5iuw",
+          "nome": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwDV16EEfGBBLgT-R5iuw",
+          "nome": "gateway _KEwDV16EEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwDU16EEfGBBLgT-R5iuw",
+          "nome": "endEvent _KEwDU16EEfGBBLgT-R5iuw",
+          "tipo": "endEvent"
+        },
+        {
+          "id": "_KEwC7V6EEfGBBLgT-R5iuw",
+          "nome": "Tech Error",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC716EEfGBBLgT-R5iuw",
+          "nome": "gateway _KEwC716EEfGBBLgT-R5iuw",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC5V6EEfGBBLgT-R5iuw",
+          "nome": "Manipular Excecao",
+          "tipo": "userTask"
+        },
+        {
+          "id": "_KEwC316EEfGBBLgT-R5iuw",
+          "nome": "Manually Fixed",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC5F6EEfGBBLgT-R5iuw",
+          "nome": "Try Again",
+          "tipo": "gateway"
+        },
+        {
+          "id": "_KEwC4l6EEfGBBLgT-R5iuw",
+          "nome": "Done - Bail",
+          "tipo": "endEvent"
+        }
+      ],
+      "herdadoPor": "segmento-do-sitio-de-chamada"
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_KEwC3V6EEfGBBLgT-R5iuw",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_KEwC3l6EEfGBBLgT-R5iuw",
+      "nome": "SetParameters",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC4F6EEfGBBLgT-R5iuw",
+      "nome": "Start Loop",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC7l6EEfGBBLgT-R5iuw",
+      "nome": "Control System Task Call",
+      "tipo": "subProcessScope",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDUl6EEfGBBLgT-R5iuw",
+      "nome": "startEvent _KEwDUl6EEfGBBLgT-R5iuw",
+      "tipo": "startEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "descida"
+    },
+    {
+      "id": "_KEwDUF6EEfGBBLgT-R5iuw",
+      "nome": "Start TX",
+      "tipo": "scriptTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDUV6EEfGBBLgT-R5iuw",
+      "nome": "Check Retries SW_QRETRYCOUNT",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDWF6EEfGBBLgT-R5iuw",
+      "nome": "CaptaParametros",
+      "tipo": "serviceTask",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDVl6EEfGBBLgT-R5iuw",
+      "nome": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDV16EEfGBBLgT-R5iuw",
+      "nome": "gateway _KEwDV16EEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwDU16EEfGBBLgT-R5iuw",
+      "nome": "endEvent _KEwDU16EEfGBBLgT-R5iuw",
+      "tipo": "endEvent",
+      "escopo": "ActivitySet",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC7V6EEfGBBLgT-R5iuw",
+      "nome": "Tech Error",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "regresso"
+    },
+    {
+      "id": "_KEwC716EEfGBBLgT-R5iuw",
+      "nome": "gateway _KEwC716EEfGBBLgT-R5iuw",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC5V6EEfGBBLgT-R5iuw",
+      "nome": "Manipular Excecao",
+      "tipo": "userTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC316EEfGBBLgT-R5iuw",
+      "nome": "Manually Fixed",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC5F6EEfGBBLgT-R5iuw",
+      "nome": "Try Again",
+      "tipo": "gateway",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_KEwC4l6EEfGBBLgT-R5iuw",
+      "nome": "Done - Bail",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [
+    {
+      "decisao": "Check Retries SW_QRETRYCOUNT",
+      "decisaoId": "_KEwDUV6EEfGBBLgT-R5iuw",
+      "ramo": "Stillgood",
+      "tipo": "CONDITION",
+      "condicao": "IPESystemValues.SW_QRETRYCOUNT < MAXRETRIES;",
+      "leva": "CaptaParametros",
+      "exige": []
+    },
+    {
+      "decisao": "gateway _KEwDVl6EEfGBBLgT-R5iuw",
+      "decisaoId": "_KEwDVl6EEfGBBLgT-R5iuw",
+      "ramo": "Good",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "gateway _KEwDV16EEfGBBLgT-R5iuw",
+      "exige": []
+    },
+    {
+      "decisao": "Tech Error",
+      "decisaoId": "_KEwC7V6EEfGBBLgT-R5iuw",
+      "ramo": "Yes",
+      "tipo": "CONDITION",
+      "condicao": "ISTECHERROR=='Y';",
+      "leva": "gateway _KEwC716EEfGBBLgT-R5iuw",
+      "exige": [
+        {
+          "campo": "ISTECHERROR",
+          "operador": "==",
+          "valor": "Y",
+          "sentinelaSwNa": false
+        }
+      ]
+    },
+    {
+      "decisao": "Manually Fixed",
+      "decisaoId": "_KEwC316EEfGBBLgT-R5iuw",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Try Again",
+      "exige": []
+    },
+    {
+      "decisao": "Try Again",
+      "decisaoId": "_KEwC5F6EEfGBBLgT-R5iuw",
+      "ramo": "No",
+      "tipo": "OTHERWISE",
+      "condicao": null,
+      "leva": "Done - Bail",
+      "exige": []
+    }
+  ],
+  "inputsRequired": [
+    {
+      "campo": "ISTECHERROR",
+      "operador": "==",
+      "valor": "Y",
+      "sentinelaSwNa": false
+    }
+  ],
+  "serviceCalls": [
+    {
+      "passo": "CaptaParametros",
+      "passoId": "_KEwDWF6EEfGBBLgT-R5iuw",
+      "operacao": null
+    }
+  ],
+  "descidas": []
+}

@@ -1,0 +1,397 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/screen-catalogue/v1",
+  "note": "ASP.NET WebForms pages of the production ePAT application, opened by TIBCO user tasks with FormType=\"UserDefined\". They are NOT POC artifacts. The reviewable content is workItemContract: lock reads case fields, keep saves without completing, release completes. Fields marked origin=undeclared are not in the case dictionary and most likely come from an external package that was never delivered.",
+  "statistics": {
+    "screenCount": 2,
+    "externalUserTaskCount": 2,
+    "linkedScreenCount": 2,
+    "undeclaredFieldCount": 1,
+    "missingControlCount": 5
+  },
+  "undeclaredFields": [
+    "CPFCNPJNOTIFICA"
+  ],
+  "missingControls": [
+    "../../../Controls/AdicionarPecas.ascx",
+    "../../../Controls/Cabecalho_AIIM_DEAT.ascx",
+    "../../../Controls/Cabecalho_AIIM.ascx",
+    "../../../Controls/ListaNotificaveis.ascx",
+    "../../../Controls/Pecas.ascx"
+  ],
+  "userTasksWithoutScreen": [],
+  "screens": [
+    {
+      "file": "Fechamento/FechamentoAIIM.aspx",
+      "codeBehind": "Fechamento/FechamentoAIIM.aspx.cs",
+      "inherits": "Fazenda.ePAT.WebApp.WebPages.PAT.PrimeiraInstancia.FechamentoAIIM",
+      "masterPage": "~/Internet.Master",
+      "validateRequest": "false",
+      "codeBehindLines": 1148,
+      "linkedFrom": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "FECHAR",
+          "nodeId": "_xWNLe1qSEfG5K7mY0I3I6w",
+          "formUri": "ePAT/WebPages/PAT/PrimeiraInstancia/FechamentoAIIMRedirect.aspx",
+          "match": "prefix"
+        }
+      ],
+      "workItemContract": {
+        "lock": [
+          {
+            "field": "SITUACAOCARREGA",
+            "origin": "case-field",
+            "swType": "swText",
+            "default": ""
+          },
+          {
+            "field": "SW_CASENUM",
+            "origin": "technical-envelope"
+          },
+          {
+            "field": "idAIIM",
+            "origin": "case-field"
+          },
+          {
+            "field": "DocsPermitidos",
+            "origin": "case-field"
+          },
+          {
+            "field": "DocsRequeridos",
+            "origin": "case-field"
+          },
+          {
+            "field": "NR_AIIM",
+            "origin": "case-field"
+          },
+          {
+            "field": "FormaCorrecao",
+            "origin": "case-field"
+          },
+          {
+            "field": "NR_RAT",
+            "origin": "case-field"
+          },
+          {
+            "field": "REGRAINSDOC",
+            "origin": "case-field"
+          }
+        ],
+        "keep": [
+          {
+            "field": "SITUACAOCARREGA",
+            "origin": "case-field",
+            "swType": "swText",
+            "default": "A",
+            "defaultExpression": "retorno[1]"
+          },
+          {
+            "field": "IDAIIM",
+            "origin": "case-field",
+            "swType": "swText",
+            "defaultExpression": "retorno[0]"
+          }
+        ],
+        "release": [],
+        "api": {
+          "getFFPWorkItem": 3,
+          "getSessionStatus": 2,
+          "getWorkItemByFFP": 1,
+          "keepWorkItem": 3,
+          "lockWorkItem": 1,
+          "releaseWorkItem": 1,
+          "undoWorkItem": 1
+        }
+      },
+      "actions": [
+        {
+          "id": "btnDesbloquear",
+          "text": "Desbloquear",
+          "onClick": "btnDesbloquear_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnRecarregar",
+          "text": "Recarregar",
+          "onClick": "btnRecarregar_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnIntegraDoc",
+          "text": "Exibir Íntegra do AIIM",
+          "onClick": null,
+          "handlerFound": false
+        },
+        {
+          "id": "btnOrdenarPaginas",
+          "text": "Ordenar Paginas",
+          "onClick": "btnOrdenarPaginas_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnRenumrarPagina",
+          "text": "Renumera Paginas",
+          "onClick": "btnRenumrarPagina_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnInserir",
+          "text": "Inserir",
+          "onClick": "btnInserirArquivoHidden_Click",
+          "handlerFound": false
+        },
+        {
+          "id": "undoHidden",
+          "text": "undoHidden",
+          "onClick": "undoHidden_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "keepHidden",
+          "text": "keepHidden",
+          "onClick": "keepHidden_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "DesbloquearHidden",
+          "text": "DesbloquearHidden",
+          "onClick": "DesbloquearHidden_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "RecarregarHidden",
+          "text": "RecarregarHidden",
+          "onClick": "RecarregarHidden_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnUndo",
+          "text": "Cancelar",
+          "onClick": "btnUndo_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnKeep",
+          "text": "Salvar Rascunho",
+          "onClick": "btnKeep_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnRelease",
+          "text": "Finalizar AIIM",
+          "onClick": "btnRelease_Click",
+          "handlerFound": true
+        }
+      ],
+      "controls": [
+        {
+          "tagName": "Pecas",
+          "src": "../../../Controls/Pecas.ascx",
+          "delivered": false
+        },
+        {
+          "tagName": "Cabecalho_AIIM",
+          "src": "../../../Controls/Cabecalho_AIIM.ascx",
+          "delivered": false
+        },
+        {
+          "tagName": "AdicionarPecas",
+          "src": "../../../Controls/AdicionarPecas.ascx",
+          "delivered": false
+        },
+        {
+          "tagName": "Cabecalho_AIIM_DEAT",
+          "src": "../../../Controls/Cabecalho_AIIM_DEAT.ascx",
+          "delivered": false
+        }
+      ],
+      "inputs": [
+        {
+          "control": "FileUpload",
+          "id": "uploadClient"
+        },
+        {
+          "control": "DropDownList",
+          "id": "ddlTpDocmnt"
+        },
+        {
+          "control": "GridView",
+          "id": "gvObsrvc"
+        },
+        {
+          "control": "Label",
+          "id": "lblObservacao"
+        },
+        {
+          "control": "TextBox",
+          "id": "ftbObsrvc"
+        }
+      ]
+    },
+    {
+      "file": "Notificação/NotificacaoPreparar.aspx",
+      "codeBehind": "Notificação/NotificacaoPreparar.aspx.cs",
+      "inherits": "Br.Gov.Sp.Fazenda.ePAT.WebApp.WebPages.PAT.PrimeiraInstancia.NotificacaoPreparar",
+      "masterPage": "~/Internet.Master",
+      "validateRequest": "false",
+      "codeBehindLines": 1602,
+      "linkedFrom": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "PrepNot",
+          "nodeId": "_sfwu-VqUEfG5K7mY0I3I6w",
+          "formUri": "ePAT/WebPages/PAT/PrimeiraInstancia/NotificacaoPreparar.aspx",
+          "match": "exact"
+        }
+      ],
+      "workItemContract": {
+        "lock": [
+          {
+            "field": "SW_CASENUM",
+            "origin": "technical-envelope"
+          },
+          {
+            "field": "SW_PARENTCASE",
+            "origin": "technical-envelope"
+          },
+          {
+            "field": "IDAIIM",
+            "origin": "case-field"
+          },
+          {
+            "field": "DocsPermitidos",
+            "origin": "case-field"
+          },
+          {
+            "field": "DocsRequeridos",
+            "origin": "case-field"
+          },
+          {
+            "field": "CPFCNPJNOTIFICA",
+            "origin": "undeclared"
+          },
+          {
+            "field": "REGRAINSDOC",
+            "origin": "case-field"
+          }
+        ],
+        "keep": [],
+        "release": [
+          {
+            "field": "CORRECAO",
+            "origin": "case-field",
+            "swType": "swNumeric",
+            "default": "0"
+          },
+          {
+            "field": "NOTIFICACAO",
+            "origin": "case-field",
+            "swType": "swText",
+            "defaultExpression": "vNotificacao"
+          }
+        ],
+        "api": {
+          "getFFPWorkItem": 1,
+          "getWorkItemByFFP": 1,
+          "keepWorkItem": 1,
+          "lockWorkItem": 1,
+          "releaseWorkItem": 2,
+          "undoWorkItem": 1
+        }
+      },
+      "actions": [
+        {
+          "id": "btnIntegraDoc",
+          "text": "Exibir Integra do AIIM",
+          "onClick": null,
+          "handlerFound": false
+        },
+        {
+          "id": "btnAssinarXml",
+          "text": "Assinar",
+          "onClick": null,
+          "handlerFound": false
+        },
+        {
+          "id": "undoHidden",
+          "text": "undoHidden",
+          "onClick": "undoHidden_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnUndo",
+          "text": "Cancelar",
+          "onClick": "btnUndo_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "keepHidden",
+          "text": "keepHidden",
+          "onClick": "keepHidden_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnKeep",
+          "text": "Salvar Rascunho",
+          "onClick": "btnKeep_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnIniciarCorrecao",
+          "text": "Iniciar Correção",
+          "onClick": "btnIniciarCorrecao_Click",
+          "handlerFound": true
+        },
+        {
+          "id": "btnRelease",
+          "text": "Iniciar Notificação",
+          "onClick": "btnRelease_Click",
+          "handlerFound": true
+        }
+      ],
+      "controls": [
+        {
+          "tagName": "Pecas",
+          "src": "../../../Controls/Pecas.ascx",
+          "delivered": false
+        },
+        {
+          "tagName": "Notificaveis",
+          "src": "../../../Controls/ListaNotificaveis.ascx",
+          "delivered": false
+        },
+        {
+          "tagName": "Cabecalho_AIIM",
+          "src": "../../../Controls/Cabecalho_AIIM_DEAT.ascx",
+          "delivered": false
+        }
+      ],
+      "inputs": [
+        {
+          "control": "DropDownList",
+          "id": "ddlDecisao"
+        },
+        {
+          "control": "GridView",
+          "id": "gvLista"
+        },
+        {
+          "control": "Label",
+          "id": "lblHeader"
+        },
+        {
+          "control": "GridView",
+          "id": "gvObsrvc"
+        },
+        {
+          "control": "Label",
+          "id": "lblObservacao"
+        },
+        {
+          "control": "TextBox",
+          "id": "ftbObsrvc"
+        }
+      ]
+    }
+  ]
+}

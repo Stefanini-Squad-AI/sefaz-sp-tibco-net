@@ -1,0 +1,525 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/builtin-contract/v1",
+  "note": "Superficie de builtins iProcess usada pelos scriptTasks. A SEMANTICA DE CADA BUILTIN NAO E DERIVAVEL destas fontes (sem TIBCO em execucao e sem documentacao do fornecedor na entrega) e por isso vem marcada como unconfirmed. Os vetores de teste sao comportamentais: fixam o RESULTADO exigido pelo dado, nao a implementacao.",
+  "statistics": {
+    "scriptTaskCount": 40,
+    "functionCount": 7,
+    "systemValueCount": 6,
+    "callSiteCount": 30,
+    "testVectorCount": 1,
+    "scriptHazardCount": 7
+  },
+  "builtins": [
+    {
+      "name": "IPEConversionUtil.DATESTR",
+      "kind": "function",
+      "callCount": 6,
+      "observedArity": [
+        1
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "CALCPRPC",
+          "node": "SetParameters",
+          "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "expression": "IPEConversionUtil.DATESTR(DATAINICIOPERIO)",
+          "arguments": [
+            "DATAINICIOPERIO"
+          ]
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "Start Loop",
+          "nodeId": "_zJIHWFqiEfG5K7mY0I3I6w",
+          "expression": "IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE)",
+          "arguments": [
+            "IPESystemValues.SW_DATE"
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "Start Loop",
+          "nodeId": "_qIDul16BEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE)",
+          "arguments": [
+            "IPESystemValues.SW_DATE"
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "Start Loop",
+          "nodeId": "_KEwC4F6EEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE)",
+          "arguments": [
+            "IPESystemValues.SW_DATE"
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "Start Loop",
+          "nodeId": "_RNdJzF6PEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE)",
+          "arguments": [
+            "IPESystemValues.SW_DATE"
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "Start Loop",
+          "nodeId": "_NcJJ5F9KEfGqPfX31TKC3w",
+          "expression": "IPEConversionUtil.DATESTR(IPESystemValues.SW_DATE)",
+          "arguments": [
+            "IPESystemValues.SW_DATE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPEConversionUtil.NUM",
+      "kind": "function",
+      "callCount": 1,
+      "observedArity": [
+        1
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "AGPECASPC",
+          "node": "Set Values",
+          "nodeId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+          "expression": "IPEConversionUtil.NUM(TEMPORESPOSTA)",
+          "arguments": [
+            "TEMPORESPOSTA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPEConversionUtil.STR",
+      "kind": "function",
+      "callCount": 16,
+      "observedArity": [
+        2
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "CALCPRPC",
+          "node": "SetParameters",
+          "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "SetParameters",
+          "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "expression": "IPEConversionUtil.STR(IDPROCESSO,0)",
+          "arguments": [
+            "IDPROCESSO",
+            "0"
+          ]
+        },
+        {
+          "process": "CALCPRPC",
+          "node": "SetParameters",
+          "nodeId": "_zJIHVlqiEfG5K7mY0I3I6w",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "SetParameters",
+          "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "SetParameters",
+          "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDPROCESSO,0)",
+          "arguments": [
+            "IDPROCESSO",
+            "0"
+          ]
+        },
+        {
+          "process": "BSCENVPC",
+          "node": "SetParameters",
+          "nodeId": "_qIDulV6BEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "SetParameters",
+          "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "SetParameters",
+          "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDPROCESSO,0)",
+          "arguments": [
+            "IDPROCESSO",
+            "0"
+          ]
+        },
+        {
+          "process": "PRPINTPC",
+          "node": "SetParameters",
+          "nodeId": "_KEwC3l6EEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "SetParameters",
+          "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "SetParameters",
+          "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDPROCESSO,0)",
+          "arguments": [
+            "IDPROCESSO",
+            "0"
+          ]
+        },
+        {
+          "process": "ATZINTPC",
+          "node": "SetParameters",
+          "nodeId": "_RNdJyl6PEfGBBLgT-R5iuw",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "AGPECASPC",
+          "node": "Set Values",
+          "nodeId": "_EvOwTF6eEfGJqLUhfbpFcQ",
+          "expression": "IPEConversionUtil.STR(IPESystemValues.SW_CASENUM,0)",
+          "arguments": [
+            "IPESystemValues.SW_CASENUM",
+            "0"
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "SetParameters",
+          "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "SetParameters",
+          "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
+          "expression": "IPEConversionUtil.STR(IDPROCESSO,0)",
+          "arguments": [
+            "IDPROCESSO",
+            "0"
+          ]
+        },
+        {
+          "process": "CRNOTPC",
+          "node": "SetParameters",
+          "nodeId": "_NcJJ4l9KEfGqPfX31TKC3w",
+          "expression": "IPEConversionUtil.STR(IDAIIM,0)",
+          "arguments": [
+            "IDAIIM",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPEDateTimeUtil.CALCTIME",
+      "kind": "function",
+      "callCount": 3,
+      "observedArity": [
+        4
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "Set Nome Etapa 2",
+          "nodeId": "_XWivF1qTEfG5K7mY0I3I6w",
+          "expression": "IPEDateTimeUtil.CALCTIME('23:59',0,0,DAYSOVER)",
+          "arguments": [
+            "'23:59'",
+            "0",
+            "0",
+            "DAYSOVER"
+          ]
+        },
+        {
+          "process": "DEAT0050",
+          "node": "HoraFimSC",
+          "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
+          "expression": "IPEDateTimeUtil.CALCTIME('23:59',0,0,DAYSOVER)",
+          "arguments": [
+            "'23:59'",
+            "0",
+            "0",
+            "DAYSOVER"
+          ]
+        },
+        {
+          "process": "DEAT0050",
+          "node": "HoraFimSC",
+          "nodeId": "_lrer3VqhEfG5K7mY0I3I6w",
+          "expression": "IPEDateTimeUtil.CALCTIME(IPESystemValues.SW_TIME,1,0,DAYSOVER)",
+          "arguments": [
+            "IPESystemValues.SW_TIME",
+            "1",
+            "0",
+            "DAYSOVER"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPEStringUtil.SEARCH",
+      "kind": "function",
+      "callCount": 1,
+      "observedArity": [
+        2
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "expression": "IPEStringUtil.SEARCH(\"|\",AUX)",
+          "arguments": [
+            "\"|\"",
+            "AUX"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPEStringUtil.STRLEN",
+      "kind": "function",
+      "callCount": 1,
+      "observedArity": [
+        1
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "expression": "IPEStringUtil.STRLEN(AUX)",
+          "arguments": [
+            "AUX"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPEStringUtil.SUBSTR",
+      "kind": "function",
+      "callCount": 2,
+      "observedArity": [
+        3
+      ],
+      "semanticsStatus": "unconfirmed",
+      "callSites": [
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "expression": "IPEStringUtil.SUBSTR(AUX,1,POSICAOFIM-1)",
+          "arguments": [
+            "AUX",
+            "1",
+            "POSICAOFIM-1"
+          ]
+        },
+        {
+          "process": "POC_EpatProcess",
+          "node": "prepSub",
+          "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+          "expression": "IPEStringUtil.SUBSTR(AUX,POSICAOINICIO,FIMSTRING)",
+          "arguments": [
+            "AUX",
+            "POSICAOINICIO",
+            "FIMSTRING"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IPESystemValues.SW_CASENUM",
+      "kind": "systemValue",
+      "callCount": 1,
+      "observedArity": [],
+      "semanticsStatus": "unconfirmed",
+      "callSites": []
+    },
+    {
+      "name": "IPESystemValues.SW_DATE",
+      "kind": "systemValue",
+      "callCount": 7,
+      "observedArity": [],
+      "semanticsStatus": "unconfirmed",
+      "callSites": []
+    },
+    {
+      "name": "IPESystemValues.SW_HOSTNAME",
+      "kind": "systemValue",
+      "callCount": 2,
+      "observedArity": [],
+      "semanticsStatus": "unconfirmed",
+      "callSites": []
+    },
+    {
+      "name": "IPESystemValues.SW_NA",
+      "kind": "systemValue",
+      "callCount": 24,
+      "observedArity": [],
+      "semanticsStatus": "documented-in-artifacts",
+      "callSites": []
+    },
+    {
+      "name": "IPESystemValues.SW_PRONAME",
+      "kind": "systemValue",
+      "callCount": 1,
+      "observedArity": [],
+      "semanticsStatus": "unconfirmed",
+      "callSites": []
+    },
+    {
+      "name": "IPESystemValues.SW_TIME",
+      "kind": "systemValue",
+      "callCount": 1,
+      "observedArity": [],
+      "semanticsStatus": "unconfirmed",
+      "callSites": []
+    }
+  ],
+  "testVectors": [
+    {
+      "id": "VEC-TOKENISE-PIPE-LIST",
+      "routine": "POC_EpatProcess/prepSub",
+      "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "builtinsExercised": [
+        "IPEStringUtil.SEARCH",
+        "IPEStringUtil.SUBSTR",
+        "IPEStringUtil.STRLEN"
+      ],
+      "input": {
+        "source": "IDSINTIMADOS",
+        "value": "278713|278712|",
+        "note": "Literal presente no proprio script - ver scriptHazards, e dado de teste embutido."
+      },
+      "expectedTokens": [
+        "278713",
+        "278712"
+      ],
+      "assertion": "Ao final do laco, o vetor de saida deve conter exatamente estes tokens, na ordem. Qualquer implementacao de SUBSTR/SEARCH que nao produza isso esta errada.",
+      "whyThisIsAnOracle": "A expectativa vem do formato do dado (lista separada por |), nao da semantica do TIBCO. Vale para qualquer implementacao candidata sem precisar da documentacao do fornecedor.",
+      "indexBaseProbe": {
+        "question": "SEARCH/SUBSTR sao base 1 ou base 0?",
+        "workedExample": "Com valor '278713|278712|': em base 1, SEARCH('|') retorna a posicao do primeiro separador e SUBSTR(x,1,pos-1) recorta o primeiro token inteiro. Em base 0 o mesmo calculo perde o ultimo caractere do token.",
+        "conclusion": "A aritmetica do script so fecha em base 1 - PRESSUPONDO que o script original esteja correto. Confirmar contra a documentacao do iProcess antes de codificar."
+      }
+    }
+  ],
+  "scriptHazards": [
+    {
+      "kind": "hardcoded-recipient",
+      "process": "POC_EpatProcess",
+      "node": "Define Destinatarios",
+      "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
+      "variable": "CCRELATORIO",
+      "value": "acsimoes@fazenda.sp.gov.br"
+    },
+    {
+      "kind": "hardcoded-recipient",
+      "process": "POC_EpatProcess",
+      "node": "Define Destinatarios",
+      "nodeId": "_G4hU81qhEfG5K7mY0I3I6w",
+      "variable": "BCCRELATORIO",
+      "value": "epat_tribunal@fazenda.sp.gov.br"
+    },
+    {
+      "kind": "hardcoded-literal",
+      "process": "POC_EpatProcess",
+      "node": "prepSub",
+      "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "variable": "IDSINTIMADOS",
+      "value": "278713|278712|"
+    },
+    {
+      "kind": "commented-out-logic",
+      "process": "POC_EpatProcess",
+      "node": "prepSub",
+      "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "variable": null,
+      "value": "if (CNTPECA1=='110' || CNTPECA1=='24' || CNTPECA1=='53' || CNTPECA1=='55' || CNTPECA1=='22'){\n   IDPECASCNT = CNTPECA1;}"
+    },
+    {
+      "kind": "commented-out-logic",
+      "process": "POC_EpatProcess",
+      "node": "prepSub",
+      "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "variable": null,
+      "value": "if (SFPECA1=='50' || SFPECA1=='24' || SFPECA1=='53' || SFPECA1=='49' || SFPECA1=='55' || SFPECA1=='110'){\n   IDPECASSF = SFPECA1;}"
+    },
+    {
+      "kind": "commented-out-logic",
+      "process": "POC_EpatProcess",
+      "node": "prepSub",
+      "nodeId": "_zE3XeV6JEfGBBLgT-R5iuw",
+      "variable": null,
+      "value": "--278711|278710|278709|278708|278707|278706|278705|278704|278703|278702|278701|278700|278699|278698|278697|278696|278695|278694|278693|278692|278691|';"
+    },
+    {
+      "kind": "hardcoded-literal",
+      "process": "CONTROPC",
+      "node": "Desativa Subs",
+      "nodeId": "_-bkxKF6JEfGBBLgT-R5iuw",
+      "variable": "STATUSSUBPROC",
+      "value": "inativo"
+    }
+  ]
+}

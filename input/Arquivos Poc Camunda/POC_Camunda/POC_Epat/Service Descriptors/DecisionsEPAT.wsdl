@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:ns6="urn:Corticon" xmlns:jms="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS" xmlns:ns5="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.tibco.com/namespaces/2005/bw/staffware-serviceagent/__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent" xmlns:jndi="http://www.tibco.com/namespaces/ws/2004/soap/apis/jndi" xmlns:ns0="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PreparaDespachoAdm.xsd" xmlns:ns2="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PrepararPRJ.xsd" xmlns:ns1="http://sefaznet.sede.fazenda.sp.gov.br/DecisionsCamaraSuperior/PrepararCamaraSuperior.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns4="http://www.tibco.com/pe/EngineTypes" xmlns:ns3="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PrepararIntimacao.xsd" name="__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_AgentWSDL" targetNamespace="http://www.tibco.com/namespaces/2005/bw/staffware-serviceagent/__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent">
+    <wsdl:documentation>TIBCO BusinessWorks iProcessServiceAgent: /Adapter Services/iProcess/iProcess Service Agent - 2026-06-03 10:32</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:tns="http://www.tibco.com/pe/EngineTypes" xmlns:idt="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.tibco.com/pe/EngineTypes" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd"/>
+            <xs:complexType name="ErrorReport">
+                <xs:sequence>
+                    <xs:element name="StackTrace" form="unqualified" type="xs:string"/>
+                    <xs:element name="Msg" form="unqualified" type="xs:string"/>
+                    <xs:element name="FullClass" form="unqualified" type="xs:string"/>
+                    <xs:element name="Class" form="unqualified" type="xs:string"/>
+                    <xs:element name="ProcessStack" form="unqualified" type="xs:string"/>
+                    <xs:element name="MsgCode" form="unqualified" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Data" form="unqualified" type="tns:anydata" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ProcessContext">
+                <xs:sequence>
+                    <xs:element name="ProcessId" form="unqualified" type="xs:long"/>
+                    <xs:element name="ProjectName" form="unqualified" type="xs:string"/>
+                    <xs:element name="EngineName" form="unqualified" type="xs:string"/>
+                    <xs:element name="RestartedFromCheckpoint" form="unqualified" type="xs:boolean"/>
+                    <xs:element name="TrackingInfo" form="unqualified" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element name="CustomId" form="unqualified" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="anydata">
+                <xs:sequence>
+                    <xs:any processContents="lax" namespace="##any"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="exception">
+                <xs:sequence>
+                    <xs:element ref="idt:Identification" minOccurs="0"/>
+                    <xs:element name="DateTime" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="DumpAnalysis" type="xs:string" minOccurs="0"/>
+                    <xs:element ref="tns:ErrorReport" minOccurs="0"/>
+                    <xs:element name="ExceptionCode" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Message" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="log">
+                <xs:sequence>
+                    <xs:element ref="idt:Identification" minOccurs="0"/>
+                    <xs:element name="DateTime" type="xs:dateTime" minOccurs="0"/>
+                    <xs:element name="message" type="xs:string" minOccurs="0"/>
+                    <xs:element name="msgCode" type="xs:string" minOccurs="0"/>
+                    <xs:element name="Role" type="xs:string" minOccurs="0"/>
+                    <xs:element name="DumpAnalysis" type="xs:string" minOccurs="0"/>
+                    <xs:element ref="tns:Exception" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="CorrelationValue" type="xs:string"/>
+            <xs:element name="ErrorReport" type="tns:ErrorReport"/>
+            <xs:element name="Exception" type="tns:exception"/>
+            <xs:element name="Log" type="tns:log"/>
+            <xs:element name="ProcessContext" type="tns:ProcessContext"/>
+        </xs:schema>
+        <xs:schema xmlns="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="identification">
+                <xs:sequence>
+                    <xs:element ref="ns5:Vendor" minOccurs="0"/>
+                    <xs:element ref="ns5:VendorId" minOccurs="0"/>
+                    <xs:element name="ApplicationName" type="xs:string" minOccurs="0"/>
+                    <xs:element ref="ns5:ProcessName" minOccurs="0"/>
+                    <xs:element name="ServiceName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="ProjectName" type="xs:string" minOccurs="0"/>
+                    <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+                    <xs:element name="StartTimestamp" type="xs:long" minOccurs="0"/>
+                    <xs:element name="Transaction" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Identification" type="ns5:identification"/>
+            <xs:element name="ProcessName" type="xs:string"/>
+            <xs:element name="Vendor" type="xs:string"/>
+            <xs:element name="VendorId" type="xs:string"/>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Corticon" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="CorticonRequestType">
+                <xs:sequence>
+                    <xs:element name="WorkDocuments" type="ns6:WorkDocumentsType"/>
+                </xs:sequence>
+                <xs:attribute name="decisionServiceEffectiveTimestamp" type="xs:dateTime"/>
+                <xs:attribute name="decisionServiceName" use="required" type="xs:string"/>
+                <xs:attribute name="decisionServiceTargetVersion" type="xs:nonNegativeInteger"/>
+            </xs:complexType>
+            <xs:complexType name="CorticonResponseType">
+                <xs:sequence>
+                    <xs:element name="WorkDocuments" type="ns6:WorkDocumentsType"/>
+                    <xs:element name="Messages" type="ns6:MessagesType"/>
+                </xs:sequence>
+                <xs:attribute name="decisionServiceEffectiveTimestamp" type="xs:dateTime"/>
+                <xs:attribute name="decisionServiceName" use="required" type="xs:string"/>
+                <xs:attribute name="decisionServiceTargetVersion" type="xs:nonNegativeInteger"/>
+            </xs:complexType>
+            <xs:complexType name="DTJRecursosRequestType">
+                <xs:sequence>
+                    <xs:element name="anulacaoDefesa" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="defesaAdmitida" type="xs:string" minOccurs="0"/>
+                    <xs:element name="existeRespPRM" type="xs:string" minOccurs="0"/>
+                    <xs:element name="flgAlcada" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoAiim" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoDebito" type="xs:string" minOccurs="0"/>
+                    <xs:element name="motivoIntimacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="origem" type="xs:string" minOccurs="0"/>
+                    <xs:element name="recursoOficio" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusOficio" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPeticao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRJ" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusRecursos" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoImpugnacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vicioRepresentacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vrAiim" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="DTJRecursosResponseType">
+                <xs:sequence>
+                    <xs:element name="cntPeca1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="codTexto" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="destino" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasCNT" type="xs:long" minOccurs="0"/>
+                    <xs:element name="qtPecasSefaz" type="xs:long" minOccurs="0"/>
+                    <xs:element name="sfDiasRepresentacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tempoResposta" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="DTJRecursosType">
+                <xs:sequence>
+                    <xs:element name="dtjRecursosRequest" type="ns6:ExtURIType" minOccurs="0"/>
+                    <xs:element name="dtjRecursosResponse" type="ns6:ExtURIType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="DespachoRequestType">
+                <xs:sequence>
+                    <xs:element name="anulacaoDefesa" type="xs:string" minOccurs="0"/>
+                    <xs:element name="diligencia" type="xs:string" minOccurs="0"/>
+                    <xs:element name="flgAlcada" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoAiim" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoDebito" type="xs:string" minOccurs="0"/>
+                    <xs:element name="instancia" type="xs:string" minOccurs="0"/>
+                    <xs:element name="motivoIntimacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRJContribuinte" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRJFazenda" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRMFazenda" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPeticao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusRESPCnt" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusRESPFazenda" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoImpugnacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vicioRepresentacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vrAiim" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="DespachoTITType">
+                <xs:sequence>
+                    <xs:element name="despachoRequest" type="ns6:ExtURIType" minOccurs="0"/>
+                    <xs:element name="despachoResponse" type="ns6:ExtURIType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="ExtURIType">
+                <xs:attribute name="href" type="xs:anyURI"/>
+            </xs:complexType>
+            <xs:complexType name="MessageType">
+                <xs:sequence>
+                    <xs:element name="severity">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Info"/>
+                                <xs:enumeration value="Warning"/>
+                                <xs:enumeration value="Violation"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="text" type="xs:string"/>
+                    <xs:element name="entityReference">
+                        <xs:complexType>
+                            <xs:attribute name="href" type="xs:anyURI"/>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MessagesType">
+                <xs:sequence>
+                    <xs:element name="Message" type="ns6:MessageType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="version" type="xs:string"/>
+            </xs:complexType>
+            <xs:complexType name="PRJRequestType">
+                <xs:sequence>
+                    <xs:element name="anulacaoDefesa" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="defesaAdmitida" type="xs:string" minOccurs="0"/>
+                    <xs:element name="flgAlcada" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoAiim" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoDebito" type="xs:string" minOccurs="0"/>
+                    <xs:element name="motivoIntimacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="origem" type="xs:string" minOccurs="0"/>
+                    <xs:element name="recursoOficio" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusOficio" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPeticao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRJ" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusRecursos" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoImpugnacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoPrjD" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vrAiim" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="PRJResponseType">
+                <xs:sequence>
+                    <xs:element name="cntPeca1" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca2" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca3" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca4" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="codTexto" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="destino" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasCNT" type="xs:long" minOccurs="0"/>
+                    <xs:element name="qtPecasSefaz" type="xs:long" minOccurs="0"/>
+                    <xs:element name="sfDiasRepresentacao" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca1" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca2" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca3" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca4" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tempoResposta" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="PRJType">
+                <xs:sequence>
+                    <xs:element name="pRJRequest" type="ns6:ExtURIType" minOccurs="0"/>
+                    <xs:element name="pRJResponse" type="ns6:ExtURIType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="RequestType">
+                <xs:sequence>
+                    <xs:element name="anulacaoDefesa" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="defesaAdmitida" type="xs:string" minOccurs="0"/>
+                    <xs:element name="destinoDiligencia" type="xs:string" minOccurs="0"/>
+                    <xs:element name="diligencia" type="xs:string" minOccurs="0"/>
+                    <xs:element name="exclusaoSolidarios" type="xs:string" minOccurs="0"/>
+                    <xs:element name="existeRespPRM" type="xs:string" minOccurs="0"/>
+                    <xs:element name="flgAlcada" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoAiim" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoDebito" type="xs:string" minOccurs="0"/>
+                    <xs:element name="indNaoRecorrer" type="xs:string" minOccurs="0"/>
+                    <xs:element name="instancia" type="xs:string" minOccurs="0"/>
+                    <xs:element name="motivoIntimacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="origem" type="xs:string" minOccurs="0"/>
+                    <xs:element name="recursoOficio" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusAdmissaoTitCNT" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusAdmissaoTitDRF" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPeticao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRJ" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusRecursos" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoImpugnacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vicioRepresentacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vrAiim" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="ResponseType">
+                <xs:sequence>
+                    <xs:element name="cntPeca1" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca2" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca3" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca4" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="codTexto" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasCNT" type="xs:long" minOccurs="0"/>
+                    <xs:element name="qtPecasSefaz" type="xs:long" minOccurs="0"/>
+                    <xs:element name="sfDiasRepresentacao" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca1" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca2" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca3" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca4" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tempoResposta" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="ResultadoJulgamentoType">
+                <xs:sequence>
+                    <xs:element name="request" type="ns6:ExtURIType" minOccurs="0"/>
+                    <xs:element name="response" type="ns6:ExtURIType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="VotoEletronicoRequestType">
+                <xs:sequence>
+                    <xs:element name="anulacaoDefesa" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="defesaAdmitida" type="xs:string" minOccurs="0"/>
+                    <xs:element name="exclusaoSolidarios" type="xs:string" minOccurs="0"/>
+                    <xs:element name="existeRespPRM" type="xs:string" minOccurs="0"/>
+                    <xs:element name="flgAlcada" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoAiim" type="xs:string" minOccurs="0"/>
+                    <xs:element name="idDecisaoDebito" type="xs:string" minOccurs="0"/>
+                    <xs:element name="indNaoRecorrer" type="xs:string" minOccurs="0"/>
+                    <xs:element name="motivoIntimacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="origem" type="xs:string" minOccurs="0"/>
+                    <xs:element name="recursoOficio" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusAdmissaoTitCNT" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusAdmissaoTitDRF" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPeticao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusPRJ" type="xs:string" minOccurs="0"/>
+                    <xs:element name="statusRecursos" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoImpugnacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vicioRepresentacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="vrAiim" type="xs:decimal" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="VotoEletronicoResponseType">
+                <xs:sequence>
+                    <xs:element name="cntPeca1" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca2" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca3" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca4" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="codTexto" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="destino" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasCNT" type="xs:long" minOccurs="0"/>
+                    <xs:element name="qtPecasSefaz" type="xs:long" minOccurs="0"/>
+                    <xs:element name="sfDiasRepresentacao" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca1" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca2" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca3" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca4" nillable="true" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tempoResposta" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="VotoEletronicoType">
+                <xs:sequence>
+                    <xs:element name="votoEletronicoRequest" type="ns6:ExtURIType" minOccurs="0"/>
+                    <xs:element name="votoEletronicoResponse" type="ns6:ExtURIType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="WorkDocumentsType">
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element name="DTJRecursos" type="ns6:DTJRecursosType" minOccurs="0"/>
+                    <xs:element name="DTJRecursosRequest" type="ns6:DTJRecursosRequestType" minOccurs="0"/>
+                    <xs:element name="DTJRecursosResponse" type="ns6:DTJRecursosResponseType" minOccurs="0"/>
+                    <xs:element name="DespachoRequest" type="ns6:DespachoRequestType" minOccurs="0"/>
+                    <xs:element name="DespachoTIT" type="ns6:DespachoTITType" minOccurs="0"/>
+                    <xs:element name="PRJ" type="ns6:PRJType" minOccurs="0"/>
+                    <xs:element name="PRJRequest" type="ns6:PRJRequestType" minOccurs="0"/>
+                    <xs:element name="PRJResponse" type="ns6:PRJResponseType" minOccurs="0"/>
+                    <xs:element name="Request" type="ns6:RequestType" minOccurs="0"/>
+                    <xs:element name="Response" type="ns6:ResponseType" minOccurs="0"/>
+                    <xs:element name="ResultadoJulgamento" type="ns6:ResultadoJulgamentoType" minOccurs="0"/>
+                    <xs:element name="VotoEletronico" type="ns6:VotoEletronicoType"/>
+                    <xs:element name="VotoEletronicoRequest" type="ns6:VotoEletronicoRequestType" minOccurs="0"/>
+                    <xs:element name="VotoEletronicoResponse" type="ns6:VotoEletronicoResponseType" minOccurs="0"/>
+                    <xs:element name="despachoResponse" type="ns6:despachoResponseType" minOccurs="0"/>
+                </xs:choice>
+                <xs:attribute name="messageType" fixed="FLAT" type="xs:anySimpleType"/>
+            </xs:complexType>
+            <xs:complexType name="despachoResponseType">
+                <xs:sequence>
+                    <xs:element name="cntPeca1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="cntPeca4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="codTexto" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contraRazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="destino" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasCNT" type="xs:long" minOccurs="0"/>
+                    <xs:element name="qtPecasSefaz" type="xs:long" minOccurs="0"/>
+                    <xs:element name="sfDiasRepresentacao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="sfPeca4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tempoResposta" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:element name="CorticonRequest" type="ns6:CorticonRequestType"/>
+            <xs:element name="CorticonResponse" type="ns6:CorticonResponseType"/>
+            <xs:complexType name="CamaraSuperiorRequestType">
+                <xs:sequence>
+                    <xs:element name="anulacaoDecisao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="exclusaoSolidario" type="xs:string" minOccurs="0"/>
+                    <xs:element name="instancia" type="xs:string" minOccurs="0"/>
+                    <xs:element name="prmJulgado" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoConhecimentoPRJ" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoConhecimentoPRJSF" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoConhecimentoPRM" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoConhecimentoRespSefaz" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoConhecimentoRespSP" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoProvimentoPRJ" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoProvimentoPRJSF" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoProvimentoPRM" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoProvimentoRespSefaz" type="xs:string" minOccurs="0"/>
+                    <xs:element name="resultadoProvimentoRespSP" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="CamaraSuperiorResponseType">
+                <xs:sequence>
+                    <xs:element name="codTexto" type="xs:string" minOccurs="0"/>
+                    <xs:element name="contrarrazao" type="xs:string" minOccurs="0"/>
+                    <xs:element name="destino" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaContribuinte1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaContribuinte2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaContribuinte3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaContribuinte4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaFazenda1" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaFazenda2" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaFazenda3" type="xs:string" minOccurs="0"/>
+                    <xs:element name="pecaFazenda4" type="xs:string" minOccurs="0"/>
+                    <xs:element name="prazoContribuinte" type="xs:string" minOccurs="0"/>
+                    <xs:element name="prazoFazenda" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasContribuinte" type="xs:string" minOccurs="0"/>
+                    <xs:element name="qtPecasFazenda" type="xs:string" minOccurs="0"/>
+                    <xs:element name="tipoDecisaoJulgamento" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="CamaraSuperiorType">
+                <xs:sequence>
+                    <xs:element name="camaraSuperiorRequest" type="ns6:ExtURIType" minOccurs="0"/>
+                    <xs:element name="camaraSuperiorResponse" type="ns6:ExtURIType" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:complexType>
+            <xs:complexType name="CorticonRequestType">
+                <xs:sequence>
+                    <xs:element name="WorkDocuments" type="ns6:WorkDocumentsType"/>
+                </xs:sequence>
+                <xs:attribute name="decisionServiceEffectiveTimestamp" type="xs:dateTime"/>
+                <xs:attribute name="decisionServiceName" use="required" type="xs:string"/>
+                <xs:attribute name="decisionServiceTargetVersion" type="xs:nonNegativeInteger"/>
+            </xs:complexType>
+            <xs:complexType name="CorticonResponseType">
+                <xs:sequence>
+                    <xs:element name="WorkDocuments" type="ns6:WorkDocumentsType"/>
+                    <xs:element name="Messages" type="ns6:MessagesType"/>
+                </xs:sequence>
+                <xs:attribute name="decisionServiceEffectiveTimestamp" type="xs:dateTime"/>
+                <xs:attribute name="decisionServiceName" use="required" type="xs:string"/>
+                <xs:attribute name="decisionServiceTargetVersion" type="xs:nonNegativeInteger"/>
+            </xs:complexType>
+            <xs:complexType name="ExtURIType">
+                <xs:attribute name="href" type="xs:anyURI"/>
+            </xs:complexType>
+            <xs:complexType name="MessageType">
+                <xs:sequence>
+                    <xs:element name="severity">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Info"/>
+                                <xs:enumeration value="Warning"/>
+                                <xs:enumeration value="Violation"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="text" type="xs:string"/>
+                    <xs:element name="entityReference">
+                        <xs:complexType>
+                            <xs:attribute name="href" type="xs:anyURI"/>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MessagesType">
+                <xs:sequence>
+                    <xs:element name="Message" type="ns6:MessageType" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+                <xs:attribute name="version" type="xs:string"/>
+            </xs:complexType>
+            <xs:complexType name="WorkDocumentsType">
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element name="CamaraSuperior" type="ns6:CamaraSuperiorType"/>
+                    <xs:element name="CamaraSuperiorRequest" type="ns6:CamaraSuperiorRequestType" minOccurs="0"/>
+                    <xs:element name="CamaraSuperiorResponse" type="ns6:CamaraSuperiorResponseType" minOccurs="0"/>
+                </xs:choice>
+                <xs:attribute name="messageType" fixed="FLAT" type="xs:anySimpleType"/>
+            </xs:complexType>
+            <xs:element name="CorticonRequest" type="ns6:CorticonRequestType"/>
+            <xs:element name="CorticonResponse" type="ns6:CorticonResponseType"/>
+        </xs:schema>
+        <xs:schema xmlns:PrepararIntimacao="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PrepararIntimacao.xsd" xmlns:tns="urn:Corticon" xmlns:ns0="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.tibco.com/pe/EngineTypes" targetNamespace="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PrepararIntimacao.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="urn:Corticon"/>
+            <xs:import namespace="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd"/>
+            <xs:import namespace="http://www.tibco.com/pe/EngineTypes"/>
+            <xs:element name="PrepararIntimacaoRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:Identification" minOccurs="0"/>
+                        <xs:element name="Request" type="tns:RequestType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PrepararIntimacaoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Response" minOccurs="0">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="tns:ResponseType">
+                                        <xs:sequence>
+                                            <xs:element name="nomeRegra" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns1:Exception" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:tns="urn:Corticon" xmlns:PrepararPRJ="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PrepararPRJ.xsd" xmlns:ns0="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.tibco.com/pe/EngineTypes" targetNamespace="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PrepararPRJ.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="urn:Corticon"/>
+            <xs:import namespace="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd"/>
+            <xs:import namespace="http://www.tibco.com/pe/EngineTypes"/>
+            <xs:element name="PrepararPRJRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:Identification" minOccurs="0"/>
+                        <xs:element name="PRJRequest" type="tns:PRJRequestType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PrepararPRJResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="PRJResponse" minOccurs="0">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="tns:PRJResponseType">
+                                        <xs:sequence>
+                                            <xs:element name="nomeRegra" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns1:Exception" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sefaznet.sede.fazenda.sp.gov.br/Decisions/PreparaDespachoAdm.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="urn:Corticon"/>
+            <xs:import namespace="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd"/>
+            <xs:import namespace="http://www.tibco.com/pe/EngineTypes"/>
+            <xs:element name="PrepararVotoEletronicoRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns5:Identification" minOccurs="0"/>
+                        <xs:element name="VotoEletronicoRequest" type="ns6:VotoEletronicoRequestType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PrepararVotoEletronicoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="VotoEletronicoResponse" minOccurs="0">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="ns6:VotoEletronicoResponseType">
+                                        <xs:sequence>
+                                            <xs:element name="nomeRegra" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns4:Exception" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PrepararDTJRecursosRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns5:Identification" minOccurs="0"/>
+                        <xs:element name="DTJRecursosRequest" type="ns6:DTJRecursosRequestType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PrepararDTJRecursosResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DTJRecursosResponse" minOccurs="0">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="ns6:DTJRecursosResponseType">
+                                        <xs:sequence>
+                                            <xs:element name="nomeRegra" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns4:Exception" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PreparaDespachoAdmRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns5:Identification" minOccurs="0"/>
+                        <xs:element name="DespachoRequest" type="ns6:DespachoRequestType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PreparaDespachoAdmResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DespachoResponse" minOccurs="0">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="ns6:despachoResponseType">
+                                        <xs:sequence>
+                                            <xs:element name="nomeRegra" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns4:Exception" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:tns="urn:Corticon" xmlns:ns0="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.tibco.com/pe/EngineTypes" xmlns:PrepararCamaraSuperior="http://sefaznet.sede.fazenda.sp.gov.br/DecisionsCamaraSuperior/PrepararCamaraSuperior.xsd" targetNamespace="http://sefaznet.sede.fazenda.sp.gov.br/DecisionsCamaraSuperior/PrepararCamaraSuperior.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:import namespace="urn:Corticon"/>
+            <xs:import namespace="http://sefaznet.sede.fazenda.sp.gov.br/Common/Identification.xsd"/>
+            <xs:import namespace="http://www.tibco.com/pe/EngineTypes"/>
+            <xs:element name="PrepararCamaraSuperiorRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="ns0:Identification" minOccurs="0"/>
+                        <xs:element name="CamaraSuperiorRequest" type="tns:CamaraSuperiorRequestType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PrepararCamaraSuperiorResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="CamaraSuperiorResponse" minOccurs="0">
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="tns:CamaraSuperiorResponseType">
+                                        <xs:sequence>
+                                            <xs:element name="nomeRegra" type="xs:string" minOccurs="0"/>
+                                        </xs:sequence>
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="ns1:Exception" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico_Request">
+        <wsdl:part name="param" element="ns0:PrepararVotoEletronicoRequest"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico_Response">
+        <wsdl:part name="return" element="ns0:PrepararVotoEletronicoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior_Request">
+        <wsdl:part name="param" element="ns1:PrepararCamaraSuperiorRequest"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior_Response">
+        <wsdl:part name="return" element="ns1:PrepararCamaraSuperiorResponse"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos_Request">
+        <wsdl:part name="param" element="ns0:PrepararDTJRecursosRequest"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos_Response">
+        <wsdl:part name="return" element="ns0:PrepararDTJRecursosResponse"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm_Request">
+        <wsdl:part name="param" element="ns0:PreparaDespachoAdmRequest"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm_Response">
+        <wsdl:part name="return" element="ns0:PreparaDespachoAdmResponse"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ_Request">
+        <wsdl:part name="param" element="ns2:PrepararPRJRequest"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ_Response">
+        <wsdl:part name="return" element="ns2:PrepararPRJResponse"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao_Request">
+        <wsdl:part name="param" element="ns3:PrepararIntimacaoRequest"/>
+    </wsdl:message>
+    <wsdl:message name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao_Response">
+        <wsdl:part name="return" element="ns3:PrepararIntimacaoResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent">
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico">
+            <wsdl:input message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico_Request"/>
+            <wsdl:output message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico_Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior">
+            <wsdl:input message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior_Request"/>
+            <wsdl:output message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior_Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos">
+            <wsdl:input message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos_Request"/>
+            <wsdl:output message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos_Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm">
+            <wsdl:input message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm_Request"/>
+            <wsdl:output message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm_Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ">
+            <wsdl:input message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ_Request"/>
+            <wsdl:output message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ_Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao">
+            <wsdl:input message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao_Request"/>
+            <wsdl:output message="tns:__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao_Response"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_AgentServiceBinding" type="tns:__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_Agent">
+        <soap:binding style="document" transport="http://www.tibco.com/namespaces/ws/2004/soap/binding/JMS"/>
+        <jms:binding messageFormat="Text"/>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararVotoEletronico">
+            <soap:operation style="document" soapAction="/Business Processes/Decision/Sub Processes/Intimacao/PrepararVotoEletronico.process"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="param"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="return"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_IntimacaoCamaraSuperior_sol_PrepararCamaraSuperior">
+            <soap:operation style="document" soapAction="/Business Processes/Decision/Sub Processes/IntimacaoCamaraSuperior/PrepararCamaraSuperior.process"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="param"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="return"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararDTJRecursos">
+            <soap:operation style="document" soapAction="/Business Processes/Decision/Sub Processes/Intimacao/PrepararDTJRecursos.process"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="param"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="return"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PreparaDespachoAdm">
+            <soap:operation style="document" soapAction="/Business Processes/Decision/Sub Processes/Intimacao/PreparaDespachoAdm.process"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="param"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="return"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararPRJ">
+            <soap:operation style="document" soapAction="/Business Processes/Decision/Sub Processes/Intimacao/PrepararPRJ.process"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="param"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="return"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao">
+            <soap:operation style="document" soapAction="/Business Processes/Decision/Sub Processes/Intimacao/PrepararIntimacao.process"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="param"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="return"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_AgentService">
+        <wsdl:port name="__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_AgentServiceJMSPort" binding="tns:__sol_Adapter_sp_Services_sol_iProcess_sol_iProcess_sp_Service_sp_AgentServiceBinding">
+            <soap:address location="tcp://srv35796:7222"/>
+            <jndi:context>
+                <jndi:property name="java.naming.provider.url" type="java.lang.String">tcp://srv35796:7222</jndi:property>
+                <jndi:property name="java.naming.factory.initial" type="java.lang.String">com.tibco.tibjms.naming.TibjmsInitialContextFactory</jndi:property>
+            </jndi:context>
+            <jms:connectionFactory>QueueConnectionFactory</jms:connectionFactory>
+            <jms:targetAddress destination="queue">sefaz.br.decisions.epat</jms:targetAddress>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

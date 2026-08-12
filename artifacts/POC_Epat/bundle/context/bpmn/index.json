@@ -1,0 +1,212 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/bpmn-index/v1",
+  "package": "POC_Epat",
+  "note": "BPMN 2.0 para revisao humana no Camunda Modeler. isExecutable=false: especificacao, nunca implantado. Um arquivo por escopo.",
+  "totals": {
+    "files": 14,
+    "nodes": 215,
+    "flows": 221,
+    "unlabelled": 0,
+    "answeredByAnalyst": 7
+  },
+  "diagrams": [
+    {
+      "file": "POC_EpatProcess__MAIN.bpmn",
+      "process": "POC_EpatProcess",
+      "scope": "MAIN",
+      "processId": "P_POC_EpatProcess_MAIN",
+      "nodes": 60,
+      "flows": 57,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        null
+      ]
+    },
+    {
+      "file": "DEAT0050__MAIN.bpmn",
+      "process": "DEAT0050",
+      "scope": "MAIN",
+      "processId": "P_DEAT0050_MAIN",
+      "nodes": 8,
+      "flows": 8,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        null
+      ]
+    },
+    {
+      "file": "CALCPRPC__MAIN.bpmn",
+      "process": "CALCPRPC",
+      "scope": "MAIN",
+      "processId": "P_CALCPRPC_MAIN",
+      "nodes": 17,
+      "flows": 18,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CRNOTPC"
+      ]
+    },
+    {
+      "file": "CALCPRPC__ActivitySet.bpmn",
+      "process": "CALCPRPC",
+      "scope": "ActivitySet",
+      "processId": "P_CALCPRPC__zJIuaFqiEfG5K7mY0I3I6w",
+      "nodes": 9,
+      "flows": 10,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CRNOTPC"
+      ]
+    },
+    {
+      "file": "BSCENVPC__MAIN.bpmn",
+      "process": "BSCENVPC",
+      "scope": "MAIN",
+      "processId": "P_BSCENVPC_MAIN",
+      "nodes": 17,
+      "flows": 18,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        "ATZINTPC",
+        "CALCPRPC",
+        "CRNOTPC"
+      ]
+    },
+    {
+      "file": "BSCENVPC__ActivitySet.bpmn",
+      "process": "BSCENVPC",
+      "scope": "ActivitySet",
+      "processId": "P_BSCENVPC__qIDu216BEfGBBLgT-R5iuw",
+      "nodes": 9,
+      "flows": 10,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        "ATZINTPC",
+        "CALCPRPC",
+        "CRNOTPC"
+      ]
+    },
+    {
+      "file": "PRPINTPC__MAIN.bpmn",
+      "process": "PRPINTPC",
+      "scope": "MAIN",
+      "processId": "P_PRPINTPC_MAIN",
+      "nodes": 17,
+      "flows": 18,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        null
+      ]
+    },
+    {
+      "file": "PRPINTPC__ActivitySet.bpmn",
+      "process": "PRPINTPC",
+      "scope": "ActivitySet",
+      "processId": "P_PRPINTPC__KEwDT16EEfGBBLgT-R5iuw",
+      "nodes": 9,
+      "flows": 10,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        null
+      ]
+    },
+    {
+      "file": "CONTROPC__MAIN.bpmn",
+      "process": "CONTROPC",
+      "scope": "MAIN",
+      "processId": "P_CONTROPC_MAIN",
+      "nodes": 7,
+      "flows": 6,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        null
+      ]
+    },
+    {
+      "file": "ATZINTPC__MAIN.bpmn",
+      "process": "ATZINTPC",
+      "scope": "MAIN",
+      "processId": "P_ATZINTPC_MAIN",
+      "nodes": 17,
+      "flows": 18,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC"
+      ]
+    },
+    {
+      "file": "ATZINTPC__ActivitySet.bpmn",
+      "process": "ATZINTPC",
+      "scope": "ActivitySet",
+      "processId": "P_ATZINTPC__RNdKE16PEfGBBLgT-R5iuw",
+      "nodes": 9,
+      "flows": 10,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        "BSCENVPC",
+        "CALCPRPC",
+        "CRNOTPC"
+      ]
+    },
+    {
+      "file": "AGPECASPC__MAIN.bpmn",
+      "process": "AGPECASPC",
+      "scope": "MAIN",
+      "processId": "P_AGPECASPC_MAIN",
+      "nodes": 10,
+      "flows": 10,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        null
+      ]
+    },
+    {
+      "file": "CRNOTPC__MAIN.bpmn",
+      "process": "CRNOTPC",
+      "scope": "MAIN",
+      "processId": "P_CRNOTPC_MAIN",
+      "nodes": 17,
+      "flows": 18,
+      "unlabelled": 0,
+      "answeredByAnalyst": 0,
+      "sharesSkeletonWith": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC"
+      ]
+    },
+    {
+      "file": "CRNOTPC__ActivitySet.bpmn",
+      "process": "CRNOTPC",
+      "scope": "ActivitySet",
+      "processId": "P_CRNOTPC__NcJxJ19KEfGqPfX31TKC3w",
+      "nodes": 9,
+      "flows": 10,
+      "unlabelled": 0,
+      "answeredByAnalyst": 1,
+      "sharesSkeletonWith": [
+        "ATZINTPC",
+        "BSCENVPC",
+        "CALCPRPC"
+      ]
+    }
+  ]
+}

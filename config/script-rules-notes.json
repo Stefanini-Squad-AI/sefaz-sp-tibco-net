@@ -1,0 +1,81 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/script-rules-notes/v1",
+  "note": "Explicacoes AUTORADAS para as regras embutidas nos scriptTasks. A intencao de um script nao e derivavel do codigo: e leitura humana. Por isso este conteudo fica separado do artefato gerado e vai marcado como NAO VERIFICADO - precisa de ratificacao de quem opera o processo hoje, exatamente como as sugestoes de rotulo do dicionario de campos. A chave e 'PROCESSO/Passo', ou '*/Passo' quando o mesmo script se repete em varios processos.",
+
+  "rules": {
+    "CONTROPC/ISetSubProc": {
+      "summary": "Tabela de decisao disfarcada de script: escolhe qual subprocesso de espera sera instanciado, a partir do resultado do julgamento.",
+      "detail": "Le o motivo da intimacao, a decisao sobre o debito, se a defesa foi admitida, se houve recurso de oficio, o tipo de impugnacao, se ha contrarrazao do contribuinte e se houve diligencia. Combina esses fatores em 14 condicoes e grava em AGUARDAR[0] o nome do processo a aguardar, entre 7 valores possiveis: AgPRJ, AgRecPRJ, AgPRJR, AgPecas, AgRCRaz, AgCRaz e AgPetica. No fim copia o valor para PROCRETORNO. O proprio autor documentou os codigos no cabecalho: idmotivo 1=Decisao, 2=Vicio, 3=Diligencia; iddecisaodebito 1=mantido, 2=reduzido, 3=cancelado.",
+      "findings": [
+        "As atribuicoes NAO sao mutuamente exclusivas: os blocos sao avaliados em sequencia e um valor posterior sobrescreve o anterior. A ORDEM importa, tal como nas colunas do Corticon.",
+        "O ultimo bloco 'if (NOVOMODELO == true)' sobrescreve QUALQUER decisao anterior com AgPecas. E um interruptor global que anula a tabela inteira.",
+        "Ha um comentario do autor admitindo pendencia: 'falta implementar regras para PRJ'.",
+        "IDDECISAODEBITO == 0 e testado mas nao consta na legenda do autor (que so documenta 1, 2 e 3): valor sem significado declarado."
+      ],
+      "migration": "Candidato natural a virar tabela de decisao DMN/NRules ao lado das regras Corticon, e nao if/else em C#. O documento da POC exige justamente 'separacao entre fluxo operacional e regras de negocio' - hoje esta regra esta dentro do fluxo. Como as atribuicoes se sobrepoem, a tabela precisa de hit policy que preserve a ordem (RULE ORDER), igual ao espelho ja usado para o Corticon."
+    },
+
+    "POC_EpatProcess/prepSub": {
+      "summary": "Prepara a chamada dos subprocessos por solidario: quebra a lista de intimados e monta as listas de pecas do contribuinte e da fazenda.",
+      "detail": "Percorre QTDINTIMADOS posicoes e, para cada uma, marca NRSUBPRO como 'CONTROLE' e extrai da string IDSINTIMADOS o proximo identificador, usando o separador '|' com SEARCH/SUBSTR/STRLEN. Depois concatena CNTPECA1..4 em IDPECASCNT e SFPECA1..4 em IDPECASSF, sempre ignorando os que estao com SW_NA.",
+      "findings": [
+        "DEFEITO PROVAVEL: a ultima linha faz IDSINTIMADOS = '278713|278712|', sobrescrevendo a lista real DEPOIS de ela ja ter sido consumida. Ha ainda uma lista maior comentada logo abaixo. Tem cara de dado de teste esquecido no processo.",
+        "O parsing manual de string com separador '|' e fragil: nao trata lista vazia nem separador final ausente.",
+        "As listas de pecas usam concatenacao de string com '|' - o modelo .NET provavelmente quer uma colecao, nao uma string."
+      ],
+      "migration": "A quebra de string vira uma colecao no modelo .NET. O literal de IDSINTIMADOS precisa de decisao explicita: se for dado de teste, NAO deve ser reproduzido - e essa e uma divergencia deliberada que tem de ficar registada."
+    },
+
+    "POC_EpatProcess/Verificar Anulacao": {
+      "summary": "Zera o status de recursos quando houve anulacao pela DTJ em segunda instancia, e normaliza a origem nao preenchida.",
+      "detail": "Se ANULACAODTJ for verdadeiro e INSTANCIA for 2, zera STATUSRECURSOS. Em seguida, se ORIGEM estiver com o sentinela SW_NA, troca por 'NA'. Por fim copia FLAGCONTRARAZAO para FLAGCRZ.",
+      "findings": [
+        "O bloco if/else-if/else sobre INDNAORECORRER e um no-op nos dois primeiros ramos (atribui o valor a si proprio). O unico efeito real e o else: quando INDNAORECORRER nao e nem true nem false - isto e, quando esta em SW_NA - forca false.",
+        "A troca de SW_NA por 'NA' e uma conversao de sentinela para literal de dominio: confirma que o terceiro estado precisa de representacao explicita no modelo .NET."
+      ],
+      "migration": "Simplificar o bloco redundante preservando a unica regra real (SW_NA vira false) e registar a simplificacao. A normalizacao ORIGEM=SW_NA -> 'NA' e exatamente o caso de uso do tipo tri-estado."
+    },
+
+    "AGPECASPC/Set Values": {
+      "summary": "Monta o contrato de retorno do subprocesso e concatena as pecas do contribuinte.",
+      "detail": "Declara os campos de retorno (procRetorno, caseRetorno) com nome, tipo e valor vindos dos valores de sistema do iProcess, concatena CNTPECA1..4 em IDPECAS ignorando os que estao em SW_NA, e converte TEMPORESPOSTA para numero em PERIODOEMDIAS.",
+      "findings": [
+        "DEFEITO LOGICO na primeira condicao: 'if (CNTPECA1 != SW_NA || CNTPECA1 != '9')' e SEMPRE verdadeira, porque nenhum valor pode ser simultaneamente igual a SW_NA e igual a '9'. O operador pretendido era quase certamente &&. O efeito e que CNTPECA1 entra na lista mesmo quando vale '9' ou SW_NA.",
+        "As tres condicoes seguintes (CNTPECA2..4) testam so SW_NA, o que reforca que a primeira esta fora do padrao."
+      ],
+      "migration": "Decidir explicitamente se a migracao REPRODUZ o defeito ou o CORRIGE. Recomenda-se corrigir e registar, porque o valor '9' entrando na lista muda o conteudo enviado adiante."
+    },
+
+    "*/SetParameters": {
+      "summary": "Monta o identificador de correlacao da chamada de servico e fixa o limite de retentativas.",
+      "detail": "Compoe PROCESS_ID no formato 'idAiim-<n>idProc-<n>', usando o sufixo 'idProc-NA' quando IDPROCESSO esta em SW_NA. Define MAXRETRIES = 5 quando ainda nao tem valor.",
+      "findings": [
+        "RESPONDE A UMA PERGUNTA EM ABERTO: o valor inicial de MAXRETRIES e 5, definido aqui e nao no formulario nem em pacote externo.",
+        "PROCESS_ID e exatamente a chave de correlacao que a migracao precisa tornar explicita: ja existe, so nao esta declarada como contrato.",
+        "O script repete-se identico em CALCPRPC, BSCENVPC, PRPINTPC, ATZINTPC e CRNOTPC."
+      ],
+      "migration": "PROCESS_ID vira a chave de correlacao formal do bookmark. MAXRETRIES vira configuracao (options), nao literal no meio do fluxo."
+    },
+
+    "*/Start Loop": {
+      "summary": "Inicializa o contador de tentativas e o estado de erro antes de cada chamada de servico.",
+      "detail": "Inicia NUMAPPRETRIES em 0 na primeira passagem e incrementa nas seguintes. Zera os indicadores de erro com ISAPPERROR='N' e ISTECHERROR='N', define OUTCOME e carimba DATETIME com a data do sistema.",
+      "findings": [
+        "RESPONDE A PERGUNTAS EM ABERTO: o dominio de ISAPPERROR e ISTECHERROR e 'N'/'Y', e NUMAPPRETRIES comeca em 0 e incrementa de 1 em 1.",
+        "DIVERGENCIA ENTRE CLONES: CALCPRPC e BSCENVPC inicializam OUTCOME='OK'; PRPINTPC, ATZINTPC e CRNOTPC inicializam OUTCOME='R'. O script e identico em tudo o resto. E preciso decidir se a diferenca e intencional.",
+        "O valor inicial de OUTCOME importa porque OUTCOME e comparado com 'OK' e 'R' em condicoes de desvio."
+      ],
+      "migration": "A politica de retentativa vira configuracao explicita. A divergencia de OUTCOME tem de ser resolvida antes de gerar os cinco subprocessos a partir de um mesmo template."
+    },
+
+    "POC_EpatProcess/Define Destinatarios": {
+      "summary": "Define os destinatarios do relatorio enviado por e-mail.",
+      "detail": "Preenche os campos de destinatario usados pelas tarefas de e-mail do processo.",
+      "findings": [
+        "Contem enderecos de e-mail fixos no codigo (ja detetados como scriptHazards): um em copia e outro em copia oculta.",
+        "Enderecos fixos num script sao configuracao disfarcada de logica: mudam sem aviso e nao passam por revisao."
+      ],
+      "migration": "Mover para configuracao (appsettings/options) e nao para constantes em C#. Confirmar com o cliente se os enderecos atuais continuam validos."
+    }
+  }
+}

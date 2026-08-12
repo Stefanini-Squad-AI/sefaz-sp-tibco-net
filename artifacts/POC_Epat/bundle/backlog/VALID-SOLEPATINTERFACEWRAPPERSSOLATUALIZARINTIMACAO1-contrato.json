@@ -1,0 +1,89 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "VALID-SOLEPATINTERFACEWRAPPERSSOLATUALIZARINTIMACAO1-contrato",
+  "cardType": "validation",
+  "title": "Provar o contrato da operacao __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1",
+  "epic": "fundacao",
+  "content": {
+    "intent": "Verificar que a porta .NET desta operacao respeita a forma declarada no WSDL, em ambos os sentidos.",
+    "injectedContext": {
+      "summary": "Operacao realmente invocada pelo processo. O contrato e o WSDL entregue; o teste compara pedido e resposta contra ele.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "tests/SefazSp.Epat.Oracles.Tests",
+        "status": "scaffold",
+        "note": "Conformidade de contrato contra o WSDL fixado."
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "service-contracts.json",
+    "pointer": "operations[__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1]",
+    "kind": "operation",
+    "nodeIds": []
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "EPAT.wsdl",
+      "elementId": "__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1"
+    }
+  ],
+  "confidence": {
+    "level": "high",
+    "basis": "O contrato e transcricao do WSDL.",
+    "verified": false,
+    "translation": "lossless"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "contract",
+      "fixture": "artifacts/POC_Epat/service-contracts.json",
+      "immutable": true,
+      "caseCount": 1
+    },
+    "criteria": [
+      "Pedido e resposta validam contra o esquema do WSDL"
+    ]
+  },
+  "scope": {
+    "process": "fundacao",
+    "inPocScope": true,
+    "scopeReason": "operacao invocada por um passo em escopo"
+  },
+  "fulfills": {
+    "etapas": [
+      3
+    ],
+    "segmento": {
+      "cenarioReferencia": "contrato",
+      "ordemNaJornada": 1,
+      "doPasso": 1,
+      "aoPasso": 1,
+      "abrePor": "__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1",
+      "fechaEm": "__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1"
+    },
+    "concepts": [
+      "service-tasks"
+    ],
+    "expectedResults": [
+      "integracao-servicos"
+    ],
+    "evidenceKind": "contract-test"
+  },
+  "dimensao": {
+    "nos": 1,
+    "camadas": 1,
+    "pastas": 1,
+    "aEscrever": 1,
+    "bloqueadores": 0,
+    "regrasDeNegocio": 0,
+    "peso": "pequeno"
+  }
+}

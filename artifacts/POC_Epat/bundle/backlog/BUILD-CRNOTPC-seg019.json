@@ -1,0 +1,270 @@
+{
+  "$schema": "sefaz-sp/tibco-intermediate/backlog-card/v1",
+  "id": "BUILD-CRNOTPC-seg019",
+  "cardType": "build",
+  "title": "Notificação do AIIM: de 'CriaNotificacao' ate 'Try Task'",
+  "epic": "etapa-2",
+  "content": {
+    "intent": "Construir o troco da jornada que vai de 'CriaNotificacao' a 'Try Task', reproduzindo o comportamento observado no legado.",
+    "injectedContext": {
+      "summary": "Troco de 11 passo(s) da jornada do caso, de 'CriaNotificacao' ate 'Try Task', no processo CRNOTPC. ATENCAO: 2 passo(s) sao alcancados por ligacao que NAO existe como transicao no XPDL (link, regresso) e tem de ser escrita explicitamente no fluxo .NET.",
+      "hypotheses": []
+    },
+    "scaffold": [
+      {
+        "path": "src/SefazSp.Epat.Application/Abstractions/Services",
+        "status": "final",
+        "note": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Execution",
+        "status": "scaffold",
+        "note": "O script do iProcess faz as duas coisas. O que calcula ou decide sobre o caso e regra de dominio e vai para Domain/Rules como funcao pura; o que mexe no envelope tecnico - STATUS_CODE, contadores de retentativa - fica em Application/Execution. A separacao ja esta feita em rule-catalogue.json, campo classification.eRegraDeNegocio."
+      },
+      {
+        "path": "src/SefazSp.Epat.Application/Workflows",
+        "status": "scaffold",
+        "note": "A condicao ja esta extraida do XPDL. O desvio e topologia, e topologia e dado - nao codigo espalhado."
+      },
+      {
+        "path": "src/SefazSp.Epat.Domain/Abstractions",
+        "status": "final",
+        "note": "O prazo e agendamento, logo topologia; mas depende de tempo, e tempo entra por IClock injectado. Nunca DateTime.Now - o teste de prazo precisa de relogio controlavel."
+      },
+      {
+        "path": "src/SefazSp.Epat.Infrastructure/Integration.Soap",
+        "status": "scaffold",
+        "note": "A porta e transcricao do WSDL e nao se mexe; a implementacao SOAP/JMS e que se escreve."
+      }
+    ],
+    "checklist": [
+      {
+        "ordem": 1,
+        "nodeId": "_NcJxMF9KEfGqPfX31TKC3w",
+        "nome": "CriaNotificacao",
+        "kind": "serviceTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 2,
+        "nodeId": "_NcJxLl9KEfGqPfX31TKC3w",
+        "nome": "gateway _NcJxLl9KEfGqPfX31TKC3w",
+        "kind": "gateway",
+        "decideQue": "A chamada a CriaNotificacao foi bem sucedida?",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 3,
+        "nodeId": "_NcJxLV9KEfGqPfX31TKC3w",
+        "nome": "Set App Error",
+        "kind": "scriptTask",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 4,
+        "nodeId": "_NcJxL19KEfGqPfX31TKC3w",
+        "nome": "gateway _NcJxL19KEfGqPfX31TKC3w",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 5,
+        "nodeId": "_NcJxK19KEfGqPfX31TKC3w",
+        "nome": "endEvent _NcJxK19KEfGqPfX31TKC3w",
+        "kind": "endEvent",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 6,
+        "nodeId": "_NcJJ8V9KEfGqPfX31TKC3w",
+        "nome": "Tech Error",
+        "kind": "gateway",
+        "entrouPor": "regresso"
+      },
+      {
+        "ordem": 7,
+        "nodeId": "_NcJJ8F9KEfGqPfX31TKC3w",
+        "nome": "App Error",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 8,
+        "nodeId": "_NcJJ7V9KEfGqPfX31TKC3w",
+        "nome": "More Retries",
+        "kind": "gateway",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 9,
+        "nodeId": "_NcJJ7l9KEfGqPfX31TKC3w",
+        "nome": "Pause",
+        "kind": "timerEvent",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 10,
+        "nodeId": "_NcJJ7F9KEfGqPfX31TKC3w",
+        "nome": "Link To: Try Task",
+        "kind": "linkThrow",
+        "entrouPor": "fluxo"
+      },
+      {
+        "ordem": 11,
+        "nodeId": "_NcJJ5V9KEfGqPfX31TKC3w",
+        "nome": "Try Task",
+        "kind": "linkCatch",
+        "entrouPor": "link"
+      }
+    ]
+  },
+  "irRef": {
+    "artifact": "scenarios/index.json",
+    "pointer": "scenarios[SC-CRNOTPC-007].segmentos[1]",
+    "kind": "segment",
+    "nodeIds": [
+      "_NcJxMF9KEfGqPfX31TKC3w",
+      "_NcJxLl9KEfGqPfX31TKC3w",
+      "_NcJxLV9KEfGqPfX31TKC3w",
+      "_NcJxL19KEfGqPfX31TKC3w",
+      "_NcJxK19KEfGqPfX31TKC3w",
+      "_NcJJ8V9KEfGqPfX31TKC3w",
+      "_NcJJ8F9KEfGqPfX31TKC3w",
+      "_NcJJ7V9KEfGqPfX31TKC3w",
+      "_NcJJ7l9KEfGqPfX31TKC3w",
+      "_NcJJ7F9KEfGqPfX31TKC3w",
+      "_NcJJ5V9KEfGqPfX31TKC3w"
+    ]
+  },
+  "sourceRef": [
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJxMF9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJxMF9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJxLl9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJxLl9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJxLV9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJxLV9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJxL19KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJxL19KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJxK19KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJxK19KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJJ8V9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJJ8V9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJJ8F9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJJ8F9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJJ7V9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJJ7V9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJJ7l9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJJ7l9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJJ7F9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJJ7F9KEfGqPfX31TKC3w']"
+    },
+    {
+      "tibcoFile": "POC_Epat.xpdl",
+      "elementId": "_NcJJ5V9KEfGqPfX31TKC3w",
+      "xpath": "//xpdl2:Activity[@Id='_NcJJ5V9KEfGqPfX31TKC3w']"
+    }
+  ],
+  "confidence": {
+    "level": "medium",
+    "basis": "Topologia e ordem sao transcricao; os corpos de script, condicao e chamada exigem interpretacao.",
+    "verified": false,
+    "translation": "lossy"
+  },
+  "provenance": {
+    "generatedAt": "2026-05-28T00:00:00Z",
+    "manifestSha256": "7b96ab1d1d4d27b5fed57b2c5568a7dcd5888ca6b7e2494a2b3e9ab2c95470c0",
+    "package": "POC_Epat"
+  },
+  "acceptance": {
+    "oracle": {
+      "kind": "scenario-path",
+      "fixture": "artifacts/POC_Epat/scenarios/SC-CRNOTPC-007.json",
+      "immutable": true,
+      "caseCount": 2
+    },
+    "criteria": [
+      "Build limpo, sem avisos",
+      "O percurso do passo 8 ao 18 do cenario SC-CRNOTPC-007 corre de ponta a ponta"
+    ]
+  },
+  "scope": {
+    "process": "CRNOTPC",
+    "inPocScope": true,
+    "scopeReason": "listado na seccao 1 do plano: criacao de notificacao, etapa 6"
+  },
+  "fulfills": {
+    "etapas": [
+      2
+    ],
+    "segmento": {
+      "cenarioReferencia": "SC-CRNOTPC-007",
+      "ordemNaJornada": 1,
+      "doPasso": 8,
+      "aoPasso": 18,
+      "abrePor": "CriaNotificacao",
+      "fechaEm": "Try Task"
+    },
+    "concepts": [
+      "service-tasks",
+      "eventos-inicio-fim",
+      "controle-prazo",
+      "loops-retornos"
+    ],
+    "expectedResults": [
+      "integracao-servicos",
+      "modelagem-bpmn",
+      "sla-prazos"
+    ],
+    "evidenceKind": "instance-trace"
+  },
+  "dimensao": {
+    "nos": 11,
+    "camadas": 3,
+    "pastas": 5,
+    "aEscrever": 3,
+    "bloqueadores": 1,
+    "regrasDeNegocio": 0,
+    "peso": "atravessa-o-sistema",
+    "nota": "Toca 3 projecto(s) e 3 pasta(s) por escrever. Continua a ser um card valido - e o troco que cumpre a etapa -, mas nao deve ser atribuido a uma pessoa so nem estimado como os outros."
+  },
+  "gaps": [
+    {
+      "construct": "link-goto",
+      "detail": "2 no(s) deste segmento, de 20 no pacote inteiro. Decisao ratificada em NOEQ-link-goto.",
+      "status": "decided",
+      "decisionRef": "NOEQ-link-goto"
+    }
+  ],
+  "reviewRefs": [
+    "NOEQ-link-goto"
+  ]
+}

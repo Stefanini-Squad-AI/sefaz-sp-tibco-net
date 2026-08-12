@@ -1,0 +1,196 @@
+{
+  "id": "SC-CONTROPC-001",
+  "process": "CONTROPC",
+  "etapa": 4,
+  "etapas": [
+    4
+  ],
+  "etapaOrigem": "no-do-percurso+arvore-de-chamada",
+  "kind": "ate-ao-fim",
+  "representative": null,
+  "representativeNote": "Qual destes percursos e o caminho normal e escolha humana: o pacote nao declara qual valor de dominio e o caso comum. Enquanto for null, nenhum card deve trata-lo como caminho feliz.",
+  "jornada": {
+    "raiz": "POC_EpatProcess",
+    "profundidade": 1,
+    "cadeia": [
+      "POC_EpatProcess/Controlar Intimados"
+    ]
+  },
+  "origem": {
+    "id": "_gFM6QF9LEfGqPfX31TKC3w",
+    "nome": "Start Event",
+    "tipo": "startEvent",
+    "como": "chamado-por",
+    "chamadoPor": "POC_EpatProcess/Controlar Intimados"
+  },
+  "destino": {
+    "id": "_-bkw8l6JEfGBBLgT-R5iuw",
+    "nome": "endEvent _-bkw8l6JEfGBBLgT-R5iuw",
+    "tipo": "endEvent",
+    "como": "regressa-ao-chamador",
+    "regressaA": "POC_EpatProcess/Controlar Intimados"
+  },
+  "lengthNodes": 7,
+  "segmentos": [
+    {
+      "etapas": [
+        4
+      ],
+      "ordemNaJornada": 0,
+      "doPasso": 1,
+      "aoPasso": 4,
+      "abrePor": "Start Event",
+      "fechaEm": "ISetSubProc",
+      "prologo": true,
+      "nos": [
+        {
+          "id": "_gFM6QF9LEfGqPfX31TKC3w",
+          "nome": "Start Event",
+          "tipo": "startEvent"
+        },
+        {
+          "id": "_-bkw_l6JEfGBBLgT-R5iuw",
+          "nome": "AtualizaIntimacao",
+          "tipo": "callActivity"
+        },
+        {
+          "id": "_-bkw_V6JEfGBBLgT-R5iuw",
+          "nome": "Controle de Prazos",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_-bkw-F6JEfGBBLgT-R5iuw",
+          "nome": "ISetSubProc",
+          "tipo": "scriptTask"
+        }
+      ]
+    },
+    {
+      "etapas": [
+        4
+      ],
+      "ordemNaJornada": 1,
+      "doPasso": 5,
+      "aoPasso": 7,
+      "abrePor": "Aguardar Retorno",
+      "fechaEm": "endEvent _-bkw8l6JEfGBBLgT-R5iuw",
+      "nos": [
+        {
+          "id": "_-bkw-V6JEfGBBLgT-R5iuw",
+          "nome": "Aguardar Retorno",
+          "tipo": "callActivity"
+        },
+        {
+          "id": "_-bkxKF6JEfGBBLgT-R5iuw",
+          "nome": "Desativa Subs",
+          "tipo": "scriptTask"
+        },
+        {
+          "id": "_-bkw8l6JEfGBBLgT-R5iuw",
+          "nome": "endEvent _-bkw8l6JEfGBBLgT-R5iuw",
+          "tipo": "endEvent"
+        }
+      ]
+    }
+  ],
+  "passosSemEtapa": 0,
+  "path": [
+    {
+      "id": "_gFM6QF9LEfGqPfX31TKC3w",
+      "nome": "Start Event",
+      "tipo": "startEvent",
+      "escopo": "MAIN",
+      "entrouPor": null
+    },
+    {
+      "id": "_-bkw_l6JEfGBBLgT-R5iuw",
+      "nome": "AtualizaIntimacao",
+      "tipo": "callActivity",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_-bkw_V6JEfGBBLgT-R5iuw",
+      "nome": "Controle de Prazos",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_-bkw-F6JEfGBBLgT-R5iuw",
+      "nome": "ISetSubProc",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_-bkw-V6JEfGBBLgT-R5iuw",
+      "nome": "Aguardar Retorno",
+      "tipo": "callActivity",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_-bkxKF6JEfGBBLgT-R5iuw",
+      "nome": "Desativa Subs",
+      "tipo": "scriptTask",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    },
+    {
+      "id": "_-bkw8l6JEfGBBLgT-R5iuw",
+      "nome": "endEvent _-bkw8l6JEfGBBLgT-R5iuw",
+      "tipo": "endEvent",
+      "escopo": "MAIN",
+      "entrouPor": "fluxo"
+    }
+  ],
+  "decisions": [],
+  "inputsRequired": [],
+  "serviceCalls": [],
+  "descidas": [
+    {
+      "passo": "AtualizaIntimacao",
+      "passoId": "_-bkw_l6JEfGBBLgT-R5iuw",
+      "continuaEm": "ATZINTPC",
+      "resolvidaPor": "process",
+      "dinamica": false,
+      "graftStep": false,
+      "cenarios": [
+        "SC-ATZINTPC-001",
+        "SC-ATZINTPC-002",
+        "SC-ATZINTPC-003",
+        "SC-ATZINTPC-004",
+        "SC-ATZINTPC-005",
+        "SC-ATZINTPC-006",
+        "SC-ATZINTPC-007",
+        "SC-ATZINTPC-008",
+        "SC-ATZINTPC-009",
+        "SC-ATZINTPC-010",
+        "SC-ATZINTPC-011",
+        "SC-ATZINTPC-012",
+        "SC-ATZINTPC-013",
+        "SC-ATZINTPC-014",
+        "SC-ATZINTPC-015",
+        "SC-ATZINTPC-016",
+        "SC-ATZINTPC-017",
+        "SC-ATZINTPC-018"
+      ],
+      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
+    },
+    {
+      "passo": "Aguardar Retorno",
+      "passoId": "_-bkw-V6JEfGBBLgT-R5iuw",
+      "continuaEm": "AGPECASPC",
+      "resolvidaPor": "processInterface",
+      "dinamica": true,
+      "graftStep": false,
+      "cenarios": [
+        "SC-AGPECASPC-001",
+        "SC-AGPECASPC-002",
+        "SC-AGPECASPC-003"
+      ],
+      "nota": "A jornada desce para este processo e regressa ao passo seguinte."
+    }
+  ]
+}
