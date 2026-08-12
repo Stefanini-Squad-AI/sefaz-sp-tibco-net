@@ -1,0 +1,130 @@
+{
+  "version": 4,
+  "targets": {
+    "net8.0": {
+      "SefazSp.Epat.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "SefazSp.Epat.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SefazSp.Epat.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SefazSp.Epat.Application.dll": {}
+        }
+      },
+      "SefazSp.Epat.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/SefazSp.Epat.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SefazSp.Epat.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SefazSp.Epat.Application/1.0.0": {
+      "type": "project",
+      "path": "../SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
+      "msbuildProject": "../SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
+    },
+    "SefazSp.Epat.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
+      "msbuildProject": "../SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "SefazSp.Epat.Application >= 1.0.0",
+      "SefazSp.Epat.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/app/.saiapp/ai-cli-home/6a7ccb9b326b6a1807d50816/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/workspace/repo/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
+      "projectName": "SefazSp.Epat.Infrastructure",
+      "projectPath": "/workspace/repo/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
+      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ccb9b326b6a1807d50816/.nuget/packages/",
+      "outputPath": "/workspace/repo/src/SefazSp.Epat.Infrastructure/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/app/.saiapp/ai-cli-home/6a7ccb9b326b6a1807d50816/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/workspace/repo/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
+              "projectPath": "/workspace/repo/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
+            },
+            "/workspace/repo/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
+              "projectPath": "/workspace/repo/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "allWarningsAsErrors": true,
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.300"
+    },
+    "frameworks": {
+      "net8.0": {
+        "framework": "net8.0",
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.302/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
