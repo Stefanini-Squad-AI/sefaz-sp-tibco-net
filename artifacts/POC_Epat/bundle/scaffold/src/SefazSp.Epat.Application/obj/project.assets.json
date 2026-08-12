@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages": {}
+    "/app/.saiapp/ai-cli-home/6a7ceedf326b6a1807d52d84/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
+      "projectUniqueName": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
       "projectName": "SefazSp.Epat.Application",
-      "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
-      "packagesPath": "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages",
-      "outputPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/obj/",
+      "projectPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
+      "packagesPath": "/app/.saiapp/ai-cli-home/6a7ceedf326b6a1807d52d84/.nuget/packages/",
+      "outputPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/runner/.nuget/NuGet/NuGet.Config"
+        "/app/.saiapp/ai-cli-home/6a7ceedf326b6a1807d52d84/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -52,8 +52,8 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
-              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
+            "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
+              "projectPath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
             }
           }
         }
