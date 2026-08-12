@@ -1,7 +1,23 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "SefazSp.Epat.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -29,6 +45,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "SefazSp.Epat.Application": "1.0.0",
           "SefazSp.Epat.Domain": "1.0.0"
         },
@@ -42,6 +59,38 @@
     }
   },
   "libraries": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
+      "sha512": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "SefazSp.Epat.Application/1.0.0": {
       "type": "project",
       "path": "../SefazSp.Epat.Application/SefazSp.Epat.Application.csproj",
@@ -66,19 +115,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\e_rfdbarssoles\\.nuget\\packages\\": {}
+    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Api\\SefazSp.Epat.Api.csproj",
+      "projectUniqueName": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Api/SefazSp.Epat.Api.csproj",
       "projectName": "SefazSp.Epat.Api",
-      "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Api\\SefazSp.Epat.Api.csproj",
-      "packagesPath": "C:\\Users\\e_rfdbarssoles\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Api\\obj\\",
+      "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Api/SefazSp.Epat.Api.csproj",
+      "packagesPath": "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages",
+      "outputPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\e_rfdbarssoles\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/runner/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -88,16 +137,17 @@
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Application\\SefazSp.Epat.Application.csproj": {
-              "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Application\\SefazSp.Epat.Application.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
             },
-            "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\SefazSp.Epat.Domain.csproj": {
-              "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Domain\\SefazSp.Epat.Domain.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
             },
-            "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Infrastructure\\SefazSp.Epat.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\e_rfdbarssoles\\Documents\\PoCs\\SEFAZ-SP\\artifacts\\POC_Epat\\scaffold\\src\\SefazSp.Epat.Infrastructure\\SefazSp.Epat.Infrastructure.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj"
             }
           }
         }
@@ -112,10 +162,12 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "imports": [
           "net461",
@@ -128,12 +180,22 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.29, 8.0.29]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.417/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

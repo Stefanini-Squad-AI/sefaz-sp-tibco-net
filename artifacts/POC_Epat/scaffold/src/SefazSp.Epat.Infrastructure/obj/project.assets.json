@@ -95,19 +95,19 @@
     ]
   },
   "packageFolders": {
-    "/app/.saiapp/ai-cli-home/6a7cd333326b6a1807d51180/.nuget/packages/": {}
+    "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
+      "projectUniqueName": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
       "projectName": "SefazSp.Epat.Infrastructure",
-      "projectPath": "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
-      "packagesPath": "/app/.saiapp/ai-cli-home/6a7cd333326b6a1807d51180/.nuget/packages/",
-      "outputPath": "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/obj/",
+      "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
+      "packagesPath": "/tmp/codeql-scratch-264e6f92724117f4/dbs/csharp/working/packages",
+      "outputPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/app/.saiapp/ai-cli-home/6a7cd333326b6a1807d51180/.nuget/NuGet/NuGet.Config"
+        "/home/runner/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -120,11 +120,11 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
-              "projectPath": "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Application/SefazSp.Epat.Application.csproj"
             },
-            "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
-              "projectPath": "/workspace/repo/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
+            "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj": {
+              "projectPath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj"
             }
           }
         }
