@@ -1,9 +1,3 @@
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.csproj.AssemblyReference.cache
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.GeneratedMSBuildEditorConfig.editorconfig
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.AssemblyInfoInputs.cache
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.AssemblyInfo.cs
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.csproj.CoreCompileInputs.cache
-/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.sourcelink.json
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/xunit.runner.reporters.netcoreapp10.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/xunit.runner.utility.netcoreapp10.dll
@@ -21,6 +15,7 @@
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/testhost.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/Newtonsoft.Json.dll
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/NuGet.Frameworks.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/xunit.abstractions.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/xunit.assert.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/xunit.core.dll
@@ -90,6 +85,12 @@
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/bin/Debug/net8.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.csproj.AssemblyReference.cache
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.AssemblyInfoInputs.cache
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.AssemblyInfo.cs
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.csproj.CoreCompileInputs.cache
+/workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.sourcelink.json
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp..B35F3FDE.Up2Date
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/SefazSp.Epat.Oracles.Tests.dll
 /workspace/repo/tests/SefazSp.Epat.Oracles.Tests/obj/Debug/net8.0/refint/SefazSp.Epat.Oracles.Tests.dll
