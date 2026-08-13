@@ -86,10 +86,10 @@ public sealed class EpatServicesClient : IEpatServices
         {
             Content = new StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
         };
-        request.Headers.Add("SOAPAction", "criarNotificacoesAIIM");
+        request.Headers.Add("SOAPAction",
+            "\"__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1\"");
 
         using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
-        response.EnsureSuccessStatusCode();
 
         var xml = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
         return ParseEnvelope(xml);
