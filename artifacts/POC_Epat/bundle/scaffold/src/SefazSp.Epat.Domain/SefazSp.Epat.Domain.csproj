@@ -10,4 +10,9 @@
 
   <!-- Domain nao referencia projecto nenhum, por desenho. -->
 
+  <!-- Ficheiros de implementacao escritos pelos agentes em src/ -->
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Domain\Rules\*.cs" />
+  </ItemGroup>
+
 </Project>
