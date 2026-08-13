@@ -31,23 +31,21 @@ public sealed class PrepararNotificacaoUseCase
     /// Aguarda a submissão do formulário 'Preparar Notificacao'.
     /// </summary>
     /// <param name="caseRef">Referência do caso (para correlação com a UI).</param>
+    /// <param name="aiimCase">Estado de negócio mutável do caso.</param>
     /// <param name="waitForSubmit">
     /// Delegate que representa a interacção humana: suspende o workflow até o fiscal
-    /// submeter o formulário. Ao submeter, o campo <c>CORRECAO</c> em
-    /// <paramref name="aiimCase"/> reflecte a escolha do utilizador.
+    /// submeter o formulário. Devolve <see langword="Task"/> após a submissão.
     /// </param>
-    /// <param name="aiimCase">Estado de negócio mutável do caso.</param>
     /// <param name="ct">Token de cancelamento.</param>
     public async Task ExecuteAsync(
         AiimCaseRef caseRef,
         AiimCase aiimCase,
-        Func<AiimCaseRef, AiimCase, CancellationToken, Task> waitForSubmit,
+        Func<AiimCaseRef, CancellationToken, Task> waitForSubmit,
         CancellationToken ct)
     {
         // ── userTask: aguarda submissão do formulário "Preparar Notificacao" ──────
-        // O campo CORRECAO é preenchido pelo utilizador no formulário.
-        // A regra RI-transition-POC_EpatProcess-Corrigir (CORRECAO == true;) é avaliada
-        // no gateway seguinte, não aqui.
-        await waitForSubmit(caseRef, aiimCase, ct).ConfigureAwait(false);
+        // Nenhuma regra de code-behind declarada no pacote para esta tarefa —
+        // o caso não é mutado; aguarda apenas a acção humana.
+        await waitForSubmit(caseRef, ct).ConfigureAwait(false);
     }
 }

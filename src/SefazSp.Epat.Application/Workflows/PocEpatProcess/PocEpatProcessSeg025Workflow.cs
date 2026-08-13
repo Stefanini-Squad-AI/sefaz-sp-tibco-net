@@ -77,14 +77,14 @@ public sealed class PocEpatProcessSeg025Workflow
     /// <param name="aiimCase">Estado de negócio mutável do caso.</param>
     /// <param name="waitForPrepararNotificacao">
     /// Delegate de interacção humana: suspende até o fiscal submeter o formulário.
-    /// Ao submeter, <c>aiimCase.CORRECAO</c> reflecte a escolha do utilizador.
+    /// Devolve <see langword="Task"/> após a submissão.
     /// </param>
     /// <param name="ct">Token de cancelamento.</param>
     /// <returns>O terminal alcançado após a avaliação do gateway.</returns>
     public async Task<PocEpatProcessSeg025Terminal> ExecuteAsync(
         AiimCaseRef caseRef,
         AiimCase aiimCase,
-        Func<AiimCaseRef, AiimCase, CancellationToken, Task> waitForPrepararNotificacao,
+        Func<AiimCaseRef, CancellationToken, Task> waitForPrepararNotificacao,
         CancellationToken ct)
     {
         // ── ordem 1: userTask 'Preparar Notificacao' (_sfwu-VqUEfG5K7mY0I3I6w, entrouPor=fluxo) ─
