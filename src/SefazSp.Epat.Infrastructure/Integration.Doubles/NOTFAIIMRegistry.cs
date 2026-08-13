@@ -10,7 +10,12 @@ namespace SefazSp.Epat.Infrastructure.Integration.Doubles;
 /// lanca <see cref="InvalidOperationException"/> de forma imediata e visivel.
 /// NAO herda HaltOnBadSubProcess=false do legado TIBCO.
 ///
-/// Destinos registados: DEAT0050 (CalculaPrazo — callActivity _lrer3lqhEfG5K7mY0I3I6w).
+/// Origem da chamada:
+///   callActivity <c>_0XWagVqNEfG5K7mY0I3I6w</c> "Aguardar evento de Notificacao do AIIM"
+///   no processo POC_EpatProcess — card BUILD-POCEPATPROCESS-seg001, etapas 1 e 2.
+///   O callee e resolvido em runtime pelo campo de caso DEAT0050.
+///
+/// Destinos registados: DEAT0050 — processo que implementa INOTFAIIM, registado com chave "DEAT0050".
 /// </summary>
 public sealed class NOTFAIIMRegistry
 {

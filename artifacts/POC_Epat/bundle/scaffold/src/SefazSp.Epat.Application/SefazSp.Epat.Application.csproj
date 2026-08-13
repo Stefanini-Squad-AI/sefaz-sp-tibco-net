@@ -15,8 +15,10 @@
   </ItemGroup>
 
   <!-- Ficheiros de implementacao escritos pelos agentes em src/ -->
+  <!-- ProcessExecutionContext.cs e fornecido pelo scaffold local; excluir da glob para evitar CS0101. -->
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Application\Execution\*.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Application\Execution\*.cs"
+             Exclude="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Application\Execution\ProcessExecutionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Application\Workflows\*.cs" />
   </ItemGroup>
 
