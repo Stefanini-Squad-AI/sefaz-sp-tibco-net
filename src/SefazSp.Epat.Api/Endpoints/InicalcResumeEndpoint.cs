@@ -47,12 +47,10 @@ public static class InicalcResumeEndpoint
         if (string.IsNullOrWhiteSpace(request.ProcessId))
             return Results.BadRequest("ProcessId é obrigatório (chave de correlação PROCESS_ID).");
 
-        var exists = await correlationStore.HasBookmarkAsync(request.ProcessId, ct);
-        if (!exists)
+        var resumed = await correlationStore.ResumeAsync(request.ProcessId, payload: null, ct);
+        if (!resumed)
             return Results.NotFound(
                 $"Nenhuma instância aguarda o bookmark INICALC para PROCESS_ID='{request.ProcessId}'.");
-
-        await correlationStore.ResumeAsync(request.ProcessId, payload: null, ct);
 
         return Results.Accepted(
             value: new { ProcessId = request.ProcessId, Bookmark = BookmarkName, Status = "resumed" });
