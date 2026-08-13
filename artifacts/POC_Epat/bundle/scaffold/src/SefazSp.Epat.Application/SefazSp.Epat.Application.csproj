@@ -14,4 +14,10 @@
     <ProjectReference Include="..\SefazSp.Epat.Domain\SefazSp.Epat.Domain.csproj" />
   </ItemGroup>
 
+  <!-- Ficheiros de implementacao escritos pelos agentes em src/ -->
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Application\Execution\*.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\..\src\SefazSp.Epat.Application\Workflows\*.cs" />
+  </ItemGroup>
+
 </Project>
