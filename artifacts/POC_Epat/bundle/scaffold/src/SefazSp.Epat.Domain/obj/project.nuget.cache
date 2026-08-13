@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3qfG0DjskCA=",
+  "dgSpecHash": "u6B5IhveMsk=",
   "success": true,
-  "projectFilePath": "/workspace/repo/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
-  "expectedPackageFiles": [
-    "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52daf/.nuget/packages/microsoft.netcore.app.ref/8.0.29/microsoft.netcore.app.ref.8.0.29.nupkg.sha512",
-    "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52daf/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.29/microsoft.aspnetcore.app.ref.8.0.29.nupkg.sha512"
-  ],
+  "projectFilePath": "/home/runner/work/sefaz-sp-tibco-net/sefaz-sp-tibco-net/artifacts/POC_Epat/bundle/scaffold/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
