@@ -1,4 +1,13 @@
+# Segredos locais. O token do Jira e lido de JIRA_API_TOKEN no ambiente,
+# nunca de um ficheiro versionado.
+/key
+.env
+.env.*
+!.env.example
 
-# .NET build output
-tests/**/bin/
-tests/**/obj/
+# Saida de compilacao .NET a QUALQUER profundidade: src/, tests/ e tambem o
+# scaffold gerado dentro de artifacts/. Regra ancorada em tests/ nao apanhava
+# artifacts/**/scaffold, que e de onde vinham os conflitos de .dll e .pdb.
+# Ficheiro binario nao tem resolucao de merge possivel.
+[Bb]in/
+[Oo]bj/
