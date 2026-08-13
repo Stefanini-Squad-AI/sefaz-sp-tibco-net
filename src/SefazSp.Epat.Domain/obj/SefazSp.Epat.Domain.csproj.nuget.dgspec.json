@@ -10,11 +10,11 @@
         "projectUniqueName": "/workspace/repo/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
         "projectName": "SefazSp.Epat.Domain",
         "projectPath": "/workspace/repo/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
-        "packagesPath": "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52daf/.nuget/packages/",
+        "packagesPath": "/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/packages/",
         "outputPath": "/workspace/repo/src/SefazSp.Epat.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52daf/.nuget/NuGet/NuGet.Config"
+          "/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -40,7 +40,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net8.0": {
@@ -60,11 +60,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.29, 8.0.29]"
+              "version": "[8.0.30, 8.0.30]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.29, 8.0.29]"
+              "version": "[8.0.30, 8.0.30]"
             }
           ],
           "frameworkReferences": {
@@ -72,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
