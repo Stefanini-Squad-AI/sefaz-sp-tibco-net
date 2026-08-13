@@ -1,0 +1,12 @@
+/workspace/repo/src/SefazSp.Epat.Domain/bin/Debug/net8.0/SefazSp.Epat.Domain.deps.json
+/workspace/repo/src/SefazSp.Epat.Domain/bin/Debug/net8.0/SefazSp.Epat.Domain.dll
+/workspace/repo/src/SefazSp.Epat.Domain/bin/Debug/net8.0/SefazSp.Epat.Domain.pdb
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.AssemblyInfoInputs.cache
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.AssemblyInfo.cs
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.csproj.CoreCompileInputs.cache
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.sourcelink.json
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.dll
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/refint/SefazSp.Epat.Domain.dll
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/SefazSp.Epat.Domain.pdb
+/workspace/repo/src/SefazSp.Epat.Domain/obj/Debug/net8.0/ref/SefazSp.Epat.Domain.dll
