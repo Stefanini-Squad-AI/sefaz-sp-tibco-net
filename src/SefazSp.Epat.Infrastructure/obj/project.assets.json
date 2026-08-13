@@ -46,7 +46,7 @@
     ]
   },
   "packageFolders": {
-    "/app/.saiapp/ai-cli-home/6a7e13c26d76b766c5ede5d2/.nuget/packages/": {}
+    "/app/.saiapp/ai-cli-home/6a7e13c86d76b766c5ede5de/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -54,11 +54,11 @@
       "projectUniqueName": "/workspace/repo/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
       "projectName": "SefazSp.Epat.Infrastructure",
       "projectPath": "/workspace/repo/src/SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj",
-      "packagesPath": "/app/.saiapp/ai-cli-home/6a7e13c26d76b766c5ede5d2/.nuget/packages/",
+      "packagesPath": "/app/.saiapp/ai-cli-home/6a7e13c86d76b766c5ede5de/.nuget/packages/",
       "outputPath": "/workspace/repo/src/SefazSp.Epat.Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/app/.saiapp/ai-cli-home/6a7e13c26d76b766c5ede5d2/.nuget/NuGet/NuGet.Config"
+        "/app/.saiapp/ai-cli-home/6a7e13c86d76b766c5ede5de/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
