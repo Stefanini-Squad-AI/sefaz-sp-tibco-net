@@ -138,8 +138,11 @@ public sealed class EpatSoapServices : IEpatServices
     /// <inheritdoc />
     public Task<ServiceEnvelope> CriarnotificacoesaiimAsync(
         AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "CriarnotificacoesaiimAsync: implementacao SOAP pendente (outro card).");
+    {
+        var transport = new CriarNotificacoesAiimTransport(
+            _httpClient, _options.CriarNotificacoesAiimEndpoint);
+        return transport.InvokeAsync(caseRef, ct);
+    }
 
     /// <inheritdoc />
     public Task<ServiceEnvelope> ObterprimeirodiautilaposperiododediascorridosdeatAsync(
@@ -155,4 +158,7 @@ public sealed class EpatSoapOptions
 {
     /// <summary>URL do endpoint SOAP buscarVistasAtivasPorAiim.</summary>
     public string BuscarVistasAtivasPorAiimEndpoint { get; init; } = string.Empty;
+
+    /// <summary>URL do endpoint SOAP criarNotificacoesAIIM.</summary>
+    public string CriarNotificacoesAiimEndpoint { get; init; } = string.Empty;
 }

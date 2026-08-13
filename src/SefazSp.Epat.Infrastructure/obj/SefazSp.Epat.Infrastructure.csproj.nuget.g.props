@@ -4,12 +4,12 @@
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
-    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/packages/</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/packages/</NuGetPackageFolders>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/app/.saiapp/ai-cli-home/6a7e13c26d76b766c5ede5cf/.nuget/packages/</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/app/.saiapp/ai-cli-home/6a7e13c26d76b766c5ede5cf/.nuget/packages/</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">7.0.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/packages/" />
+    <SourceRoot Include="/app/.saiapp/ai-cli-home/6a7e13c26d76b766c5ede5cf/.nuget/packages/" />
   </ItemGroup>
 </Project>

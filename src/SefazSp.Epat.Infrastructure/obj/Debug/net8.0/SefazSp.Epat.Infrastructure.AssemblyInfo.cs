@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SefazSp.Epat.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d0969140aa5011f8edb5eb3215c44c2c35f7fbf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5480abb11c9f72db80402e12418dc04c55f8792c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SefazSp.Epat.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SefazSp.Epat.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
