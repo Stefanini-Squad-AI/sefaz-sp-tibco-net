@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZJsGOhrhb9s=",
+  "dgSpecHash": "OKoaiG2PogQ=",
   "success": true,
   "projectFilePath": "/workspace/repo/src/SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj",
   "expectedPackageFiles": [
-    "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52daf/.nuget/packages/microsoft.netcore.app.ref/8.0.29/microsoft.netcore.app.ref.8.0.29.nupkg.sha512",
-    "/app/.saiapp/ai-cli-home/6a7ceee5326b6a1807d52daf/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.29/microsoft.aspnetcore.app.ref.8.0.29.nupkg.sha512"
+    "/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/packages/microsoft.netcore.app.ref/8.0.30/microsoft.netcore.app.ref.8.0.30.nupkg.sha512",
+    "/app/.saiapp/ai-cli-home/6a7dfe876d76b766c5edd3d9/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.30/microsoft.aspnetcore.app.ref.8.0.30.nupkg.sha512"
   ],
   "logs": []
 }
