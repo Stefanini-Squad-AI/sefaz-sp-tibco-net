@@ -9,6 +9,8 @@ namespace SefazSp.Epat.Infrastructure.Integration.Doubles;
 /// Validado no arranque da aplicacao: um destino sem implementacao concreta do duble
 /// lanca <see cref="InvalidOperationException"/> de forma imediata e visivel.
 /// NAO herda HaltOnBadSubProcess=false do legado TIBCO.
+///
+/// Destinos registados: DEAT0050 (CalculaPrazo — callActivity _lrer3lqhEfG5K7mY0I3I6w).
 /// </summary>
 public sealed class NOTFAIIMRegistry
 {
