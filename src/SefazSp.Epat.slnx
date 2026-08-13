@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SefazSp.Epat.Api/SefazSp.Epat.Api.csproj" />
+  <Project Path="SefazSp.Epat.Application/SefazSp.Epat.Application.csproj" />
+  <Project Path="SefazSp.Epat.Domain/SefazSp.Epat.Domain.csproj" />
+  <Project Path="SefazSp.Epat.Infrastructure/SefazSp.Epat.Infrastructure.csproj" />
+</Solution>
