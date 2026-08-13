@@ -34,17 +34,12 @@ namespace SefazSp.Epat.Application.Abstractions.Runtime;
 public interface ICorrelationStore
 {
     /// <summary>
-    /// Retoma a instância de workflow que aguarda o bookmark identificado por
-    /// <paramref name="correlationKey"/> (PROCESS_ID do caso).
-    /// Lança <see cref="InvalidOperationException"/> se não existir instância em espera.
-    /// </summary>
-    Task ResumeAsync(string correlationKey, object? payload, CancellationToken ct);
-
-    /// <summary>
     /// Devolve true se existir uma instância à espera do bookmark correspondente
     /// a <paramref name="correlationKey"/>.
     /// </summary>
     Task<bool> HasBookmarkAsync(string correlationKey, CancellationToken ct);
+
+    /// <summary>
     /// Retoma a instancia de workflow suspensa identificada por <paramref name="correlationKey"/>.
     /// </summary>
     /// <param name="correlationKey">
