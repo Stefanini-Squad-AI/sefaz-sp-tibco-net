@@ -65,9 +65,35 @@ public sealed class EpatServicesClient : IEpatServices
             "AtualizarintimacaoAsync nao pertence a este segmento (BUILD-BSCENVPC-seg003).");
 
     /// <inheritdoc />
-    public Task<ServiceEnvelope> CriarnotificacoesaiimAsync(AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "CriarnotificacoesaiimAsync nao pertence a este segmento (BUILD-BSCENVPC-seg003).");
+    /// <remarks>
+    /// Operacao TIBCO: __sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1
+    /// Declarada em EPAT.wsdl.
+    /// Invocada pelo passo _NcJxMF9KEfGqPfX31TKC3w (CriaNotificacao) no processo CRNOTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _NcJxLl9KEfGqPfX31TKC3w, condicao STATUS_CODE != "0").
+    /// Excepcao de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_NcJJ8V9KEfGqPfX31TKC3w).
+    /// </remarks>
+    public async Task<ServiceEnvelope> CriarnotificacoesaiimAsync(
+        AiimCaseRef caseRef,
+        CancellationToken ct)
+    {
+        // SOAP envelope minimo para a operacao criarNotificacoesAIIM.
+        // O endpoint e configurado via HttpClient base address (composicao externa).
+        var soapBody = BuildSoapEnvelope("criarNotificacoesAIIM", caseRef);
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, (Uri?)null)
+        {
+            Content = new StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
+        };
+        request.Headers.Add("SOAPAction", "criarNotificacoesAIIM");
+
+        using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
+        response.EnsureSuccessStatusCode();
+
+        var xml = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+        return ParseEnvelope(xml);
+    }
 
     /// <inheritdoc />
     public Task<ServiceEnvelope> ObterprimeirodiautilaposperiododediascorridosdeatAsync(
