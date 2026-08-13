@@ -13,6 +13,8 @@ namespace SefazSp.Epat.Domain.Rules;
 /// SW_QRETRYCOUNT é o contador de falhas de entrega da fila, controlado pelo runtime
 /// iProcess e lido, nunca escrito, pelo processo. Valor numérico simples; não usa SW_NA.
 /// Decisão NOEQ-iprocess-builtin (shim-tri-state, ratificado 2026-08-06).
+///
+/// Invariante: identificador do nó _zJIubVqiEfG5K7mY0I3I6w não deve ser renomeado.
 /// </summary>
 public static class CalcprpcCheckRetriesRule
 {
@@ -24,7 +26,7 @@ public static class CalcprpcCheckRetriesRule
     /// </param>
     /// <param name="maxRetries">Tecto de tentativas (MAXRETRIES), inicializado no SetParameters.</param>
     /// <returns>
-    ///   <c>true</c>  → ramo "Stillgood" → CalcularPrazo<br/>
+    ///   <c>true</c>  → ramo "Stillgood" → CalcularPrazo  (_AsZCkVqkEfG5K7mY0I3I6w)<br/>
     ///   <c>false</c> → retentativas do motor esgotadas
     /// </returns>
     public static bool IsStillgood(long swQRetryCount, int maxRetries) =>
