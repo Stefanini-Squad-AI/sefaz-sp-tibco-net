@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SefazSp.Epat.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bd7fd7d95c7edb704608240c5b9019d5461cdf1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b8ee8b4e83bce857b0435bcc052b4a5fd491c18")]
 [assembly: System.Reflection.AssemblyProductAttribute("SefazSp.Epat.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SefazSp.Epat.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
