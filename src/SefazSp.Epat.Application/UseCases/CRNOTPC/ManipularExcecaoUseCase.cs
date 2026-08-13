@@ -6,32 +6,30 @@ using SefazSp.Epat.Application.Execution;
 namespace SefazSp.Epat.Application.UseCases.CRNOTPC;
 
 /// <summary>
-/// Caso de uso para a userTask 'Manipular Excecao' (_NcJJ6V9KEfGqPfX31TKC3w).
+/// Caso de uso para a userTask 'Manipular Excecao' (_NcJJ6V9KEfGqPfX31TKC3w)
+/// do processo CRNOTPC.
 ///
-/// Esta tarefa humana e activada quando o laco de retry se esgota
-/// (gateway More Retries, ramo OTHERWISE). O operador avalia o estado
-/// do caso e decide:
-///   - Repetir a chamada de servico (OUTCOME = 'R')
+/// Esta tarefa humana é ativada quando o laço de retry se esgota
+/// (gateway More Retries, ramo OTHERWISE / gateway _NcJw8V9KEfGqPfX31TKC3w).
+/// O operador avalia o estado do caso e decide:
+///   - Repetir a chamada de serviço (OUTCOME = 'R')
 ///   - Considerar o caso resolvido manualmente (OUTCOME = 'OK')
 ///
-/// O resultado actualiza o ProcessExecutionContext.OUTCOME, que e lido
-/// a seguir pelos gateways Manually Fixed (_NcJJ419KEfGqPfX31TKC3w)
-/// e Try Again (_NcJJ6F9KEfGqPfX31TKC3w).
-///
-/// Fonte TIBCO: POC_Epat.xpdl //xpdl2:Activity[@Id='_NcJJ6V9KEfGqPfX31TKC3w']
+/// O resultado atualiza o ProcessExecutionContext.OUTCOME, que é lido
+/// a seguir pelo gateway Manually Fixed (_NcJJ419KEfGqPfX31TKC3w).
 /// </summary>
 public sealed class ManipularExcecaoUseCase
 {
     /// <summary>
-    /// Aguarda a decisao do operador e aplica-a ao contexto de execucao.
+    /// Aguarda a decisão do operador e aplica-a ao contexto de execução.
     /// </summary>
-    /// <param name="caseRef">Referencia do caso (para apresentacao na UI).</param>
-    /// <param name="ctx">Contexto de execucao mutavel — OUTCOME e actualizado aqui.</param>
+    /// <param name="caseRef">Referência do caso (para apresentação na UI).</param>
+    /// <param name="ctx">Contexto de execução mutável — OUTCOME é atualizado aqui.</param>
     /// <param name="decideOutcome">
-    /// Delegate que representa a interacao humana: recebe a referencia do caso
-    /// e devolve a decisao do operador. Em producao, este delegate suspende o
-    /// workflow ate o operador submeter o formulario MANEXC. Em testes, e
-    /// substituido por um valor configurado no cenario.
+    /// Delegate que representa a interação humana: recebe a referência do caso
+    /// e devolve a decisão do operador. Em produção, este delegate suspende o
+    /// workflow até o operador submeter o formulário MANEXC. Em testes, é
+    /// substituído por um valor configurado no cenário.
     /// </param>
     /// <param name="ct">Token de cancelamento.</param>
     public async Task ExecuteAsync(
