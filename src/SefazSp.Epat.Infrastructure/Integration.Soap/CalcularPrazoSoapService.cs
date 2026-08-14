@@ -1,102 +1,113 @@
 #nullable enable
 
-using System.Net.Http;
-using System.Security;
-using System.Text;
-using System.Xml.Linq;
 using SefazSp.Epat.Application.Abstractions;
+using SefazSp.Epat.Application.Workflows.CALCPRPC;
 
 namespace SefazSp.Epat.Infrastructure.Integration.Soap;
 
 /// <summary>
-/// Implementação SOAP/JMS da operação 'obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT'
-/// do EPAT.wsdl.
+/// Implementação SOAP da operação CalcularPrazo invocada pelo serviceTask
+/// _AsZCkVqkEfG5K7mY0I3I6w do processo CALCPRPC.
 ///
-/// Corresponde ao serviceTask 'CalcularPrazo' (_AsZCkVqkEfG5K7mY0I3I6w) no processo CALCPRPC.
-/// Esta classe contém apenas a lógica de transporte SOAP/HTTP.
+/// Esta classe é a única que conhece o transporte SOAP/HTTP para o serviço de
+/// cálculo de prazo do AIIM. A porta de abstracção é injectada no workflow
+/// via <c>ICalcularPrazoSoapService</c> (definida em Application/Workflows/CALCPRPC).
+///
+/// O envelope de resposta segue o padrão TIBCO BusinessWorks:
+///   RESULT/STATUS_CODE : '0' = sucesso; qualquer outro valor = erro aplicacional.
+///   RESULT/ERROR/ERROR_CODE, ERROR_DESCRIPTION: mapeados para STERRORCODE/STERRORDESC.
+///
+/// Excepção de transporte (HTTP/SOAP falha) → o chamador deve capturar e
+/// encaminhar para o gateway Tech Error (_zJIHZVqiEfG5K7mY0I3I6w, entrouPor=regresso).
 /// </summary>
-internal sealed class CalcularPrazoTransport
+public sealed class CalcularPrazoSoapService : ICalcularPrazoSoapService
 {
-    private const string SoapAction = "\"__sol_EPATInterfaceWrappers_sol_obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.1\"";
+    private readonly HttpClient _http;
 
-    private readonly HttpClient _httpClient;
-    private readonly string _endpointUrl;
-
-    public CalcularPrazoTransport(HttpClient httpClient, string endpointUrl)
+    /// <param name="http">
+    /// Cliente HTTP pré-configurado com o endpoint do TIBCO BusinessWorks
+    /// (base address, timeouts e headers de autenticação configurados no registo de infraestrutura).
+    /// </param>
+    public CalcularPrazoSoapService(HttpClient http)
     {
-        _httpClient = httpClient;
-        _endpointUrl = endpointUrl;
+        _http = http;
     }
 
+    /// <summary>
+    /// Invoca a operação CalcularPrazo via SOAP/HTTP.
+    /// Devolve o envelope técnico mapeado de STATUS_CODE, STERRORCODE e STERRORDESC.
+    /// </summary>
+    /// <param name="caseRef">Identidade do caso (IdAiim e ProcessId para correlação).</param>
+    /// <param name="ct">Token de cancelamento.</param>
+    /// <returns>
+    /// <see cref="ServiceEnvelope"/> com STATUS_CODE, STERRORCODE e STERRORDESC.
+    /// STATUS_CODE == "0" indica sucesso; qualquer outro valor indica erro aplicacional.
+    /// </returns>
     public async Task<ServiceEnvelope> InvokeAsync(AiimCaseRef caseRef, CancellationToken ct)
     {
         var soapBody = BuildSoapRequest(caseRef);
 
-        using var request = new HttpRequestMessage(HttpMethod.Post, _endpointUrl)
+        using var request = new HttpRequestMessage(HttpMethod.Post, (Uri?)null)
         {
-            Content = new StringContent(soapBody, Encoding.UTF8, "text/xml"),
+            Content = new StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
         };
-        request.Headers.Add("SOAPAction", SoapAction);
+        request.Headers.Add("SOAPAction", "\"CalcularPrazo\"");
 
-        using var response = await _httpClient.SendAsync(request, ct);
-        var responseBody = await response.Content.ReadAsStringAsync(ct);
+        using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
+        var responseXml    = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
 
-        return ParseSoapResponse(responseBody);
+        return ParseSoapResponse(responseXml);
     }
+
+    // ── Construção do envelope SOAP ──────────────────────────────────────────
 
     private static string BuildSoapRequest(AiimCaseRef caseRef)
     {
-        var processId = SecurityElement.Escape(caseRef.ProcessId) ?? string.Empty;
-        var dateTime = DateTimeOffset.UtcNow.ToString("O");
+        var transactionId = Guid.NewGuid().ToString("N");
+        var datetime      = DateTimeOffset.UtcNow.ToString("o");
 
         return $"""
-                 <?xml version="1.0" encoding="utf-8"?>
-                 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-                                xmlns:epat="urn:EPATInterfaceWrappers">
-                   <soap:Body>
-                     <epat:obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEATRequest>
-                       <epat:HEADER>
-                         <epat:TRANSACTION_ID>{caseRef.IdAiim}</epat:TRANSACTION_ID>
-                         <epat:PROCESS_ID>{processId}</epat:PROCESS_ID>
-                         <epat:DATETIME>{dateTime}</epat:DATETIME>
-                       </epat:HEADER>
-                       <epat:BODY>
-                         <epat:dataInicioPeriodo />
-                         <epat:periodoEmDias>0</epat:periodoEmDias>
-                         <epat:codigoMunicipio>0</epat:codigoMunicipio>
-                       </epat:BODY>
-                     </epat:obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEATRequest>
-                   </soap:Body>
-                 </soap:Envelope>
-                 """;
+            <soapenv:Envelope
+                xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                xmlns:epat="urn:EPATInterfaceWrappers">
+              <soapenv:Body>
+                <epat:CalcularPrazoRequest>
+                  <HEADER>
+                    <TRANSACTION_ID>{System.Security.SecurityElement.Escape(transactionId)}</TRANSACTION_ID>
+                    <DATETIME>{System.Security.SecurityElement.Escape(datetime)}</DATETIME>
+                  </HEADER>
+                  <BODY>
+                    <nrAiim>{caseRef.IdAiim}</nrAiim>
+                    <processId>{System.Security.SecurityElement.Escape(caseRef.ProcessId)}</processId>
+                  </BODY>
+                </epat:CalcularPrazoRequest>
+              </soapenv:Body>
+            </soapenv:Envelope>
+            """;
     }
 
-    private static ServiceEnvelope ParseSoapResponse(string responseBody)
+    // ── Análise da resposta SOAP ─────────────────────────────────────────────
+
+    private static ServiceEnvelope ParseSoapResponse(string responseXml)
     {
-        try
-        {
-            var doc = XDocument.Parse(responseBody);
-            var body = doc.Descendants().FirstOrDefault(static element =>
-                element.Name.LocalName == "obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEATResponse");
+        // Extrai STATUS_CODE, ERROR_CODE e ERROR_DESCRIPTION do envelope TIBCO.
+        // Procura na secção RESULT/STATUS_CODE e RESULT/ERROR/*.
+        var statusCode  = ExtractElement(responseXml, "STATUS_CODE");
+        var errorCode   = ExtractElement(responseXml, "ERROR_CODE");
+        var errorDesc   = ExtractElement(responseXml, "ERROR_DESCRIPTION");
 
-            if (body is null)
-                return new ServiceEnvelope(
-                    STATUS_CODE: "PARSE_ERROR",
-                    STERRORCODE: "SOAP_PARSE",
-                    STERRORDESC: "Resposta SOAP sem corpo esperado.");
+        return new ServiceEnvelope(statusCode, errorCode, errorDesc);
+    }
 
-            var statusCode = body.Descendants().FirstOrDefault(static element => element.Name.LocalName == "STATUS_CODE")?.Value ?? "UNKNOWN";
-            var errorCode = body.Descendants().FirstOrDefault(static element => element.Name.LocalName == "ERROR_CODE" || element.Name.LocalName == "STERRORCODE")?.Value;
-            var errorDesc = body.Descendants().FirstOrDefault(static element => element.Name.LocalName == "ERROR_DESCRIPTION" || element.Name.LocalName == "STERRORDESC")?.Value;
-
-            return new ServiceEnvelope(statusCode, errorCode, errorDesc);
-        }
-        catch (Exception ex)
-        {
-            return new ServiceEnvelope(
-                STATUS_CODE: "TRANSPORT_ERROR",
-                STERRORCODE: ex.GetType().Name,
-                STERRORDESC: ex.Message);
-        }
+    private static string? ExtractElement(string xml, string elementName)
+    {
+        var open  = $"<{elementName}>";
+        var close = $"</{elementName}>";
+        var start = xml.IndexOf(open, StringComparison.Ordinal);
+        if (start < 0) return null;
+        start += open.Length;
+        var end = xml.IndexOf(close, start, StringComparison.Ordinal);
+        if (end < 0) return null;
+        return xml[start..end];
     }
 }
