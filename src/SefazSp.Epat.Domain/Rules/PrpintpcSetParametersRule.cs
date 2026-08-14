@@ -8,9 +8,11 @@ namespace SefazSp.Epat.Domain.Rules;
 /// RI-script-PRPINTPC-SetParameters
 /// Regra de domínio pura do passo SetParameters do processo PRPINTPC.
 ///
-/// Expressão legada: IDPROCESSO != IPESystemValues.SW_NA | MAXRETRIES==null
-/// Consequência: escreve MAXRETRIES (default 5) e PROCESS_ID.
+/// Expressão legada: if (MAXRETRIES == null) MAXRETRIES = 5
+/// Consequência: escreve MAXRETRIES (default 5) quando ainda não inicializado.
 ///
+/// Não usa SW_NA nesta regra; MAXRETRIES é um inteiro inicializado no contexto técnico.
+/// Decisão NOEQ-iprocess-builtin (shim-tri-state, ratificado 2026-08-06).
 /// IDPROCESSO é comparado com SW_NA — um TERCEIRO estado distinto de null e de vazio.
 /// Usa <see cref="FieldValue{T}"/> (shim-tri-state, NOEQ-iprocess-builtin, ratificado 2026-08-06).
 /// SW_NA NUNCA é mapeado para null.

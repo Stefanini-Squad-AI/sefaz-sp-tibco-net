@@ -3,16 +3,24 @@
 namespace SefazSp.Epat.Application.UseCases.PRPINTPC;
 
 /// <summary>
-/// Resultado da interacção humana na userTask 'Manipular Excecao'
+/// Resultado da interação humana na tarefa 'Manipular Excecao'
 /// (_KEwC5V6EEfGBBLgT-R5iuw) do processo PRPINTPC.
 ///
-/// Card: BUILD-PRPINTPC-seg035 · AC7
+/// O operador escolhe uma de duas ações:
+///   - RetryAgain: rota o fluxo de volta ao início do laço (Try Again)
+///   - ManuallyFixed: considera o caso resolvido manualmente (Done - Fixed)
 /// </summary>
 public enum ManipularExcecaoPrpintpcResult
 {
-    /// <summary>Caso resolvido manualmente. Gateway Manually Fixed → ramo 'Yes'. OUTCOME = "OK".</summary>
-    ManuallyFixed,
-
-    /// <summary>Operador opta por repetir a chamada. Gateway Try Again → ramo 'Yes'. OUTCOME = "R".</summary>
+    /// <summary>
+    /// Operador optou por repetir a chamada. OUTCOME = 'R'.
+    /// O fluxo regressa ao início do laço de retry (StartLoop).
+    /// </summary>
     RetryAgain,
+
+    /// <summary>
+    /// Operador considera o caso resolvido. OUTCOME = 'OK'.
+    /// O fluxo avança para o gateway Manually Fixed e encerra em Done - Fixed.
+    /// </summary>
+    ManuallyFixed,
 }
