@@ -97,6 +97,90 @@ internal sealed class BuscaEnvolvidosVistaTransport
 }
 
 /// <summary>
+/// Implementação SOAP da operação 'PrepararIntimacao' do DecisionsEPAT.wsdl.
+///
+/// Corresponde ao serviceTask 'CaptaParametros' (_KEwDWF6EEfGBBLgT-R5iuw)
+/// no processo PRPINTPC — segmento 036 (SC-PRPINTPC-008).
+///
+/// Fonte TIBCO: DecisionsEPAT.wsdl
+///   operacao: __sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao
+/// </summary>
+internal sealed class CaptaParametrosTransport
+{
+    private readonly HttpClient _httpClient;
+    private readonly string _endpointUrl;
+
+    public CaptaParametrosTransport(HttpClient httpClient, string endpointUrl)
+    {
+        _httpClient  = httpClient;
+        _endpointUrl = endpointUrl;
+    }
+
+    /// <summary>
+    /// Envia o pedido SOAP e devolve o envelope técnico do BusinessWorks.
+    /// STATUS_CODE = '0' indica sucesso; qualquer outro valor é erro.
+    /// </summary>
+    public async Task<ServiceEnvelope> InvokeAsync(AiimCaseRef caseRef, CancellationToken ct)
+    {
+        var soapBody = BuildSoapRequest(caseRef);
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, _endpointUrl)
+        {
+            Content = new StringContent(soapBody, Encoding.UTF8, "text/xml"),
+        };
+        request.Headers.Add("SOAPAction",
+            "\"__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao\"");
+
+        using var response = await _httpClient.SendAsync(request, ct);
+        var responseBody   = await response.Content.ReadAsStringAsync(ct);
+
+        return ParseSoapResponse(responseBody);
+    }
+
+    private static string BuildSoapRequest(AiimCaseRef caseRef) =>
+        $"""
+         <?xml version="1.0" encoding="utf-8"?>
+         <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+                        xmlns:dec="urn:DecisionsEPAT">
+           <soap:Body>
+             <dec:PrepararIntimacaoRequest>
+               <dec:idAiim>{caseRef.IdAiim}</dec:idAiim>
+               <dec:processId>{caseRef.ProcessId}</dec:processId>
+             </dec:PrepararIntimacaoRequest>
+           </soap:Body>
+         </soap:Envelope>
+         """;
+
+    private static ServiceEnvelope ParseSoapResponse(string responseBody)
+    {
+        try
+        {
+            var doc  = XDocument.Parse(responseBody);
+            var ns   = (XNamespace)"urn:DecisionsEPAT";
+            var body = doc.Descendants(ns + "PrepararIntimacaoResponse").FirstOrDefault();
+
+            if (body is null)
+                return new ServiceEnvelope(STATUS_CODE: "PARSE_ERROR",
+                    STERRORCODE: "SOAP_PARSE",
+                    STERRORDESC: "Resposta SOAP sem corpo esperado.");
+
+            var statusCode = body.Element(ns + "STATUS_CODE")?.Value ?? "UNKNOWN";
+            var errorCode  = body.Element(ns + "STERRORCODE")?.Value;
+            var errorDesc  = body.Element(ns + "STERRORDESC")?.Value;
+
+            return new ServiceEnvelope(statusCode, errorCode, errorDesc);
+        }
+        catch (Exception ex)
+        {
+            return new ServiceEnvelope(
+                STATUS_CODE: "TRANSPORT_ERROR",
+                STERRORCODE: ex.GetType().Name,
+                STERRORDESC: ex.Message);
+        }
+    }
+}
+
+/// <summary>
 /// Implementacao SOAP/JMS da operacao 'criarNotificacoesAIIM' do EPAT.wsdl.
 ///
 /// Corresponde ao serviceTask 'CriaNotificacao'
@@ -219,8 +303,11 @@ public sealed class EpatSoapServices : IEpatServices
     /// <inheritdoc />
     public Task<ServiceEnvelope> PrepararintimacaoAsync(
         AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "PrepararintimacaoAsync: implementacao SOAP pendente (outro card).");
+    {
+        var transport = new CaptaParametrosTransport(
+            _httpClient, _options.PrepararIntimacaoEndpoint);
+        return transport.InvokeAsync(caseRef, ct);
+    }
 
     /// <inheritdoc />
     public Task<ServiceEnvelope> AtualizarintimacaoAsync(
@@ -247,6 +334,9 @@ public sealed class EpatSoapOptions
 
     /// <summary>URL do endpoint SOAP criarNotificacoesAIIM (processo CRNOTPC).</summary>
     public string CriarNotificacoesAiimEndpoint { get; init; } = string.Empty;
+
+    /// <summary>URL do endpoint SOAP PrepararIntimacao / CaptaParametros (processo PRPINTPC).</summary>
+    public string PrepararIntimacaoEndpoint { get; init; } = string.Empty;
 
     /// <summary>URL do endpoint SOAP obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.</summary>
     public string CalcularPrazoEndpoint { get; init; } = string.Empty;
