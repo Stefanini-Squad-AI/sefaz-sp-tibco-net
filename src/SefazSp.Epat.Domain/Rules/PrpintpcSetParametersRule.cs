@@ -15,8 +15,8 @@ namespace SefazSp.Epat.Domain.Rules;
 /// Usa <see cref="FieldValue{T}"/> (shim-tri-state, NOEQ-iprocess-builtin, ratificado 2026-08-06).
 /// SW_NA NUNCA é mapeado para null.
 ///
-/// Card: BUILD-PRPINTPC-seg035 · AC1
 /// Invariante: identificador do nó _KEwC3l6EEfGBBLgT-R5iuw não deve ser renomeado.
+/// Card: BUILD-PRPINTPC-seg038 · AC1
 /// </summary>
 public static class PrpintpcSetParametersRule
 {
