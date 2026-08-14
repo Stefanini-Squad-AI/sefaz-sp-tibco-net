@@ -312,8 +312,11 @@ public sealed class EpatSoapServices : IEpatServices
     /// <inheritdoc />
     public Task<ServiceEnvelope> AtualizarintimacaoAsync(
         AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "AtualizarintimacaoAsync: implementacao SOAP pendente (outro card).");
+    {
+        var transport = new AtualizarIntimacaoTransport(
+            _httpClient, _options.AtualizarIntimacaoEndpoint);
+        return transport.InvokeAsync(caseRef, ct);
+    }
 
     /// <inheritdoc />
     public Task<ServiceEnvelope> ObterprimeirodiautilaposperiododediascorridosdeatAsync(
@@ -340,4 +343,7 @@ public sealed class EpatSoapOptions
 
     /// <summary>URL do endpoint SOAP obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.</summary>
     public string CalcularPrazoEndpoint { get; init; } = string.Empty;
+
+    /// <summary>URL do endpoint SOAP atualizarIntimacao (processo ATZINTPC).</summary>
+    public string AtualizarIntimacaoEndpoint { get; init; } = string.Empty;
 }
