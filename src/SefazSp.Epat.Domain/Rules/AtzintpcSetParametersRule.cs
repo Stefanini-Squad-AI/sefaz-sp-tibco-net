@@ -1,19 +1,19 @@
 #nullable enable
 
+using SefazSp.Epat.Domain.ValueObjects;
+
 namespace SefazSp.Epat.Domain.Rules;
 
 /// <summary>
 /// RI-script-ATZINTPC-SetParameters
 /// Regra de domínio pura do passo SetParameters do processo ATZINTPC.
 ///
-/// Expressão legada: if (MAXRETRIES == null) MAXRETRIES = 5
-/// Consequência: escreve MAXRETRIES (default 5) quando ainda não inicializado.
+/// Expressão legada: IDPROCESSO != IPESystemValues.SW_NA | MAXRETRIES==null
+/// Consequência: escreve MAXRETRIES (default 5) e PROCESS_ID.
 ///
-/// NOEQ-iprocess-builtin (shim-tri-state, ratificado 2026-08-06).
-/// SW_NA é mapeado via <see cref="Domain.ValueObjects.FieldValue{T}"/> — NUNCA para null.
-///
-/// Invariante: identificador do nó _RNdJyl6PEfGBBLgT-R5iuw não deve ser renomeado.
-/// Card: BUILD-ATZINTPC-seg041 · AC1
+/// IDPROCESSO é comparado com SW_NA — um TERCEIRO estado distinto de null e de vazio.
+/// Usa <see cref="FieldValue{T}"/> (shim-tri-state, NOEQ-iprocess-builtin, ratificado 2026-08-06).
+/// SW_NA NUNCA é mapeado para null.
 /// </summary>
 public static class AtzintpcSetParametersRule
 {
@@ -25,15 +25,17 @@ public static class AtzintpcSetParametersRule
     public const int DefaultMaxRetries = 5;
 
     /// <summary>
-    /// Avalia se o passo SetParameters deve inicializar o contexto.
+    /// Avalia a condição legada:
+    ///   IDPROCESSO != IPESystemValues.SW_NA  OU  MAXRETRIES==null
+    /// Retorna verdadeiro quando há um IDPROCESSO disponível no caso
+    /// ou quando MAXRETRIES ainda não foi inicializado (qualquer um pede escrita).
     /// </summary>
+    /// <param name="idProcesso">
+    ///   Campo tri-estado: HasValue = preenchido; IsNotAvailable = SW_NA; Empty = não declarado.
+    /// </param>
     /// <param name="maxRetries">Valor atual de MAXRETRIES (null = ainda não inicializado).</param>
-    /// <returns>
-    ///   <c>true</c> → escrever MAXRETRIES no contexto de execução.
-    ///   <c>false</c> → nenhuma escrita necessária.
-    /// </returns>
-    public static bool ShouldInitialize(int? maxRetries) =>
-        maxRetries is null;
+    public static bool ShouldInitialize(FieldValue<long> idProcesso, int? maxRetries) =>
+        !idProcesso.IsNotAvailable || maxRetries is null;
 
     /// <summary>
     /// Devolve o valor efectivo de MAXRETRIES: o que foi fixado no caso, ou o default.

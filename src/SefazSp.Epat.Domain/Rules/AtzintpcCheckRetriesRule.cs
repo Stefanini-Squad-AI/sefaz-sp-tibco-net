@@ -8,15 +8,11 @@ namespace SefazSp.Epat.Domain.Rules;
 ///
 /// Expressão legada: IPESystemValues.SW_QRETRYCOUNT &lt; MAXRETRIES
 /// Ramo verdadeiro ("Stillgood"): prossegue para AtualizarIntimacao.
-/// Ramo falso: retentativas do motor esgotadas — segue para Set Technical Error.
+/// Ramo falso: retentativas do motor esgotadas.
 ///
 /// SW_QRETRYCOUNT é o contador de falhas de entrega da fila, controlado pelo runtime
 /// iProcess e lido, nunca escrito, pelo processo. Valor numérico simples; não usa SW_NA.
 /// Decisão NOEQ-iprocess-builtin (shim-tri-state, ratificado 2026-08-06).
-/// Confirmado 2026-08-06: SW_QRETRYCOUNT e NUMAPPRETRIES são dois contadores independentes.
-///
-/// Invariante: identificador do nó _RNdKFV6PEfGBBLgT-R5iuw não deve ser renomeado.
-/// Card: BUILD-ATZINTPC-seg041 · AC3
 /// </summary>
 public static class AtzintpcCheckRetriesRule
 {
@@ -29,7 +25,7 @@ public static class AtzintpcCheckRetriesRule
     /// <param name="maxRetries">Tecto de tentativas (MAXRETRIES), inicializado no SetParameters.</param>
     /// <returns>
     ///   <c>true</c>  → ramo "Stillgood" → AtualizarIntimacao<br/>
-    ///   <c>false</c> → retentativas do motor esgotadas → Set Technical Error
+    ///   <c>false</c> → retentativas do motor esgotadas
     /// </returns>
     public static bool IsStillgood(long swQRetryCount, int maxRetries) =>
         swQRetryCount < maxRetries;

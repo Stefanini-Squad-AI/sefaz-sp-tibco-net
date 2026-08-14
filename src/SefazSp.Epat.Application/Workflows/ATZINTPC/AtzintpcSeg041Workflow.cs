@@ -1,11 +1,13 @@
 #nullable enable
 
+using System.Globalization;
 using SefazSp.Epat.Application.Abstractions;
 using SefazSp.Epat.Application.Abstractions.Services;
 using SefazSp.Epat.Application.Execution;
 using SefazSp.Epat.Application.Execution.ATZINTPC;
 using SefazSp.Epat.Application.UseCases.ATZINTPC;
 using SefazSp.Epat.Domain.Rules;
+using SefazSp.Epat.Domain.ValueObjects;
 
 namespace SefazSp.Epat.Application.Workflows.ATZINTPC;
 
@@ -217,7 +219,8 @@ public sealed class AtzintpcSeg041Workflow
         // ── Nó 2: scriptTask 'SetParameters' (_RNdJyl6PEfGBBLgT-R5iuw) ───────
         // Regra: RI-script-ATZINTPC-SetParameters.
         // NOEQ-iprocess-builtin: SW_NA via FieldValue<T> (shim-tri-state, ratificado 2026-08-06).
-        if (AtzintpcSetParametersRule.ShouldInitialize(ctx.MAXRETRIES == 0 ? null : ctx.MAXRETRIES))
+        var idProcesso = ParseIdProcesso(caseRef.ProcessId);
+        if (AtzintpcSetParametersRule.ShouldInitialize(idProcesso, ctx.MAXRETRIES == 0 ? null : ctx.MAXRETRIES))
             AtzintpcSeg041Steps.ApplySetParameters(ctx);
 
         StartLoopEntry:
@@ -360,5 +363,22 @@ public sealed class AtzintpcSeg041Workflow
         Success,
         AppError,
         TechError,
+    }
+
+    private static FieldValue<long> ParseIdProcesso(string processId)
+    {
+        const string marker = "idProc-";
+        var markerIndex = processId.LastIndexOf(marker, StringComparison.Ordinal);
+        if (markerIndex < 0)
+            return FieldValue<long>.Empty;
+
+        var rawValue = processId[(markerIndex + marker.Length)..];
+
+        if (string.Equals(rawValue, "NA", StringComparison.OrdinalIgnoreCase))
+            return FieldValue<long>.NotAvailable;
+
+        return long.TryParse(rawValue, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value)
+            ? FieldValue<long>.Of(value)
+            : FieldValue<long>.Empty;
     }
 }

@@ -3,17 +3,24 @@
 namespace SefazSp.Epat.Application.UseCases.ATZINTPC;
 
 /// <summary>
-/// Resultado possível da userTask 'Manipular Excecao' (_RNdJ0V6PEfGBBLgT-R5iuw)
-/// do processo ATZINTPC.
+/// Resultado da interacao humana na tarefa 'Manipular Excecao'
+/// (_RNdJ0V6PEfGBBLgT-R5iuw).
 ///
-/// O operador decide entre repetir a chamada ou considerar o caso resolvido.
-/// Card: BUILD-ATZINTPC-seg041 · AC6
+/// O operador escolhe uma de duas acoes:
+///   - RetryAgain: rota o fluxo de volta ao inicio do laco (Try Again)
+///   - ManuallyFixed: considera o caso resolvido manualmente (Done - Fixed)
 /// </summary>
 public enum ManipularExcecaoAtzintpcResult
 {
-    /// <summary>Tentar novamente — OUTCOME = 'R'.</summary>
+    /// <summary>
+    /// Operador optou por repetir a chamada. OUTCOME = 'R'.
+    /// O fluxo regressa ao inicio do laco de retry.
+    /// </summary>
     RetryAgain,
 
-    /// <summary>Caso resolvido manualmente — OUTCOME = 'OK'.</summary>
+    /// <summary>
+    /// Operador considera o caso resolvido. OUTCOME = 'OK'.
+    /// O fluxo avanca para o gateway Manually Fixed e encerra em Done - Fixed.
+    /// </summary>
     ManuallyFixed,
 }
