@@ -117,6 +117,8 @@ public static class AgpecaspcSetValuesRule
                || cntPeca2NotSwNa
                || cntPeca3NotSwNa
                || cntPeca4NotSwNa;
+    }
+
     /// Valor sentinela de CNTPECA1 que indica fim de lista de peças.
     /// O significado exacto de "9" não está declarado no pacote (naoSabemos).
     /// </summary>
