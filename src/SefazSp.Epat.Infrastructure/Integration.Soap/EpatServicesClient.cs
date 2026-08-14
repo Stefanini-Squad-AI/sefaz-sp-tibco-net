@@ -86,6 +86,15 @@ public sealed class EpatServicesClient : IEpatServices
 
     /// <inheritdoc />
     /// <remarks>
+    /// Operação TIBCO: __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1
+    /// Declarada em EPAT.wsdl.
+    /// Invocada pelo passo _RNdKHF6PEfGBBLgT-R5iuw (AtualizarIntimacao) no processo ATZINTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _RNdKGl6PEfGBBLgT-R5iuw, condição STATUS_CODE != "0").
+    /// Excepção de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_RNdJ2V6PEfGBBLgT-R5iuw,
+    /// entrouPor=regresso).
+    /// Card: BUILD-ATZINTPC-seg041
     /// Operacao TIBCO: __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1
     /// Declarada em EPAT.wsdl.
     /// Invocada pelo passo _RNdKHF6PEfGBBLgT-R5iuw (AtualizarIntimacao) no processo ATZINTPC.
