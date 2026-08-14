@@ -85,9 +85,33 @@ public sealed class EpatServicesClient : IEpatServices
     }
 
     /// <inheritdoc />
-    public Task<ServiceEnvelope> AtualizarintimacaoAsync(AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "AtualizarintimacaoAsync nao pertence a este segmento (BUILD-BSCENVPC-seg003).");
+    /// <remarks>
+    /// Operação TIBCO: __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1
+    /// Declarada em EPAT.wsdl.
+    /// Invocada pelo passo _RNdKHF6PEfGBBLgT-R5iuw (AtualizarIntimacao) no processo ATZINTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _RNdKGl6PEfGBBLgT-R5iuw, condição STATUS_CODE != "0").
+    /// Excepção de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_RNdJ2V6PEfGBBLgT-R5iuw,
+    /// entrouPor=regresso).
+    /// Card: BUILD-ATZINTPC-seg041
+    /// </remarks>
+    public async Task<ServiceEnvelope> AtualizarintimacaoAsync(AiimCaseRef caseRef, CancellationToken ct)
+    {
+        var soapBody = BuildSoapEnvelope("atualizarIntimacao", caseRef);
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, (Uri?)null)
+        {
+            Content = new StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
+        };
+        request.Headers.Add("SOAPAction", "atualizarIntimacao");
+
+        using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
+        response.EnsureSuccessStatusCode();
+
+        var xml = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+        return ParseEnvelope(xml);
+    }
 
     /// <inheritdoc />
     /// <remarks>
