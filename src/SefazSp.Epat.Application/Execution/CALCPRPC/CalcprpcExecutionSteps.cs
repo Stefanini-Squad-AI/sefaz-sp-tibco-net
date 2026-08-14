@@ -44,6 +44,10 @@ public static class CalcprpcExecutionSteps
             ctx.PROCESS_ID = processId;
     }
 
+    /// <inheritdoc cref="ApplySetParameters(ProcessExecutionContext, string?)"/>
+    public static void ApplySetParameters(ProcessExecutionContext ctx)
+        => ApplySetParameters(ctx, processId: null);
+
     // ── Nó 3: Start Loop (_zJIHWFqiEfG5K7mY0I3I6w) ─────────────────────────
 
     /// <summary>
@@ -87,7 +91,28 @@ public static class CalcprpcExecutionSteps
         ctx.NUMAPPRETRIES++;
     }
 
-    // ── Condições de gateway (topologia como dado) ────────────────────────────
+    /// <inheritdoc cref="SetAppError(ProcessExecutionContext)"/>
+    /// <param name="envelope">Envelope de serviço cujos dados de erro são mapeados para o contexto.</param>
+    public static void SetAppError(ProcessExecutionContext ctx, ServiceEnvelope envelope)
+    {
+        MapServiceEnvelope(ctx, envelope);
+        SetAppError(ctx);
+    }
+
+    // ── Nó Tech Error (regresso explícito) ───────────────────────────────────
+
+    /// <summary>
+    /// Marca ISTECHERROR="Y" no contexto, registando a razão técnica.
+    /// Chamado tanto pelo ramo Maxretriesexceeded do gateway de retentativas
+    /// quanto pela captura de excepção de transporte (regresso explícito).
+    /// </summary>
+    /// <param name="ctx">Contexto de execução mutável do processo.</param>
+    /// <param name="reason">Mensagem de diagnóstico (não persistida no caso; apenas para rastreabilidade).</param>
+    public static void SetTechError(ProcessExecutionContext ctx, string reason)
+    {
+        ctx.ISTECHERROR = "Y";
+        ctx.STERRORDESC ??= reason;
+    }
 
     /// <summary>
     /// Gateway _zJIuclqiEfG5K7mY0I3I6w.

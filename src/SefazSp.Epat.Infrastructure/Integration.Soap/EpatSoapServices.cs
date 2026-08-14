@@ -231,8 +231,10 @@ public sealed class EpatSoapServices : IEpatServices
     /// <inheritdoc />
     public Task<ServiceEnvelope> ObterprimeirodiautilaposperiododediascorridosdeatAsync(
         AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "ObterprimeirodiautilaposperiododediascorridosdeatAsync: implementacao SOAP pendente (outro card).");
+    {
+        var transport = new CalcularPrazoSoapService(_httpClient);
+        return transport.InvokeAsync(caseRef, ct);
+    }
 }
 
 /// <summary>
@@ -245,4 +247,7 @@ public sealed class EpatSoapOptions
 
     /// <summary>URL do endpoint SOAP criarNotificacoesAIIM (processo CRNOTPC).</summary>
     public string CriarNotificacoesAiimEndpoint { get; init; } = string.Empty;
+
+    /// <summary>URL do endpoint SOAP obterPrimeiroDiaUtilAposPeriodoDeDiasCorridosDEAT.</summary>
+    public string CalcularPrazoEndpoint { get; init; } = string.Empty;
 }
