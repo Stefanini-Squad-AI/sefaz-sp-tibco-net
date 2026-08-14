@@ -12,6 +12,11 @@ namespace SefazSp.Epat.Domain.Rules;
 ///
 /// SW_QRETRYCOUNT é o contador de falhas de entrega da fila, controlado pelo runtime
 /// iProcess e lido, nunca escrito, pelo processo. Valor numérico simples; não usa SW_NA.
+/// Decisão NOEQ-iprocess-builtin (shim-tri-state, ratificado).
+///
+/// Invariante: identificadores ATZINTPC, CheckRetriesSWQRETRYCOUNT, SW_QRETRYCOUNT,
+/// MAXRETRIES não devem ser renomeados.
+/// Card: BUILD-ATZINTPC-seg046 · AC3 · Nó _RNdKFV6PEfGBBLgT-R5iuw
 /// Decisão NOEQ-iprocess-builtin (shim-tri-state, ratificado 2026-08-06).
 /// </summary>
 public static class AtzintpcCheckRetriesRule
