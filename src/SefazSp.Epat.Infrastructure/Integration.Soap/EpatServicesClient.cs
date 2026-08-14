@@ -99,12 +99,14 @@ public sealed class EpatServicesClient : IEpatServices
     /// Declarada em EPAT.wsdl.
     /// Invocada pelo passo _RNdKHF6PEfGBBLgT-R5iuw (AtualizarIntimacao) no processo ATZINTPC.
     /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
-    /// (gateway _RNdKGl6PEfGBBLgT-R5iuw, condicao STATUS_CODE != "0").
-    /// Excepcao de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// (gateway _RNdKGl6PEfGBBLgT-R5iuw, condição STATUS_CODE != "0").
+    /// Excepção de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
     /// deve capturar e encaminhar para o gateway Tech Error (_RNdJ2V6PEfGBBLgT-R5iuw).
-    /// Card: BUILD-ATZINTPC-seg046 · AC3
+    /// Card: BUILD-ATZINTPC-seg043.
     /// </remarks>
-    public async Task<ServiceEnvelope> AtualizarintimacaoAsync(AiimCaseRef caseRef, CancellationToken ct)
+    public async Task<ServiceEnvelope> AtualizarintimacaoAsync(
+        AiimCaseRef caseRef,
+        CancellationToken ct)
     {
         var soapBody = BuildSoapEnvelope("atualizarIntimacao", caseRef);
 
