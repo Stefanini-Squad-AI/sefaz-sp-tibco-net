@@ -9,6 +9,7 @@ namespace SefazSp.Epat.Domain.Rules;
 /// Expressão legada: IPESystemValues.SW_QRETRYCOUNT &lt; MAXRETRIES
 /// Ramo verdadeiro ("Stillgood"): prossegue para AtualizarIntimacao.
 /// Ramo falso: retentativas do motor esgotadas — segue para Set Technical Error.
+/// Ramo falso: retentativas do motor esgotadas.
 ///
 /// SW_QRETRYCOUNT é o contador de falhas de entrega da fila, controlado pelo runtime
 /// iProcess e lido, nunca escrito, pelo processo. Valor numérico simples; não usa SW_NA.

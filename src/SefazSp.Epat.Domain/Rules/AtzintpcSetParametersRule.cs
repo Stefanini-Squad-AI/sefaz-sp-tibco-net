@@ -22,7 +22,8 @@ public static class AtzintpcSetParametersRule
 {
     /// <summary>
     /// Valor padrão de MAXRETRIES quando não foi ainda inicializado.
-    /// Fonte: glossário POC_Epat.yaml — "if (MAXRETRIES == null) MAXRETRIES = 5".
+    /// Fonte: glossário POC_Epat.yaml — "if (MAXRETRIES == null) MAXRETRIES = 5",
+    /// confirmado em 2026-08-06.
     /// </summary>
     public const int DefaultMaxRetries = 5;
 
@@ -41,6 +42,12 @@ public static class AtzintpcSetParametersRule
     ///   <c>true</c> → escrever MAXRETRIES e PROCESS_ID no contexto de execução.
     ///   <c>false</c> → nenhuma escrita necessária.
     /// </returns>
+    /// ou quando MAXRETRIES ainda não foi inicializado (qualquer um pede escrita).
+    /// </summary>
+    /// <param name="idProcesso">
+    ///   Campo tri-estado: HasValue = preenchido; IsNotAvailable = SW_NA; Empty = não declarado.
+    /// </param>
+    /// <param name="maxRetries">Valor atual de MAXRETRIES (null = ainda não inicializado).</param>
     public static bool ShouldInitialize(FieldValue<long> idProcesso, int? maxRetries) =>
         !idProcesso.IsNotAvailable || maxRetries is null;
 
