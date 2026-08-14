@@ -44,12 +44,35 @@ public sealed record ScenarioPathNode(
 );
 
 /// <summary>
+/// Decision point declared in a reference scenario (decisions[]).
+/// </summary>
+public sealed record ScenarioDecision(
+    [property: JsonPropertyName("decisao")] string? Decisao,
+    [property: JsonPropertyName("decisaoId")] string? DecisaoId,
+    [property: JsonPropertyName("ramo")] string? Ramo,
+    [property: JsonPropertyName("tipo")] string? Tipo,
+    [property: JsonPropertyName("condicao")] string? Condicao,
+    [property: JsonPropertyName("leva")] string? Leva
+);
+
+/// <summary>
+/// Required input declared in a reference scenario (inputsRequired[]).
+/// </summary>
+public sealed record ScenarioInputRequired(
+    [property: JsonPropertyName("campo")] string? Campo,
+    [property: JsonPropertyName("operador")] string? Operador,
+    [property: JsonPropertyName("valor")] string? Valor,
+    [property: JsonPropertyName("sentinelaSwNa")] bool SentinelaSwNa
+);
+
+/// <summary>
 /// Sub-process call declared in a reference scenario (descidas[]).
 /// </summary>
 public sealed record ScenarioDescida(
     [property: JsonPropertyName("passo")] string? Passo,
     [property: JsonPropertyName("passoId")] string? PassoId,
     [property: JsonPropertyName("continuaEm")] string? ContinuaEm,
+    [property: JsonPropertyName("resolvidaPor")] string? ResolvidaPor,
     [property: JsonPropertyName("dinamica")] bool Dinamica,
     [property: JsonPropertyName("graftStep")] bool GraftStep,
     [property: JsonPropertyName("cenarios")] IReadOnlyList<string>? Cenarios
@@ -78,7 +101,9 @@ public sealed record ScenarioDetail(
     [property: JsonPropertyName("etapas")] IReadOnlyList<int>? Etapas,
     [property: JsonPropertyName("segmentos")] IReadOnlyList<ScenarioSegmento>? Segmentos,
     [property: JsonPropertyName("path")] IReadOnlyList<ScenarioPathNode>? Path,
-    [property: JsonPropertyName("descidas")] IReadOnlyList<ScenarioDescida>? Descidas
+    [property: JsonPropertyName("descidas")] IReadOnlyList<ScenarioDescida>? Descidas,
+    [property: JsonPropertyName("decisions")] IReadOnlyList<ScenarioDecision>? Decisions,
+    [property: JsonPropertyName("inputsRequired")] IReadOnlyList<ScenarioInputRequired>? InputsRequired
 );
 
 /// <summary>
