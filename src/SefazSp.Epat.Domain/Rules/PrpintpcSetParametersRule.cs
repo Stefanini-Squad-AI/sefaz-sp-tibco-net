@@ -39,7 +39,7 @@ public static class PrpintpcSetParametersRule
     /// </param>
     /// <param name="maxRetries">Valor atual de MAXRETRIES (null = ainda não inicializado).</param>
     /// <returns>
-    ///   <c>true</c> → escrever MAXRETRIES no contexto de execução.
+    ///   <c>true</c> → escrever MAXRETRIES e PROCESS_ID no contexto de execução.
     ///   <c>false</c> → nenhuma escrita necessária.
     /// </returns>
     public static bool ShouldInitialize(FieldValue<long> idProcesso, int? maxRetries) =>
