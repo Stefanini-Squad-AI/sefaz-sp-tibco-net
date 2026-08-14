@@ -1,5 +1,7 @@
 #nullable enable
 
+using SefazSp.Epat.Domain.ValueObjects;
+
 namespace SefazSp.Epat.Domain.Rules;
 
 /// <summary>
@@ -20,6 +22,24 @@ public static class PrpintpcSetParametersRule
     /// confirmado em 2026-08-06.
     /// </summary>
     public const int DefaultMaxRetries = 5;
+
+    /// <summary>
+    /// Avalia a condição legada:
+    ///   IDPROCESSO != IPESystemValues.SW_NA  OU  MAXRETRIES==null
+    /// Retorna verdadeiro quando há um IDPROCESSO disponível no caso
+    /// ou quando MAXRETRIES ainda não foi inicializado (qualquer um pede escrita).
+    /// </summary>
+    /// <param name="idProcesso">
+    ///   Campo tri-estado: HasValue = preenchido; IsNotAvailable = SW_NA; Empty = não declarado.
+    ///   SW_NA significa "não preenchido" — terceiro estado, nunca null.
+    /// </param>
+    /// <param name="maxRetries">Valor atual de MAXRETRIES (null = ainda não inicializado).</param>
+    /// <returns>
+    ///   <c>true</c> → escrever MAXRETRIES e PROCESS_ID no contexto de execução.
+    ///   <c>false</c> → nenhuma escrita necessária.
+    /// </returns>
+    public static bool ShouldInitialize(FieldValue<long> idProcesso, int? maxRetries) =>
+        !idProcesso.IsNotAvailable || maxRetries is null;
 
     /// <summary>
     /// Devolve o valor efectivo de MAXRETRIES: o que foi fixado no caso, ou o default.
