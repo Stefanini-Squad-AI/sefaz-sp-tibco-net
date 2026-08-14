@@ -17,6 +17,7 @@ namespace SefazSp.Epat.Domain.Rules;
 /// Invariante: identificadores ATZINTPC, CheckRetriesSWQRETRYCOUNT, SW_QRETRYCOUNT,
 /// MAXRETRIES não devem ser renomeados.
 /// Card: BUILD-ATZINTPC-seg046 · AC3 · Nó _RNdKFV6PEfGBBLgT-R5iuw
+/// Decisão NOEQ-iprocess-builtin (shim-tri-state, ratificado 2026-08-06).
 /// </summary>
 public static class AtzintpcCheckRetriesRule
 {
