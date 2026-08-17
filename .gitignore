@@ -15,6 +15,7 @@
 # --- Segredos ----------------------------------------------------------------
 # O token do Jira e lido de JIRA_API_TOKEN no ambiente, nunca de um ficheiro.
 /key
+key
 *.token
 .env
 .env.*
