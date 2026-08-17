@@ -102,7 +102,7 @@ public sealed class BuscarVistasAtivasPorAiimSoapService
     {
         // Extraccao minima baseada em XPath para evitar dependencia de WCF.
         // A validacao completa do contrato esta em BuscarVistasAtivasPorAiimContractTests.
-        using var doc = new System.Xml.XmlDocument();
+        var doc = new System.Xml.XmlDocument();
         doc.LoadXml(xml);
 
         var ns = new System.Xml.XmlNamespaceManager(doc.NameTable);

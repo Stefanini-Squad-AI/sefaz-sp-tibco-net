@@ -55,19 +55,104 @@ public sealed class EpatServicesClient : IEpatServices
     }
 
     /// <inheritdoc />
-    public Task<ServiceEnvelope> PrepararintimacaoAsync(AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "PrepararintimacaoAsync nao pertence a este segmento (BUILD-BSCENVPC-seg003).");
+    /// <remarks>
+    /// Operação TIBCO: __sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao
+    /// Declarada em DecisionsEPAT.wsdl.
+    /// Invocada pelo passo _KEwDWF6EEfGBBLgT-R5iuw (CaptaParametros) no processo PRPINTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _KEwDVl6EEfGBBLgT-R5iuw, condição STATUS_CODE != "0",
+    /// corrigida de SW_NA per rulings.CLONE-PRPINTPC).
+    /// Excepção de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_KEwC7V6EEfGBBLgT-R5iuw).
+    /// </remarks>
+    public async Task<ServiceEnvelope> PrepararintimacaoAsync(
+        AiimCaseRef caseRef,
+        CancellationToken ct)
+    {
+        var soapBody = BuildSoapEnvelope("prepararIntimacao", caseRef);
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, (Uri?)null)
+        {
+            Content = new System.Net.Http.StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
+        };
+        request.Headers.Add("SOAPAction",
+            "\"__sol_Business_sp_Processes_sol_Decision_sol_Sub_sp_Processes_sol_Intimacao_sol_PrepararIntimacao\"");
+
+        using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
+
+        var xml = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+        return ParseEnvelope(xml);
+    }
 
     /// <inheritdoc />
-    public Task<ServiceEnvelope> AtualizarintimacaoAsync(AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "AtualizarintimacaoAsync nao pertence a este segmento (BUILD-BSCENVPC-seg003).");
+    /// <remarks>
+    /// Operação TIBCO: __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1
+    /// Declarada em EPAT.wsdl.
+    /// Invocada pelo passo _RNdKHF6PEfGBBLgT-R5iuw (AtualizarIntimacao) no processo ATZINTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _RNdKGl6PEfGBBLgT-R5iuw, condição STATUS_CODE != "0").
+    /// Excepção de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_RNdJ2V6PEfGBBLgT-R5iuw,
+    /// entrouPor=regresso).
+    /// Card: BUILD-ATZINTPC-seg041
+    /// Operacao TIBCO: __sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1
+    /// Declarada em EPAT.wsdl.
+    /// Invocada pelo passo _RNdKHF6PEfGBBLgT-R5iuw (AtualizarIntimacao) no processo ATZINTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _RNdKGl6PEfGBBLgT-R5iuw, condição STATUS_CODE != "0").
+    /// Excepção de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_RNdJ2V6PEfGBBLgT-R5iuw).
+    /// Card: BUILD-ATZINTPC-seg043.
+    /// </remarks>
+    public async Task<ServiceEnvelope> AtualizarintimacaoAsync(
+        AiimCaseRef caseRef,
+        CancellationToken ct)
+    {
+        var soapBody = BuildSoapEnvelope("atualizarIntimacao", caseRef);
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, (Uri?)null)
+        {
+            Content = new StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
+        };
+        request.Headers.Add("SOAPAction",
+            "\"__sol_EPATInterfaceWrappers_sol_atualizarIntimacao.1\"");
+
+        using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
+
+        var xml = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+        return ParseEnvelope(xml);
+    }
 
     /// <inheritdoc />
-    public Task<ServiceEnvelope> CriarnotificacoesaiimAsync(AiimCaseRef caseRef, CancellationToken ct)
-        => throw new NotImplementedException(
-            "CriarnotificacoesaiimAsync nao pertence a este segmento (BUILD-BSCENVPC-seg003).");
+    /// <remarks>
+    /// Operacao TIBCO: __sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1
+    /// Declarada em EPAT.wsdl.
+    /// Invocada pelo passo _NcJxMF9KEfGqPfX31TKC3w (CriaNotificacao) no processo CRNOTPC.
+    /// STATUS_CODE='0' indica sucesso; qualquer outro valor activa o ramo AppError
+    /// (gateway _NcJxLl9KEfGqPfX31TKC3w, condicao STATUS_CODE != "0").
+    /// Excepcao de transporte (HTTP/SOAP falha) sinaliza TechError — o chamador
+    /// deve capturar e encaminhar para o gateway Tech Error (_NcJJ8V9KEfGqPfX31TKC3w).
+    /// </remarks>
+    public async Task<ServiceEnvelope> CriarnotificacoesaiimAsync(
+        AiimCaseRef caseRef,
+        CancellationToken ct)
+    {
+        // SOAP envelope minimo para a operacao criarNotificacoesAIIM.
+        // O endpoint e configurado via HttpClient base address (composicao externa).
+        var soapBody = BuildSoapEnvelope("criarNotificacoesAIIM", caseRef);
+
+        using var request = new HttpRequestMessage(HttpMethod.Post, (Uri?)null)
+        {
+            Content = new StringContent(soapBody, System.Text.Encoding.UTF8, "text/xml"),
+        };
+        request.Headers.Add("SOAPAction",
+            "\"__sol_EPATInterfaceWrappers_sol_criarNotificacoesAIIM.1\"");
+
+        using var response = await _http.SendAsync(request, ct).ConfigureAwait(false);
+
+        var xml = await response.Content.ReadAsStringAsync(ct).ConfigureAwait(false);
+        return ParseEnvelope(xml);
+    }
 
     /// <inheritdoc />
     public Task<ServiceEnvelope> ObterprimeirodiautilaposperiododediascorridosdeatAsync(

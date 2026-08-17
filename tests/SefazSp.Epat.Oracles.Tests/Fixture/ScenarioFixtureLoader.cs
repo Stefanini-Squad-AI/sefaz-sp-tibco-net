@@ -15,7 +15,8 @@ public sealed record ScenarioSummary(
     [property: JsonPropertyName("ate")] string? Ate,
     [property: JsonPropertyName("passos")] int Passos,
     [property: JsonPropertyName("decisoes")] int Decisoes,
-    [property: JsonPropertyName("entradas")] int Entradas
+    [property: JsonPropertyName("entradas")] int Entradas,
+    [property: JsonPropertyName("etapas")] IReadOnlyList<int>? Etapas
 );
 
 public sealed record ScenarioIndex(
@@ -32,6 +33,52 @@ public sealed record ScenarioNode(
 );
 
 /// <summary>
+/// Node in the flat ordered path of a reference scenario (SC-*.json → path[]).
+/// </summary>
+public sealed record ScenarioPathNode(
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("nome")] string? Nome,
+    [property: JsonPropertyName("tipo")] string? Tipo,
+    [property: JsonPropertyName("escopo")] string? Escopo,
+    [property: JsonPropertyName("entrouPor")] string? EntrouPor
+);
+
+/// <summary>
+/// Decision point declared in a reference scenario (decisions[]).
+/// </summary>
+public sealed record ScenarioDecision(
+    [property: JsonPropertyName("decisao")] string? Decisao,
+    [property: JsonPropertyName("decisaoId")] string? DecisaoId,
+    [property: JsonPropertyName("ramo")] string? Ramo,
+    [property: JsonPropertyName("tipo")] string? Tipo,
+    [property: JsonPropertyName("condicao")] string? Condicao,
+    [property: JsonPropertyName("leva")] string? Leva
+);
+
+/// <summary>
+/// Required input declared in a reference scenario (inputsRequired[]).
+/// </summary>
+public sealed record ScenarioInputRequired(
+    [property: JsonPropertyName("campo")] string? Campo,
+    [property: JsonPropertyName("operador")] string? Operador,
+    [property: JsonPropertyName("valor")] string? Valor,
+    [property: JsonPropertyName("sentinelaSwNa")] bool SentinelaSwNa
+);
+
+/// <summary>
+/// Sub-process call declared in a reference scenario (descidas[]).
+/// </summary>
+public sealed record ScenarioDescida(
+    [property: JsonPropertyName("passo")] string? Passo,
+    [property: JsonPropertyName("passoId")] string? PassoId,
+    [property: JsonPropertyName("continuaEm")] string? ContinuaEm,
+    [property: JsonPropertyName("resolvidaPor")] string? ResolvidaPor,
+    [property: JsonPropertyName("dinamica")] bool Dinamica,
+    [property: JsonPropertyName("graftStep")] bool GraftStep,
+    [property: JsonPropertyName("cenarios")] IReadOnlyList<string>? Cenarios
+);
+
+/// <summary>
 /// One path segment (ordered slice of the scenario journey).
 /// </summary>
 public sealed record ScenarioSegmento(
@@ -40,6 +87,7 @@ public sealed record ScenarioSegmento(
     [property: JsonPropertyName("aoPasso")] int AoPasso,
     [property: JsonPropertyName("abrePor")] string? AbrePor,
     [property: JsonPropertyName("fechaEm")] string? FechaEm,
+    [property: JsonPropertyName("etapas")] IReadOnlyList<int>? Etapas,
     [property: JsonPropertyName("nos")] IReadOnlyList<ScenarioNode>? Nos
 );
 
@@ -51,7 +99,11 @@ public sealed record ScenarioDetail(
     [property: JsonPropertyName("process")] string Process,
     [property: JsonPropertyName("kind")] string Kind,
     [property: JsonPropertyName("etapas")] IReadOnlyList<int>? Etapas,
-    [property: JsonPropertyName("segmentos")] IReadOnlyList<ScenarioSegmento>? Segmentos
+    [property: JsonPropertyName("segmentos")] IReadOnlyList<ScenarioSegmento>? Segmentos,
+    [property: JsonPropertyName("path")] IReadOnlyList<ScenarioPathNode>? Path,
+    [property: JsonPropertyName("descidas")] IReadOnlyList<ScenarioDescida>? Descidas,
+    [property: JsonPropertyName("decisions")] IReadOnlyList<ScenarioDecision>? Decisions,
+    [property: JsonPropertyName("inputsRequired")] IReadOnlyList<ScenarioInputRequired>? InputsRequired
 );
 
 /// <summary>
@@ -75,6 +127,8 @@ public static class ScenarioFixtureLoader
             "Cannot locate repository root (directory containing 'artifacts/'). " +
             $"Searched from: {AppContext.BaseDirectory}");
     }
+
+    public static string RepoRootPath => RepoRoot;
 
     public static string FixturePath =>
         Path.Combine(RepoRoot, "artifacts", "POC_Epat", "scenarios", "index.json");
