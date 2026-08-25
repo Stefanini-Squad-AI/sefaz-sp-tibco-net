@@ -6,11 +6,28 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RootNamespace>SefazSp.Epat.Infrastructure</RootNamespace>
+    <!-- Elsa's Humanizer analyzer fails to load under net8 SDK; not a code issue. -->
+    <NoWarn>$(NoWarn);CS8032</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SefazSp.Epat.Application\SefazSp.Epat.Application.csproj" />
     <ProjectReference Include="..\SefazSp.Epat.Domain\SefazSp.Epat.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Elsa" Version="3.7.1" />
+    <PackageReference Include="Elsa.Scheduling" Version="3.7.1" />
+    <!-- Track A: durable persistence — ePAT external-state DbContext on SQLite (EF Core 9 to match the Elsa provider). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.13" PrivateAssets="all" />
+    <!-- Drop the broken Humanizer Roslyn analyzer; keep the library Elsa depends on. -->
+    <PackageReference Include="Humanizer.Core" Version="3.0.1" ExcludeAssets="analyzers" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- fundacao-motor-de-regras: the Corticon fold, embedded (authoritative source; DMN is derived). -->
+    <EmbeddedResource Include="..\..\artifacts\POC_Epat\decision-tables.json" LogicalName="SefazSp.Epat.Infrastructure.Rules.Dmn.decision-tables.json" />
   </ItemGroup>
 
 </Project>

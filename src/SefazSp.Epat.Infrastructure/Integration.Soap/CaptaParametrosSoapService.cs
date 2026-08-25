@@ -43,7 +43,7 @@ public sealed class CaptaParametrosSoapService : ICaptaParametrosSoapService
     /// STATUS_CODE == "0" indica sucesso (decisão rulings.CLONE-PRPINTPC).
     /// Excepção de transporte propaga-se para o chamador, que encaminha para Tech Error.
     /// </remarks>
-    public async Task<ServiceEnvelope> InvokeAsync(AiimCaseRef caseRef, CancellationToken ct)
+    public Task<ServiceEnvelope> InvokeAsync(AiimCaseRef caseRef, CancellationToken ct)
     {
         // O payload SOAP é construído com os dados do caso (IdAiim, ProcessId) e
         // enviado para o endpoint BusinessWorks configurado em _http.BaseAddress.

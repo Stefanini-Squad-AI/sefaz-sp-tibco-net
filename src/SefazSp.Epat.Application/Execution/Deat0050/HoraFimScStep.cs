@@ -1,5 +1,6 @@
 #nullable enable
 
+using SefazSp.Epat.Application.Abstractions.Legacy;
 using SefazSp.Epat.Domain.Cases;
 using SefazSp.Epat.Domain.Abstractions;
 
@@ -12,42 +13,37 @@ using SefazSp.Epat.Domain.Abstractions;
 //   Este encurtamento de prazo para ambiente de desenvolvimento não é migrado.
 //   A demonstração usa relógio controlável (IClock) em vez de prazos encurtados por nome de máquina.
 //
-// CALCTIME: a chamada de produção usa IPEDateTimeUtil.CALCTIME(SW_TIME, 1, 0, DAYSOVER).
-//   A semântica exacta (base-1/base-0, comprimento vs posição final) está pendente de
-//   confirmação da documentação TIBCO (rulings.BUILTIN-SEMANTICS). O corpo será
-//   completado quando IProcessBuiltins.CALCTIME estiver definido em
-//   src/SefazSp.Epat.Infrastructure/Legacy.
+// CALCTIME: reproduzido pela camada anticorrupção (IProcessBuiltins.CalcTime), base-1.
 
 namespace SefazSp.Epat.Application.Execution.Deat0050;
 
 /// <summary>
 /// Passo HoraFimSC do DEAT0050 — calcula a hora de fim do dia de trabalho
-/// e escreve <see cref="AiimCase.PRAZODEFESAT"/> (e <see cref="AiimCase.DAYSOVER"/>)
-/// a partir do resultado de CALCTIME.
+/// e escreve <see cref="AiimCase.PRAZODEFESAT"/> a partir do resultado de CALCTIME.
 ///
 /// Nunca usa <see cref="DateTime.Now"/>: o relógio é sempre <see cref="IClock"/> injectado.
 /// </summary>
 public sealed class HoraFimScStep
 {
     private readonly IClock _clock;
+    private readonly IProcessBuiltins _builtins;
 
-    public HoraFimScStep(IClock clock) => _clock = clock;
+    public HoraFimScStep(IClock clock, IProcessBuiltins builtins)
+    {
+        _clock = clock;
+        _builtins = builtins;
+    }
 
     /// <summary>
     /// Executa o script HoraFimSC sobre <paramref name="caseData"/>.
     /// O atalho des1 foi removido (decisão ratificada).
-    /// O corpo de CALCTIME será preenchido quando IProcessBuiltins estiver implementado.
     /// </summary>
     public void Execute(AiimCase caseData)
     {
-        // PENDENTE: chamar IProcessBuiltins.CALCTIME(currentTime, 1, 0, caseData.DAYSOVER)
-        // para calcular PRAZODEFESAT conforme o legado de produção.
-        // O método CalcTime será adicionado a IProcessBuiltins quando rulings.BUILTIN-SEMANTICS
-        // fixar a base de índice e a aridade.
-        //
-        // Exemplo de corpo esperado (sujeito a confirmação):
-        //   var currentTime = TimeOnly.FromTimeSpan(_clock.Now.TimeOfDay);
-        //   caseData.PRAZODEFESAT = _builtins.CalcTime(currentTime, 1, 0, caseData.DAYSOVER);
-        _ = _clock; // referência ao relógio mantida para AC3 (nunca DateTime.Now)
+        // Produção: PRAZODEFESAT = CALCTIME(SW_TIME, 1, 0, DAYSOVER).
+        // SW_TIME é a hora corrente do motor, fornecida pelo relógio injectável.
+        var currentTime = TimeOnly.FromTimeSpan(_clock.Now.TimeOfDay);
+        caseData.PRAZODEFESAT = _builtins.CalcTime(currentTime, 1, 0, caseData.DAYSOVER);
     }
 }
+

@@ -5,6 +5,7 @@ using SefazSp.Epat.Application.Abstractions.Services;
 using SefazSp.Epat.Application.Execution;
 using SefazSp.Epat.Application.Execution.CRNOTPC;
 using SefazSp.Epat.Application.UseCases.CRNOTPC;
+using SefazSp.Epat.Application.Workflows.ServiceTemplate;
 
 namespace SefazSp.Epat.Application.Workflows.CRNOTPC;
 
@@ -32,7 +33,7 @@ namespace SefazSp.Epat.Application.Workflows.CRNOTPC;
 ///     do ActivitySet (endEvent _NcJxK19KEfGqPfX31TKC3w) de volta ao escopo MAIN. Escrita
 ///     explicitamente como queda implicita no fluxo .NET — nao existe como transicao no XPDL.
 /// </summary>
-public sealed class CrnotpcSeg016Workflow
+public sealed class CrnotpcSeg016Workflow : IServiceRetryTemplate
 {
     private readonly IEpatServices _services;
     private readonly ManipularExcecaoUseCase _manipularExcecao;
@@ -41,6 +42,73 @@ public sealed class CrnotpcSeg016Workflow
     {
         _services         = services;
         _manipularExcecao = manipularExcecao;
+    }
+
+    // ── Molde de serviço (IServiceRetryTemplate) ────────────────────────────
+    // As duas fases abaixo são a MESMA lógica dos nós 1–13; RunAsync compõe-nas.
+
+    /// <inheritdoc />
+    public string ProcessKey => "CRNOTPC";
+
+    /// <inheritdoc />
+    public void InitializeContext(ProcessExecutionContext ctx, string? processId)
+    {
+        // Prólogo do subprocesso (segmento 028): SetParameters + Start Loop + Start TX.
+        CrnotpcSeg028Steps.ApplySetParameters(ctx, processId);
+        CrnotpcSeg028Steps.ApplyStartLoop(ctx);
+        CrnotpcSeg028Steps.ApplyStartTx(ctx);
+    }
+
+    /// <summary>
+    /// Fase 1 — nós 1–8: CriaNotificacao → gateways de erro → More Retries.
+    /// Devolve Success / NonAppError, ou RequiresOperator quando as retentativas esgotam.
+    /// </summary>
+    public async Task<ServiceCallOutcome> RunUntilOperatorAsync(
+        AiimCaseRef caseRef, ProcessExecutionContext ctx, long swQRetryCount, CancellationToken ct)
+    {
+        _ = swQRetryCount; // CRNOTPC não tem gateway Check Retries SW_QRETRYCOUNT.
+
+        // ── Ponto de reingresso do laço de retry (nó 1) ──────────────────────
+        CriaNotificacaoEntry:
+
+        // ── Nó 1: serviceTask 'CriaNotificacao' (_NcJxMF9KEfGqPfX31TKC3w) ─────
+        var envelope = await _services.CriarnotificacoesaiimAsync(caseRef, ct);
+        CrnotpcSeg016Steps.MapServiceEnvelopeToContext(ctx, envelope);
+
+        // ── Nó 2: gateway — "A chamada a CriaNotificacao foi bem sucedida?" ───
+        if (!CrnotpcSeg016Steps.IsAppError(ctx))
+            return ServiceCallOutcome.Success;
+
+        // ── Nó 3: scriptTask 'Set App Error' ─────────────────────────────────
+        CrnotpcSeg016Steps.SetAppError(ctx, envelope);
+
+        // ── Nós 6/7: gateways Tech Error / App Error ─────────────────────────
+        if (!CrnotpcSeg016Steps.IsAppErrorFlag(ctx))
+            return ServiceCallOutcome.NonAppError;
+
+        // ── Nó 8: gateway 'More Retries' — NUMAPPRETRIES < MAXRETRIES ─────────
+        if (CrnotpcSeg016Steps.HasMoreRetries(ctx))
+            goto CriaNotificacaoEntry;
+
+        // Retentativas esgotadas → tarefa humana 'Manipular Excecao'.
+        return ServiceCallOutcome.RequiresOperator;
+    }
+
+    /// <summary>
+    /// Fase 2 — nós 11–13: aplica a decisão já gravada em ctx.OUTCOME.
+    /// </summary>
+    public OperatorDecisionOutcome ApplyOperatorDecision(ProcessExecutionContext ctx)
+    {
+        // ── Nó 11: gateway 'Manually Fixed' — OUTCOME == 'OK'? ───────────────
+        if (CrnotpcSeg016Steps.IsManuallyFixed(ctx))
+            return OperatorDecisionOutcome.ManuallyFixed;
+
+        // ── Nó 12: gateway 'Try Again' — OUTCOME == 'R'? ─────────────────────
+        if (CrnotpcSeg016Steps.IsTryAgain(ctx))
+            return OperatorDecisionOutcome.TryAgain;
+
+        // ── Nó 13: endEvent 'Done - Bail' ────────────────────────────────────
+        return OperatorDecisionOutcome.Bail;
     }
 
     /// <summary>
@@ -62,77 +130,23 @@ public sealed class CrnotpcSeg016Workflow
         Func<AiimCaseRef, CancellationToken, Task<ManipularExcecaoResult>> decideOutcome,
         CancellationToken ct)
     {
-        // ── Ponto de reingresso do laco de retry ──────────────────────────────
-        // Equivalente ao regresso TIBCO — aresta explicita no fluxo .NET.
-        CriaNotificacaoEntry:
-
-        // ── No 1: serviceTask 'CriaNotificacao' (_NcJxMF9KEfGqPfX31TKC3w) ──────────────────────
-        var envelope = await _services.CriarnotificacoesaiimAsync(caseRef, ct);
-        CrnotpcSeg016Steps.MapServiceEnvelopeToContext(ctx, envelope);
-
-        // ── No 2: gateway _NcJxLl9KEfGqPfX31TKC3w — "A chamada a CriaNotificacao foi bem sucedida?" ─
-        if (!CrnotpcSeg016Steps.IsAppError(ctx))
+        // Composição das duas fases do molde — mesmo percurso dos nós 1–13.
+        while (true)
         {
-            // Ramo sucesso: STATUS_CODE == "0" — sai do ActivitySet via endEvent directo.
-            // ── No 4: gateway _NcJxL19KEfGqPfX31TKC3w (ramo sem retentativa) ─────────────────────
-            // ── No 5: endEvent _NcJxK19KEfGqPfX31TKC3w — fim do ActivitySet ────────────────────
-            return CrnotpcSeg016Result.Sucesso;
+            var call = await RunUntilOperatorAsync(caseRef, ctx, swQRetryCount: 0, ct);
+            if (call == ServiceCallOutcome.Success)     return CrnotpcSeg016Result.Sucesso;
+            if (call == ServiceCallOutcome.NonAppError) return CrnotpcSeg016Result.ErroNaoAplicacao;
+
+            // RequiresOperator — nó 9 (pass-through) + nó 10 (userTask 'Manipular Excecao').
+            await _manipularExcecao.ExecuteAsync(caseRef, ctx, decideOutcome, ct);
+
+            switch (ApplyOperatorDecision(ctx))
+            {
+                case OperatorDecisionOutcome.ManuallyFixed: return CrnotpcSeg016Result.ManuallyFixed;
+                case OperatorDecisionOutcome.TryAgain:      continue; // regressa ao início do laço
+                default:                                    return CrnotpcSeg016Result.DoneBail;
+            }
         }
-
-        // ── No 3: scriptTask 'Set App Error' (_NcJxLV9KEfGqPfX31TKC3w) ──────────────────────────
-        CrnotpcSeg016Steps.SetAppError(ctx, envelope);
-
-        // ── No 4: gateway _NcJxL19KEfGqPfX31TKC3w — encaminha para fim do ActivitySet ────────────
-        // ── No 5: endEvent _NcJxK19KEfGqPfX31TKC3w — fim do ActivitySet ────────────────────────
-        // (queda implicita para o regresso ao escopo MAIN)
-
-        // ── No 6: gateway 'Tech Error' (_NcJJ8V9KEfGqPfX31TKC3w, entrouPor=regresso) ────────────
-        // Aresta explicita de retorno: o iProcess NAO tem transicao XPDL aqui; a aresta e escrita
-        // explicitamente no fluxo .NET desde o fim do ActivitySet ate este gateway.
-        // Ramo "No" (OTHERWISE) leva a App Error — nao ha ramo "Yes" neste cenario.
-
-        // ── No 7: gateway 'App Error' (_NcJJ8F9KEfGqPfX31TKC3w) — ISAPPERROR == 'Y'? ────────────
-        if (!CrnotpcSeg016Steps.IsAppErrorFlag(ctx))
-        {
-            // Ramo No em App Error: nao e erro aplicacional (erro tecnico nao retentavel).
-            return CrnotpcSeg016Result.ErroNaoAplicacao;
-        }
-
-        // ── No 8: gateway 'More Retries' (_NcJJ7V9KEfGqPfX31TKC3w) — NUMAPPRETRIES < MAXRETRIES ─
-        if (CrnotpcSeg016Steps.HasMoreRetries(ctx))
-        {
-            // Ramo Yes: ainda ha retentativas — regressa ao inicio do laco.
-            goto CriaNotificacaoEntry;
-        }
-
-        // Ramo No (OTHERWISE): retentativas esgotadas — avanca para gateway _NcJw8V9KEfGqPfX31TKC3w.
-
-        // ── No 9: gateway _NcJw8V9KEfGqPfX31TKC3w — encaminha para Manipular Excecao ────────────
-        // (pass-through: a decisao e implicita no alcance deste ponto)
-
-        // ── No 10: userTask 'Manipular Excecao' (_NcJJ6V9KEfGqPfX31TKC3w) ──────────────────────
-        await _manipularExcecao.ExecuteAsync(caseRef, ctx, decideOutcome, ct);
-
-        // ── No 11: gateway 'Manually Fixed' (_NcJJ419KEfGqPfX31TKC3w) — OUTCOME == 'OK'? ────────
-        if (CrnotpcSeg016Steps.IsManuallyFixed(ctx))
-        {
-            // Ramo Yes: caso resolvido manualmente.
-            return CrnotpcSeg016Result.ManuallyFixed;
-        }
-
-        // Ramo No (OTHERWISE): avanca para gateway Try Again.
-
-        // ── No 12: gateway 'Try Again' (_NcJJ6F9KEfGqPfX31TKC3w) — OUTCOME == 'R'? ────────────
-        if (CrnotpcSeg016Steps.IsTryAgain(ctx))
-        {
-            // Ramo Yes: operador quer repetir a chamada — regressa ao inicio do laco.
-            goto CriaNotificacaoEntry;
-        }
-
-        // Ramo No (OTHERWISE): avanca para Done - Bail.
-
-        // ── No 13: endEvent 'Done - Bail' (_NcJJ5l9KEfGqPfX31TKC3w) ─────────────────────────────
-        return CrnotpcSeg016Result.DoneBail;
     }
 }
 

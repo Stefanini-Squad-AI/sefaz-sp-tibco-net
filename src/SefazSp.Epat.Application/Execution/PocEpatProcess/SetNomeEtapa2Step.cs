@@ -25,6 +25,7 @@
 //   src/SefazSp.Epat.Infrastructure/Legacy.
 //   Expressao observada: CALCTIME('23:59', 0, 0, DAYSOVER).
 
+using SefazSp.Epat.Application.Abstractions.Legacy;
 using SefazSp.Epat.Domain.Abstractions;
 using SefazSp.Epat.Domain.Cases;
 
@@ -50,9 +51,15 @@ namespace SefazSp.Epat.Application.Execution.PocEpatProcess;
 public sealed class SetNomeEtapa2Step
 {
     private readonly IClock _clock;
+    private readonly IProcessBuiltins _builtins;
 
     /// <param name="clock">Relogio injectavel — nunca <see cref="DateTime.Now"/>.</param>
-    public SetNomeEtapa2Step(IClock clock) => _clock = clock;
+    /// <param name="builtins">Camada anticorrupção que reproduz CALCTIME.</param>
+    public SetNomeEtapa2Step(IClock clock, IProcessBuiltins builtins)
+    {
+        _clock = clock;
+        _builtins = builtins;
+    }
 
     /// <summary>
     /// Executa o script 'Set Nome Etapa 2' sobre <paramref name="aiimCase"/>.
@@ -79,15 +86,8 @@ public sealed class SetNomeEtapa2Step
         aiimCase.DTFIMCQ = DateOnly.FromDateTime(_clock.Now.DateTime);
 
         // HRFIMCQ = IPEDateTimeUtil.CALCTIME('23:59', 0, 0, DAYSOVER)
-        // PENDENTE: chamar IProcessBuiltins.CALCTIME quando a semantica for confirmada
-        // (builtin-contract.json · semanticsStatus=unconfirmed, NOEQ-iprocess-builtin).
-        // A expressao observada e CALCTIME('23:59', 0, 0, DAYSOVER=0).
-        // Enquanto IProcessBuiltins nao estiver disponivel, o campo fica como TimeOnly.MinValue
-        // (00:00) como sentinela de "nao calculado" — diferente de nulo, detectavel em teste.
-        //
-        // Exemplo de corpo esperado (sujeito a confirmacao):
-        //   aiimCase.HRFIMCQ = _builtins.CalcTime(new TimeOnly(23, 59), 0, 0, aiimCase.DAYSOVER);
-        _ = _clock; // referencia mantida — garante que o relogio e sempre injectado
-        aiimCase.HRFIMCQ = TimeOnly.MinValue; // sentinela: CALCTIME pendente
+        // Reproduzido pela camada anticorrupção (base-1). Com 0h/0m somados, o resultado
+        // é a própria hora-base 23:59, independentemente de DAYSOVER.
+        aiimCase.HRFIMCQ = _builtins.CalcTime(new TimeOnly(23, 59), 0, 0, aiimCase.DAYSOVER);
     }
 }

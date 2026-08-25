@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <IsPackable>false</IsPackable>
     <RootNamespace>SefazSp.Epat.Oracles.Tests</RootNamespace>
   </PropertyGroup>
 
@@ -17,9 +16,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <!-- Track A restart-recovery: boot the real Program.cs composition in-process. -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\artifacts\POC_Epat\bundle\scaffold\src\SefazSp.Epat.Application\SefazSp.Epat.Application.csproj" />
+    <ProjectReference Include="..\..\src\SefazSp.Epat.Application\SefazSp.Epat.Application.csproj" />
+    <ProjectReference Include="..\..\src\SefazSp.Epat.Infrastructure\SefazSp.Epat.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\SefazSp.Epat.Api\SefazSp.Epat.Api.csproj" />
   </ItemGroup>
 </Project>

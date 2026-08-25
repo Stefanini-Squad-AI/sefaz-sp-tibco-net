@@ -72,7 +72,7 @@ public sealed class AtualizarIntimacao1ContractTests
 
         Assert.True(
             op.TryGetProperty("logicalPath", out var logicalPath) &&
-            logicalPath.GetString() == "/EPATInterfaceWrappers_sol_atualizarIntimacao.1",
+            logicalPath.GetString() == "/EPATInterfaceWrappers/atualizarIntimacao.1",
             "logicalPath não corresponde ao percurso declarado no WSDL.");
 
         // AC2: pedido (request) — valida campos obrigatórios declarados no WSDL

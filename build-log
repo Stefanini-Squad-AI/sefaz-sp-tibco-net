@@ -1,0 +1,17 @@
+
+dotnet run --project src\SefazSp.Epat.Api\SefazSp.Epat.Api.csproj
+
+POST /debug/bscenvpc/start  {"processId":"idAiim-42idProc-7"}
+   → prologue runs (branch=Stillgood)
+   → status: Running / Suspended   ← bookmark created, keyed by PROCESS_ID
+
+POST /deat0050/resume  {"processId":"idAiim-42idProc-7"}
+   → IEventPublisher finds the bookmark by CorrelationId
+   → workflow resumes → completes → HTTP 202
+
+
+   1. Debug endpoint (see the workflow execute)
+Field	Value
+Method	POST
+URL	http://localhost:5000/debug/bscenvpc/run
+Body	raw → JSON

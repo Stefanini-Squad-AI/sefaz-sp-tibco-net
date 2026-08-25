@@ -65,7 +65,7 @@ public static class PocEpatProcessPedidoDeVistasResumeEndpoint
     }
 
     private static async Task<IResult> HandleAsync(
-        PedidoDeVistasResumeRequest request,
+        PocEpatProcessPedidoDeVistasResumeRequest request,
         ICorrelationStore correlationStore,
         CancellationToken ct)
     {
@@ -94,4 +94,4 @@ public static class PocEpatProcessPedidoDeVistasResumeEndpoint
 /// Chave de correlação — formato <c>idAiim-&lt;n&gt;idProc-&lt;n&gt;</c>,
 /// montada pelos scripts antes de cada chamada. Identifica a instância a retomar.
 /// </param>
-public sealed record PedidoDeVistasResumeRequest(string ProcessId);
+public sealed record PocEpatProcessPedidoDeVistasResumeRequest(string ProcessId);

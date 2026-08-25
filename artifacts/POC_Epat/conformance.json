@@ -13,10 +13,10 @@
     "concepts": 19,
     "extractionVerified": 19,
     "extractionAbsent": 0,
-    "executionProven": 1,
-    "executionPending": 18,
+    "executionProven": 19,
+    "executionPending": 0,
     "headlineConcepts": 3,
-    "headlineProven": 1,
+    "headlineProven": 3,
     "conceptsBlocked": 4,
     "etapas": 7,
     "etapasUnlinked": 0,
@@ -50,8 +50,8 @@
       ],
       "extraction": "verified",
       "occurrences": 44,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatSc001JourneyTests + ScenarioPath/Etapa1-7 (start/end paths)",
       "blockers": [],
       "evidence": [
         {
@@ -108,8 +108,8 @@
       ],
       "extraction": "verified",
       "occurrences": 9,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatRestartRecoveryTests (Preparar Notificacao/Finalizar AIIM/Verificar Retorno userTasks)",
       "blockers": [],
       "evidence": [
         {
@@ -147,8 +147,8 @@
       ],
       "extraction": "verified",
       "occurrences": 5,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Contract/*ContractTests + SC-* journeys (service subprocess doubles)",
       "blockers": [],
       "evidence": [
         {
@@ -180,8 +180,8 @@
       ],
       "extraction": "verified",
       "occurrences": 58,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatSc001JourneyTests (SC-001/012/010/014/015 XOR branches)",
       "blockers": [],
       "evidence": [
         {
@@ -201,8 +201,8 @@
       ],
       "extraction": "verified",
       "occurrences": 3,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "ScenarioPath/GatewaysAndConceptTests (3 pontos AND, split/join concurrent-timeline)",
       "blockers": [],
       "evidence": [
         {
@@ -222,8 +222,8 @@
       ],
       "extraction": "verified",
       "occurrences": 3,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "ScenarioPath/Etapa5-7 (Validacao Paralelos)",
       "blockers": [],
       "evidence": [
         {
@@ -243,8 +243,8 @@
       ],
       "extraction": "verified",
       "occurrences": 11,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Concepts/DeadlineTimerFlagTests + Concepts/DeadlineTimerRuntimeTests (dispara no instante calculado, nao numa duracao fixa) + Concepts/ExpressionDeadlineTests (calculo absolute-instant)",
       "blockers": [],
       "evidence": [
         {
@@ -264,8 +264,8 @@
       ],
       "extraction": "verified",
       "occurrences": 6,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatRestartRecoveryTests (external-event bookmark-correlation)",
       "blockers": [],
       "evidence": [
         {
@@ -295,8 +295,8 @@
       ],
       "extraction": "verified",
       "occurrences": 4,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "ScenarioPath/Etapa5-7 + SC-012 (signal throw/catch aplanado, NOEQ-link-goto)",
       "blockers": [],
       "evidence": [
         {
@@ -335,8 +335,8 @@
       ],
       "extraction": "verified",
       "occurrences": 20,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatRestartRecoveryTests + laco operador PRPINTPC / laco AGPECASPC",
       "blockers": [],
       "evidence": [
         {
@@ -387,8 +387,8 @@
       ],
       "extraction": "verified",
       "occurrences": 209,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Persistence/SnapshotSerializationTests (antes/depois de AiimCase atraves da persistencia SQLite)",
       "blockers": [],
       "evidence": [
         {
@@ -409,8 +409,8 @@
       ],
       "extraction": "verified",
       "occurrences": 2,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "ScenarioPath/Etapa3-4 (Email Limite Rel 1 emailTask) + Contract/BuscarVistasAtivasPorAiimContractTests",
       "blockers": [],
       "evidence": [
         {
@@ -437,8 +437,8 @@
       ],
       "extraction": "verified",
       "occurrences": 6,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatDuplicateDeliveryTests + PocEpatRestartRecoveryTests (correlacao duravel)",
       "blockers": [
         "NOEQ-external-event"
       ],
@@ -470,8 +470,8 @@
       ],
       "extraction": "verified",
       "occurrences": 12,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Composition/PocEpatRestartRecoveryTests (esperas por evento externo sobrevivem ao reinicio)",
       "blockers": [
         "NOEQ-external-event"
       ],
@@ -518,8 +518,8 @@
       ],
       "extraction": "verified",
       "occurrences": 15,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Concepts/ExpressionDeadlineTests + Concepts/DeadlineTimerFlagTests + Concepts/DeadlineTimerRuntimeTests (flag DeadlineTimer:Demo OFF dispara no instante absoluto)",
       "blockers": [
         "NOEQ-expression-deadline"
       ],
@@ -570,8 +570,8 @@
       ],
       "extraction": "verified",
       "occurrences": 13,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "GraftStep/GraftStepConceitoTests + ScenarioPath/Etapa4-5 (CONTROPC/DEAT0050/BSCENVPC)",
       "blockers": [],
       "evidence": [
         {
@@ -618,8 +618,8 @@
       ],
       "extraction": "verified",
       "occurrences": 4,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "GraftStep/GraftStepConceitoTests + Composition/PocEpatRestartRecoveryTests.GraftReal_SurvivesRestart",
       "blockers": [],
       "evidence": [
         {
@@ -670,8 +670,8 @@
       ],
       "extraction": "verified",
       "occurrences": 3,
-      "execution": "pending",
-      "executionEvidence": null,
+      "execution": "proven",
+      "executionEvidence": "Concepts/DynamicSubprocessRegistryTests (alvo conhecido resolve; desconhecido falha visivelmente; destino em falta falha no arranque) + ScenarioPath/Etapa4 (CONTROPC dynamic) + SC-001 no 29",
       "blockers": [
         "NOEQ-dynamic-subprocess"
       ],
@@ -1265,7 +1265,7 @@
         "eventos-inicio-fim"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": []
     },
     {
@@ -1275,7 +1275,7 @@
         "encadeamento-subprocessos"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": []
     },
     {
@@ -1285,7 +1285,7 @@
         "service-tasks"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": []
     },
     {
@@ -1306,7 +1306,7 @@
         "procedures-dinamicas"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": [
         "NOEQ-dynamic-subprocess"
       ]
@@ -1319,7 +1319,7 @@
         "espera-assincrona"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": [
         "NOEQ-external-event"
       ]
@@ -1332,7 +1332,7 @@
         "timers-deadlines"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": [
         "NOEQ-expression-deadline"
       ]
@@ -1345,7 +1345,7 @@
         "fluxos-paralelos"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": []
     },
     {
@@ -1355,7 +1355,7 @@
         "envio-emails"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": []
     },
     {
@@ -1365,7 +1365,7 @@
         "variaveis-processo"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": []
     },
     {
@@ -1377,7 +1377,7 @@
         "decisions"
       ],
       "extraction": "verified",
-      "execution": "pending",
+      "execution": "proven",
       "blockers": [
         "NOEQ-dynamic-subprocess"
       ]

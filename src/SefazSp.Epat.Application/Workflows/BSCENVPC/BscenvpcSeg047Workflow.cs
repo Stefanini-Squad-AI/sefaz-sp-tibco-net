@@ -199,7 +199,7 @@ public sealed class BscenvpcSeg047Workflow
         var maxRetriesNullable = ctx.MAXRETRIES == 0 ? (int?)null : ctx.MAXRETRIES;
         if (BscenvpcSetParametersRule.ShouldInitialize(idProcesso, maxRetriesNullable))
         {
-            var processId = idProcesso.Match(
+            var processId = idProcesso.Match<string?>(
                 hasValue:      v => v.ToString(),
                 notAvailable:  ()  => null,
                 empty:         ()  => null);

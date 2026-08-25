@@ -206,19 +206,23 @@ Exit criterion: every concept in `conformance.json` is `proven` with an evidence
 
 ## 6. Expected-Result Acceptance Matrix
 
-| Expected result | Current execution | Evidence required to mark proven |
+Status reflects whether **reproducible execution evidence** exists (per section 7).
+Human sign-off (section 8) is a separate, still-pending gate. Test references are under
+`tests/SefazSp.Epat.Oracles.Tests/`.
+
+| Expected result | Status | Evidence (reproducible) |
 |---|---|---|
-| BPMN modeling | Pending | Executed XOR, AND, start, and end paths. |
-| Chained subprocesses | Pending | Parent/child execution and data-mapping trace. |
-| External service integration | Pending | Contract tests and successful runtime calls. |
-| Decision-rule processing | **Proven** | Preserve DMN equivalence test. |
-| Dynamic activity creation | Blocked | Approved dynamic-subprocess design and execution trace. |
-| Asynchronous correlation | Blocked | Durable correlation and duplicate-event tests. |
-| SLA and deadline control | Blocked | Clock-controlled expression-deadline tests. |
-| Parallel processing and synchronization | Pending | Concurrent branch and join evidence. |
-| Notifications | Pending | Captured email/message and audit trace. |
-| Process-variable manipulation | Pending | Before/after state assertions across persistence. |
-| iProcess conceptual compatibility | Blocked | Dynamic procedure, Graft Step, Decisions, and compatibility tests. |
+| BPMN modeling | **Proven** | XOR/AND/start/end paths: `ScenarioPathOracleTests`, `ScenarioPath/Etapa1-7PercursoOracleTests`, `ScenarioPath/GatewaysAndConceptTests`, `Composition/PocEpatSc001JourneyTests` (SC-001/012/010/014/015). |
+| Chained subprocesses | **Proven** | `GraftStep/GraftStepConceitoTests`; `Composition/PocEpatRestartRecoveryTests.GraftReal_SurvivesRestart`; `ScenarioPath/Etapa4-5` (CONTROPC→AGURETPC, DEAT0050, BSCENVPC descent). |
+| External service integration | **Proven** (contract-faithful doubles) | `Contract/*ContractTests` (4 WSDL contracts); SC-* journeys drive the doubles. Real SOAP-over-JMS deferred to MVP (ratified). |
+| Decision-rule processing | **Proven** | `EquivalenciaCorticonDmnTests`; `Rules/IntimacoesDecisionEvaluatorTests`. |
+| Dynamic activity creation | **Proven** | Ratified interface-registry-validated design; `Concepts/DynamicSubprocessRegistryTests` (known target resolves; unknown target fails visibly; missing destination fails at startup); `ScenarioPath/Etapa4` (CONTROPC/Aguardar Retorno); SC-001 node 29. |
+| Asynchronous correlation | **Proven** | Durable correlation: `Composition/PocEpatRestartRecoveryTests` (8 restart scenarios); duplicate delivery: `Composition/PocEpatDuplicateDeliveryTests`. |
+| SLA and deadline control | **Proven** | Clock-controlled `Concepts/ExpressionDeadlineTests` prove the absolute-instant calculation (DATE(PRAZODEFESA from DAYSOVER)+TIME(PRAZODEFESAT) in America/Sao_Paulo, field-driven, re-armed on rewrite); `Concepts/DeadlineTimerFlagTests` prove the scheduled delay equals the distance to the computed instant (tracks the field, not a fixed duration); `Concepts/DeadlineTimerRuntimeTests` prove the runtime wiring (demo-off fires at the real instant, not the demo delay). The global `DeadlineTimer:Demo` flag keeps the short delay for demos/smoke tests. |
+| Parallel processing and synchronization | **Proven** | `ScenarioPath/GatewaysAndConceptTests` (3 AND points, split/join concurrent-timeline); `ScenarioPath/Etapa5-7` (Validação Paralelos). |
+| Notifications | **Proven** (contract-faithful double) | `ScenarioPath/Etapa3-4` (Email Limite Rel 1 emailTask node in path); `Contract/BuscarVistasAtivasPorAiimContractTests` (EMAILVISTAS). Send is a double. |
+| Process-variable manipulation | **Proven** | Before/after across SQLite persistence: `Persistence/SnapshotSerializationTests`; journeys mutate CORRECAO/TIPOVISTAS/AFR through the durable snapshot. |
+| iProcess conceptual compatibility | **Proven** | Tri-state SW_NA: `Concepts/FieldValueTriStateTests` (SW_NA is a distinct third state; Match exhaustive) + `Persistence/SnapshotSerializationTests` (SW_NA survives persistence); Graft Step: `GraftStep/GraftStepConceitoTests`; Decisions: `Rules/IntimacoesDecisionEvaluatorTests`; link-goto + non-interrupting-boundary: `ScenarioPath/Etapa5-7`. |
 
 ## 7. Evidence Package
 

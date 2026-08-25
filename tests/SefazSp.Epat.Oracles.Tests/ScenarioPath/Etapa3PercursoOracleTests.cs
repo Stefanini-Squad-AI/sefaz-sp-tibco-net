@@ -140,7 +140,8 @@ public sealed class Etapa3PercursoOracleTests
         Assert.True(File.Exists(GlossaryPath),
             $"Glossário não encontrado: {GlossaryPath}");
 
-        var yaml = File.ReadAllText(GlossaryPath);
+        // Normalise CRLF→LF so the LF-anchored ruling lookups below match on Windows.
+        var yaml = File.ReadAllText(GlossaryPath).Replace("\r\n", "\n");
 
         var requiredRulings = new[]
         {

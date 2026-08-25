@@ -6,6 +6,7 @@ using SefazSp.Epat.Application.Abstractions.Services;
 using SefazSp.Epat.Application.Execution;
 using SefazSp.Epat.Application.Execution.PRPINTPC;
 using SefazSp.Epat.Application.UseCases.PRPINTPC;
+using SefazSp.Epat.Application.Workflows.ServiceTemplate;
 using SefazSp.Epat.Domain.Rules;
 using SefazSp.Epat.Domain.ValueObjects;
 
@@ -117,7 +118,7 @@ public enum PrpintpcSeg035Outcome
 ///   qualquer STATUS_CODE != "0" activa o ramo AppError, incluindo SW_NA.
 ///   Isto alinha o comportamento com os processos irmãos ATZINTPC, BSCENVPC, CALCPRPC e CRNOTPC.
 /// </summary>
-public sealed class PrpintpcSeg035Workflow
+public sealed class PrpintpcSeg035Workflow : IServiceRetryTemplate
 {
     // ── Identificadores de nó — invariantes (não renomear) ───────────────────
 
@@ -192,8 +193,7 @@ public sealed class PrpintpcSeg035Workflow
     public PrpintpcSeg035Workflow(
         IEpatServices services,
         ManipularExcecaoPrpintpcUseCase manipularExcecao)
-    {
-        _services         = services;
+    {        _services         = services;
         _manipularExcecao = manipularExcecao;
     }
 
@@ -220,86 +220,78 @@ public sealed class PrpintpcSeg035Workflow
         Func<AiimCaseRef, CancellationToken, Task<ManipularExcecaoPrpintpcResult>> decideManipularExcecao,
         CancellationToken ct)
     {
-        // ── Nó 1: startEvent 'Start Event' (_KEwC3V6EEfGBBLgT-R5iuw) ─────────
-        // Ponto de entrada. Sem efeito lateral. Controlo passa ao nó 2.
+        // Composição das duas fases do molde — mesmo percurso dos nós 1–20.
+        InitializeContext(ctx, caseRef.ProcessId);
+        while (true)
+        {
+            var call = await RunUntilOperatorAsync(caseRef, ctx, swQRetryCount, ct);
+            if (call == ServiceCallOutcome.Success) return PrpintpcSeg035Outcome.Success;
 
-        // ── Nó 2: scriptTask 'SetParameters' (_KEwC3l6EEfGBBLgT-R5iuw) ───────
-        // Regra: RI-script-PRPINTPC-SetParameters.
-        // NOEQ-iprocess-builtin: IDPROCESSO comparado com SW_NA via FieldValue<T> (shim-tri-state).
-        // SW_NA NUNCA é mapeado para null — FieldValue<T>.NotAvailable é o terceiro estado.
-        var idProcesso = ParseIdProcesso(caseRef.ProcessId);
+            // RequiresOperator — nó 17 (userTask 'Manipular Excecao').
+            await _manipularExcecao
+                .ExecuteAsync(caseRef, ctx, decideManipularExcecao, ct)
+                .ConfigureAwait(false);
+
+            switch (ApplyOperatorDecision(ctx))
+            {
+                case OperatorDecisionOutcome.ManuallyFixed: return PrpintpcSeg035Outcome.ManuallyFixed;
+                case OperatorDecisionOutcome.TryAgain:      continue; // reinicia o laço
+                default:                                    return PrpintpcSeg035Outcome.DoneBail;
+            }
+        }
+    }
+
+    // ── Molde de serviço (IServiceRetryTemplate) ────────────────────────────
+    // As duas fases abaixo são a MESMA lógica dos nós 1–20; RunAsync compõe-nas.
+
+    /// <inheritdoc />
+    public string ProcessKey => "PRPINTPC";
+
+    /// <inheritdoc />
+    public void InitializeContext(ProcessExecutionContext ctx, string? processId)
+    {
+        // Nó 2: SetParameters. NOEQ-iprocess-builtin — IDPROCESSO via shim tri-state.
+        var idProcesso = ParseIdProcesso(processId ?? string.Empty);
         if (PrpintpcSetParametersRule.ShouldInitialize(idProcesso, ctx.MAXRETRIES == 0 ? null : ctx.MAXRETRIES))
-            PrpintpcSeg035Steps.ApplySetParameters(ctx, caseRef.ProcessId);
+            PrpintpcSeg035Steps.ApplySetParameters(ctx, processId);
+    }
 
+    /// <summary>Fase 1 — nós 3–16: Start Loop → subprocess → gateways de erro → More Retries.</summary>
+    public async Task<ServiceCallOutcome> RunUntilOperatorAsync(
+        AiimCaseRef caseRef, ProcessExecutionContext ctx, long swQRetryCount, CancellationToken ct)
+    {
         StartLoopEntry:
-
-        // ── Nó 3: scriptTask 'Start Loop' (_KEwC4F6EEfGBBLgT-R5iuw) ──────────
-        // Regra: RI-script-PRPINTPC-StartLoop.
         PrpintpcSeg035Steps.ApplyStartLoop(ctx);
 
-        // ── Nó 4: subProcessScope 'Control System Task Call' (_KEwC7l6EEfGBBLgT-R5iuw) ──
-        // ── Nó 5: startEvent interno (_KEwDUl6EEfGBBLgT-R5iuw) ─────────────────
-        // DESCIDA EXPLÍCITA: não existe transição XPDL do subProcessScope para o startEvent
-        // interno. A aresta é escrita explicitamente neste workflow (AC3).
+        var subResult = await ExecuteSubProcessScopeAsync(caseRef, ctx, swQRetryCount, ct);
+
+        // Tech Error e App-error-esgotado convergem na tarefa humana (nó 16 → 17).
+        if (subResult == SubProcessResult.TechError)
+            return ServiceCallOutcome.RequiresOperator;
+
+        if (subResult == SubProcessResult.AppError)
         {
-            var subResult = await ExecuteSubProcessScopeAsync(caseRef, ctx, swQRetryCount, ct);
-
-            if (subResult == SubProcessResult.TechError)
-            {
-                // ── Nó 13: gateway 'Tech Error' (_KEwC7V6EEfGBBLgT-R5iuw) ────
-                // REGRESSO EXPLÍCITO: não existe transição XPDL do endEvent interno de volta ao MAIN.
-                // Alcançado via excepção de transporte ou esgotamento de SW_QRETRYCOUNT (AC6).
-                // Ramo "No" (otherwise): → Nó 16 (convergência antes de Manipular Excecao).
-                goto ManipularExcecaoEntry;
-            }
-
-            if (subResult == SubProcessResult.AppError)
-            {
-                // ── Nó 13: gateway 'Tech Error' (_KEwC7V6EEfGBBLgT-R5iuw) ────
-                // Regresso explícito. ISTECHERROR = "N" → ramo "No" (otherwise).
-                // ── Nó 14: gateway 'App Error' (_KEwC7F6EEfGBBLgT-R5iuw) ─────
-                // Ramo "Yes": ISAPPERROR == "Y".
-                // ── Nó 15: gateway 'More Retries' (_KEwC6V6EEfGBBLgT-R5iuw) ──
-                // Ramo "Yes": NUMAPPRETRIES < MAXRETRIES → volta ao laço.
-                if (PrpintpcSeg035Steps.HasMoreRetries(ctx))
-                    goto StartLoopEntry;
-
-                // Ramo "No" (otherwise): retentativas esgotadas.
-                // ── Nó 16: gateway _KEwC716EEfGBBLgT-R5iuw (convergência) ────
-                goto ManipularExcecaoEntry;
-            }
-
-            // SubProcessResult.Success: STATUS_CODE = "0", sem erro.
-            // ── Nó 13: gateway 'Tech Error' → ramo "No".
-            // ── Nó 14: gateway 'App Error' → ramo "No" (ISAPPERROR != "Y").
-            return PrpintpcSeg035Outcome.Success;
+            if (PrpintpcSeg035Steps.HasMoreRetries(ctx))
+                goto StartLoopEntry;
+            return ServiceCallOutcome.RequiresOperator;
         }
 
-        ManipularExcecaoEntry:
+        return ServiceCallOutcome.Success;
+    }
 
-        // ── Nó 17: userTask 'Manipular Excecao' (_KEwC5V6EEfGBBLgT-R5iuw) ────
-        await _manipularExcecao
-            .ExecuteAsync(caseRef, ctx, decideManipularExcecao, ct)
-            .ConfigureAwait(false);
-
-        // ── Nó 18: gateway 'Manually Fixed' (_KEwC316EEfGBBLgT-R5iuw) ─────────
+    /// <summary>Fase 2 — nós 18–20: aplica a decisão já gravada em ctx.OUTCOME.</summary>
+    public OperatorDecisionOutcome ApplyOperatorDecision(ProcessExecutionContext ctx)
+    {
         if (PrpintpcSeg035Steps.IsManuallyFixed(ctx))
-        {
-            // OUTCOME = "OK" → caso resolvido manualmente.
-            return PrpintpcSeg035Outcome.ManuallyFixed;
-        }
+            return OperatorDecisionOutcome.ManuallyFixed;
 
-        // ── Nó 19: gateway 'Try Again' (_KEwC5F6EEfGBBLgT-R5iuw) ────────────
         if (PrpintpcSeg035Steps.IsTryAgain(ctx))
         {
-            // OUTCOME = "R" → operador opta por repetir; reinicia o laço.
-            ctx.NUMAPPRETRIES = 0;
-            goto StartLoopEntry;
+            ctx.NUMAPPRETRIES = 0; // nó 19: Try Again reinicia o contador de aplicação.
+            return OperatorDecisionOutcome.TryAgain;
         }
 
-        // ── Nó 20: endEvent 'Done - Bail' (_KEwC4l6EEfGBBLgT-R5iuw) ─────────
-        // Ramo "No" de Try Again (OTHERWISE): encerra por esgotamento sem resolução.
-        return PrpintpcSeg035Outcome.DoneBail;
+        return OperatorDecisionOutcome.Bail;
     }
 
     // ── Execução do subProcessScope (ActivitySet) ─────────────────────────────

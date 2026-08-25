@@ -53,3 +53,10 @@ docs-site/build/
 # --- Sistema operativo -------------------------------------------------------
 Thumbs.db
 .DS_Store
+
+.fake
+
+# --- Track A: durable persistence runtime SQLite (not versioned) -------------
+epat-poc.db
+epat-poc.db-shm
+epat-poc.db-wal
