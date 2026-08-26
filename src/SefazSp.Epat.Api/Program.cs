@@ -19,6 +19,7 @@ using SefazSp.Epat.Application.Workflows.CRNOTPC;
 using SefazSp.Epat.Application.Workflows.PRPINTPC;
 using SefazSp.Epat.Application.Workflows.ServiceTemplate;
 using SefazSp.Epat.Infrastructure.Integration.Doubles;
+using SefazSp.Epat.Infrastructure.Integration.Logging;
 using SefazSp.Epat.Infrastructure.Legacy;
 using SefazSp.Epat.Infrastructure.Persistence;
 using SefazSp.Epat.Infrastructure.Runtime;
@@ -84,8 +85,12 @@ builder.Services.AddSingleton(new DeadlineDemoOptions
 // Anticorruption layer: iProcess builtins shim (base-1).
 builder.Services.AddSingleton<IProcessBuiltins, ProcessBuiltins>();
 
-// Service-template wiring (Batch 1). In-memory SOAP double drives the retry loop.
-builder.Services.AddSingleton<IEpatServices>(_ => new EpatServicesDouble());
+// Interaction log (integration evidence): durable request/response audit per PROCESS_ID.
+builder.Services.AddSingleton<IServiceInteractionLog, EfServiceInteractionLog>();
+
+// Service-template wiring (Batch 1). In-memory SOAP double, wrapped by the interaction-log decorator.
+builder.Services.AddSingleton<IEpatServices>(sp => new LoggingEpatServices(
+    new EpatServicesDouble(), sp.GetRequiredService<IServiceInteractionLog>(), sp.GetRequiredService<IClock>()));
 builder.Services.AddSingleton<IOperatorDecisionInbox, InMemoryOperatorDecisionInbox>();
 builder.Services.AddSingleton<IServiceExecutionState, InMemoryServiceExecutionState>();
 builder.Services.AddScoped<ManipularExcecaoUseCase>();
@@ -95,7 +100,8 @@ builder.Services.AddScoped<IServiceRetryTemplate, PrpintpcSeg035Workflow>();
 builder.Services.AddScoped<ManipularExcecaoAtzintpcUseCase>();
 builder.Services.AddScoped<IServiceRetryTemplate, AtzintpcSeg041Workflow>();
 builder.Services.AddScoped<ManipularExcecaoCalcprpcUseCase>();
-builder.Services.AddSingleton<ICalcularPrazoSoapService>(_ => new CalcularPrazoServiceDouble());
+builder.Services.AddSingleton<ICalcularPrazoSoapService>(sp => new LoggingCalcularPrazoService(
+    new CalcularPrazoServiceDouble(), sp.GetRequiredService<IServiceInteractionLog>(), sp.GetRequiredService<IClock>()));
 builder.Services.AddScoped<IServiceRetryTemplate, CalcprpcSeg030Workflow>();
 
 // DEAT0050 (Batch 2): external event (INICALC) + timer (Aguarda Defesa).
@@ -192,6 +198,12 @@ app.MapPocEpatMain();
 
 // fundacao-motor-de-regras (Phase 4): Decisions rules engine showcase
 app.MapDecisionsEvaluate();
+
+// Integration evidence: recorded external-service interactions per PROCESS_ID
+app.MapServiceInteractions();
+
+// Live workflow visibility (Part 2, Phase 1): traversed BPMN path + interactions per PROCESS_ID
+app.MapWorkflowJourney();
 
 app.Run();
 

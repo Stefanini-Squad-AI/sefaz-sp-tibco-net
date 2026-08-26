@@ -1,0 +1,154 @@
+@page "/"
+@rendermode InteractiveServer
+@inject IHttpClientFactory HttpFactory
+@inject IJSRuntime JS
+@inject IWebHostEnvironment Env
+@implements IAsyncDisposable
+
+<PageTitle>ePAT — Visibilidade do Fluxo</PageTitle>
+
+<header class="bar">
+    <h1>ePAT — Visibilidade do Fluxo</h1>
+    <div class="controls">
+        <input @bind="_processId" placeholder="PROCESS_ID (ex.: SC001-xxxxxxxx)" />
+        <button @onclick="ConnectAsync" disabled="@_busy">Ligar</button>
+        <span class="status @StatusClass">@_statusLabel</span>
+    </div>
+</header>
+
+<div class="layout">
+    <div id="canvas" class="canvas"></div>
+
+    <aside class="panel">
+        <h2>Interações de serviço</h2>
+        @if (_view is null || _view.Interactions.Count == 0)
+        {
+            <p class="muted">Sem interações registadas.</p>
+        }
+        else
+        {
+            <ul class="interactions">
+                @foreach (var it in _view.Interactions)
+                {
+                    <li class="@(it.Success ? "ok" : "fail")">
+                        <span class="op">@it.Port · @it.Operation</span>
+                        <span class="meta">@(it.Success ? "✓" : "✗") · @it.DurationMs ms · @it.At.ToLocalTime().ToString("HH:mm:ss")</span>
+                        @if (!string.IsNullOrEmpty(it.Failure))
+                        {
+                            <span class="err">@it.Failure</span>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+
+        @if (_view is not null)
+        {
+            <h2>Percurso</h2>
+            <p class="muted">@_view.Traversed.Count nós · @_view.Status</p>
+        }
+    </aside>
+</div>
+
+@if (_error is not null)
+{
+    <div class="error">@_error</div>
+}
+
+@code {
+    private string _processId = "";
+    private JourneyView? _view;
+    private string _statusLabel = "desligado";
+    private string? _error;
+    private bool _busy;
+    private bool _rendered;
+    private CancellationTokenSource? _poll;
+
+    private string StatusClass => _view?.Status switch
+    {
+        "Completed" => "done",
+        "Suspended" => "live",
+        _ => "idle"
+    };
+
+    private async Task ConnectAsync()
+    {
+        if (string.IsNullOrWhiteSpace(_processId) || _busy) return;
+        _busy = true;
+        _error = null;
+        try
+        {
+            if (!_rendered)
+            {
+                var xml = await ReadBpmnAsync();
+                await JS.InvokeVoidAsync("epatJourney.render", "canvas", xml);
+                _rendered = true;
+            }
+
+            _poll?.Cancel();
+            _poll = new CancellationTokenSource();
+            _ = PollLoopAsync(_poll.Token);
+            _statusLabel = "a acompanhar…";
+        }
+        catch (Exception ex)
+        {
+            _error = "Falha ao ligar: " + ex.Message;
+        }
+        finally
+        {
+            _busy = false;
+        }
+    }
+
+    private async Task PollLoopAsync(CancellationToken ct)
+    {
+        var client = HttpFactory.CreateClient("epat-api");
+        while (!ct.IsCancellationRequested)
+        {
+            try
+            {
+                var resp = await client.GetAsync($"/workflow/{_processId}/journey", ct);
+                if (resp.IsSuccessStatusCode)
+                {
+                    _view = await resp.Content.ReadFromJsonAsync<JourneyView>(cancellationToken: ct);
+                    if (_view is not null)
+                    {
+                        var traversed = _view.Traversed.Select(s => s.NodeId).ToArray();
+                        await JS.InvokeVoidAsync("epatJourney.apply", ct, traversed, _view.CurrentNodeId);
+                        _statusLabel = _view.Status == "Completed" ? "concluído" : "suspenso";
+                    }
+                }
+                else
+                {
+                    _statusLabel = "PROCESS_ID desconhecido";
+                }
+            }
+            catch (OperationCanceledException) { break; }
+            catch (Exception ex) { _error = ex.Message; }
+
+            await InvokeAsync(StateHasChanged);
+            try { await Task.Delay(TimeSpan.FromSeconds(2), ct); } catch (OperationCanceledException) { break; }
+        }
+    }
+
+    // The main-flow BPMN whose element ids match the traversed node ids; read from the repo artifacts.
+    private async Task<string> ReadBpmnAsync()
+    {
+        var dir = new DirectoryInfo(Env.ContentRootPath);
+        while (dir is not null)
+        {
+            var candidate = Path.Combine(dir.FullName, "artifacts", "POC_Epat", "bpmn", "POC_EpatProcess__MAIN.bpmn");
+            if (File.Exists(candidate))
+                return await File.ReadAllTextAsync(candidate);
+            dir = dir.Parent;
+        }
+        throw new FileNotFoundException("POC_EpatProcess__MAIN.bpmn não encontrado a partir de " + Env.ContentRootPath);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _poll?.Cancel();
+        _poll?.Dispose();
+        await ValueTask.CompletedTask;
+    }
+}

@@ -1,0 +1,73 @@
+:root {
+    --bg: #f6f7f9;
+    --ink: #1f2933;
+    --muted: #6b7280;
+    --live: #2563eb;
+    --done: #16a34a;
+    --traversed-fill: #d4edda;
+    --traversed-stroke: #28a745;
+    --current-stroke: #f59e0b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+}
+
+.bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: .75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.bar h1 { font-size: 1.05rem; margin: 0; white-space: nowrap; }
+
+.controls { display: flex; align-items: center; gap: .5rem; }
+.controls input { padding: .4rem .6rem; border: 1px solid #d1d5db; border-radius: 6px; min-width: 22rem; }
+.controls button { padding: .4rem .9rem; border: 0; border-radius: 6px; background: var(--live); color: #fff; cursor: pointer; }
+.controls button:disabled { opacity: .5; cursor: default; }
+
+.status { font-size: .85rem; padding: .2rem .55rem; border-radius: 999px; background: #eef2f7; color: var(--muted); }
+.status.live { background: #dbeafe; color: var(--live); }
+.status.done { background: #dcfce7; color: var(--done); }
+
+.layout { display: grid; grid-template-columns: 1fr 22rem; height: calc(100vh - 3.25rem); }
+.canvas { height: 100%; background: #fff; }
+
+.panel { border-left: 1px solid #e5e7eb; padding: 1rem; overflow-y: auto; background: #fff; }
+.panel h2 { font-size: .9rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); margin: 1rem 0 .5rem; }
+.muted { color: var(--muted); font-size: .85rem; }
+
+.interactions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
+.interactions li { border: 1px solid #e5e7eb; border-left-width: 3px; border-radius: 6px; padding: .45rem .6rem; display: flex; flex-direction: column; gap: .15rem; }
+.interactions li.ok { border-left-color: var(--done); }
+.interactions li.fail { border-left-color: #dc2626; }
+.interactions .op { font-weight: 600; font-size: .85rem; }
+.interactions .meta { font-size: .78rem; color: var(--muted); }
+.interactions .err { font-size: .78rem; color: #dc2626; }
+
+.error { position: fixed; bottom: 1rem; left: 1rem; background: #fee2e2; color: #991b1b; padding: .6rem .9rem; border-radius: 6px; }
+
+/* bpmn-js element markers */
+.traversed .djs-visual > :nth-child(1) {
+    fill: var(--traversed-fill) !important;
+    stroke: var(--traversed-stroke) !important;
+}
+
+.current .djs-visual > :nth-child(1) {
+    stroke: var(--current-stroke) !important;
+    stroke-width: 3px !important;
+    animation: epat-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes epat-pulse {
+    0%, 100% { stroke-opacity: 1; }
+    50% { stroke-opacity: .35; }
+}
