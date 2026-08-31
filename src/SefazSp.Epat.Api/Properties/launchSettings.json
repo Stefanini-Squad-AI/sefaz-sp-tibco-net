@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SefazSp.Epat.Api": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5081",
+        "Logging__LogLevel__Microsoft.EntityFrameworkCore.Database.Command": "Warning"
+      }
+    }
+  }
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ePAT — Fluxo POC_EpatProcess (Visão para Validação)</title>
+<style>
+  :root { --bg: #f8f9fb; --ink: #1f2933; --muted: #6b7280; --blue: #2563eb; --green: #16a34a; --amber: #f59e0b; --red: #dc2626; --lane: #fff; --border: #d1d5db; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: var(--bg); padding: 2rem; }
+  h1 { font-size: 1.4rem; margin-bottom: .3rem; }
+  .subtitle { color: var(--muted); font-size: .9rem; margin-bottom: 2rem; }
+  .legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; font-size: .85rem; }
+  .legend-item { display: flex; align-items: center; gap: .4rem; }
+  .legend-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .stage { background: var(--lane); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.5rem; position: relative; }
+  .stage + .stage { margin-top: -1px; }
+  .stage-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .8rem; }
+  .stage-num { width: 30px; height: 30px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; flex-shrink: 0; }
+  .stage-title { font-weight: 700; font-size: 1rem; }
+  .stage-desc { color: var(--muted); font-size: .85rem; margin-bottom: .6rem; }
+
+  .nodes { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .node { border: 1px solid var(--border); border-radius: 8px; padding: .4rem .7rem; font-size: .8rem; background: #f3f4f6; display: flex; align-items: center; gap: .35rem; }
+  .node.task { border-left: 3px solid var(--blue); }
+  .node.gateway { border-left: 3px solid var(--amber); background: #fffbeb; }
+  .node.event { border-left: 3px solid var(--green); }
+  .node.subprocess { border-left: 3px solid #7c3aed; background: #f5f3ff; }
+  .node.link { border-left: 3px solid var(--muted); background: #f9fafb; font-style: italic; }
+  .node-icon { font-size: .7rem; }
+
+  .branch { margin-top: .6rem; padding: .6rem .8rem; background: #f0f9ff; border: 1px dashed var(--blue); border-radius: 8px; }
+  .branch-label { font-weight: 600; font-size: .82rem; color: var(--blue); margin-bottom: .3rem; }
+  .branch .nodes { margin-top: .3rem; }
+
+  .scenarios { margin-top: 2rem; }
+  .scenarios h2 { font-size: 1.1rem; margin-bottom: .8rem; }
+  .sc-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  .sc-table th, .sc-table td { text-align: left; padding: .5rem .7rem; border: 1px solid var(--border); }
+  .sc-table th { background: #f3f4f6; font-weight: 600; }
+  .sc-table tr:nth-child(even) { background: #fafbfc; }
+  .badge { display: inline-block; padding: .15rem .45rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+  .badge-green { background: #dcfce7; color: var(--green); }
+  .badge-blue { background: #dbeafe; color: var(--blue); }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+
+  .concepts { margin-top: 2rem; }
+  .concepts h2 { font-size: 1.1rem; margin-bottom: .8rem; }
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .6rem; }
+  .concept { border: 1px solid var(--border); border-radius: 8px; padding: .6rem .8rem; background: #fff; }
+  .concept-name { font-weight: 600; font-size: .85rem; }
+  .concept-where { color: var(--muted); font-size: .78rem; margin-top: .2rem; }
+
+  .footer { margin-top: 3rem; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+
+  @media print {
+    body { padding: .5rem; }
+    .stage { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>ePAT — POC_EpatProcess: Estrutura do Fluxo Principal</h1>
+<p class="subtitle">Documento de validação para desenvolvedores do cliente. Descreve as etapas, subprocessos, decisões e cenários do fluxo migrado de TIBCO iProcess para .NET/Elsa.</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-icon" style="background:var(--blue)">T</div> Tarefa (user/service/send)</div>
+  <div class="legend-item"><div class="legend-icon" style="background:var(--amber)">G</div> Gateway (decisão/convergência)</div>
+  <div class="legend-item"><div class="legend-icon" style="background:var(--green)">E</div> Evento (start/end/timer/signal)</div>
+  <div class="legend-item"><div class="legend-icon" style="background:#7c3aed">S</div> Subprocesso (callActivity)</div>
+  <div class="legend-item"><div class="legend-icon" style="background:var(--muted)">L</div> Link (goto entre raias)</div>
+</div>
+
+<div class="flow">
+
+  <!-- Etapa 1 -->
+  <div class="stage">
+    <div class="stage-header"><div class="stage-num">1</div><div class="stage-title">Início — Iniciar Novo Graft</div></div>
+    <p class="stage-desc">O AFR inicia o processo para um AIIM já existente. O motor cria a instância e suspende no primeiro evento externo.</p>
+    <div class="nodes">
+      <span class="node event">○ Start Event</span>
+      <span class="node task">✉ Iniciar Novo Graft <small>(receiveTask)</small></span>
+    </div>
+  </div>
+
+  <!-- Etapa 2 -->
+  <div class="stage">
+    <div class="stage-header"><div class="stage-num">2</div><div class="stage-title">Preparação — Set Nome Etapa + Preparar Notificação</div></div>
+    <p class="stage-desc">Após o sinal, configura a etapa 2, define destinatários, dispara e-mails e avalia se é necessário corrigir.</p>
+    <div class="nodes">
+      <span class="node task">⚙ Set Nome Etapa 2</span>
+      <span class="node task">👤 Preparar Notificação <small>(userTask)</small></span>
+      <span class="node event">⏰ Prazo Maximo Mantendo Atividade <small>(non-interrupting boundary)</small></span>
+      <span class="node task">✉ Email Limite Rel 1</span>
+      <span class="node task">⚙ Define Destinatários</span>
+      <span class="node task">✉ Email CQ Fechamento</span>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Gateway: Corrigir?</div>
+      <div class="nodes">
+        <span class="node gateway">◇ Corrigir? = Sim → continua ao Finalizar AIIM</span>
+        <span class="node gateway">◇ Corrigir? = Não → Criar Notificação (SC-015, encerra)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Etapa 3 -->
+  <div class="stage">
+    <div class="stage-header"><div class="stage-num">3</div><div class="stage-title">Finalizar AIIM + DEAT0050</div></div>
+    <p class="stage-desc">Fecha o AIIM e inicia o subprocesso DEAT0050 (notificação). Inclui AND-split (execução paralela), graft-step e timer Aguarda Defesa.</p>
+    <div class="nodes">
+      <span class="node task">👤 Finalizar AIIM <small>(userTask)</small></span>
+      <span class="node gateway">⊕ AND-split <small>(paralelo)</small></span>
+      <span class="node gateway">◇ Existe Notificação?</span>
+      <span class="node link">↗ Inicia Graft Step <small>(link throw/catch)</small></span>
+      <span class="node task">⚙ Flag Retirati True GS</span>
+      <span class="node subprocess">▣ Aguardar evento de Notificação do AIIM → DEAT0050</span>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Gateway: Existe Notificação? = Sim</div>
+      <div class="nodes">
+        <span class="node gateway">◇ SC-014: short-circuit → endEvent (10 nós)</span>
+      </div>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Subprocesso DEAT0050 (inline)</div>
+      <div class="nodes">
+        <span class="node event">✉ INICALC <small>(evento externo)</small></span>
+        <span class="node task">⚙ CalculaPrazo + HoraFimSC</span>
+        <span class="node gateway">◇ Deve Aguardar Defesa?</span>
+        <span class="node event">⏰ Timer Aguarda Defesa <small>(expression deadline: DATE+TIME)</small></span>
+        <span class="node task">⚙ Controlar Data</span>
+      </div>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Modo Graft-Real (alternativo)</div>
+      <div class="nodes">
+        <span class="node event">Filhos DEAT0050 anexam-se ao pai (graft-step)</span>
+        <span class="node gateway">Pai prossegue quando janela fecha + todos os filhos terminaram</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Etapa 4 -->
+  <div class="stage">
+    <div class="stage-header"><div class="stage-num">4</div><div class="stage-title">Decisões + PRPINTPC</div></div>
+    <p class="stage-desc">Troca notificação, avalia regras Decisions (motor Corticon), prepara intimação via subprocesso PRPINTPC. Inclui retry/operador.</p>
+    <div class="nodes">
+      <span class="node gateway">◇ Trocar Notificação?</span>
+      <span class="node link">↗ Iniciar Decisions <small>(link throw/catch)</small></span>
+      <span class="node task">⚙ Verificar Anulação</span>
+      <span class="node subprocess">▣ Prepara Intimação → PRPINTPC</span>
+      <span class="node task">⚙ Verificar Retorno Decisions <small>(Corticon fold: 49 regras)</small></span>
+      <span class="node task">⚙ Define Destinatários</span>
+      <span class="node task">✉ Email Limite Rel 1</span>
+    </div>
+    <div class="branch">
+      <div class="branch-label">PRPINTPC falha (STATUS_CODE ≠ 0)</div>
+      <div class="nodes">
+        <span class="node task">⚙ Retry loop (MAXRETRIES × NUMAPPRETRIES)</span>
+        <span class="node task">👤 Manipular Exceção <small>(operador decide: R=retry, outro=abortar)</small></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Etapa 5 -->
+  <div class="stage">
+    <div class="stage-header"><div class="stage-num">5</div><div class="stage-title">Verificar Retorno — 3 Vias (TIPOVISTAS)</div></div>
+    <p class="stage-desc">Validação paralela dos resultados, depois gateway de 3 vias com base em TIPOVISTAS.</p>
+    <div class="nodes">
+      <span class="node task">👤 Verificar Retorno Decisions <small>(userTask)</small></span>
+      <span class="node link">↗ Validar Paralelos <small>(link throw/catch)</small></span>
+      <span class="node gateway">◇ Vistas do Juiz?</span>
+      <span class="node gateway">◇ Tipo de Vista Mista?</span>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Via JUIZ (SC-001, 30 nós)</div>
+      <div class="nodes">
+        <span class="node task">👤 Vistas do Juiz <small>(receiveTask — evento externo)</small></span>
+        <span class="node gateway">◇ Convergência</span>
+      </div>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Via MISTA (SC-012, 29 nós)</div>
+      <div class="nodes">
+        <span class="node task">⚙ VistaAgenda</span>
+        <span class="node event">⊙ Fim Vista Mista</span>
+        <span class="node task">👤 Realizar Atividade Vista Mista <small>(receiveTask)</small></span>
+        <span class="node event">⚠ Catch Signal Event <small>(Sim → encerra)</small></span>
+      </div>
+    </div>
+    <div class="branch">
+      <div class="branch-label">Via DRF (SC-010, 30 nós)</div>
+      <div class="nodes">
+        <span class="node task">✉ Pedido de Vistas <small>(receiveTask — corrida contra timer)</small></span>
+        <span class="node event">⏰ Timer PRAZORETRA <small>(expression deadline — vence → Fim de Prazo)</small></span>
+        <span class="node task">⚙ Busca Envolvidos → BSCENVPC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Etapa 6 -->
+  <div class="stage">
+    <div class="stage-header"><div class="stage-num">6</div><div class="stage-title">Convergência + prepSub → Controlar Intimados</div></div>
+    <p class="stage-desc">As 3 vias convergem. O fluxo prepara o subprocesso dinâmico e invoca CONTROPC. A instância encerra.</p>
+    <div class="nodes">
+      <span class="node gateway">⊕ Convergência <small>(AND-join das vias)</small></span>
+      <span class="node gateway">◇ caso contrário / No</span>
+      <span class="node task">⚙ prepSub <small>(resolução dinâmica)</small></span>
+      <span class="node subprocess">▣ Controlar Intimados → CONTROPC <small>(dynamic subprocess via AGUARDAR registry)</small></span>
+      <span class="node event">⊙ Fim <small>(endEvent)</small></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- Cenários -->
+<div class="scenarios">
+  <h2>Cenários Validados (Oracle Tests)</h2>
+  <table class="sc-table">
+    <thead>
+      <tr><th>Cenário</th><th>Descrição</th><th>Nós</th><th>Condição de Entrada</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><span class="badge badge-green">SC-001</span></td><td>Caminho completo JUIZ</td><td>30</td><td>Corrigir=Sim, ExisteNotif=Não, TIPOVISTAS=JUIZ</td><td>✅ IDÊNTICO</td></tr>
+      <tr><td><span class="badge badge-green">SC-012</span></td><td>Caminho MISTA</td><td>29</td><td>Corrigir=Sim, ExisteNotif=Não, TIPOVISTAS=MISTA</td><td>✅ IDÊNTICO</td></tr>
+      <tr><td><span class="badge badge-green">SC-010</span></td><td>Caminho DRF (timer vence)</td><td>30</td><td>Corrigir=Sim, ExisteNotif=Não, TIPOVISTAS=DRF</td><td>✅ IDÊNTICO</td></tr>
+      <tr><td><span class="badge badge-blue">SC-014</span></td><td>Short-circuit: Existe Notificação</td><td>10</td><td>Corrigir=Sim, ExisteNotif=Sim</td><td>✅ IDÊNTICO</td></tr>
+      <tr><td><span class="badge badge-blue">SC-015</span></td><td>Short-circuit: Não corrigir</td><td>6</td><td>Corrigir=Não</td><td>✅ IDÊNTICO</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Conceitos -->
+<div class="concepts">
+  <h2>Conceitos BPM Demonstrados</h2>
+  <div class="concept-grid">
+    <div class="concept"><div class="concept-name">Modelagem BPMN</div><div class="concept-where">XOR, AND, start/end — todo o fluxo</div></div>
+    <div class="concept"><div class="concept-name">Subprocessos Encadeados</div><div class="concept-where">DEAT0050, PRPINTPC, CONTROPC, CRNOTPC</div></div>
+    <div class="concept"><div class="concept-name">Subprocesso Dinâmico</div><div class="concept-where">CONTROPC via AGUARDAR registry</div></div>
+    <div class="concept"><div class="concept-name">Graft Step</div><div class="concept-where">Filhos DEAT0050 anexam ao pai (etapa 3)</div></div>
+    <div class="concept"><div class="concept-name">Evento Externo</div><div class="concept-where">INICALC, Iniciar Novo Graft, Vistas do Juiz</div></div>
+    <div class="concept"><div class="concept-name">Expression Deadline</div><div class="concept-where">DATE(PRAZODEFESA)+TIME — timer absoluto</div></div>
+    <div class="concept"><div class="concept-name">Non-Interrupting Boundary</div><div class="concept-where">Prazo Máximo Mantendo Atividade (etapa 2)</div></div>
+    <div class="concept"><div class="concept-name">Link/Goto</div><div class="concept-where">Corrigir Fechamento, Iniciar Decisions, Validar Paralelos</div></div>
+    <div class="concept"><div class="concept-name">Correlação Assíncrona</div><div class="concept-where">Bookmark + CorrelationId por PROCESS_ID</div></div>
+    <div class="concept"><div class="concept-name">Regras Decisions (Corticon)</div><div class="concept-where">49 regras, fold override, nó 18</div></div>
+    <div class="concept"><div class="concept-name">Retry + Operador</div><div class="concept-where">PRPINTPC: MAXRETRIES → Manipular Exceção</div></div>
+    <div class="concept"><div class="concept-name">Persistência Durável</div><div class="concept-where">SQLite — instância sobrevive restart</div></div>
+    <div class="concept"><div class="concept-name">Execução Paralela</div><div class="concept-where">AND-split/join (etapas 3 e 5)</div></div>
+    <div class="concept"><div class="concept-name">Notificação (E-mail)</div><div class="concept-where">Email Limite Rel 1, Email CQ Fechamento</div></div>
+    <div class="concept"><div class="concept-name">Compatibilidade iProcess</div><div class="concept-where">SW_NA tri-state, SW_CASENUM, CALCTIME</div></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Gerado para validação — ePAT PoC, migração TIBCO iProcess → .NET 8 / Elsa 3.7.1</p>
+  <p>2013 testes oracle (todos verdes) · 5 cenários SC-* IDÊNTICO · Persistência SQLite · Motor de regras Decisions integrado</p>
+  <p>Fonte: <code>POC_EpatProcess__MAIN.bpmn</code> + <code>PocEpatMainActivity.cs</code> + <code>POC_FULFILLMENT_PLAN.md</code></p>
+</div>
+
+</body>
+</html>
