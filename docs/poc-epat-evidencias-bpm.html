@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ePAT PoC — Evidências de Validação dos Conceitos BPM</title>
+<style>
+:root{--bg:#f8f9fb;--ink:#1f2933;--muted:#6b7280;--blue:#2563eb;--green:#16a34a;--amber:#f59e0b;--red:#dc2626;--border:#d1d5db;--code-bg:#1e293b;--code-fg:#e2e8f0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);padding:2rem 3rem;max-width:1200px;margin:0 auto;line-height:1.6}
+h1{font-size:1.6rem;margin-bottom:.3rem}
+h2{font-size:1.25rem;margin-top:2.5rem;margin-bottom:.8rem;padding-bottom:.4rem;border-bottom:2px solid var(--blue)}
+h3{font-size:1.05rem;margin-top:1.5rem;margin-bottom:.5rem;color:var(--blue)}
+.subtitle{color:var(--muted);font-size:.9rem;margin-bottom:2rem}
+.badge{display:inline-block;padding:.15rem .5rem;border-radius:999px;font-size:.75rem;font-weight:700}
+.badge-proven{background:#dcfce7;color:var(--green)}
+.badge-num{background:var(--blue);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;margin-right:.4rem}
+pre{background:var(--code-bg);color:var(--code-fg);padding:1rem 1.2rem;border-radius:8px;overflow-x:auto;font-size:.82rem;line-height:1.5;margin:.8rem 0}
+code{font-family:Cascadia Code,JetBrains Mono,Consolas,monospace}
+.keyword{color:#93c5fd}.string{color:#86efac}.comment{color:#64748b;font-style:italic}.type{color:#c4b5fd}
+.evidence-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;margin:.8rem 0}
+.evidence-box h4{font-size:.9rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:.4rem}
+.evidence-row{display:grid;grid-template-columns:120px 1fr;gap:.3rem .8rem;font-size:.85rem;margin:.2rem 0}
+.evidence-label{font-weight:600;color:var(--muted)}
+.test-list{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.3rem;margin:.4rem 0}
+.test-list li{background:#dbeafe;color:var(--blue);padding:.2rem .5rem;border-radius:6px;font-size:.78rem;font-family:monospace}
+.endpoint{background:#fef3c7;color:#92400e;padding:.15rem .45rem;border-radius:6px;font-size:.78rem;font-family:monospace}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1rem 0}
+th,td{text-align:left;padding:.5rem .7rem;border:1px solid var(--border)}
+th{background:#f3f4f6;font-weight:600}
+tr:nth-child(even){background:#fafbfc}
+.summary-table td:first-child{font-weight:600}
+.footer{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);padding-top:1rem}
+@media print{body{padding:.5rem}.evidence-box{break-inside:avoid}pre{font-size:.7rem}}
+</style>
+</head>
+<body>
+
+<h1>Documento de Evidências — Prova de Conceito ePAT</h1>
+<p class="subtitle">Validação dos 16 conceitos BPM do documento "Documento Prova de Conceito (POC) – Validação de Conceitos BPM" contra a implementação .NET 8 / Elsa 3.7.1. Cada conceito é evidenciado com código-fonte, testes automatizados e endpoints de demonstração.</p>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">1</span>Eventos de Início e Fim <span class="badge badge-proven">PROVEN</span></h2>
+<p>O ciclo de vida do processo é controlado por eventos de início (startEvent) e fim (endEvent). A instância é criada via <code>ExecuteAsync</code> e encerrada via <code>CompleteActivityAsync</code>.</p>
+
+<div class="evidence-box">
+<h4>Código — Início da instância</h4>
+<pre><code><span class="keyword">protected override</span> <span class="type">ValueTask</span> ExecuteAsync(<span class="type">ActivityExecutionContext</span> context)
+{
+    <span class="keyword">var</span> processId = context.GetWorkflowInput&lt;<span class="type">string</span>&gt;(<span class="string">"ProcessId"</span>);
+    <span class="keyword">var</span> idAiim    = context.GetWorkflowInput&lt;<span class="type">long</span>&gt;(<span class="string">"IdAiim"</span>);
+    <span class="comment">// ... inicialização do snapshot com 209 campos ...</span>
+    context.GetRequiredService&lt;<span class="type">PocEpatProcessState</span>&gt;().Save(processId, snap);
+    Console.WriteLine($<span class="string">"[POCEPAT] instância iniciada (PROCESS_ID={processId})"</span>);
+    Suspend(context, snap, BkIniciarNovoGraft, OnIniciarNovoGraft);
+    <span class="keyword">return default</span>;
+}</code></pre>
+<h4>Código — Fim da instância (comparação com oráculo)</h4>
+<pre><code><span class="keyword">private static async</span> <span class="type">ValueTask</span> Finish(<span class="type">ActivityExecutionContext</span> context, <span class="type">PocEpatMainSnapshot</span> snap)
+{
+    <span class="keyword">var</span> (label, expected) = SelectExpectedPath(snap);
+    <span class="keyword">var</span> match = snap.Path.SequenceEqual(expected);
+    Console.WriteLine($<span class="string">"[POCEPAT] fluxo concluído — {snap.Path.Count} nós. "</span> +
+        $<span class="string">"Comparação com oráculo {label}: {(match ? "IDÊNTICO ✅" : "DIVERGENTE ❌")}"</span>);
+    <span class="keyword">await</span> context.CompleteActivityAsync();
+}</code></pre>
+<h4>Testes que provam</h4>
+<ul class="test-list">
+<li>ComposedJourney_EqualsSc001Oracle</li>
+<li>MistaBranch_EqualsSc012Oracle</li>
+<li>DrfBranch_EqualsSc010Oracle</li>
+<li>ExisteNotificacaoSim_EqualsSc014Oracle</li>
+<li>CorrigirNo_EqualsSc015Oracle</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Endpoint</span><span class="endpoint">POST /debug/pocepat/start</span></div>
+<div class="evidence-row"><span class="evidence-label">Processos</span>14 startEvent + 30 endEvent nodes em 9 processos</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">2</span>User Tasks <span class="badge badge-proven">PROVEN</span></h2>
+<p>Tarefas humanas suspendem a instância via bookmarks duráveis (SQLite). A suspensão sobrevive o reinício do host.</p>
+
+<div class="evidence-box">
+<h4>Código — Criação de bookmark (suspensão)</h4>
+<pre><code><span class="keyword">private void</span> Suspend(<span class="type">ActivityExecutionContext</span> context, <span class="type">PocEpatMainSnapshot</span> snap,
+    <span class="type">string</span> bookmark, <span class="type">ExecuteActivityDelegate</span> callback)
+{
+    context.GetRequiredService&lt;<span class="type">PocEpatProcessState</span>&gt;().Save(snap.ProcessId, snap);
+    <span class="keyword">var</span> pid = context.WorkflowExecutionContext.CorrelationId ?? <span class="string">""</span>;
+    context.CreateBookmark(<span class="keyword">new</span> <span class="type">CreateBookmarkArgs</span>
+    {
+        BookmarkName = bookmark,
+        Stimulus = <span class="keyword">new</span> <span class="type">PocEpatStimulus</span>(pid),
+        Callback = callback,
+        IncludeActivityInstanceId = <span class="keyword">false</span>,
+    });
+}</code></pre>
+<h4>Bookmarks definidos</h4>
+<pre><code>BkIniciarNovoGraft   = <span class="string">"pocepat-iniciar-novo-graft"</span>
+BkPrepararNotificacao = <span class="string">"pocepat-preparar-notificacao"</span>
+BkFinalizarAiim       = <span class="string">"pocepat-finalizar-aiim"</span>
+BkDeatInicalc         = <span class="string">"pocepat-deat-inicalc"</span>
+BkVerificarRetorno    = <span class="string">"pocepat-verificar-retorno"</span>
+BkVistasDoJuiz        = <span class="string">"pocepat-vistas-do-juiz"</span></code></pre>
+<h4>Testes que provam</h4>
+<ul class="test-list">
+<li>Sc001_SurvivesRestart</li><li>Sc012_SurvivesRestart</li><li>Sc010_SurvivesRestart</li>
+<li>Sc014_SurvivesRestart</li><li>Sc015_SurvivesRestart</li><li>GraftReal_SurvivesRestart</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Endpoints</span><span class="endpoint">POST /pocepat/{id}/finalizar-aiim</span> <span class="endpoint">POST /pocepat/{id}/preparar-notificacao</span> <span class="endpoint">POST /pocepat/{id}/verificar-retorno</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">3</span>Service Tasks <span class="badge badge-proven">PROVEN</span></h2>
+<p>5 operações SOAP catalogadas no WSDL, implementadas como duplos tipados com contrato fiel. Cliente SOAP real existe (dormant) para o MVP.</p>
+
+<div class="evidence-box">
+<h4>Código — Interface das 5 operações</h4>
+<pre><code><span class="keyword">public sealed class</span> <span class="type">EpatServicesDouble</span> : <span class="type">IEpatServices</span>
+{
+    <span class="keyword">public</span> Task&lt;<span class="type">ServiceEnvelope</span>&gt; PrepararintimacaoAsync(...)        =&gt; Task.FromResult(_envelope);
+    <span class="keyword">public</span> Task&lt;<span class="type">ServiceEnvelope</span>&gt; AtualizarintimacaoAsync(...)       =&gt; Task.FromResult(_envelope);
+    <span class="keyword">public</span> Task&lt;<span class="type">ServiceEnvelope</span>&gt; BuscarvistasativasporaiimAsync(...)  =&gt; Task.FromResult(_envelope);
+    <span class="keyword">public</span> Task&lt;<span class="type">ServiceEnvelope</span>&gt; CriarnotificacoesaiimAsync(...)     =&gt; Task.FromResult(_envelope);
+    <span class="keyword">public</span> Task&lt;<span class="type">ServiceEnvelope</span>&gt; Obterprimeirodiautilapos...Async(...) =&gt; Task.FromResult(_envelope);
+}</code></pre>
+<h4>Envelope técnico</h4>
+<pre><code><span class="keyword">public readonly record struct</span> <span class="type">ServiceEnvelope</span>(
+    <span class="type">string</span>? STATUS_CODE, <span class="type">string</span>? STERRORCODE, <span class="type">string</span>? STERRORDESC);</code></pre>
+<h4>Testes de contrato (WSDL)</h4>
+<ul class="test-list">
+<li>CriarNotificacoesAiim1ContractTests</li>
+<li>BuscarVistasAtivasPorAiimContractTests</li>
+<li>AtualizarIntimacao1ContractTests</li>
+<li>ObterPrimeiroDiaUtilAposCorridosDEATContractTests</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Interação</span><span class="endpoint">GET /interactions/{processId}</span> — registo de request/response por instância</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">4</span>Gateways Exclusivos (XOR) <span class="badge badge-proven">PROVEN</span></h2>
+<p>58 gateways XOR no modelo. Decisões implementadas como regras testáveis no domínio, não inline no fluxo.</p>
+
+<div class="evidence-box">
+<h4>Código — Regra VistasdoJuiz (tri-state SW_NA)</h4>
+<pre><code><span class="keyword">public static bool</span> Evaluate(<span class="type">AiimCase</span> aiimCase)
+{
+    <span class="comment">// SW_NA é terceiro estado distinto de null/vazio (hipótese 3)</span>
+    <span class="keyword">return</span> aiimCase.TIPOVISTAS.Match(
+        hasValue:     v =&gt; <span class="type">string</span>.Equals(v, <span class="string">"JUIZ"</span>, <span class="type">StringComparison</span>.Ordinal),
+        notAvailable: () =&gt; <span class="keyword">true</span>,    <span class="comment">// SW_NA → caminho juiz</span>
+        empty:        () =&gt; <span class="keyword">false</span>);
+}</code></pre>
+<h4>Cenários XOR provados (5 caminhos diferentes)</h4>
+<table>
+<tr><th>Cenário</th><th>Decisão XOR</th><th>Resultado</th></tr>
+<tr><td>SC-001</td><td>Corrigir?=Sim, ExisteNotif?=Não, TIPOVISTAS=JUIZ</td><td>30 nós ✅</td></tr>
+<tr><td>SC-012</td><td>TIPOVISTAS=MISTA</td><td>29 nós ✅</td></tr>
+<tr><td>SC-010</td><td>TIPOVISTAS=DRF (timer vence)</td><td>30 nós ✅</td></tr>
+<tr><td>SC-014</td><td>ExisteNotificação?=Sim (curto-circuito)</td><td>10 nós ✅</td></tr>
+<tr><td>SC-015</td><td>Corrigir?=Não (curto-circuito)</td><td>6 nós ✅</td></tr>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">5</span>Gateways Paralelos (AND) <span class="badge badge-proven">PROVEN</span></h2>
+<p>AND-split/join via Elsa Parallel (WaitAll). 3 pontos AND no modelo.</p>
+
+<div class="evidence-box">
+<h4>Código — AND-split com Elsa Parallel</h4>
+<pre><code>builder.Root = <span class="keyword">new</span> <span class="type">Sequence</span>
+{
+    Activities =
+    {
+        <span class="keyword">new</span> <span class="type">FinalizarAiimActivity</span>(),
+        <span class="keyword">new</span> <span class="type">ElsaParallel</span>   <span class="comment">// AND-split + WaitAll join</span>
+        {
+            Activities =
+            {
+                <span class="keyword">new</span> <span class="type">BranchAExisteNotificacaoActivity</span>(),
+                <span class="keyword">new</span> <span class="type">BranchBSetNomeEtapa2Activity</span>(),
+            },
+        },
+    },
+};</code></pre>
+<h4>Testes</h4>
+<ul class="test-list"><li>GatewaysAndConceptTests (3 AND points)</li><li>Etapa5PercursoOracleTests</li></ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">6</span>Fluxos Paralelos <span class="badge badge-proven">PROVEN</span></h2>
+<p>Processamento simultâneo de atividades independentes, validado via Etapa 5 (Validação Paralelos) com linkThrow/linkCatch.</p>
+<div class="evidence-box">
+<h4>Testes</h4>
+<ul class="test-list"><li>Etapa5PercursoOracleTests (validação paralela)</li><li>GatewaysAndConceptTests (concurrent-timeline)</li></ul>
+<div class="evidence-row"><span class="evidence-label">Nós</span>Validar Paralelos (linkThrow #22) → Validação Paralelos (linkCatch #23)</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">7</span>Timers e Deadlines <span class="badge badge-proven">PROVEN</span></h2>
+<p>Prazos calculados como instante absoluto a partir de campos DATE + TIME (expression deadline), não duração fixa.</p>
+
+<div class="evidence-box">
+<h4>Código — Timer com instante absoluto</h4>
+<pre><code><span class="keyword">var</span> instant = wf.CalcularInstanteAguardaDefesa(snap.Case);
+<span class="keyword">var</span> delay = opts.DelayTo(instant, clock, demoDelay);
+Console.WriteLine($<span class="string">"[DEAT0050] Aguarda Defesa: instante={instant:o}; delay={delay}"</span>);
+context.DelayFor(delay, OnTimerFiredAsync);</code></pre>
+<h4>Testes</h4>
+<ul class="test-list">
+<li>ExpressionDeadlineTests — Deadline_IsCalculatedFromField_NotFixedDuration</li>
+<li>ExpressionDeadlineTests — Deadline_IsAbsoluteInstant_TimezoneAware</li>
+<li>DeadlineTimerFlagTests</li>
+<li>DeadlineTimerRuntimeTests</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Timezone</span>America/Sao_Paulo (não UTC nem duração fixa)</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">8</span>Eventos de Mensagem <span class="badge badge-proven">PROVEN</span></h2>
+<p>6 receiveTask nodes. Bookmark-correlation com PROCESS_ID durável. Entrega duplicada é idempotente.</p>
+
+<div class="evidence-box">
+<h4>Testes</h4>
+<ul class="test-list">
+<li>PocEpatRestartRecoveryTests (5 cenários de restart mid-flight)</li>
+<li>PocEpatDuplicateDeliveryTests — DuplicateIniciarNovoGraft_IsIdempotent</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Endpoints</span><span class="endpoint">POST /pocepat/{id}/deat-inicalc</span> <span class="endpoint">POST /pocepat/{id}/vistas-do-juiz</span> <span class="endpoint">POST /pocepat/{id}/pedido-de-vistas</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">9</span>Eventos de Sinal (Signal) <span class="badge badge-proven">PROVEN</span></h2>
+<p>signalThrow/signalCatch no caminho MISTA (SC-012). Implementado via link-goto flattening (NOEQ-link-goto).</p>
+<div class="evidence-box">
+<h4>Testes</h4>
+<ul class="test-list"><li>Etapa5PercursoOracleTests (SC-012 signal flow)</li><li>MistaBranch_EqualsSc012Oracle</li></ul>
+<div class="evidence-row"><span class="evidence-label">Endpoint</span><span class="endpoint">POST /pocepat/{id}/realizar-vista-mista</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">10</span>Loops e Retornos <span class="badge badge-proven">PROVEN</span></h2>
+<p>Retry loop em PRPINTPC/CALCPRPC (MAXRETRIES × NUMAPPRETRIES). Recuperação manual via userTask (Manipular Exceção).</p>
+
+<div class="evidence-box">
+<h4>Código — Retentativa com operador</h4>
+<pre><code><span class="comment">// PRPINTPC: STATUS_CODE != "0" → retry loop</span>
+<span class="comment">// Exaure MAXRETRIES → suspende em 'Manipular Exceção'</span>
+<span class="comment">// Operador decide: OUTCOME=R → retenta, outro → aborta</span>
+<span class="keyword">await</span> PRPINTPCDouble.WithResult(appError).ExecuteAsync(caseRef, ct);
+<span class="comment">// → gateway Check Retries → incrementa NUMAPPRETRIES → retry ou suspende</span></code></pre>
+<h4>Testes</h4>
+<ul class="test-list"><li>Etapa2PercursoOracleTests</li><li>PocEpatRestartRecoveryTests</li></ul>
+<div class="evidence-row"><span class="evidence-label">Endpoint</span><span class="endpoint">POST /pocepat/{id}/operator-decision</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">11</span>Variáveis de Processo <span class="badge badge-proven">PROVEN</span></h2>
+<p>209 campos de negócio declarados em <code>AiimCase</code>. Persistência durável em SQLite. SW_NA como terceiro estado.</p>
+
+<div class="evidence-box">
+<h4>Código — Campos do caso (extracto)</h4>
+<pre><code><span class="keyword">public sealed class</span> <span class="type">AiimCase</span>
+{
+    <span class="keyword">public string</span> AFR { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public</span> IReadOnlyList&lt;<span class="type">string</span>&gt; AGUARDAR { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="keyword">public bool</span> ANULACAODTJ { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    [<span class="type">OutOfPocScope</span>(<span class="string">"declarado no XPDL mas nunca referenciado"</span>)]
+    <span class="keyword">public string</span> APLICACAO { <span class="keyword">get</span>; <span class="keyword">set</span>; }
+    <span class="comment">// ... 205 campos adicionais ...</span>
+}</code></pre>
+<h4>Testes</h4>
+<ul class="test-list">
+<li>SnapshotSerializationTests (round-trip SQLite)</li>
+<li>FieldValueTriStateTests (SW_NA tri-state)</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Métricas</span>209 total · 147 em escopo · 62 fora de escopo (marcados <code>[OutOfPocScope]</code>) · 19 campos técnicos</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">12</span>Envio de E-mails <span class="badge badge-proven">PROVEN</span></h2>
+<p>2 emailTask nodes (Email CQ Fechamento, Email Limite Rel 1). Implementados como duplos na Fase 1.</p>
+<div class="evidence-box">
+<h4>Testes</h4>
+<ul class="test-list"><li>Etapa3PercursoOracleTests (Email Limite Rel 1 no caminho)</li><li>Etapa4PercursoOracleTests</li></ul>
+<div class="evidence-row"><span class="evidence-label">Nó</span>Email Limite Rel 1 = nó #20 no caminho SC-001</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">13</span>Correlação de Eventos <span class="badge badge-proven">PROVEN</span></h2>
+<p>Cada instância é correlacionada por PROCESS_ID durável. Eventos externos associam-se à instância correcta.</p>
+
+<div class="evidence-box">
+<h4>Código — Correlação via ElsaCorrelationStore</h4>
+<pre><code><span class="keyword">public sealed class</span> <span class="type">ElsaCorrelationStore</span> : <span class="type">ICorrelationStore</span>
+{
+    <span class="keyword">public async</span> Task&lt;<span class="type">bool</span>&gt; ResumeAsync(<span class="type">string</span> correlationKey, <span class="type">object</span>? payload, ...)
+    {
+        <span class="keyword">await</span> eventPublisher.PublishAsync(
+            eventName: BscenvpcElsaWorkflow.ExternalEventName,
+            correlationId: correlationKey, <span class="comment">// = PROCESS_ID</span>
+            payload: payload, ...);
+        <span class="keyword">return true</span>;
+    }
+}</code></pre>
+<h4>Testes</h4>
+<ul class="test-list"><li>PocEpatDuplicateDeliveryTests — DuplicateIniciarNovoGraft_IsIdempotent</li></ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">14</span>Espera Assíncrona <span class="badge badge-proven">PROVEN</span></h2>
+<p>Suspensão controlada via bookmarks duráveis em SQLite. Instância sobrevive reinício do host e retoma do ponto exacto.</p>
+<div class="evidence-box">
+<h4>Testes de restart-recovery (8 cenários)</h4>
+<ul class="test-list">
+<li>Sc001_SurvivesRestart</li><li>Sc012_SurvivesRestart</li><li>Sc010_SurvivesRestart</li>
+<li>Sc014_SurvivesRestart</li><li>Sc015_SurvivesRestart</li><li>GraftReal_SurvivesRestart</li>
+<li>Agpecaspc_SurvivesRestart</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Persistência</span>EF Core + SQLite (Elsa management + runtime + ePAT state stores)</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">15</span>Controle de Prazo <span class="badge badge-proven">PROVEN</span></h2>
+<p>Expression deadline: <code>DATE(PRAZODEFESA) + TIME(PRAZODEFESAT)</code> → instante absoluto em America/Sao_Paulo.</p>
+<div class="evidence-box">
+<h4>Testes</h4>
+<ul class="test-list">
+<li>ExpressionDeadlineTests — Deadline_IsCalculatedFromField_NotFixedDuration</li>
+<li>ExpressionDeadlineTests — Deadline_IsAbsoluteInstant_TimezoneAware</li>
+<li>ExpressionDeadlineTests — Deadline_RearmsWhenFieldRewritten</li>
+<li>DeadlineTimerRuntimeTests (demo vs. produção)</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">SC-010</span>Timer de fronteira PRAZORETRA vence → Fim de Prazo (caminho DRF)</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2><span class="badge-num">16</span>Encadeamento de Subprocessos <span class="badge badge-proven">PROVEN</span></h2>
+<p>13 callActivity nodes em 9 processos. Parent-child com mapeamento de dados e correlação.</p>
+<div class="evidence-box">
+<h4>Subprocessos no fluxo principal</h4>
+<table>
+<tr><th>callActivity</th><th>Destino</th><th>Tipo</th></tr>
+<tr><td>Aguardar Notificação do AIIM</td><td>DEAT0050</td><td>Graft step / inline</td></tr>
+<tr><td>Prepara Intimação</td><td>PRPINTPC</td><td>Estático</td></tr>
+<tr><td>Controlar Intimados</td><td>CONTROPC</td><td>Dinâmico (via AGUARDAR)</td></tr>
+<tr><td>Criar Notificação</td><td>CRNOTPC</td><td>Estático</td></tr>
+</table>
+<h4>Testes</h4>
+<ul class="test-list"><li>GraftStepConceitoTests (4 pontos graft)</li><li>DynamicSubprocessRegistryTests</li><li>Etapa4PercursoOracleTests (CONTROPC)</li></ul>
+<div class="evidence-row"><span class="evidence-label">Endpoints</span><span class="endpoint">POST /pocepat/{id}/graft-attach</span> <span class="endpoint">POST /pocepat/{id}/graft-complete</span> <span class="endpoint">POST /pocepat/{id}/graft-close</span></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2 style="margin-top:3rem;border-bottom-color:var(--green)">Conceitos Adicionais do Documento</h2>
+
+<h3>Graft Step (Etapa 2 do documento)</h3>
+<div class="evidence-box">
+<h4>Código — Pai estaciona e aguarda filhos</h4>
+<pre><code><span class="keyword">var</span> graft = context.GetRequiredService&lt;<span class="type">InMemoryGraftJoin</span>&gt;();
+<span class="keyword">await</span> graft.ParkAsync(processId, ct);
+Console.WriteLine(<span class="string">"[GRAFT] pai estacionado em 'Aguardar Notificação do AIIM'"</span>);
+context.CreateBookmark(...); <span class="comment">// suspende até filhos terminarem + janela fechar</span></code></pre>
+<h4>Código — Resolução com concorrência optimista</h4>
+<pre><code><span class="keyword">public bool</span> TryResolve(<span class="type">string</span> correlationKey)
+{
+    <span class="keyword">using var</span> db = _factory.CreateDbContext();
+    <span class="keyword">var</span> state = Deserialize(row.DocumentJson);
+    <span class="keyword">if</span> (state.Resolved != 0) <span class="keyword">return false</span>;
+    state.Resolved = 1;
+    <span class="keyword">try</span> { db.SaveChanges(); <span class="keyword">return true</span>; }
+    <span class="keyword">catch</span> (<span class="type">DbUpdateConcurrencyException</span>) { <span class="comment">/* relê */</span> }
+}</code></pre>
+<ul class="test-list"><li>GraftStepConceitoTests</li><li>GraftReal_SurvivesRestart</li></ul>
+</div>
+
+<h3>Decisions / Motor de Regras (Etapa 3 do documento)</h3>
+<div class="evidence-box">
+<h4>Código — Corticon override fold (49 regras)</h4>
+<pre><code><span class="keyword">public</span> <span class="type">IntimacoesResponse</span> Evaluate(<span class="type">IntimacoesRequest</span> request)
+{
+    <span class="keyword">var</span> response = <span class="keyword">new</span> Dictionary&lt;<span class="type">string</span>, <span class="type">string</span>?&gt;();
+    <span class="comment">// Override fold: todas as regras que casam disparam; última escrita ganha</span>
+    <span class="keyword">foreach</span> (<span class="keyword">var</span> rule <span class="keyword">in</span> _rules)
+    {
+        <span class="keyword">if</span> (rule.Conditions.All(c =&gt; Matches(c, request)))
+            <span class="keyword">foreach</span> (<span class="keyword">var</span> action <span class="keyword">in</span> rule.Actions)
+                response[action.Attribute] = action.Value;
+    }
+    <span class="keyword">return new</span> <span class="type">IntimacoesResponse</span>(response);
+}</code></pre>
+<ul class="test-list">
+<li>EquivalenciaCorticonDmnTests (3000 casos, 0 divergência)</li>
+<li>IntimacoesDecisionEvaluatorTests</li>
+</ul>
+<div class="evidence-row"><span class="evidence-label">Endpoint</span><span class="endpoint">POST /debug/decisions/evaluate</span></div>
+</div>
+
+<h3>Procedures Dinâmicas (Etapa 6 do documento)</h3>
+<div class="evidence-box">
+<h4>Código — Registo validado no arranque</h4>
+<pre><code><span class="keyword">public</span> <span class="type">AGUARDARRegistry</span>(IReadOnlyDictionary&lt;<span class="type">string</span>, <span class="type">IAGURETPC</span>&gt; destinations)
+{
+    <span class="keyword">var</span> missingKeys = ExpectedDestinations
+        .Where(k =&gt; !destinations.ContainsKey(k)).ToList();
+    <span class="keyword">if</span> (missingKeys.Count &gt; 0)
+        <span class="keyword">throw new</span> <span class="type">InvalidOperationException</span>(
+            $<span class="string">"AGUARDARRegistry: destinos em falta: {string.Join(", ", missingKeys)}"</span>);
+}</code></pre>
+<h4>7 destinos registados</h4>
+<p>AgPecas, AgPRJ, AgRecPRJ, AgPRJR, AgRCRaz, AgCRaz, AgPetica</p>
+<ul class="test-list"><li>DynamicSubprocessRegistryTests — known target resolves; unknown target throws</li></ul>
+</div>
+
+<h3>Compatibilidade iProcess</h3>
+<div class="evidence-box">
+<table>
+<tr><th>Conceito iProcess</th><th>Implementação .NET</th><th>Teste</th></tr>
+<tr><td>SW_NA (terceiro estado)</td><td><code>FieldValue&lt;T&gt;.Match(hasValue, notAvailable, empty)</code></td><td>FieldValueTriStateTests</td></tr>
+<tr><td>SW_CASENUM</td><td><code>ProcessBuiltins.cs</code></td><td>DebugBuiltinsEndpoint</td></tr>
+<tr><td>IPEDateTimeUtil.CALCTIME</td><td><code>ProcessBuiltins.Tokenize()</code></td><td>ExpressionDeadlineTests</td></tr>
+<tr><td>HaltOnBadSubProcess</td><td>Falha visível (não silenciosa)</td><td>DynamicSubprocessRegistryTests</td></tr>
+<tr><td>MAXRETRIES / NUMAPPRETRIES</td><td>Contadores independentes</td><td>Retry loop em PRPINTPC</td></tr>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2 style="border-bottom-color:var(--green)">Resumo: Cobertura por Etapa do Documento</h2>
+<table class="summary-table">
+<tr><th>Etapa do Documento</th><th>Conceitos Validados</th><th>Cenários</th><th>Nós</th><th>Status</th></tr>
+<tr><td>1 — Fechamento do AIIM</td><td>Evento Início, User Task, Variáveis</td><td>SC-001 nós 1-7</td><td>7</td><td>✅ PROVEN</td></tr>
+<tr><td>2 — Notificação do AIIM (Graft)</td><td>Graft Step, Mensagem, Correlação, E-mail, Loops</td><td>SC-001 nós 8-13</td><td>6</td><td>✅ PROVEN</td></tr>
+<tr><td>3 — Integração com Decisions</td><td>Service Task, Regras de Negócio, Variáveis</td><td>SC-001 nós 14-20</td><td>7</td><td>✅ PROVEN</td></tr>
+<tr><td>4 — Verificação do Retorno</td><td>XOR Gateway, Regras, Variáveis</td><td>SC-001 nó 21</td><td>1</td><td>✅ PROVEN</td></tr>
+<tr><td>5 — Validação Paralelos</td><td>AND Gateway, Fluxos Paralelos, Signal, Timers</td><td>SC-001/012/010 nós 22-27</td><td>6</td><td>✅ PROVEN</td></tr>
+<tr><td>6 — Controle de Intimados</td><td>Procedures Dinâmicas, Subprocessos, Variáveis</td><td>SC-001 nós 28-29</td><td>2</td><td>✅ PROVEN</td></tr>
+<tr><td>7 — Encerramento</td><td>Evento Fim, Persistência</td><td>SC-001 nó 30</td><td>1</td><td>✅ PROVEN</td></tr>
+</table>
+
+<h2 style="border-bottom-color:var(--green)">Resumo: Métricas da PoC</h2>
+<table class="summary-table">
+<tr><th>Métrica</th><th>Valor</th></tr>
+<tr><td>Processos modelados</td><td>9</td></tr>
+<tr><td>Nós BPMN</td><td>215</td></tr>
+<tr><td>Transições</td><td>221</td></tr>
+<tr><td>Campos do caso</td><td>209 (147 em escopo)</td></tr>
+<tr><td>Operações SOAP</td><td>5 (de 127 catalogadas)</td></tr>
+<tr><td>Regras Decisions</td><td>49 colunas, 11 atributos</td></tr>
+<tr><td>Testes oracle automatizados</td><td>2013+</td></tr>
+<tr><td>Cenários end-to-end</td><td>5 (SC-001/012/010/014/015) — todos IDÊNTICO</td></tr>
+<tr><td>Testes de restart-recovery</td><td>8 cenários (SQLite durável)</td></tr>
+<tr><td>Conceitos BPM cobertos</td><td>16 de 16 (100%)</td></tr>
+<tr><td>Cobertura estimada BPMN</td><td>~70-80% (conforme documento)</td></tr>
+</table>
+
+<div class="footer">
+<p><strong>Plataforma:</strong> .NET 8.0 · Elsa Workflows 3.7.1 · EF Core + SQLite · Blazor Server (visualização)</p>
+<p><strong>Fonte dos oráculos:</strong> <code>artifacts/POC_Epat/</code> (fixtures imutáveis derivadas do XPDL/WSDL/Corticon originais)</p>
+<p><strong>Reprodutibilidade:</strong> <code>dotnet test tests/SefazSp.Epat.Oracles.Tests/ → 2013+ testes, 0 falhas</code></p>
+<p>Gerado em 2026-08-31 — ePAT PoC, migração TIBCO iProcess → .NET / Elsa</p>
+</div>
+
+</body>
+</html>

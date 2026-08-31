@@ -60,3 +60,7 @@ Thumbs.db
 epat-poc.db
 epat-poc.db-shm
 epat-poc.db-wal
+
+# --- Root markdown files (working notes, not deliverables) -------------------
+/*.md
+!README.md

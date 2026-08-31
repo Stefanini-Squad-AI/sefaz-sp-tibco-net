@@ -13,6 +13,13 @@
         <input @bind="_processId" placeholder="PROCESS_ID (ex.: SC001-xxxxxxxx)" />
         <button @onclick="ConnectAsync" disabled="@_busy">Ligar</button>
         <span class="status @StatusClass">@_statusLabel</span>
+        <span class="spacer"></span>
+        <div class="zoom">
+            <button title="Reduzir" @onclick="() => ZoomAsync(-0.2)">−</button>
+            <button title="Ampliar" @onclick="() => ZoomAsync(0.2)">+</button>
+            <button title="Ajustar à janela" @onclick="FitAsync">Ajustar</button>
+            <button title="Repor a disposição original" @onclick="ResetAsync">Repor</button>
+        </div>
     </div>
 </header>
 
@@ -20,6 +27,84 @@
     <div id="canvas" class="canvas"></div>
 
     <aside class="panel">
+        <h2>Ações</h2>
+        @if (_view is null || _view.Status == "Unknown")
+        {
+            <div class="action-group">
+                <label>ID do AIIM</label>
+                <input type="number" @bind="_idAiim" style="width:100%" />
+                <button class="btn-action" @onclick="StartProcessAsync" disabled="@_actionBusy">▶ Iniciar Processo</button>
+            </div>
+        }
+        else if (_view.Status == "Completed")
+        {
+            <p class="muted">Processo concluído — @_view.Traversed.Count nós percorridos.</p>
+            <button class="btn-action btn-secondary" @onclick="NewProcessAsync">Novo processo</button>
+        }
+        else
+        {
+            <p class="muted step-label">Próximo passo:</p>
+            @switch (_nextAction)
+            {
+                case "iniciar-novo-graft":
+                    <button class="btn-action" @onclick="PostIniciarNovoGraftAsync" disabled="@_actionBusy">1 · Iniciar Novo Graft</button>
+                    break;
+                case "preparar-notificacao":
+                    <div class="action-group">
+                        <label><input type="checkbox" @bind="_correcao" /> Correção</label>
+                        <button class="btn-action" @onclick="PrepararNotificacaoAsync" disabled="@_actionBusy">2 · Preparar Notificação</button>
+                    </div>
+                    break;
+                case "finalizar-aiim":
+                    <button class="btn-action" @onclick="FinalizarAiimAsync" disabled="@_actionBusy">3 · Finalizar AIIM</button>
+                    break;
+                case "deat-inicalc":
+                    <button class="btn-action" @onclick="PostDeatInicalcAsync" disabled="@_actionBusy">4 · DEAT0050 INICALC</button>
+                    <p class="hint">O timer Aguarda Defesa dispara automaticamente (~2s).</p>
+                    break;
+                case "graft-attach":
+                    <div class="action-group">
+                        <input @bind="_graftChildId" placeholder="childId (ex.: DEAT-A)" style="width:100%" />
+                        <button class="btn-action" @onclick="GraftAttachAsync" disabled="@_actionBusy">Graft · Attach</button>
+                        <button class="btn-action" @onclick="GraftCompleteAsync" disabled="@_actionBusy">Graft · Complete</button>
+                        <button class="btn-action" @onclick="PostGraftCloseAsync" disabled="@_actionBusy">Graft · Fechar Janela</button>
+                    </div>
+                    break;
+                case "operator-decision":
+                    <button class="btn-action" @onclick="PostOperatorDecisionAsync" disabled="@_actionBusy">Operador · Retry</button>
+                    break;
+                case "verificar-retorno":
+                    <div class="action-group">
+                        <label>Tipo de Vistas</label>
+                        <select @bind="_tipoVistas" style="width:100%">
+                            <option value="JUIZ">JUIZ</option>
+                            <option value="MISTA">MISTA</option>
+                            <option value="DRF">DRF</option>
+                        </select>
+                        <button class="btn-action" @onclick="VerificarRetornoAsync" disabled="@_actionBusy">5 · Verificar Retorno</button>
+                    </div>
+                    break;
+                case "vistas-do-juiz":
+                    <button class="btn-action" @onclick="PostVistasDoJuizAsync" disabled="@_actionBusy">6 · Vistas do Juiz</button>
+                    break;
+                case "realizar-vista-mista":
+                    <button class="btn-action" @onclick="PostRealizarVistaMistaAsync" disabled="@_actionBusy">6 · Realizar Vista Mista</button>
+                    break;
+                case "pedido-de-vistas":
+                    <button class="btn-action" @onclick="PostPedidoDeVistasAsync" disabled="@_actionBusy">6 · Pedido de Vistas</button>
+                    <p class="hint">Ou aguarde ~2s — o timer de limite dispara e encerra via DRF.</p>
+                    break;
+                default:
+                    <p class="muted">Aguardando… (timer ou evento automático)</p>
+                    break;
+            }
+        }
+
+        @if (_actionMessage is not null)
+        {
+            <p class="action-msg">@_actionMessage</p>
+        }
+
         <h2>Interações de serviço</h2>
         @if (_view is null || _view.Interactions.Count == 0)
         {
@@ -47,6 +132,8 @@
             <h2>Percurso</h2>
             <p class="muted">@_view.Traversed.Count nós · @_view.Status</p>
         }
+
+        <p class="hint">Use a roda do rato para zoom e arraste o fundo para deslocar o diagrama.</p>
     </aside>
 </div>
 
@@ -64,12 +151,173 @@
     private bool _rendered;
     private CancellationTokenSource? _poll;
 
+    // Action panel state
+    private long _idAiim = 42;
+    private bool _correcao = true;
+    private string _tipoVistas = "JUIZ";
+    private string _graftChildId = "DEAT-A";
+    private bool _actionBusy;
+    private string? _actionMessage;
+    private string _nextAction = "";
+
     private string StatusClass => _view?.Status switch
     {
         "Completed" => "done",
         "Suspended" => "live",
         _ => "idle"
     };
+
+    // Suspension points (from console logs / Sc001NodePath):
+    //   0    → after start, before any event → show iniciar-novo-graft
+    //   2    → after iniciar-novo-graft (nodes 1-2) → show preparar-notificacao
+    //   4    → after preparar-notificacao SC-015 short-circuit check
+    //   6    → after preparar-notificacao (correcao=true, nodes 3-6) → show finalizar-aiim
+    //   13   → after finalizar-aiim (nodes 7-13), DEAT suspended → show deat-inicalc
+    //   20   → after DEAT+PRPINTPC (nodes 14-20) → show verificar-retorno
+    //   21+  → after verificar-retorno → show final step per branch
+    private void DetectNextAction()
+    {
+        if (_view is null || _view.Status != "Suspended") { _nextAction = ""; return; }
+        _nextAction = _view.Traversed.Count switch
+        {
+            0       => "iniciar-novo-graft",
+            1 or 2  => "preparar-notificacao",
+            >= 3 and <= 6 => "finalizar-aiim",
+            >= 7 and <= 13 => "deat-inicalc",
+            >= 14 and <= 20 => "verificar-retorno",
+            >= 21 => _tipoVistas switch
+            {
+                "JUIZ" => "vistas-do-juiz",
+                "MISTA" => "realizar-vista-mista",
+                "DRF" => "pedido-de-vistas",
+                _ => "vistas-do-juiz"
+            },
+            _ => ""
+        };
+    }
+
+    private async Task StartProcessAsync()
+    {
+        _actionBusy = true;
+        _actionMessage = null;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            _processId = $"demo-{_idAiim}";
+            var body = new { processId = _processId, idAiim = _idAiim };
+            var resp = await client.PostAsJsonAsync("/debug/pocepat/start", body);
+            if (resp.IsSuccessStatusCode)
+            {
+                _actionMessage = $"Processo {_processId} criado.";
+                await ConnectAsync();
+            }
+            else
+            {
+                _actionMessage = $"Erro: {resp.StatusCode}";
+            }
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
+
+    private async Task NewProcessAsync()
+    {
+        _poll?.Cancel();
+        _view = null;
+        _processId = "";
+        _statusLabel = "desligado";
+        _nextAction = "";
+        _actionMessage = null;
+        _idAiim++;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private Task PostIniciarNovoGraftAsync() => PostSimpleAsync("/pocepat/" + _processId + "/iniciar-novo-graft");
+    private Task PostDeatInicalcAsync() => PostSimpleAsync("/pocepat/" + _processId + "/deat-inicalc");
+    private Task PostGraftCloseAsync() => PostSimpleAsync("/pocepat/" + _processId + "/graft-close");
+    private Task PostOperatorDecisionAsync() => PostSimpleAsync("/pocepat/" + _processId + "/operator-decision");
+    private Task PostVistasDoJuizAsync() => PostSimpleAsync("/pocepat/" + _processId + "/vistas-do-juiz");
+    private Task PostRealizarVistaMistaAsync() => PostSimpleAsync("/pocepat/" + _processId + "/realizar-vista-mista");
+    private Task PostPedidoDeVistasAsync() => PostSimpleAsync("/pocepat/" + _processId + "/pedido-de-vistas");
+
+    private async Task PostSimpleAsync(string path)
+    {
+        _actionBusy = true;
+        _actionMessage = null;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            await client.PostAsync(path, null);
+            _actionMessage = "Enviado.";
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
+
+    private async Task PrepararNotificacaoAsync()
+    {
+        _actionBusy = true;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            await client.PostAsJsonAsync($"/pocepat/{_processId}/preparar-notificacao", new { correcao = _correcao });
+            _actionMessage = _correcao ? "Correção=Sim → continua." : "Correção=Não → SC-015.";
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
+
+    private async Task FinalizarAiimAsync()
+    {
+        _actionBusy = true;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            await client.PostAsJsonAsync($"/pocepat/{_processId}/finalizar-aiim", new { afrName = "AFR Demo" });
+            _actionMessage = "AIIM finalizado.";
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
+
+    private async Task VerificarRetornoAsync()
+    {
+        _actionBusy = true;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            await client.PostAsJsonAsync($"/pocepat/{_processId}/verificar-retorno", new { tipoVistas = _tipoVistas });
+            _actionMessage = $"Tipo de vistas: {_tipoVistas}";
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
+
+    private async Task GraftAttachAsync()
+    {
+        _actionBusy = true;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            await client.PostAsJsonAsync($"/pocepat/{_processId}/graft-attach", new { childId = _graftChildId });
+            _actionMessage = $"Child {_graftChildId} attached.";
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
+
+    private async Task GraftCompleteAsync()
+    {
+        _actionBusy = true;
+        try
+        {
+            var client = HttpFactory.CreateClient("epat-api");
+            await client.PostAsJsonAsync($"/pocepat/{_processId}/graft-complete", new { childId = _graftChildId });
+            _actionMessage = $"Child {_graftChildId} completed.";
+        }
+        catch (Exception ex) { _actionMessage = ex.Message; }
+        finally { _actionBusy = false; }
+    }
 
     private async Task ConnectAsync()
     {
@@ -100,6 +348,21 @@
         }
     }
 
+    private async Task ZoomAsync(double delta)
+    {
+        if (_rendered) await JS.InvokeVoidAsync("epatJourney.zoom", delta);
+    }
+
+    private async Task FitAsync()
+    {
+        if (_rendered) await JS.InvokeVoidAsync("epatJourney.fit");
+    }
+
+    private async Task ResetAsync()
+    {
+        if (_rendered) await JS.InvokeVoidAsync("epatJourney.reset");
+    }
+
     private async Task PollLoopAsync(CancellationToken ct)
     {
         var client = HttpFactory.CreateClient("epat-api");
@@ -114,8 +377,9 @@
                     if (_view is not null)
                     {
                         var traversed = _view.Traversed.Select(s => s.NodeId).ToArray();
-                        await JS.InvokeVoidAsync("epatJourney.apply", ct, traversed, _view.CurrentNodeId);
+                        await JS.InvokeVoidAsync("epatJourney.apply", traversed, _view.CurrentNodeId);
                         _statusLabel = _view.Status == "Completed" ? "concluído" : "suspenso";
+                        DetectNextAction();
                     }
                 }
                 else
